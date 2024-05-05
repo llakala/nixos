@@ -45,7 +45,7 @@ environment.systemPackages =
   nodejs
   git
   efibootmgr # manage efi entries
-  grub2_efi # grub commands
+  grub2 # grub commands
   gparted
 ])
 ++
