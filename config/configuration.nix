@@ -44,6 +44,7 @@ environment.systemPackages =
   gnumake # make command
   nodejs
   git
+  efibootmgr 
 ])
 ++
 
