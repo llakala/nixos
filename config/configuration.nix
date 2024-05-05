@@ -46,6 +46,7 @@ environment.systemPackages =
   git
   efibootmgr # manage efi entries
   grub2_efi # grub commands
+  gparted
 ])
 ++
 
@@ -67,7 +68,7 @@ environment.systemPackages =
   };
   networking =
   {
-    hostName = "my_pc";
+    hostName = "my-pc";
     networkmanager.enable = true;
 
     firewall.enable = true;
