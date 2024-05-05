@@ -58,6 +58,7 @@
                 [
                     ./config/home.nix
                     ./home-modules/gnome-extensions.nix
+                    ./home-modules/dconf-settings.nix
                 ];
                 specialArgs =
                 {

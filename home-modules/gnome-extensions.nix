@@ -2,13 +2,6 @@
 
 {
 
-   home.packages = with pkgs.gnomeExtensions;
-  [
-    clipboard-indicator
-    dash-to-dock
-    just-perfection
-  ];
-
   dconf.settings =
   {
     "org/gnome/shell" =
