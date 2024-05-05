@@ -1,13 +1,13 @@
-  # Edit this configuration file to define what should be installed on
-  # your system.  Help is available in the configuration.nix(5) man page
-  # and in the NixOS manual (accessible by running ‘nixos-help’).
-  {
-  inputs,
-  pkgs,
-  pkgs-unstable,
-  config,
-  ...
-  }:
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+{
+inputs,
+pkgs,
+pkgs-unstable,
+config,
+...
+}:
 
 {
   imports =
@@ -21,7 +21,8 @@
 
 
 
-  users.users.username = {
+  users.users.username =
+  {
     isNormalUser = true;
     description = "User Name";
     password = " ";
@@ -31,54 +32,37 @@
 
 # Packages for terminal
 nixpkgs.config.allowUnfree = true;
-  environment.systemPackages =
-  (with pkgs;
-  [
-    libsecret
-    busybox # Tiny utils
-    libgccjit # gcc
-    linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
-    gnumake # make command
-    nodejs
-    git
-  ])
-  ++
 
-  (with pkgs-unstable;
-  [
-    nh
-  ]);
+
+environment.systemPackages =
+(with pkgs;
+[
+  libsecret
+  busybox # Tiny utils
+  libgccjit # gcc
+  linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
+  gnumake # make command
+  nodejs
+  git
+])
+++
+
+(with pkgs-unstable;
+[
+  nh
+]);
 
   # Sound
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
+  services.pipewire =
+  {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-
-  boot =
-  {
-    blacklistedKernelModules = [ ];
-    extraModulePackages = with config.boot.kernelPackages; [  ];
-    initrd.kernelModules = [ ];
-    kernelPackages = pkgs.linuxPackages_latest;
-
-    loader =
-    {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      grub.enable = false;
-    };
-  };
-
-
-
-
   networking =
   {
     hostName = "my_pc";
