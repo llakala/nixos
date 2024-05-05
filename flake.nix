@@ -58,6 +58,7 @@
                 modules =
                 [
                     ./config/home.nix
+                    ./home-modules/bashrc.nix
                     ./home-modules/gnome-extensions.nix
                     ./home-modules/dconf-settings.nix
                 ];
