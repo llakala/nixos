@@ -38,6 +38,7 @@
                 [
                     ./config/configuration.nix
 
+                    ./nix-modules/bootloader.nix
                     ./nix-modules/gnome.nix
                     ./nix-modules/nvidia.nix
                 ];
