@@ -33,7 +33,7 @@ config,
 # Packages for terminal
 nixpkgs.config.allowUnfree = true;
 
-
+environment.sessionVariables.FLAKE = "/etc/nixos";
 environment.systemPackages =
 (with pkgs;
 [
@@ -68,7 +68,7 @@ environment.systemPackages =
   };
   networking =
   {
-    hostName = "my-pc";
+    hostName = "mypc";
     networkmanager.enable = true;
 
     firewall.enable = true;

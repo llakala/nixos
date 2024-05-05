@@ -31,7 +31,7 @@
     {
         nixosConfigurations =
         {
-            my-pc = lib.nixosSystem
+            mypc = lib.nixosSystem
             {
                 inherit system;
                 modules =
