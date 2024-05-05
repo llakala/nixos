@@ -44,7 +44,8 @@ environment.systemPackages =
   gnumake # make command
   nodejs
   git
-  efibootmgr 
+  efibootmgr # manage efi entries
+  grub2_efi # grub commands
 ])
 ++
 
