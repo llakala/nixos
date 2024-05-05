@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
 
+  boot.loader.systemd-boot.enable = true;
 
   boot =
   {
@@ -9,16 +10,14 @@
     initrd.kernelModules = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
-
   boot.loader.efi =
   {
     canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
   };
 
   boot.loader.grub =
   {
-    enable = true;
+    enable = false;
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
