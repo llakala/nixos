@@ -38,11 +38,13 @@
                 [
                     ./config/configuration.nix
 
-                    ./nix-modules/bootloader.nix
-                    ./nix-modules/gnome.nix
-                    ./nix-modules/networking.nix
-                    ./nix-modules/nvidia.nix
-                    ./nix-modules/sound.nix
+                    ./packages/nixos-pkgs.nix
+
+                    ./modules/nixos/bootloader.nix
+                    ./modules/nixos/gnome.nix
+                    ./modules/nixos/networking.nix
+                    ./modules/nixos/nvidia.nix
+                    ./modules/nixos/sound.nix
                 ];
                 specialArgs =
                 {
@@ -60,10 +62,14 @@
                 modules =
                 [
                     ./config/home.nix
-                    ./home-modules/bash.nix
-                    ./home-modules/git.nix
+
+                    ./packages/home-pkgs.nix
+
                     ./home-modules/gnome-extensions.nix
                     ./home-modules/dconf-settings.nix
+
+                    ./programs/bash.nix
+                    ./programs/git.nix
                 ];
                 extraSpecialArgs =
                 {
