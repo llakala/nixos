@@ -40,7 +40,9 @@
 
                     ./nix-modules/bootloader.nix
                     ./nix-modules/gnome.nix
+                    ./nix-modules/networking.nix
                     ./nix-modules/nvidia.nix
+                    ./nix-modules/sound.nix
                 ];
                 specialArgs =
                 {
@@ -59,6 +61,7 @@
                 [
                     ./config/home.nix
                     ./home-modules/bash.nix
+                    ./home-modules/git.nix
                     ./home-modules/gnome-extensions.nix
                     ./home-modules/dconf-settings.nix
                 ];

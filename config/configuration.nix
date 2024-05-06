@@ -18,8 +18,7 @@ config,
   # Important settings, never to change
   nix.settings.experimental-features = "nix-command flakes";
   virtualisation.vmware.host.enable = true;
-
-
+  hardware.bluetooth.powerOnBoot = true;
 
   users.users.username =
   {
@@ -30,56 +29,34 @@ config,
   };
   security.sudo.wheelNeedsPassword = false;
 
-# Packages for terminal
-nixpkgs.config.allowUnfree = true;
+  # Packages for terminal
+  nixpkgs.config.allowUnfree = true;
 
-environment.sessionVariables.FLAKE = "/etc/nixos";
-environment.systemPackages =
-(with pkgs;
-[
-  libsecret
-  busybox # Tiny utils
-  libgccjit # gcc
-  linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
-  gnumake # make command
-  nodejs
-  git
-  efibootmgr # manage efi entries
-  grub2 # grub commands
-  grub2_efi
-  gparted
-])
-++
+  environment.sessionVariables.FLAKE = "/etc/nixos";
+  environment.systemPackages =
+  (with pkgs;
+  [
+    libsecret
+    busybox # Tiny utils
+    libgccjit # gcc
+    linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
+    gnumake # make command
+    nodejs
+    git
+    efibootmgr # manage efi entries
+    grub2 # grub commands
+    grub2_efi
+    gparted
+  ])
+  ++
 
-(with pkgs-unstable;
-[
-  nh
-]);
-
-  # Sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire =
-  {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  networking =
-  {
-    hostName = "mypc";
-    networkmanager.enable = true;
-
-    firewall.enable = true;
-    resolvconf.dnsExtensionMechanism = false;
-  };
-
+  (with pkgs-unstable;
+  [
+    nh
+  ]);
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
   system.stateVersion = "23.11"; # Did you read the comment?
-
-  }
+}
