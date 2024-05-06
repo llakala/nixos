@@ -1,9 +1,9 @@
-{ ... }:
+{ vars, ... }:
 
 {
   networking =
     {
-      hostName = "mypc";
+      hostName = vars.hostName;
       networkmanager.enable = true;
 
       firewall.enable = true;

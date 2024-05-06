@@ -3,8 +3,9 @@
   homeDirectory = "/home/username";
   fullName = "User Name";
 
+
   hostName = "mypc";
-  email = "ellakalle6@gmail.com";
+  configPath = "/etc/nixos";
 
   system = "x86_64-linux";
   stateVersion = "23.11";
