@@ -2,6 +2,7 @@
 {
 inputs,
 config,
+vars,
 ...
 }:
 
@@ -13,10 +14,10 @@ config,
 
   # Important settings, never to change
   nix.settings.experimental-features = "nix-command flakes";
-  users.users.username =
+  users.users.${vars.username} =
   {
     isNormalUser = true;
-    description = "User Name";
+    description = vars.fullName;
     extraGroups = [ "networkmanager" "wheel" ];
   };
   security.sudo.wheelNeedsPassword = false;
