@@ -65,8 +65,8 @@
 
                     ./packages/home-pkgs.nix
 
-                    ./home-modules/gnome-extensions.nix
-                    ./home-modules/dconf-settings.nix
+                    ./modules/home/gnome-extensions.nix
+                    ./modules/home/dconf-settings.nix
 
                     ./programs/bash.nix
                     ./programs/git.nix
