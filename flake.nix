@@ -26,15 +26,14 @@
         vars = import ./variables.nix;
         system = vars.system;
         lib = nixpkgs.lib;
-        pkgs = nixpkgs.legacyPackages.${system};
-        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${vars.system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${vars.system};
     in
     {
         nixosConfigurations =
         {
             ${vars.hostName} = lib.nixosSystem
             {
-                inherit system;
                 modules =
                 [
                     ./defaults/nixos-defaults.nix
@@ -76,6 +75,7 @@
                 extraSpecialArgs =
                 {
                     inherit pkgs-unstable;
+                    vars = vars;
                 };
             };
         };
