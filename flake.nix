@@ -23,16 +23,18 @@
 
     }:
     let
-        options = import ./options.nix;
+        vars = import ./variables.nix;
+        system = vars.system;
         lib = nixpkgs.lib;
-        pkgs = nixpkgs.legacyPackages.options.${options.system};
-        pkgs-unstable = nixpkgs-unstable.legacyPackages.${options.system};
+        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
         nixosConfigurations =
         {
-            ${options.hostName} = lib.nixosSystem
+            ${vars.hostName} = lib.nixosSystem
             {
+                inherit system;
                 modules =
                 [
                     ./defaults/nixos-defaults.nix
@@ -48,6 +50,7 @@
                 specialArgs =
                 {
                     inherit pkgs-unstable;
+                    vars = vars;
                 };
             };
         };
@@ -55,7 +58,7 @@
 
         homeConfigurations =
         {
-            ${options.username} = home-manager.lib.homeManagerConfiguration
+            ${vars.username} = home-manager.lib.homeManagerConfiguration
             {
                 inherit pkgs;
                 modules =
