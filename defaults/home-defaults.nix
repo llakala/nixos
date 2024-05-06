@@ -1,4 +1,4 @@
-{ ... }:
+{ options, ...}:
 
 {
   programs.home-manager.enable = true;
@@ -9,4 +9,6 @@
     homeDirectory = options.homeDirectory;
     stateVersion = options.stateVersion;
   };
+
+  services.mako.enable = true;
 }
