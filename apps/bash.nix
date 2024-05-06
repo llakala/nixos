@@ -1,12 +1,12 @@
-{ ... }:
+{ vars, ... }:
 
 {
   programs.bash =
   {
     enable = true;
     bashrcExtra = ''
-    export NIX_PATH="home-manager=/etc/nixos/config:$NIX_PATH"
-    export HOME_MANAGER_CONFIG=/etc/nixos/config/home.nix
+    export NIX_PATH="home-manager=${vars.configPath}/defaults:$NIX_PATH"
+    export HOME_MANAGER_CONFIG=/etc/nixos/defaults/home-defaults.nix
     rbld()
     {
       case "$1" in
