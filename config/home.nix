@@ -30,12 +30,6 @@
     pika-backup
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "Ella Kramer";
-    userEmail = "ellakalle6@gmail.com";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
