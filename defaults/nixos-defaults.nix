@@ -12,7 +12,7 @@ config,
   ];
 
   # Important settings, never to change
-
+  nix.settings.experimental-features = "nix-command flakes";
   users.users.username =
   {
     isNormalUser = true;
@@ -25,4 +25,6 @@ config,
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  system.stateVersion = options.stateVersion;
 }

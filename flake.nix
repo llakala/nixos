@@ -33,10 +33,9 @@
         {
             mypc = lib.nixosSystem
             {
-                inherit options;
                 modules =
                 [
-                    ./defaults/defaults.nix
+                    ./defaults/nixos-defaults.nix
 
                     ./packages/nixos.nix
 
@@ -49,6 +48,7 @@
                 specialArgs =
                 {
                     inherit pkgs-unstable;
+                    inherit options;
                 };
             };
         };
@@ -58,14 +58,13 @@
         {
             username = home-manager.lib.homeManagerConfiguration
             {
-                inherit pkgs options;
-                homeDirectory = options.homeDirectory;
-                username = options.username;
+                inherit pkgs;
                 modules =
                 [
+                    ./defaults/home-defaults.nix
+
                     ./apps/bash.nix
                     ./apps/git.nix
-                    ./apps/home-manager.nix
 
                     ./packages/home.nix
 
@@ -75,6 +74,7 @@
                 extraSpecialArgs =
                 {
                     inherit pkgs-unstable;
+                    inherit options;
                 };
             };
         };
