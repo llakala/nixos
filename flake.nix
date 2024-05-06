@@ -31,9 +31,9 @@
     {
         nixosConfigurations =
         {
-            ${options.hostName} = lib.nixosSystem
+            mypc = lib.nixosSystem
             {
-                inherit system options;
+                inherit options;
                 modules =
                 [
                     ./defaults/defaults.nix
@@ -56,7 +56,7 @@
 
         homeConfigurations =
         {
-            ${options.username} = home-manager.lib.homeManagerConfiguration
+            username = home-manager.lib.homeManagerConfiguration
             {
                 inherit pkgs options;
                 homeDirectory = options.homeDirectory;

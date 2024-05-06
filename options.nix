@@ -1,6 +1,6 @@
 {
   username = "username";
-  homeDirectory = "/home/${username}";
+  homeDirectory = "/home/username";
   fullName = "User Name";
 
   hostName = "mypc";
