@@ -23,22 +23,22 @@
 
     }:
     let
-        system = "x86_64-linux";
+        options = import ./options.nix;
         lib = nixpkgs.lib;
-        pkgs = nixpkgs.legacyPackages.${system};
-        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${options.system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${options.system};
     in
     {
         nixosConfigurations =
         {
-            mypc = lib.nixosSystem
+            ${options.hostName} = lib.nixosSystem
             {
-                inherit system;
+                inherit system options;
                 modules =
                 [
-                    ./config/configuration.nix
+                    ./defaults/defaults.nix
 
-                    ./packages/nixos-pkgs.nix
+                    ./packages/nixos.nix
 
                     ./modules/nixos/bootloader.nix
                     ./modules/nixos/gnome.nix
@@ -56,20 +56,21 @@
 
         homeConfigurations =
         {
-            username = home-manager.lib.homeManagerConfiguration
+            ${options.username} = home-manager.lib.homeManagerConfiguration
             {
-                inherit pkgs;
+                inherit pkgs options;
+                homeDirectory = options.homeDirectory;
+                username = options.username;
                 modules =
                 [
-                    ./config/home.nix
+                    ./apps/bash.nix
+                    ./apps/git.nix
+                    ./apps/home-manager.nix
 
-                    ./packages/home-pkgs.nix
+                    ./packages/home.nix
 
                     ./modules/home/gnome-extensions.nix
                     ./modules/home/dconf-settings.nix
-
-                    ./programs/bash.nix
-                    ./programs/git.nix
                 ];
                 extraSpecialArgs =
                 {

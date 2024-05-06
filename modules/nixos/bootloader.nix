@@ -2,7 +2,8 @@
 {
 
   boot.loader.systemd-boot.enable = true;
-
+  hardware.bluetooth.powerOnBoot = true;
+  
   boot =
   {
     blacklistedKernelModules = [ ];
