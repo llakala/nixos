@@ -1,12 +1,14 @@
-{...}:
+{ vars, ...}:
 
 {
   programs.home-manager.enable = true;
 
   home =
   {
-    # username = options.username;
-    # homeDirectory = options.homeDirectory;
-    # stateVersion = options.stateVersion;
+    username = vars.username;
+    homeDirectory = vars.homeDirectory;
+    stateVersion = vars.stateVersion;
+
+    
   };
 }
