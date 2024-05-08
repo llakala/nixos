@@ -10,7 +10,6 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        vscode-server.url = "github:nix-community/nixos-vscode-server";
     };
 
 
@@ -20,7 +19,6 @@
         nixpkgs,
         nixpkgs-unstable,
         home-manager,
-        vscode-server,
         ...
     }:
     let
@@ -37,7 +35,6 @@
             {
                 modules =
                 [
-                    vscode-server.nixosModules.default
                     ./defaults/nixos-defaults.nix
 
                     ./packages/nixos.nix
@@ -68,6 +65,7 @@
 
                     ./apps/bash.nix
                     ./apps/git.nix
+                    ./apps/vscode-server.nix
 
                     ./packages/home.nix
 
