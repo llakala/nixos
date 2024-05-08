@@ -8,7 +8,5 @@
     username = vars.username;
     homeDirectory = vars.homeDirectory;
     stateVersion = vars.stateVersion;
-
-    
   };
 }
