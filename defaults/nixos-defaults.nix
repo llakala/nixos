@@ -21,8 +21,9 @@ vars,
     extraGroups = [ "networkmanager" "wheel" ];
   };
   security.sudo.wheelNeedsPassword = false;
+  services.vscode-server.enable = true;
 
-  environment.sessionVariables.FLAKE = "/etc/nixos";
+  environment.sessionVariables.FLAKE = vars.configPath;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
