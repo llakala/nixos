@@ -23,7 +23,7 @@ vars,
   security.sudo.wheelNeedsPassword = false;
   services.vscode-server.enable = true;
 
-  environment.sessionVariables.FLAKE = vars.configPath;
+  environment.sessionVariables.FLAKE = vars.configDirectory;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
