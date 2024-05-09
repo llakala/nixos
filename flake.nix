@@ -10,6 +10,7 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
     };
 
 
@@ -44,6 +45,7 @@
                     ./modules/nixos/networking.nix
                     ./modules/nixos/nvidia.nix
                     ./modules/nixos/sound.nix
+                    ./modules/vscode-server.nix
                 ];
                 specialArgs =
                 {
@@ -65,7 +67,6 @@
 
                     ./apps/bash.nix
                     ./apps/git.nix
-                    ./apps/vscode-server.nix
 
                     ./packages/home.nix
 

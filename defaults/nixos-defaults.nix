@@ -21,7 +21,6 @@ vars,
     extraGroups = [ "networkmanager" "wheel" ];
   };
   security.sudo.wheelNeedsPassword = false;
-  services.vscode-server.enable = true;
 
   environment.sessionVariables.FLAKE = vars.configDirectory;
 
