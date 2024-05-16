@@ -45,7 +45,7 @@
                     ./modules/nixos/networking.nix
                     ./modules/nixos/nvidia.nix
                     ./modules/nixos/sound.nix
-                    ./modules/vscode-server.nix
+                    ./modules/nixos/vscode-server.nix
                 ];
                 specialArgs =
                 {
