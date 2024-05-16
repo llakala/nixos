@@ -11,20 +11,20 @@
     {
       case "$1" in
         -n)
-          nh os switch
+          nix flake lock --update-input nixpkgs
+          nh os switch -u
           ;;
         -h)
-          nh home switch
-          ;;
-        -f)
-          sudo nix flake update
+          nix flake lock --update-input home-manager
+          nh home switch -u
           ;;
         "")
-          nh os switch
-          nh home switch
+          nix flake update
+          nh os switch -u
+          nh home switch -u
           ;;
         *)
-          echo "Usage: rbld [-n|-h}"
+          echo "Usage: rbld [-n|-h]"
           ;;
       esac
     }
