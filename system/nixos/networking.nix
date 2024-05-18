@@ -1,4 +1,7 @@
-{ vars, ... }:
+{
+  vars,
+  ...
+}:
 
 {
   networking =

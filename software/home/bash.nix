@@ -1,4 +1,7 @@
-{ vars, ... }:
+{
+  vars,
+  ...
+}:
 
 {
   programs.bash =
@@ -14,16 +17,13 @@
           sudo nh os switch -u
           ;;
         -h)
-          sudo nix flake lock --update-input home-manager
           nh home switch -u
           ;;
-        "")
+        -f)
           sudo nix flake update
-          sudo nh os switch -u
-          nh home switch -u
           ;;
         *)
-          echo "Usage: rbld [-n|-h]"
+          echo "Usage: rbld (-n|-h|-f)"
           ;;
       esac
     }

@@ -1,4 +1,8 @@
-{ config, vars }:
+{
+  config,
+  vars,
+  ...
+}:
 
 {
   nix.settings.experimental-features = "nix-command flakes";
