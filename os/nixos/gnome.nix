@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+
 {
     services.xserver = {
       enable = true;
