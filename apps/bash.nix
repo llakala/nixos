@@ -11,16 +11,15 @@
     {
       case "$1" in
         -n)
-          nix flake lock --update-input nixpkgs
-          nh os switch -u
+          sudo nh os switch -u
           ;;
         -h)
-          nix flake lock --update-input home-manager
+          sudo nix flake lock --update-input home-manager
           nh home switch -u
           ;;
         "")
-          nix flake update
-          nh os switch -u
+          sudo nix flake update
+          sudo nh os switch -u
           nh home switch -u
           ;;
         *)
