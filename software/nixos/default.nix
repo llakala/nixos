@@ -3,6 +3,6 @@
 {
   imports =
   [
-    ./packages.nix
+    ./vscode-server.nix
   ];
 }

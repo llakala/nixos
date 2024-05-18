@@ -3,6 +3,7 @@
 {
   imports =
   [
-    ./packages.nix
+    ./bash.nix
+    ./git.nix
   ];
 }

@@ -3,6 +3,6 @@
 {
   imports =
   [
-    ./packages.nix
+    ./gnome.nix
   ];
 }
