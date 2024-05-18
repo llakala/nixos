@@ -4,6 +4,7 @@
     inputs =
     {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager =
         {
             url = "github:nix-community/home-manager/release-23.11";
@@ -17,62 +18,55 @@
     {
         self,
         nixpkgs,
+        nixpkgs-unstable,
         home-manager,
         ...
     }:
     let
-        vars = import ./variables.nix;
+        vars = import ./system/variables.nix;
         system = vars.system;
         lib = nixpkgs.lib;
-        pkgs = nixpkgs.legacyPackages.${vars.system};
+        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
-        nixosConfigurations =
+
+        nixosConfigurations.${vars.hostName} = lib.nixosSystem
         {
-            ${vars.hostName} = lib.nixosSystem
+            modules =
+            [
+                ./system/nixos
+
+                ./packages/nixos
+
+                ./modules/nixos
+            ];
+            specialArgs =
             {
-                modules =
-                [
-                    ./defaults/nixos-defaults.nix
-
-                    ./packages/nixos.nix
-
-                    ./modules/nixos/bootloader.nix
-                    ./modules/nixos/gnome.nix
-                    ./modules/nixos/networking.nix
-                    ./modules/nixos/nvidia.nix
-                    ./modules/nixos/sound.nix
-                    ./modules/nixos/vscode-server.nix
-                ];
-                specialArgs =
-                {
-                    vars = vars;
-                };
+                inherit pkgs-unstable vars;
             };
         };
 
 
-        homeConfigurations =
+        homeConfigurations.${vars.username} = home-manager.lib.homeManagerConfiguration
         {
-            ${vars.username} = home-manager.lib.homeManagerConfiguration
+            inherit pkgs;
+            modules =
+            [
+                ./system/home
+
+                ./apps/bash.nix
+                ./apps/git.nix
+
+                ./packages/home.nix
+
+                ./modules/home/gnome-extensions.nix
+                ./modules/home/dconf-settings.nix
+            ];
+            extraSpecialArgs =
             {
-                inherit pkgs;
-                modules =
-                [
-                    ./defaults/home-defaults.nix
-
-                    ./apps/bash.nix
-                    ./apps/git.nix
-
-                    ./packages/home.nix
-
-                    ./modules/home/gnome-extensions.nix
-                    ./modules/home/dconf-settings.nix
-                ];
-                extraSpecialArgs =
-                {
-                    vars = vars;
-                };
+                inherit pkgs-unstable;
+                vars = vars;
             };
         };
     };
