@@ -1,12 +1,8 @@
-{ vars, ...}:
+{ }:
 
 {
-  programs.home-manager.enable = true;
-
-  home =
-  {
-    username = vars.username;
-    homeDirectory = vars.homeDirectory;
-    stateVersion = vars.stateVersion;
-  };
+  imports =
+  [ # Include the results of the hardware scan.
+    ./home-manager.nix
+  ];
 }

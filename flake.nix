@@ -23,7 +23,7 @@
         ...
     }:
     let
-        vars = import ./system/variables.nix;
+        vars = import ./variables.nix;
         system = vars.system;
         lib = nixpkgs.lib;
         pkgs = nixpkgs.legacyPackages.${system};
@@ -35,15 +35,19 @@
         {
             modules =
             [
-                ./system/nixos
+
+                ./os/nixos
 
                 ./packages/nixos
 
-                ./modules/nixos
+                ./software/nixos
+
+                ./system/nixos
             ];
             specialArgs =
             {
-                inherit pkgs-unstable vars;
+                inherit pkgs-unstable;
+                vars = vars;
             };
         };
 
@@ -53,15 +57,15 @@
             inherit pkgs;
             modules =
             [
+                ./os/home
+
+                ./packages/home
+
+                ./software/home
+
                 ./system/home
 
-                ./apps/bash.nix
-                ./apps/git.nix
 
-                ./packages/home.nix
-
-                ./modules/home/gnome-extensions.nix
-                ./modules/home/dconf-settings.nix
             ];
             extraSpecialArgs =
             {
