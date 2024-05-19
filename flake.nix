@@ -38,13 +38,13 @@
             modules =
             [
 
-                ./os/nixos
+                ./nixos/os
 
-                ./packages/nixos
+                ./nixos/packages
 
-                ./software/nixos
+                ./nixos/software
 
-                ./system/nixos
+                ./nixos/system
             ];
             specialArgs =
             {
@@ -58,13 +58,13 @@
             inherit pkgs;
             modules =
             [
-                ./os/home
+                ./home/os
 
-                ./packages/home
+                ./home/packages
 
-                ./software/home
+                ./home/software
 
-                ./system/home
+                ./home/system
 
 
             ];
