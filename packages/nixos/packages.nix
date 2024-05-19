@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   ...
 }:
 
@@ -8,7 +8,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages =
-  (with pkgs;
+  (with pkgs-stable;
   [
     libsecret
     busybox # Tiny utils
@@ -24,7 +24,7 @@
   ])
   ++
 
-  (with pkgs-unstable;
+  (with pkgs;
   [
     nh
   ]);
