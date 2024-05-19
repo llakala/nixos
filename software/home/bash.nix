@@ -14,7 +14,7 @@
     {
       case "$1" in
         -n)
-          sudo nh os switch -u
+          nh os switch -u
           ;;
         -h)
           nh home switch -u
