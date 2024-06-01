@@ -17,6 +17,5 @@
     usbimager
     pika-backup
     discord
-    inputs.nix-software-center.packages.${vars.system}.nix-software-center
   ];
 }
