@@ -15,12 +15,12 @@
     };
 
 
-    outputs =
+    outputs = inputs @ 
     {
         self,
         nixpkgs,
         nixpkgs-stable,
-        home-manager
+        home-manager,
         ...
     }:
 
@@ -49,7 +49,7 @@
             ];
             specialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-stable vars inputs;
             };
         };
 

@@ -1,6 +1,8 @@
 {
   pkgs,
   pkgs-stable,
+  inputs,
+  vars,
   ...
 }:
 
@@ -28,5 +30,6 @@
   (with pkgs;
   [
     nh
+    inputs.nix-software-center.packages.${vars.system}.nix-software-center
   ]);
 }
