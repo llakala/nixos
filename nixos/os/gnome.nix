@@ -28,7 +28,15 @@
       };
     };
 
+
     services.gnome.core-utilities.enable = false;
+    environment.gnome.excludePackages = with pkgs;
+    [
+      gnome-tour
+    ];
+
+
+
     programs.dconf.enable = true;
 
     # Add some actually useful packages back

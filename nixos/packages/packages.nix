@@ -22,7 +22,6 @@
     efibootmgr # manage efi entries
     grub2 # grub commands
     grub2_efi
-    gparted
     jdk22
   ])
   ++
