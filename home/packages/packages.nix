@@ -13,5 +13,6 @@
     vscode
     usbimager
     pika-backup
+    discord
   ];
 }
