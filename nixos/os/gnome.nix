@@ -38,6 +38,7 @@
       gnome-terminal
       dconf-editor
       gnome-disk-utility
+      resources
     ]);
 
     # Workaround for GNOME autologin

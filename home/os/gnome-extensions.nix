@@ -20,7 +20,7 @@
     "org/gnome/shell/extensions/dash-to-dock" =
     {
       autohide-in-fullscreen = true;
-      intellihide-mode = "MAXIMIZED_WINDOWS";
+      intellihide-mode = "ALWAYS_ON_TOP";
       hide-delay = 0.15;
       show-delay = 0.15;
       show-trash = false;
