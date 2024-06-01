@@ -15,7 +15,7 @@
     };
 
 
-    outputs = inputs @ 
+    outputs = inputs @
     {
         self,
         nixpkgs,
@@ -71,7 +71,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-stable vars inputs;
             };
         };
     };
