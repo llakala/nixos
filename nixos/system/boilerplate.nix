@@ -21,4 +21,5 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  system.stateVersion = vars.stateVersion;
 }

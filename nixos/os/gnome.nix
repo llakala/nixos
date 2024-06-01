@@ -2,29 +2,33 @@
   pkgs,
   lib,
   config,
+  vars,
   ...
 }:
 
 {
-    services.xserver = {
+    services.displayManager.autoLogin =
+    {
+      enable = true;
+      user = vars.username;
+    };
+    services.xserver =
+    {
       enable = true;
       excludePackages = with pkgs; [xterm]; # Remove weird xterm
 
       # Enable Gnome
       desktopManager.gnome.enable = true;
 
-      displayManager = {
-        gdm.enable = true;
-        autoLogin.enable = true;
-        autoLogin.user = "username";
+      displayManager.gdm.enable = true;
+      xkb =
+      {
+        layout = "us";
+        variant = "";
       };
-      layout = "us";
-      xkbVariant = "";
     };
 
-    # Disable all default gnome apps
     services.gnome.core-utilities.enable = false;
-
     programs.dconf.enable = true;
 
     # Add some actually useful packages back
@@ -36,7 +40,6 @@
       gnome-tweaks
       nautilus
       gnome-terminal
-      dconf-editor
       gnome-disk-utility
       resources
     ]);
