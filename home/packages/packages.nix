@@ -14,8 +14,7 @@
   [
     firefox
     vscode
-    usbimager
-    pika-backup
     discord
+    gparted
   ];
 }

@@ -13,10 +13,12 @@
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-indicator@tudmotu.com"
         "just-perfection-desktop@just-perfection"
+        "AlphabeticalAppGrid@stuarthayhurst"
       ];
 
     };
 
+    
     "org/gnome/shell/extensions/dash-to-dock" =
     {
       autohide-in-fullscreen = true;
