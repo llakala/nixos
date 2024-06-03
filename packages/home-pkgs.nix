@@ -6,20 +6,19 @@
 
 {
 
-  
   home.packages =
-  (with pkgs;
+
+  (with pkgs-stable;
   [
-    firefox
-    vscode
     discord
     gparted
   ])
   ++
 
-  (with pkgs-stable;
+  (with pkgs;
   [
-    modrinth-app
+    firefox
+    vscode
   ]);
 
 
