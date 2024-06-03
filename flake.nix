@@ -43,11 +43,11 @@
 
                 ./nixos/os
 
-                ./nixos/packages
-
                 ./nixos/software
 
                 ./nixos/system
+
+                ./packages/nixos-pkgs.nix
             ];
             specialArgs =
             {
@@ -63,13 +63,11 @@
             [
                 ./home/os
 
-                ./home/packages
-
                 ./home/software
 
                 ./home/system
 
-
+                ./packages/nixos-pkgs.nix
             ];
             extraSpecialArgs =
             {
