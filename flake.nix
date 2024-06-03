@@ -28,8 +28,11 @@
         vars = import ./variables.nix;
         system = vars.system;
         lib = nixpkgs.lib;
-        pkgs = nixpkgs.legacyPackages.${system};
-        pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+
+        pkgsArgs = { inherit system; config.allowUnfree = true; };
+        pkgs = import nixpkgs pkgsArgs;
+        pkgs-stable = import nixpkgs-stable pkgsArgs;
+
     in
     {
 

@@ -5,8 +5,6 @@
 }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages =
   (with pkgs-stable;
   [
@@ -27,6 +25,5 @@
   (with pkgs;
   [
     nh
-    modrinth-app
   ]);
 }
