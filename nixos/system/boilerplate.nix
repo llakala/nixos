@@ -21,5 +21,5 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  system.stateVersion = vars.stateVersion;
+  system.stateVersion = "23.11";
 }
