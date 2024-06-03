@@ -1,8 +1,6 @@
 {
   pkgs,
   pkgs-stable,
-  inputs,
-  vars,
   ...
 }:
 
@@ -29,5 +27,6 @@
   (with pkgs;
   [
     nh
+    modrinth-app
   ]);
 }

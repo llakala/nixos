@@ -19,7 +19,7 @@
 
   (with pkgs-stable;
   [
-    modrinth-app
+
   ]);
 
 
