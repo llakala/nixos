@@ -67,7 +67,7 @@
 
                 ./home/system
 
-                ./packages/nixos-pkgs.nix
+                ./packages/home-pkgs.nix
             ];
             extraSpecialArgs =
             {
