@@ -5,11 +5,11 @@
 
 {
   networking =
-    {
-      hostName = vars.hostName;
-      networkmanager.enable = true;
+  {
+    hostName = vars.hostName;
+    networkmanager.enable = true;
 
-      firewall.enable = true;
-      resolvconf.dnsExtensionMechanism = false;
-    };
+    firewall.enable = true;
+    resolvconf.dnsExtensionMechanism = false;
+  };
 }
