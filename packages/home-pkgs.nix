@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-stable,
+  pkgs-unstable,
   ...
 }:
 
@@ -8,7 +8,7 @@
 
   home.packages =
 
-  (with pkgs-stable;
+  (with pkgs;
   [
     discord
     gparted
@@ -17,7 +17,7 @@
   ])
   ++
 
-  (with pkgs;
+  (with pkgs-unstable;
   [
     firefox
     vscode

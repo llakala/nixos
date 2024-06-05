@@ -3,8 +3,8 @@
 
     inputs =
     {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager =
         {
             url = "github:nix-community/home-manager";
@@ -18,9 +18,9 @@
     {
         self,
         nixpkgs,
-        nixpkgs-stable,
+        nixpkgs-unstable,
         home-manager,
-        
+
         ...
     }:
 
@@ -32,7 +32,7 @@
 
         pkgsArgs = { inherit system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
-        pkgs-stable = import nixpkgs-stable pkgsArgs;
+        pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
     in
     {
@@ -52,7 +52,7 @@
             ];
             specialArgs =
             {
-                inherit pkgs-stable vars inputs;
+                inherit pkgs-unstable vars inputs;
             };
         };
 
@@ -72,7 +72,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit pkgs-stable vars inputs;
+                inherit pkgs-unstable vars inputs;
             };
         };
     };

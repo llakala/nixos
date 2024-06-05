@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-stable,
+  pkgs-unstable,
   ...
 }:
 
@@ -12,7 +12,7 @@
 
 
   environment.systemPackages =
-  (with pkgs-stable;
+  (with pkgs;
   [
     libsecret
     busybox # Tiny utils
@@ -28,7 +28,7 @@
   ])
   ++
 
-  (with pkgs;
+  (with pkgs-unstable;
   [
     nh
   ]);
