@@ -20,6 +20,7 @@
         nixpkgs,
         nixpkgs-stable,
         home-manager,
+        
         ...
     }:
 

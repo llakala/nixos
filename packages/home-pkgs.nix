@@ -12,6 +12,8 @@
   [
     discord
     gparted
+    modrinth-app
+    prismlauncher
   ])
   ++
 
