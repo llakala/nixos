@@ -13,6 +13,7 @@
     discord
     gparted
     modrinth-app
+    filezilla
   ])
   ++
 
