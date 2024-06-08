@@ -33,53 +33,34 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
-    in
+        host = import ./secrets/host.nix; # Secret
+        { nixBase, homeBase, configMap } = import ./hostProfiles.nix;
+
+
+        selectConfiguration = type: host: configMap.${host}.${type};
+
+    in 
     {
         nixosConfigurations = 
         {
-            username = lib.nixosSystem
-            {   
-                modules =
-                [
-
-                    ./nixos/os
-
-                    ./nixos/software
-
-                    ./desktop/nixos
-
-                    ./packages/nixos-pkgs.nix
-                ];
-                specialArgs =
-                {
-                    inherit pkgs-stable vars inputs;
-                };
-            };
+            "${host}" = 
+                let
+                    config = selectConfiguration "nixos" host;
+                    modules = config.nixBase.modules // config.nixBase.packages;
+                    systemExpr = lib.nixosSystem modules config.nixBase.args;
+                in
+                    lib.optional (configMap ? host) systemExpr;
         };
-
 
         homeConfigurations = 
         {
-            username = home-manager.lib.homeManagerConfiguration
-            {
-                inherit pkgs;
-                modules =
-                [
-                    ./home/os
-
-                    ./home/software
-
-                    ./desktop/home
-
-                    ./packages/home-pkgs.nix
-                ];
-                extraSpecialArgs =
-                {
-                    inherit pkgs-stable vars inputs;
-                };
-            };
-
-
+            "${host}" = 
+                let
+                    config = selectConfiguration "home" host;
+                    modules = config.homeBase.modules // config.homeBase.packages;
+                    homeExpr = pkgs.lib.homeManagerConfiguration modules config.homeBase.args;
+                in
+                    lib.optional (configMap ? host) homeExpr;
         };
-    };
+    }
 }
