@@ -20,7 +20,6 @@
         nixpkgs,
         nixpkgs-stable,
         home-manager,
-
         ...
     }:
 
@@ -36,44 +35,51 @@
 
     in
     {
-
-        nixosConfigurations.${vars.hostName} = lib.nixosSystem
+        nixosConfigurations = 
         {
-            modules =
-            [
+            username = lib.nixosSystem
+            {   
+                modules =
+                [
 
-                ./nixos/os
+                    ./nixos/os
 
-                ./nixos/software
+                    ./nixos/software
 
-                ./nixos/system
+                    ./desktop/nixos
 
-                ./packages/nixos-pkgs.nix
-            ];
-            specialArgs =
-            {
-                inherit pkgs-stable vars inputs;
+                    ./packages/nixos-pkgs.nix
+                ];
+                specialArgs =
+                {
+                    inherit pkgs-stable vars inputs;
+                };
             };
         };
 
 
-        homeConfigurations.${vars.username} = home-manager.lib.homeManagerConfiguration
+        homeConfigurations = 
         {
-            inherit pkgs;
-            modules =
-            [
-                ./home/os
-
-                ./home/software
-
-                ./home/system
-
-                ./packages/home-pkgs.nix
-            ];
-            extraSpecialArgs =
+            username = home-manager.lib.homeManagerConfiguration
             {
-                inherit pkgs-stable vars inputs;
+                inherit pkgs;
+                modules =
+                [
+                    ./home/os
+
+                    ./home/software
+
+                    ./desktop/home
+
+                    ./packages/home-pkgs.nix
+                ];
+                extraSpecialArgs =
+                {
+                    inherit pkgs-stable vars inputs;
+                };
             };
+
+
         };
     };
 }

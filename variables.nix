@@ -1,6 +1,7 @@
 {
-  username = "username";
+  desktop_username = "username";
   homeDirectory = "/home/username";
+  
   fullName = "User Name";
 
 
