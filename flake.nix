@@ -26,7 +26,7 @@
 
     let
         lib = nixpkgs.lib;
-        vars = import ./vars.nix
+        vars = import ./variables.nix
 
         base = import ./profile.nix { inherit inputs pkgs-stable vars; };
 
