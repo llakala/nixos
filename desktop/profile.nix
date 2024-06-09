@@ -13,8 +13,14 @@
         ./home
     ];
 
-    nixos.packages = { };
-    home.packages = { };
+    nixos.packages = 
+    {
+        ./packages/nixPackages.nix
+    };
+    home.packages = 
+    {
+        ./packages/homePackages.nix
+    };
 
     nixos.args = { };
     home.args = { };
