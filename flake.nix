@@ -25,42 +25,43 @@
 
 
     let
-        vars = import ./variables.nix;
-        system = vars.system;
         lib = nixpkgs.lib;
+        vars = import ./variables/genericVars.nix
 
-        pkgsArgs = { inherit system; config.allowUnfree = true; };
+        baseProfiles = import ./baseProfiles.nix { inherit inputs pkgs-stable vars; };
+
+        hostName = import ./secrets/host.nix; # Secret
+        hostProfiles = import ./hostProfiles.nix { inherit inputs; };
+        host = hostProfiles.${hostName};
+
+        pkgsArgs = { inherit (host) system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
-        host = import ./secrets/host.nix; # Secret
-        { nixBase, homeBase, configMap } = import ./hostProfiles.nix;
-
-
-        selectConfiguration = type: host: configMap.${host}.${type};
-
-    in 
+    in
     {
-        nixosConfigurations = 
+        nixosConfigurations.${hostName} =
         {
-            "${host}" = 
-                let
-                    config = selectConfiguration "nixos" host;
-                    modules = config.nixBase.modules // config.nixBase.packages;
-                    systemExpr = lib.nixosSystem modules config.nixBase.args;
-                in
-                    lib.optional (configMap ? host) systemExpr;
+            let
+                baseNix = baseProfiles.nixos;
+                hostNix = host.nixos;
+            in
+                system = host.system;
+                modules = baseNix.modules ++ hostNix.modules;
+                packages = baseNix.packages // hostNix.packages;
+                args = baseNix.args // hostNix.args;
         };
 
-        homeConfigurations = 
+        homeConfigurations.${hostName} =
         {
-            "${host}" = 
-                let
-                    config = selectConfiguration "home" host;
-                    modules = config.homeBase.modules // config.homeBase.packages;
-                    homeExpr = pkgs.lib.homeManagerConfiguration modules config.homeBase.args;
-                in
-                    lib.optional (configMap ? host) homeExpr;
+            let
+                baseHome = baseProfiles.home;
+                hostHome = host.home;
+            in
+                system = host.system;
+                modules = baseHome.modules ++ hostHome.modules;
+                packages = baseHome.packages // hostHome.packages;
+                args = baseHome.args // hostHome.args;
         };
     }
 }

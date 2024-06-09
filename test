@@ -1,0 +1,72 @@
+# hostProfiles.nix
+
+{
+    lib,
+    pkgs,
+    pkgs-stable,
+    vars,
+    inputs,
+}:
+
+let
+    createArgs = pkgs-stable: vars: inputs: {
+        inherit pkgs-stable vars inputs;
+    };
+in
+
+nixBase =
+{
+    modules =
+    [
+        ./nixos/os
+        ./nixos/software
+    ];
+    packages = ./packages/nixos-pkgs.nix;
+    args = createArgs pkgs-stable vars inputs;
+};
+
+homeBase =
+{
+    modules =
+    [
+        ./home/os
+        ./home/software
+    ];
+    packages = ./packages/home-pkgs.nix;
+    args = createArgs pkgs-stable vars inputs;
+};
+
+configMap =
+{
+
+    "desktop" =
+    {
+        nixos =
+        {
+            inherit nixBase;
+            hostConfig = ./desktop/nixos;
+        };
+        home =
+        {
+            inherit homeBase;
+            hostConfig = ./desktop/home;
+        };
+    };
+
+
+    "framework" =
+    {
+        nixos =
+        {
+            inherit nixBase;
+            hostConfig = ./framework/nixos;
+        };
+        home =
+        {
+            inherit homeBase;
+            hostConfig = ./framework/home;
+        };
+    };
+
+
+};
