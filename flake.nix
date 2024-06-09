@@ -26,13 +26,13 @@
 
     let
         lib = nixpkgs.lib;
-        vars = import ./variables/genericVars.nix
+        vars = import ./vars.nix
 
-        baseProfiles = import ./baseProfiles.nix { inherit inputs pkgs-stable vars; };
+        base = import ./profile.nix { inherit inputs pkgs-stable vars; };
 
         hostName = import ./secrets/host.nix; # Secret
-        hostProfiles = import ./hostProfiles.nix { inherit inputs; };
-        host = hostProfiles.${hostName};
+        hostPath = ./${hostName}/profile.nix;
+        host = import hostPath;
 
         pkgsArgs = { inherit (host) system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
@@ -43,7 +43,7 @@
         nixosConfigurations.${hostName} =
         {
             let
-                baseNix = baseProfiles.nixos;
+                baseNix = base.nixos;
                 hostNix = host.nixos;
             in
                 system = host.system;
