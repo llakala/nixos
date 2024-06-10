@@ -30,10 +30,10 @@
 
         base = import ./profile.nix { inherit inputs pkgs-stable vars; };
 
-        homeDir = builtins.getEnv "HOME";
+
         hostName = import (builtins.path 
         {
-            path = ${homeDir}/secrets/home.nix
+            path = /etc/nixos/secrets/home.nix
         });
         
         hostPath = ./${hostName}/profile.nix;
