@@ -30,8 +30,7 @@
 
 
         hostName = builtins.readFile "${vars.configDirectory}/secrets/host.nix";
-        hostPath = "./${hostName}/profile.nix";
-        host = import hostPath { inherit inputs pkgs-stable vars; };
+        host = import ./${hostName}/profile.nix { inherit inputs pkgs-stable vars; };
 
         pkgsArgs = {  system = host.system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
@@ -39,37 +38,28 @@
 
         base = import ./profile.nix { inherit inputs pkgs-stable vars; };
 
+        baseNix = base.nixos;
+        hostNix = host.nixos;
+        baseHome = base.home;
+        hostHome = host.home;
+
     in
     {
-        nixosConfigurations =
+        nixosConfigurations.
+        "mypc" = nixpkgs.lib.nixosSystem
         {
-            ${hostName} = let
-                baseNix = base.nixos;
-                hostNix = host.nixos;
-            in
-            {
-                system = host.system;
-                modules = baseNix.modules ++ hostNix.modules;
-                packages = baseNix.packages // hostNix.packages;
-                args = baseNix.args // hostNix.args;
-            };
+            system = host.system;
+            modules = baseNix.modules ++ hostNix.modules;
+            specialArgs = baseNix.args // hostNix.args;
         };
 
 
 
 
-        homeConfigurations =
+        homeConfigurations."mypc" = home-manager.lib.homeManagerConfiguration
         {
-            ${hostName} = let
-                baseHome = base.home;
-                hostHome = host.home;
-            in
-            {
-                system = host.system;
-                modules = baseHome.modules ++ hostHome.modules;
-                packages = baseHome.packages // hostHome.packages;
-                args = baseHome.args // hostHome.args;
-            };
+            modules = baseHome.modules ++ hostHome.modules;
+            extraSpecialArgs = baseHome.args // hostHome.args;
         };
     };
 }
