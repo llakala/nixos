@@ -13,8 +13,6 @@
       ./nixos/os
       ./nixos/software
     ];
-    packages = ./packages/nixPackages.nix;
-    args = { inherit pkgs-stable vars inputs; };
   };
 
   home =
@@ -24,7 +22,6 @@
       ./home/os
       ./home/software
     ];
-    packages = ./packages/homePackages.nix;
-    args = { inherit pkgs-stable vars inputs; };
+
   };
 }
