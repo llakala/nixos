@@ -33,7 +33,7 @@
 
         hostName = import (builtins.path 
         {
-            path = /etc/nixos/secrets/home.nix
+            path = ${vars.configDirectory}/secrets/home.nix
         });
         
         hostPath = ./${hostName}/profile.nix;
