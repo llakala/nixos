@@ -26,47 +26,50 @@
 
     let
         lib = nixpkgs.lib;
-        vars = import ./variables.nix
-
-        base = import ./profile.nix { inherit inputs pkgs-stable vars; };
+        vars = import ./variables.nix;
 
 
-        hostName = import (builtins.path 
-        {
-            path = ${vars.configDirectory}/secrets/home.nix
-        });
-        
-        hostPath = ./${hostName}/profile.nix;
-        host = import hostPath;
+        hostName = builtins.readFile "${vars.configDirectory}/secrets/host.nix";
+        hostPath = "./${hostName}/profile.nix";
+        host = import hostPath { inherit inputs pkgs-stable vars; };
 
-        pkgsArgs = { inherit (host) system; config.allowUnfree = true; };
+        pkgsArgs = {  system = host.system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
+        base = import ./profile.nix { inherit inputs pkgs-stable vars; };
+
     in
     {
-        nixosConfigurations.${hostName} =
+        nixosConfigurations =
         {
-            let
+            ${hostName} = let
                 baseNix = base.nixos;
                 hostNix = host.nixos;
             in
+            {
                 system = host.system;
                 modules = baseNix.modules ++ hostNix.modules;
                 packages = baseNix.packages // hostNix.packages;
                 args = baseNix.args // hostNix.args;
+            };
         };
 
-        homeConfigurations.${hostName} =
+
+
+
+        homeConfigurations =
         {
-            let
-                baseHome = baseProfiles.home;
+            ${hostName} = let
+                baseHome = base.home;
                 hostHome = host.home;
             in
+            {
                 system = host.system;
                 modules = baseHome.modules ++ hostHome.modules;
                 packages = baseHome.packages // hostHome.packages;
                 args = baseHome.args // hostHome.args;
+            };
         };
-    }
+    };
 }
