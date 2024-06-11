@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  vars,
+  hostVars,
   ...
 }:
 
@@ -10,7 +10,7 @@
     services.displayManager.autoLogin =
     {
       enable = true;
-      user = vars.username;
+      user = hostVars.username;
     };
     services.xserver =
     {
