@@ -75,7 +75,7 @@
             };
         };
 
-        homeConfigurations.mypc = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules =
@@ -93,14 +93,14 @@
         };
 
 
-        homeConfigurations.framework = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."emanseru@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules =
             [
                 ./base/home/os
                 ./base/home/software
-                
+
                 ./base/homePackages.nix
             ];
             extraSpecialArgs =
