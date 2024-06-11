@@ -51,23 +51,6 @@
             };
         };
 
-        homeConfigurations.mypc = home-manager.lib.homeManagerConfiguration
-        {
-
-            inherit pkgs;
-            modules =
-            [
-                ./base/home/os
-                ./base/home/software
-                ./desktop/home
-            ];
-            extraSpecialArgs =
-            {
-                inherit pkgs-stable vars;
-                hostVars = import ./desktop/variables.nix;
-            };
-        };
-
 
         nixosConfigurations.framework = nixpkgs.lib.nixosSystem
         {
@@ -86,6 +69,21 @@
             };
         };
 
+        homeConfigurations.mypc = home-manager.lib.homeManagerConfiguration
+        {
+            inherit pkgs;
+            modules =
+            [
+                ./base/home/os
+                ./base/home/software
+            ];
+            extraSpecialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/variables.nix;
+            };
+        };
+
 
         homeConfigurations.framework = home-manager.lib.homeManagerConfiguration
         {
@@ -94,12 +92,12 @@
             [
                 ./base/home/os
                 ./base/home/software
-                ./framework/home
+                ./
             ];
             extraSpecialArgs =
             {
                 inherit pkgs-stable vars;
-                hostVars = import ./desktop/variables.nix;
+                hostVars = import ./framework/variables.nix;
             };
         };
 
