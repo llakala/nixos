@@ -1,5 +1,5 @@
 {
-  vars,
+  hostVars,
   ...
 }:
 
@@ -9,10 +9,15 @@
 
   home =
   {
-    username = vars.username;
-    homeDirectory = vars.homeDirectory;
+    username = hostVars.username;
+    homeDirectory = hostVars.homeDirectory;
   };
 
-  home.stateVersion = "23.11";
+
+
+  home-manager.users.${hostVars.username} =
+  {
+    home.stateVersion = 23.11;
+  }
 
 }
