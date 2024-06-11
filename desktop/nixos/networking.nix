@@ -1,12 +1,12 @@
 {
-  vars,
+  hostVars,
   ...
 }:
 
 {
   networking =
   {
-    hostName = vars.hostName;
+    hostName = hostVars.hostName;
     networkmanager.enable = true;
 
     firewall.enable = true;

@@ -22,8 +22,9 @@
         home-manager,
         ...
     }: let
-        lib = nixpkgs.lib;
+
         vars = import ./variables.nix;
+        lib = nixpkgs.lib;
         system = "x86_64-linux";
 
         pkgsArgs = { inherit system; config.allowUnfree = true; };
@@ -32,55 +33,75 @@
 
     in
     {
-        nixosConfigurations.desktop = nixpkgs.lib.nixosSystem # Desktop as hostname
+        nixosConfigurations.mypc = nixpkgs.lib.nixosSystem # Desktop as hostname
         {
+
             inherit system;
-            modules = 
+            modules =
             [
                 ./base/nixos/os
                 ./base/nixos/software
+                ./base/nixos/system
                 ./desktop/nixos
             ];
-            specialArgs = { inherit pkgs-stable vars inputs; };
+            specialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/variables.nix;
+            };
         };
 
-        homeConfigurations.desktop = home-manager.lib.homeManagerConfiguration
+        homeConfigurations.mypc = home-manager.lib.homeManagerConfiguration
         {
+
             inherit pkgs;
-            modules = 
+            modules =
             [
                 ./base/home/os
                 ./base/home/software
                 ./desktop/home
             ];
-            extraSpecialArgs = { inherit pkgs-stable vars inputs; };
+            extraSpecialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/variables.nix;
+            };
         };
 
 
         nixosConfigurations.framework = nixpkgs.lib.nixosSystem
         {
             inherit system;
-            modules = 
+            modules =
             [
                 ./base/nixos/os
                 ./base/nixos/software
+                ./base/nixos/system
                 ./framework/nixos
             ];
-            specialArgs = { inherit pkgs-stable vars inputs; };
+            specialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/variables.nix;
+            };
         };
 
 
         homeConfigurations.framework = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = 
+            modules =
             [
                 ./base/home/os
                 ./base/home/software
                 ./framework/home
             ];
-            extraSpecialArgs = { inherit pkgs-stable vars inputs; };
+            extraSpecialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/variables.nix;
+            };
         };
-        
+
     };
 }

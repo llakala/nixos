@@ -1,13 +1,13 @@
 {
-vars,
+hostVars,
 ...
 }:
 
 {
-  users.users.${vars.username} =
+  users.users.${hostVars.username} =
   {
     isNormalUser = true;
-    description = vars.fullName;
+    description = hostVars.fullName;
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
