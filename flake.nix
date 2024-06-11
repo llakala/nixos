@@ -42,6 +42,9 @@
                 ./base/nixos/os
                 ./base/nixos/software
                 ./base/nixos/system
+
+                ./base/nixPackages.nix
+
                 ./desktop/nixos
             ];
             specialArgs =
@@ -60,6 +63,9 @@
                 ./base/nixos/os
                 ./base/nixos/software
                 ./base/nixos/system
+
+                ./base/nixPackages.nix
+
                 ./framework/nixos
             ];
             specialArgs =
@@ -76,6 +82,8 @@
             [
                 ./base/home/os
                 ./base/home/software
+
+                ./base/homePackages.nix
             ];
             extraSpecialArgs =
             {
@@ -92,7 +100,8 @@
             [
                 ./base/home/os
                 ./base/home/software
-                ./
+                
+                ./base/homePackages.nix
             ];
             extraSpecialArgs =
             {
