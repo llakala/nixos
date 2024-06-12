@@ -87,7 +87,7 @@
             specialArgs =
             {
                 inherit pkgs-stable vars;
-                hostVars = import ./desktop/frameVars.nix;
+                hostVars = import ./framework/frameVars.nix;
             };
         };
 
