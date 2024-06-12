@@ -1,6 +1,6 @@
 {
   hostName = "isoimage";
-  username = "isouser";
-  homeDirectory = "/home/isouser";
+  username = "nixos";
+  homeDirectory = "/home/nixos";
   fullName = "ISO User";
 }

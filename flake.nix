@@ -111,10 +111,10 @@
             inherit system;
             modules = lib.concatLists
             [
-                base.nix.modules
                 [
-                    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+                    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
                 ]
+                base.nix.modules
             ];
             specialArgs =
             {
@@ -123,7 +123,7 @@
             };
         };
 
-        homeConfigurations."isouser@isoimage" = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."nixos@isoimage" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules = lib.concatLists
