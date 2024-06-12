@@ -3,7 +3,7 @@
 {
   imports =
   [
-    ./boilerplate.nix
+    ./hardware.nix
     ./hardware-configuration.nix
   ];
 }
