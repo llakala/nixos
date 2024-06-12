@@ -8,8 +8,8 @@
     fprintd
   ];
 
-  
-  fprintd.enable = true; # Fingerprint
+
+  #fprintd.enable = true; # Fingerprint
 
   power-profiles-daemon.enable = true;
 }
