@@ -11,8 +11,12 @@
 
 
   environment.sessionVariables.FLAKE = vars.configDirectory;
+  nix.nixPath =
+  [
+    "home-manager=${vars.configDirectory}/defaults"
+    "nixpkgs=flake:nixpkgs"
+  ];
 
-  
   nixpkgs.config.allowUnfree = true;
 
 

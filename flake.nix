@@ -43,7 +43,7 @@
         base = import ./base.nix;
     in
     {
-        nixosConfigurations.mypc = nixpkgs.lib.nixosSystem # Desktop as hostname
+        nixosConfigurations.mypc = lib.nixosSystem # Desktop as hostname
         {
             inherit system;
             modules = lib.concatLists # Combine base config and host config
@@ -74,7 +74,7 @@
             };
         };
 
-        nixosConfigurations.framework = nixpkgs.lib.nixosSystem
+        nixosConfigurations.framework = lib.nixosSystem
         {
             inherit system;
             modules = lib.concatLists
@@ -106,7 +106,7 @@
         };
 
 
-        nixosConfigurations.isoimage = nixpkgs.lib.nixosSystem
+        nixosConfigurations.isoimage = lib.nixosSystem
         {
             inherit system;
             modules = lib.concatLists
