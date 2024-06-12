@@ -27,7 +27,7 @@
         lib = nixpkgs.lib;
         system = "x86_64-linux";
 
-        pkgsArgs = { inherit system; };
+        pkgsArgs = { inherit system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
