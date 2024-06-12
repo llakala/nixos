@@ -10,7 +10,7 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        nixos-hardware.url = "github:nixos/nixos-hardware/master";
+        # nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
 
 
