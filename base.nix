@@ -1,18 +1,25 @@
 {
-  baseNix =
-  [
-    /baseNix/os
-    ./baseNix/software
-    ./baseNix/system
+  nix =
+  {
+    modules =
+    [
+      ./baseNix/os
+      ./baseNix/software
+      ./baseNix/system
 
-    ./packages/nixPackages.nix
-  ];
+      ./packages/nixPackages.nix
+    ];
+  };
 
-  baseHome =
-  [
-    /baseHome/os
-    ./baseHome/software
+  home =
+  {
+    modules =
+    [
+      ./baseHome/os
+      ./baseHome/software
+      ./baseHome/system
 
-    ./packages/homePackages.nix
-  ]
+      ./packages/homePackages.nix
+    ];
+  };
 }

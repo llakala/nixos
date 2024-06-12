@@ -32,17 +32,18 @@
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
         base = import ./base.nix;
-        baseNix = base.baseNix;
-        baseHome = base.baseHome;
     in
     {
         nixosConfigurations.mypc = nixpkgs.lib.nixosSystem # Desktop as hostname
         {
 
             inherit system;
-            modules = baseNix ++
+            modules = lib.concatLists
             [
-                ./framework/nixos
+                base.nix.modules
+                [
+                    ./desktop/nixos
+                ]
             ];
             specialArgs =
             {
@@ -54,12 +55,9 @@
         homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules =
+            modules = lib.concatLists
             [
-                ./baseHome/os
-                ./baseHome/software
-
-                ./packages/homePackages.nix
+                base.home.modules
             ];
             extraSpecialArgs =
             {
@@ -71,9 +69,12 @@
         nixosConfigurations.framework = nixpkgs.lib.nixosSystem
         {
             inherit system;
-            modules = baseNix ++
+            modules = lib.concatLists
             [
-                ./framework/nixos
+                base.nix.modules
+                [
+                    ./framework/nixos
+                ]
             ];
             specialArgs =
             {
@@ -85,12 +86,9 @@
         homeConfigurations."emanseru@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules =
+            modules = lib.concatLists
             [
-                ./baseHome/os
-                ./baseHome/software
-
-                ./packages/homePackages.nix
+                base.home.modules
             ];
             extraSpecialArgs =
             {
