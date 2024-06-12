@@ -11,13 +11,6 @@
   {
     username = hostVars.username;
     homeDirectory = hostVars.homeDirectory;
+    stateVersion = "23.11";
   };
-
-
-
-  home-manager.users.${hostVars.username} =
-  {
-    home.stateVersion = 23.11;
-  }
-
 }
