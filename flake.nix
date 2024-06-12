@@ -10,8 +10,12 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        # nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
+        vscode-server = 
+        {
+            url = "github:nix-community/nixos-vscode-server";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
 
     };
@@ -23,7 +27,6 @@
         nixpkgs,
         nixpkgs-stable,
         home-manager,
-        nixos-hardware,
         ...
     }: let
 
@@ -46,6 +49,7 @@
                 base.nix.modules
                 [
                     ./desktop/nixos
+                    vscode-server.nixosModules.home
                 ]
             ];
             specialArgs =
@@ -77,6 +81,7 @@
                 base.nix.modules
                 [
                     ./framework/nixos
+                    nixos-hardware.nixosModules.framework-13-7040-amd
                 ]
             ];
             specialArgs =
