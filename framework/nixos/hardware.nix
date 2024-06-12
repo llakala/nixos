@@ -2,15 +2,12 @@
 
 {
 
-  #fwupd.enable = true; # Bios updates
-  environment.systemPackages = with pkgs;
-  [
-  ];
+
 
   services =
   {
     fprintd.enable = true; # Fingerprint
-    fwupd.enable = true;
-    power-profiles-daemon.enable = true;
+    fwupd.enable = true; # bios
+    power-profiles-daemon.enable = true; # better power management
   };
 }
