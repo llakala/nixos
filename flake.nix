@@ -82,6 +82,7 @@
                 base.nix.modules
                 [
                     ./framework/nixos
+                    nixos-hardware.nixosModules.framework-13-7040-amd
                 ]
             ];
             specialArgs =

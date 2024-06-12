@@ -1,20 +1,16 @@
-{ pkgs-stable, ...}:
+{ pkgs, pkgs-stable, nixos-hardware, ...}:
 
 {
 
-  imports =
-  [
-    nixos-hardware.nixosModules.framework-13-7040-amd
-  ];
   #fwupd.enable = true; # Bios updates
-
-  environment.systemPackages = with pkgs-stable;
+  environment.systemPackages = with pkgs;
   [
-    fprintd
   ];
 
-
-  fprintd.enable = true; # Fingerprint
-
-  #power-profiles-daemon.enable = true;
+  services =
+  {
+    fprintd.enable = true; # Fingerprint
+    fwupd.enable = true;
+    power-profiles-daemon.enable = true;
+  };
 }
