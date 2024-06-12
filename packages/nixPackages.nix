@@ -21,6 +21,8 @@
     grub2 # grub commands
     grub2_efi
     jdk22
+    hwinfo
+    ripgrep
   ])
   ++
 
