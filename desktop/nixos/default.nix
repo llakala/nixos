@@ -5,6 +5,5 @@
   [
     ./hardware-configuration.nix
     ./nvidia.nix
-    
   ];
 }
