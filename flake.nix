@@ -27,7 +27,7 @@
         lib = nixpkgs.lib;
         system = "x86_64-linux";
 
-        pkgsArgs = { inherit system; config.allowUnfree = true; };
+        pkgsArgs = { inherit system; };
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
@@ -38,7 +38,7 @@
         {
 
             inherit system;
-            modules = lib.concatLists
+            modules = lib.concatLists # Combine base config and host config
             [
                 base.nix.modules
                 [
