@@ -106,7 +106,7 @@
         };
 
 
-        nixosConfigurations.isohost = nixpkgs.lib.nixosSystem
+        nixosConfigurations.isoimage = nixpkgs.lib.nixosSystem
         {
             inherit system;
             modules = lib.concatLists
@@ -123,7 +123,7 @@
             };
         };
 
-        homeConfigurations."isouser@isohost" = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."isouser@isoimage" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules = lib.concatLists
@@ -136,9 +136,5 @@
                 hostVars = import ./iso/isoVars.nix;
             };
         };
-
-
-};
-
     };
 }
