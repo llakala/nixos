@@ -91,7 +91,6 @@
                 hostVars = import ./framework/frameVars.nix;
             };
         };
-
         homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
@@ -105,5 +104,41 @@
                 hostVars = import ./framework/frameVars.nix;
             };
         };
+
+
+        nixosConfigurations.isohost = nixpkgs.lib.nixosSystem
+        {
+            inherit system;
+            modules = lib.concatLists
+            [
+                base.nix.modules
+                [
+                    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+                ]
+            ];
+            specialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./iso/isoVars.nix;
+            };
+        };
+
+        homeConfigurations."isouser@isohost" = home-manager.lib.homeManagerConfiguration
+        {
+            inherit pkgs;
+            modules = lib.concatLists
+            [
+                base.home.modules
+            ];
+            extraSpecialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./iso/isoVars.nix;
+            };
+        };
+
+
+};
+
     };
 }
