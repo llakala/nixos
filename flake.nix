@@ -39,39 +39,18 @@
             inherit system;
             modules =
             [
-                ./base/nixos/os
-                ./base/nixos/software
-                ./base/nixos/system
+                ./baseNix/os
+                ./baseNix/software
+                ./baseNix/system
 
-                ./base/nixPackages.nix
+                ./packages/nixPackages.nix
 
                 ./desktop/nixos
             ];
             specialArgs =
             {
                 inherit pkgs-stable vars;
-                hostVars = import ./desktop/variables.nix;
-            };
-        };
-
-
-        nixosConfigurations.framework = nixpkgs.lib.nixosSystem
-        {
-            inherit system;
-            modules =
-            [
-                ./base/nixos/os
-                ./base/nixos/software
-                ./base/nixos/system
-
-                ./base/nixPackages.nix
-
-                ./framework/nixos
-            ];
-            specialArgs =
-            {
-                inherit pkgs-stable vars;
-                hostVars = import ./desktop/variables.nix;
+                hostVars = import ./desktop/deskVars.nix;
             };
         };
 
@@ -80,33 +59,52 @@
             inherit pkgs;
             modules =
             [
-                ./base/home/os
-                ./base/home/software
+                ./baseHome/os
+                ./baseHome/software
 
-                ./base/homePackages.nix
+                ./packages/homePackages.nix
             ];
             extraSpecialArgs =
             {
                 inherit pkgs-stable vars;
-                hostVars = import ./desktop/variables.nix;
+                hostVars = import ./desktop/deskVars.nix;
             };
         };
 
+        nixosConfigurations.framework = nixpkgs.lib.nixosSystem
+        {
+            inherit system;
+            modules =
+            [
+                ./baseNix/os
+                ./baseNix/software
+                ./baseNix/system
+
+                ./packages/nixPackages.nix
+
+                ./framework/nixos
+            ];
+            specialArgs =
+            {
+                inherit pkgs-stable vars;
+                hostVars = import ./desktop/frameVars.nix;
+            };
+        };
 
         homeConfigurations."emanseru@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules =
             [
-                ./base/home/os
-                ./base/home/software
+                ./baseHome/os
+                ./baseHome/software
 
-                ./base/homePackages.nix
+                ./packages/homePackages.nix
             ];
             extraSpecialArgs =
             {
                 inherit pkgs-stable vars;
-                hostVars = import ./framework/variables.nix;
+                hostVars = import ./framework/frameVars.nix;
             };
         };
 
