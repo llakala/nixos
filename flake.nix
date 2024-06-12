@@ -10,7 +10,7 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        vscode-server = 
+        vscode-server =
         {
             url = "github:nix-community/nixos-vscode-server";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -104,6 +104,5 @@
                 hostVars = import ./framework/frameVars.nix;
             };
         };
-
     };
 }
