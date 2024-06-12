@@ -1,7 +1,7 @@
 { pkgs-stable, ...}:
 
 {
-  fwupd.enable = true; # Bios updates
+  #fwupd.enable = true; # Bios updates
 
   environment.systemPackages = with pkgs-stable;
   [
@@ -11,5 +11,5 @@
 
   #fprintd.enable = true; # Fingerprint
 
-  power-profiles-daemon.enable = true;
+  #power-profiles-daemon.enable = true;
 }
