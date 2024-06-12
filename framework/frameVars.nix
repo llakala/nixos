@@ -1,6 +1,6 @@
 {
   hostName = "framework";
-  username = "emanseru";
-  homeDirectory = "/home/emanseru";
-  fullName = "Eman Seru";
+  username = "emanresu";
+  homeDirectory = "/home/emanresu";
+  fullName = "Eman Resu";
 }

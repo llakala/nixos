@@ -83,7 +83,7 @@
             };
         };
 
-        homeConfigurations."emanseru@framework" = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules = lib.concatLists
