@@ -10,6 +10,9 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nixos-hardware = "github:nixos/nixos-hardware/master";
+
+
 
     };
 
@@ -20,6 +23,7 @@
         nixpkgs,
         nixpkgs-stable,
         home-manager,
+        nixos-hardware,
         ...
     }: let
 
@@ -36,7 +40,6 @@
     {
         nixosConfigurations.mypc = nixpkgs.lib.nixosSystem # Desktop as hostname
         {
-
             inherit system;
             modules = lib.concatLists # Combine base config and host config
             [
