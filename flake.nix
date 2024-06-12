@@ -31,21 +31,18 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-stable = import nixpkgs-stable pkgsArgs;
 
+        base = import ./base.nix;
+        baseNix = base.baseNix;
+        baseHome = base.baseHome;
     in
     {
         nixosConfigurations.mypc = nixpkgs.lib.nixosSystem # Desktop as hostname
         {
 
             inherit system;
-            modules =
+            modules = baseNix ++
             [
-                ./baseNix/os
-                ./baseNix/software
-                ./baseNix/system
-
-                ./packages/nixPackages.nix
-
-                ./desktop/nixos
+                ./framework/nixos
             ];
             specialArgs =
             {
@@ -74,14 +71,8 @@
         nixosConfigurations.framework = nixpkgs.lib.nixosSystem
         {
             inherit system;
-            modules =
+            modules = baseNix ++
             [
-                ./baseNix/os
-                ./baseNix/software
-                ./baseNix/system
-
-                ./packages/nixPackages.nix
-
                 ./framework/nixos
             ];
             specialArgs =
