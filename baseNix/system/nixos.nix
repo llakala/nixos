@@ -11,8 +11,8 @@
 
 
   environment.sessionVariables.FLAKE = vars.configDirectory;
-  nix.nixPath = ["nixos-config=${vars.configDirectory }"];
 
+  
   nixpkgs.config.allowUnfree = true;
 
 
