@@ -49,7 +49,7 @@
                 base.nix.modules
                 [
                     ./desktop/nixos
-                    vscode-server.nixosModules.home
+                    inputs.vscode-server.nixosModules.home
                 ]
             ];
             specialArgs =
@@ -81,7 +81,7 @@
                 base.nix.modules
                 [
                     ./framework/nixos
-                    nixos-hardware.nixosModules.framework-13-7040-amd
+                    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
                 ]
             ];
             specialArgs =
