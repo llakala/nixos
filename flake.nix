@@ -114,7 +114,7 @@
                 [
                     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
                 ]
-                base.nix.modules
+                ./iso/nixos/tools.nix
             ];
             specialArgs =
             {
@@ -122,7 +122,6 @@
                 hostVars = import ./iso/isoVars.nix;
             };
         };
-
         homeConfigurations."nixos@isoimage" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
