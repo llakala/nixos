@@ -23,7 +23,7 @@
     jdk22
     hwinfo
     ripgrep
-    rename
+    detox-
   ])
   ++
 
