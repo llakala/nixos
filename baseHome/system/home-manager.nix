@@ -14,6 +14,6 @@
   {
     username = hostVars.username;
     homeDirectory = hostVars.homeDirectory;
-    stateVersion = "23.11";
+    stateVersion = hostVars.stateVersion;
   };
 }
