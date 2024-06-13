@@ -111,10 +111,8 @@
             inherit system;
             modules = lib.concatLists
             [
-                [
-                    "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-                ]
-                ./iso/nixos/tools.nix
+                [ ./iso/nixos ]
+                [ "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix" ]
             ];
             specialArgs =
             {
