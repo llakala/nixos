@@ -3,5 +3,5 @@
   username = "nixos";
   homeDirectory = "/home/nixos";
   fullName = "ISO User";
-  stateVersion = "24.11";
+  stateVersion = "24.05";
 }

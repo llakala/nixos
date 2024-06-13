@@ -10,6 +10,4 @@
   ];
 
   networking.hostName = hostVars.hostName;
-
-
 }
