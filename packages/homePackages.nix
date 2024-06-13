@@ -26,6 +26,7 @@
   (with pkgs;
   [
     vscode
+    modrinth-app
   ]);
 
 
