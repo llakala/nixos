@@ -8,7 +8,8 @@ hostVars,
   {
     isNormalUser = true;
     description = hostVars.fullName;
-    
+
+    initialPassword = " ";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 

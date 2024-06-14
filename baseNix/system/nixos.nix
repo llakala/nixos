@@ -10,7 +10,7 @@
   nix.channel.enable = false;
 
 
-  environment.sessionVariables.FLAKE = vars.configDirectory;
+  nix.autoOptimizeStore = true;
   nix.nixPath =
   [
     "home-manager=${vars.configDirectory}/defaults"
