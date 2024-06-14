@@ -4,6 +4,8 @@
 
   dconf.settings =
   {
+
+
     "org/gnome/shell" =
     {
       disable-user-extensions = false;
@@ -14,11 +16,13 @@
         "clipboard-indicator@tudmotu.com"
         "just-perfection-desktop@just-perfection"
         "AlphabeticalAppGrid@stuarthayhurst"
+        "windowIsReady_Remover@nunofarruca@gmail.com"
+
       ];
 
     };
 
-    
+
     "org/gnome/shell/extensions/dash-to-dock" =
     {
       autohide-in-fullscreen = true;
