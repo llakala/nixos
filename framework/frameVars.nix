@@ -3,5 +3,5 @@
   username = "emanresu";
   homeDirectory = "/home/emanresu";
   fullName = "Eman Resu";
-  stateVersion = "24.11";
+  stateVersion = "24.05";
 }
