@@ -32,7 +32,7 @@
       show-trash = false;
       show-show-apps-button = false;
       show-mounts = false;
-      dash-max-iconisze = 56;
+      dash-max-iconsize = 56;
     };
 
     "org/gnome/shell/extensions/clipboard-indicator" =
