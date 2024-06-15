@@ -82,7 +82,7 @@
                 base.nix.modules
                 [
                     ./framework/nixos
-                    nixos-hardware.nixosModules.framework-13-7040-amd
+                    # nixos-hardware.nixosModules.framework-13-7040-amd # Removed until nixos-hardware fixes their stuff
                 ]
             ];
             specialArgs =
