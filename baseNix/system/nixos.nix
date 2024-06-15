@@ -10,7 +10,7 @@
   nix.channel.enable = false;
 
 
-  nix.autoOptimizeStore = true;
+  nix.settings.auto-optimise-store = true;
   nix.nixPath =
   [
     "home-manager=${vars.configDirectory}/defaults"

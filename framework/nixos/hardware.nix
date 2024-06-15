@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, nixos-hardware, ...}:
+{ nixos-hardware, ...}:
 
 {
 
