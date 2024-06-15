@@ -3,8 +3,8 @@
 
     inputs =
     {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager =
         {
             url = "github:nix-community/home-manager";
@@ -25,7 +25,7 @@
     {
         self,
         nixpkgs,
-        nixpkgs-stable,
+        nixpkgs-unstable,
         home-manager,
         vscode-server,
         nixos-hardware,
@@ -38,7 +38,7 @@
 
         pkgsArgs = { inherit system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
-        pkgs-stable = import nixpkgs-stable pkgsArgs;
+        pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
         base = import ./base.nix;
     in
@@ -55,7 +55,7 @@
             ];
             specialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -69,7 +69,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -82,12 +82,12 @@
                 base.nix.modules
                 [
                     ./framework/nixos
-                    # nixos-hardware.nixosModules.framework-13-7040-amd # Removed until nixos-hardware fixes their stuff
+                    nixos-hardware.nixosModules.framework-13-7040-amd # Removed until nixos-hardware fixes their stuff
                 ]
             ];
             specialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
@@ -100,7 +100,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
@@ -115,7 +115,7 @@
             ];
             specialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./iso/isoVars.nix;
             };
         };
@@ -128,7 +128,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit pkgs-stable vars;
+                inherit pkgs-unstable vars;
                 hostVars = import ./iso/isoVars.nix;
             };
         };
