@@ -8,7 +8,6 @@
   {
     enable = true;
     bashrcExtra = ''
-    export NIX_PATH="home-manager=${vars.configDirectory}/defaults:$NIX_PATH"
     rbld()
     {
       case "$1" in

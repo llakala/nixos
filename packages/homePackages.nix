@@ -19,6 +19,7 @@
       '';
     }))
     filezilla
+    modrinth-app
 
   ])
   ++
@@ -26,7 +27,6 @@
   (with pkgs-unstable;
   [
     vscode
-    modrinth-app
   ]);
 
 
