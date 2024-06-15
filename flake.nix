@@ -104,33 +104,5 @@
                 hostVars = import ./framework/frameVars.nix;
             };
         };
-
-
-        nixosConfigurations.isoimage = lib.nixosSystem
-        {
-            inherit system;
-            modules = lib.concatLists
-            [
-                [ "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix" ]
-            ];
-            specialArgs =
-            {
-                inherit pkgs-unstable vars;
-                hostVars = import ./iso/isoVars.nix;
-            };
-        };
-        homeConfigurations."nixos@isoimage" = home-manager.lib.homeManagerConfiguration
-        {
-            inherit pkgs;
-            modules = lib.concatLists
-            [
-                base.home.modules
-            ];
-            extraSpecialArgs =
-            {
-                inherit pkgs-unstable vars;
-                hostVars = import ./iso/isoVars.nix;
-            };
-        };
     };
 }

@@ -1,5 +1,6 @@
 {
   hostVars,
+  vars,
   ...
 }:
 
@@ -8,6 +9,6 @@
   {
     enable = true;
     userName = hostVars.fullName;
-    userEmail = "ellakalle6@gmail.com";
+    userEmail = hostVars.userEmail;
   };
 }
