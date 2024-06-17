@@ -8,8 +8,6 @@
       ./baseNix/system
 
       ./packages/nixPackages.nix
-
-      ./overlays
     ];
   };
 
@@ -22,8 +20,6 @@
       ./baseHome/system
 
       ./packages/homePackages.nix
-
-      ./overlays
     ];
   };
 }

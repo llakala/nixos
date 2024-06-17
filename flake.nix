@@ -15,16 +15,19 @@
     };
 
 
-    outputs = inputs @
+    outputs =
     {
         self,
+
         nixpkgs,
         nixpkgs-unstable,
+
         home-manager,
         nixos-hardware,
         ...
-    }: let
+    } @ inputs:
 
+    let
         vars = import ./variables.nix;
         lib = nixpkgs.lib;
         system = "x86_64-linux";
@@ -36,6 +39,8 @@
         base = import ./base.nix;
     in
     {
+
+
         nixosConfigurations.mypc = lib.nixosSystem
         {
             inherit pkgs; # Do this to properly send the pkgs we declared
