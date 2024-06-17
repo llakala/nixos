@@ -12,7 +12,6 @@
   [
     discord
     gparted
-    firefox-org # firefox on xorg
     filezilla
     modrinth-app
 
