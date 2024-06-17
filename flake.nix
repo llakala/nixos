@@ -37,7 +37,6 @@
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
         base = import ./base.nix;
-        baseSpecialArgs = base.common.args;
     in
     {
 
@@ -53,7 +52,7 @@
             ];
             specialArgs =
             {
-                inherit baseSpecialArgs;
+                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -68,7 +67,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit baseSpecialArgs;
+                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -86,7 +85,7 @@
             ];
             specialArgs =
             {
-                inherit baseSpecialArgs;
+                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
@@ -100,7 +99,7 @@
             ];
             extraSpecialArgs =
             {
-                inherit baseSpecialArgs;
+                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
