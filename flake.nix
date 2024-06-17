@@ -32,8 +32,8 @@
         system = "x86_64-linux";
 
         pkgsArgs = { inherit system; config.allowUnfree = true; };
-        pkgs = import nixpkgs commonArgs;
-        pkgs-unstable = import nixpkgs-unstable commonArgs;
+        pkgs = import nixpkgs pkgsArgs;
+        pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
         base = import ./base.nix;
     in
@@ -41,7 +41,7 @@
         nixosConfigurations.mypc = lib.nixosSystem
         {
             inherit pkgs; # Do this to properly send the pkgs we declared
-            
+
             modules = lib.concatLists # Combine base config and host config
             [
                 base.nix.modules
