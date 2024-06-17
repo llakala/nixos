@@ -5,14 +5,10 @@
     {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
         home-manager =
         {
             url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-        vscode-server =
-        {
-            url = "github:nix-community/nixos-vscode-server";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -27,7 +23,6 @@
         nixpkgs,
         nixpkgs-unstable,
         home-manager,
-        vscode-server,
         nixos-hardware,
         ...
     }: let
@@ -37,21 +32,19 @@
         system = "x86_64-linux";
 
         pkgsArgs = { inherit system; config.allowUnfree = true; };
-        pkgs = import nixpkgs pkgsArgs;
-        pkgs-unstable = import nixpkgs-unstable pkgsArgs;
+        pkgs = import nixpkgs commonArgs;
+        pkgs-unstable = import nixpkgs-unstable commonArgs;
 
         base = import ./base.nix;
     in
     {
         nixosConfigurations.mypc = lib.nixosSystem # Desktop as hostname
         {
-            inherit system;
+            inherit pkgs;
             modules = lib.concatLists # Combine base config and host config
             [
                 base.nix.modules
-                [
-                    ./desktop/nixos
-                ]
+                [ ./desktop/nixos ]
             ];
             specialArgs =
             {
@@ -77,7 +70,7 @@
 
         nixosConfigurations.framework = lib.nixosSystem
         {
-            inherit system;
+            inherit pkgs;
             modules = lib.concatLists
             [
                 base.nix.modules
