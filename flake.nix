@@ -38,9 +38,10 @@
         base = import ./base.nix;
     in
     {
-        nixosConfigurations.mypc = lib.nixosSystem # Desktop as hostname
+        nixosConfigurations.mypc = lib.nixosSystem
         {
-            inherit pkgs;
+            inherit pkgs; # Do this to properly send the pkgs we declared
+            
             modules = lib.concatLists # Combine base config and host config
             [
                 base.nix.modules
