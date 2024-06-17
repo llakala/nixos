@@ -26,4 +26,12 @@
       ./overlays
     ];
   };
+
+  common =
+  {
+    args =
+    {
+      inherit pkgs-unstable vars;
+    }
+  }
 }
