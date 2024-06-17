@@ -50,6 +50,7 @@
       gnome-terminal
       gnome-disk-utility
       resources
+      gnome-keyring
     ]);
 
     # Workaround for GNOME autologin
