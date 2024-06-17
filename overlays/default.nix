@@ -12,7 +12,7 @@
         buildCommand = (oldAttrs.buildCommand or "") +
         ''
         wrapProgram $out/bin/firefox \
-        --set MOZ_ENABLE_WAYLAND 0
+        --set MOZ_ENABLE_WAYLAND 0 # Disable wayland
         '';
       });
     })
