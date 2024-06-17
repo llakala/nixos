@@ -66,6 +66,7 @@
             modules = lib.concatLists
             [
                 base.home.modules
+                [ ./desktop/home ]
             ];
             extraSpecialArgs =
             {
@@ -82,7 +83,7 @@
                 base.nix.modules
                 [
                     ./framework/nixos
-                    nixos-hardware.nixosModules.framework-13-7040-amd # Removed until nixos-hardware fixes their stuff
+                    nixos-hardware.nixosModules.framework-13-7040-amd
                 ]
             ];
             specialArgs =
@@ -97,6 +98,7 @@
             modules = lib.concatLists
             [
                 base.home.modules
+                [ ./framework/home ]
             ];
             extraSpecialArgs =
             {
