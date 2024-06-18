@@ -32,10 +32,16 @@
 
     "org/gnome/shell/extensions/dash-to-dock" =
     {
+      apply-custom-theme = true;
+
       autohide-in-fullscreen = true;
-      intellihide-mode = "ALWAYS_ON_TOP";
+      intellihide-mode = "FOCUS_APPLICATION_WINDOWS";
       hide-delay = 0.15;
       show-delay = 0.15;
+      animation-time = 0.05;
+
+      require-pressure-to-show = false;
+
       show-trash = false;
       show-show-apps-button = false;
       show-mounts = false;
@@ -51,10 +57,10 @@
     "org/gnome/shell/extensions/just-perfection" =
     {
       panel = false;
-      "panel-in-overview" = true;
-      "window-demands-attention-focus" = true;
-      "switcher-popup-delay" = false;
-      "startup-status" = 0;
+      panel-in-overview = true;
+      window-demands-attention-focus = true;
+      switcher-popup-delay = true;
+      startup-status = 0;
     };
   };
 }
