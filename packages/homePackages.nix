@@ -20,7 +20,7 @@
 
   (with pkgs-unstable;
   [
-    vscode
+    
   ]);
 
 
