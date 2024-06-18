@@ -1,5 +1,5 @@
 {
-  hostName = "mypc";
+  hostName = "desktop";
   username = "username";
   homeDirectory = "/home/username";
   fullName = "User Name";

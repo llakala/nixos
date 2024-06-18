@@ -50,7 +50,7 @@
     {
 
 
-        nixosConfigurations.mypc = lib.nixosSystem
+        nixosConfigurations.desktop = lib.nixosSystem
         {
             inherit pkgs; # Do this to properly send the pkgs we declared
 
@@ -66,7 +66,7 @@
             };
         };
 
-        homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules = lib.concatLists
