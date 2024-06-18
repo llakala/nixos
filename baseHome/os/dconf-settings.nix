@@ -5,6 +5,7 @@
     "org/gnome/desktop/interface" =
     {
       color-scheme = "prefer-dark";
+      clock-format = "12h";
       enable-hot-corners = false;
     };
 
@@ -12,6 +13,7 @@
     {
       num-workspaces = 1;
     };
+
 
     "org/gnome/desktop/peripherals/mouse" =
     {
@@ -33,6 +35,11 @@
         "org.gnome.Terminal.desktop"
         "code.desktop"
        ];
+    };
+
+    "org/gtk/settings/file-chooser" =
+    {
+      clock-format = "12h";
     };
   };
 }
