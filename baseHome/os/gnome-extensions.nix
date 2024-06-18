@@ -1,10 +1,18 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
 
+  home.packages = with pkgs.gnomeExtensions;
+  [
+    dash-to-dock
+    clipboard-indicator
+    just-perfection
+    alphabetical-app-grid
+    window-is-ready-remover
+  ];
+
   dconf.settings =
   {
-
 
     "org/gnome/shell" =
     {
@@ -17,7 +25,6 @@
         "just-perfection-desktop@just-perfection"
         "AlphabeticalAppGrid@stuarthayhurst"
         "windowIsReady_Remover@nunofarruca@gmail.com"
-
       ];
 
     };
