@@ -12,4 +12,6 @@
     firewall.enable = true;
     resolvconf.dnsExtensionMechanism = false;
   };
+
+  services.openssh.enable = true;
 }

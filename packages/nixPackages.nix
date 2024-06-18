@@ -24,6 +24,9 @@
     hwinfo
     ripgrep
     detox
+    age
+    ssh-to-age
+    sops
   ])
   ++
 
