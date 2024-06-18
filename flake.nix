@@ -5,13 +5,20 @@
     {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
         home-manager =
         {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+        sops-nix =
+        {
+            url = "github:mic92/sops-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
 
@@ -23,7 +30,9 @@
         nixpkgs-unstable,
 
         home-manager,
+
         nixos-hardware,
+        sops-nix,
         ...
     } @ inputs:
 
