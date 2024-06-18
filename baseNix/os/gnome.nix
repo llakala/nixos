@@ -29,7 +29,12 @@
     };
 
 
-    services.gnome.core-utilities.enable = false;
+    services.gnome =
+    {
+      core-utilities.enable = false;
+      gnome-keyring.enable = true;
+    };
+
     environment.gnome.excludePackages = with pkgs;
     [
       gnome-tour
@@ -51,6 +56,7 @@
       gnome-disk-utility
       resources
       gnome-keyring
+      seahorse
     ]);
 
     # Workaround for GNOME autologin
