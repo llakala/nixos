@@ -9,5 +9,6 @@
     ./sound.nix
     #./sops.nix
     ./user.nix
+    ./virtualization.nix
   ];
 }
