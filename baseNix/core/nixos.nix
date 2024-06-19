@@ -6,16 +6,28 @@
 }:
 
 {
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.channel.enable = false;
+
+  nix =
+  {
+    channel.enable = false;
+    nixPath =
+    [
+      "home-manager=${vars.configDirectory}/defaults"
+      "nixpkgs=flake:nixpkgs"
+    ];
+    gc.automatic = true;
+  };
+
+  nix.settings =
+  {
+    experimental-features = "nix-command flakes";
+    auto-optimise-store = true;
+    connect-timeout = 5;
+    log-lines = 25; # Show more lines if error happens
+    warn-dirty = false; # No warnings if git isn't pushed
+  };
 
 
-  nix.settings.auto-optimise-store = true;
-  nix.nixPath =
-  [
-    "home-manager=${vars.configDirectory}/defaults"
-    "nixpkgs=flake:nixpkgs"
-  ];
 
 
   time.timeZone = "America/New_York";
