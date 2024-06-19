@@ -4,6 +4,8 @@
 {
 
   specialArgs = { inherit pkgs-unstable vars; };
+
+
   nix.modules =
   [
     ./baseNix/core
@@ -15,7 +17,7 @@
 
     ./overlays
 
-    {nixpkgs.pkgs = pkgs; }
+    {nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
     disko.nixosModules.disko
   ];
 
