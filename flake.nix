@@ -53,7 +53,7 @@
 
         nixosConfigurations.desktop = lib.nixosSystem
         {
-            inherit system; # Do this to properly send the pkgs we declared
+            inherit system;
 
             modules = base.nix.modules ++
             [
