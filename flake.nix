@@ -46,7 +46,7 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix;
+        base = import ./base.nix { inherit disko; };
     in
     {
 
