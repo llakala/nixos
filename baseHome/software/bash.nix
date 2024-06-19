@@ -7,6 +7,7 @@
   programs.bash =
   {
     enable = true;
+    enableCompletion = true;
     bashrcExtra = ''
     rbld()
     {
