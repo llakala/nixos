@@ -1,4 +1,4 @@
-{ disko, ... }:
+{ disko, nixpkgs, pkgs, ... }:
 
 
 {
@@ -15,6 +15,7 @@
 
       ./overlays
 
+      {nixpkgs.pkgs = pkgs; }
       disko.nixosModules.disko
     ];
   };

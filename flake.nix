@@ -46,14 +46,14 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit disko; };
+        base = import ./base.nix { inherit disko nixpkgs pkgs; };
     in
     {
 
 
         nixosConfigurations.desktop = lib.nixosSystem
         {
-            inherit pkgs; # Do this to properly send the pkgs we declared
+            inherit system; # Do this to properly send the pkgs we declared
 
             modules = base.nix.modules ++ # Combine base config and host config
             [
@@ -82,10 +82,11 @@
 
         nixosConfigurations.framework = lib.nixosSystem
         {
-            inherit pkgs;
+            inherit system;
             modules = base.nix.modules ++
             [
                 ./framework/nixos
+
             ];
             specialArgs =
             {
