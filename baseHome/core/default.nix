@@ -1,0 +1,8 @@
+{ ... }:
+
+{
+  imports =
+  [ 
+    ./home-manager.nix
+  ];
+}

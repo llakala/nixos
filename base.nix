@@ -3,9 +3,10 @@
   {
     modules =
     [
+      ./baseNix/core
+      ./baseNix/features
       ./baseNix/os
       ./baseNix/software
-      ./baseNix/system
 
       ./packages/nixPackages.nix
 
@@ -17,9 +18,10 @@
   {
     modules =
     [
+      ./baseHome/core
+      ./baseHome/features
       ./baseHome/os
       ./baseHome/software
-      ./baseHome/system
 
       ./packages/homePackages.nix
 

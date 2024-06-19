@@ -13,9 +13,10 @@
 
 
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-        sops-nix =
+
+        disko =
         {
-            url = "github:mic92/sops-nix";
+            url = "github:nix-community/disko";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -32,7 +33,7 @@
         home-manager,
 
         nixos-hardware,
-        sops-nix,
+        disko,
         ...
     } @ inputs:
 
