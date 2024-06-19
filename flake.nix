@@ -55,7 +55,7 @@
         {
             inherit system; # Do this to properly send the pkgs we declared
 
-            modules = base.nix.modules ++ # Combine base config and host config
+            modules = base.nix.modules ++
             [
                 ./desktop/nixos
             ];
@@ -68,7 +68,7 @@
         homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-             modules = base.nix.modules ++ # Combine base config and host config
+             modules = base.home.modules ++
             [
                 ./desktop/home
             ];
@@ -94,7 +94,7 @@
         homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = base.home.modules ++ # Combine base config and host config
+            modules = base.home.modules ++
             [
                 ./framework/home
             ];
