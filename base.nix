@@ -1,3 +1,6 @@
+{ disko, ... }:
+
+
 {
   nix =
   {
@@ -11,6 +14,8 @@
       ./packages/nixPackages.nix
 
       ./overlays
+
+      disko.nixosModules.disko
     ];
   };
 

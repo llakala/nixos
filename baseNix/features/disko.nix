@@ -3,7 +3,7 @@
 
   disko.devices.disk.my-disk =
   {
-    device = "/dev/sdb";
+    device = "nvme0n1";
     type = "disk";
     content.type = "gpt";
     content.partitions =
@@ -11,7 +11,7 @@
       ESP =
       {
         type = "EF00";
-        size = "500M";
+        size = "512M";
         content =
         {
           type = "filesystem";
