@@ -57,7 +57,8 @@
 
             modules = base.nix.modules ++
             [
-                ./desktop/nixos
+                ./desktop/nix
+                ./desktop/nixware
             ];
             specialArgs = base.specialArgs //
             {
@@ -68,9 +69,10 @@
         homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-             modules = base.home.modules ++
+            modules = base.home.modules ++
             [
                 ./desktop/home
+                ./desktop/homeware
             ];
             extraSpecialArgs = base.specialArgs //
             {
@@ -83,7 +85,8 @@
             inherit system;
             modules = base.nix.modules ++
             [
-                ./framework/nixos
+                ./framework/nix
+                ./framework/nixware
 
             ];
             specialArgs = base.specialArgs //
@@ -97,6 +100,7 @@
             modules = base.home.modules ++
             [
                 ./framework/home
+                ./framework/homeware
             ];
             extraSpecialArgs = base.specialArgs //
             {
