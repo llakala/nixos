@@ -1,37 +1,33 @@
-{ disko, nixpkgs, pkgs, ... }:
+{ disko, nixpkgs, pkgs, pkgs-unstable, vars, ... }:
 
 
 {
-  nix =
-  {
-    modules =
-    [
-      ./baseNix/core
-      ./baseNix/features
-      ./baseNix/os
-      ./baseNix/software
 
-      ./packages/nixPackages.nix
+  specialArgs = { inherit pkgs-unstable vars; };
+  nix.modules =
+  [
+    ./baseNix/core
+    ./baseNix/features
+    ./baseNix/os
+    ./baseNix/software
 
-      ./overlays
+    ./packages/nixPackages.nix
 
-      {nixpkgs.pkgs = pkgs; }
-      disko.nixosModules.disko
-    ];
-  };
+    ./overlays
 
-  home =
-  {
-    modules =
-    [
-      ./baseHome/core
-      ./baseHome/features
-      ./baseHome/os
-      ./baseHome/software
+    {nixpkgs.pkgs = pkgs; }
+    disko.nixosModules.disko
+  ];
 
-      ./packages/homePackages.nix
+  home.modules =
+  [
+    ./baseHome/core
+    ./baseHome/features
+    ./baseHome/os
+    ./baseHome/software
 
-      ./overlays
-    ];
-  };
+    ./packages/homePackages.nix
+
+    ./overlays
+  ];
 }

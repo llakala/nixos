@@ -46,7 +46,7 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit disko nixpkgs pkgs; };
+        base = import ./base.nix { inherit disko nixpkgs pkgs pkgs-unstable vars; };
     in
     {
 
@@ -59,9 +59,8 @@
             [
                 ./desktop/nixos
             ];
-            specialArgs =
+            specialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -73,9 +72,8 @@
             [
                 ./desktop/home
             ];
-            extraSpecialArgs =
+            extraSpecialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -88,9 +86,8 @@
                 ./framework/nixos
 
             ];
-            specialArgs =
+            specialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
@@ -101,9 +98,8 @@
             [
                 ./framework/home
             ];
-            extraSpecialArgs =
+            extraSpecialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
