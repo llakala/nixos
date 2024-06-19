@@ -47,5 +47,10 @@
     {
       clock-format = "12h";
     };
+
+    "org/gtk/gtk4/settings/file-chooser" =
+    {
+      show-hidden = true;
+    };
   };
 }
