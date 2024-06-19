@@ -55,10 +55,9 @@
         {
             inherit pkgs; # Do this to properly send the pkgs we declared
 
-            modules = lib.concatLists # Combine base config and host config
+            modules = base.nix.modules ++ # Combine base config and host config
             [
-                base.nix.modules
-                [ ./desktop/nixos ]
+                ./desktop/nixos
             ];
             specialArgs =
             {
@@ -70,10 +69,9 @@
         homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = lib.concatLists
+             modules = base.nix.modules ++ # Combine base config and host config
             [
-                base.home.modules
-                [ ./desktop/home ]
+                ./desktop/home
             ];
             extraSpecialArgs =
             {
@@ -85,13 +83,9 @@
         nixosConfigurations.framework = lib.nixosSystem
         {
             inherit pkgs;
-            modules = lib.concatLists
+            modules = base.nix.modules ++
             [
-                base.nix.modules
-                [
-                    ./framework/nixos
-                    nixos-hardware.nixosModules.framework-13-7040-amd
-                ]
+                ./framework/nixos
             ];
             specialArgs =
             {
@@ -102,10 +96,9 @@
         homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = lib.concatLists
+            modules = base.home.modules ++ # Combine base config and host config
             [
-                base.home.modules
-                [ ./framework/home ]
+                ./framework/home
             ];
             extraSpecialArgs =
             {
