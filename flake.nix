@@ -7,15 +7,16 @@
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager =
         {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/release-24.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
 
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-        sops-nix =
+
+        disko =
         {
-            url = "github:mic92/sops-nix";
+            url = "github:nix-community/disko";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -32,7 +33,7 @@
         home-manager,
 
         nixos-hardware,
-        sops-nix,
+        disko,
         ...
     } @ inputs:
 
@@ -45,23 +46,22 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix;
+        base = import ./base.nix { inherit disko nixpkgs pkgs pkgs-unstable vars; };
     in
     {
 
 
         nixosConfigurations.desktop = lib.nixosSystem
         {
-            inherit pkgs; # Do this to properly send the pkgs we declared
+            inherit system;
 
-            modules = lib.concatLists # Combine base config and host config
+            modules = base.nix.modules ++
             [
-                base.nix.modules
-                [ ./desktop/nixos ]
+                ./desktop/nix
+                ./desktop/nixware
             ];
-            specialArgs =
+            specialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -69,46 +69,41 @@
         homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = lib.concatLists
+            modules = base.home.modules ++
             [
-                base.home.modules
-                [ ./desktop/home ]
+                ./desktop/home
+                ./desktop/homeware
             ];
-            extraSpecialArgs =
+            extraSpecialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
 
         nixosConfigurations.framework = lib.nixosSystem
         {
-            inherit pkgs;
-            modules = lib.concatLists
+            inherit system;
+            modules = base.nix.modules ++
             [
-                base.nix.modules
-                [
-                    ./framework/nixos
-                    nixos-hardware.nixosModules.framework-13-7040-amd
-                ]
+                ./framework/nix
+                ./framework/nixware
+
             ];
-            specialArgs =
+            specialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
         homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
-            modules = lib.concatLists
+            modules = base.home.modules ++
             [
-                base.home.modules
-                [ ./framework/home ]
+                ./framework/home
+                ./framework/homeware
             ];
-            extraSpecialArgs =
+            extraSpecialArgs = base.specialArgs //
             {
-                inherit pkgs-unstable vars;
                 hostVars = import ./framework/frameVars.nix;
             };
         };

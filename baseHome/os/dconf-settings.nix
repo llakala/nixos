@@ -14,11 +14,17 @@
       num-workspaces = 1;
     };
 
-
     "org/gnome/desktop/peripherals/mouse" =
     {
       accel-profile = "flat";
     };
+
+    "org/gnome/desktop/peripherals/touchpad" =
+    {
+      disable-while-typing = false;
+    };
+
+
 
     "org/gnome/mutter" =
     {
@@ -40,6 +46,11 @@
     "org/gtk/settings/file-chooser" =
     {
       clock-format = "12h";
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" =
+    {
+      show-hidden = true;
     };
   };
 }
