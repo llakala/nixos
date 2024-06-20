@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
 
 
@@ -6,7 +6,7 @@
   {
     "org/gnome/desktop/interface" =
     {
-       scaling-factor = lib.hm.gvariant.mkUint32 1;
+       scaling-factor = 2;
     };
 
 
