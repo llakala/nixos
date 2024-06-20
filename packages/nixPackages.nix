@@ -26,6 +26,7 @@
     detox # automatic file deletion
     age # Used for secrets
     ssh-to-age
+    qemu-utils
   ])
   ++
 
