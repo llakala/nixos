@@ -1,13 +1,22 @@
 {
 
 
-  disko.devices.disk.my-disk =
+  disko.devices.disk.main =
   {
-    device = "nvme0n1";
+    device = "/dev/disk/by-id/nixos";
     type = "disk";
     content.type = "gpt";
     content.partitions =
     {
+
+
+      MBR =
+      {
+        type = "EF02"; # for grub MBR
+        size = "1M";
+        priority = 1; # Needs to be first partition
+      };
+
       ESP =
       {
         type = "EF00";
@@ -20,7 +29,6 @@
         };
       };
 
-
       root =
       {
         size = "100%";
@@ -31,9 +39,9 @@
           mountpoint = "/";
         };
       };
+
+
     };
   };
-
-
 
 }
