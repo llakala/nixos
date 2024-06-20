@@ -15,7 +15,6 @@
       "home-manager=${vars.configDirectory}/defaults"
       "nixpkgs=flake:nixpkgs"
     ];
-    gc.automatic = true;
   };
 
   nix.settings =
