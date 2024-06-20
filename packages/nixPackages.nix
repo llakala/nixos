@@ -11,7 +11,7 @@
   (with pkgs;
   [
     libsecret
-    busybox # Tiny utils
+    coreutils # Tiny utils
     libgccjit # gcc
     linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
     gnumake # make command
@@ -23,10 +23,9 @@
     jdk22
     hwinfo
     ripgrep
-    detox
-    age
+    detox # automatic file deletion
+    age # Used for secrets
     ssh-to-age
-    sops
   ])
   ++
 

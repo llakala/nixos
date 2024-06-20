@@ -1,29 +1,35 @@
+{ disko, nixpkgs, pkgs, pkgs-unstable, vars, ... }:
+
+
 {
-  nix =
-  {
-    modules =
-    [
-      ./baseNix/os
-      ./baseNix/software
-      ./baseNix/system
 
-      ./packages/nixPackages.nix
+  specialArgs = { inherit pkgs-unstable vars; };
 
-      ./overlays
-    ];
-  };
 
-  home =
-  {
-    modules =
-    [
-      ./baseHome/os
-      ./baseHome/software
-      ./baseHome/system
+  nix.modules =
+  [
+    ./baseNix/core
+    ./baseNix/features
+    ./baseNix/os
+    ./baseNix/software
 
-      ./packages/homePackages.nix
+    ./packages/nixPackages.nix
 
-      ./overlays
-    ];
-  };
+    ./overlays
+
+    {nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
+    disko.nixosModules.disko
+  ];
+
+  home.modules =
+  [
+    ./baseHome/core
+    ./baseHome/features
+    ./baseHome/os
+    ./baseHome/software
+
+    ./packages/homePackages.nix
+
+    ./overlays
+  ];
 }
