@@ -51,7 +51,7 @@
     {
 
 
-        nixosConfigurations.desktop = lib.nixosSystem
+        nixosConfigurations.mypc = lib.nixosSystem
         {
             inherit system;
 
@@ -66,7 +66,7 @@
             };
         };
 
-        homeConfigurations."username@desktop" = home-manager.lib.homeManagerConfiguration
+        homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
             modules = base.home.modules ++
