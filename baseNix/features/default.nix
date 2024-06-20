@@ -3,7 +3,7 @@
 {
   imports =
   [
-    ./disko.nix
+    #./disko.nix
     ./sound.nix
     ./virtualization.nix
   ];
