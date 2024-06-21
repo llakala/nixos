@@ -24,11 +24,13 @@ project
 │   └───home-software
 │   └───nixos
 │   └───nixos-software
+|   └───desktopVars.nix
 └───framework
 │   └───home-modules
 │   └───home-software
 │   └───nixos-modules
 │   └───nixos-software
+|   └───frameworkVars.nix
 └───overlays
 └───packages
 ```
