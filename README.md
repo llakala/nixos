@@ -45,8 +45,8 @@ The base configuration is split between nixos and home-manager. These each have 
 
 - Features manages extra features on top of core that every host would want, like virtualization.
 
-- OS manages operating-system specific features. Currently the configuration uses GNOME, so these mange dconf settings and gnome-extensions. 
-
+- OS manages operating-system specific features. Currently the configuration uses GNOME, so these mange dconf settings and gnome-extensions. However, moving to KDE Plasma is on the [roadmap](roadmap.md)
+  
 - Software manages configurations for specific apps, like VSCode, Firefox, etc.
 
 ## Variables
