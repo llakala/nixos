@@ -53,3 +53,7 @@ The base configuration is split between nixos and home-manager. These each have 
 There are two types of variables: general variables, and host-specific variables. General variables are host-independent, such as the directory of the nixos configuration. Host-specific variables are set based on the host, like the hostname and email.
 
 Files can request a value from hostVars without knowing which host is being used. For example, files in the base configuration can use values set in hostVars.
+
+# HOW DO I USE THIS?
+
+Well, you could install NixOS and clone the repo into your /etc/nixos directory. But I wouldn't recommend it, since most of the configuration is specific to my taste, which probably won't match yours. HOWEVER, I do think my configuration is pretty well organized, and a lot more readable than a lot of Nix code out there, which makes it appropriate for beginners. Because of this, I'd recommend fiddling around with it in a VM and seeing what parts of it you might want to adapt to your own tastes. 
