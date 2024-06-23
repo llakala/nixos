@@ -5,45 +5,67 @@
   programs.firefox =
   {
     enable = true;
-
-    package = (pkgs.wrapFirefox pkgs.firefox-unwrapped
-    {
-
-    })
-
-    .overrideAttrs (oldAttrs:
-    {
-      buildCommand = oldAttrs.buildCommand +
-      ''
-      wrapProgram $out/bin/firefox \
-        --set MOZ_ENABLE_WAYLAND 0 \
-        --set MOZ_USE_XINPUT2 1
-      '';
-    });
+    profiles.${hostVars.username}.isDefault = true;
   };
 
 
-  programs.firefox.profiles.${hostVars.username} =
+  programs.firefox.package = (pkgs.wrapFirefox pkgs.firefox-unwrapped
   {
-    isDefault = true;
-    settings =
+    extraPolicies =
     {
-      "browser.startup.page" = 3; # Restore last tabs
-      "browser.aboutConfig.showWarning" = false; # No warning when going to config
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisplayBookmarksToolbar = "never";
+      DisplayMenuBar = "never";
+    };
 
-      "browser.urlbar.placeholderName" = "DuckDuckGo";
-      "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+    extraPolicies.ExtensionSettings =
+    {
 
+    };
+
+
+    extraPolicies.Preferences =
+    {
       "privacy.donottrackheader.enabled" = false; # Don't track me
       "privacy.globalprivacycontrol.enabled" = true; # Don't sell or share my data
-
       "browser.urlbar.suggest.quicksuggest.sponsored" = false; # No sponsored suggestions
       "browser.newtabpage.activity-stream.feeds.section.topstories" = false; # No recommended stories
       "browser.newtabpage.activity-stream.feeds.topsites" = false; # No stupid top sites
       "browser.newtabpage.activity-stream.section.highlights.includePocket" = false; # Disable stupid pocket stuff
-    };
-  };
 
+      "browser.urlbar.placeholderName" = "DuckDuckGo";
+      "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+
+      "browser.startup.page" = 3; # Restore last tabs
+      "browser.aboutConfig.showWarning" = false; # No warning when going to config
+      "trailhead.firstrun.didSeeAboutWelcome" = true; # Don't welcome me
+
+      "browser.uiCustomization.state" =
+      ''
+      {"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":[],"nav-bar":["back-button","forward-button","stop-reload-button","urlbar-container","downloads-button","fxa-toolbar-menu-button","unified-extensions-button"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["firefox-view-button","tabbrowser-tabs","new-tab-button","alltabs-button"],"PersonalToolbar":["personal-bookmarks"]},"seen":["save-to-pocket-button","developer-button"],"dirtyAreaCache":["nav-bar"],"currentVersion":20,"newElementCount":3}
+      ''; # Make toolbar only have what I want
+      "browser.download.autohideButton" = false; # Never hide downloads button
+      "media.videocontrols.picture-in-picture.video-toggle.enabled" = false; # Disable picture in picture;
+
+      "services.sync.engine.addons" = false; # Don't sync addons
+      "services.sync.engine.prefs" = false; # Don't sync settings
+      "services.sync.engine.prefs.modified" = false; # Don't sync more settings
+      "services.sync.engine.bookmarks" = false; # Don't sync bookmarks
+      "services.sync.declinedEngines" = "prefs,bookmarks,addons"; # Decline everything more
+    };
+  })
+
+  .overrideAttrs (oldAttrs:
+  {
+    buildCommand = oldAttrs.buildCommand +
+    ''
+    wrapProgram $out/bin/firefox \
+      --set MOZ_ENABLE_WAYLAND 0 \
+      --set MOZ_USE_XINPUT2 1
+    '';
+  });
 
 
 }
