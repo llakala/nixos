@@ -1,15 +1,7 @@
 { pkgs, hostVars, ...}:
 
-{
-
-  programs.firefox =
-  {
-    enable = true;
-    profiles.${hostVars.username}.isDefault = true;
-  };
-
-
-  programs.firefox.package = (pkgs.wrapFirefox pkgs.firefox-unwrapped
+let
+  customFox = pkgs.wrapFirefox pkgs.firefox-unwrapped # Use unwrapped to allow wrapping
   {
     extraPolicies =
     {
@@ -17,7 +9,7 @@
       DisableFirefoxStudies = true;
       DisablePocket = true;
       DisplayBookmarksToolbar = "never";
-      DisplayMenuBar = "never";
+      DisplayMenuBar = "never"; # Disable the weird file menu that comes up when pressing alt
     };
 
     extraPolicies.ExtensionSettings =
@@ -55,17 +47,27 @@
       "services.sync.engine.bookmarks" = false; # Don't sync bookmarks
       "services.sync.declinedEngines" = "prefs,bookmarks,addons"; # Decline everything more
     };
-  })
+  };
 
-  .overrideAttrs (oldAttrs:
+
+
+
+in
+{
+  programs.firefox =
   {
-    buildCommand = oldAttrs.buildCommand +
-    ''
-    wrapProgram $out/bin/firefox \
-      --set MOZ_ENABLE_WAYLAND 0 \
-      --set MOZ_USE_XINPUT2 1
-    '';
-  });
+    enable = true;
+    profiles.${hostVars.username}.isDefault = true;
+    package = customFox.overrideAttrs (oldAttrs: # Change attributes of firefox with config set
+    {
+      buildCommand = oldAttrs.buildCommand +
+      ''
+      wrapProgram $out/bin/firefox \
+        --set MOZ_ENABLE_WAYLAND 0 \
+        --set MOZ_USE_XINPUT2 1
+      '';
+    });
+  };
 
 
 }
