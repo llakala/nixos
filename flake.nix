@@ -81,6 +81,7 @@
             ];
             extraSpecialArgs = base.specialArgs //
             {
+                inherit firefox-addons;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -109,6 +110,7 @@
             ];
             extraSpecialArgs = base.specialArgs //
             {
+                inherit firefox-addons;
                 hostVars = import ./framework/frameVars.nix;
             };
         };

@@ -1,4 +1,4 @@
-{ pkgs, hostVars, ...}:
+{ pkgs, hostVars, firefox-addons, ...}:
 
 let
   customFox = pkgs.wrapFirefox pkgs.firefox-unwrapped # Use unwrapped to allow wrapping
@@ -46,6 +46,14 @@ let
       "services.sync.engine.prefs.modified" = false; # Don't sync more settings
       "services.sync.engine.bookmarks" = false; # Don't sync bookmarks
       "services.sync.declinedEngines" = "prefs,bookmarks,addons"; # Decline everything more
+
+      "browser.download.useDownloadDir" = false; # Don't ask where to download things
+
+      "browser.in-content.dark-mode" = true; # Use dark mode
+      "ui.systemUsesDarkTheme" = true;
+
+      "extensions.autoDisableScopes" = 0; # Automatically enable extensions
+      "extensions.update.enabled" = false; # Don't update extensions since they're sourced from rycee
     };
   };
 
@@ -57,7 +65,6 @@ in
   programs.firefox =
   {
     enable = true;
-    profiles.${hostVars.username}.isDefault = true;
     package = customFox.overrideAttrs (oldAttrs: # Change attributes of firefox with config set
     {
       buildCommand = oldAttrs.buildCommand +
@@ -67,6 +74,24 @@ in
         --set MOZ_USE_XINPUT2 1
       '';
     });
+    profiles.default =
+    {
+      isDefault = true;
+      extensions = with firefox-addons.packages.${pkgs.system};
+      [
+        ublock-origin
+        sponsorblock
+        # bypass-paywalls-clean (can't use, was creating popups)
+        consent-o-matic
+        clearurls
+        indie-wiki-buddy
+        link-cleaner
+        modrinthify
+        return-youtube-dislikes
+        terms-of-service-didnt-read
+      ];
+    };
+
   };
 
 
