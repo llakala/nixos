@@ -7,7 +7,7 @@
 
 
 # SOFTWARE:
-- [ ] Kit out firefox with all options
+- [x] Kit out firefox with all options
 
 - [ ] Kit out vscode with all options
     - [ ] Get vscode-server fully working
@@ -16,6 +16,10 @@
 - [ ] Kit out bash / try other terminals
 
 # IMPROVEMENTS:
+- [ ] Improve the way inputs are passed from flake to be more clear and less hacky (ASAP)
+- [ ] Learn how to custom-build firefox extensions to add movie-web remastered
+
+
 - [ ] Make username consistent to avoid annoyance
 
 
