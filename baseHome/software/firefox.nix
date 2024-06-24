@@ -80,15 +80,20 @@ in
       extensions = with firefox-addons.packages.${pkgs.system};
       [
         ublock-origin
+
         sponsorblock
+        return-youtube-dislikes
+        indie-wiki-buddy
+        modrinthify
+
         # bypass-paywalls-clean (can't use, was creating popups)
         consent-o-matic
-        clearurls
-        indie-wiki-buddy
-        link-cleaner
-        modrinthify
-        return-youtube-dislikes
         terms-of-service-didnt-read
+
+        auto-tab-discard
+        clearurls
+        link-cleaner
+
       ];
     };
 
