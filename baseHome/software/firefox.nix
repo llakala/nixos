@@ -57,6 +57,38 @@ let
     };
   };
 
+  ryceeAddons = with firefox-addons.packages.${pkgs.system};
+  [
+    ublock-origin
+
+    sponsorblock
+    return-youtube-dislikes
+    indie-wiki-buddy
+    modrinthify
+
+    # bypass-paywalls-clean (can't use, was creating popups)
+    consent-o-matic
+    terms-of-service-didnt-read
+
+    auto-tab-discard
+    clearurls
+    link-cleaner
+
+  ];
+
+  customAddons =
+  [
+    ( firefox-addons.lib.${pkgs.system}.buildFirefoxXpiAddon
+    {
+      pname = "movie-web";
+      version = "1.1.4";
+      addonId = "{b0a674f9-f848-9cfd-0feb-583d211308b0}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4286163/cfu_flix_movie_web_extension-1.1.4.xpi";
+      sha256 = "sha256-vNlak2hDB7rgPwIGnKUZ0RXyeYEN4gEcYoU9X9XF+1I";
+      meta = {};
+    })
+  ];
+
 
 
 
@@ -77,24 +109,7 @@ in
     profiles.default =
     {
       isDefault = true;
-      extensions = with firefox-addons.packages.${pkgs.system};
-      [
-        ublock-origin
-
-        sponsorblock
-        return-youtube-dislikes
-        indie-wiki-buddy
-        modrinthify
-
-        # bypass-paywalls-clean (can't use, was creating popups)
-        consent-o-matic
-        terms-of-service-didnt-read
-
-        auto-tab-discard
-        clearurls
-        link-cleaner
-
-      ];
+      extensions = ryceeAddons ++ customAddons;
     };
 
   };
