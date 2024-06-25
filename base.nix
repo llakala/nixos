@@ -1,9 +1,9 @@
-{ disko, nixpkgs, pkgs, pkgs-unstable, vars, ... }:
+{ inputs, nixpkgs, pkgs, pkgs-unstable, vars, ... }:
 
 
 {
 
-  specialArgs = { inherit pkgs-unstable vars; };
+  specialArgs = { inherit inputs pkgs-unstable vars; };
 
 
   nix.modules =
@@ -18,7 +18,7 @@
     ./overlays
 
     {nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
-    disko.nixosModules.disko
+    inputs.disko.nixosModules.disko
   ];
 
   home.modules =
