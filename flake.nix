@@ -35,8 +35,8 @@
 
         home-manager,
 
-        nixos-hardware,
-        disko,
+        # nixos-hardware,
+        # disko,
         firefox-addons,
 
         ...
@@ -51,7 +51,7 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit disko nixpkgs pkgs pkgs-unstable vars; };
+        base = import ./base.nix { inherit inputs nixpkgs pkgs pkgs-unstable vars; };
     in
     {
 
