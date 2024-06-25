@@ -16,7 +16,7 @@
 - [ ] Kit out bash / try other terminals
 
 # IMPROVEMENTS:
-- [ ] Improve the way inputs are passed from flake to be more clear and less hacky (ASAP)
+- [x] Improve the way inputs are passed from flake to be more clear and less hacky (ASAP)
 - [x] Learn how to custom-build firefox extensions to add movie-web remastered
     - OR: Make issue with rycee to add the extension
 
