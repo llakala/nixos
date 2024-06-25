@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, pkgs, pkgs-unstable, vars, ... }:
+{ inputs, pkgs, pkgs-unstable, vars, ... }:
 
 
 {
@@ -17,7 +17,7 @@
 
     ./overlays
 
-    {nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
+    {inputs.nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
     inputs.disko.nixosModules.disko
   ];
 

@@ -1,4 +1,4 @@
-{ pkgs, hostVars, firefox-addons, ...}:
+{ pkgs, hostVars, inputs, ...}:
 
 let
   customFox = pkgs.wrapFirefox pkgs.firefox-unwrapped # Use unwrapped to allow wrapping
@@ -57,7 +57,7 @@ let
     };
   };
 
-  ryceeAddons = with firefox-addons.packages.${pkgs.system};
+  ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
   [
     ublock-origin
 
@@ -78,7 +78,7 @@ let
 
   customAddons =
   [
-    ( firefox-addons.lib.${pkgs.system}.buildFirefoxXpiAddon
+    ( inputs.firefox-addons.lib.${pkgs.system}.buildFirefoxXpiAddon
     {
       pname = "movie-web";
       version = "1.1.4";
