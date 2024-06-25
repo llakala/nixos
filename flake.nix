@@ -35,10 +35,6 @@
 
         home-manager,
 
-        # nixos-hardware,
-        # disko,
-        firefox-addons,
-
         ...
     } @ inputs:
 
@@ -51,7 +47,7 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit inputs nixpkgs pkgs pkgs-unstable vars; };
+        base = import ./base.nix { inherit inputs pkgs pkgs-unstable vars; };
     in
     {
 
@@ -81,7 +77,6 @@
             ];
             extraSpecialArgs = base.specialArgs //
             {
-                inherit firefox-addons;
                 hostVars = import ./desktop/deskVars.nix;
             };
         };
@@ -110,7 +105,6 @@
             ];
             extraSpecialArgs = base.specialArgs //
             {
-                inherit firefox-addons;
                 hostVars = import ./framework/frameVars.nix;
             };
         };
