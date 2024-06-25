@@ -36,7 +36,7 @@
         home-manager,
 
         ...
-    } @ inputs:
+    } @ inputs: # Everything else is passed via "inputs.NAME" to avoid clutter
 
     let
         vars = import ./variables.nix;
