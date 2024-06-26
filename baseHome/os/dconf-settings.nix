@@ -2,6 +2,12 @@
 {
   dconf.settings =
   {
+
+    "org/gnome/evolution-data-server/calendar" =
+    {
+      notify-with-tray = true;
+    };
+
     "org/gnome/desktop/interface" =
     {
       color-scheme = "prefer-dark";
@@ -23,8 +29,6 @@
     {
       disable-while-typing = false;
     };
-
-
 
     "org/gnome/mutter" =
     {
