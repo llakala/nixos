@@ -1,25 +1,25 @@
 {
-  config,
-  vars,
   hostVars,
+  pkgs,
+  nixpkgs,
+  lib,
   ...
 }:
 
 {
-
   nix =
   {
+    registry.nixpkgs.flake = nixpkgs;
     channel.enable = false;
-    nixPath =
-    [
-      "home-manager=${vars.configDirectory}/defaults"
-      "nixpkgs=flake:nixpkgs"
-    ];
   };
+
+  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}"; # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
 
   nix.settings =
   {
+    nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
     experimental-features = "nix-command flakes";
+
     auto-optimise-store = true;
     connect-timeout = 5;
     log-lines = 25; # Show more lines if error happens
