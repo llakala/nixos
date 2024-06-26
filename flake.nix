@@ -49,21 +49,23 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit nixpkgs disko pkgs pkgs-unstable vars; };
+        specialArgs = { inherit inputs pkgs-unstable vars; };
+
+        base = import ./base.nix { inherit nixpkgs disko pkgs; };
     in
     {
 
 
         nixosConfigurations.mypc = lib.nixosSystem
         {
-            inherit system inputs;
+            inherit system;
 
             modules = base.nix.modules ++
             [
                 ./desktop/nix
                 ./desktop/nixware
             ];
-            specialArgs = base.specialArgs //
+            specialArgs = specialArgs //
             {
                 hostVars = import ./desktop/deskVars.nix;
             };
@@ -77,7 +79,7 @@
                 ./desktop/home
                 ./desktop/homeware
             ];
-            extraSpecialArgs = base.specialArgs //
+            extraSpecialArgs = specialArgs //
             {
                 hostVars = import ./desktop/deskVars.nix;
             };
@@ -92,7 +94,7 @@
                 ./framework/nixware
 
             ];
-            specialArgs = base.specialArgs //
+            specialArgs = specialArgs //
             {
                 hostVars = import ./framework/frameVars.nix;
             };
@@ -105,7 +107,7 @@
                 ./framework/home
                 ./framework/homeware
             ];
-            extraSpecialArgs = base.specialArgs //
+            extraSpecialArgs = specialArgs //
             {
                 hostVars = import ./framework/frameVars.nix;
             };

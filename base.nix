@@ -1,9 +1,7 @@
-{ nixpkgs, disko, pkgs, pkgs-unstable, vars, ... }:
+{ nixpkgs, disko, pkgs, ... }:
 
 
 {
-
-  specialArgs = { inherit pkgs-unstable vars; };
 
 
   nix.modules =
