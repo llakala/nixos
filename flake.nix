@@ -73,7 +73,7 @@
 
         homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
-            inherit pkgs inputs;
+            inherit pkgs;
             modules = base.home.modules ++
             [
                 ./desktop/home
@@ -106,7 +106,7 @@
             [
                 ./framework/home
                 ./framework/homeware
-            ];
+            ]; 
             extraSpecialArgs = specialArgs //
             {
                 hostVars = import ./framework/frameVars.nix;
