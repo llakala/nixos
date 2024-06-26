@@ -26,7 +26,7 @@
     };
 
 
-    outputs =
+    outputs = inputs @
     {
         self,
 
@@ -35,8 +35,10 @@
 
         home-manager,
 
+        disko,
+
         ...
-    } @ inputs: # Everything else is passed via "inputs.NAME" to avoid clutter
+    }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
     let
         vars = import ./variables.nix;
@@ -47,14 +49,14 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        base = import ./base.nix { inherit inputs pkgs pkgs-unstable vars; };
+        base = import ./base.nix { inherit nixpkgs disko pkgs pkgs-unstable vars; };
     in
     {
 
 
         nixosConfigurations.mypc = lib.nixosSystem
         {
-            inherit system;
+            inherit system inputs;
 
             modules = base.nix.modules ++
             [
@@ -69,7 +71,7 @@
 
         homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
-            inherit pkgs;
+            inherit pkgs inputs;
             modules = base.home.modules ++
             [
                 ./desktop/home
