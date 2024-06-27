@@ -52,24 +52,17 @@
         specialArgs = { inherit inputs pkgs-unstable vars; };
 
         base = import ./base.nix { inherit nixpkgs disko pkgs; };
+
+        mkHosts = import ./mkHosts.nix;
     in
     {
 
+        nixosConfigurations = mkHosts "x86_64-linux"
+        [
+            "desktop"
+            "framework"
+        ];
 
-        nixosConfigurations.mypc = lib.nixosSystem
-        {
-            inherit system;
-
-            modules = base.nix.modules ++
-            [
-                ./desktop/nix
-                ./desktop/nixware
-            ];
-            specialArgs = specialArgs //
-            {
-                hostVars = import ./desktop/deskVars.nix;
-            };
-        };
 
         homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
         {
@@ -85,20 +78,6 @@
             };
         };
 
-        nixosConfigurations.framework = lib.nixosSystem
-        {
-            inherit system;
-            modules = base.nix.modules ++
-            [
-                ./framework/nix
-                ./framework/nixware
-
-            ];
-            specialArgs = specialArgs //
-            {
-                hostVars = import ./framework/frameVars.nix;
-            };
-        };
         homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
         {
             inherit pkgs;
