@@ -54,6 +54,7 @@
         base = import ./base.nix { inherit nixpkgs disko pkgs; };
         mkHosts = system: hosts:
         lib.genAttrs
+        hosts
         (
             hostName:
             lib.nixosSystem
@@ -65,8 +66,13 @@
                     ./baseNix/os
                     ./baseNix/software
                     ./packages/nixPackages.nix
-                    "./${hostName}/nix"
-                    "./${hostName}/nixware"
+                    ./${hostName}/nix
+                    ./${hostName}/nixware
+                    {
+                        nixpkgs.hostPlatform = system;
+                        nixpkgs.pkgs = pkgs; 
+                    }
+
                 ];
                 specialArgs =
                 {
@@ -74,7 +80,7 @@
                     hostVars = import ./${hostName}/vars.nix;
                 };
             }
-        ) hosts;
+        );
     in
     {
 
