@@ -52,8 +52,29 @@
         specialArgs = { inherit inputs pkgs-unstable vars; };
 
         base = import ./base.nix { inherit nixpkgs disko pkgs; };
-
-        mkHosts = import ./mkHosts.nix;
+        mkHosts = system: hosts:
+        lib.genAttrs
+        (
+            hostName:
+            lib.nixosSystem
+            {
+                modules =
+                [
+                    ./baseNix/core
+                    ./baseNix/features
+                    ./baseNix/os
+                    ./baseNix/software
+                    ./packages/nixPackages.nix
+                    "./${hostName}/nix"
+                    "./${hostName}/nixware"
+                ];
+                specialArgs =
+                {
+                    inherit inputs pkgs-unstable vars;
+                    hostVars = import ./${hostName}/vars.nix;
+                };
+            }
+        ) hosts;
     in
     {
 
