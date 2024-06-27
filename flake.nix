@@ -57,7 +57,7 @@
     in
     {
 
-        nixosConfigurations = mkHosts.mkHosts "x86_64-linux"
+        nixosConfigurations = mkHosts "x86_64-linux"
         [
             "desktop"
             "framework"
