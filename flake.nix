@@ -70,14 +70,14 @@
                     ./${hostName}/nixware
                     {
                         nixpkgs.hostPlatform = system;
-                        nixpkgs.pkgs = pkgs; 
+                        nixpkgs.pkgs = pkgs;
                     }
 
                 ];
                 specialArgs =
                 {
                     inherit inputs pkgs-unstable vars;
-                    hostVars = import ./${hostName}/vars.nix;
+                    hostVars = import ./${hostName}/${hostName}Vars.nix;
                 };
             }
         );
