@@ -49,7 +49,7 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        specialArgs = { inherit inputs nixpkgs pkgs-unstable vars; };
+        specialArgs = { inherit inputs pkgs-unstable vars; };
 
         base = import ./base.nix { inherit nixpkgs disko pkgs; };
     in

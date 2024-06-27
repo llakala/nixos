@@ -1,7 +1,7 @@
 {
   hostVars,
   pkgs,
-  nixpkgs,
+  inputs,
   lib,
   ...
 }:
@@ -9,11 +9,11 @@
 {
   nix =
   {
-    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
   };
 
-  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}"; # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}"; # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
 
   nix.settings =
   {
