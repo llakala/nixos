@@ -57,7 +57,7 @@
     in
     {
 
-        nixosConfigurations = mkHosts "x86_64-linux"
+        nixosConfigurations = mkHosts.generateNix "x86_64-linux"
         [
             "desktop"
             "framework"
@@ -74,7 +74,7 @@
             ];
             extraSpecialArgs = specialArgs //
             {
-                hostVars = import ./desktop/deskVars.nix;
+                hostVars = import ./desktop/desktopVars.nix;
             };
         };
 
@@ -88,7 +88,7 @@
             ];
             extraSpecialArgs = specialArgs //
             {
-                hostVars = import ./framework/frameVars.nix;
+                hostVars = import ./framework/frameworkVars.nix;
             };
         };
     };
