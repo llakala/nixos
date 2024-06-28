@@ -37,4 +37,31 @@ in
     }
   );
 
+
+  generateHome = system: hosts:
+  lib.genAttrs hosts
+  (
+    hostName:
+    inputs.home-manager.lib.homeManagerConfiguration
+    {
+      inherit pkgs;
+
+      modules =
+      [
+        ./baseHome/core
+        ./baseHome/features
+        ./baseHome/os
+        ./baseHome/software
+        ./packages/homePackages.nix
+        ./${hostName}/home
+        ./${hostName}/homeware
+      ];
+
+      specialArgs = helpers //
+      {
+        hostVars = import ./${hostName}/${hostName}Vars.nix;
+      };
+    }
+  );
+
 }
