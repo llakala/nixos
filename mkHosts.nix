@@ -1,5 +1,12 @@
 { lib, pkgs, inputs, pkgs-unstable, vars, ...}:
 
+let
+  helpers =
+  {
+    inherit inputs pkgs-unstable vars;
+  };
+
+in
 {
   generateNix = system: hosts:
   lib.genAttrs hosts
@@ -22,9 +29,9 @@
           nixpkgs.pkgs = pkgs;
         }
       ];
-      specialArgs =
+
+      specialArgs = helpers //
       {
-        inherit inputs pkgs-unstable vars;
         hostVars = import ./${hostName}/${hostName}Vars.nix;
       };
     }
