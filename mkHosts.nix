@@ -57,7 +57,7 @@ in
         ./${hostName}/homeware
       ];
 
-      specialArgs = helpers //
+      extraSpecialArgs = helpers //
       {
         hostVars = import ./${hostName}/${hostName}Vars.nix;
       };
