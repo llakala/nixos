@@ -8,7 +8,7 @@
 
 
 # SOFTWARE:
-- [ ] Set up firefox dark mode
+- [ ] Set up firefox dark mode + get google gone
 - [ ] Kit out vscode with all options
     - [ ] Get vscode-server fully working
     - [ ] Work on vscode theme again (whether it's personal or lesbian theme)
