@@ -1,10 +1,12 @@
-{ lib, pkgs, inputs, pkgs-unstable, vars, ...}:
+{ lib, inputs, pkgs, pkgs-unstable, vars, ...}:
 
 let
   helpers =
   {
     inherit inputs pkgs-unstable vars;
   };
+
+  
 
 in
 {
@@ -38,30 +40,41 @@ in
   );
 
 
-  generateHome = system: hosts:
-  lib.genAttrs hosts
+  generateHome = users: hosts:
+  builtins.listToAttrs
   (
-    hostName:
-    inputs.home-manager.lib.homeManagerConfiguration
-    {
-      inherit pkgs;
+    lib.lists.imap0
+    (
+      index: host:
+      lib.nameValuePair
+      (
+        ( builtins.elemAt users index )
+        + "@" + host
+      )
 
-      modules =
-      [
-        ./baseHome/core
-        ./baseHome/features
-        ./baseHome/os
-        ./baseHome/software
-        ./packages/homePackages.nix
-        ./${hostName}/home
-        ./${hostName}/homeware
-      ];
 
-      extraSpecialArgs = helpers //
+      (inputs.home-manager.lib.homeManagerConfiguration
       {
-        hostVars = import ./${hostName}/${hostName}Vars.nix;
-      };
-    }
+        inherit pkgs;
+        modules =
+        [
+          ./baseHome/core
+          ./baseHome/features
+          ./baseHome/os
+          ./baseHome/software
+          ./packages/homePackages.nix
+          ./${host}/home
+          ./${host}/homeware
+        ];
+        extraSpecialArgs = helpers //
+        {
+          hostVars = import ./${host}/${host}Vars.nix;
+        };
+      })
+
+
+    )
+    hosts
   );
 
 }
