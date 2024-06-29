@@ -64,32 +64,14 @@
         ];
 
 
-        homeConfigurations."username@mypc" = home-manager.lib.homeManagerConfiguration
-        {
-            inherit pkgs;
-            modules = base.home.modules ++
-            [
-                ./desktop/home
-                ./desktop/homeware
-            ];
-            extraSpecialArgs = specialArgs //
-            {
-                hostVars = import ./desktop/desktopVars.nix;
-            };
-        };
-
-        homeConfigurations."emanresu@framework" = home-manager.lib.homeManagerConfiguration
-        {
-            inherit pkgs;
-            modules = base.home.modules ++
-            [
-                ./framework/home
-                ./framework/homeware
-            ];
-            extraSpecialArgs = specialArgs //
-            {
-                hostVars = import ./framework/frameworkVars.nix;
-            };
-        };
+        homeConfigurations = mkHosts.generateHome
+        [
+            "username"
+            "emanresu"
+        ]
+        [
+            "desktop"
+            "framework"
+        ];
     };
 }
