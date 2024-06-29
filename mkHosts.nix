@@ -6,7 +6,7 @@ let
     inherit inputs pkgs-unstable vars;
   };
 
-  
+
 
 in
 {
@@ -24,12 +24,17 @@ in
         ./baseNix/features
         ./baseNix/os
         ./baseNix/software
+
+        ./overlays
         ./packages/nixPackages.nix
+
+        {
+          nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
+        }
+        inputs.disko.nixosModules.disko
+
         ./${hostName}/nix
         ./${hostName}/nixware
-        {
-          nixpkgs.pkgs = pkgs;
-        }
       ];
 
       specialArgs = helpers //
@@ -45,11 +50,11 @@ in
   (
     lib.lists.imap0
     (
-      index: host:
+      index: hostName:
       lib.nameValuePair
       (
-        ( builtins.elemAt users index )
-        + "@" + host
+        ( builtins.elemAt users index ) # Current user
+        + "@" + hostName
       )
 
 
@@ -62,17 +67,18 @@ in
           ./baseHome/features
           ./baseHome/os
           ./baseHome/software
+
+          ./overlays
           ./packages/homePackages.nix
-          ./${host}/home
-          ./${host}/homeware
+
+          ./${hostName}/home
+          ./${hostName}/homeware
         ];
         extraSpecialArgs = helpers //
         {
-          hostVars = import ./${host}/${host}Vars.nix;
+          hostVars = import ./${hostName}/${hostName}Vars.nix;
         };
       })
-
-
     )
     hosts
   );
