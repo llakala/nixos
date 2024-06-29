@@ -27,8 +27,8 @@
 - [ ] Create new, working iso with disko
 - [ ] Add swap partition to disko
 
-- [ ] Move all non-base software to an area independent of host for modularity
-    - [ ] If this is implemented, make sure not to crowd flake.nix with imports
+- [x] Move all non-base software to an area independent of host for modularity
+    - [x] If this is implemented, make sure not to crowd flake.nix with imports
 
 - [ ] Declare system per-host instead of globally
 - [ ] See if hostVars can be enforced to have all the same variables
