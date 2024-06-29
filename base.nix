@@ -16,7 +16,6 @@
     ./overlays
 
     {nixpkgs.pkgs = pkgs; } # Makes sure the pkgs declared in flake.nix is properly passed
-    disko.nixosModules.disko
   ];
 
   home.modules =

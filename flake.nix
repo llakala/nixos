@@ -57,7 +57,8 @@
     in
     {
 
-        nixosConfigurations = mkHosts.generateNix "x86_64-linux"
+        nixosConfigurations = mkHosts.generateNix
+        "x86_64-linux"
         [
             "desktop"
             "framework"
