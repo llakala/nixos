@@ -49,9 +49,6 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        specialArgs = { inherit inputs pkgs-unstable vars; };
-
-        base = import ./base.nix { inherit nixpkgs disko pkgs; };
 
         mkHosts = import ./mkHosts.nix { inherit lib pkgs inputs pkgs-unstable vars; };
     in
