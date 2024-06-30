@@ -112,6 +112,11 @@ in
     {
       isDefault = true;
       extensions = ryceeAddons ++ customAddons;
+      search =
+      {
+        force = true;
+        default = "DuckDuckGo";
+      };
     };
 
   };
