@@ -33,13 +33,13 @@ in
         }
         inputs.disko.nixosModules.disko
 
-        ./${hostName}/nix
-        ./${hostName}/nixware
+        ./hosts/${hostName}/nix
+        ./hosts/${hostName}/nixware
       ];
 
       specialArgs = helpers //
       {
-        hostVars = import ./${hostName}/${hostName}Vars.nix;
+        hostVars = import ./hosts/${hostName}/${hostName}Vars.nix;
       };
     }
   );
@@ -71,12 +71,12 @@ in
           ./overlays
           ./packages/homePackages.nix
 
-          ./${hostName}/home
-          ./${hostName}/homeware
+          ./hosts/${hostName}/home
+          ./hosts/${hostName}/homeware
         ];
         extraSpecialArgs = helpers //
         {
-          hostVars = import ./${hostName}/${hostName}Vars.nix;
+          hostVars = import ./hosts/${hostName}/${hostName}Vars.nix;
         };
       })
     )
