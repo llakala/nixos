@@ -35,8 +35,6 @@
 
         home-manager,
 
-        disko,
-
         ...
     }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
@@ -48,7 +46,6 @@
         pkgsArgs = { inherit system; config.allowUnfree = true; };
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
-
 
         mkHosts = import ./mkHosts.nix { inherit lib pkgs inputs pkgs-unstable vars; };
     in
