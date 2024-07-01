@@ -21,7 +21,6 @@ in
       modules =
       [
         ./base/nix/core
-        ./base/nix/features
         ./base/nix/os
         ./base/nix/software
 
@@ -64,7 +63,6 @@ in
         modules =
         [
           ./base/home/core
-          ./base/home/features
           ./base/home/os
           ./base/home/software
 
