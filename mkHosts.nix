@@ -20,10 +20,10 @@ in
 
       modules =
       [
-        ./baseNix/core
-        ./baseNix/features
-        ./baseNix/os
-        ./baseNix/software
+        ./base/nix/core
+        ./base/nix/features
+        ./base/nix/os
+        ./base/nix/software
 
         ./overlays
         ./packages/nixPackages.nix
@@ -63,10 +63,10 @@ in
         inherit pkgs;
         modules =
         [
-          ./baseHome/core
-          ./baseHome/features
-          ./baseHome/os
-          ./baseHome/software
+          ./base/home/core
+          ./base/home/features
+          ./base/home/os
+          ./base/home/software
 
           ./overlays
           ./packages/homePackages.nix
