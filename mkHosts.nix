@@ -34,8 +34,7 @@ in
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
         }
         inputs.disko.nixosModules.disko
-        ./hosts/${hostName}/nix
-        ./hosts/${hostName}/nix
+
       ];
 
       specialArgs = helpers //
