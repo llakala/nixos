@@ -14,13 +14,14 @@
     gparted
     filezilla
     modrinth-app
+    moonlight-qt
 
   ])
   ++
 
   (with pkgs-unstable;
   [
-    
+
   ]);
 
 
