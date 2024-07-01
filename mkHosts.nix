@@ -24,16 +24,17 @@ in
         ./base/nix/os
         ./base/nix/software
 
-        ./overlays
-        ./packages/nixPackages.nix
+        ./hosts/${hostName}/nix
+        ./hosts/${hostName}/nixware
+
+        ./resources/overlays
+        ./resources/packages/nixPackages.nix
 
         {
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
         }
-        inputs.disko.nixosModules.disko
-
-        ./hosts/${hostName}/nix
-        ./hosts/${hostName}/nixware
+        inputs.disko.nixosModu./hosts/${hostName}/nix
+        ./hosts/${hostName}/nixwareles.disko
       ];
 
       specialArgs = helpers //
@@ -66,11 +67,11 @@ in
           ./base/home/os
           ./base/home/software
 
-          ./overlays
-          ./packages/homePackages.nix
-
           ./hosts/${hostName}/home
           ./hosts/${hostName}/homeware
+
+          ./resources/overlays
+          ./resources/packages/homePackages.nix
         ];
         extraSpecialArgs = helpers //
         {
