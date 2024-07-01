@@ -1,7 +1,9 @@
+{ inputs, ...}:
+
 {
 
 
-  disko.devices.disk.main =
+  inputs.disko.devices.disk.main =
   {
     device = "/dev/disk/by-id/nixos";
     type = "disk";
