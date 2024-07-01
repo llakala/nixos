@@ -13,9 +13,8 @@
     discord
     gparted
     filezilla
-    modrinth-app
     moonlight-qt
-
+    zathura
   ])
   ++
 
