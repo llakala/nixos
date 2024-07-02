@@ -13,16 +13,21 @@
     {
       case "$1" in
         -n)
-          nh os switch -u
+          sudo nixos-rebuild switch --fast --show-trace
           ;;
         -h)
-          nh home switch -u
+          home-manager switch --flake ${vars.configDirectory} --show-trace
           ;;
         -f)
           sudo nix flake update
           ;;
+        -a)
+          rbld -f
+          rbld -n
+          rbld -h
+          ;;
         *)
-          echo "Usage: rbld (-n|-h|-f)"
+          echo "Usage: rbld (-n|-h|-a|-f)"
           ;;
       esac
     }
