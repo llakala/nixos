@@ -19,7 +19,7 @@
           home-manager switch --flake ${vars.configDirectory} --show-trace
           ;;
         -f)
-          sudo nix flake update
+          sudo nix flake update ${vars.configDirectory}
           ;;
         -a)
           rbld -f
