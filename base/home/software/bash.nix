@@ -21,13 +21,17 @@
         -f)
           sudo nix flake update ${vars.configDirectory}
           ;;
+        -b)
+          rbld -n
+          rbld -h
+          ;;
         -a)
           rbld -f
           rbld -n
           rbld -h
           ;;
         *)
-          echo "Usage: rbld (-n|-h|-f|-a)"
+          echo "Usage: rbld (-n|-h|-f|-b|-a)"
           ;;
       esac
     }
