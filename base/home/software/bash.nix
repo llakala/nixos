@@ -13,7 +13,7 @@
     {
       case "$1" in
         -n)
-          sudo nixos-rebuild switch --fast --show-trace
+          sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace --fast
           ;;
         -h)
           home-manager switch --flake ${vars.configDirectory} --show-trace
