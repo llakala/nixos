@@ -27,7 +27,7 @@
           rbld -h
           ;;
         *)
-          echo "Usage: rbld (-n|-h|-a|-f)"
+          echo "Usage: rbld (-n|-h|-f|-a)"
           ;;
       esac
     }
