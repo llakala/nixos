@@ -1,14 +1,14 @@
 # FEATURES:
 
-- [ ] Create new aliases for rebuilding
- with option for fast install
-
 - [ ] Set up SSH
 - [ ] Try out KDE
 
 - [ ] Add secrets management (either with sops or agenix)
 - [ ] Add disko configuration and reinstall everyone with it applied
 - [ ] Try out impermanence
+
+- [x] Create new aliases for rebuilding
+ with option for fast install
 
 
 # SOFTWARE:
@@ -25,7 +25,8 @@
 
 
 # IMPROVEMENTS:
-- [ ] Update readme to reflect not using base anymore
+- [ ] Use movie-web from rycee's
+
 - [ ] Ask discord if there's a way to pass the set from flake.nix to mkHosts.nix so that the functions are more lightweight
 
 - [ ] Reinstall desktop name with name and host as "emanresu@desktop"
@@ -42,3 +43,5 @@
 
 - [x] Move all non-base software to an area independent of host for modularity
     - [x] If this is implemented, make sure not to crowd flake.nix with imports
+
+- [x] Update readme to reflect not using base anymore
