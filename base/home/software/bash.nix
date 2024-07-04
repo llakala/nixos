@@ -13,13 +13,13 @@
     {
       case "$1" in
         -n)
-          sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace --fast
+          sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace --fast |& nom
           ;;
         -h)
-          home-manager switch --flake ${vars.configDirectory} --show-trace
+          home-manager switch --flake ${vars.configDirectory} --show-trace |& nom
           ;;
         -f)
-          sudo nix flake update ${vars.configDirectory}
+          sudo nix flake update ${vars.configDirectory} |& nom
           ;;
         -b)
           rbld -n
