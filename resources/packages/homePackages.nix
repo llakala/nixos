@@ -14,8 +14,8 @@
     gparted
     filezilla
     moonlight-qt
-    zathura
-    viewnior
+    zathura # pdf viewer
+    viewnior # image viewer
   ])
   ++
 
