@@ -15,6 +15,7 @@
     filezilla
     moonlight-qt
     zathura
+    viewnior
   ])
   ++
 
