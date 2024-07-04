@@ -46,6 +46,7 @@ All of the hostnames to be created are passed to the proper host creation functi
 - /homeware
 - /nix
 - /nixware
+
 Homeware and nixware contain configuration for software only used by one host.
 
 The ${hostName} directory also contains host-specific variables, with the name ${hostName}Vars.nix. An example of this filepath is below for the desktop host.
