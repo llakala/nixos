@@ -35,7 +35,22 @@ The base configuration is split between nixos and home-manager. These each have 
 - Software manages configurations for specific apps, like VSCode, Firefox, etc.
 
 ## Automatic host creation
-All of the hostnames to be created are passed to the proper host creation functions from the flake. A given host is then created by combining the modules in /base, /resources, and /hosts/${hostName}. /hosts/${hostName} contains the subdirectories /home, /homeware, /nix, and /nixware. homeware and nixware contain configuration for apps only used by one host. Host-specific variables are taken from /host/${hostName}/${hostName}Vars.nix (ex: /host/desktop/desktopVars.nix). 
+All of the hostnames to be created are passed to the proper host creation functions from the flake. A given host is then created by combining the modules in
+
+- /base
+- /resources
+- /hosts/${hostName}
+
+/hosts/${hostName} contains the subdirectories
+- /home
+- /homeware
+- /nix
+- /nixware
+Homeware and nixware contain configuration for software only used by one host.
+
+The ${hostName} directory also contains host-specific variables, with the name ${hostName}Vars.nix. An example of this filepath is below for the desktop host.
+
+/host/desktop/desktopVars.nix
 
 ## Variables
 There are two types of variables: general variables, and host-specific variables. General variables are host-independent, such as the directory of the nixos configuration. Host-specific variables are set based on the host, like the hostname and email.
