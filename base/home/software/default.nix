@@ -7,5 +7,6 @@
     ./firefox.nix
     ./git.nix
     ./vscode.nix
+    ./zathura.nix
   ];
 }
