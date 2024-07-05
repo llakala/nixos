@@ -1,5 +1,6 @@
 # FEATURES:
 
+- [ ] Add xdg-mime full setup
 - [ ] Set up SSH
 - [ ] Try out KDE
 
