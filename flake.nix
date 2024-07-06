@@ -74,18 +74,5 @@
             "desktop"
             "framework"
         ];
-
-        packages.${system} =
-        {
-            vmware = inputs.nixos-generators.nixosGenerate
-            {
-                inherit system;
-                modules =
-                [
-                    
-                ];
-                format = "vmware";
-            };
-        };
     };
 }
