@@ -75,18 +75,17 @@
             "framework"
         ];
 
-        # packages.x86_64-linux =
-        # {
-        #     vmware = nixos-generators.nixosGenerate
-        #     {
-        #         system = "x86_64-linux";
-        #         modules =
-        #         [
-        #         # you can include your own nixos configuration here, i.e.
-        #         # ./configuration.nix
-        #         ];
-        #         format = "vmware";
-        #     };
-        # };
+        packages.${system} =
+        {
+            vmware = inputs.nixos-generators.nixosGenerate
+            {
+                inherit system;
+                modules =
+                [
+                    
+                ];
+                format = "vmware";
+            };
+        };
     };
 }
