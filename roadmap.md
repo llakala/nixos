@@ -1,5 +1,6 @@
 # FEATURES:
 
+- [ ] Get nixos-generators working with iso by copying our friend
 - [ ] Add xdg-mime full setup
 - [ ] Set up SSH
 - [ ] Try out KDE
