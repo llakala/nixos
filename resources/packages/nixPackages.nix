@@ -35,6 +35,8 @@
 
     nvd # For recreating nh functions
     nix-output-monitor
+
+    comma # Run something from nixpkgs without installing
   ])
   ++
 
