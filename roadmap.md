@@ -1,6 +1,6 @@
 # FEATURES:
 
-- [ ] Get nixos-generators working with iso by copying our friend
+- [ ] Get nixos-generators working with iso by copying Wizard
 - [ ] Add xdg-mime full setup
 - [ ] Set up SSH
 - [ ] Try out KDE
@@ -9,8 +9,7 @@
 - [ ] Add disko configuration and reinstall everyone with it applied
 - [ ] Try out impermanence
 
-- [x] Create new aliases for rebuilding
- with option for fast install
+- [x] Create new aliases for rebuilding with option for fast install
 
 
 # SOFTWARE:
