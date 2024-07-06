@@ -5,12 +5,12 @@
     {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
         home-manager =
         {
             url = "github:nix-community/home-manager/release-24.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
         disko =
         {
             url = "github:nix-community/disko";
@@ -21,6 +21,12 @@
             url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nixos-generators =
+        {
+            url = "github:nix-community/nixos-generators";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     };
@@ -68,5 +74,19 @@
             "desktop"
             "framework"
         ];
+
+        # packages.x86_64-linux =
+        # {
+        #     vmware = nixos-generators.nixosGenerate
+        #     {
+        #         system = "x86_64-linux";
+        #         modules =
+        #         [
+        #         # you can include your own nixos configuration here, i.e.
+        #         # ./configuration.nix
+        #         ];
+        #         format = "vmware";
+        #     };
+        # };
     };
 }
