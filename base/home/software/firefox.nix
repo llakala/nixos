@@ -10,6 +10,16 @@ let
       DisablePocket = true;
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "never"; # Disable the weird file menu that comes up when pressing alt
+      Handlers = 
+      {
+        "schemes" = 
+        {
+          "vscode" = 
+          {
+            "action" = "useSystemDefault";
+          };
+        };
+      };
     };
 
     extraPolicies.ExtensionSettings =
