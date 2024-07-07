@@ -58,7 +58,7 @@
     };
 
 
-    "/net/nokyan/Resources" = 
+    "net/nokyan/Resources" = 
     {
       network-bits = true;
       graph-data-points = 100;
