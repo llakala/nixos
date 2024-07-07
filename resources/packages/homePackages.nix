@@ -10,7 +10,7 @@
 
   (with pkgs;
   [
-    discord
+    webcord
     gparted
     filezilla
     moonlight-qt
