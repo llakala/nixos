@@ -1,15 +1,16 @@
 # FEATURES:
 
-- [ ] Get nixos-generators working with iso by copying Wizard
+- [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
+
 - [ ] Set up SSH
 - [ ] Try out KDE
 
 - [ ] Add secrets management (either with sops or agenix)
-- [ ] Add disko configuration and reinstall everyone with it applied
 - [ ] Try out impermanence
 
 - [x] Create new aliases for rebuilding with option for fast install
+- [x] Add disko configuration and reinstall everyone with it applied
 
 
 # SOFTWARE:
@@ -26,18 +27,20 @@
 
 
 # IMPROVEMENTS:
+
+- [ ] Create shell script that initializes home-manager and makes user own /etc/nixos
 - [ ] Use movie-web from rycee's
 
 - [ ] Ask discord if there's a way to pass the set from flake.nix to mkHosts.nix so that the functions are more lightweight
 
 - [ ] Reinstall desktop name with name and host as "emanresu@desktop"
 
-- [ ] Create new, working iso with disko
 - [ ] Add swap partition to disko
 
 - [ ] See if hostVars can be enforced to have all the same variables
     - This could be done with mkIf and passing hostname from the flake.nix
 
+- [x] Create new, working iso with disko
 - [x] Improve the way inputs are passed from flake to be more clear and less hacky (ASAP)
 - [x] Learn how to custom-build firefox extensions to add movie-web remastered
     - OR: Make issue with rycee to add the extension
