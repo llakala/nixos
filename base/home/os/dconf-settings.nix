@@ -56,5 +56,21 @@
     {
       show-hidden = true;
     };
+
+
+    "/net/nokyan/Resources" = 
+    {
+      network-bits = true;
+      graph-data-points = 100;
+      sidebar-details = true;
+
+      apps-show-gpu-memory = false;
+
+      processes-show-user = false;
+      processes-show-id = false;
+
+
+    };
+
   };
 }
