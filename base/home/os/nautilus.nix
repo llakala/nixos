@@ -19,4 +19,10 @@
       show-hidden = true;
     };
   };
+
+  gtk.gtk3.bookmarks =
+  [
+    "file:/// /"
+    "file:///etc/nixos nixos"
+  ];
 }
