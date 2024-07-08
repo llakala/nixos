@@ -22,7 +22,12 @@
     bash.enable = true;
     firefox.enable = true;
     git.enable = true;
-    vscode.enable = true;
     zathura.enable = true;
   };
+
+  environment.systemPackages = 
+  with pkgs-unstable;
+  [
+    vscode
+  ];
 }
