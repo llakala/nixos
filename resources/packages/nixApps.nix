@@ -20,6 +20,7 @@
   (with pkgs-unstable;
   [
     vscode
+    zathura
   ]);
 
   programs = 
@@ -27,6 +28,5 @@
     bash.enable = true;
     firefox.enable = true;
     git.enable = true;
-    zathura.enable = true;
   };
 }
