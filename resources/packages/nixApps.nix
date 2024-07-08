@@ -25,7 +25,6 @@
 
   programs = 
   {
-    bash.enable = true;
     firefox.enable = true;
     git.enable = true;
   };
