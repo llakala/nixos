@@ -50,6 +50,8 @@
 
     "org/gnome/shell/extensions/clipboard-indicator" =
     {
+      move-item-first = true; # Move to top of the list when selected
+      
       enable-keybindings = false;
       history-size = 30;
     };
