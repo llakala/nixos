@@ -37,9 +37,8 @@
     nix-output-monitor
 
     comma # Run something from nixpkgs without installing
-    nix-index
-    
-    powertop
+
+    powertop # Test battery
   ])
   ++
 
