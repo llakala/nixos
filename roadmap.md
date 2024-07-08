@@ -15,6 +15,7 @@
 
 # SOFTWARE:
 - [ ] Set up firefox dark mode
+- [ ] Make firefox scroll slower
 - [ ] Kit out vscode with all options
     - [ ] Get vscode-server fully working
 
