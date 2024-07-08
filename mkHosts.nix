@@ -34,7 +34,7 @@ in
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
         }
         inputs.disko.nixosModules.disko
-        
+
         inputs.nix-index-database.nixosModules.nix-index
         { programs.nix-index-database.comma.enable = true; } # Make comma work with nix index db
 
@@ -75,6 +75,10 @@ in
 
           ./resources/overlays
           ./resources/packages/homePackages.nix
+
+          inputs.nix-index-database.hmModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
+          { programs.nix-index-database.comma.enable = true; }
         ];
         extraSpecialArgs = helpers //
         {
