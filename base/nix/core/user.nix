@@ -10,7 +10,7 @@ hostVars,
     description = hostVars.fullName;
 
     initialPassword = " ";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
