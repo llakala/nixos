@@ -10,7 +10,6 @@
   environment.systemPackages =
   with pkgs;
   [
-    git
     coreutils # Tiny utils
 
     libsecret
