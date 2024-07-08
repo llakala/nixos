@@ -30,7 +30,6 @@
 # IMPROVEMENTS:
 
 - [ ] Fix clipboard indicator
-- [ ] Obtain pre-existing nix index database from https://github.com/Mic92/nix-index-database
 
 - [ ] Create shell script that initializes home-manager and makes user own /etc/nixos
 - [ ] Use movie-web from rycee's
@@ -44,6 +43,8 @@
 - [ ] See if hostVars can be enforced to have all the same variables
     - This could be done with mkIf and passing hostname from the flake.nix
 
+- [x] Make vscode.dev consistently redirect to vscode using handlers
+- [x] Obtain pre-existing nix index database from https://github.com/Mic92/nix-index-database
 - [x] Create new, working iso with disko
 - [x] Improve the way inputs are passed from flake to be more clear and less hacky (ASAP)
 - [x] Learn how to custom-build firefox extensions to add movie-web remastered
