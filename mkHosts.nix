@@ -33,9 +33,6 @@ in
         }
         inputs.disko.nixosModules.disko
 
-        inputs.nix-index-database.nixosModules.nix-index
-        { programs.nix-index-database.comma.enable = true; } # Make comma work with nix index db
-
       ];
 
       specialArgs = helpers //
@@ -74,9 +71,6 @@ in
           ./resources/overlays
           ./resources/packages/homePackages.nix
 
-          inputs.nix-index-database.hmModules.nix-index
-          { programs.nix-index-database.comma.enable = true; }
-          { programs.nix-index-database.comma.enable = true; }
         ];
         extraSpecialArgs = helpers //
         {
