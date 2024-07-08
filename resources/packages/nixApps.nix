@@ -15,11 +15,13 @@
     filezilla
     moonlight-qt
     viewnior # image viewer
-  ];)
+  ])
+
+  
   (with pkgs-unstable;
   [
     vscode
-  ];)
+  ])
 
   programs = 
   {
