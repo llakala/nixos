@@ -30,6 +30,7 @@
 # IMPROVEMENTS:
 
 - [ ] Fix clipboard indicator
+- [ ] Obtain pre-existing nix index database from https://github.com/Mic92/nix-index-database
 
 - [ ] Create shell script that initializes home-manager and makes user own /etc/nixos
 - [ ] Use movie-web from rycee's
