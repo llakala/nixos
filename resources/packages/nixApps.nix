@@ -8,14 +8,18 @@
 {
 
   environment.systemPackages =
-  with pkgs;
+  (with pkgs;
   [
     webcord
     gparted
     filezilla
     moonlight-qt
     viewnior # image viewer
-  ];
+  ];)
+  (with pkgs-unstable;
+  [
+    vscode
+  ];)
 
   programs = 
   {
@@ -24,10 +28,4 @@
     git.enable = true;
     zathura.enable = true;
   };
-
-  environment.systemPackages = 
-  with pkgs-unstable;
-  [
-    vscode
-  ];
 }
