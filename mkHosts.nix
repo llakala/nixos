@@ -27,6 +27,7 @@ in
 
         ./resources/overlays
         ./resources/packages/nixPackages.nix
+        ./resources/packages/nixApps.nix
 
         {
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
@@ -69,7 +70,6 @@ in
           ./hosts/${hostName}/homeware
 
           ./resources/overlays
-          ./resources/packages/homePackages.nix
 
         ];
         extraSpecialArgs = helpers //

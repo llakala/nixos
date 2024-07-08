@@ -8,8 +8,9 @@
 {
 
   environment.systemPackages =
-  (with pkgs;
+  with pkgs;
   [
+    git
     coreutils # Tiny utils
 
     libsecret
@@ -37,11 +38,5 @@
     nix-output-monitor
 
     powertop # Test battery
-  ])
-  ++
-
-  (with pkgs-unstable;
-  [
-
-  ]);
+  ]
 }
