@@ -6,8 +6,6 @@ let
     inherit inputs pkgs-unstable vars;
   };
 
-
-
 in
 {
   generateNix = system: hosts:
