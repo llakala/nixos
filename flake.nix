@@ -79,5 +79,11 @@
             "desktop"
             "framework"
         ];
+
+        devShells.${system}.default =
+        (
+            import ./resources/shell.nix { inherit pkgs; }
+        );
+
     };
 }
