@@ -38,5 +38,5 @@
     nix-output-monitor
 
     powertop # Test battery
-  ]
+  ];
 }
