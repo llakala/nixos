@@ -80,6 +80,8 @@ let
 
     "browser.download.useDownloadDir" = false; # Don't ask where to download things
 
+    "browser.tabs.loadInBackground" = true; # Load tabs automaticlaly
+
     "browser.in-content.dark-mode" = true; # Use dark mode
     "ui.systemUsesDarkTheme" = true;
 
