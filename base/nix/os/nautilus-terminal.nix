@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 {
 
@@ -7,5 +7,5 @@
     enable = true;
     terminal = "kgx"; # TODO: Update if stop using gnome
   };
-  
+
 }
