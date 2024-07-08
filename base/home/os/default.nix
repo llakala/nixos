@@ -4,8 +4,8 @@
   imports =
   [
     ./dconf-settings.nix
-    ./nautilus.nix
     ./gnome-extensions.nix
+    ./nautilus.nix
     ./xdg.nix
   ];
 }
