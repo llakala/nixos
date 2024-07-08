@@ -1,5 +1,7 @@
 # FEATURES:
 
+- [ ] Bring disko back
+
 - [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
 
@@ -29,7 +31,8 @@
 
 # IMPROVEMENTS:
 
-- [ ] Fix clipboard indicator
+- [ ] Learn about shell from vimjoyer
+- [ ] Setup nix-ld in shell.nix
 
 - [ ] Create shell script that initializes home-manager and makes user own /etc/nixos
 - [ ] Use movie-web from rycee's
@@ -43,6 +46,7 @@
 - [ ] See if hostVars can be enforced to have all the same variables
     - This could be done with mkIf and passing hostname from the flake.nix
 
+- [x] Fix clipboard indicator
 - [x] Make vscode.dev consistently redirect to vscode using handlers
 - [x] Obtain pre-existing nix index database from https://github.com/Mic92/nix-index-database
 - [x] Create new, working iso with disko
