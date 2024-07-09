@@ -18,9 +18,8 @@ in
 
       modules =
       [
-        ./baseModules/nix/core
-        ./baseModules/nix/os
-
+        ./baseModules/core/nix
+        ./baseModules/os/nix
 
         ./baseSoftware/nix
 
@@ -62,8 +61,8 @@ in
         inherit pkgs;
         modules =
         [
-          ./baseModules/home/core
-          ./baseModules/home/os
+          ./baseModules/core/home
+          ./baseModules/os/home
 
           ./baseSoftware/home
 
