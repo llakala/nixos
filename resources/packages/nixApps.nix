@@ -17,7 +17,7 @@
     viewnior # image viewer
 
     slack
-    jira
+    atlassian-jira
 
     spotify-qt
   ];
