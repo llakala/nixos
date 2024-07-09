@@ -26,8 +26,6 @@ in
         ./hosts/${hostName}/nixware
 
         ./resources/overlays
-        ./resources/packages/nixPackages.nix
-        ./resources/packages/nixApps.nix
 
         {
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
