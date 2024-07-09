@@ -10,34 +10,31 @@
   environment.systemPackages =
   with pkgs;
   [
-    coreutils # Tiny utils
-
-    libsecret
-    libgccjit # gcc
-    linuxKernel.packages.linux_xanmod_stable.system76 # dkms command
-    gnumake # make command
     nodejs
     git
-    efibootmgr # manage efi entries
+    coreutils # Tiny utils
+
+    jdk22
 
     grub2 # grub commands
     grub2_efi
 
-    jdk22
-    hwinfo
+    nvd # For recreating nh functions
+
     ripgrep # For grep stuff
+    gnumake # make command
+    qemu-utils # Virtualization
+
+    libsecret
+    libgccjit # gcc
+    efibootmgr # manage efi entries
+
+    hwinfo
     detox # automatic file deletion
 
     age # Used for secrets
     ssh-to-age
 
-    qemu-utils # Virtualization
-
-    nvd # For recreating nh functions
-    nix-output-monitor
-
     powertop # Test battery
-
-    nodejs_18
   ];
 }
