@@ -19,11 +19,6 @@
   ++
   (with pkgs-unstable;
   [
-    zathura
+
   ]);
-
-  programs =
-  {
-
-  };
 }
