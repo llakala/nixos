@@ -64,6 +64,7 @@ in
           ./base/os/home
           ./base/software/home
 
+          ./${hostName}/core/home
           ./${hostName}/modules/home
           ./${hostName}/software/home
 
