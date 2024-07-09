@@ -50,7 +50,7 @@
     }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
     let
-        vars = import ./variables.nix;
+        vars = import ./base/variables.nix;
         lib = nixpkgs.lib;
         system = "x86_64-linux";
 
