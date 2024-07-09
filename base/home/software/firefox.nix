@@ -128,6 +128,7 @@ in
 {
   programs.firefox =
   {
+    enable = true;
     inherit package policies;
     profiles.default =
     {
