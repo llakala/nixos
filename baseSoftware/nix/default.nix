@@ -8,7 +8,6 @@
     ./nix-ld.nix
     ./virtualization.nix
 
-    ./apps.nix
     ./packages.nix
   ];
 }

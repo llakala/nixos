@@ -8,5 +8,7 @@
     ./git.nix
     ./vscode.nix
     ./zathura.nix
+
+    ./apps.nix
   ];
 }
