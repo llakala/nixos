@@ -15,6 +15,9 @@
     filezilla
     moonlight-qt
     viewnior # image viewer
+
     slack
+
+    spotify-qt
   ];
 }
