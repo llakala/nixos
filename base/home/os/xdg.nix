@@ -24,7 +24,7 @@
         xdg-desktop-portal-gnome
       ];
 
-      config.common.default = "gtk";
+      config.common.default = "gnome";
     };
 
   };
