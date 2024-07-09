@@ -8,6 +8,10 @@
   {
     enable = true;
     enableCompletion = true;
+    shellAliases =
+    {
+      shell = "nix develop ${vars.configDirectory} --impure";
+    };
     bashrcExtra = ''
     rbld()
     {
