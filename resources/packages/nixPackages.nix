@@ -14,7 +14,7 @@
     git
     coreutils # Tiny utils
 
-    jdk22
+    jdk
 
     grub2 # grub commands
     grub2_efi
