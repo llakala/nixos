@@ -1,9 +1,10 @@
-{ lib, inputs, pkgs, pkgs-unstable, vars, ...}:
+{ lib, inputs, pkgs, pkgs-unstable, ...}:
 
 let
   helpers =
   {
-    inherit inputs pkgs-unstable vars;
+    vars = import ./base/baseVars.nix;
+    inherit inputs pkgs-unstable;
   };
 
 in
