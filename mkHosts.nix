@@ -27,6 +27,8 @@ in
         ./${hostName}/os/nix
         ./${hostName}/software/nix
 
+        ./${hostName}/hardware-configuration.nix
+
         ./resources/overlays
 
         {
