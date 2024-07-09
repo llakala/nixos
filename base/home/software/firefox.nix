@@ -32,13 +32,19 @@ let
     };
   };
 
-  policies.Handlers =
+  policies.Handlers = # Sadly doesn't seem to be working, wait for home-manager to implement
   {
     "schemes" =
     {
       "vscode" =
       {
-        "action" = "useSystemDefault";
+        "action" = "useHelperApp";
+        "ask" = false;
+      };
+      "slack" =
+      {
+        "action" = "useHelperApp";
+        "ask" = false;
       };
     };
   };
