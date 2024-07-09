@@ -50,7 +50,6 @@
     }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
     let
-        vars = import ./variables.nix;
         lib = nixpkgs.lib;
         system = "x86_64-linux";
 
@@ -58,7 +57,8 @@
         pkgs = import nixpkgs pkgsArgs;
         pkgs-unstable = import nixpkgs-unstable pkgsArgs;
 
-        mkHosts = import ./mkHosts.nix { inherit lib pkgs inputs pkgs-unstable vars; };
+        vars = import ./resources/variables.nix;
+        mkHosts = import ./resources/mkHosts.nix { inherit lib pkgs inputs pkgs-unstable vars; };
     in
     {
 
