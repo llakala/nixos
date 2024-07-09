@@ -20,7 +20,9 @@ in
       [
         ./base/nix/core
         ./base/nix/os
-        ./base/nix/software
+
+
+        ./baseSoftware/nix
 
         ./hosts/${hostName}/nix
         ./hosts/${hostName}/nixware
