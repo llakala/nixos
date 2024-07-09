@@ -37,5 +37,7 @@
     nix-output-monitor
 
     powertop # Test battery
+
+    nodejs_18
   ];
 }
