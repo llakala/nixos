@@ -1,7 +1,5 @@
 # FEATURES:
 
-- [ ] Bring disko back
-
 - [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
 
@@ -11,13 +9,20 @@
 - [ ] Add secrets management (either with sops or agenix)
 - [ ] Try out impermanence
 
+- [ ] Bring disko back (NOT YET)
+
+- [x] GET LANDO WORKING!!!
 - [x] Create new aliases for rebuilding with option for fast install
 - [x] Add disko configuration and reinstall everyone with it applied
 
 
 # SOFTWARE:
+
+- [ ] Fix firefox reopening tabs
+- [ ] Make duckduckgo work again
 - [ ] Set up firefox dark mode
 - [ ] Make firefox scroll slower
+
 - [ ] Kit out vscode with all options
     - [ ] Get vscode-server fully working
 
@@ -31,11 +36,15 @@
 
 # IMPROVEMENTS:
 
-- [ ] Learn about shell from vimjoyer
-- [ ] Setup nix-ld in shell.nix
+- [ ] Make lando actually go to path rather than with a stupid alias
 
-- [ ] Create shell script that initializes home-manager and makes user own /etc/nixos
-- [ ] Use movie-web from rycee's
+
+- [ ] Watch vimjoyer on shell scripts
+    - [ ] Then make shell script for lando
+    - [ ] Then, make shell script for install with home-manager and chown
+
+- [ ] Watch vimjoyer on shell
+    - [ ] Write something basic there for practice
 
 - [ ] Ask discord if there's a way to pass the set from flake.nix to mkHosts.nix so that the functions are more lightweight
 
