@@ -80,7 +80,7 @@
             "framework"
         ];
 
-        devShells.${system}.default = import ./shell.nix { inherit pkgs lib; };
+        devShells.${system}.default = import ./resources/shell.nix { inherit pkgs lib; };
 
     };
 }
