@@ -25,6 +25,6 @@
 
   programs =
   {
-    firefox.enable = true;
+    
   };
 }
