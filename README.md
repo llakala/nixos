@@ -10,8 +10,9 @@ project
 │   mkHosts.nix
 |   vars.nix
 └───base
-│   └───home
-│   └───nix
+│   └───core
+│   └───os
+│   └───software
 └───hosts
 │   └───framework
 │   └───desktop
