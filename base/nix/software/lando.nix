@@ -8,4 +8,10 @@
     lando = "perl ${hostVars.homeDirectory}/cli/bin/lando"; # Use lando command
   };
 
+  networking.extraHosts =
+  ''
+    127.0.0.1 dataport.lndo.site
+    ::1 dataport.lndo.site
+  ''; # Modifies /etc/hosts
+
 }
