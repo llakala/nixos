@@ -34,6 +34,7 @@
 
 # IMPROVEMENTS:
 
+- [ ] Fix broken link to roadmap in readme
 - [ ] Make lando actually go to path rather than with a stupid alias
 
 - [ ] Watch vimjoyer on shell scripts
