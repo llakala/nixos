@@ -7,7 +7,7 @@
 
 {
 
-  environment.systemPackages =
+  home.packages =
   with pkgs;
   [
     webcord # Discord client
