@@ -16,7 +16,7 @@
           sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace --fast |& nom
           ;;
         -h)
-          home-manager switch --flake ${vars.configDirectory} --show-trace -b backup |& nom
+          home-manager switch -b backup --flake ${vars.configDirectory} --show-trace |& nom
           ;;
         -f)
           sudo nix flake update ${vars.configDirectory} |& nom
