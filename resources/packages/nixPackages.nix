@@ -13,6 +13,7 @@
     nodejs
     git
     coreutils # Tiny utils
+    bind # Networking utils
 
     jdk
 
