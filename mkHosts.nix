@@ -22,7 +22,8 @@ in
         ./base/os/nix
         ./base/software/nix
 
-        ./${hostName}/modules/nix
+        ./${hostName}/core/nix
+        ./${hostName}/os/nix
         ./${hostName}/software/nix
 
         ./resources/overlays
@@ -65,7 +66,7 @@ in
           ./base/software/home
 
           ./${hostName}/core/home
-          ./${hostName}/modules/home
+          ./${hostName}/os/home
           ./${hostName}/software/home
 
           ./resources/overlays
