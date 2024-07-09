@@ -1,5 +1,7 @@
 # FEATURES:
 
+- [ ] Move to home-manager standalone
+
 - [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
 
@@ -17,9 +19,6 @@
 
 
 # SOFTWARE:
-
-- [ ] Fix firefox reopening tabs
-- [ ] Make duckduckgo work again
 - [ ] Set up firefox dark mode
 - [ ] Make firefox scroll slower
 
@@ -37,7 +36,6 @@
 # IMPROVEMENTS:
 
 - [ ] Make lando actually go to path rather than with a stupid alias
-
 
 - [ ] Watch vimjoyer on shell scripts
     - [ ] Then make shell script for lando
