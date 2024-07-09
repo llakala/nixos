@@ -36,7 +36,7 @@ in
 
       specialArgs = helpers //
       {
-        hostVars = import ./hosts/${hostName}/${hostName}Vars.nix;
+        hostVars = import ./${hostName}/${hostName}Vars.nix;
       };
     }
   );
@@ -72,7 +72,7 @@ in
         ];
         extraSpecialArgs = helpers //
         {
-          hostVars = import ./hosts/${hostName}/${hostName}Vars.nix;
+          hostVars = import ./${hostName}/${hostName}Vars.nix;
         };
       })
     )
