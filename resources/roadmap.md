@@ -1,6 +1,5 @@
 # FEATURES:
-
-- [ ] Move to home-manager standalone
+- [ ] Move to home-manager standalone for more stability
 
 - [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
