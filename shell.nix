@@ -1,15 +1,18 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, lib, }:
 
 pkgs.mkShell
 {
-  nativeBuildInputs = with pkgs; [
-    nodejs
+
+  NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+
+  NIX_LD_LIBRARY_PATH = lib.makeLibraryPath
+  [
+    pkgs.stdenv.cc.cc
+    pkgs.openssl
+    # ...s  
   ];
 
   shellHook = ''
-    echo "weclome"
-    echo "to my shell!" | ${pkgs.lolcat}/bin/lolcat
-  '';
 
-  COLOR = "blue";
+  '';
 }
