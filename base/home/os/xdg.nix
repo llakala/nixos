@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 
 {
@@ -21,8 +21,10 @@
       [
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
       ];
-      gtkUsePortal = true;
+
+      config.common.default = "gtk";
     };
 
   };
