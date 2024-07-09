@@ -19,12 +19,11 @@
   ++
   (with pkgs-unstable;
   [
-    vscode
     zathura
   ]);
 
   programs =
   {
-    
+
   };
 }
