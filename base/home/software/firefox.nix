@@ -43,14 +43,7 @@ let
     };
   };
 
-
-  search =
-  {
-    force = true;
-    default = "DuckDuckGo";
-  };
-
-  settings =
+  policies.Preferences =
   {
     "browser.tabs.tabMinWidth" = 50; # Make tabs able to be smaller to prevent scrolling
 
@@ -87,6 +80,12 @@ let
 
     "extensions.autoDisableScopes" = 0; # Automatically enable extensions
     "extensions.update.enabled" = false; # Don't update extensions since they're sourced from rycee
+  };
+
+  search =
+  {
+    force = true;
+    default = "DuckDuckGo";
   };
 
   ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
@@ -134,7 +133,7 @@ in
     {
       isDefault = true;
       extensions = ryceeAddons ++ customAddons;
-      inherit settings search;
+      inherit search;
     };
 
   };
