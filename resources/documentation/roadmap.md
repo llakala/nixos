@@ -34,7 +34,6 @@
 
 # IMPROVEMENTS:
 
-- [ ] Fix broken link to roadmap in readme
 - [ ] Make lando actually go to path rather than with a stupid alias
 
 - [ ] Watch vimjoyer on shell scripts
@@ -53,7 +52,8 @@
 - [ ] See if hostVars can be enforced to have all the same variables
     - This could be done with mkIf and passing hostname from the flake.nix
 
-- [x] Fix clipboard indicator
+- [x] Fix broken link to roadmap in readme
+- [x] Fix clipboard indicator (it fixed itself on reinstall)
 - [x] Make vscode.dev consistently redirect to vscode using handlers
 - [x] Obtain pre-existing nix index database from https://github.com/Mic92/nix-index-database
 - [x] Create new, working iso with disko

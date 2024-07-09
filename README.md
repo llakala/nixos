@@ -6,53 +6,42 @@ The current high-level structure is organized like this:
 
 ```
 project
-│   flake.nix
-│   mkHosts.nix
-|   vars.nix
 └───base
 │   └───core
 │   └───os
 │   └───software
-└───hosts
-│   └───framework
-│   └───desktop
+|   |   baseVars.nix
+└───host1
+│   └───core
+│   └───os
+│   └───software
+|   |   host1Vars.nix
+└───host2
+│   └───modules
+│   └───software
+|   |   host2Vars.nix
 └───resources
 │   └───overlays
-│   └───packages
+│   └───documentation
+|   |   shell.nix
+│   flake.nix
+│   mkHosts.nix
 ```
 
 # DIVING DEEPER
 
 ## Facilitation
-The flake.nix acts as our entrypoint, which declares our inputs and outputs. It utilizes a function declared in mkHosts, which automatically creates hosts.
+The flake.nix acts as our entrypoint, which declares our inputs and outputs. It utilizes a [function](./mkHosts.nix), which automatically creates hosts.
 
-## Base configuration
-The base configuration is split between nixos and home-manager. These each have their own subfolders, which each manage different parts of the configuration.
+## Home-manager and nixos separation
+This configuration utilizes home-manager, an extraordinarily useful tool for controlling parts of a user's home directory that don't already have options provided via base nixos. However, home-manager is an external project, and thus uses different options than the base NixOS. This means that a configuration requires separated directories to not cause issues.
 
-- Core manages basic functions you'd always want on a computer, like networking, the bootloader, etc.
+The most frustrating part of this for me is that I never remember if something is a home file, or a nix one. To solve this, I have this separation at the lowest level. This means that if something isn't in the home directory, it'll be in the nix one right alongside it. I recommend adopting the same structure for your configuration.
 
-- OS manages operating-system specific features. Currently the configuration uses GNOME, so these manage dconf settings and gnome-extensions. However, moving to KDE Plasma is on the [roadmap](roadmap.md).
+## Structure
+To simplify everything, I use a basic structure for both my base configuration and my hosts. This means that to be properly imported into the flake, a host should follow this structure. The base configuration can be thought of as its own host whose configuration is included in any other host.
 
-- Software manages configurations for specific apps, like VSCode, Firefox, etc.
-
-## Automatic host creation
-All of the hostnames to be created are passed to the proper host creation functions from the flake. A given host is then created by combining the modules in
-
-- /base
-- /resources
-- /hosts/${hostName}
-
-/hosts/${hostName} contains the subdirectories
-- /home
-- /homeware
-- /nix
-- /nixware
-
-Homeware and nixware contain configuration for software only used by one host.
-
-The ${hostName} directory also contains host-specific variables, with the name ${hostName}Vars.nix. An example of this filepath is below for the desktop host.
-
-/host/desktop/desktopVars.nix
+The basic structure for a host is listed [here](./resources/documentation/structure.md).
 
 ## Variables
 There are two types of variables: general variables, and host-specific variables. General variables are host-independent, such as the directory of the nixos configuration. Host-specific variables are set based on the host, like the hostname and email.

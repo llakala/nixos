@@ -27,7 +27,7 @@ in
         ./${hostName}/os/nix
         ./${hostName}/software/nix
 
-        ./${hostName}/hardware-configuration.nix
+        ./${hostName}/hardware-configuration.nix # NIX ONLY
 
         ./resources/overlays
 
