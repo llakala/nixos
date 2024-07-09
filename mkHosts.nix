@@ -22,8 +22,6 @@ in
         ./base/os/nix
         ./base/software/nix
 
-        ./baseSoftware/nix
-
         ./hosts/${hostName}/nix
         ./hosts/${hostName}/nixware
 
@@ -62,9 +60,9 @@ in
         inherit pkgs;
         modules =
         [
-          ./baseModules/core/home
-          ./baseModules/os/home
-          ./baseModules/software/home
+          ./base/core/home
+          ./base/os/home
+          ./base/software/home
 
           ./hosts/${hostName}/home
           ./hosts/${hostName}/homeware
