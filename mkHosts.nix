@@ -62,7 +62,8 @@ in
         [
           ./base/home/core
           ./base/home/os
-          ./base/home/software
+
+          ./baseSoftware/home
 
           ./hosts/${hostName}/home
           ./hosts/${hostName}/homeware
