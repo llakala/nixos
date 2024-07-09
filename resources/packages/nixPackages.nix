@@ -20,7 +20,8 @@
     grub2_efi
 
     nvd # For recreating nh functions
-
+    nom
+    
     ripgrep # For grep stuff
     gnumake # make command
     qemu-utils # Virtualization
