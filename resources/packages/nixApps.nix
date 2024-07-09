@@ -10,7 +10,7 @@
   environment.systemPackages =
   (with pkgs;
   [
-    webcord
+    webcord # Discord client
     gparted
     filezilla
     moonlight-qt
