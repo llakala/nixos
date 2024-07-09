@@ -12,6 +12,7 @@
     firewall.enable = true;
     resolvconf.dnsExtensionMechanism = false;
   };
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
 
   hardware.bluetooth =
   {
