@@ -18,8 +18,9 @@ in
 
       modules =
       [
-        ./baseModules/core/nix
-        ./baseModules/os/nix
+        ./base/core/nix
+        ./base/os/nix
+        ./base/software/nix
 
         ./baseSoftware/nix
 
@@ -63,8 +64,7 @@ in
         [
           ./baseModules/core/home
           ./baseModules/os/home
-
-          ./baseSoftware/home
+          ./baseModules/software/home
 
           ./hosts/${hostName}/home
           ./hosts/${hostName}/homeware
