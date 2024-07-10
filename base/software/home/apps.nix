@@ -19,6 +19,6 @@
     slack
     atlassian-jira
 
-    spotify-qt
+    spotify
   ];
 }
