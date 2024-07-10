@@ -111,19 +111,14 @@ let
     clearurls
     link-cleaner
 
+    redirector # For nixos wiki
+    movie-web # Thanks rycee
+
   ];
 
   customAddons =
   [
-    ( inputs.firefox-addons.lib.${pkgs.system}.buildFirefoxXpiAddon
-    {
-      pname = "movie-web";
-      version = "1.1.4";
-      addonId = "{b0a674f9-f848-9cfd-0feb-583d211308b0}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4286163/cfu_flix_movie_web_extension-1.1.4.xpi";
-      sha256 = "sha256-vNlak2hDB7rgPwIGnKUZ0RXyeYEN4gEcYoU9X9XF+1I";
-      meta = {};
-    })
+
   ];
 
 
