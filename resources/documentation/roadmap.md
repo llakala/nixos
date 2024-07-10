@@ -1,4 +1,5 @@
 # FEATURES:
+- [ ] Move all of this to github issues
 - [ ] Move to home-manager standalone for more stability
 
 - [ ] Package firefox without wayland
