@@ -78,8 +78,8 @@ let
     "services.sync.declinedEngines" = "prefs,bookmarks,addons"; # Decline everything more
 
     "browser.download.useDownloadDir" = false; # Don't ask where to download things
-
     "browser.tabs.loadInBackground" = true; # Load tabs automaticlaly
+    "mousewheel.system_scroll_override" = true; # SCROLL NORMALLY FFS
 
     "browser.in-content.dark-mode" = true; # Use dark mode
     "ui.systemUsesDarkTheme" = true;
