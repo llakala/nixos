@@ -1,11 +1,11 @@
 # FEATURES:
 - [ ] Move all of this to github issues
-- [ ] Move to home-manager standalone for more stability
 
 - [ ] Package firefox without wayland
 - [ ] Add xdg-mime full setup
-
 - [ ] Set up SSH
+
+- [ ] Move to home-manager standalone for more stability
 - [ ] Try out KDE
 
 - [ ] Add secrets management (either with sops or agenix)
