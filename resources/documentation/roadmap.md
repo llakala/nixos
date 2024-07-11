@@ -36,7 +36,8 @@
 
 # IMPROVEMENTS:
 
-- [ ] Make lando actually go to path rather than with a stupid alias
+
+- [ ] Automatically apply redirector sqlite file
 
 - [ ] Watch vimjoyer on shell scripts
     - [ ] Then make shell script for lando
