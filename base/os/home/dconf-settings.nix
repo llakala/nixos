@@ -72,6 +72,13 @@
       processes-show-id = false;
     };
 
+    "org/gnome/terminal/legacy/keybindings" =
+    {
+      find = "<Primary>f";
+      copy = "<Primary>c";
+      paste = "<Primary>v";
+    };
+
 
   };
 }
