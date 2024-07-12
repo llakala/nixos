@@ -143,6 +143,8 @@ let
     redirector # For nixos wiki
     movie-web # Thanks rycee
 
+    darkreader
+
   ];
 
   customAddons =
