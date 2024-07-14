@@ -7,8 +7,6 @@
 
 {
 
-  boot.loader.systemd-boot.enable = true;
-
   boot =
   {
     blacklistedKernelModules = [ ];
@@ -16,16 +14,18 @@
     initrd.kernelModules = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
-  boot.loader.efi =
-  {
-    canTouchEfiVariables = true;
-  };
 
-  boot.loader.grub =
+  boot.loader =
   {
-    enable = false;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+
+    grub =
+    {
+      enable = false;
+      device = "nodev";
+      efiSupport = true;
+      useOSProber = true;
+    };
   };
 }
