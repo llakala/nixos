@@ -4,9 +4,6 @@
     programs.zathura =
     {
       enable = true;
-      options =
-      {
-        useMupdf = true;
-      };
+      options.useMupdf = true;
     };
 }

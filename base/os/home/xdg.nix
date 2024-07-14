@@ -5,32 +5,30 @@
   xdg =
   {
     enable = true;
-    userDirs.enable = true;
     mime.enable = true;
 
-    mimeApps =
-    {
-      enable = true;
-    };
+    mimeApps.enable = true;
+  };
 
+  xdg.portal =
+  {
+    enable = true;
+    extraPortals = with pkgs;
+    [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
 
-    portal =
-    {
-      enable = true;
-      extraPortals = with pkgs;
-      [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
-      ];
+    config.common.default = "gnome";
+  };
 
-      config.common.default = "gnome";
-    };
-
-    # Remove stupid things from side of nautilus
-    userDirs.music = hostVars.homeDirectory;
-    userDirs.pictures = hostVars.homeDirectory;
-    userDirs.videos = hostVars.homeDirectory;
-    userDirs.documents = hostVars.homeDirectory;
+  xdg.userDirs =
+  {
+    enable = true;
+    music = hostVars.homeDirectory;
+    pictures = hostVars.homeDirectory;
+    videos = hostVars.homeDirectory;
+    documents = hostVars.homeDirectory;
   };
 }

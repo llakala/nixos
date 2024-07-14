@@ -12,6 +12,7 @@
       enable = true;
       user = hostVars.username;
     };
+
     services.xserver =
     {
       enable = true;
@@ -41,20 +42,22 @@
 
 
 
-    programs.dconf.enable = true;
 
     # Add some actually useful packages back
     environment.systemPackages = with pkgs;
     [
       gnome-extension-manager
-    ] ++ (with pkgs.gnome;
+    ]
+    ++
+    (with pkgs.gnome;
     [
       gnome-tweaks
       nautilus
       gnome-terminal
       gnome-disk-utility
       resources
-    ]);
+    ]
+    );
 
     # Workaround for GNOME autologin
     systemd.services."getty@tty1".enable = false;
