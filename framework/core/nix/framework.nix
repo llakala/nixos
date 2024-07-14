@@ -26,7 +26,7 @@
           bash-completion
         ]);
       }
-    );
+      );
   };
 
   services.fwupd = # Bios updates

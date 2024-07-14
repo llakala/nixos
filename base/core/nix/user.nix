@@ -1,7 +1,4 @@
-{
-hostVars,
-...
-}:
+{ hostVars, ... }:
 
 {
   users.users.${hostVars.username} =

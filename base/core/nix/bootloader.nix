@@ -19,13 +19,13 @@
   {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+  };
 
-    grub =
-    {
-      enable = false;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-    };
+  boot.loader.grub =
+  {
+    enable = false;
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true;
   };
 }
