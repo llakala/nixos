@@ -1,0 +1,5 @@
+{ }:
+
+{
+  programs.hyprland.enable = true;
+}

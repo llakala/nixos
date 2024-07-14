@@ -20,11 +20,11 @@ in
       modules =
       [
         ./base/core/nix
-        ./base/gnome/nix
+        ./base/hypr/nix
         ./base/software/nix
 
         ./${hostName}/core/nix
-        ./${hostName}/gnome/nix
+        ./${hostName}/hypr/nix
         ./${hostName}/software/nix
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
@@ -65,11 +65,11 @@ in
         modules =
         [
           ./base/core/home
-          ./base/gnome/home
+          ./base/hypr/home
           ./base/software/home
 
           ./${hostName}/core/home
-          ./${hostName}/gnome/home
+          ./${hostName}/hypr/home
           ./${hostName}/software/home
 
           ./resources/overlays
