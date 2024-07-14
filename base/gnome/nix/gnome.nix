@@ -7,11 +7,6 @@
 }:
 
 {
-    services.displayManager.autoLogin =
-    {
-      enable = true;
-      user = hostVars.username;
-    };
 
     services.xserver =
     {
@@ -56,8 +51,4 @@
       resources
     ]
     );
-
-    # Workaround for GNOME autologin
-    systemd.services."getty@tty1".enable = false;
-    systemd.services."autovt@tty1".enable = false;
 }
