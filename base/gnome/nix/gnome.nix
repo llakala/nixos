@@ -20,8 +20,6 @@
 
       # Enable Gnome
       desktopManager.gnome.enable = true;
-
-      displayManager.gdm.enable = true;
       xkb =
       {
         layout = "us";
