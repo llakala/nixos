@@ -5,8 +5,8 @@
   xdg =
   {
     enable = true;
+    userDirs.enable = true;
     mime.enable = true;
-
 
     mimeApps =
     {
@@ -27,5 +27,10 @@
       config.common.default = "gnome";
     };
 
+    # Remove stupid things from side of nautilus
+    userDirs.music = hostVars.homeDirectory;
+    userDirs.pictures = hostVars.homeDirectory;
+    userDirs.videos = hostVars.homeDirectory;
+    userDirs.documents = hostVars.homeDirectory;
   };
 }

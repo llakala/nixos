@@ -14,9 +14,13 @@
     };
   };
 
-  gtk.gtk3.bookmarks =
-  [
-    "file:/// /"
-    "file:///etc/nixos nixos"
-  ];
+  gtk =
+  {
+    enable = true;
+    gtk3.bookmarks =
+    [
+      "file:///"
+      "file:///etc/nixos"
+    ];
+  };
 }
