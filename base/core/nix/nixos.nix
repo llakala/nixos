@@ -3,21 +3,19 @@
   pkgs,
   inputs,
   lib,
+  vars,
   ...
 }:
 
 {
-  nix =
-  {
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    channel.enable = false;
-  };
-
-  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}"; # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
+  nix.settings.nix-path =
+  [
+    "nixpkgs=${pkgs.path}"
+  ];
 
   nix.settings =
   {
-    nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+    max-jobs = lib.mkDefault 4;
     experimental-features = "nix-command flakes";
 
     substituters =
