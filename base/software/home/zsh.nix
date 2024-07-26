@@ -4,25 +4,35 @@
 }:
 
 {
-  programs.bash =
+  programs.zsh =
   {
     enable = true;
-    enableCompletion = true;
+
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    enableCompletion = false;
     shellAliases =
     {
       shell = "nix develop ${vars.configDirectory} --impure";
     };
   };
 
-  programs.bash.bashrcExtra =
+  programs.zsh.initExtra =
   ''
+  bindkey '^I' autosuggest-accept
   rbld()
   {
     run_rbld()
     {
       set -o pipefail && "$@" |& nom || return
     }
-    
+
+    rbld_shell()
+    {
+      "$@" && source ~/.zshrc
+    }
+
     case "$1" in
       -n)
         run_rbld sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace --fast
