@@ -3,7 +3,7 @@
 {
 
   # Follow this for install https://docs.lando.dev/install/source.html
-  programs.bash.shellAliases =
+  programs.zsh.shellAliases =
   {
     lando = "perl ${hostVars.homeDirectory}/cli/bin/lando"; # Use lando command
   };

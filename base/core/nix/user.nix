@@ -1,4 +1,4 @@
-{ hostVars, ... }:
+{ hostVars, pkgs, ... }:
 
 {
   users.users.${hostVars.username} =
@@ -8,7 +8,11 @@
 
     initialPassword = " ";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
 
   security.sudo.wheelNeedsPassword = false;
 }
