@@ -10,8 +10,8 @@
   environment.systemPackages =
   with pkgs;
   [
-    nodejs
     git
+    nodejs
     coreutils # Tiny utils
     bind # Networking utils
 
