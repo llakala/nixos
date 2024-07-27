@@ -13,7 +13,8 @@
 
     extraConfig =
     {
-      pull.rebase = true;
+      pull.rebase = true; # Merging is evil
+      help.autocorrect = 30; # You know what I meant, git, but give me 3 seconds to stop you
     };
   };
 }
