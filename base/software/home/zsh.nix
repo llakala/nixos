@@ -21,6 +21,10 @@
   programs.zsh.initExtra =
   ''
   bindkey '^I' autosuggest-accept
+  setopt HIST_IGNORE_DUPS
+  setopt AUTO_CD
+
+
   rbld()
   {
     run_rbld()
