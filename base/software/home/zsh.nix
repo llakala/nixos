@@ -21,8 +21,20 @@
   programs.zsh.initExtra =
   ''
   bindkey '^I' autosuggest-accept
-  setopt HIST_IGNORE_DUPS
+
   setopt AUTO_CD
+  setopt INTERACTIVE_COMMENTS
+  setopt PIPEFAIL
+
+  export EDITOR=nano
+  export VISUAL="$EDITOR"
+
+  export HISTSIZE=10000
+  export SAVEHIST=10000
+  setopt APPEND_HISTORY
+  setopt HIST_IGNORE_ALL_DUPS
+  setopt SHARE_HISTORY
+  setopt HIST_REDUCE_BLANKS
 
 
   rbld()
