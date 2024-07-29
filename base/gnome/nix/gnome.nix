@@ -48,6 +48,7 @@
       nautilus
       gnome-terminal
       gnome-disk-utility
+      gnome-boxes
       resources
     ]
     );
