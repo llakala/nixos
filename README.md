@@ -8,18 +8,24 @@ The current high-level structure is organized like this:
 project
 └───base
 │   └───core
-│   └───os
+│   └───gnome
 │   └───software
+│   └───terminal
 |   |   baseVars.nix
 └───host1
 │   └───core
-│   └───os
+│   └───gnome
 │   └───software
+│   └───terminal
 |   |   host1Vars.nix
+|   |   hardware-configuration.nix
 └───host2
-│   └───modules
+│   └───core
+│   └───gnome
 │   └───software
+│   └───terminal
 |   |   host2Vars.nix
+|   |   hardware-configuration.nix
 └───resources
 │   └───overlays
 │   └───documentation
