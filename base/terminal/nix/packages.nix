@@ -10,11 +10,10 @@
   environment.systemPackages =
   with pkgs;
   [
-    git
-    nodejs
     coreutils # Tiny utils
     bind # Networking utils
 
+    nodejs
     jdk
 
     grub2 # grub commands

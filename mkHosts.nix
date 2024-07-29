@@ -21,13 +21,13 @@ in
       [
         ./base/core/nix
         ./base/gnome/nix
-        ./base/hypr/nix
         ./base/software/nix
+        ./base/terminal/nix
 
         ./${hostName}/core/nix
         ./${hostName}/gnome/nix
-        ./${hostName}/hypr/nix
         ./${hostName}/software/nix
+        ./${hostName}/terminal/nix
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
 
@@ -68,13 +68,13 @@ in
         [
           ./base/core/home
           ./base/gnome/home
-          ./base/hypr/home
           ./base/software/home
+          ./base/terminal/home
 
           ./${hostName}/core/home
           ./${hostName}/gnome/home
-          ./${hostName}/hypr/home
           ./${hostName}/software/home
+          ./${hostName}/terminal/home
 
           ./resources/overlays
 
