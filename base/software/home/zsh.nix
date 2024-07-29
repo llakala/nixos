@@ -41,7 +41,7 @@
   {
     run_rbld()
     {
-      set -o pipefail && "$@" |& nom || return
+      git add -AN && "$@" |& nom || return
     }
 
     rbld_shell()
@@ -57,7 +57,7 @@
         run_rbld home-manager switch -b backup --flake ${vars.configDirectory} --show-trace
         ;;
       -f)
-        run_rbld sudo nix flake update ${vars.configDirectory}
+        sudo nix flake update ${vars.configDirectory}
         ;;
       -b)
         rbld -n && rbld -h
