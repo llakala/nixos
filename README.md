@@ -42,7 +42,7 @@ The flake.nix acts as our entrypoint, which declares our inputs and outputs. It 
 ## Home-manager and nixos separation
 This configuration utilizes home-manager, an extraordinarily useful tool for controlling parts of a user's home directory that don't already have options provided via base nixos. However, home-manager is an external project, and thus uses different options than the base NixOS. This means that a configuration requires separated directories to not cause issues.
 
-The most frustrating part of this for me is that I never remember if something is a home file, or a nix one. To solve this, I have this separation at the lowest level. This means that if something isn't in the home directory, it'll be in the nix one right alongside it. I recommend adopting the same structure for your configuration.
+The most frustrating part of this for me is that I never remember if something is a home file, or a nixos one. To solve this, I have this separation at the lowest level. This means that if something isn't in the home directory, it'll be in the nixos one right alongside it. I recommend adopting the same structure for your configuration.
 
 ## Structure
 To simplify everything, I use a basic structure for both my base configuration and my hosts. This means that to be properly imported into the flake, a host should follow this structure. The base configuration can be thought of as its own host whose configuration is included in any other host.
