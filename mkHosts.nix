@@ -19,15 +19,15 @@ in
 
       modules =
       [
-        ./base/core/nix
-        ./base/gnome/nix
-        ./base/software/nix
-        ./base/terminal/nix
+        ./base/core/nixos
+        ./base/gnome/nixos
+        ./base/software/nixos
+        ./base/terminal/nixos
 
-        ./${hostName}/core/nix
-        ./${hostName}/gnome/nix
-        ./${hostName}/software/nix
-        ./${hostName}/terminal/nix
+        ./${hostName}/core/nixos
+        ./${hostName}/gnome/nixos
+        ./${hostName}/software/nixos
+        ./${hostName}/terminal/nixos
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
 
