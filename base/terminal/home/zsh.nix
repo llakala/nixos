@@ -1,5 +1,6 @@
 {
   vars,
+  hostVars,
   ...
 }:
 
@@ -25,7 +26,7 @@
 
     history =
     {
-      path = ~/.zsh_history;
+      path = "${hostVars.homeDirectory}/.zsh_history";
 
       size = 10000;
       save = 10000;
@@ -37,8 +38,8 @@
 
   programs.zsh.initExtra =
   ''
-    source ${./zshextras/options.zsh}
-    source ${./zshextras/keybinds.zsh}
-    source ${./zshextras/rbld.zsh}
+    source ${./zshextras/options.sh}
+    source ${./zshextras/keybinds.sh}
+    source ${./zshextras/rbld.sh}
   '';
 }
