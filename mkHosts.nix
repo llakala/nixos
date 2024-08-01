@@ -31,8 +31,6 @@ in
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
 
-        ./resources/overlays
-
         {
           nixpkgs.pkgs = pkgs; # Use pkgs declared in flake.nix with custom options
         }
@@ -75,8 +73,6 @@ in
           ./${hostName}/gnome/home
           ./${hostName}/software/home
           ./${hostName}/terminal/home
-
-          ./resources/overlays
 
         ];
         extraSpecialArgs = helpers //

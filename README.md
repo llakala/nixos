@@ -27,7 +27,6 @@ project
 |   |   host2Vars.nix
 |   |   hardware-configuration.nix
 └───resources
-│   └───overlays
 │   └───documentation
 |   |   shell.nix
 │   flake.nix
