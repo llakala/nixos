@@ -1,4 +1,4 @@
-{ ... }:
+{ vars, ... }:
 
 {
   dconf.settings =
@@ -19,8 +19,8 @@
     enable = true;
     gtk3.bookmarks =
     [
-      "file:///"
-      "file:///etc/nixos"
+      "file:///" # Root
+      "file://${vars.configDirectory}" # nixos config directory
     ];
   };
 }
