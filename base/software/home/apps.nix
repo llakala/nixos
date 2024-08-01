@@ -17,6 +17,7 @@
     moonlight-qt
     viewnior # image viewer
 
+    virt-manager
     spotify
   ];
 }
