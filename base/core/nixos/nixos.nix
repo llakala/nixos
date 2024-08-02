@@ -27,10 +27,9 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
 
-    auto-optimise-store = true;
-    connect-timeout = 5;
-    log-lines = 25; # Show more lines if error happens
+    connect-timeout = 5; # Offline caches won't just hang
     warn-dirty = false; # No warnings if git isn't pushed
+    fallback = true; # If binary cache fails, it's okay
   };
 
 

@@ -7,10 +7,4 @@
   {
     enable = true;
   };
-
-  programs.nh.clean =
-  {
-    enable = true;
-    extraArgs = "--keep-since 30d";
-  };
 }
