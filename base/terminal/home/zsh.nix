@@ -45,7 +45,7 @@
     {
       run_rbld() # Add any new files to git and pipe into nom
       {
-          git add -AN && "$@" |& nom || return # 2>&1 is identical to |&, but vscode prefers it
+          git -C ${vars.configDirectory} add -AN && "$@" |& nom || return # 2>&1 is identical to |&, but vscode prefers it
       }
 
       rbld_shell() # Not setup yet, but will automatically source zshrc when modified
