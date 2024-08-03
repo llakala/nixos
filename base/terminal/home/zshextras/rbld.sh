@@ -12,13 +12,13 @@ rbld()
 
     case "$1" in
         -n)
-            run_rbld sudo nixos-rebuild switch --flake ${vars.configDirectory} --show-trace
+            run_rbld sudo nixos-rebuild switch --flake /etc/nixos --show-trace
             ;;
         -h)
-            run_rbld home-manager switch -b backup --flake ${vars.configDirectory} --show-trace
+            run_rbld home-manager switch -b backup --flake /etc/nixos --show-trace
             ;;
         -f)
-            sudo nix flake update ${vars.configDirectory}
+            sudo nix flake update /etc/nixos
             ;;
         -b)
             rbld -n && rbld -h
