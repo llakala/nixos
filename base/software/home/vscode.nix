@@ -1,16 +1,17 @@
 { pkgs-unstable, ... }:
 {
 
-  home.sessionVariables =
-  {
-    NIXOS_OZONE_WL = "1";
-  };
 
   programs.vscode =
   {
     enable = true;
 
-    package = pkgs-unstable.vscode;
+    package = pkgs-unstable.vscode.override
+    {
+      commandLineArgs =
+      [ # Vscode isn't really ready
+      ];
+    };
   };
 
 }
