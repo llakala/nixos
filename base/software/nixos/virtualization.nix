@@ -2,13 +2,15 @@
 
 {
 
-  virtualisation.docker.enable = true;
+
 
   boot.kernelModules = [ "kvm-amd" ];
 
-  virtualisation =
+
+  virtualisation = # NOT VIRTUALIZATION
   {
     libvirtd.enable = true;
+    docker.enable = true;
   };
 
 
