@@ -24,7 +24,7 @@
     config.common.default = "gnome";
   };
 
-  xdg.userDirs =
+  xdg.userDirs = # Delete useless directories from nautilus settings
   {
     enable = true;
     music = hostVars.homeDirectory;

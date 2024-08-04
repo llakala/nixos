@@ -7,7 +7,7 @@
     ./gc.nix
     ./gdm.nix
     ./networking.nix
-    ./nix.nix
+    ./nixos.nix
     ./sound.nix
     ./user.nix
   ];

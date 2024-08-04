@@ -14,5 +14,5 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = false; # Passwordless sudo
 }
