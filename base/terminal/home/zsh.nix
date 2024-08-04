@@ -57,7 +57,6 @@
               ;;
           -h)
               run_rbld home-manager switch -b backup --flake ${vars.configDirectory} --show-trace
-            fi
               ;;
           -f)
               sudo nix flake update ${vars.configDirectory}
