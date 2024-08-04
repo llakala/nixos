@@ -40,8 +40,8 @@
   programs.zsh.initExtra =
   ''
     export CONFIG_DIRECTORY="/etc/nixos"
-    source ${./zshextras/options.sh}
-    source ${./zshextras/keybinds.sh}
-    source ${./zshextras/rbld.sh}
+    source ${./shellextras/options.sh}
+    source ${./shellextras/keybinds.sh}
+    source ${./shellextras/rbld.sh}
   '';
 }

@@ -4,6 +4,6 @@
   imports =
   [
     ./git.nix
-    ./zsh.nix
+    ./shell.nix
   ];
 }
