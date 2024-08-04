@@ -8,7 +8,7 @@
       color-scheme = "prefer-dark";
       clock-format = "12h";
       enable-hot-corners = false;
-      font-aliasing = "rgba"; # Aliasing with lcd screen instead of grayscale
+      font-antialiasing = "rgba"; # Aliasing with lcd screen instead of grayscale
     };
 
     "org/gnome/desktop/wm/preferences" =
