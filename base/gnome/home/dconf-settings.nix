@@ -15,6 +15,7 @@
     {
       num-workspaces = 1;
       button-layout = "appmenu:minimize,close"; # Show minimize and close button for windows
+      action-right-click-titlebar = "toggle-shade";
     };
 
     "org/gnome/desktop/peripherals/mouse" =
