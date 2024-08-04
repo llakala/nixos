@@ -7,6 +7,14 @@ let
     inherit inputs pkgs-unstable;
   };
 
+  importAll =
+  dir:
+    lib.mapAttrsToList
+    (
+      n: _: dir + "/${n}"
+    )
+    (builtins.readDir dir);
+
 in
 {
   generateNix = system: hosts:
@@ -18,11 +26,11 @@ in
       inherit system;
 
       modules =
+      importAll ./base/core/nixos ++
+      importAll ./base/gnome/nixos ++
+      importAll ./base/software/nixos ++
+      importAll ./base/terminal/nixos ++
       [
-        ./base/core/nixos
-        ./base/gnome/nixos
-        ./base/software/nixos
-        ./base/terminal/nixos
 
         ./${hostName}/core/nixos
         ./${hostName}/gnome/nixos
