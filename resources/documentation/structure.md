@@ -18,7 +18,7 @@ Any host is expected to provide these four directories, with a default.nix insid
 
 - software manages configurations for specific GUI apps, like VSCode, Firefox, etc.
 
-- terminal manages both command-line utilities and overall terminal setup. I'm currently using ZSH, and have a custom function for rebuilding (see [here](https://github.com/quatquatt/nixos/tree/main/base/terminal/home/zshextras/rbld.sh))
+- terminal manages both command-line utilities and overall terminal setup. I'm currently using ZSH, and have a custom function for rebuilding (see [here](https://github.com/quatquatt/nixos/tree/main/base/terminal/home/shellextras/rbld.sh))
 
 This structure is intended to work for both base and hosts. Hosts often don't specify that much, though, so it's very possible that many of these folders will be empty. This doesn't bother me, but if you dislike it, I recommend using a different structure for your base configuration and your hosts.
 
