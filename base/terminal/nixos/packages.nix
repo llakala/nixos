@@ -24,7 +24,6 @@
 
     ripgrep # For grep stuff
     gnumake # make command
-    qemu-utils # Virtualization
 
     libsecret
     libgccjit # gcc
@@ -39,5 +38,8 @@
     powertop # Test battery
 
     xorg.xeyes # Check if app is running in xwayland or wayland
+
+    qemu-utils # Virtualization
+    quickemu
   ];
 }
