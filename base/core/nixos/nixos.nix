@@ -1,6 +1,7 @@
 {
   hostVars,
   pkgs,
+  pkgs-unstable,
   inputs,
   lib,
   vars,
@@ -8,15 +9,18 @@
 }:
 
 {
-  nix.settings.nix-path =
-  [
-    "nixpkgs=${pkgs.path}"
-  ];
+  nix.package = pkgs-unstable.nixVersions.latest;
 
   nix.settings =
   {
     max-jobs = lib.mkDefault 4;
     experimental-features = "nix-command flakes";
+
+    nix-path =
+    [
+      "nixpkgs=${pkgs.path}"
+    ];
+
 
     substituters =
     [
