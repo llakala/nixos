@@ -80,6 +80,11 @@
       paste = "<Primary>v";
     };
 
+    "org/gnome/terminal/legacy" =
+    {
+      new-terminal-mode = "tab";
+    };
+
 
   };
 }
