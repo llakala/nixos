@@ -15,7 +15,7 @@ rbld()
             run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY --show-trace
             ;;
         -f)
-            sudo nix flake update $CONFIG_DIRECTORY
+            sudo nix flake update --flake $CONFIG_DIRECTORY
             ;;
         -b)
             rbld -n && rbld -h
