@@ -11,6 +11,7 @@
   with pkgs;
   [
     coreutils # Tiny utils
+    usbutils
     bind # Networking utils
 
     nodejs
