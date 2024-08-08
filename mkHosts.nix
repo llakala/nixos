@@ -8,14 +8,14 @@ let
   };
 
   importNixFiles = dir:
-  if builtins.pathExists dir then
+  if builtins.pathExists dir then # If folder has contents
     lib.mapAttrsToList
     (file: _: dir + "/${file}")
     (lib.filterAttrs
-      (file: _: lib.hasSuffix ".nix" file)
+      (file: _: lib.hasSuffix ".nix" file) # Only import .nix files
       (builtins.readDir dir)
     )
-  else # If directory is empty
+  else # If directory is empty, return empty list
     [];
 
   importFolders = dirs:
