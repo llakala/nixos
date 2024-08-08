@@ -19,15 +19,9 @@ let
     (builtins.readDir dir)
   );
 
-  importFolders =
-  dirs:
-  lib.concatMap
-  (
-    dir: importNixFiles dir
-  )
-  (
-    dirs
-  );
+  importFolders = dirs:
+  lib.concatLists
+  (map importNixFiles dirs);
 
 in
 {
@@ -40,10 +34,13 @@ in
       inherit system;
 
       modules =
-      importNixFiles ./base/core/nixos ++
-      importNixFiles ./base/gnome/nixos ++
-      importNixFiles ./base/software/nixos ++
-      importNixFiles ./base/terminal/nixos ++
+      importFolders
+      [
+        ./base/core/nixos
+        ./base/gnome/nixos
+        ./base/software/nixos
+        ./base/terminal/nixos
+      ] ++
       importNixFiles ./${hostName}/core/nixos ++
       # importNixFiles ./${hostName}/gnome/nixos ++
       importNixFiles ./${hostName}/software/nixos ++
