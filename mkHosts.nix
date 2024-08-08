@@ -8,16 +8,15 @@ let
   };
 
   importNixFiles = dir:
-  lib.mapAttrsToList
-  (
-     file: _: dir + "/${file}"
-  )
-  (lib.filterAttrs
-    (
-      file: _: lib.hasSuffix ".nix" file
+  if builtins.pathExists dir then
+    lib.mapAttrsToList
+    (file: _: dir + "/${file}")
+    (lib.filterAttrs
+      (file: _: lib.hasSuffix ".nix" file)
+      (builtins.readDir dir)
     )
-    (builtins.readDir dir)
-  );
+  else # If directory is empty
+    [];
 
   importFolders = dirs:
   lib.concatLists
@@ -40,11 +39,11 @@ in
         ./base/gnome/nixos
         ./base/software/nixos
         ./base/terminal/nixos
+        ./${hostName}/core/nixos
+        ./${hostName}/gnome/nixos
+        ./${hostName}/software/nixos
+        ./${hostName}/terminal/nixos
       ] ++
-      importNixFiles ./${hostName}/core/nixos ++
-      # importNixFiles ./${hostName}/gnome/nixos ++
-      importNixFiles ./${hostName}/software/nixos ++
-      # importNixFiles ./${hostName}/terminal/nixos ++
       [
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
