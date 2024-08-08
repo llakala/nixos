@@ -45,7 +45,6 @@ in
         ./${hostName}/terminal/nixos
       ] ++
       [
-
         ./${hostName}/hardware-configuration.nix # NIX ONLY
 
         {
@@ -80,6 +79,7 @@ in
       {
         inherit pkgs;
         modules =
+        importFolders
         [
           ./base/core/home
           ./base/gnome/home
@@ -90,7 +90,6 @@ in
           ./${hostName}/gnome/home
           ./${hostName}/software/home
           ./${hostName}/terminal/home
-
         ];
         extraSpecialArgs = helpers //
         {
