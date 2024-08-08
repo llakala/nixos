@@ -7,13 +7,27 @@ let
     inherit inputs pkgs-unstable;
   };
 
-  importAll =
-  dir:
-    lib.mapAttrsToList
+  importNixFiles = dir:
+  lib.mapAttrsToList
+  (
+     file: _: dir + "/${file}"
+  )
+  (lib.filterAttrs
     (
-      n: _: dir + "/${n}"
+      file: _: lib.hasSuffix ".nix" file
     )
-    (builtins.readDir dir);
+    (builtins.readDir dir)
+  );
+
+  importFolders =
+  dirs:
+  lib.concatMap
+  (
+    dir: importNixFiles dir
+  )
+  (
+    dirs
+  );
 
 in
 {
@@ -26,16 +40,15 @@ in
       inherit system;
 
       modules =
-      importAll ./base/core/nixos ++
-      importAll ./base/gnome/nixos ++
-      importAll ./base/software/nixos ++
-      importAll ./base/terminal/nixos ++
+      importNixFiles ./base/core/nixos ++
+      importNixFiles ./base/gnome/nixos ++
+      importNixFiles ./base/software/nixos ++
+      importNixFiles ./base/terminal/nixos ++
+      importNixFiles ./${hostName}/core/nixos ++
+      # importNixFiles ./${hostName}/gnome/nixos ++
+      importNixFiles ./${hostName}/software/nixos ++
+      # importNixFiles ./${hostName}/terminal/nixos ++
       [
-
-        ./${hostName}/core/nixos
-        ./${hostName}/gnome/nixos
-        ./${hostName}/software/nixos
-        ./${hostName}/terminal/nixos
 
         ./${hostName}/hardware-configuration.nix # NIX ONLY
 
