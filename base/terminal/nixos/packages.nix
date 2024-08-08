@@ -13,6 +13,7 @@
     coreutils # Tiny utils
     usbutils
     bind # Networking utils
+    qemu-utils # Virtualization
 
     nodejs
     jdk
@@ -21,7 +22,7 @@
     grub2_efi
 
     nvd # For recreating nh functions
-    nix-output-monitor # NOT NOM
+    nix-output-monitor # NOT CALLED NOM IN NIXPKGS
 
     ripgrep # For grep stuff
     gnumake # make command
@@ -40,7 +41,6 @@
 
     xorg.xeyes # Check if app is running in xwayland or wayland
 
-    qemu-utils # Virtualization
-    quickemu
+    quickemu # Easy virtual machines
   ];
 }
