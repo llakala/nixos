@@ -10,7 +10,7 @@ You can pass these through the flake.nix into mkHosts. A given host is then crea
 
 ## Subdirectories
 
-Any host is expected to provide these four directories, with a default.nix inside of it that imports all files located in the folder.
+Any host is expected to provide these four directories. A default.nix file isn't required, since we have a function to import all nix files in a folder.
 
 - core manages basic functions you'd always want on a computer, like networking, the bootloader, etc.
 
