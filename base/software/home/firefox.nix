@@ -115,6 +115,8 @@ let
 
     "extensions.autoDisableScopes" = 0; # Automatically enable extensions
     "extensions.update.enabled" = false; # Don't update extensions since they're sourced from rycee
+
+    "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
   };
 
   search =
