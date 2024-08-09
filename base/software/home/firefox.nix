@@ -108,6 +108,7 @@ let
 
     "browser.download.useDownloadDir" = false; # Don't ask where to download things
     "browser.tabs.loadInBackground" = true; # Load tabs automaticlaly
+    "browser.tabs.hoverPreview.enabled" = true; # Enable new preview tabs feature as of 129.0
     "mousewheel.system_scroll_override" = true; # SCROLL NORMALLY FFS
 
     "browser.in-content.dark-mode" = true; # Use dark mode
