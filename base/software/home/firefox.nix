@@ -1,7 +1,7 @@
 { pkgs, hostVars, inputs, ...}:
 
 let
-  package = pkgs.firefox.overrideAttrs
+  package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix
   (oldAttrs:
   {
     buildCommand = oldAttrs.buildCommand +
