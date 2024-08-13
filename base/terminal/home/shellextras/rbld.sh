@@ -2,7 +2,7 @@ rbld()
 {
     run_rbld() # Add any new files to git and pipe into nom
     {
-        git -C $CONFIG_DIRECTORY add -AN &&
+        git -C $CONFIG_DIRECTORY add -- intent-to-add all &&
         "$@" |&
         nom || return
     }
