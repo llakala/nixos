@@ -17,6 +17,7 @@
 
     nodejs
     jdk
+    appimage-run # Allow running appimages for when something isnt on nixpkgs
 
     grub2 # grub commands
     grub2_efi
@@ -26,6 +27,7 @@
 
     ripgrep # For grep stuff
     gnumake # make command
+    clinfo # Test if opencl is installed
 
     libsecret
     libgccjit # gcc
