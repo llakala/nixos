@@ -12,9 +12,7 @@
 
     open = false;
     nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"]; # Use proprietary drivers
 }
