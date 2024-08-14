@@ -9,7 +9,7 @@
 }:
 
 {
-  nix.package = pkgs-unstable.nixVersions.latest;
+  nix.package = pkgs-unstable.nixVersions.latest; # Use latest version of nix package manager
 
   nix.settings =
   {
@@ -20,7 +20,6 @@
     [
       "nixpkgs=${pkgs.path}"
     ];
-
 
     substituters =
     [
@@ -35,6 +34,9 @@
     warn-dirty = false; # No warnings if git isn't pushed
     fallback = true; # If binary cache fails, it's okay
   };
+
+
+  systemd.services.nix-daemon.environment.TMPDIR = "/nix/tmp"; # TMPFS is too small for building some stuff
 
 
   time.timeZone = "America/New_York";
