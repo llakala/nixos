@@ -13,6 +13,8 @@
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
+
+    kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
 
   boot.loader =
