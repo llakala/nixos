@@ -7,7 +7,7 @@
   {
     libvirtd.enable = true;
     docker.enable = true;
-    spiceUSBRedirection.enable = true; # Make spice able to pass usb devices easily
+    spiceUSBRedirection.enable = true; # Give permission for USB drives to be passed through spice
   };
 
   users.users.${hostVars.username}.extraGroups = ["libvirtd" "docker" ];
@@ -16,7 +16,6 @@
 
   environment.systemPackages = with pkgs;
   [
-
     quickemu # Easy virtual machines
     qemu-utils # Virtualization
 

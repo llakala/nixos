@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   hostVars,
   ...
 }:
@@ -26,6 +25,7 @@
     services.gnome =
     {
       core-utilities.enable = false;
+      evolution-data-server.enable = lib.mkForce false; # Disable Events and Tasks Reminders from always running in the background
     };
 
     environment.gnome.excludePackages = with pkgs;
