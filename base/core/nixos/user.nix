@@ -7,7 +7,7 @@
     description = hostVars.fullName;
 
     initialPassword = " ";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
 

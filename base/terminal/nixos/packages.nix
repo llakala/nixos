@@ -13,7 +13,6 @@
     coreutils # Tiny utils
     usbutils
     bind # Networking utils
-    qemu-utils # Virtualization
 
     nodejs
     jdk
@@ -42,7 +41,5 @@
     powertop # Test battery
 
     xorg.xeyes # Check if app is running in xwayland or wayland
-
-    quickemu # Easy virtual machines
   ];
 }
