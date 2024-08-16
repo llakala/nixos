@@ -1,4 +1,4 @@
-{ pkgs, hostVars, ... }:
+{ pkgs, hostVars, lib, ... }:
 
 
 {
@@ -23,4 +23,6 @@
 
     config.common.default = "gnome";
   };
+
+  home.file."${hostVars.homeDirectory}/.config/mimeapps.list".force = lib.mkForce true; # Delete backup for mimeApps since backups are done idiotically
 }
