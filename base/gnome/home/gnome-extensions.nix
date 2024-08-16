@@ -8,7 +8,8 @@ let
     clipboard-indicator
     just-perfection
     alphabetical-app-grid
-    window-is-ready-remover
+    tiling-assistant
+    status-area-horizontal-spacing
   ];
 in
 {
@@ -46,16 +47,21 @@ in
     "org/gnome/shell/extensions/clipboard-indicator" =
     {
       move-item-first = true; # Move to top of the list when selected
-      
+      paste-button = false;
+
       enable-keybindings = false;
-      history-size = 30;
+      history-size = 50;
     };
 
     "org/gnome/shell/extensions/just-perfection" =
     {
       panel = false;
       panel-in-overview = true;
+      calendar = false;
+
       window-demands-attention-focus = true;
+
+
       switcher-popup-delay = true;
       startup-status = 0;
     };
