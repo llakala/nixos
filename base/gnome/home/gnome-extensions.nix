@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
-{
 
-  home.packages = with pkgs.gnomeExtensions;
+let
+  gnomeExtensions = with pkgs.gnomeExtensions;
   [
     dash-to-dock
     clipboard-indicator
@@ -10,6 +10,9 @@
     alphabetical-app-grid
     window-is-ready-remover
   ];
+in
+{
+  home.packages = gnomeExtensions;
 
   dconf.settings =
   {
@@ -18,15 +21,7 @@
     {
       disable-user-extensions = false;
 
-      enabled-extensions =
-      [
-        "dash-to-dock@micxgx.gmail.com"
-        "clipboard-indicator@tudmotu.com"
-        "just-perfection-desktop@just-perfection"
-        "AlphabeticalAppGrid@stuarthayhurst"
-        "windowIsReady_Remover@nunofarruca@gmail.com"
-      ];
-
+      enabled-extensions =  map (extension: extension.extensionUuid) gnomeExtensions;
     };
 
 
