@@ -8,9 +8,10 @@ let
     clipboard-indicator
     just-perfection
     alphabetical-app-grid
-    tiling-assistant
-    status-area-horizontal-spacing
+    tiling-assistant # When tiling one app, suggest another app to tile
+    status-area-horizontal-spacing # Put things on the top right closer together
   ];
+
 in
 {
   home.packages = gnomeExtensions;
@@ -32,6 +33,7 @@ in
 
       autohide-in-fullscreen = true;
       intellihide-mode = "FOCUS_APPLICATION_WINDOWS";
+
       hide-delay = 0.15;
       show-delay = 0.15;
       animation-time = 0.05;
@@ -59,11 +61,11 @@ in
       panel-in-overview = true;
       calendar = false;
 
-      window-demands-attention-focus = true;
+      window-demands-attention-focus = true; # Just make window appear when it's done with a task
 
 
-      switcher-popup-delay = true;
-      startup-status = 0;
+      switcher-popup-delay = true; # No delay with alt-tab
+      startup-status = 0; # Start on desktop when rebooting
     };
   };
 }
