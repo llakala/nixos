@@ -39,7 +39,7 @@
 
   programs.zsh.initExtra =
   ''
-    export CONFIG_DIRECTORY="/etc/nixos"
+    export CONFIG_DIRECTORY=${vars.configDirectory}
     source ${./shellextras/options.sh}
     source ${./shellextras/keybinds.sh}
     source ${./shellextras/rbld.sh}
