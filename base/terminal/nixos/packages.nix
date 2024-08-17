@@ -41,5 +41,7 @@
     powertop # Test battery
 
     xorg.xeyes # Check if app is running in xwayland or wayland
+
+    nil # Nix language server
   ];
 }
