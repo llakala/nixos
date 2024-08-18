@@ -37,7 +37,6 @@
 
     "org/gnome/mutter" =
     {
-      edge-tiling = true;
       dynamic-workspaces = false;
     };
 
