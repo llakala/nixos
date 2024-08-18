@@ -1,4 +1,4 @@
-{ ... }:
+{ hostVars, ... }:
 {
   dconf.settings =
   {
@@ -13,8 +13,10 @@
        ];
     };
 
+
     "org/gnome/desktop/interface" =
     {
+      scaling-factor = hostVars.scalingFactor;
       color-scheme = "prefer-dark";
 
       clock-format = "12h";

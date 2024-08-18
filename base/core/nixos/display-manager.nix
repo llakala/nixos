@@ -14,9 +14,9 @@
     {
       settings =
       {
-        "org/gnome/desktop/interface" = # 200% scaling on login screen
+        "org/gnome/desktop/interface" = # Scaling on login screen
         {
-          scaling-factor = lib.gvariant.mkUint32 2;
+          scaling-factor = lib.gvariant.mkUint32 hostVars.scalingFactor;
         };
       };
     }
