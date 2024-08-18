@@ -11,7 +11,6 @@
     [
       rocm-opencl-icd
       rocm-opencl-runtime
-      amdvlk
     ];
   };
 }
