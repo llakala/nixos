@@ -7,5 +7,7 @@
   fullName = "Eman Resu";
   userEmail = "ellakalle6+laptop@gmail.com";
 
+  scalingFactor = 2;
+
   stateVersion = "24.05";
 }
