@@ -16,10 +16,6 @@
   };
 
   programs.gamescope.enable = true;
-    extraPackages = with pkgs;
-    [
-      gamemode
-    ];
-  };
+  programs.gamemode.enable = true;
 
 }
