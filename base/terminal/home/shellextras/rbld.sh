@@ -9,10 +9,10 @@ rbld()
 
     case "$1" in
         -n)
-            run_rbld sudo nixos-rebuild switch --flake $CONFIG_DIRECTORY --show-trace
+            run_rbld sudo nixos-rebuild switch --flake $CONFIG_DIRECTORY
             ;;
         -h)
-            run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY --show-trace
+            run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY
             ;;
         -f)
             sudo nix flake update --flake $CONFIG_DIRECTORY
