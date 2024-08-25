@@ -29,10 +29,13 @@ All hosts should provide a hardware-configuration file along with the subdirecto
 The last file expected to be provided is one that defines host variables. These are referenced within the base configuration for things that may differ between hosts. Currently, the host variables aren't enforced (since I don't know how to do that), so it's expected that you provide all the ones it expects. This will hopefully be fixed at some point.
 
 At the time of writing, you are expected to provide these host variables:
-- hostName (example: nixos)
-- username (example: user1)
-- homeDirectory (example: /home/user1)
-- fullName (example: Full Name)
-- userEmail (example: awesomeperson@gmail.com)
+- hostName (ex: nixos)
+- username (ex: user1)
+- homeDirectory (ex: /home/user1)
+- fullName (ex: Full Name)
+- userEmail (ex: awesomeperson@gmail.com)
+- scalingFactor (ex: 1)
+- editor (ex: neovim)
+- stateVersion (ex: 24.05)
 
 Some of these are probably already environment variables that don't need defining, but I'm not sure which, so this is an acceptable problem for the time being. If you want to change this so that the proper environment variables are used, please make a pull request.
