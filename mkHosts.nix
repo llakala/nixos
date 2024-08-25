@@ -39,6 +39,7 @@ in
         ./base/gnome/nixos
         ./base/software/nixos
         ./base/terminal/nixos
+
         ./${hostName}/core/nixos
         ./${hostName}/gnome/nixos
         ./${hostName}/software/nixos
