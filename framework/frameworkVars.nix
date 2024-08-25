@@ -7,7 +7,7 @@
   fullName = "Eman Resu";
   userEmail = "ellakalle6+laptop@gmail.com";
 
-  scalingFactor = 2;
+  scalingFactor = 2; # 200% scaling
   editor = "nano";
 
   stateVersion = "24.05";
