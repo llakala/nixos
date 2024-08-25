@@ -17,7 +17,7 @@
 
     sessionVariables =
     {
-      EDITOR = "nano";
+      EDITOR = hostVars.editor;
     };
     shellAliases =
     {
