@@ -1,8 +1,11 @@
+#! /usr/bin/env zsh
 rbld()
-{
+( # Run in susbshell so the cd is undone after rebuilding
+    cd $CONFIG_DIRECTORY
+
     run_rbld() # Add any new files to git and pipe into nom
     {
-        git -C $CONFIG_DIRECTORY add -AN &&
+        git add -AN &&
         "$@" |&
         nom || return
     }
@@ -35,8 +38,8 @@ rbld()
 
             if [[ $OLD_TIME != $NEW_TIME ]]; then
                 rbld -b
-                git -C $CONFIG_DIRECTORY commit -m "Update flake.lock" flake.lock -q
-                git -C $CONFIG_DIRECTORY push
+                git commit -m "Update flake.lock" flake.lock -q
+                git push
             else
                 echo "No important updates to flake.lock, so skipping rebuild"
             fi
@@ -45,4 +48,4 @@ rbld()
             echo "Usage: rbld (-n|-h|-f|-b|-a)"
             ;;
     esac
-}
+)
