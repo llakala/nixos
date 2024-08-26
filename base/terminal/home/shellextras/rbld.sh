@@ -21,9 +21,14 @@ rbld()
             rbld -n && rbld -h
             ;;
         -a)
-            rbld -f &&
-            rbld -n &&
-            rbld -h
+            rbld -f
+            if [[ $(git status -s flake.lock) ]]; then
+                rbld -b
+                git -C $CONFIG_DIRECTORY commit -m "Update flake.lock" flake.lock
+                git -C $CONFIG_DIRECTORY push
+            else
+                echo "No updates to flake.lock, so skipping rebuild"
+            fi
             ;;
         *)
             echo "Usage: rbld (-n|-h|-f|-b|-a)"
