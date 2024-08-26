@@ -1,4 +1,3 @@
-#! /usr/bin/env zsh
 rbld()
 ( # Run in susbshell so the cd is undone after rebuilding
     cd $CONFIG_DIRECTORY
@@ -12,7 +11,7 @@ rbld()
 
     get_time() # Get flake.lock revisions times for the inputs we care about
     {
-        jq -r '([.nodes["home-manager", "nixpkgs", "nixpkgs-unstable"].locked.lastModified] | join(""))' flake.lock
+        jq -r '([.nodes["home-manager", "nixpkgs", "nixpkgs-unstable"].locked.lastModified] | add)' flake.lock
     }
 
     case "$1" in
@@ -36,7 +35,7 @@ rbld()
             echo "Old time: $OLD_TIME" # Logs for debugging
             echo "New time: $NEW_TIME"
 
-            if [[ $OLD_TIME != $NEW_TIME ]]; then
+            if [[ $NEW_TIME > $OLD_TIME ]]; then
                 rbld -b
                 git commit -m "Update flake.lock" flake.lock -q
                 git push
