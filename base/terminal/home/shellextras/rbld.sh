@@ -1,8 +1,8 @@
 rbld()
-( # Run in susbshell so the cd is undone after rebuilding
+( # Run in subshell so the cd is undone after rebuilding
     cd $CONFIG_DIRECTORY
 
-    run_rbld() # Add any new files to git and pipe into nom
+    run_rbld() # Add any new files to git and pipe command output into `nom`
     {
         git add -AN &&
         "$@" |&
@@ -34,7 +34,7 @@ rbld()
 
             if [[ $NEW_TIME > $OLD_TIME ]]; then
                 rbld -b
-                git commit -m "Update flake.lock" flake.lock -q
+                git commit -q -m "Update flake.lock" flake.lock
                 git push
             else
                 echo "No important updates to flake.lock, so skipping rebuild"
