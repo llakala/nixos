@@ -1,48 +1,69 @@
 {
-  pkgs-unstable,
   pkgs,
   ...
 }:
 
-
-{
-
-  environment.systemPackages =
-  with pkgs;
+let
+  basic = with pkgs;
   [
-    coreutils # Tiny utils
+    coreutils # Basic linnux utils
+    libgccjit # gcc
     usbutils
     bind # Networking utils
+  ];
 
+  commands = with pkgs;
+  [
+    ripgrep
+    gnumake # Make
+    unzip
+    wget
+
+    jq
+  ];
+
+  nixUtils = with pkgs;
+  [
+    nil # Nix language server
+    nvd
+    nix-output-monitor # NOT CALLED NOM
+  ];
+
+  programming = with pkgs;
+  [
     nodejs
     jdk
-    appimage-run # Allow running appimages for when something isnt on nixpkgs
+  ];
 
-    grub2 # grub commands
+  linux = with pkgs;
+  [
+    grub2
     grub2_efi
+    efibootmgr
 
-    nvd # For recreating nh functions
-    nix-output-monitor # NOT CALLED NOM IN NIXPKGS
+    appimage-run # Allow running appimages for when something isnt on nixpkgs
+  ];
 
-    ripgrep # For grep stuff
-    gnumake # make command
-    clinfo # Test if opencl is installed
-    jq # json parser
-
+  extras = with pkgs;
+  [
+    # Secrets
+    age
+    ssh-to-age
     libsecret
-    libgccjit # gcc
-    efibootmgr # manage efi entries
 
     hwinfo
-    detox # automatic file deletion
-
-    age # Used for secrets
-    ssh-to-age
-
-    powertop # Test battery
 
     xorg.xeyes # Check if app is running in xwayland or wayland
-
-    nil # Nix language server
+  ];
+in
+{
+  environment.systemPackages =
+  [
+    basic
+    commands
+    nixUtils
+    programming
+    linux
+    extras
   ];
 }
