@@ -41,7 +41,15 @@ rbld()
             fi
             ;;
         *)
-            echo "Usage: rbld (-n|-h|-f|-b|-a)"
+            cat << EOT
+Usage: rbld (-n|-h|-f|-b|-a)
+Options:
+  -n        Rebuild the system configuration (akin to nixos-rebuild switch)
+  -h        Rebuild the home-manager configuration (akin to home-manager switch)
+  -b        Rebuild both the system and home-manager configurations
+  -f        Update the flake.lock and rebuild if necessary
+EOT
             ;;
     esac
+
 )
