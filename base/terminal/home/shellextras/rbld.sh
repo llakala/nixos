@@ -21,15 +21,12 @@ rbld()
         -h)
             run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY
             ;;
-        -f)
-            sudo nix flake update --flake $CONFIG_DIRECTORY
-            ;;
         -b)
             rbld -n && rbld -h
             ;;
-        -a)
+        -f)
             OLD_TIME=$(get_time)
-            rbld -f
+            sudo nix flake update --flake $CONFIG_DIRECTORY
             NEW_TIME=$(get_time)
 
             echo "Old time: $OLD_TIME" # Logs for debugging
