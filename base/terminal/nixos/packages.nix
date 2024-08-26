@@ -1,12 +1,13 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
 let
   basic = with pkgs;
   [
-    coreutils # Basic linnux utils
+    coreutils # Basic linux utils
     libgccjit # gcc
     usbutils
     bind # Networking utils
@@ -57,7 +58,7 @@ let
   ];
 in
 {
-  environment.systemPackages =
+  environment.systemPackages = lib.concatLists
   [
     basic
     commands
