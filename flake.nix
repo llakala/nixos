@@ -69,5 +69,6 @@
 
       devShells.${system}.default = import ./resources/shell.nix { inherit pkgs lib; };
 
+      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
   };
 }
