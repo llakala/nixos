@@ -3,19 +3,18 @@
 
 {
 
-  programs.alacritty.enable = true;
-
-  programs.alacritty.settings =
+  programs.kitty =
   {
-    live_config_reload = true;
+    enable = true;
+    shellIntegration.enableZshIntegration = true;
 
-    window.title = "Terminal";
+    font.name = "JetBrains Mono";
+    theme = "Catppuccin-Mocha";
+  };
 
-   font =
-   {
-      size = 12;
-    };
-    colors.draw_bold_text_with_bright_colors = true;
+  programs.kitty.settings =
+  {
+    linux_display_server = "x11"; # Make titlebar work normally
   };
 
 
