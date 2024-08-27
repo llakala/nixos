@@ -21,7 +21,6 @@
     };
     shellAliases =
     {
-      shell = "nix develop ${vars.configDirectory} --impure";
       src = ". ~/.zshrc";
     };
 
