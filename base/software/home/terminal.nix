@@ -25,5 +25,8 @@ in
     linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
   };
 
-
+  programs.kitty.keybindings =
+  {
+    "ctrl+q" = "close_window";
+  };
 }
