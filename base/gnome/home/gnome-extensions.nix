@@ -67,5 +67,16 @@ in
       switcher-popup-delay = true; # No delay with alt-tab
       startup-status = 0; # Start on desktop when rebooting
     };
+
+    "org/gnome/shell/extensions/tiling-assistant" =
+    {
+      restore-window = []; # Let us use Super+Down
+
+      tile-left-half = ["<Super>a" "<Super>Left"];
+      tile-right-half = ["<Super>d" "<Super>Right"];
+      tile-top-half = ["<Super>w"];
+      tile-bottom-half = ["<Super>s"];
+
+    };
   };
 }
