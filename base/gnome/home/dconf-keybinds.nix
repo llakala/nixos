@@ -1,5 +1,7 @@
 { ... }:
 
+# `dconf watch /` shows what dconf changes are set live
+# `gsettings list-recursively | rg "<Super>"` is also super useful for finding where a keybind is set
 {
   dconf.settings =
   {
@@ -20,6 +22,12 @@
       restore-shortcuts = []; # Never reset shortcuts to default
     };
 
+    "org/gnome/shell/keybindings" =
+    {
+      toggle-application-view = []; # Super+A is useful
+      toggle-quick-settings = [ ]; # Super+S is also useful
+    };
+
     "org/gnome/desktop/wm/keybindings" =
     {
       switch-applications = [ "<Super>Tab" ];
@@ -29,7 +37,6 @@
 
 
       toggle-fullscreen = ["F11"];
-      lower = ["<Super>Down"]; # Lower window
     };
 
 
