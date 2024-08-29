@@ -68,19 +68,6 @@
       clock-format = "12h";
     };
 
-
-    "net/nokyan/Resources" =
-    {
-      network-bits = true; # Use mbps instead of mb/s
-      graph-data-points = 100;
-      sidebar-details = true;
-
-      apps-show-gpu-memory = false;
-
-      processes-show-user = false;
-      processes-show-id = false;
-    };
-
     "org/gnome/terminal/legacy/keybindings" =
     {
       find = "<Primary>f";

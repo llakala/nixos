@@ -51,15 +51,6 @@
       search = ["<Super>space"];
 
       logout = ["<Control><Alt>BackSpace"]; # Power off
-
-      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"]; # List of custom keybindings
-    };
-
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
-    {
-      binding = "<Control><Alt>Delete";
-      command = "nix run nixpkgs#resources";
-      name = "Open Resources app to force quit applications";
     };
 
 
