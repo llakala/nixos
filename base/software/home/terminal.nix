@@ -23,6 +23,11 @@ in
   programs.kitty.settings =
   {
     linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
+
+    bold_is_bright = true;
+    background_opacity = "0.9";
+
+    copy_on_select = true;
   };
 
   programs.kitty.keybindings =
