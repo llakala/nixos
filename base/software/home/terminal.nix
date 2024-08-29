@@ -1,15 +1,23 @@
-{ ... }:
+{ pkgs, ... }:
 
-
+let
+  myFont =
+  {
+    name = "Monocraft";
+    package = pkgs.monocraft;
+    size = 12;
+  };
+in
 {
 
   programs.kitty =
   {
     enable = true;
-    shellIntegration.enableZshIntegration = true;
+    # shellIntegration.enableZshIntegration = true; # Not needed since ZSH checks for the shell variable
 
-    font.name = "JetBrains Mono";
-    theme = "Catppuccin-Mocha";
+    font = myFont;
+
+    theme = "Adwaita darker";
   };
 
   programs.kitty.settings =
