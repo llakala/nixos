@@ -48,6 +48,7 @@
       home = ["<Super>e"]; # Open file explorer
       www = ["<Super>f"]; # Open web browser
       control-center = ["<Super>i"]; # Open settings
+      search = ["<Super>space"];
 
       logout = ["<Control><Alt>BackSpace"]; # Power off
 
