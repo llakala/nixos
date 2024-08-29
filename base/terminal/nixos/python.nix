@@ -2,11 +2,11 @@
 
 {
 
-   environment.systemPackages = with pkgs; [ python311 ] ++
-   (with pkgs.python311Packages;
+   environment.systemPackages = with pkgs; [ python313 ] ++
+   (with pkgs.python313Packages;
    [
-      pandas
-      matplotlib
-      numpy
+      # pandas # Relies on numpy
+      # numpy # Broken on 3.13
+      # matplotlib # Relies on numpy
   ]);
 }
