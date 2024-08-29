@@ -34,4 +34,17 @@ in
   {
     "ctrl+q" = "close_window";
   };
+
+
+  # Open terminal with Super+T
+  dconf.settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =
+  [
+    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/"
+  ];
+  dconf.settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal" =
+  {
+    name = "Open terminal";
+    command = "kitty";
+    binding = "<Super>t";
+  };
 }
