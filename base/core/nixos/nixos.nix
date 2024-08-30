@@ -2,9 +2,7 @@
   hostVars,
   pkgs,
   pkgs-unstable,
-  inputs,
   lib,
-  vars,
   ...
 }:
 
