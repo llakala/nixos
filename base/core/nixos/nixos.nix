@@ -7,7 +7,7 @@
 }:
 
 {
-  nix.package = pkgs-unstable.nixVersions.latest; # Use latest version of nix package manager
+  nix.package = pkgs-unstable.nixVersions.nix_2_23; # Use latest version of nix package manager
 
   nix.settings =
   {
