@@ -28,6 +28,8 @@ in
     background_opacity = "0.9";
 
     copy_on_select = true;
+
+    confirm_os_window_close = 0; # Close instead of asking "Would you like to close?"
   };
 
   programs.kitty.keybindings =
