@@ -29,16 +29,10 @@ in
 
     "org/gnome/shell/extensions/dash-to-dock" =
     {
+      dock-fixed = true;
+
+      custom-theme-shrink = true;
       apply-custom-theme = true;
-
-      autohide-in-fullscreen = true;
-      intellihide-mode = "FOCUS_APPLICATION_WINDOWS";
-
-      hide-delay = 0.15;
-      show-delay = 0.15;
-      animation-time = 0.05;
-
-      require-pressure-to-show = false;
 
       show-trash = false;
       show-show-apps-button = false;
