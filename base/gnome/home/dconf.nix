@@ -1,4 +1,4 @@
-{ hostVars, ... }:
+{ ... }:
 {
   dconf.settings =
   {

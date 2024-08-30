@@ -1,11 +1,4 @@
-{
-  hostVars,
-  pkgs,
-  inputs,
-  lib,
-  vars,
-  ...
-}:
+{ ... }:
 
 {
   nix.settings =
