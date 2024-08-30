@@ -1,4 +1,4 @@
-{ pkgs, hostVars, inputs, ...}:
+{ pkgs, inputs, lib, ...}:
 
 let
   package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix
@@ -11,6 +11,39 @@ let
       --set MOZ_USE_XINPUT2 1
     '';
   });
+
+  engines =
+  {
+    "Github Nix Code" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search";
+        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
+        {
+          "type" = "code";
+          "q" = "lang:nix NOT is:fork {searchTerms}";
+        };
+      };
+
+      iconUpdateURL = "https://github.com/favicon.ico";
+      definedAliases = [ "@ghn @" ];
+    };
+
+    "MyNixOS" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://mynixos.com/search";
+        params = lib.attrsToList
+        {
+          "q" = "{searchTerms}";
+        };
+      };
+
+      definedAliases = [ "@mn" ];
+    };
+  };
 
   policies =
   {
@@ -123,6 +156,7 @@ let
   {
     force = true;
     default = "DuckDuckGo";
+    inherit engines;
   };
 
   ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
