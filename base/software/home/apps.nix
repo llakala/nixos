@@ -17,5 +17,6 @@
     moonlight-qt
     viewnior # image viewer
     spotify
+    shortwave # Internet radio
   ];
 }
