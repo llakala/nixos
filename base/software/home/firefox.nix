@@ -27,7 +27,7 @@ let
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = [ "@ghn @" ];
+      definedAliases = [ "@ghn" ];
     };
 
     "MyNixOS" =
