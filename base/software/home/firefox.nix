@@ -199,14 +199,20 @@ in
   {
     enable = true;
     inherit package policies;
-    profiles.default =
+  };
+
+  programs.firefox.profiles.default =
     {
       isDefault = true;
       extensions = ryceeAddons ++ customAddons;
       inherit search;
-    };
-
+    userChrome = ''
+      @import "firefox-gnome-theme/userChrome.css";
+    '';
+    userContent = ''
+      @import "firefox-gnome-theme/userContent.css";
+    '';
   };
 
-
+  home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
 }
