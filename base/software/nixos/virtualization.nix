@@ -18,8 +18,6 @@
   [
     quickemu # Easy virtual machines
     qemu-utils # Virtualization
-
-    lsof # List open files
   ];
 
 }
