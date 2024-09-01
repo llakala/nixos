@@ -15,12 +15,14 @@ let
 
   commands = with pkgs;
   [
-    ripgrep
     gnumake # Make
+    zip
     unzip
     wget
 
     jq
+    neofetch
+    ripgrep
   ];
 
   nixUtils = with pkgs;
