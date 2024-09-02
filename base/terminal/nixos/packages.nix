@@ -21,7 +21,6 @@ let
     wget
 
     jq
-    neofetch
     ripgrep
   ];
 
