@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "A no-longer simple NixOS flake";
 
   inputs =
   {
