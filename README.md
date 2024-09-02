@@ -36,10 +36,10 @@ project
 # DIVING DEEPER
 
 ## Facilitation
-The flake.nix acts as our entrypoint, which declares our inputs and outputs. It utilizes a [function](./mkHosts.nix), which automatically creates hosts.
+The flake.nix utilizes a [function](./mkHosts.nix), which automatically creates hosts. This means that you can create a new host via the file structure without having to write a config for it in the flake!
 
 ## Home-manager and nixos separation
-This configuration utilizes home-manager, an extraordinarily useful tool for controlling parts of a user's home directory that don't already have options provided via base nixos. However, home-manager is an external project, and thus uses different options than the base NixOS. This means that a configuration requires separated directories to not cause issues.
+This configuration utilizes home-manager, which you've likely heard of before if you're reading this. However, home-manager is an external project, and thus uses different options than the base NixOS. This means that a configuration requires separated directories to not cause issues.
 
 The most frustrating part of this for me is that I never remember if something is a home file, or a nixos one. To solve this, I have this separation at the lowest level. This means that if something isn't in the home directory, it'll be in the nixos one right alongside it. I recommend adopting the same structure for your configuration.
 
@@ -55,4 +55,14 @@ Files can request a value from hostVars without knowing which host is being used
 
 # HOW DO I USE THIS?
 
-Well, you could install NixOS and clone the repo into your /etc/nixos directory. But I wouldn't recommend it, since most of the configuration is specific to my taste, which probably won't match yours. HOWEVER, I do think my configuration is pretty well organized, and a lot more readable than a lot of Nix code out there, which makes it appropriate for beginners. Because of this, I'd recommend fiddling around with it in a VM and seeing what parts of it you might want to adapt to your own tastes.
+Just kidding. Nobody actually uses a random person's NixOS configuration. Unless it's Misterio's and you want to cause yourself pain and suffering.
+
+Anyways, I think this is a pretty good reference. I try to keep things readable and well-commented so everything is reproducible for a casual observer. Here's a quick list of things you should steal from me:
+
+- My rebuild function is awesome. I wrote some really cool logic with `rbld -f`, so it gets flake updates, then checks whether those flake updates necessitate a rebuild. Check it out [here](./base/terminal/home/shellextras/rbld.sh).
+
+- I have a cool little import function that imports all *.nix files in a folder, without the need for a default.nix file. Check it out [here](mkHosts.nix).
+
+- I have a lot of software that I've heavily configured, like Firefox, Kitty, Gnome extensions, etc. Steal it all! I think it looks pretty, which makes it objectively the best configuration out there.
+
+Thanks for reading! I hope this helps you as a resource.
