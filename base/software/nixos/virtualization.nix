@@ -18,6 +18,7 @@
   [
     quickemu # Easy virtual machines
     qemu-utils # Virtualization
+    quickgui
   ];
 
 }
