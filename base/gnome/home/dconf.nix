@@ -28,6 +28,11 @@
 
     };
 
+    "org/gnome/settings-daemon/plugins/power" =
+    {
+      ambient-enabled = false;
+    };
+
     "org/gnome/desktop/wm/preferences" =
     {
       num-workspaces = 1;
