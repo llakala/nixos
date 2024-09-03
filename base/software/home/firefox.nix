@@ -123,8 +123,16 @@ let
           "q" = "{searchTerms}";
         };
       };
-
       definedAliases = [ "@mn" ];
+    };
+
+    "Noogle" =
+    {
+      urls = lib.singleton
+      {
+        template =  "https://noogle.dev/q?term={searchTerms}";
+      };
+      definedAliases = [ "@nog" ];
     };
 
   };
