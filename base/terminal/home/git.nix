@@ -14,7 +14,8 @@
     extraConfig =
     {
       pull.rebase = true; # Merging is evil
-      help.autocorrect = 30; # You know what I meant, git, but give me 3 seconds to stop you
+      help.autocorrect = 50; # You know what I meant, git, but give me 5 seconds to stop you
+      push.autoSetupRemote = true;
     };
   };
 }
