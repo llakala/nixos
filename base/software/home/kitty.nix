@@ -33,11 +33,28 @@ in
 
     tab_bar_edge = "top";
     tab_bar_style = "powerline";
+
+    enabled_layouts = "horizontal";
   };
 
   programs.kitty.keybindings =
   {
-    "ctrl+q" = "close_window";
+    "ctrl+q" = "close_os_window"; # Quit application
+    "ctrl+w" = "close_window"; #  Prioritizes internal windows > tabs
+
+    "ctrl+t" = "new_tab";
+
+    "ctrl+k" = "new_window"; # Split screen
+    "ctrl+j" = "previous_window";
+    "ctrl+l" = "next_window";
+
+
+    # Default binds should do nothing
+    "ctrl+shift+t" = "no_op";
+    "ctrl+shift+enter" = "no_op";
+    "ctrl+shift+[" = "no_op";
+    "ctrl+shift+]" = "no_op";
+
   };
 
 
