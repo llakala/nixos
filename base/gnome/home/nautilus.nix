@@ -21,19 +21,16 @@
     [
       "file:///" # Root
       "file://${vars.configDirectory}" # nixos config directory
+      "file://${hostVars.homeDirectory}/VMS"
     ];
   };
 
-  xdg.userDirs = # Delete useless directories from nautilus settings
+  xdg.userDirs = # Changes only apply on reboot
   {
     enable = true;
     createDirectories = true;
 
     music = null;
-    pictures = "${hostVars.homeDirectory}/Screenshots";
-    videos = "${hostVars.homeDirectory}/VMs"; # We can't define custom userDirs easily, so just make videos point to VMs. since we'd never use videos anyway
-    documents = null;
-
-    # vms = "${hostVars.homeDirectory}/VMs";
+    videos = null;
   };
 }
