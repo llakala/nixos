@@ -1,13 +1,15 @@
 {
   hostVars,
   pkgs,
-  pkgs-unstable,
   lib,
+  inputs,
   ...
 }:
 
 {
-  nix.package = pkgs-unstable.nixVersions.nix_2_23; # Use latest version of nix package manager
+  nix.package = pkgs.nixVersions.nix_2_23;
+
+  nix.registry.nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
 
   nix.settings =
   {
