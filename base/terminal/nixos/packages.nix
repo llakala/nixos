@@ -4,68 +4,43 @@
   ...
 }:
 
-let
-  basic = with pkgs;
+{
+  environment.systemPackages = with pkgs;
   [
-    coreutils # Basic linux utils
+    # Basic utils
+    coreutils
     libgccjit # gcc
-    usbutils
+    usbutils # lsusb and friends
     bind # Networking utils
-  ];
 
-  commands = with pkgs;
-  [
-    gnumake # Make
+    # Basic commands that should be included
     zip
     unzip
     wget
+    gnumake # make
+    file
+    tldr
 
+    # Extra commmands for personal preference
     jq
     ripgrep
-  ];
+    sd # Sed alternative
 
-  nixUtils = with pkgs;
-  [
+    # Weird stuff
+    appimage-run # Allow running appimages for when something isnt on nixpkgs
+    powertop # Check battery drain
+    xorg.xeyes
+    hwinfo
+    age
+    libsecret
+
+    # commands specifically for nix
     nil # Nix language server
     nvd
     nix-output-monitor # NOT CALLED NOM
-  ];
 
-  programming = with pkgs;
-  [
+    # Big kits
     nodejs
     jdk
-  ];
-
-  linux = with pkgs;
-  [
-    grub2
-    grub2_efi
-    efibootmgr
-
-    appimage-run # Allow running appimages for when something isnt on nixpkgs
-  ];
-
-  extras = with pkgs;
-  [
-    # Secrets
-    age
-    ssh-to-age
-    libsecret
-
-    hwinfo
-
-    xorg.xeyes # Check if app is running in xwayland or wayland
-  ];
-in
-{
-  environment.systemPackages = lib.concatLists
-  [
-    basic
-    commands
-    nixUtils
-    programming
-    linux
-    extras
   ];
 }
