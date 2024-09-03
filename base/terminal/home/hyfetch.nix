@@ -11,7 +11,7 @@
 			color_align.mode = "horizontal";
 
       args = ''
-      --package_managers off
+        --package_managers off
       ''; # Arguments passed into neofetch
 		};
 	};
