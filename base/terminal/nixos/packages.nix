@@ -20,6 +20,7 @@
     gnumake # make
     file
     tldr
+    calc # It's just slang chat
 
     # Extra commmands for personal preference
     jq
