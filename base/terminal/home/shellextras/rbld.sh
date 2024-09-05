@@ -33,7 +33,7 @@ rbld()
             echo "New time: $NEW_TIME"
 
             if [[ $NEW_TIME != $OLD_TIME ]]; then
-                git commit -q -m "Update flake.lock" flake.lock
+                git commit -q -m "flake: update flake.lock" flake.lock
                 git push
                 rbld -b
             else
