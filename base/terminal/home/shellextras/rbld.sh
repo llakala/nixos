@@ -32,10 +32,10 @@ rbld()
             echo "Old time: $OLD_TIME" # Logs for debugging
             echo "New time: $NEW_TIME"
 
-            if [[ $NEW_TIME > $OLD_TIME ]]; then
-                rbld -b
+            if [[ $NEW_TIME != $OLD_TIME ]]; then
                 git commit -q -m "Update flake.lock" flake.lock
                 git push
+                rbld -b
             else
                 echo "No important updates to flake.lock, so skipping rebuild"
             fi
