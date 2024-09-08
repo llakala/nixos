@@ -22,6 +22,8 @@ in
 
   programs.kitty.settings =
   {
+    scrollback_lines = 5000;
+
     linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
 
     bold_is_bright = true;
