@@ -71,6 +71,9 @@ in
       tile-top-half = ["<Super>w"];
       tile-bottom-half = ["<Super>s"];
 
+      enable-advanced-experimental-features = true;
+      default-move-mode = 2; # Indirectly disables edge tiling via the GUI, so we only do it via keybinds
+
     };
   };
 }
