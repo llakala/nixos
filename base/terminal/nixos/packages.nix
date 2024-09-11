@@ -34,6 +34,7 @@
     hwinfo
     age
     libsecret
+    cava # Audio display
 
     # commands specifically for nix
     nil # Nix language server
