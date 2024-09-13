@@ -17,7 +17,7 @@
 
     sessionVariables =
     {
-      EDITOR = hostVars.editor;
+      EDITOR = vars.editor;
     };
     shellAliases =
     {
