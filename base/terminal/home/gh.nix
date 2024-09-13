@@ -4,7 +4,7 @@
 
   programs.gh =
   {
-    enable = false;
+    enable = true;
   };
 
   programs.gh.settings =
