@@ -17,7 +17,7 @@
   hardware.bluetooth =
   {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false; # Why not save some battery
   };
 
   services.openssh.enable = true;
