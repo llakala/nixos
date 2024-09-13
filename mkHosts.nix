@@ -40,10 +40,8 @@ in
         ./base/software/nixos
         ./base/terminal/nixos
 
-        ./${hostName}/core/nixos
-        ./${hostName}/gnome/nixos
-        ./${hostName}/software/nixos
-        ./${hostName}/terminal/nixos
+        ./${hostName}/features/nixos
+        ./${hostName}/hardware/nixos
       ] ++
       [
         ./${hostName}/hardware-configuration.nix # NIX ONLY
@@ -87,10 +85,8 @@ in
           ./base/software/home
           ./base/terminal/home
 
-          ./${hostName}/core/home
-          ./${hostName}/gnome/home
-          ./${hostName}/software/home
-          ./${hostName}/terminal/home
+          ./${hostName}/features/home
+          ./${hostName}/hardware/home
         ];
         extraSpecialArgs = helpers //
         {
