@@ -43,37 +43,35 @@
   }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
   let
-    lib = nixpkgs.lib;
-    system = "x86_64-linux";
-
-    pkgsArgs = { inherit system; config.allowUnfree = true; };
-    pkgs = import nixpkgs pkgsArgs;
-    pkgs-unstable = import nixpkgs-unstable pkgsArgs;
-
-    mkHosts = import ./mkHosts.nix { inherit lib pkgs inputs pkgs-unstable; };
+    myLib = import ./myLib.nix { inherit inputs; };
   in
   {
+    nixosConfigurations =
+    {
+      framework = myLib.mkNixos
+      {
+        hostname = "framework";
+      };
+      desktop = myLib.mkNixos
+      {
+        hostname = "desktop";
+      };
+    };
 
-      nixosConfigurations = mkHosts.generateNix
-      "x86_64-linux"
-      [
-          "desktop"
-          "framework"
-      ];
+    homeConfigurations =
+    {
+      "emanresu@framework" = myLib.mkHome
+      {
+        hostname = "framework";
+        username = "emanresu";
+      };
+      "username@desktop" = myLib.mkHome
+      {
+        hostname = "desktop";
+        username = "username";
+      };
+    };
 
-
-      homeConfigurations = mkHosts.generateHome
-      [
-        "username"
-        "emanresu"
-      ]
-      [
-        "desktop"
-        "framework"
-      ];
-
-      devShells.${system}.default = import ./resources/shell.nix { inherit pkgs lib; };
-
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
+    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
   };
 }
