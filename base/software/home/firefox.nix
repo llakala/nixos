@@ -97,6 +97,7 @@ in
     };
   };
 
+
   programs.firefox.policies.Handlers."schemes" =
   {
     "vscode" =
@@ -126,15 +127,12 @@ in
     userContent = ''
       @import "firefox-gnome-theme/userContent.css";
     '';
+    extraConfig = builtins.readFile "${inputs.firefox-gnome-theme}/configuration/user.js";
 
     settings = # Settings that aren't allowed to be set in policies
     {
       "gnomeTheme.activeTabContrast" = true;
       "gnomeTheme.normalWidthTabs" = true;
-
-      # Settings recommended by firefox-gnome-theme
-      "widget.gtk.rounded-bottom-corners.enabled" = true;
-      "browser.uidensity" = 0;
 
       # Normal firefox settings that happen to be blocked
       "mousewheel.system_scroll_override" = true; # Normal system scrolling
