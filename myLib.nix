@@ -15,21 +15,21 @@ in rec
 
   importNixFile = filepath:
     if builtins.pathExists filepath && isNixFile filepath
-    then [ filepath ]
+      then [ filepath ]
     else [];
 
   importNixFolder = dir:
-  if builtins.pathExists dir && builtins.readDir dir != {} then # If folder has contents
-    lib.mapAttrsToList
-    (file: _: dir + "/${file}")
-    (lib.filterAttrs
-      (file: _: isNixFile file)
-      (builtins.readDir dir)
-    )
-  else []; # If directory is empty, return empty list
+  if !builtins.pathExists dir || builtins.readDir dir == {}
+    then [] # Exit early if directory doesn't exist, or is empty
+  else lib.mapAttrsToList
+  (file: _: dir + "/${file}")
+  (lib.filterAttrs
+    (file: _: isNixFile file)
+    (builtins.readDir dir)
+  );
 
   importNixFileOrFolder = path:
-    if !builtins.pathExists path then []
+    if !builtins.pathExists path then [] # Exit early if path is invalid
     else if lib.pathIsDirectory path then importNixFolder path
     else importNixFile path;
 
