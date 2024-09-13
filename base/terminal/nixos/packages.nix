@@ -12,6 +12,7 @@
     libgccjit # gcc
     usbutils # lsusb and friends
     bind # Networking utils
+    libva-utils # Check for hardware acceleration
 
     # Basic commands that should be included
     zip
