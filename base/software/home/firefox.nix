@@ -1,7 +1,40 @@
 { pkgs, inputs, lib, ...}:
 
 let
-  package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix
+
+  ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
+  [
+    ublock-origin
+    sponsorblock
+    return-youtube-dislikes
+    indie-wiki-buddy
+
+    modrinthify
+    refined-github
+    movie-web
+
+    # bypass-paywalls-clean (can't use, was creating popups)
+    consent-o-matic
+    terms-of-service-didnt-read
+
+    auto-tab-discard
+    clearurls
+    link-cleaner
+
+    redirector # For nixos wiki
+    darkreader
+  ];
+
+  customAddons =
+  [
+
+  ];
+in
+{
+
+  programs.firefox.enable = true;
+
+  programs.firefox.package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix
   (oldAttrs:
   {
     buildCommand = oldAttrs.buildCommand +
@@ -12,9 +45,7 @@ let
     '';
   });
 
-
-
-  policies =
+  programs.firefox.policies =
   {
     DontCheckDefaultBrowser = true;
     DisableTelemetry = true;
@@ -66,7 +97,7 @@ let
     };
   };
 
-  policies.Handlers."schemes" =
+  programs.firefox.policies.Handlers."schemes" =
   {
     "vscode" =
     {
@@ -80,15 +111,38 @@ let
     };
   };
 
-
-
-  search =
+  programs.firefox.profiles.default =
   {
-    force = true;
-    default = "DuckDuckGo";
+    isDefault = true;
+    extensions = ryceeAddons ++ customAddons;
+    search =
+    {
+      force = true;
+      default = "DuckDuckGo";
+    };
+    userChrome = ''
+      @import "firefox-gnome-theme/userChrome.css";
+    '';
+    userContent = ''
+      @import "firefox-gnome-theme/userContent.css";
+    '';
+
+    settings = # Settings that aren't allowed to be set in policies
+    {
+      "gnomeTheme.activeTabContrast" = true;
+      "gnomeTheme.normalWidthTabs" = true;
+
+      # Settings recommended by firefox-gnome-theme
+      "widget.gtk.rounded-bottom-corners.enabled" = true;
+      "browser.uidensity" = 0;
+
+      # Normal firefox settings that happen to be blocked
+      "mousewheel.system_scroll_override" = true; # Normal system scrolling
+      "reader.parse-on-load.enabled" = false; # Disable Reader View
+    };
   };
 
-  search.engines =
+  programs.firefox.profiles.default.search.engines =
   {
     # Disable all the stupid "This time, search with" icons
     "Google".metaData.hidden = true;
@@ -139,7 +193,7 @@ let
 
 
 
-  policies.Preferences =
+  programs.firefox.policies.Preferences =
   {
     "browser.urlbar.suggest.searches" = true; # Need this for basic search suggestions
     "browser.urlbar.shortcuts.bookmarks" = false;
@@ -165,7 +219,7 @@ let
     "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
   };
 
-  policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
+  programs.firefox.policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
   {
     placements =
     {
@@ -203,73 +257,6 @@ let
     };
     currentVersion = 20;
     newElementCount = 3;
-  };
-
-
-
-  ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
-  [
-    ublock-origin
-    sponsorblock
-    return-youtube-dislikes
-    indie-wiki-buddy
-
-    modrinthify
-    refined-github
-    movie-web
-
-    # bypass-paywalls-clean (can't use, was creating popups)
-    consent-o-matic
-    terms-of-service-didnt-read
-
-    auto-tab-discard
-    clearurls
-    link-cleaner
-
-    redirector # For nixos wiki
-    darkreader
-  ];
-
-  customAddons =
-  [
-
-  ];
-
-
-
-in
-{
-  programs.firefox =
-  {
-    enable = true;
-    inherit package policies;
-  };
-
-  programs.firefox.profiles.default =
-  {
-    isDefault = true;
-    extensions = ryceeAddons ++ customAddons;
-    inherit search;
-    userChrome = ''
-      @import "firefox-gnome-theme/userChrome.css";
-    '';
-    userContent = ''
-      @import "firefox-gnome-theme/userContent.css";
-    '';
-
-    settings = # Settings that aren't allowed to be set in policies
-    {
-      "gnomeTheme.activeTabContrast" = true;
-      "gnomeTheme.normalWidthTabs" = true;
-
-      # Settings recommended by firefox-gnome-theme
-      "widget.gtk.rounded-bottom-corners.enabled" = true;
-      "browser.uidensity" = 0;
-
-      # Normal firefox settings that happen to be blocked
-      "mousewheel.system_scroll_override" = true; # Normal system scrolling
-      "reader.parse-on-load.enabled" = false; # Disable Reader View
-    };
   };
 
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
