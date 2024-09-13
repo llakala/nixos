@@ -10,6 +10,7 @@
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
         "code.desktop"
+        "obsidian.desktop"
        ];
     };
 
