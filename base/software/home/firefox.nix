@@ -102,13 +102,7 @@ in
   {
     "vscode" =
     {
-      "action" = "useHelperApp";
-      "ask" = false;
-    };
-    "slack" =
-    {
-      "action" = "useHelperApp";
-      "ask" = false;
+      "action" = "useSystemDefault"; # System default uses the helper app
     };
   };
 
