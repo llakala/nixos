@@ -41,7 +41,8 @@ in
     ''
     wrapProgram $out/bin/firefox \
       --set MOZ_ENABLE_WAYLAND 0 \
-      --set MOZ_USE_XINPUT2 1
+      --set MOZ_USE_XINPUT2 1 \
+      --set MOZ_LOG "FFmpegVideo:5"
     '';
   });
 
@@ -197,13 +198,14 @@ in
     "browser.aboutConfig.showWarning" = false; # No warning when going to config
     "browser.warnOnQuitShortcut" = false;
 
-    "browser.tabs.loadInBackground" = true; # Load tabs automaticlaly
+    "browser.tabs.loadInBackground" = true; # Load tabs automatically
+    "media.ffmpeg.vaapi.enabled" = true; # Enable hardware acceleration
 
     "browser.in-content.dark-mode" = true; # Use dark mode
     "ui.systemUsesDarkTheme" = true;
 
     "extensions.autoDisableScopes" = 0; # Automatically enable extensions
-    "extensions.update.enabled" = false; # Don't update extensions since they're sourced from rycee
+    "extensions.update.enabled" = false;
 
     "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
   };
