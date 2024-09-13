@@ -95,14 +95,10 @@ in
       SponsoredPocket = false;
       Snippets = false;
     };
-  };
 
-
-  programs.firefox.policies.Handlers."schemes" =
-  {
-    "vscode" =
+    Handlers.schemes.vscode =
     {
-      "action" = "useSystemDefault"; # System default uses the helper app
+      action = "useSystemDefault"; # System default uses the helper app
     };
   };
 
