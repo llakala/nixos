@@ -20,13 +20,14 @@
     wget
     gnumake # make
     file
-    tldr
-    calc # It's just slang chat
 
     # Extra commmands for personal preference
     jq
     ripgrep
     sd # Sed alternative
+    tldr
+    calc # It's just slang chat
+    cava # Audio display
 
     # Weird stuff
     appimage-run # Allow running appimages for when something isnt on nixpkgs
@@ -35,7 +36,6 @@
     hwinfo
     age
     libsecret
-    cava # Audio display
 
     # commands specifically for nix
     nil # Nix language server
