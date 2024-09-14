@@ -7,6 +7,16 @@
      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
+  hardware.framework-laptop.keyboardBacklight =
+  {
+    enable = true;
+    brightness = 0;
+  };
+  hardware.framework-laptop.fingerprintBacklight =
+  {
+    enable = true;
+    brightness = "medium";
+  };
 
   services =
   {
