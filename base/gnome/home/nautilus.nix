@@ -1,11 +1,11 @@
 { vars, hostVars, pkgs, ... }:
 
 {
-  home.packages = with pkgs;
+  home.packages = with pkgs.gnome;
   [
     nautilus
   ];
-  
+
   dconf.settings =
   {
    "org/gtk/gtk4/settings/file-chooser" = # Within Nautilus
