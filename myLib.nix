@@ -52,7 +52,7 @@ in rec
       pkgs-unstable = myUnstablePkgs system;
 
       vars = import ./base/baseVars.nix;
-      hostVars = import ./${hostname}/${hostname}Vars.nix;
+      hostVars = import ./hosts/${hostname}/${hostname}Vars.nix;
     };
 
     modules =
@@ -63,9 +63,8 @@ in rec
       ./base/software/nixos
       ./base/terminal/nixos
 
-      ./${hostname}/features/nixos
-      ./${hostname}/hardware/nixos
-      ./${hostname}/hardware-configuration.nix
+      ./hosts/${hostname}/nixos
+      ./hosts/${hostname}/hardware-configuration.nix
     ]
     ++ lib.singleton # Wraps list around set
     {
@@ -86,7 +85,7 @@ in rec
       pkgs-unstable = myUnstablePkgs system;
 
       vars = import ./base/baseVars.nix;
-      hostVars = import ./${hostname}/${hostname}Vars.nix;
+      hostVars = import ./hosts/${hostname}/${hostname}Vars.nix;
     };
 
     modules =
@@ -97,8 +96,7 @@ in rec
       ./base/software/home
       ./base/terminal/home
 
-      ./${hostname}/features/home
-      ./${hostname}/hardware/home
+      ./hosts/${hostname}/home
     ];
   };
 
