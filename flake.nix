@@ -62,13 +62,13 @@
     {
       "emanresu@framework" = myLib.mkHome
       {
-        hostname = "framework";
         username = "emanresu";
+        hostname = "framework";
       };
       "username@desktop" = myLib.mkHome
       {
-        hostname = "desktop";
         username = "username";
+        hostname = "desktop";
       };
     };
 
