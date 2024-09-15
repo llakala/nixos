@@ -39,7 +39,7 @@ in
   };
   config =
   {
-    environment.systemPackages = mkIf (cfg.keyboardBacklight.enable || cfg.fingerprintBacklight.enable ) [ pkgs.framework-tool ];
+    environment.systemPackages = mkIf (cfg.keyboardBacklight.enable || cfg.fingerprintBacklight.enable || cfg.chargeLimit.enable ) [ pkgs.framework-tool ];
 
     systemd.services =
     {
