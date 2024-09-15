@@ -44,7 +44,6 @@
     (with pkgs.gnome;
     [
       gnome-tweaks
-      nautilus
       gnome-terminal
       gnome-disk-utility
       gnome.dconf-editor
