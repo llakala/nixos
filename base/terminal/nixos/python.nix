@@ -1,12 +1,16 @@
 { pkgs, ... }:
 
-{
+let
+   myPython = pkgs.python312;
 
-   environment.systemPackages = with pkgs; [ python313 ] ++
-   (with pkgs.python313Packages;
+   myPythonPackages = pythonPackages: with pythonPackages;
    [
-      # pandas # Relies on numpy
-      # numpy # Broken on 3.13
-      # matplotlib # Relies on numpy
-  ]);
+      termcolor
+      pandas
+      matplotlib
+      numpy
+   ];
+in
+{
+   environment.systemPackages = [( myPython.withPackages myPythonPackages )];
 }
