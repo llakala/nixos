@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs-unstable, ... }:
 
 let
-   myPython = pkgs.python312;
+   myPython = pkgs-unstable.python313;
 
    myPythonPackages = pythonPackages: with pythonPackages;
    [
