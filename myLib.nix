@@ -38,8 +38,23 @@ in rec
   (map importNixFileOrFolder dirs);
 
 
+  # Idea for using these proudly stolen from https://github.com/MattSturgeon/nix-config/blob/e98a93e/hosts/flake-module.nix
+  atSignSplit = string:
+    lib.splitString "@" string;
 
-  mkNixos = { hostname, system ? "x86_64-linux" }:
+  guessUsername = userhost:
+    if builtins.length (atSignSplit userhost ) == 2
+    then builtins.elemAt (atSignSplit userhost) 0 # First value in list
+    else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
+
+  guessHostname = userhost:
+    if builtins.length (atSignSplit userhost ) == 2
+    then builtins.elemAt (atSignSplit userhost) 1 # Second value in list
+    else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
+
+
+
+  mkNixos = hostname: { system }:
   lib.nixosSystem
   {
     inherit system;
@@ -73,7 +88,12 @@ in rec
   };
 
 
-  mkHome = { hostname, username, system ? "x86_64-linux" }:
+  mkHome = userhost:
+  {
+    system,
+    username ? guessUsername userhost,
+    hostname ? guessHostname userhost
+  }:
   inputs.home-manager.lib.homeManagerConfiguration
   {
     pkgs = myPkgs system;
