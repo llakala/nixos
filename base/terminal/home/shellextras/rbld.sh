@@ -1,5 +1,6 @@
 rbld()
 ( # Run in subshell so the cd is undone after rebuilding
+    set -e # Exit early if any commands fail
     cd $CONFIG_DIRECTORY
 
     run_rbld() # Add any new files to git and pipe command output into `nom`
@@ -36,13 +37,7 @@ rbld()
                 echo "No important updates to flake.lock, so skipping rebuild"
                 exit 0
             fi
-
-            if ! rbld -b; then
-                echo "Rebuild failed, not committing changes"
-                exit 1
-            fi
-
-            echo "Rebuild passed, commiting changes: "
+            rbld -b # If we fail here, we exit early and don't commit something broken`
             git commit -q -m "flake: update flake.lock" flake.lock
             git push
             ;;
