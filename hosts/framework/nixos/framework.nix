@@ -1,11 +1,26 @@
 { inputs, pkgs, ...}:
 
 {
-
   imports =
   [
      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
+
+
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxKernel.kernels.linux_6_10); # Until https://nixpk.gs/pr-tracker.html?pr=342294 hits 24.05
+
+
+  hardware.graphics =
+  {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs;
+    [
+      libvdpau-va-gl
+      vaapiVdpau
+    ];
+  };
+
 
   hardware.framework-laptop.keyboardBacklight =
   {
@@ -18,6 +33,7 @@
     brightness = "medium";
   };
 
+
   services =
   {
     fstrim.enable = true; # Disk
@@ -29,22 +45,12 @@
     extraRemotes = [ "lvfs-testing" ];
   };
 
+
   hardware.wirelessRegulatoryDatabase = true; # Speed up wifi?
   boot.extraModprobeConfig =
   ''
     options cfg80211 ieee80211_regdom="US"
   '';
-
-  hardware.graphics =
-  {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs;
-    [
-      libvdpau-va-gl
-      vaapiVdpau
-    ];
-  };
 
 
   # boot.kernelPatches =
