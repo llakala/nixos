@@ -99,7 +99,14 @@ in
 
     Handlers.schemes.vscode =
     {
-      action = "useSystemDefault"; # System default uses the helper app
+      action = "useSystemDefault"; # Open VSCode app
+      ask = false;
+    };
+
+    Handlers.schemes.element =
+    {
+      action = "useSystemDefault"; # Open Element app
+      ask = false;
     };
   };
 
@@ -179,6 +186,20 @@ in
       definedAliases = [ "@nog" ];
     };
 
+    "Nixpkgs" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search";
+        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
+        {
+          "type" = "code";
+          "q" = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
+        };
+      };
+      definedAliases = [ "@npkgs" ];
+    };
+
   };
 
 
@@ -251,7 +272,7 @@ in
   };
 
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
-  
+
   home.file.".mozilla/firefox/default/extension-preferences.json" =
   {
     text = builtins.toJSON
