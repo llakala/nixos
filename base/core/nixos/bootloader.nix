@@ -12,7 +12,7 @@
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxKernel.kernels.linux_6_10);
 
     kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
