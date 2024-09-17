@@ -42,6 +42,7 @@ rbld()
                 exit 1
             fi
 
+            echo "Rebuild passed, commiting changes: "
             git commit -q -m "flake: update flake.lock" flake.lock
             git push
             ;;
