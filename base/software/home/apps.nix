@@ -18,5 +18,6 @@
     spotify
     shortwave # Internet radio
     obsidian # Notes
+    element-desktop
   ];
 }
