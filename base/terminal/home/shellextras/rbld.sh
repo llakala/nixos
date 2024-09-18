@@ -27,7 +27,7 @@ rbld()
             ;;
         -f)
             OLD_TIME=$(get_time)
-            sudo nix flake update --flake $CONFIG_DIRECTORY
+            nix flake update --flake $CONFIG_DIRECTORY
             NEW_TIME=$(get_time)
 
             echo "Old time: $OLD_TIME" # Logs for debugging
