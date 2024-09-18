@@ -273,16 +273,24 @@ in
 
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
 
-  home.file.".mozilla/firefox/default/extension-preferences.json" =
+  home.file.".mozilla/firefox/default/extension-preferences.json".text = builtins.toJSON
   {
-    text = builtins.toJSON
+    "uBlock0@raymondhill.net" =
     {
-      "uBlock0@raymondhill.net" =
-      {
-        permissions = [ "internal:privateBrowsingAllowed" ];
-        origins = [];
-      };
+      permissions = [ "internal:privateBrowsingAllowed" ];
+      origins = [];
     };
-    force = true;
+    "{b0a674f9-f848-9cfd-0feb-583d211308b0}" = # Movie-web
+    {
+      "permissions" = [ "<all_urls>" ];
+      "origins" = [ "<all_urls>" ];
+    };
+    "gdpr@cavi.au.dk" =
+    {
+      "permissions" = [ "<all_urls>" ];
+      "origins" = [ "<all_urls>" ];
+    };
   };
+
+  home.file.".mozilla/firefox/default/extension-preferences.json".force = true;
 }
