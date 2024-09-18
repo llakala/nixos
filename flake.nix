@@ -48,16 +48,16 @@
   {
     nixosConfigurations = builtins.mapAttrs myLib.mkNixos
     {
-      framework = { system = "x86_64-linux"; };
-      desktop = { system = "x86_64-linux"; };
+      framework.system = "x86_64-linux";
+      desktop.system = "x86_64-linux";
     };
 
     homeConfigurations = builtins.mapAttrs myLib.mkHome
     {
-      "emanresu@framework" = { system = "x86_64-linux"; };
-      "username@desktop" = { system = "x86_64-linux"; };
+      "emanresu@framework".system = "x86_64-linux";
+      "username@desktop".system = "x86_64-linux";
     };
 
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
+    packages.x86_64-linux.default = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
   };
 }
