@@ -6,7 +6,7 @@
 
 {
 
-  home.packages =
+  hm.home.packages =
   with pkgs;
   [
     modrinth-app

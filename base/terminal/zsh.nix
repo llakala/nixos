@@ -5,7 +5,7 @@
 }:
 
 {
-  programs.zsh =
+  hm.programs.zsh =
   {
     enable = true;
 
@@ -34,13 +34,13 @@
       share = true; # Share history between terminal sessions
       ignoreDups = true; # # Ignore duplicates only if they're right next to each other
     };
-  };
 
-  programs.zsh.initExtra =
-  ''
-    export CONFIG_DIRECTORY=${vars.configDirectory}
-    source ${./shellextras/options.sh}
-    source ${./shellextras/keybinds.sh}
-    source ${./shellextras/rbld.sh}
-  '';
+    initExtra =
+    ''
+      export CONFIG_DIRECTORY=${vars.configDirectory}
+      source ${./shellextras/options.sh}
+      source ${./shellextras/keybinds.sh}
+      source ${./shellextras/rbld.sh}
+    '';
+  };
 }

@@ -44,18 +44,26 @@
 
   let
     myLib = import ./myLib.nix { inherit inputs; };
-  in
+  in rec
   {
     nixosConfigurations = builtins.mapAttrs myLib.mkNixos
     {
-      framework.system = "x86_64-linux";
-      desktop.system = "x86_64-linux";
+      framework =
+      {
+        system = "x86_64-linux";
+        username = "emanresu";
+      };
+
+      desktop =
+      {
+        system = "x86_64-linux";
+        username = "username";
+      };
     };
 
-    homeConfigurations = builtins.mapAttrs myLib.mkHome
+    homeConfigurations =
     {
-      "emanresu@framework".system = "x86_64-linux";
-      "username@desktop".system = "x86_64-linux";
+      framework = nixosConfigurations.framework.config.home-manager.users.emanresu.home;
     };
 
     packages.x86_64-linux.default = home-manager.defaultPackage.x86_64-linux; # For activating home-manager

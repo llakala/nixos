@@ -54,7 +54,7 @@ in rec
 
 
 
-  mkNixos = hostname: { system }:
+  mkNixos = hostname: { system, username }:
   lib.nixosSystem
   {
     inherit system;
@@ -73,18 +73,23 @@ in rec
     modules =
     importAll
     [
-      ./base/core/nixos
-      ./base/gnome/nixos
-      ./base/software/nixos
-      ./base/terminal/nixos
+      ./base/core
+      ./base/gnome
+      ./base/software
+      ./base/terminal
 
-      ./hosts/${hostname}/nixos
+      ./hosts/${hostname}/config
       ./hosts/${hostname}/hardware-configuration.nix
     ]
-    ++ lib.singleton # Wraps list around set
-    {
-      nixpkgs.pkgs = myPkgs system;
-    };
+    ++
+    [
+      inputs.home-manager.nixosModules.home-manager
+
+      (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" username])
+      {
+        nixpkgs.pkgs = myPkgs system;
+      }
+    ];
   };
 
 
