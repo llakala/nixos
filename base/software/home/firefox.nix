@@ -134,7 +134,6 @@ in
 
       # Normal firefox settings that happen to be blocked
       "mousewheel.system_scroll_override" = true; # Normal system scrolling
-      "reader.parse-on-load.enabled" = false; # Disable Reader View
       "services.sync.declinedEngines" = "";
     };
   };
