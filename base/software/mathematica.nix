@@ -18,7 +18,7 @@ let
   };
 in
 {
-  hm.home.packages =
+  environment.systemPackages =
   [
     my_mathematica
   ];

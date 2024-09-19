@@ -31,7 +31,8 @@ let
   ];
 in
 {
-  hm = {
+  hm =
+  {
     programs.firefox.enable = true;
 
     programs.firefox.package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix

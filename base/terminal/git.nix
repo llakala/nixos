@@ -5,28 +5,25 @@
 }:
 
 {
-  hm =
+  hm.programs.git =
   {
-    programs.git =
+    enable = true;
+    userName = hostVars.fullName;
+    userEmail = hostVars.userEmail;
+
+    extraConfig =
     {
-      enable = true;
-      userName = hostVars.fullName;
-      userEmail = hostVars.userEmail;
+      pull.ff = "only";
 
-      extraConfig =
-      {
-        pull.ff = "only";
+      push.autoSetupRemote = true;
+      push.useForceIfIncludes = true;
+    };
 
-        push.autoSetupRemote = true;
-        push.useForceIfIncludes = true;
-      };
-
-      aliases =
-      {
-        oops = "commit --amend --no-edit";
-        reword = "commit --amend";
-        force = "push --force-with-lease --force-if-includes";
-      };
+    aliases =
+    {
+      oops = "commit --amend --no-edit";
+      reword = "commit --amend";
+      force = "push --force-with-lease --force-if-includes";
     };
   };
 }

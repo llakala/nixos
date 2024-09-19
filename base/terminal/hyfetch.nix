@@ -1,23 +1,22 @@
 { ... }:
 
 {
-  hm =
+
+  environment.shellAliases.neofetch = "hyfetch";
+
+  
+  hm.programs.hyfetch =
   {
-    programs.hyfetch =
+    enable = true;
+    settings =
     {
-      enable = true;
-      settings =
-      {
-        preset = "transgender";
-        mode = "rgb";
-        color_align.mode = "horizontal";
+      preset = "transgender";
+      mode = "rgb";
+      color_align.mode = "horizontal";
 
-        args = ''
-          --package_managers off
-        ''; # Arguments passed into neofetch
-      };
+      args = ''
+        --package_managers off
+      ''; # Arguments passed into neofetch
     };
-
-    home.shellAliases.neofetch = "hyfetch";
   };
 }

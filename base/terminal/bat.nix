@@ -1,22 +1,17 @@
 { lib, pkgs, ... }:
 
 {
-  hm =
+  environment.shellAliases.cat = "bat";
+  environment.shellAliases.man = "batman";
+
+  hm.programs.bat =
   {
+    enable = true;
 
-    programs.bat =
-    {
-      enable = true;
-
-      extraPackages = with pkgs.bat-extras;
-      [
-        batman # Prettier version of man
-      ];
-    };
-
-    home.shellAliases.cat = "bat";
-    home.shellAliases.man = "batman";
-
-    home.activation.batCache = lib.mkForce ""; # Until https://github.com/nix-community/home-manager/issues/5481 is fixed
+    extraPackages = with pkgs.bat-extras;
+    [
+      batman # Prettier version of man
+    ];
   };
+    # Waiting for https://github.com/nix-community/home-manager/issues/5481 is fixed
 }
