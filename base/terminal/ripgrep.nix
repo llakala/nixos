@@ -1,11 +1,9 @@
 {
-  hm =
-  {
-    programs.ripgrep =
-    {
-      enable = true;
-    };
 
-    home.shellAliases.grep = "rg";
+  environment.shellAliases.grep = "rg";
+
+  hm.programs.ripgrep =
+  {
+    enable = true;
   };
 }

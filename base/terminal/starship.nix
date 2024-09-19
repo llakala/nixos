@@ -1,36 +1,32 @@
 { ... }:
 
 {
-  hm =
+  hm.programs.starship =
   {
+    enable = true;
+    enableZshIntegration = true;
 
-    programs.starship =
-    {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    programs.starship.settings.directory =
+    settings.directory =
     {
       truncate_to_repo = false; # Show full path of current direcotry
     };
 
-    programs.starship.settings.git_branch =
+    settings.git_branch =
     {
       ignore_branches = [ "master" "main" ]; # Don't show git branch if on master/amin
     };
 
-    programs.starship.settings.cmd_duration =
+    settings.cmd_duration =
     {
       min_time = 30 * 1000; # 30 seconds
     };
 
-    programs.starship.settings.line_break =
+    settings.line_break =
     {
       disabled = true; # Everything on one line
     };
 
-    programs.starship.settings.battery =
+    settings.battery =
     {
       display = # TODO: Use the lib wrapper function here
       [{
