@@ -23,7 +23,6 @@
 
     # Extra commmands for personal preference
     jq
-    ripgrep
     sd # Sed alternative
     tldr
     calc # It's just slang chat
