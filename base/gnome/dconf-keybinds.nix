@@ -28,7 +28,7 @@
       toggle-quick-settings = [ ]; # Super+S is also useful
     };
 
-    "org/gnome/desktop/wm/keybindings" =
+    "org/gnome/desktop/wm/keybindings" = # Make apps immediately appear in alt tab menu
     {
       switch-applications = [ "<Super>Tab" ];
       switch-applications-backward = [ "<Shift><Super>Tab" ];
