@@ -1,3 +1,5 @@
+# NOTE: Quite a bit of the info in this README is currently outdated, including the structure info. I'm planning on fixing it soon.
+
 # WHAT IS THIS?
 This is my own nixos configuration for both my desktop and laptop. Currently it provides a base configuration, as well as per-host modules on top of the base.
 
