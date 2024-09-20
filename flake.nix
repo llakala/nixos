@@ -45,7 +45,7 @@
   let
     myLib = import ./myLib.nix { inherit inputs; };
 
-    nixosConfigurations = builtins.mapAttrs myLib.mkNixos
+    nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as userhost
     {
       framework.system = "x86_64-linux";
 
@@ -56,7 +56,7 @@
   {
     inherit nixosConfigurations;
 
-    homeConfigurations = builtins.mapAttrs myLib.mkHome
+    homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
     {
       "emanresu@framework" = { inherit nixosConfigurations; };
     };
