@@ -13,5 +13,7 @@
       batman # Prettier version of man
     ];
   };
-    # Waiting for https://github.com/nix-community/home-manager/issues/5481 is fixed
+
+  
+  hm.home.activation.batCache = lib.mkForce "";# Waiting for https://github.com/nix-community/home-manager/issues/5481 is fixed
 }
