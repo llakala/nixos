@@ -18,7 +18,7 @@ in rec
       then [ filepath ]
     else [];
 
-  importNixFolder = dir:
+  importNixFolder = dir: # Import all nix files within a folder
   if !builtins.pathExists dir || builtins.readDir dir == {}
     then [] # Exit early if directory doesn't exist, or is empty
   else lib.mapAttrsToList
@@ -42,12 +42,12 @@ in rec
   atSignSplit = string:
     lib.splitString "@" string;
 
-  guessUsername = userhost:
+  guessUsername = userhost: # Grab everything before the @ in "username@hostname"
     if builtins.length (atSignSplit userhost ) == 2
     then builtins.elemAt (atSignSplit userhost) 0 # First value in list
     else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
 
-  guessHostname = userhost:
+  guessHostname = userhost: # Grab everything after the @ in "username@hostname"
     if builtins.length (atSignSplit userhost ) == 2
     then builtins.elemAt (atSignSplit userhost) 1 # Second value in list
     else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
@@ -99,6 +99,6 @@ in rec
     username ? guessUsername userhost,
     hostname ? guessHostname userhost
   }:
-  nixosConfigurations.${hostname}.config.home-manager.users.${username}.home;
+  nixosConfigurations.${hostname}.config.home-manager.users.${username}.home; # allows me to independently switch my home environment without rebuilding my entire system (thanks RadioAddition)
 
 }
