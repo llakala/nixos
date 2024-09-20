@@ -22,9 +22,6 @@ rbld()
         -h)
             run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY
             ;;
-        -b)
-            rbld -n && rbld -h
-            ;;
         -f)
             OLD_TIME=$(get_time)
             nix flake update --flake $CONFIG_DIRECTORY
@@ -37,7 +34,7 @@ rbld()
                 echo "No important updates to flake.lock, so skipping rebuild"
                 exit 0
             fi
-            rbld -b # If we fail here, we exit early and don't commit something broken`
+            rbld -n # If we fail here, we exit early and don't commit something broken`
             git commit -q -m "flake: update flake.lock" flake.lock
             git push
             ;;
