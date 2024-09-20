@@ -10,6 +10,7 @@ let
     alphabetical-app-grid
     tiling-assistant # When tiling one app, suggest another app to tile
     status-area-horizontal-spacing # Put things on the top right closer together
+    sane-airplane-mode # Airplane mode won't auto enable
   ];
 
 in
@@ -23,7 +24,7 @@ in
     {
       disable-user-extensions = false;
 
-      enabled-extensions =  map (extension: extension.extensionUuid) gnomeExtensions;
+      enabled-extensions = map (extension: extension.extensionUuid) gnomeExtensions; # Enable all gnomeExtensions
     };
 
 
@@ -73,6 +74,12 @@ in
 
       enable-advanced-experimental-features = true;
       default-move-mode = 2; # Indirectly disables edge tiling via the GUI, so we only do it via keybinds
+    };
+
+    "org/gnome/shell/extensions/sane-airplane-mode" =
+    {
+      enable-airplane-mode = false;
+      enable-bluetooth = false; # Misleading: actually means when turning off airplane mode, bluetooth doesn't go on
     };
   };
 }
