@@ -38,9 +38,9 @@
     initExtra =
     ''
       export CONFIG_DIRECTORY=${vars.configDirectory}
-      source ${./shellextras/options.sh}
-      source ${./shellextras/keybinds.sh}
-      source ${./shellextras/rbld.sh}
+      source ${./options.sh}
+      source ${./keybinds.sh}
+      source ${./rbld.sh}
     '';
   };
 }

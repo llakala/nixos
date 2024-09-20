@@ -74,11 +74,14 @@ in rec
     importAll
     [
       ./base/core
+      ./base/features
       ./base/gnome
-      ./base/software
       ./base/terminal
 
-      ./hosts/${hostname}/config
+      ./apps/cli
+      ./apps/gui
+
+      ./hosts/${hostname}/modules
       ./hosts/${hostname}/hardware-configuration.nix
     ]
     ++
