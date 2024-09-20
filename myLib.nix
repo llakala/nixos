@@ -95,34 +95,10 @@ in rec
 
   mkHome = userhost:
   {
-    system,
+    nixosConfigurations,
     username ? guessUsername userhost,
     hostname ? guessHostname userhost
   }:
-  inputs.home-manager.lib.homeManagerConfiguration
-  {
-    pkgs = myPkgs system;
-
-    extraSpecialArgs =
-    {
-      inherit inputs myLib;
-
-      pkgs-unstable = myUnstablePkgs system;
-
-      vars = import ./base/baseVars.nix;
-      hostVars = import ./hosts/${hostname}/${hostname}Vars.nix;
-    };
-
-    modules =
-    importAll
-    [
-      ./base/core/home
-      ./base/gnome/home
-      ./base/software/home
-      ./base/terminal/home
-
-      ./hosts/${hostname}/home
-    ];
-  };
+  nixosConfigurations.${hostname}.config.home-manager.users.${username}.home;
 
 }

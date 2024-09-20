@@ -44,8 +44,7 @@
 
   let
     myLib = import ./myLib.nix { inherit inputs; };
-  in rec
-  {
+
     nixosConfigurations = builtins.mapAttrs myLib.mkNixos
     {
       framework.system = "x86_64-linux";
@@ -53,9 +52,13 @@
       desktop.system = "x86_64-linux";
     };
 
-    homeConfigurations =
+  in
+  {
+    inherit nixosConfigurations;
+
+    homeConfigurations = builtins.mapAttrs myLib.mkHome
     {
-      "emanresu@framework" = nixosConfigurations.framework.config.home-manager.users.emanresu.home;
+      "emanresu@framework" = { inherit nixosConfigurations; };
     };
   };
 }
