@@ -32,7 +32,7 @@
       ];
     };
 
-    xdg.userDirs = # Changes only apply on reboot
+    xdg.userDirs = # Remove music and videos directories from sidebar
     {
       enable = true;
       createDirectories = true;
@@ -40,5 +40,6 @@
       music = null;
       videos = null;
     };
+    xdg.configFile."user-dirs.dirs".force = true;
   };
 }
