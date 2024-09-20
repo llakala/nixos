@@ -1,6 +1,6 @@
 { ... }:
 {
-  dconf.settings =
+  hm.dconf.settings =
   {
     "org/gnome/shell" =
     {

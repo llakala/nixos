@@ -18,7 +18,7 @@ in rec
       then [ filepath ]
     else [];
 
-  importNixFolder = dir:
+  importNixFolder = dir: # Import all nix files within a folder
   if !builtins.pathExists dir || builtins.readDir dir == {}
     then [] # Exit early if directory doesn't exist, or is empty
   else lib.mapAttrsToList
@@ -42,12 +42,12 @@ in rec
   atSignSplit = string:
     lib.splitString "@" string;
 
-  guessUsername = userhost:
+  guessUsername = userhost: # Grab everything before the @ in "username@hostname"
     if builtins.length (atSignSplit userhost ) == 2
     then builtins.elemAt (atSignSplit userhost) 0 # First value in list
     else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
 
-  guessHostname = userhost:
+  guessHostname = userhost: # Grab everything after the @ in "username@hostname"
     if builtins.length (atSignSplit userhost ) == 2
     then builtins.elemAt (atSignSplit userhost) 1 # Second value in list
     else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
@@ -73,51 +73,32 @@ in rec
     modules =
     importAll
     [
-      ./base/core/nixos
-      ./base/gnome/nixos
-      ./base/software/nixos
-      ./base/terminal/nixos
+      ./base/core
+      ./base/features
+      ./base/gnome
+      ./base/terminal
 
-      ./hosts/${hostname}/nixos
+      ./apps/cli
+      ./apps/gui
+
+      ./hosts/${hostname}/modules
       ./hosts/${hostname}/hardware-configuration.nix
     ]
-    ++ lib.singleton # Wraps list around set
-    {
-      nixpkgs.pkgs = myPkgs system;
-    };
+    ++
+    [
+      {
+        nixpkgs.pkgs = myPkgs system;
+      }
+    ];
   };
 
 
   mkHome = userhost:
   {
-    system,
+    nixosConfigurations,
     username ? guessUsername userhost,
     hostname ? guessHostname userhost
   }:
-  inputs.home-manager.lib.homeManagerConfiguration
-  {
-    pkgs = myPkgs system;
-
-    extraSpecialArgs =
-    {
-      inherit inputs myLib;
-
-      pkgs-unstable = myUnstablePkgs system;
-
-      vars = import ./base/baseVars.nix;
-      hostVars = import ./hosts/${hostname}/${hostname}Vars.nix;
-    };
-
-    modules =
-    importAll
-    [
-      ./base/core/home
-      ./base/gnome/home
-      ./base/software/home
-      ./base/terminal/home
-
-      ./hosts/${hostname}/home
-    ];
-  };
+  nixosConfigurations.${hostname}.config.home-manager.users.${username}.home; # allows me to independently switch my home environment without rebuilding my entire system (thanks RadioAddition)
 
 }

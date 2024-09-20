@@ -5,7 +5,7 @@
 }:
 
 {
-  programs.git =
+  hm.programs.git =
   {
     enable = true;
     userName = hostVars.fullName;

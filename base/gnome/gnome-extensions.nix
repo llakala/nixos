@@ -14,9 +14,9 @@ let
 
 in
 {
-  home.packages = gnomeExtensions;
+  environment.systemPackages = gnomeExtensions;
 
-  dconf.settings =
+  hm.dconf.settings =
   {
 
     "org/gnome/shell" =
@@ -73,7 +73,6 @@ in
 
       enable-advanced-experimental-features = true;
       default-move-mode = 2; # Indirectly disables edge tiling via the GUI, so we only do it via keybinds
-
     };
   };
 }

@@ -22,7 +22,7 @@ let
   };
 in
 {
-  home.packages =
+  environment.systemPackages =
   [
     my_mathematica
   ];
