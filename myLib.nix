@@ -54,7 +54,7 @@ in rec
 
 
 
-  mkNixos = hostname: { system, username }:
+  mkNixos = hostname: { system }:
   lib.nixosSystem
   {
     inherit system;
@@ -86,9 +86,6 @@ in rec
     ]
     ++
     [
-      inputs.home-manager.nixosModules.home-manager
-
-      (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" username])
       {
         nixpkgs.pkgs = myPkgs system;
       }
