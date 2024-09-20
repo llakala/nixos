@@ -6,7 +6,7 @@
 
 {
 
-  home.packages =
+  environment.systemPackages =
   with pkgs;
   [
     modrinth-app

@@ -2,7 +2,12 @@
 
 {
 
-  dconf.settings =
+  environment.systemPackages = with pkgs;
+  [
+    resources
+  ];
+
+  hm.dconf.settings =
   {
     # Ctrl+Alt+Delete to open Resources
     "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =
@@ -29,9 +34,4 @@
       processes-show-id = false;
     };
   };
-
-  home.packages = with pkgs;
-  [
-    resources
-  ];
 }

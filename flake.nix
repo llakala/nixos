@@ -44,20 +44,21 @@
 
   let
     myLib = import ./myLib.nix { inherit inputs; };
-  in
-  {
-    nixosConfigurations = builtins.mapAttrs myLib.mkNixos
+
+    nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as userhost
     {
       framework.system = "x86_64-linux";
+
       desktop.system = "x86_64-linux";
     };
 
-    homeConfigurations = builtins.mapAttrs myLib.mkHome
-    {
-      "emanresu@framework".system = "x86_64-linux";
-      "username@desktop".system = "x86_64-linux";
-    };
+  in
+  {
+    inherit nixosConfigurations;
 
-    packages.x86_64-linux.default = home-manager.defaultPackage.x86_64-linux; # For activating home-manager
+    homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
+    {
+      "emanresu@framework" = { inherit nixosConfigurations; };
+    };
   };
 }
