@@ -43,7 +43,7 @@
   }: # Everything else is passed via "inputs.NAME" to avoid clutter
 
   let
-    myLib = import ./myLib.nix { inherit inputs; };
+    myLib = import ./myLib { inherit inputs; };
 
     nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as userhost
     {
