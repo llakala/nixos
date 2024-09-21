@@ -7,9 +7,6 @@
   ];
 
 
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linuxKernel.kernels.linux_6_10); # Until https://nixpk.gs/pr-tracker.html?pr=342294 hits 24.05
-
-
   hardware.graphics =
   {
     enable = true;
