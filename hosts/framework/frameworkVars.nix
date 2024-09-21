@@ -5,7 +5,7 @@
   homeDirectory = "/home/emanresu";
 
   fullName = "Eman Resu";
-  userEmail = "ellakalle6+laptop@gmail.com";
+  userEmail = "78693624+quatquatt@users.noreply.github.com";
 
   scalingFactor = 2; # 200% scaling
 
