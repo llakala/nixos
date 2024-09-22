@@ -10,7 +10,11 @@
 {
   nix.package = pkgs-unstable.nixVersions.latest;
 
-  nix.registry.nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
+  nix.registry =
+  {
+    nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
+    nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+  };
 
   nix.settings =
   {
