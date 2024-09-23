@@ -19,12 +19,12 @@
   };
 
 
-  hardware.framework-laptop.keyboardBacklight =
+  custom.hardware.framework-laptop.keyboardBacklight =
   {
     enable = true;
     brightness = 0;
   };
-  hardware.framework-laptop.fingerprintBacklight =
+  custom.hardware.framework-laptop.fingerprintBacklight =
   {
     enable = true;
     brightness = "medium";

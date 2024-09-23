@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.hardware.framework-laptop;
+  cfg = config.custom.hardware.framework-laptop;
   inherit (lib) mkEnableOption mkIf mkOption types;
 in
 {
-  options.hardware.framework-laptop =
+  options.custom.hardware.framework-laptop =
   {
     keyboardBacklight =
     {

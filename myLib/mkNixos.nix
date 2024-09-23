@@ -29,6 +29,7 @@ let
       ../base/core
       ../base/features
       ../base/gnome
+      ../base/modules
       ../base/terminal
 
       ../apps/cli
