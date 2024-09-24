@@ -1,10 +1,15 @@
 {
   vars,
   hostVars,
+  pkgs,
   ...
 }:
 
 {
+  programs.zsh.enable = true; # Required to set environment.shells
+  environment.shells = with pkgs; [ zsh ];
+  users.users.${hostVars.username}.shell = pkgs.zsh;
+
   hm.programs.zsh =
   {
     enable = true;
