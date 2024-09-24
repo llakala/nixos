@@ -15,7 +15,7 @@
 
   environment.systemPackages = with pkgs;
   [
-    home-manager
+    home-manager # Lets us run commands like `home-manager switch`
   ];
 
   hm =
