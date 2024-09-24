@@ -18,7 +18,6 @@
 
   nix.settings =
   {
-    max-jobs = lib.mkDefault 4;
     experimental-features = "nix-command flakes";
 
     nix-path =
