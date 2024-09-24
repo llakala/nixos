@@ -17,7 +17,6 @@ let
     {
       inherit inputs myLib;
 
-      pkgs = internals.myPkgs system;
       pkgs-unstable = internals.myUnstablePkgs system;
 
       vars = import ../base/baseVars.nix;
