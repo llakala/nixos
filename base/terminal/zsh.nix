@@ -12,27 +12,21 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = false;
-
     autocd = true; # If empty directory given as command, interpret it as cd
 
-    sessionVariables =
-    {
-      EDITOR = vars.editor;
-    };
-    shellAliases =
-    {
-      src = ". ~/.zshrc";
-    };
+    sessionVariables.EDITOR = vars.editor;
+    shellAliases.src = ". ~/.zshrc";
 
     history =
     {
       path = "${hostVars.homeDirectory}/.zsh_history";
 
-      size = 10000;
-      save = 10000;
+      size = 100000;
+      save = 100000;
 
       share = true; # Share history between terminal sessions
       ignoreDups = true; # # Ignore duplicates only if they're right next to each other
+      expireDuplicatesFirst = true;
     };
 
     initExtra =
