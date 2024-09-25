@@ -22,7 +22,6 @@ in
 
     "org/gnome/shell" =
     {
-      allow-extension-installation = false; # Extensions now can't be installed imperatively
       disabled-extensions = [];
 
       enabled-extensions = map (extension: extension.extensionUuid) gnomeExtensions; # Enable all gnomeExtensions
