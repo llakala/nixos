@@ -13,7 +13,7 @@
   nix.registry =
   {
     nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
-    nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+    nixpkgs-unstable.flake = inputs.nixpkgs-unstable; # Lets us access nixpkgs-unstable via `nix run`
   };
 
   nix.settings =
@@ -42,6 +42,8 @@
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  documentation.nixos.enable = false; # Apparently speeds up rebuild time
 
   system.stateVersion = hostVars.stateVersion;
 }
