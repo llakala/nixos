@@ -61,7 +61,7 @@ in
 
 
       switcher-popup-delay = true; # No delay with alt-tab
-      startup-status = 0; # Start on desktop when rebooting
+      startup-status = 1; # Start on overview when rebooting
     };
 
     "org/gnome/shell/extensions/tiling-assistant" =
