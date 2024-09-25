@@ -16,15 +16,12 @@
   boot.loader =
   {
     systemd-boot.enable = true;
+    systemd-boot.editor = false; # We shouldn't be editing boot params imperatively
+
     efi.canTouchEfiVariables = true;
     timeout = 3;
   };
 
-  boot.loader.grub =
-  {
-    enable = false;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
-  };
+  boot.loader.grub.enable = lib.mkForce false; # No need to break our system accidentally
+
 }
