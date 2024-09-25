@@ -40,7 +40,8 @@
     nil # Nix language server
     nvd
     nix-output-monitor # NOT CALLED NOM
-
+    nixfmt-rfc-style
+    
     # Big kits
     nodejs
     jdk
