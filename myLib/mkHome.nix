@@ -8,13 +8,13 @@ let
       lib.splitString "@" string;
 
     guessUsername = userhost: # Grab everything before the @ in "username@hostname"
-      if builtins.length (internals.atSignSplit userhost ) == 2
-      then builtins.elemAt (internals.atSignSplit userhost) 0 # First value in list
+      if lib.length (internals.atSignSplit userhost ) == 2
+      then lib.elemAt (internals.atSignSplit userhost) 0 # First value in list
       else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
 
     guessHostname = userhost: # Grab everything after the @ in "username@hostname"
-      if builtins.length (internals.atSignSplit userhost ) == 2
-      then builtins.elemAt (internals.atSignSplit userhost) 1 # Second value in list
+      if lib.length (internals.atSignSplit userhost ) == 2
+      then lib.elemAt (internals.atSignSplit userhost) 1 # Second value in list
       else throw "Invalid userhost format: ${userhost}. Expected format: username@hostname";
   };
 
