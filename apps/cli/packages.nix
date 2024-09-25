@@ -41,6 +41,7 @@
     nvd
     nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
+    nix-inspect
     
     # Big kits
     nodejs
