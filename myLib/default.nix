@@ -7,8 +7,10 @@ let
 
 in
 {
-  importUtils = import ./importUtils.nix { inherit lib myLib; }; 
+  importUtils = import ./importUtils.nix { inherit lib myLib; };
 
   mkNixos = import ./mkNixos.nix { inherit lib myLib inputs; };
   mkHome = import ./mkHome.nix { inherit lib myLib; };
+
+  mkList = attrset: [ attrset ];
 }
