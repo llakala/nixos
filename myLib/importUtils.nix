@@ -13,10 +13,10 @@ let # Functions for internal use, not exporting
         then lib.singleton filepath
       else [];
 
-    importNixFolder = dir: builtins.map # Return a list of nix files in the corresponding folder
+    importNixFolder = dir: lib.map # Return a list of nix files in the corresponding folder
     ( file: dir + "/${file}" )
     (
-      builtins.attrNames
+      lib.attrNames
       (
         lib.filterAttrs
         (
@@ -40,7 +40,7 @@ let # Functions for internal use, not exporting
       else [];
 
     importAll = paths: # Combine lists of paths generated via importAny
-      builtins.concatMap
+      lib.concatMap
         exports.importAny
         paths;
   };

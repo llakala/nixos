@@ -126,7 +126,7 @@ in
       userContent = ''
         @import "firefox-gnome-theme/userContent.css";
       '';
-      extraConfig = builtins.readFile "${inputs.firefox-gnome-theme}/configuration/user.js";
+      extraConfig = lib.readFile "${inputs.firefox-gnome-theme}/configuration/user.js";
 
       settings = # Settings that aren't allowed to be set in policies
       {
