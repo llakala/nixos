@@ -34,7 +34,7 @@
     };
   };
 
-  home-manager.useUserPackages = lib.mkForce false; # Breaks everything
+  home-manager.useUserPackages = true; 
   home-manager.useGlobalPkgs = true;
 
 }
