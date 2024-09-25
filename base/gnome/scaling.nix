@@ -1,7 +1,7 @@
-{ lib, hostVars, ... }:
+{ lib, myLib, hostVars, ... }:
 
 {
-  programs.dconf.profiles.gdm.databases = lib.singleton # dconf options from nixos, NOT home-manager
+  programs.dconf.profiles.gdm.databases = myLib.mkList # dconf options from nixos, NOT home-manager
   {
     settings."org/gnome/desktop/interface" = # Scaling on login screen
     {
