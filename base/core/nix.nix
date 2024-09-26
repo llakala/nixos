@@ -10,9 +10,10 @@
 {
   nix.package = pkgs-unstable.nixVersions.latest;
 
-  nix.registry = lib.mkForce
+  nix.registry = lib.mkForce # Makes `nix run` commands use unfree
   {
-    nixpkgs.flake = pkgs.callPackage ./nixpkgs/unfree.nix {}; # Makes `nix run` commands use unfree
+    nixpkgs.flake = pkgs.callPackage ./nixpkgs/unfree.nix { path = inputs.nixpkgs; };
+    nixpkgs-unstable.flake = pkgs.callPackage ./nixpkgs/unfree.nix { path = inputs.nixpkgs-unstable; };
   };
 
   nix.settings =
