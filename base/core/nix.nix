@@ -10,10 +10,9 @@
 {
   nix.package = pkgs-unstable.nixVersions.latest;
 
-  nix.registry =
+  nix.registry = lib.mkForce
   {
-    nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
-    nixpkgs-unstable.flake = inputs.nixpkgs-unstable; # Lets us access nixpkgs-unstable via `nix run`
+    nixpkgs.flake = pkgs.callPackage ./nixpkgs/unfree.nix {}; # Makes `nix run` commands use unfree
   };
 
   nix.settings =
