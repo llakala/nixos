@@ -2,19 +2,11 @@
   hostVars,
   pkgs,
   pkgs-unstable,
-  lib,
-  inputs,
   ...
 }:
 
 {
   nix.package = pkgs-unstable.nixVersions.latest;
-
-  nix.registry =
-  {
-    nixpkgs.flake = inputs.nixpkgs; # Apparently makes evaluation of `nix search` faster
-    nixpkgs-unstable.flake = inputs.nixpkgs-unstable; # Lets us access nixpkgs-unstable via `nix run`
-  };
 
   nix.settings =
   {

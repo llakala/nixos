@@ -13,4 +13,6 @@ in
   mkHome = import ./mkHome.nix { inherit lib myLib; };
 
   mkList = attrset: [ attrset ];
+
+  mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix;
 }
