@@ -1,8 +1,7 @@
-{
-  path,
-  runCommandLocal,
-}:
-runCommandLocal "nixpkgs-configured" { src = path; } ''
+{ path, runCommandLocal, }:
+
+runCommandLocal "nixpkgs-configured" { src = path; }
+''
   mkdir -p $out
 
   substitute $src/flake.nix $out/flake.nix \
