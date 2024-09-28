@@ -1,5 +1,5 @@
 {
-  vars,
+  config,
   ...
 }:
 
@@ -7,7 +7,7 @@
   hm.programs.git =
   {
     enable = true;
-    userName = vars.fullName; # Full name associated with commits
+    userName = config.baseVars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
 
     extraConfig =
