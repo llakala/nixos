@@ -1,5 +1,4 @@
 {
-  hostVars,
   vars,
   ...
 }:
@@ -8,7 +7,7 @@
   hm.programs.git =
   {
     enable = true;
-    userName = "Eman Resu"; # Full name associated with commits
+    userName = vars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
 
     extraConfig =
