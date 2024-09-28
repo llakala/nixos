@@ -1,10 +1,11 @@
 {
-  hostName = "framework";
+  hostVars =
+  {
+    hostName = "framework";
+    username = "emanresu";
 
-  username = "emanresu";
-  homeDirectory = "/home/emanresu";
+    scalingFactor = 2; # 200% scaling
 
-  scalingFactor = 2; # 200% scaling
-
-  stateVersion = "24.05";
+    stateVersion = "24.05";
+  };
 }

@@ -1,4 +1,4 @@
-{ vars, ... }:
+{ config, ... }:
 
 {
   hm =
@@ -10,7 +10,7 @@
 
     programs.gh.settings =
     {
-      editor = vars.editor;
+      editor = config.baseVars.editor;
       git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
     };
 

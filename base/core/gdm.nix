@@ -1,4 +1,4 @@
- { hostVars, lib, ... }:
+ { config, lib, ... }:
 
 
 {
@@ -15,7 +15,7 @@
   # services.displayManager.autoLogin =
   # {
   #   enable = true;
-  #   user = hostVars.username;
+  #   user = config.hostVars.username;
   # };
 
   # systemd.services."getty@tty1".enable = false;
