@@ -8,8 +8,8 @@
   hm.programs.git =
   {
     enable = true;
-    userName = hostVars.fullName;
-    userEmail = hostVars.userEmail;
+    userName = "Eman Resu"; # Full name associated with commits
+    userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
 
     extraConfig =
     {
