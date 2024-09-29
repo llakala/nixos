@@ -23,6 +23,8 @@
       oops = "commit --amend --no-edit";
       reword = "commit --amend";
       force = "push --force-with-lease --force-if-includes";
+      brb = "stash push --staged";
+      imback = "stash pop";
     };
   };
 }
