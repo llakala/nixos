@@ -1,4 +1,4 @@
-{ pkgs, hostVars, ... }:
+{ pkgs, config, ... }:
 
 {
 
@@ -15,7 +15,7 @@
     enableOnBoot = false;
   };
 
-  users.users.${hostVars.username}.extraGroups = [ "libvirtd ""docker" ];
+  users.users.${config.hostVars.username}.extraGroups = [ "libvirtd ""docker" ];
 
   services.spice-webdavd.enable = true;
 

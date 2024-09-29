@@ -1,5 +1,5 @@
 {
-  hostVars,
+  config,
   pkgs,
   pkgs-unstable,
   ...
@@ -37,5 +37,5 @@
 
   documentation.nixos.enable = false; # Apparently speeds up rebuild time
 
-  system.stateVersion = hostVars.stateVersion;
+  system.stateVersion = config.hostVars.stateVersion;
 }
