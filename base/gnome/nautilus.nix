@@ -1,4 +1,4 @@
-{ vars, hostVars, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -27,8 +27,8 @@
       gtk3.bookmarks =
       [
         "file:///" # Root
-        "file://${vars.configDirectory}" # nixos config directory
-        "file://${hostVars.homeDirectory}/VMS"
+        "file://${config.baseVars.configDirectory}" # nixos config directory
+        "file://${config.hostVars.homeDirectory}/VMS"
       ];
     };
 

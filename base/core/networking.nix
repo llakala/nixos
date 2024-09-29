@@ -1,16 +1,16 @@
-{ hostVars, ... }:
+{ config, ... }:
 
 {
   networking =
   {
-    hostName = hostVars.hostName;
+    hostName = config.hostVars.hostName;
 
     firewall.enable = true;
     resolvconf.dnsExtensionMechanism = false;
   };
 
   networking.networkmanager.enable = true;
-  users.users.${hostVars.username}.extraGroups = [ "networkmanager"]; 
+  users.users.${config.hostVars.username}.extraGroups = [ "networkmanager"];
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
 

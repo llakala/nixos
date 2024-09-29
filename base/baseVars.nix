@@ -1,5 +1,5 @@
 {
-  configDirectory = "/etc/nixos";
-  editor = "nano";
-  fullName = "Eman Resu";
+  baseVars.configDirectory = "/etc/nixos";
+  baseVars.editor = "nano";
+  baseVars.fullName = "Eman Resu";
 }

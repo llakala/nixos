@@ -18,9 +18,6 @@ let
       inherit inputs myLib;
 
       pkgs-unstable = internals.myUnstablePkgs system;
-
-      vars = import ../base/baseVars.nix;
-      hostVars = import ../hosts/${hostname}/${hostname}Vars.nix;
     };
 
     modules = myLib.importUtils.importAll
@@ -30,12 +27,14 @@ let
       ../base/gnome
       ../base/modules
       ../base/terminal
+      ../base/baseVars.nix
 
       ../apps/cli
       ../apps/gui
 
       ../hosts/${hostname}/modules
       ../hosts/${hostname}/hardware-configuration.nix
+      ../hosts/${hostname}/${hostname}Vars.nix
     ]
     ++
     [

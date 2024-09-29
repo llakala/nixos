@@ -1,4 +1,4 @@
-{ pkgs, hostVars, ... }:
+{ pkgs, config, ... }:
 
 {
 
@@ -11,7 +11,7 @@
     gamescopeSession.enable = true;
     package = pkgs.steam.override
     {
-      extraArgs = "-forcedesktopscaling ${toString hostVars.scalingFactor}";
+      extraArgs = "-forcedesktopscaling ${toString config.hostVars.scalingFactor}";
     };
   };
 

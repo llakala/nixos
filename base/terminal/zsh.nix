@@ -1,6 +1,5 @@
 {
-  vars,
-  hostVars,
+  config,
   pkgs,
   ...
 }:
@@ -8,7 +7,7 @@
 {
   programs.zsh.enable = true; # Required to set environment.shells
   environment.shells = with pkgs; [ zsh ];
-  users.users.${hostVars.username}.shell = pkgs.zsh;
+  users.users.${config.hostVars.username}.shell = pkgs.zsh;
 
   hm.programs.zsh =
   {
@@ -19,12 +18,12 @@
     enableCompletion = false;
     autocd = true; # If empty directory given as command, interpret it as cd
 
-    sessionVariables.EDITOR = vars.editor;
+    sessionVariables.EDITOR = config.baseVars.editor;
     shellAliases.src = ". ~/.zshrc";
 
     history =
     {
-      path = "${hostVars.homeDirectory}/.zsh_history";
+      path = "${config.hostVars.homeDirectory}/.zsh_history";
 
       size = 100000;
       save = 100000;
@@ -36,14 +35,14 @@
 
     initExtra =
     ''
-      export CONFIG_DIRECTORY=${vars.configDirectory}
+      export CONFIG_DIRECTORY=${config.baseVars.configDirectory}
       source ${./options.sh}
       source ${./keybinds.sh}
       source ${./rbld.sh}
 
       evalue()
       (
-        nix eval --json "${vars.configDirectory}#nixosConfigurations.${hostVars.hostName}.config.$1" | jq
+        nix eval --json "${config.baseVars.configDirectory}#nixosConfigurations.${config.hostVars.hostName}.config.$1" | jq
       )
     '';
   };

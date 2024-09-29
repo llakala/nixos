@@ -1,5 +1,5 @@
 {
-  hostVars,
+  config,
   lib,
   inputs,
   pkgs,
@@ -10,7 +10,7 @@
   imports =
   [
     inputs.home-manager.nixosModules.home-manager
-    (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" hostVars.username]) # Let us use hm as shorthand for home-manager config
+    (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.hostVars.username]) # Let us use hm as shorthand for home-manager config
   ];
 
   environment.systemPackages = with pkgs;
@@ -28,13 +28,13 @@
 
     home =
     {
-      username = hostVars.username;
-      homeDirectory = hostVars.homeDirectory;
-      stateVersion = hostVars.stateVersion;
+      username = config.hostVars.username;
+      homeDirectory = config.hostVars.homeDirectory;
+      stateVersion = config.hostVars.stateVersion;
     };
   };
 
-  home-manager.useUserPackages = true; 
+  home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
 }
