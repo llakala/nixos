@@ -59,7 +59,7 @@
 
     "org/gnome/desktop/peripherals/mouse" =
     {
-      accel-profile = "flat";
+      accel-profile = "flat"; # No mouse acceleration
     };
 
     "org/gnome/desktop/peripherals/touchpad" =
@@ -72,18 +72,6 @@
     "org/gtk/settings/file-chooser" =
     {
       clock-format = "12h";
-    };
-
-    "org/gnome/terminal/legacy/keybindings" =
-    {
-      find = "<Primary>f";
-      copy = "<Primary>c";
-      paste = "<Primary>v";
-    };
-
-    "org/gnome/terminal/legacy" =
-    {
-      new-terminal-mode = "tab";
     };
 
 
