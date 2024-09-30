@@ -2,7 +2,7 @@
 
 {
 
-  custom.programs.zed-editor.enable = true;
+  custom.programs.zed-editor.enable = false;
 
   custom.programs.zed-editor.settings =
   {
