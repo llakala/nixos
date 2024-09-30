@@ -20,6 +20,7 @@
     wget
     gnumake # make
     file
+    ncdu # Scan folder size prettily
 
     # Extra commmands for personal preference
     jq
