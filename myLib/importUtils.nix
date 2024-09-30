@@ -7,21 +7,20 @@ let # Functions for internal use, not exporting
 
     isNixFile = lib.hasSuffix ".nix";
 
-
-    importNixFile = filepath: # Return a list containing only one element: the inputted filepath
+    wrapIfNixFile = filepath: # Return a list containing only one element: the inputted filepath
       if internals.isNixFile filepath
         then lib.singleton filepath
       else [];
 
-    importNixFolder = dir: lib.map # Return a list of nix files in the corresponding folder
+    nixFilesInFolder = dir: map # Return a list of nix files in the corresponding folder. Non-recursive.
     ( file: dir + "/${file}" )
     (
       lib.attrNames
       (
         lib.filterAttrs
-        (
+        ( # Only accepts .nix *files*, rejecting nested folders
           name: type:
-          lib.hasSuffix ".nix" name
+          internals.isNixFile name
           && type == "regular"
         )
         ( builtins.readDir dir )
@@ -34,14 +33,14 @@ let # Functions for internal use, not exporting
 
   exports = # Export all files within this set
   {
-    importAny = path: # Return a list containing files to be imported
-      if lib.pathIsDirectory path then internals.importNixFolder path
-      else if lib.pathIsRegularFile path then internals.importNixFile path
+    pathToFileList = path: # Wrapper around `wrapIfNixFile` and `nixFilesInFolder` that takes a path and automatically chooses the appropriate action for it. Returns a list of filepaths
+      if lib.pathIsRegularFile path then internals.wrapIfNixFile path
+      else if lib.pathIsDirectory path then internals.nixFilesInFolder path
       else [];
 
-    importAll = paths: # Combine lists of paths generated via importAny
+    importAll = paths: # Wrapper around pathToFileList that takes a full list of paths to evaluate
       lib.concatMap
-        exports.importAny
+        exports.pathToFileList
         paths;
   };
 in
