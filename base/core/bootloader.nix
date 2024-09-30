@@ -17,6 +17,7 @@
   {
     systemd-boot.enable = true;
     systemd-boot.editor = false; # We shouldn't be editing boot params imperatively
+    systemd-boot.configurationLimit = 20;
 
     efi.canTouchEfiVariables = true;
     timeout = 3;
