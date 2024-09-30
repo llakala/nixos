@@ -28,7 +28,7 @@
       reword = "commit --amend";
       force = "push --force-with-lease --force-if-includes";
 
-      brb = "stash push --staged";
+      brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
       imback = "stash pop";
     };
   };

@@ -30,7 +30,7 @@
 
     "org/gnome/desktop/wm/keybindings" = # Make apps immediately appear in alt tab menu
     {
-      switch-applications = [ "<Super>Tab" ];
+      switch-applications = [ "<Super>Tab" ]; # Legacy alt-tab menu
       switch-applications-backward = [ "<Shift><Super>Tab" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];

@@ -6,7 +6,7 @@
     hostName = config.hostVars.hostName;
 
     firewall.enable = true;
-    resolvconf.dnsExtensionMechanism = false;
+    resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
   };
 
   networking.networkmanager.enable = true;

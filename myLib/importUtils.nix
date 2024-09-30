@@ -1,8 +1,8 @@
 { lib, myLib, ... }:
 
-let # Functions for internal use, not exporting
+let
 
-  internals =
+  internals = # Helper functions for internal use, not to be used outside this file
   {
 
     isNixFile = lib.hasSuffix ".nix";
@@ -12,7 +12,7 @@ let # Functions for internal use, not exporting
         then lib.singleton filepath
       else [];
 
-    nixFilesInFolder = dir: map # Return a list of nix files in the corresponding folder. Non-recursive.
+    nixFilesInFolder = dir: map # Return a list of nix files in the inputted folder. Non-recursive.
     ( file: dir + "/${file}" )
     (
       lib.attrNames

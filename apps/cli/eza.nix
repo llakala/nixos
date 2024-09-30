@@ -8,7 +8,7 @@
     extraOptions =
     [
       "--group-directories-first"
-      "--hyperlink"
+      "--hyperlink" # Ctrl+Click a file to go directly to it
       "--sort=extension"
 
       "--smart-group" # Show "group" if it's not the default
