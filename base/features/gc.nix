@@ -1,14 +1,17 @@
-{ ... }:
+{ lib, ... }:
 
 {
-  nix.optimise.automatic = true; # Used instead of auto-optimize-store so that `nix-store --optimise` runs daily rather than for every build
-
-
-
-  nix.gc =
+  nix.optimise = # Runs `nix-store --optimise` on a timer. Used instead of auto-optimize-store so we don't need to do this on every build
   {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+    dates = lib.singleton "daily";
+  };
+
+  nix.gc = # Runs `nix-collect-garbage` on a timer
+  {
+    automatic = true;
+    persistent = true; # If system is powered off when timer finishes, do it next time the system power on
+    dates = "daily";
+    options = "--delete-older-than 14d"; # Delete old generations
   };
 }
