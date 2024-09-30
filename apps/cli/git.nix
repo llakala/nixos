@@ -12,10 +12,14 @@
 
     extraConfig =
     {
-      pull.ff = "only";
-
       push.autoSetupRemote = true;
+      init.defaultBranch = "main";
+
+      pull.ff = "only";
       push.useForceIfIncludes = true;
+
+      rebase.autoStash = true; # Lets us use `git rebase -I` with uncommented changes
+      rebase.autoSquash = true; # Automatically make
     };
 
     aliases =
@@ -23,6 +27,7 @@
       oops = "commit --amend --no-edit";
       reword = "commit --amend";
       force = "push --force-with-lease --force-if-includes";
+
       brb = "stash push --staged";
       imback = "stash pop";
     };
