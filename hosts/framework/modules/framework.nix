@@ -33,7 +33,7 @@
 
   services =
   {
-    fstrim.enable = true; # Disk
+    fstrim.enable = true; # Remove this in 24.11 since it's set by default
   };
 
   services.fwupd = # Bios updates
@@ -50,6 +50,7 @@
   '';
 
 
+# Below isn't used yet since it requires us to compile the kernel
   # boot.kernelPatches =
   # [
   #   {

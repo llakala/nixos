@@ -2,7 +2,7 @@
 
 let
 
-  internals = # Functions for internal use, not exporting (proudly stolen from proudly stolen from https://github.com/MattSturgeon/nix-config/blob/e98a93e/hosts/flake-module.nix)
+  internals = # Functions for internal use, not exporting (proudly stolen from https://github.com/MattSturgeon/nix-config/blob/e98a93e/hosts/flake-module.nix)
   {
     atSignSplit = string:
       lib.splitString "@" string;

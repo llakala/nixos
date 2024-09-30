@@ -32,11 +32,12 @@
       ];
     };
 
-    xdg.userDirs = # Remove music and videos directories from sidebar
+    xdg.userDirs =
     {
       enable = true;
       createDirectories = true;
 
+      # Remove music and videos directories from sidebar
       music = null;
       videos = null;
     };
