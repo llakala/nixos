@@ -46,8 +46,8 @@
     gnome-tweaks
     gnome-terminal
     gnome-disk-utility
-    gnome.dconf-editor
-    gnome.baobab
+    dconf-editor
+    baobab
   ]
   );
 }
