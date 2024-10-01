@@ -23,6 +23,7 @@ in
     "org/gnome/shell" =
     {
       disabled-extensions = [];
+      disable-user-extensions = false; # Hopefully enables all extensions after reboot
 
       enabled-extensions = map (extension: extension.extensionUuid) gnomeExtensions; # Enable all gnomeExtensions
     };
