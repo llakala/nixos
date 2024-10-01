@@ -7,10 +7,10 @@
   {
     "org/gnome/desktop/input-sources" =
     {
-      xkb-options = # Make caps lock escape
+      xkb-options =
       [
         "terminate:ctrl_alt_bksp"
-        "caps:escape" # Caps lock --> escape
+        "caps:swapescape" # Swap caps lock and escape. Listen, gotta train those neural pathways.
         "compose:rctrl" # Right control --> weird characters
       ];
     };
