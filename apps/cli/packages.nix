@@ -36,6 +36,7 @@
     hwinfo
     age
     libsecret
+    ffmpeg
 
     # commands specifically for nix
     nil # Nix language server
