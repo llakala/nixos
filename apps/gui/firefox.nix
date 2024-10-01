@@ -41,9 +41,8 @@ in
       buildCommand = oldAttrs.buildCommand +
       ''
       wrapProgram $out/bin/firefox \
-        --set MOZ_ENABLE_WAYLAND 0 \
-        --set MOZ_USE_XINPUT2 1 \
-        --set MOZ_LOG "FFmpegVideo:5"
+        --set MOZ_ENABLE_WAYLAND 1 \
+        --set MOZ_LOG "PlatformDecoderModule:5"
       '';
     });
 
@@ -220,7 +219,10 @@ in
       "browser.warnOnQuitShortcut" = false;
 
       "browser.tabs.loadInBackground" = true; # Load tabs automatically
+
       "media.ffmpeg.vaapi.enabled" = true; # Enable hardware acceleration
+      "layers.acceleration.force-enabled" = true;
+      "gfx.webrender.all" = true;
 
       "browser.in-content.dark-mode" = true; # Use dark mode
       "ui.systemUsesDarkTheme" = true;
