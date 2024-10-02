@@ -13,11 +13,6 @@
 
     # Enable Gnome
     desktopManager.gnome.enable = true;
-    xkb =
-    {
-      layout = "us";
-      variant = "";
-    };
   };
 
 
