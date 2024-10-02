@@ -1,42 +1,35 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
-  layoutName = "caps";
+  layoutName = "custom";
 in
 {
-  console.useXkbConfig = true;
-  # services.xserver.exportConfiguration = lib.mkForce true;
-
-
-  services.xserver.xkb =
+  services.xserver.xkb.extraLayouts.${layoutName} = # Changes to this seem to only apply after a gnome reboot
   {
-    layout = "us";
+    description = "Custom layout where CAPS is Escape, and ESC does nothing";
+    languages = [ "eng" ];
+    symbolsFile = pkgs.writeText layoutName # This name doesn't matter, it can be anything
+    ''
+      xkb_symbols
+      {
+        include "us(basic)"
 
-    # extraLayouts.${layoutName} =
-    # {
-    #   description = "Custom layout with Escape unbound";
-    #   languages = [ "eng" ];
-    #   symbolsFile = ./${layoutName}.xkb;
-    # };
+        key <CAPS> {[ Escape ]};
+        key <ESC> {[ VoidSymbol ]};
+      };
+    '';
   };
 
-  hm.dconf.settings =
+  hm.dconf.settings."org/gnome/desktop/input-sources" =
   {
-    "org/gnome/desktop/input-sources" =
-    {
-      xkb-options =
-      [
-        "terminate:ctrl_alt_bksp"
-        "caps:swapescape"
-        "compose:rctrl" # Right control --> weird characters
-      ];
-
-      # sources = lib.singleton
-      # (
-      #   lib.gvariant.mkTuple ["xkb" layoutName]
-      # );
-    };
-
-
-
+    xkb-options =
+    [
+      "terminate:ctrl_alt_bksp"
+      "compose:rctrl" # Right control --> weird characters
+    ];
+    sources = lib.singleton # Override gnome to use our custom layout, required
+    (
+      lib.gvariant.mkTuple ["xkb" layoutName]
+    );
   };
+
 }
