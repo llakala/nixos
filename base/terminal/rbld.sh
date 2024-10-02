@@ -17,7 +17,7 @@ rbld()
 
     case "$1" in
         -n)
-            run_rbld nixos-rebuild switch --use-remote-sudo --flake $CONFIG_DIRECTORY
+            run_rbld nixos-rebuild switch --use-remote-sudo --fast --flake $CONFIG_DIRECTORY
             ;;
         -h)
             run_rbld home-manager switch -b backup --flake $CONFIG_DIRECTORY
