@@ -1,19 +1,16 @@
 { config, ... }:
 
 {
-  hm =
+  hm.programs.gh =
   {
-    programs.gh =
-    {
-      enable = true;
-    };
+    enable = true;
 
-    programs.gh.settings =
+    settings =
     {
       editor = config.baseVars.editor;
       git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
     };
-
-
   };
+
+
 }
