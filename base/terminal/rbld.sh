@@ -42,9 +42,8 @@ rbld()
             cat << EOT
 Usage: rbld (-n|-h|-f|-b|-a)
 Options:
-  -n        Rebuild the system configuration (akin to nixos-rebuild switch)
-  -h        Rebuild the home-manager configuration (akin to home-manager switch)
-  -b        Rebuild both the system and home-manager configurations
+  -n        Rebuild both the system configuration and the home-manager configuration
+  -h        Rebuild *only* the home-manager configuration
   -f        Update the flake.lock and rebuild if necessary
 EOT
             ;;
