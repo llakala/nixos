@@ -40,11 +40,10 @@
 
     # commands specifically for nix
     nil # Nix language server
-    nvd
     nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
     nix-inspect
-    
+
     # Big kits
     nodejs
     jdk
