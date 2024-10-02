@@ -5,18 +5,6 @@
 {
   hm.dconf.settings =
   {
-    "org/gnome/desktop/input-sources" =
-    {
-      xkb-options =
-      [
-        "terminate:ctrl_alt_bksp"
-        "caps:swapescape" # Swap caps lock and escape. Listen, gotta train those neural pathways.
-        "compose:rctrl" # Right control --> weird characters
-      ];
-    };
-
-
-
     "org/gnome/mutter/wayland/keybindings" =
     {
       restore-shortcuts = []; # Never reset shortcuts to default
