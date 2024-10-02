@@ -20,7 +20,6 @@
     wget
     gnumake # make
     file
-    ncdu # Scan folder size prettily
 
     # Extra commmands for personal preference
     jq
@@ -28,15 +27,17 @@
     tldr
     calc # It's just slang chat
     cava # Audio display
+    ncdu # Scan folder size prettily
 
     # Weird stuff
     appimage-run # Allow running appimages for when something isnt on nixpkgs
     powertop # Check battery drain
-    xorg.xeyes
+    xorg.xeyes # See if an app is running under xwayland or not
     hwinfo
     age
     libsecret
     ffmpeg
+    exiftool
 
     # commands specifically for nix
     nil # Nix language server
