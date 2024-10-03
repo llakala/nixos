@@ -31,16 +31,7 @@
   };
 
 
-  outputs = inputs @
-  {
-    self,
-
-    nixpkgs,
-    nixpkgs-unstable,
-
-    home-manager,
-    ...
-  }: # Everything else is passed via "inputs.NAME" to avoid clutter
+  outputs = inputs @ { ... }: # Everything is passed via "inputs.NAME" to avoid clutter
 
   let
     myLib = import ./myLib { inherit inputs; };
