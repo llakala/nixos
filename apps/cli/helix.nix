@@ -10,7 +10,20 @@
 
   hm.programs.helix.settings =
   {
-    keys.normal = # We will learn hjkl 
+    theme = "onedarker";
+    editor.indent-guides.render = true; # Show where indentations are with |
+  };
+
+  hm.programs.helix.settings.keys =
+  {
+    normal = # We WILL learn hjkl
+    {
+      up = "no_op";
+      down = "no_op";
+      left = "no_op";
+      right = "no_op";
+    };
+    insert = # And we WILL only use normal mode for moving around
     {
       up = "no_op";
       down = "no_op";
