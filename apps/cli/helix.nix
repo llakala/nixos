@@ -1,4 +1,5 @@
-{ ... }:
+{ lib, pkgs, ... }:
+
 
 {
   hm.programs.helix =
@@ -16,5 +17,20 @@
       left = "no_op";
       right = "no_op";
     };
+  };
+
+
+  hm.programs.helix.languages.language =
+  [
+    {
+      name = "nix";
+      auto-format = false;
+      language-servers = lib.singleton "nil";
+    }
+  ];
+
+  hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
+  {
+    nil.command = lib.getExe pkgs.nil;
   };
 }
