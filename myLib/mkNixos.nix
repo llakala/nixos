@@ -35,9 +35,6 @@ let
       ../hosts/${hostname}/modules
       ../hosts/${hostname}/hardware-configuration.nix
       ../hosts/${hostname}/${hostname}Vars.nix
-    ]
-    ++
-    [
       {
         nixpkgs.pkgs = internals.myPkgs system;
       }
