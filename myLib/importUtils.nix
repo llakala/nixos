@@ -10,7 +10,7 @@ let
     wrapIfNixFile = filepath: # Return a list containing only one element: the inputted filepath
       if internals.isNixFile filepath
         then lib.singleton filepath
-      else [];
+      else []; # Disinclude the file if it's not a nix file
 
     nixFilesInFolder = dir: map # Return a list of nix files in the inputted folder. Non-recursive.
     ( file: dir + "/${file}" )
@@ -33,12 +33,14 @@ let
 
   exports = # Export all files within this set
   {
-    pathToFileList = path: # Wrapper around `wrapIfNixFile` and `nixFilesInFolder` that takes a path and automatically chooses the appropriate action for it. Returns a list of filepaths
-      if lib.pathIsRegularFile path then internals.wrapIfNixFile path
-      else if lib.pathIsDirectory path then internals.nixFilesInFolder path
-      else [];
+    pathToFileList = input: # Wrapper around `wrapIfNixFile` and `nixFilesInFolder` that takes a path and chooses the appropriate action. Returns a list of filepaths
+      if builtins.isPath input then
+        if lib.pathIsRegularFile input then internals.wrapIfNixFile input
+        else if lib.pathIsDirectory input then internals.nixFilesInFolder input
+        else [] # It's a path, but not a file or a directory? Astonishing
+      else lib.singleton input; # Return input unchanged if it's not a path. Makes attribute sets work
 
-    importAll = paths: # Wrapper around pathToFileList that takes a full list of paths to evaluate
+    importAll = paths: # Wrapper around pathToFileList that takes a full list of values to evaluate
       lib.concatMap
         exports.pathToFileList
         paths;
