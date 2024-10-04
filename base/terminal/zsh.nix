@@ -35,10 +35,8 @@
 
     initExtra =
     ''
-      export CONFIG_DIRECTORY=${config.baseVars.configDirectory}
       source ${./options.sh}
       source ${./keybinds.sh}
-      source ${./rbld.sh}
     '';
   };
 }
