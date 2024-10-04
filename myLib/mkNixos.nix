@@ -20,7 +20,7 @@ let
       pkgs-unstable = internals.myUnstablePkgs system;
     };
 
-    modules = myLib.importUtils.importAll # Use custom function to allow importing all nix files within a folder
+    modules = myLib.resolveAndFilter # Use custom function that grabs all files within a folder and filters out non-nix files
     [
       ../base/core
       ../base/features
