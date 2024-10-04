@@ -131,6 +131,7 @@ in
       {
         "gnomeTheme.activeTabContrast" = true;
         "gnomeTheme.normalWidthTabs" = true;
+        "gnomeTheme.hideSingleTab" = false; 
 
         # Normal firefox settings that happen to be blocked
         "mousewheel.system_scroll_override" = true; # Normal system scrolling
