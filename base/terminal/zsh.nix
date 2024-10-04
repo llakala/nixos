@@ -39,11 +39,6 @@
       source ${./options.sh}
       source ${./keybinds.sh}
       source ${./rbld.sh}
-
-      evalue()
-      (
-        nix eval --json "${config.baseVars.configDirectory}#nixosConfigurations.${config.hostVars.hostName}.config.$1" | jq
-      )
     '';
   };
 }
