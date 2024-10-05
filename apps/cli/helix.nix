@@ -22,6 +22,7 @@
       down = "no_op";
       left = "no_op";
       right = "no_op";
+      W = "move_prev_word_start"; # Shift+W to go back a word
     };
     insert = # And we WILL only use normal mode for moving around
     {
