@@ -28,6 +28,12 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    rbld =
+    {
+      url = "github:quatquatt/rebuild-but-less-dumb/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
 
