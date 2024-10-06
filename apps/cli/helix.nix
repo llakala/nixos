@@ -5,7 +5,7 @@
   hm.programs.helix =
   {
     enable = true;
-    defaultEditor = false; # We do this manually via the EDITOR variable
+    defaultEditor = true; # Sets EDITOR environment variable
   };
 
   hm.programs.helix.settings =
