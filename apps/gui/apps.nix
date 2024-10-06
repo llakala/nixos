@@ -10,7 +10,6 @@
   with pkgs;
   [
     modrinth-app
-    webcord # Discord client
     gparted
     filezilla
     moonlight-qt
