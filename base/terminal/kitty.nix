@@ -73,4 +73,6 @@ in
       binding = "<Super>t";
     };
   };
+
+  environment.variables.TERMINAL = "kitty";
 }
