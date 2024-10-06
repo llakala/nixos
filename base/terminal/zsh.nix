@@ -18,7 +18,6 @@
     enableCompletion = false;
     autocd = true; # If empty directory given as command, interpret it as cd
 
-    sessionVariables.EDITOR = config.baseVars.editor;
     shellAliases.src = ". ~/.zshrc";
 
     history =
