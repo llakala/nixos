@@ -2,17 +2,14 @@
 
 
 {
-  hm =
+  hm.xdg =
   {
-    xdg =
-    {
-      enable = true;
-      mime.enable = true;
+    enable = true;
+    mime.enable = true;
 
-      mimeApps.enable = true;
-    };
+    mimeApps.enable = true;
 
-    xdg.portal =
+    portal =
     {
       enable = true;
       extraPortals = with pkgs;
@@ -26,6 +23,6 @@
       config.common.default = "gnome";
     };
 
-    home.file."${config.hostVars.homeDirectory}/.config/mimeapps.list".force = lib.mkForce true; # Delete backup for mimeApps since backups are done idiotically
+    configFile."mimeapps.list".force = lib.mkForce true; # Delete backup for mimeApps since backups are done idiotically
   };
 }
