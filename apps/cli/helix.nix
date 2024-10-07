@@ -6,12 +6,21 @@
   {
     enable = true;
     defaultEditor = true; # Sets EDITOR environment variable
+    settings.theme = "onedarker";
   };
 
-  hm.programs.helix.settings =
+  hm.programs.helix.settings.editor =
   {
-    theme = "onedarker";
-    editor.indent-guides.render = true; # Show where indentations are with |
+    indent-guides.render = true; # Show where indentations are with |
+
+    mouse = false; # you'll thank me later
+
+    cursor-shape =
+    {
+      insert = "bar";
+      normal = "block";
+      select = "underline";
+    };
   };
 
   hm.programs.helix.settings.keys =
