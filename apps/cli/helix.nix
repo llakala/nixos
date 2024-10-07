@@ -50,10 +50,16 @@
       auto-format = false;
       language-servers = lib.singleton "nil";
     }
+    {
+      name = "python";
+      auto-format = false;
+      language-servers = lib.singleton "pylsp";
+    }
   ];
 
   hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
   {
     nil.command = lib.getExe pkgs.nil;
+    pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
   };
 }
