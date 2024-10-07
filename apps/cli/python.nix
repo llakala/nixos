@@ -1,7 +1,7 @@
 { pkgs-unstable, pkgs, ... }:
 
 let
-   myPython = pkgs.python3;
+   myPython = pkgs.python3; # Python version for our packages to reference
 
    myPythonPackages = pythonPackages: with pythonPackages;
    [
@@ -12,5 +12,8 @@ let
    ];
 in
 {
-   environment.systemPackages = [( myPython.withPackages myPythonPackages )];
+   environment.systemPackages =
+   [
+      ( myPython.withPackages myPythonPackages )
+   ];
 }
