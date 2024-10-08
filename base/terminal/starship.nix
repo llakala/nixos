@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   hm.programs.starship =
@@ -27,10 +27,11 @@
 
     settings.battery =
     {
-      display = # TODO: Use the lib wrapper function here
-      [{
+      display = lib.singleton
+      {
         threshold = 5;
-      }];
+      };
     };
+    
   };
 }
