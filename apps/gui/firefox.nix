@@ -35,13 +35,12 @@ in
   {
     programs.firefox.enable = true;
 
-    programs.firefox.package = pkgs.firefox.overrideAttrs # Bug fixed on firefox 130: wait for fix
+    programs.firefox.package = pkgs.firefox.overrideAttrs
     (oldAttrs:
     {
       buildCommand = oldAttrs.buildCommand +
       ''
       wrapProgram $out/bin/firefox \
-        --set MOZ_ENABLE_WAYLAND 1 \
         --set MOZ_LOG "PlatformDecoderModule:5"
       '';
     });
