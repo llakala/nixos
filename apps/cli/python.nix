@@ -9,6 +9,7 @@ let
       pandas
       matplotlib
       numpy
+      pycodestyle
    ];
 in
 {
@@ -16,4 +17,6 @@ in
    [
       ( myPython.withPackages myPythonPackages )
    ];
+
+   environment.shellAliases.pep8 = "pycodestyle";
 }
