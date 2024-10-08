@@ -55,6 +55,9 @@
       p = "paste_clipboard_after";
       P = "paste_clipboard_before";
       R = "replace_selections_with_clipboard";
+
+      d = "delete_selection_noyank";
+      c = "change_selection_noyank";
     };
 
     insert = # And we WILL only use normal mode for moving around
@@ -89,6 +92,8 @@
       P = "paste_clipboard_before";
       R = "replace_selections_with_clipboard";
 
+      d = "delete_selection_noyank";
+      c = "change_selection_noyank";   
     };
   };
 
