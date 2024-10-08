@@ -50,6 +50,11 @@
       N = "move_prev_long_word_end";
 
       C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
+
+      y = "yank_to_clipboard";
+      p = "paste_clipboard_after";
+      P = "paste_clipboard_before";
+      R = "replace_selections_with_clipboard";
     };
 
     insert = # And we WILL only use normal mode for moving around
@@ -78,6 +83,12 @@
 
       n = "extend_next_long_word_end";
       N = "extend_prev_long_word_end";
+
+      y = "yank_to_clipboard";
+      p = "paste_clipboard_after";
+      P = "paste_clipboard_before";
+      R = "replace_selections_with_clipboard";
+
     };
   };
 
