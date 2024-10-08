@@ -1,4 +1,4 @@
-{ config, pkgs-unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 
 {
@@ -8,7 +8,7 @@
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
-    kernelPackages = lib.mkDefault pkgs-unstable.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
