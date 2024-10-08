@@ -25,28 +25,31 @@
   };
 
   hm.programs.helix.settings.keys =
-  let normal =
   {
-    up = "no_op";
-    down = "no_op";
-    left = "no_op";
-    right = "no_op";
+    normal =
+    {
+      up = "no_op";
+      down = "no_op";
+      left = "no_op";
+      right = "no_op";
 
-    # w and shift+w for moving around with special characters EXCLUDED
-    w = "move_next_word_start";
-    W = "move_prev_word_start";
+      # Moving around with special characters EXCLUDED
+      w = "move_next_word_start";
+      W = "move_prev_word_start";
 
-    # e and shift+e for moving around with special characters INCLUDED
-    e = "move_next_long_word_start";
-    E = "move_prev_long_word_start";
+      # Moving around with special characters INCLUDED
+      e = "move_next_long_word_start";
+      E = "move_prev_long_word_start";
 
-    # These are weird and I likely won't use them, but I shouldn't get rid of a bind
-    b = "move_next_word_end";
-    B = "move_next_long_word_end";
-  };
-  in
-  {
-    inherit normal;
+      # w and W, but including spaces
+      b = "move_next_word_end";
+      B = "move_prev_word_end";
+
+      # e and E, but including spaces
+      n = "move_next_long_word_end";
+      N = "move_prev_long_word_end";
+    };
+
     insert = # And we WILL only use normal mode for moving around
     {
       up = "no_op";
@@ -54,7 +57,26 @@
       left = "no_op";
       right = "no_op";
     };
-    select = normal; # Reuse custom normal
+
+    select = # Same binds as normal, but move --> extend so selection works as expected
+    {
+      up = "no_op";
+      down = "no_op";
+      left = "no_op";
+      right = "no_op";
+
+      w = "extend_next_word_start";
+      W = "extend_prev_word_start";
+
+      e = "extend_next_long_word_start";
+      E = "extend_prev_long_word_start";
+
+      b = "extend_next_word_end";
+      B = "extend_prev_word_end";
+
+      n = "extend_next_long_word_end";
+      N = "extend_prev_long_word_end";
+    };
   };
 
 
