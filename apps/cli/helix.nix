@@ -48,6 +48,8 @@
       # e and E, but including spaces
       n = "move_next_long_word_end";
       N = "move_prev_long_word_end";
+
+      C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
     };
 
     insert = # And we WILL only use normal mode for moving around
