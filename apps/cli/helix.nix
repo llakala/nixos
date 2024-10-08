@@ -1,10 +1,11 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, pkgs-unstable, ... }:
 
 
 {
   hm.programs.helix =
   {
     enable = true;
+    package = pkgs-unstable.helix;
     defaultEditor = true; # Sets EDITOR environment variable
     settings.theme = "onedarker";
   };
