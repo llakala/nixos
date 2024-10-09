@@ -36,8 +36,6 @@ in
 
       tab_bar_edge = "top";
       tab_bar_style = "powerline";
-
-      enabled_layouts = "horizontal";
     };
 
     programs.kitty.keybindings =
