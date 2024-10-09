@@ -1,13 +1,22 @@
-{ lib, config, pkgs-unstable, ... }:
+{ lib, config, pkgs-unstable, inputs, ... }:
 
 {
-  programs.yazi =
+
+  hm = 
+  {
+    disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
+    imports = lib.singleton "${inputs.home-manager-unstable}/modules/programs/yazi.nix";
+  };
+
+
+  
+  hm.programs.yazi =
   {
     enable = true;
     # package = pkgs-unstable.yazi; # Can't use until I fix missing folder icon
   };
 
-  programs.yazi.settings.yazi = # yazi.toml settings, documented here https://yazi-rs.github.io/docs/configuration/yazi
+  hm.programs.yazi.settings = # yazi.toml settings, documented here https://yazi-rs.github.io/docs/configuration/yazi
   {
     opener.edit =
     [
@@ -25,7 +34,7 @@
     ];
   };
 
-  programs.yazi.settings.keymap.manager.prepend_keymap =
+  hm.programs.yazi.keymap.manager.prepend_keymap =
   [
     {
       on = lib.singleton "i"; # Same as "o" for open, but for my helix muscle memory
