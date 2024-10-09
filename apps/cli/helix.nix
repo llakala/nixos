@@ -7,32 +7,34 @@ let navigationBinds = type:
   left = "no_op";
   right = "no_op";
 
-  # Moving around with special characters EXCLUDED
+
+  # Go till the next word *starts*. w+a inserts after "word "
   w = "${type}_next_word_start";
   W = "${type}_prev_word_start";
 
+  # w/W, but for WORDS, special characters included.
+  A-w = "${type}_next_long_word_start"; # alt-w
+  A-W = "${type}_prev_long_word_start"; # alt-shift-w
 
-  # Moving around with special characters INCLUDED
-  e = "${type}_next_long_word_start";
-  E = "${type}_prev_long_word_start";
 
-  # w and W, but including spaces
-  b = "${type}_next_word_end";
-  B = "${type}_prev_word_end";
+  # Go till the next word *ends*. e+a inserts after "word"
+  e = "${type}_next_word_end";
+  E = "${type}_prev_word_end";
 
-  # e and E, but including spaces
-  n = "${type}_next_long_word_end";
-  N = "${type}_prev_long_word_end";
+  # e/E, but for WORDS, special characters included. 
+  A-e = "${type}_next_long_word_end"; # alt-e
+  A-E = "${type}_prev_long_word_end"; # alt-shift-e
+
 
   C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
 
   y = "yank_to_clipboard";
   p = "paste_clipboard_after";
   P = "paste_clipboard_before";
-  R = "replace_selections_with_clipboard";
+  R = "replace_selections_with_clipboard"; # Easier d+p
 
   d = "delete_selection_noyank";
-  c = "change_selection_noyank";
+  c = "change_selection_noyank"; # Easier d+i
 };
 in
 {

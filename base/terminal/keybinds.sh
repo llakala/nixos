@@ -10,3 +10,5 @@ bindkey '^H' backward-delete-word # Ctrl + Backspace
 
 bindkey '^[[Z' undo # Shift+tab undo last action
 bindkey '^Z' undo # Ctrl+Z undo last action
+
+bindkey -r '^[e' # Bind Alt+E to nothing so we can use it within Helix
