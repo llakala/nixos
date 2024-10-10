@@ -171,11 +171,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728319813,
-        "narHash": "sha256-CPCYMgafY/RFoy7p/pkaKDzD3tJSjcItom1GoBxRXSI=",
+        "lastModified": 1728595105,
+        "narHash": "sha256-sTTCAE5w6ZDGaVBjL9ZyZ6pl44obUyUsX4gNUEvxRHY=",
         "owner": "quatquatt",
         "repo": "rebuild-but-less-dumb",
-        "rev": "c8a7959b11094890c3966a19d3a444a95190b954",
+        "rev": "1dc9e52c8e3bb4d1ff5cc25e258c9bb0ec28606f",
         "type": "github"
       },
       "original": {
