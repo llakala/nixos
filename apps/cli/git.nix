@@ -33,16 +33,12 @@
       brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
       imback = "stash pop";
 
-      hireman = "stage --patch"; # Stage specific changes, one by one
-      hman = "hireman";
-      
+      employ = "stage --patch"; # Stage specific changes, one by one
       demote = "reset --patch"; # Unstage specific staged changes
-      
-      fireman = "restore --patch"; # Undo an unstaged change
-      fman = "killman";
+      layoff = "restore --patch"; # Undo an unstaged change
 
-      actors = "diff --staged";
-      extras = "diff";
+      staged = "diff --staged";
+      unstaged = "diff";
 
       # Used like this to combine last three commits: `git combine 3 "awesome commit message here"`
       combine = ''!f() { git reset HEAD && git branch -D backup-before-combine && git branch backup-before-combine && git reset --soft HEAD~"$1" && git commit -m "$2"; }; f'';
