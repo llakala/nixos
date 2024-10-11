@@ -14,6 +14,7 @@
     ];
   };
 
+  environment.variables.MANPAGER = "sh -c 'col -bx | bat -l man -p --paging always'"; # Make --help look pretty like batman
   
   hm.home.activation.batCache = lib.mkForce "";# Waiting for https://github.com/nix-community/home-manager/issues/5481 is fixed
 }
