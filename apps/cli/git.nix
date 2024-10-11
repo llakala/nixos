@@ -9,11 +9,14 @@
     enable = true;
     userName = config.baseVars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
+    difftastic.enable = true;
 
+    
     extraConfig =
     {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
+      diff.algorithm = "histogram";
 
       pull.ff = "only";
       push.useForceIfIncludes = true;
