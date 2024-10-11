@@ -36,9 +36,9 @@
       brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
       imback = "stash pop";
 
-      employ = "stage --patch"; # Stage specific changes, one by one
+      hire = "stage --patch"; # Stage specific changes, one by one
       demote = "reset --patch"; # Unstage specific staged changes
-      layoff = "restore --patch"; # Undo an unstaged change
+      fire = "restore --patch"; # Undo an unstaged change
 
       staged = "diff --staged";
       unstaged = "diff";
