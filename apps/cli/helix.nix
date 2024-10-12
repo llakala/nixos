@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ lib, pkgs, inputs, ... }:
 
 let navigationBinds = type: 
 {
@@ -26,6 +26,11 @@ let navigationBinds = type:
   A-e = "${type}_next_long_word_end"; # alt-e
   A-E = "${type}_prev_long_word_end"; # alt-shift-e
 
+  # Select next word, with no spaces selected at all. Great for replacing via `q+c`
+  q = "@emiw"; # Uses macros, added in unstable helix version
+  A-q = "@emiW"; 
+   
+
 
   C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
 
@@ -45,7 +50,7 @@ in
   hm.programs.helix =
   {
     enable = true;
-    package = pkgs-unstable.helix;
+    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source from commit adding macro support
     defaultEditor = true; # Sets EDITOR environment variable
     settings.theme = "onedarker";
   };
