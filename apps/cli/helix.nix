@@ -6,6 +6,7 @@ let navigationBinds = type:
   down = "no_op";
   left = "no_op";
   right = "no_op";
+  b = "no_op"; # We've moved the functionality of `b` to other keybinds
 
 
   # Go till the next word *starts*. w+a inserts after "word "
@@ -35,6 +36,9 @@ let navigationBinds = type:
 
   d = "delete_selection_noyank";
   c = "change_selection_noyank"; # Easier d+i
+
+  H = "goto_first_nonwhitespace";
+  L = "goto_line_end";
 };
 in
 {
