@@ -33,6 +33,7 @@
       flake = false;
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    helix-unstable.url = "github:helix-editor/helix/7e85fd5b77aa9b0898ddccfb834e36801db31825"; # Compile Helix from source to support macro keybinds
 
     rbld =
     {
