@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728334376,
-        "narHash": "sha256-CTKEKPzD/j8FK6H4DO3EjyixZd3HHvgAgfnCwpGFP5c=",
+        "lastModified": 1728687662,
+        "narHash": "sha256-D9TChzb00eTG1YWBx8eN2s6lJJnBjB5Y7RpxkAzGvyQ=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "d39ee334984fcdae6244f5a8e6ab857479cbaefe",
+        "rev": "bdbdb725d632863bdedb80baabf21327614dd237",
         "type": "github"
       },
       "original": {
@@ -29,11 +29,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1728589536,
-        "narHash": "sha256-tmDOiPQVksql8E0s4CR/YVU0sH7a5/YInzAij5Z73rU=",
+        "lastModified": 1728651065,
+        "narHash": "sha256-Zp/tYPDfWN5OjGb67/cZAHcLStUY+4r8mNYrTqmSB8Y=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "17ffbb602ae9ccdbd4aa826d8a99eef0e22ab752",
+        "rev": "0f51a541c62a9502405d2ae211554ae6636e216d",
         "type": "gitlab"
       },
       "original": {
@@ -46,11 +46,11 @@
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1728245282,
-        "narHash": "sha256-NfC/6dpFpm5jrz0AY5G/VDVk8zT4rFkMYXutQkTJ6B8=",
+        "lastModified": 1728654484,
+        "narHash": "sha256-J53bks/1loTdXiSQz1OlOAc8jx9g399oF1YiXAX2JKQ=",
         "owner": "rafaelmardojai",
         "repo": "firefox-gnome-theme",
-        "rev": "4f935c3b7f19d13d6341acd8174246906b1a902c",
+        "rev": "e53b84d428e7f5ba0f04d6a91e6cc6c05c75b632",
         "type": "github"
       },
       "original": {
@@ -102,11 +102,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728588172,
-        "narHash": "sha256-wCLcOMOyiFHa4MfAT1SR8jj47GcmCXiR93kgFs38bVY=",
+        "lastModified": 1728685293,
+        "narHash": "sha256-1WowL96pksT/XCi+ZXHgqiQ9NiU5oxWuNIQYWqOoEYc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8bb5d53c5847d9a9b2ad1bda49f9aa9df0de282a",
+        "rev": "2b13611eaed8326789f76f70d21d06fbb14e3e47",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728595105,
-        "narHash": "sha256-sTTCAE5w6ZDGaVBjL9ZyZ6pl44obUyUsX4gNUEvxRHY=",
+        "lastModified": 1728688322,
+        "narHash": "sha256-XevwYQWJqdPR+ewYHgcC8XPiGBILpRjwdEy3El4evpk=",
         "owner": "quatquatt",
         "repo": "rebuild-but-less-dumb",
-        "rev": "1dc9e52c8e3bb4d1ff5cc25e258c9bb0ec28606f",
+        "rev": "37501464c24b0341c6d6b763d49a0d0b3b2f0252",
         "type": "github"
       },
       "original": {
