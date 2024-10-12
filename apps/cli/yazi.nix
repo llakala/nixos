@@ -42,9 +42,15 @@
       desc = "Open the selected files";
     }
     {
-      on = ["g" "n"]; # g+n in sequence
+      on = ["g" "n"]; 
       run = "cd ${config.baseVars.configDirectory}";
       desc = "Go to the NixOS configuration directory";
+    }
+    
+    {
+      on = [ "g" "p" ];
+      run = "cd ~/Documents/projects";
+      desc = "Go to the projects folder for working on external Git repos";
     }
   ];
 
