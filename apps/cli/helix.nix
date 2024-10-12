@@ -9,20 +9,15 @@ let navigationBinds = type:
   b = "no_op"; # We've moved the functionality of `b` to other keybinds
 
 
-  # Go till the next word *starts*. w+a inserts after "word "
+  # Select next word, plus extra space afterwards. Good for adding on via `w+a`
   w = "${type}_next_word_start";
   W = "${type}_prev_word_start";
-
-  # w/W, but for WORDS, special characters included.
   A-w = "${type}_next_long_word_start"; # alt-w
   A-W = "${type}_prev_long_word_start"; # alt-shift-w
 
-
-  # Go till the next word *ends*. e+a inserts after "word"
+  # Select next word, plus a space prior. Good for deletion via `e+d`
   e = "${type}_next_word_end";
   E = "${type}_prev_word_end";
-
-  # e/E, but for WORDS, special characters included. 
   A-e = "${type}_next_long_word_end"; # alt-e
   A-E = "${type}_prev_long_word_end"; # alt-shift-e
 
