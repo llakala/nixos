@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -36,8 +40,12 @@
     gnome-terminal
     gnome-disk-utility
     dconf-editor
-    baobab
-  ];
+    baobab # Disk Usage Analyzer
+
+    totem # Video viewer
+    loupe # Image viewer
+  ]
+  );
 
   environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
 }
