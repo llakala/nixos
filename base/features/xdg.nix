@@ -5,8 +5,8 @@
   hm.xdg =
   {
     enable = true;
-    mime.enable = true;
 
+    mime.enable = true;
     mimeApps.enable = true;
   };
 
@@ -18,7 +18,6 @@
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
-      xdg-desktop-portal-hyprland
     ];
     config.common.default = "gnome";
   };
