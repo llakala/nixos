@@ -69,4 +69,5 @@ in
   };
 
   environment.variables.TERMINAL = "kitty";
+  environment.variables.TERM = "kitty";
 }
