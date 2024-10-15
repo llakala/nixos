@@ -248,15 +248,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1728688322,
-        "narHash": "sha256-XevwYQWJqdPR+ewYHgcC8XPiGBILpRjwdEy3El4evpk=",
-        "owner": "quatquatt",
+        "lastModified": 1729010061,
+        "narHash": "sha256-aw7ZQ975/9YMAEoCAb5Y5FVRa1Zo0OlEx40u6OPZGoQ=",
+        "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "37501464c24b0341c6d6b763d49a0d0b3b2f0252",
+        "rev": "a241c06dca76b782f0281b0a1c374310d8cbb6c8",
         "type": "github"
       },
       "original": {
-        "owner": "quatquatt",
+        "owner": "llakala",
         "ref": "main",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
