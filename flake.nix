@@ -37,7 +37,7 @@
 
     rbld =
     {
-      url = "github:quatquatt/rebuild-but-less-dumb/main";
+      url = "github:llakala/rebuild-but-less-dumb/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
