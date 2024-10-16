@@ -1,9 +1,9 @@
 { inputs, pkgs, ... }:
 let
-  system = pkgs.system; # Something like x86-64_linux
+  rbld = inputs.rbld.packages.${pkgs.system}.rbld;
+  unify = inputs.rbld.packages.${pkgs.system}.unify;
 
-  rbld = inputs.rbld.packages.${system}.default;
 in
 {
-  environment.systemPackages = [ rbld ];
+  environment.systemPackages = [ rbld unify ];
 }
