@@ -32,7 +32,7 @@ let
       ../apps/cli
       ../apps/gui
 
-      ../hosts/${hostname}/modules
+      ../hosts/${hostname}/config
       ../hosts/${hostname}/hardware-configuration.nix
       ../hosts/${hostname}/${hostname}Vars.nix
       {
