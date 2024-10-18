@@ -93,11 +93,22 @@ in
       auto-format = false;
       language-servers = lib.singleton "pylsp";
     }
+    {
+      name = "markdown";
+      auto-format = false;
+      language-servers = [ "mdpls" ];
+    }
   ];
 
   hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
   {
     nil.command = lib.getExe pkgs.nil;
+
     pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
+
+    mdpls = 
+    {
+      command = lib.getExe inputs.self.packages.${pkgs.system}.mdpls;
+    };
   };
 }

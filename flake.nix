@@ -59,6 +59,10 @@
 
   in
   {
+    packages = myLib.forAllSystems 
+    (
+      pkgs: import ./packages { inherit myLib pkgs; }
+    );
     inherit nixosConfigurations;
 
     homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
