@@ -20,4 +20,6 @@ in
   mkList = attrset: [ attrset ];
 
   mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix;
+
+  forAllSystems = import ./forAllSystems.nix { inherit lib myLib inputs; };
 }
