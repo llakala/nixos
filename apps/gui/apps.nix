@@ -1,13 +1,7 @@
-{
-  pkgs,
-  ...
-}:
-
+{ pkgs, ... }:
 
 {
-
-  environment.systemPackages =
-  with pkgs;
+  environment.systemPackages = with pkgs;
   [
     modrinth-app
     gparted
