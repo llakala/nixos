@@ -2,9 +2,13 @@
 
 
 {
-  nix.registry = lib.mkForce # Makes `nix run` commands use unfree
+  nix.registry = lib.mkForce
   {
-    nixpkgs.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
-    nixpkgs-unstable.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
+    nixpkgs.flake = inputs.nixpkgs;
+    nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+
+    # Allow running unfree packages with nix3 commands via `nix run unfree#steam`
+    unfree.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
+    unfree-unstable.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
   };
 }
