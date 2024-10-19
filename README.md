@@ -48,7 +48,7 @@ The most frustrating part of this for me is that I never remember if something i
 ## Structure
 To simplify everything, I use a basic structure for both my base configuration and my hosts. This means that to be properly imported into the flake, a host should follow this structure. The base configuration can be thought of as its own host whose configuration is included in any other host.
 
-The basic structure for a host is listed [here](./resources/documentation/structure.md).
+The basic structure for a host is listed [here](./extras/documentation/structure.md).
 
 ## Variables
 There are two types of variables: general variables, and host-specific variables. General variables are host-independent, such as the directory of the nixos configuration. Host-specific variables are set based on the host, like the hostname and email.
