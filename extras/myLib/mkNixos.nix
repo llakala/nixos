@@ -18,7 +18,6 @@ let
       ../../base/core
       ../../base/features
       ../../base/gnome
-      ../../base/modules
       ../../base/terminal
       ../../base/baseVars.nix
 
@@ -28,6 +27,8 @@ let
       ../../hosts/${hostname}/config
       ../../hosts/${hostname}/hardware-configuration.nix
       ../../hosts/${hostname}/${hostname}Vars.nix
+
+      inputs.self.nixosModules.default
     ];
   };
 in

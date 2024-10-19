@@ -1,7 +1,5 @@
-{ lib, config, options, ... }:
-let
-  cfg = config.baseVars;
-in
+{ lib, options, ... }:
+
 {
   options.baseVars =
   {

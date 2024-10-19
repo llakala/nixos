@@ -63,6 +63,15 @@
     (
       pkgs: import ./extras/packages { inherit myLib pkgs; }
     );
+
+    nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
+    {
+      imports = myLib.resolveAndFilter
+      [
+        ./extras/nixosModules
+      ];
+    };
+
     inherit nixosConfigurations;
 
     homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
