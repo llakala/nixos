@@ -15,19 +15,19 @@ let
 
     modules = myLib.resolveAndFilter # Use custom function that grabs all files within a folder and filters out non-nix files
     [
-      ../base/core
-      ../base/features
-      ../base/gnome
-      ../base/modules
-      ../base/terminal
-      ../base/baseVars.nix
+      ../../base/core
+      ../../base/features
+      ../../base/gnome
+      ../../base/modules
+      ../../base/terminal
+      ../../base/baseVars.nix
 
-      ../apps/cli
-      ../apps/gui
+      ../../apps/cli
+      ../../apps/gui
 
-      ../hosts/${hostname}/config
-      ../hosts/${hostname}/hardware-configuration.nix
-      ../hosts/${hostname}/${hostname}Vars.nix
+      ../../hosts/${hostname}/config
+      ../../hosts/${hostname}/hardware-configuration.nix
+      ../../hosts/${hostname}/${hostname}Vars.nix
     ];
   };
 in
