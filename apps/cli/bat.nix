@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 
 {
-  environment.shellAliases.cat = "bat";
   environment.shellAliases.man = "batman";
 
   hm.programs.bat =
