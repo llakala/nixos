@@ -3,16 +3,16 @@
 {
   hm.programs.zsh =
   {
-    defaultKeymap = "viins";
+    defaultKeymap = "viins"; # Insert mode in new terminal session
 
-    plugins = lib.singleton
+    plugins = lib.singleton # Documentation seen here for adding new keybinds https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#custom-widgets-and-keybindings
     {
       name = "vi-mode";
       file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       src = pkgs.zsh-vi-mode;
     };
 
-    initExtraFirst =
+    initExtraFirst = # language for treesitter: bash
     ''
       function my_delete_bind()
       {
