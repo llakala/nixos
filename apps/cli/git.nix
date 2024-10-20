@@ -37,6 +37,7 @@
       hire = "stage --patch"; # Stage specific changes, one by one
       demote = "restore --staged --patch"; # Unstage specific staged changes
       fire = "restore --patch"; # Undo an unstaged change
+      kill = "restore --staged --worktree --patch"; # Get rid of a change, regardless of whether it's staged or not
 
       staged = "diff --staged";
       unstaged = "diff";
