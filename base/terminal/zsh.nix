@@ -7,15 +7,17 @@
 {
   programs.zsh.enable = true; # Required to set environment.shells
   environment.shells = with pkgs; [ zsh ];
-  users.users.${config.hostVars.username}.shell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
 
   hm.programs.zsh =
   {
     enable = true;
 
     autosuggestion.enable = true;
+    enableCompletion = true;
+
     syntaxHighlighting.enable = true;
-    enableCompletion = false;
     autocd = true; # If empty directory given as command, interpret it as cd
 
     shellAliases.src = ". ~/.zshrc";
