@@ -1,4 +1,4 @@
-{ pkgs-unstable, pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
    myPython = pkgs.python3; # Python version for our packages to reference
@@ -13,10 +13,9 @@ let
    ];
 in
 {
-   environment.systemPackages =
-   [
-      ( myPython.withPackages myPythonPackages )
-   ];
+   environment.systemPackages = lib.singleton
+   ( myPython.withPackages myPythonPackages );
 
    environment.shellAliases.pep8 = "pycodestyle";
+
 }
