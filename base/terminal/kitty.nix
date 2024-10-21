@@ -39,7 +39,6 @@ in
   hm.programs.kitty.keybindings =
   {
     "ctrl+q" = "close_os_window"; # Quit application
-    "ctrl+w" = "close_window"; #  Prioritizes internal windows > tabs
 
     "ctrl+t" = "new_tab";
 
