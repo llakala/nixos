@@ -1,5 +1,10 @@
 {
 
+  environment.variables =
+  {
+    ABBR_SET_EXPANSION_CURSOR = 1; # Enable % syntax
+  };
+
   hm.programs.zsh.zsh-abbr =
   {
     enable = true;
@@ -8,7 +13,7 @@
       g = "git";
       gst = "git status";
       gsw = "git switch";
-      gcm = "git commit -m";
+      gcm = "git commit -m \"%\"";
       gps = "git push";
       glg = "git log";
 
