@@ -1,27 +1,19 @@
-{ pkgs, lib, ... }:
-
-
+{ ... }:
 {
-  hm.xdg =
+  custom.services.mimetypes =
   {
     enable = true;
 
-    mime.enable = true;
-    mimeApps.enable = true;
+    browser = "firefox.desktop";
+    editor = "Helix.desktop";
+    fileManager = "org.gnome.Nautilus.desktop";
+    terminal = "kitty.desktop";
+    extractor = "org.gnome.Nautilus.desktop";
+
+    pdfViewer = "org.pwmt.zathura.desktop";
+    imageViewer = "org.gnome.Loupe.desktop";
+    videoViewer = "org.gnome.Totem.desktop";
   };
 
-  hm.xdg.portal =
-  {
-    enable = true;
-    extraPortals = with pkgs;
-    [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
-    config.common.default = "gnome";
-  };
-
-  hm.xdg.configFile."mimeapps.list".force = lib.mkForce true; # Delete backup for mimeApps since backups are done idiotically
 
 }
