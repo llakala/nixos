@@ -31,11 +31,11 @@ let
   ];
 in
 {
-  hm =
+  hm.programs.firefox =
   {
-    programs.firefox.enable = true;
+    enable = true;
 
-    programs.firefox.package = pkgs.firefox.overrideAttrs
+    package = pkgs.firefox.overrideAttrs
     (oldAttrs:
     {
       buildCommand = oldAttrs.buildCommand +
@@ -45,7 +45,7 @@ in
       '';
     });
 
-    programs.firefox.policies =
+    policies =
     {
       DontCheckDefaultBrowser = true;
       DisableTelemetry = true;
@@ -128,7 +128,7 @@ in
 
     };
 
-    programs.firefox.profiles.default =
+    profiles.default =
     {
       isDefault = true;
       extensions = ryceeAddons ++ customAddons;
@@ -157,7 +157,7 @@ in
       };
     };
 
-    programs.firefox.profiles.default.search.engines =
+    profiles.default.search.engines =
     {
       # Disable all the stupid "This time, search with" icons
       "Google".metaData.hidden = true;
@@ -222,7 +222,7 @@ in
 
 
 
-    programs.firefox.policies.Preferences =
+    policies.Preferences =
     {
       "browser.urlbar.suggest.searches" = true; # Need this for basic search suggestions
       "browser.urlbar.shortcuts.bookmarks" = false;
@@ -252,7 +252,7 @@ in
       "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
     };
 
-    programs.firefox.policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
+    policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
     {
       placements =
       {
@@ -292,6 +292,8 @@ in
       newElementCount = 3;
     };
 
-    home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
   };
+
+  hm.home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
+
 }
