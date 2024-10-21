@@ -19,7 +19,7 @@
     syntaxHighlighting.enable = true;
 
     autocd = true; # If empty directory given as command, interpret it as cd
-    shellAliases.src = ". ~/.zshrc";
+    shellAliases.src = ". ~/.zshrc && exec zsh";
 
     initExtra =
     ''
