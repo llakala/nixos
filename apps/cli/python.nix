@@ -10,6 +10,7 @@ let
       matplotlib
       numpy
       pycodestyle
+      pretty-errors
    ];
 in
 {
