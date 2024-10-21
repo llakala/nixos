@@ -107,6 +107,25 @@ in
         action = "useSystemDefault"; # Open Element app
         ask = false;
       };
+
+      "3rdparty".extensions."uBlock0@raymondhill.net" =
+      {
+        permissions = [ "internal:privateBrowsingAllowed" ];
+        origins = [];
+      };
+
+      "3rdparty".extensions."{b0a674f9-f848-9cfd-0feb-583d211308b0}" = # Movie-web
+      {
+        "permissions" = [ "<all_urls>" ];
+        "origins" = [ "<all_urls>" ];
+      };
+
+      "3rdparty".extensions."gdpr@cavi.au.dk" =
+      {
+        "permissions" = [ "<all_urls>" ];
+        "origins" = [ "<all_urls>" ];
+      };
+
     };
 
     programs.firefox.profiles.default =
@@ -274,26 +293,5 @@ in
     };
 
     home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
-
-    home.file.".mozilla/firefox/default/extension-preferences.json".text = builtins.toJSON
-    {
-      "uBlock0@raymondhill.net" =
-      {
-        permissions = [ "internal:privateBrowsingAllowed" ];
-        origins = [];
-      };
-      "{b0a674f9-f848-9cfd-0feb-583d211308b0}" = # Movie-web
-      {
-        "permissions" = [ "<all_urls>" ];
-        "origins" = [ "<all_urls>" ];
-      };
-      "gdpr@cavi.au.dk" =
-      {
-        "permissions" = [ "<all_urls>" ];
-        "origins" = [ "<all_urls>" ];
-      };
-    };
-
-    home.file.".mozilla/firefox/default/extension-preferences.json".force = true;
   };
 }
