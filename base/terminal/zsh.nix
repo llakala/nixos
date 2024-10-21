@@ -21,10 +21,21 @@
     autocd = true; # If empty directory given as command, interpret it as cd
     shellAliases.src = ". ~/.zshrc";
 
-    initExtra =
+    initExtra = # bash
     ''
       source ${./options.sh}
       source ${./keybinds.sh}
+
+      function zle_ls
+      {
+        kitty @ ls -m recent:0 > /tmp/kittyTabCache.json
+        cat /tmp/kittyTabCache.json | python3 ./kitty-convert-dump.py > $HOME/.config/kitty/kitty-session.kitty
+
+        zle reset-prompt; zle redisplay
+      }
+
+      zle -N zle_ls
+      bindkey "^O" zle_ls
     '';
   };
 
