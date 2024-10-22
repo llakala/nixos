@@ -34,6 +34,7 @@
     libsecret
     ffmpeg
     exiftool
+    wl-clipboard # Wayland terminal stuff
 
     # commands specifically for nix
     nil # Nix language server
