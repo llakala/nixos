@@ -54,12 +54,6 @@
     }
 
     {
-      on = lib.singleton "!";
-      run = "shell '$SHELL' --block --confirm";
-      desc = "Open shell in current directory";
-    }
-
-    {
       on = lib.singleton "p";
       run = "plugin --sync smart-paste";
       desc = "Paste into the hovered directory or CWD";
