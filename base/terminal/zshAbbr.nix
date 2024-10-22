@@ -1,3 +1,4 @@
+{ config, ... }:
 {
 
   environment.variables =
@@ -10,6 +11,8 @@
     enable = true;
     abbreviations =
     {
+      cdn = "cd ${config.baseVars.configDirectory}";
+
       g = "git";
       gst = "git status";
       gsw = "git switch";
