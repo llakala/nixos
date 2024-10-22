@@ -20,10 +20,11 @@
       gps = "git push";
       glg = "git log";
 
-      # Using our custom git aliases for staging, unstaging, and removing changes
+      # Using our custom git aliases
       ghr = "git hire";
       gdm = "git demote";
       gfr = "git fire";
+      gfs = "git force";
 
       nd = "nix develop";
     };
