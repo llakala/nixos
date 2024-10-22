@@ -16,7 +16,7 @@
     autocd = true; # If empty directory given as command, interpret it as cd
     shellAliases.src = ". ~/.zshrc && exec zsh";
 
-    initExtra =
+    initExtra = # bash
     ''
       source ${./options.sh}
       source ${./keybinds.sh}
