@@ -52,7 +52,30 @@
       run = "cd ~/Documents/projects";
       desc = "Go to the projects folder for working on external Git repos";
     }
+
+    {
+      on = lib.singleton "!";
+      run = "shell '$SHELL' --block --confirm";
+      desc = "Open shell in current directory";
+    }
   ];
+
+  hm.programs.zsh.initExtra = # bash
+  ''
+    function y()
+    {
+      local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+      command yazi "$@" --cwd-file="$tmp" # Use `command yazi` to get around our yazi alias
+
+      if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+      fi
+
+      rm -f -- "$tmp"
+    }
+  '';
+
+  environment.shellAliases.yazi = "echo 'USE y DUMMY'"; # We should always be using the `y` function, it's shorter and better
 
 
 }
