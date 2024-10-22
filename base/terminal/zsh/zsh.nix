@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   programs.zsh.enable = true; # Required to set environment.shells
@@ -12,7 +12,6 @@
 
     autosuggestion.enable = true;
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
 
     autocd = true; # If empty directory given as command, interpret it as cd
     shellAliases.src = ". ~/.zshrc && exec zsh";
@@ -36,4 +35,12 @@
     ignoreDups = true; # # Ignore duplicates only if they're right next to each other
     expireDuplicatesFirst = true;
   };
+
+  hm.programs.zsh.plugins = lib.singleton
+  {
+    name = "zsh-fast-syntax-highlighting";
+    src = pkgs.zsh-fast-syntax-highlighting;
+    file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
+  };
+
 }
