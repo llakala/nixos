@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }:
+{ lib, config, inputs, pkgs-unstable, ... }:
 
 {
 
@@ -13,7 +13,7 @@
   hm.programs.yazi =
   {
     enable = true;
-    # package = pkgs-unstable.yazi; # Can't use until I fix missing folder icon
+    package = pkgs-unstable.yazi; # Can't use until I fix missing folder icon
   };
 
   hm.programs.yazi.settings = # yazi.toml settings, documented here https://yazi-rs.github.io/docs/configuration/yazi
