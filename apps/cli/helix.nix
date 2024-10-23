@@ -98,6 +98,12 @@ in
       auto-format = false;
       language-servers = [ "mdpls" ];
     }
+
+    {
+      name = "json";
+      auto-format = false;
+      language-servers = lib.singleton "vscode-json-language-server";
+    }
   ];
 
   hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
@@ -106,9 +112,14 @@ in
 
     pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
 
-    mdpls = 
+    mdpls.command = lib.getExe inputs.self.packages.${pkgs.system}.mdpls;
+
+    vscode-json-language-server =
     {
-      command = lib.getExe inputs.self.packages.${pkgs.system}.mdpls;
+      command = lib.getExe pkgs.nodePackages.vscode-json-languageserver;
+      args = [ "--stdio" ];
+      config.provideFormatter = false;
     };
+
   };
 }
