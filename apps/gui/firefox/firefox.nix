@@ -2,6 +2,8 @@
 
 let
 
+  # Search extension names with below command:
+  # nix flake show --json "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons" --all-systems | jq -r '.packages."x86_64-linux" | keys[]' | rg QUERY
   ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system};
   [
     ublock-origin
