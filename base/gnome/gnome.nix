@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs;
   [
     gnome-extension-manager
+    video-trimmer
   ]
   ++
   (with pkgs.gnome;
