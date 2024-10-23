@@ -39,6 +39,8 @@ let navigationBinds = type:
 
   H = "goto_first_nonwhitespace";
   L = "goto_line_end";
+
+  space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
 };
 in
 {
