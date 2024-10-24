@@ -1,6 +1,6 @@
 { lib, pkgs, inputs, ... }:
 
-let navigationBinds = type: 
+let navigationBinds = type:
 {
   up = "no_op";
   down = "no_op";
@@ -23,8 +23,8 @@ let navigationBinds = type:
 
   # Select next word, with no spaces selected at all. Great for replacing via `q+c`
   q = "@emiw"; # Uses macros, added in unstable helix version
-  A-q = "@emiW"; 
-   
+  A-q = "@emiW";
+
 
 
   C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
