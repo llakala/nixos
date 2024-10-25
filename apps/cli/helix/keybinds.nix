@@ -1,5 +1,3 @@
-{ lib, pkgs, inputs, ... }:
-
 let navigationBinds = type:
 {
   up = "no_op";
@@ -44,28 +42,6 @@ let navigationBinds = type:
 };
 in
 {
-  hm.programs.helix =
-  {
-    enable = true;
-    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source from commit adding macro support
-    defaultEditor = true; # Sets EDITOR environment variable
-    settings.theme = "onedarker";
-  };
-
-  hm.programs.helix.settings.editor =
-  {
-    indent-guides.render = true; # Show where indentations are with |
-
-    mouse = false; # you'll thank me later
-
-    cursor-shape =
-    {
-      insert = "bar";
-      normal = "block";
-      select = "underline";
-    };
-  };
-
   hm.programs.helix.settings.keys =
   {
     # Normal and select use the same custom binds, but normal moves the selection, while select extends the selection
@@ -79,49 +55,5 @@ in
       left = "no_op";
       right = "no_op";
     };
-
-  };
-
-
-  hm.programs.helix.languages.language =
-  [
-    {
-      name = "nix";
-      auto-format = false;
-      language-servers = lib.singleton "nil";
-    }
-    {
-      name = "python";
-      auto-format = false;
-      language-servers = lib.singleton "pylsp";
-    }
-    {
-      name = "markdown";
-      auto-format = false;
-      language-servers = [ "mdpls" ];
-    }
-
-    {
-      name = "json";
-      auto-format = false;
-      language-servers = lib.singleton "vscode-json-language-server";
-    }
-  ];
-
-  hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
-  {
-    nil.command = lib.getExe pkgs.nil;
-
-    pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
-
-    mdpls.command = lib.getExe inputs.self.packages.${pkgs.system}.mdpls;
-
-    vscode-json-language-server =
-    {
-      command = lib.getExe pkgs.nodePackages.vscode-json-languageserver;
-      args = [ "--stdio" ];
-      config.provideFormatter = false;
-    };
-
   };
 }
