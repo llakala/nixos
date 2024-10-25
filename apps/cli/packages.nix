@@ -44,6 +44,5 @@
 
     # Big kits
     nodejs
-    jdk
   ];
 }
