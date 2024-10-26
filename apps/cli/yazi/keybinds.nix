@@ -53,5 +53,6 @@ in
     }
   ];
 
-  hm.xdg.configFile."yazi/plugins/smart-paste.yazi/init.lua".text = builtins.readFile ./smart-paste.lua;
+  hm.xdg.configFile."yazi/plugins/smart-paste.yazi/init.lua".text = builtins.readFile ./plugins/smart-paste.lua;
+
 }
