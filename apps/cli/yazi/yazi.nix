@@ -20,12 +20,6 @@
       desc = "Open with the default editor.";
       block = true;
     }
-
-    {
-      run = ''code "$@" '';
-      desc = "Open with VSCode.";
-      block = true;
-    }
   ];
 
 }
