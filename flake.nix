@@ -34,7 +34,12 @@
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    kanagawa-yazi =
+    {
+      url = "github:dangooddd/kanagawa.yazi";
+      flake = false;
+    };
     helix-unstable.url = "github:helix-editor/helix/7e85fd5b77aa9b0898ddccfb834e36801db31825"; # Compile Helix from source to support macro keybinds. We don't have it follow nixpkgs so it doesn't recompile all the time
 
     rbld =

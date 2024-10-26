@@ -177,6 +177,22 @@
         "type": "github"
       }
     },
+    "kanagawa-yazi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723283899,
+        "narHash": "sha256-hi3RXCle+KTHlhnQwKDJiHTOro0At9QJMwY2hwWU8Ic=",
+        "owner": "dangooddd",
+        "repo": "kanagawa.yazi",
+        "rev": "b32f205c52ba0615c276d3dab22448adf65f7351",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dangooddd",
+        "repo": "kanagawa.yazi",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1729742320,
@@ -270,6 +286,7 @@
         "helix-unstable": "helix-unstable",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
+        "kanagawa-yazi": "kanagawa-yazi",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
