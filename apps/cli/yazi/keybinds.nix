@@ -3,7 +3,7 @@ let
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy"; # We have it installed systemwide, but better safe than sorry
 in
 {
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  hm.programs.yazi.keymap.manager.prepend_keymap = # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
   [
     {
       desc = "Open the selected files";
@@ -23,7 +23,7 @@ in
     }
 
     {
-      desc = "Paste into the hovered directory or CWD";
+      desc = "Paste into a directory if we're hovering over it";
       on = lib.singleton "p";
       run = "plugin --sync smart-paste";
     }
