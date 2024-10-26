@@ -39,6 +39,18 @@ in
         ''
       ];
     }
+
+    {
+      desc = "Exit normally, returning to wherever you previously were before entering Yazi";
+      on = "q";
+      run = "quit --no-cwd-file";
+    }
+
+    {
+      desc = "Exit to wherever we currently are within the filetree";
+      on = "Q";
+      run = "quit";
+    }
   ];
 
   hm.xdg.configFile."yazi/plugins/smart-paste.yazi/init.lua".text = builtins.readFile ./smart-paste.lua;
