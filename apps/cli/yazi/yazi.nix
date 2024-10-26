@@ -1,35 +1,31 @@
 { lib, config, inputs, pkgs-unstable, ... }:
 
 {
-  hm =
+  hm = # Use unstable home-manager module for yazi
   {
     disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
     imports = lib.singleton "${inputs.home-manager-unstable}/modules/programs/yazi.nix";
   };
 
-
   hm.programs.yazi =
   {
     enable = true;
-    package = pkgs-unstable.yazi; # Can't use until I fix missing folder icon
+    package = pkgs-unstable.yazi;
   };
 
-  hm.programs.yazi.settings = # yazi.toml settings, documented here https://yazi-rs.github.io/docs/configuration/yazi
-  {
-    opener.edit =
-    [
-      {
-        run = ''${config.baseVars.editor} "$@" '';
-        desc = "Open with the default editor.";
-        block = true;
-      }
+  hm.programs.yazi.settings.opener.edit = # Custom options when opening a file
+  [
+    {
+      run = ''${config.baseVars.editor} "$@" '';
+      desc = "Open with the default editor.";
+      block = true;
+    }
 
-      {
-        run = ''code "$@" '';
-        desc = "Open with VSCode.";
-        block = true;
-      }
-    ];
-  };
+    {
+      run = ''code "$@" '';
+      desc = "Open with VSCode.";
+      block = true;
+    }
+  ];
 
 }

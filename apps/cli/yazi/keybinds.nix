@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }:
+
 let
-  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy"; # We have it installed systemwide, but better safe than sorry
+  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy"; # Package used for smart-paste. Installed here so we don't rely on a package being installed
 in
 {
   hm.programs.yazi.keymap.manager.prepend_keymap = # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
@@ -46,7 +47,7 @@ in
       ];
     }
 
-    {
+    { # Swapped `q` and `Q`, since returning to the previous directory is what I want more often
       desc = "Exit normally, returning to wherever you previously were before entering Yazi";
       on = "q";
       run = "quit --no-cwd-file";
