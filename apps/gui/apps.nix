@@ -7,7 +7,6 @@
     gparted
     filezilla
     moonlight-qt
-    viewnior # image viewer
     spotify
     shortwave # Internet radio
     obsidian # Notes

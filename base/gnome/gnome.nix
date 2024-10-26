@@ -40,10 +40,12 @@
   (with pkgs.gnome;
   [
     gnome-tweaks
-    gnome-terminal
-    gnome-disk-utility
+    gnome-disk-utility # Disks
     dconf-editor
-    baobab
+    baobab # Disk Usage Analyzer
+
+    totem # Video viewer
+    loupe # Image viewer
   ]
   );
 
