@@ -70,6 +70,7 @@ in
     settings =
     {
       allow_remote_control = true;
+      listen_on = "unix:@kitty";
       enabled_layouts = "splits:split_axis=horizontal";
     };
     keybindings = # Keybind for bringing up file manager
