@@ -24,6 +24,7 @@
     calc # It's just slang chat
     cava # Audio display
     ncdu # Scan folder size prettily
+    tree # Show filetree for writing out in markdown
 
     # Weird stuff
     appimage-run # Allow running appimages for when something isnt on nixpkgs
