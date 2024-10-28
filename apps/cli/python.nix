@@ -16,7 +16,9 @@ let
 in
 {
    environment.systemPackages = lib.singleton
-   ( myPython.withPackages myPythonPackages );
+   ( 
+      myPython.withPackages myPythonPackages 
+   );
 
    environment.shellAliases.pep8 = "pycodestyle";
 
