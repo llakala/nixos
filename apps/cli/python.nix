@@ -11,6 +11,7 @@ let
       numpy
       pycodestyle
       pretty-errors
+      pip # Just for use in virtual environments, systemwide-packages should be put here
    ];
 in
 {
