@@ -27,6 +27,8 @@
       gfs = "git force";
 
       nd = "nix develop";
+
+      src = "source";
     };
   };
 

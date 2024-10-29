@@ -14,7 +14,7 @@
     enableCompletion = true;
 
     autocd = true; # If empty directory given as command, interpret it as cd
-    shellAliases.src = ". ~/.zshrc && exec zsh";
+    shellAliases.zsrc = "source ~/.zshrc && exec zsh";
 
     initExtra = # bash
     ''
