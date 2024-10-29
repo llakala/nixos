@@ -1,4 +1,4 @@
-{ lib, myLib, inputs, ... }:
+{ lib, myLib, inputs, self, ... }:
 
 let
   mkNixos = hostname: { system }: # Function to be exported
@@ -8,7 +8,7 @@ let
 
     specialArgs =
     {
-      inherit inputs myLib;
+      inherit inputs myLib self;
 
       pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
     };

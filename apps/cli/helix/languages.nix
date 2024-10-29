@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, self, ... }:
 {
   hm.programs.helix.languages =
   {
@@ -33,7 +33,7 @@
 
       pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
 
-      mdpls.command = lib.getExe inputs.self.packages.${pkgs.system}.mdpls;
+      mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
 
       vscode-json-language-server =
       {
