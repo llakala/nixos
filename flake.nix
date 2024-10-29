@@ -51,10 +51,10 @@
   };
 
 
-  outputs = inputs @ { ... }: # Everything is passed via "inputs.NAME" to avoid clutter
+  outputs = { self, ... } @ inputs: # Everything is passed via "inputs.NAME" to avoid clutter
 
   let
-    myLib = import ./extras/myLib { inherit inputs; };
+    myLib = import ./extras/myLib { inherit inputs self; };
 
     # Declare nixosConfigurations within the let expression so we can reuse it for homeConfigurations
     nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as host
