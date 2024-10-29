@@ -26,6 +26,9 @@
       gfr = "git fire";
       gfs = "git force";
 
+      grw = "git reword";
+      grwm = "git reword --message"; # Get ready with me :3
+
       nd = "nix develop";
 
       src = "source";
