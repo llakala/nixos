@@ -17,7 +17,9 @@
       gst = "git status";
       gsw = "git switch";
       gcm = "git commit -m \"%\"";
+      gc = "git commit";
       gps = "git push";
+      gpl = "git pull";
       glg = "git log";
 
       # Using our custom git aliases
