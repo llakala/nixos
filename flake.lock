@@ -257,18 +257,18 @@
         "type": "github"
       }
     },
-    "rbld": {
+    "rebuild-but-less-dumb": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1730308843,
-        "narHash": "sha256-Hw23C8cRReVwOVwYOcxHkcx04hDMm6wqpdTp41ngPoY=",
+        "lastModified": 1730310041,
+        "narHash": "sha256-sDldsA97/VGgszGovCrAipoi45pi72QjqtOzwmHFS4Q=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "b8df148ccc7d2a4097f3d36c621f83220958152d",
+        "rev": "00edee96cfbbe3533cab67dc9586448ac89e05f1",
         "type": "github"
       },
       "original": {
@@ -290,7 +290,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "rbld": "rbld"
+        "rebuild-but-less-dumb": "rebuild-but-less-dumb"
       }
     },
     "rust-overlay": {
