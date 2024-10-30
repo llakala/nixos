@@ -11,7 +11,7 @@ let
       numpy
       pycodestyle
       pretty-errors
-      pip # Just for use in virtual environments, systemwide-packages should be put here
+      pip
    ];
 in
 {
@@ -21,5 +21,10 @@ in
    );
 
    environment.shellAliases.pep8 = "pycodestyle";
+
+   environment.variables =
+   {
+      PIP_REQUIRE_VIRTUALENV = "true"; # For non virtual environments, we should use Nix
+   };
 
 }
