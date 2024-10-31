@@ -21,6 +21,8 @@
       gps = "git push";
       gpl = "git pull";
       glg = "git log";
+      grb = "git rebase";
+      grbi = "git rebase -i";
 
       # Using our custom git aliases
       ghr = "git hire";
