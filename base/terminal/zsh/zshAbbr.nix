@@ -13,14 +13,21 @@
     {
       cdn = "cd ${config.baseVars.configDirectory}";
 
+      nd = "nix develop";
+
+      src = "source";
+
       g = "git";
       gst = "git status";
       gsw = "git switch";
-      gcm = "git commit -m \"%\"";
+      glg = "git log";
+
       gc = "git commit";
+      gcm = "git commit -m \"%\"";
+
       gps = "git push";
       gpl = "git pull";
-      glg = "git log";
+
       grb = "git rebase";
       grbi = "git rebase -i";
 
@@ -28,14 +35,11 @@
       ghr = "git hire";
       gdm = "git demote";
       gfr = "git fire";
+
       gfs = "git force";
 
       grw = "git reword";
       grwm = "git reword --message"; # Get ready with me :3
-
-      nd = "nix develop";
-
-      src = "source";
     };
   };
 
