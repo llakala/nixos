@@ -31,6 +31,11 @@
       grb = "git rebase";
       grbi = "git rebase -i";
 
+      gdf = "git diff";
+      gdfs = "git diff --staged";
+      gdfa = "git diff HEAD"; # Including both unstaged and staged changes
+
+
       # Using our custom git aliases
       ghr = "git hire";
       gdm = "git demote";
