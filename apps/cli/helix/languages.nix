@@ -1,47 +1,45 @@
 { lib, pkgs, self, ... }:
 {
-  hm.programs.helix.languages =
-  {
-    language =
-    [
-      {
-        name = "nix";
-        auto-format = false;
-        language-servers = lib.singleton "nil";
-      }
-      {
-        name = "python";
-        auto-format = false;
-        language-servers = lib.singleton "pylsp";
-      }
-      {
-        name = "markdown";
-        auto-format = false;
-        language-servers = [ "mdpls" ];
-      }
-
-      {
-        name = "json";
-        auto-format = false;
-        language-servers = lib.singleton "vscode-json-language-server";
-      }
-    ];
-
-    language-server = # Define language server executables here so helix can access them
+  hm.programs.helix.languages.language =
+  [
     {
-      nil.command = lib.getExe pkgs.nil;
+      name = "nix";
+      auto-format = false;
+      language-servers = lib.singleton "nil";
+    }
+    {
+      name = "python";
+      auto-format = false;
+      language-servers = lib.singleton "pylsp";
+    }
+    {
+      name = "markdown";
+      auto-format = false;
+      language-servers = [ "mdpls" ];
+    }
 
-      # We don't pass the pylsp exe, instead using the one from helix.extraPackages
+    {
+      name = "json";
+      auto-format = false;
+      language-servers = lib.singleton "vscode-json-language-server";
+    }
+  ];
 
-      mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
+  hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
+  {
+    nil.command = lib.getExe pkgs.nil;
 
-      vscode-json-language-server =
-      {
-        command = lib.getExe pkgs.nodePackages.vscode-json-languageserver;
-        args = [ "--stdio" ];
-        config.provideFormatter = false;
-      };
+    # We don't pass the pylsp exe, instead using the one from helix.extraPackages
+
+    mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
+
+    vscode-json-language-server =
+    {
+      command = lib.getExe pkgs.nodePackages.vscode-json-languageserver;
+      args = [ "--stdio" ];
+      config.provideFormatter = false;
     };
+
   };
 
   hm.programs.helix.extraPackages =
