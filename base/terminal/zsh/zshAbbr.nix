@@ -29,7 +29,7 @@
       gpl = "git pull";
 
       grb = "git rebase";
-      grbi = "git rebase -i";
+      grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
 
       gdf = "git diff";
       gdfs = "git diff --staged";
