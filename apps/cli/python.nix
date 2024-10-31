@@ -5,12 +5,16 @@ let
 
    myPythonPackages = pythonPackages: with pythonPackages;
    [
-      termcolor
       pandas
       matplotlib
       numpy
+
+      termcolor
+      pretty-errors
+
       pycodestyle
       pretty-errors
+
       pip
    ];
 in
