@@ -31,7 +31,7 @@
     {
       nil.command = lib.getExe pkgs.nil;
 
-      pylsp.command = lib.getExe pkgs.python3Packages.python-lsp-server;
+      # We don't pass the pylsp exe, instead using the one from helix.extraPackages
 
       mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
 
@@ -42,7 +42,16 @@
         config.provideFormatter = false;
       };
     };
-
   };
 
+  hm.programs.helix.extraPackages =
+  let
+    pylspInstance = pkgs.python3.withPackages
+    (
+      ps:
+      [ ps.python-lsp-server ]
+      ++ ps.python-lsp-server.optional-dependencies.all
+    );
+  in
+    lib.singleton pylspInstance;
 }
