@@ -1,4 +1,4 @@
-let navigationBinds = type:
+let navigationBinds = type: # Use the same binds for both normal and select mode, but movement binds work as intended in select mode
 {
   # Select next word, plus extra space afterwards. Good for adding on via `w+a`
   w = "${type}_next_word_start";
@@ -24,13 +24,15 @@ let navigationBinds = type:
 
   X = "extend_line_above"; # Select line upwards
 
+  # Use system clipboard everywhere
   y = "yank_to_clipboard";
   p = "paste_clipboard_after";
   P = "paste_clipboard_before";
   R = "replace_selections_with_clipboard"; # Easier d+p
 
+  # Don't yank when deleting and changing
   d = "delete_selection_noyank";
-  c = "change_selection_noyank"; # Easier d+i
+  c = "change_selection_noyank";
 
   H = "goto_first_nonwhitespace";
   L = "goto_line_end";
