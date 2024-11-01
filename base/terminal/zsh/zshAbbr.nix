@@ -31,9 +31,9 @@
       grb = "git rebase";
       grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
 
-      gdf = "git diff";
+      gdf = "git diff HEAD"; # Including both unstaged and staged changes
       gdfs = "git diff --staged";
-      gdfa = "git diff HEAD"; # Including both unstaged and staged changes
+      gdfu = "git diff"; # Unstaged changes
 
 
       # Using our custom git aliases
