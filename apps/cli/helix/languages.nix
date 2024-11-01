@@ -33,13 +33,14 @@
 
     mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
 
+    bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
+
     vscode-json-language-server =
     {
       command = lib.getExe pkgs.nodePackages.vscode-json-languageserver;
       args = [ "--stdio" ];
       config.provideFormatter = false;
     };
-
   };
 
   hm.programs.helix.extraPackages =
