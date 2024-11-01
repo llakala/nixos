@@ -1,12 +1,5 @@
 let navigationBinds = type:
 {
-  up = "no_op";
-  down = "no_op";
-  left = "no_op";
-  right = "no_op";
-
-  X = "extend_line_above"; # Select line upwards
-
   # Select next word, plus extra space afterwards. Good for adding on via `w+a`
   w = "${type}_next_word_start";
   W = "${type}_prev_word_start";
@@ -24,8 +17,12 @@ let navigationBinds = type:
   A-q = "@emiW";
 
 
+  space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
 
   C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
+
+
+  X = "extend_line_above"; # Select line upwards
 
   y = "yank_to_clipboard";
   p = "paste_clipboard_after";
@@ -38,7 +35,10 @@ let navigationBinds = type:
   H = "goto_first_nonwhitespace";
   L = "goto_line_end";
 
-  space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
+  up = "no_op";
+  down = "no_op";
+  left = "no_op";
+  right = "no_op";
 };
 in
 {
