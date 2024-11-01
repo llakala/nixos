@@ -4,8 +4,6 @@ let navigationBinds = type:
   down = "no_op";
   left = "no_op";
   right = "no_op";
-  b = "no_op"; # We've moved the functionality of `b` to other keybinds
-
 
   # Select next word, plus extra space afterwards. Good for adding on via `w+a`
   w = "${type}_next_word_start";
