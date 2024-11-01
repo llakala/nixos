@@ -5,6 +5,8 @@ let navigationBinds = type:
   left = "no_op";
   right = "no_op";
 
+  X = "extend_line_above"; # Select line upwards
+
   # Select next word, plus extra space afterwards. Good for adding on via `w+a`
   w = "${type}_next_word_start";
   W = "${type}_prev_word_start";
