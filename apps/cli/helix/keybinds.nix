@@ -37,6 +37,10 @@ let navigationBinds = type: # Use the same binds for both normal and select mode
   H = "goto_first_nonwhitespace";
   L = "goto_line_end";
 
+  # More ergonomic alternative to `><`
+  tab = "indent";
+  S-tab = "unindent";
+
   up = "no_op";
   down = "no_op";
   left = "no_op";
