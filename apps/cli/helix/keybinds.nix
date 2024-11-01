@@ -43,7 +43,11 @@ in
   hm.programs.helix.settings.keys =
   {
     # Normal and select use the same custom binds, but normal moves the selection, while select extends the selection
-    normal = navigationBinds "move";
+    normal = navigationBinds "move" //
+    {
+      esc = "keep_primary_selection"; # Escape also removes cursors, like `,`
+    };
+
     select = navigationBinds "extend";
 
     insert = # And we WILL only use normal mode for moving around
