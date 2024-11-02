@@ -6,6 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-utils.url = "github:numtide/flake-utils"; # Not actually using this, but we need to pin other things to the same version
+
     home-manager =
     {
       url = "github:nix-community/home-manager/release-24.05";
@@ -22,12 +24,14 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     firefox-addons =
     {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     firefox-gnome-theme =
     {
@@ -40,7 +44,12 @@
       url = "github:dangooddd/kanagawa.yazi";
       flake = false;
     };
-    helix-unstable.url = "github:helix-editor/helix/7e85fd5b77aa9b0898ddccfb834e36801db31825"; # Compile Helix from source to support macro keybinds. We don't have it follow nixpkgs so it doesn't recompile all the time
+    helix-unstable = 
+    {
+      url = "github:helix-editor/helix/7e85fd5b77aa9b0898ddccfb834e36801db31825"; # Compile Helix from source to support macro keybinds. We don't have it follow nixpkgs so it doesn't recompile all the time
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     rebuild-but-less-dumb =
     {
