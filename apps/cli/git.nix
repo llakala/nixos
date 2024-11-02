@@ -30,7 +30,7 @@
 
     aliases =
     {
-      oops = "commit --amend --no-edit";
+      amend = "commit --amend --no-edit";
       reword = "commit --amend";
       force = "push --force-with-lease --force-if-includes";
 
