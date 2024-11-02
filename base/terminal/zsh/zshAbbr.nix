@@ -31,6 +31,7 @@
 
       grb = "git rebase";
       grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
+      grbc = "git rebase --continue";
 
       gdf = "git diff HEAD"; # Including both unstaged and staged changes
       gdfs = "git diff --staged";
