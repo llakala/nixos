@@ -1,4 +1,4 @@
-{ config, pkgs-unstable, ... }:
+{ config, pkgs-unstable, lib, pkgs, ... }:
 
 {
   hm.programs.git =
@@ -21,6 +21,11 @@
 
       rebase.autoStash = true; # Lets us use `git rebase -I` with uncommented changes
       rebase.autoSquash = true; # Automatically make
+
+      merge.conflictstyle = "diff3";
+
+      merge.tool = "meld";
+      mergetool.meld.path = lib.getExe pkgs.meld;
     };
 
     aliases =
