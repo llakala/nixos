@@ -1,4 +1,3 @@
-{ ... }:
 {
   hm.dconf.settings =
   {
