@@ -1,6 +1,5 @@
  { config, lib, ... }:
 
-
 {
 
   services.xserver.displayManager.gdm =

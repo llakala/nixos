@@ -1,4 +1,5 @@
 { config, lib, pkgs-unstable, ... }:
+
 let
   cfg = config.custom.programs.zed-editor;
 

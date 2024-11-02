@@ -1,4 +1,5 @@
 { inputs, ... }:
+
 {
 
   hm.programs.yazi =

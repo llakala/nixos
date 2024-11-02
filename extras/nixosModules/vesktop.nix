@@ -1,5 +1,6 @@
 # Thanks to Heisfer on github for a lot of this content
 { config, lib, pkgs, ... }:
+
 let
   cfg = config.custom.programs.vesktop;
   jsonFormat = pkgs.formats.json { };

@@ -1,6 +1,5 @@
 { pkgs, ... }:
 
-
 let
   gnomeExtensions = with pkgs.gnomeExtensions;
   [
