@@ -1,4 +1,5 @@
 { inputs, pkgs, config, ... }:
+
 {
   environment.systemPackages = with inputs.rebuild-but-less-dumb.packages.${pkgs.system};
   [

@@ -1,4 +1,5 @@
 { lib, pkgs, ... }:
+
 # Makes Helix, Yazi, and Kitty all work together for a filetree. Thanks to Ghashy for the guide, seen here:
 # https://www.reddit.com/r/HelixEditor/comments/1bgsauh/instruction_how_to_setup_file_tree_in_helix_using/
 # Also a lot of thanks to Vesdef for having an excellent reference configuration, seen here:

@@ -1,4 +1,5 @@
 { lib, ... }:
+
 {
   hm.programs.firefox.profiles.default.search.engines =
   {

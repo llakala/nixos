@@ -1,4 +1,5 @@
 { lib, config, options, ... }:
+
 let
   cfg = config.hostVars;
 in
