@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  pkgs-unstable,
-  ...
-}:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   nix.package = pkgs-unstable.nixVersions.latest;
