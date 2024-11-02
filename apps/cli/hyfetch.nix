@@ -1,5 +1,3 @@
-{ ... }:
-
 {
 
   environment.shellAliases.neofetch = "hyfetch";

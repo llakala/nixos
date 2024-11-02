@@ -1,5 +1,3 @@
-{ ... }:
-
 # `dconf watch /` shows what dconf changes are set live
 # `gsettings list-recursively | rg "<Super>"` is also super useful for finding where a keybind is set
 {
