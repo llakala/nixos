@@ -30,7 +30,7 @@ let
     c = "change_selection_noyank";
 
     H = "goto_first_nonwhitespace";
-    L = "goto_line_end";
+    L = "goto_line_end_newline";
 
     # More ergonomic alternative to `><`
     tab = "indent";
