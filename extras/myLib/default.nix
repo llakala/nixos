@@ -1,9 +1,10 @@
 { inputs, self, ... }:
 
 let
-  lib = inputs.nixpkgs.lib;
+  inputs = self.inputs;
+  lib = nixpkgs.lib;
 
-  myLib = (import ./default.nix) {inherit inputs self;}; # Pass around so functions in different files can call each other
+  myLib = (import ./default.nix) {inherit self;}; # Pass around so functions in different files can call each other
 
   internals = # Helpful internal abstractions for different parts of a function, but we should only give the user the wrapping function
   {
@@ -19,7 +20,7 @@ in
 
   mkList = attrset: [ attrset ];
 
-  mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix;
+  mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix; # Don't send function args because they're passed at use-time
 
   forAllSystems = import ./forAllSystems.nix { inherit lib myLib inputs; };
 }
