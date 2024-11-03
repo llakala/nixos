@@ -10,7 +10,7 @@
   hm.programs.yazi =
   {
     enable = true;
-    package = pkgs-unstable.yazi;
+    # package = pkgs-unstable.yazi; # Broken until https://nixpk.gs/pr-tracker.html?pr=353272
   };
 
   hm.programs.yazi.settings.opener.edit = # Custom options when opening a file
