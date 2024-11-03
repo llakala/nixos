@@ -1,11 +1,14 @@
-{ lib, config, inputs, pkgs-unstable, ... }:
+{ lib, config, inputs, pkgs-unstable, myLib, ... }:
 
 {
-  hm = # Use unstable home-manager module for yazi
-  {
-    disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
-    imports = lib.singleton "${inputs.home-manager-unstable}/modules/programs/yazi.nix";
-  };
+  imports = lib.singleton
+  (
+    myLib.mkUnstableHmModule
+    {
+      module = "programs/yazi.nix";
+      moduleSource = inputs.home-manager-unstable;
+    }
+  );
 
   hm.programs.yazi =
   {
