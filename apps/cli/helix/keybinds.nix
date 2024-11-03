@@ -72,6 +72,7 @@ in
       E = doAndDeselect "move_prev_word_end";
       A-E = doAndDeselect "move_prev_long_word_end";
 
+      a = doAndDeselect "append_mode";
 
       esc = "keep_primary_selection"; # Escape also removes cursors, like `,`
     };
