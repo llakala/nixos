@@ -1,7 +1,8 @@
-{ inputs, self, ... }:
+{ self, ... }:
 
 let
   inputs = self.inputs;
+  nixpkgs = self.inputs.nixpkgs; # When possible, we only propagate nixpkgs instead of passing all inputs
   lib = nixpkgs.lib;
 
   myLib = (import ./default.nix) {inherit self;}; # Pass around so functions in different files can call each other
@@ -22,5 +23,5 @@ in
 
   mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix; # Don't send function args because they're passed at use-time
 
-  forAllSystems = import ./forAllSystems.nix { inherit lib myLib inputs; };
+  forAllSystems = import ./forAllSystems.nix { inherit lib myLib nixpkgs; };
 }
