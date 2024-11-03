@@ -22,4 +22,7 @@ in
   mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix;
 
   forAllSystems = import ./forAllSystems.nix { inherit lib myLib inputs; };
+
+  mkUnstableNixosModule = import ./mkUnstableNixosModule.nix { inherit lib myLib; };
+  mkUnstableHmModule = import ./mkUnstableHmModule.nix { inherit lib myLib; };
 }
