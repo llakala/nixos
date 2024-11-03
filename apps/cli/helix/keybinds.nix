@@ -13,11 +13,9 @@ let
     q = "@emiw"; # Uses macros, added in unstable helix version
     A-q = "@emiW";
 
-
     space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
 
     C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
-
 
     X = "extend_line_above"; # Select line upwards
 
@@ -47,8 +45,6 @@ let
     B = "no_op";
     A-b = "no_op";
     A-B = "no_op";
-
-
   };
 in
 {
