@@ -1,5 +1,5 @@
 let
-  moveAndDeselect = action:
+  doAndDeselect = action: # Run a command and deselect immediately after. Accepts strings and lists.
     if builtins.isString action then
       [ action "collapse_selection" ]
     else if builtins.isList action then
@@ -57,20 +57,20 @@ in
     normal = sharedBinds //
     {
       # Beginning of next word
-      w = moveAndDeselect [ "move_next_word_start" "move_char_right" ];
-      A-w = moveAndDeselect [ "move_next_long_word_start" "move_char_right" ];
+      w = doAndDeselect [ "move_next_word_start" "move_char_right" ];
+      A-w = doAndDeselect [ "move_next_long_word_start" "move_char_right" ];
 
       # Beginning of current word
-      W = moveAndDeselect "move_prev_word_start";
-      A-W = moveAndDeselect "move_prev_long_word_start";
+      W = doAndDeselect "move_prev_word_start";
+      A-W = doAndDeselect "move_prev_long_word_start";
 
       # End of current word
-      e = moveAndDeselect "move_next_word_end";
-      A-e = moveAndDeselect "move_next_long_word_end";
+      e = doAndDeselect "move_next_word_end";
+      A-e = doAndDeselect "move_next_long_word_end";
 
       # End of previous word
-      E = moveAndDeselect "move_prev_word_end";
-      A-E = moveAndDeselect "move_prev_long_word_end";
+      E = doAndDeselect "move_prev_word_end";
+      A-E = doAndDeselect "move_prev_long_word_end";
 
 
       esc = "keep_primary_selection"; # Escape also removes cursors, like `,`
