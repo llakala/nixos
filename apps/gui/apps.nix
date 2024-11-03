@@ -11,5 +11,6 @@
     spotify
     shortwave # Internet radio
     obsidian # Notes
+    gnome-feeds # rss feeds
   ];
 }
