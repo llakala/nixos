@@ -28,7 +28,7 @@ let
       ../../hosts/${hostname}/hardware-configuration.nix
       ../../hosts/${hostname}/${hostname}Vars.nix
 
-      inputs.self.nixosModules.default
+      self.nixosModules.default
     ];
   };
 in
