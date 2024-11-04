@@ -16,6 +16,7 @@
   {
     core-utilities.enable = false;
     evolution-data-server.enable = lib.mkForce false; # Disable Events and Tasks Reminders from always running in the background
+    sushi.enable = true; # Nautilus previewing
   };
 
   environment.gnome.excludePackages = with pkgs;
