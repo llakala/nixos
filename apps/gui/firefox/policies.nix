@@ -61,24 +61,6 @@
       action = "useSystemDefault"; # Open Element app
       ask = false;
     };
-
-    "3rdparty".extensions."uBlock0@raymondhill.net" =
-    {
-      permissions = [ "internal:privateBrowsingAllowed" ];
-      origins = [];
-    };
-
-    "3rdparty".extensions."{b0a674f9-f848-9cfd-0feb-583d211308b0}" = # Movie-web
-    {
-      "permissions" = [ "<all_urls>" ];
-      "origins" = [ "<all_urls>" ];
-    };
-
-    "3rdparty".extensions."gdpr@cavi.au.dk" =
-    {
-      "permissions" = [ "<all_urls>" ];
-      "origins" = [ "<all_urls>" ];
-    };
   };
 
 }
