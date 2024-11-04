@@ -21,6 +21,10 @@
       normal = "block";
       select = "underline";
     };
+
+    bufferline = "multiple";
+    insert-final-newline = false;
+
   };
 
 }
