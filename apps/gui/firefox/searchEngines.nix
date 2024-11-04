@@ -10,6 +10,7 @@
     "Amazon.com".metaData.hidden = true;
     "Wikipedia (en)".metaData.hidden = true;
 
+    # Thanks to xunuwu on github for being a reference for use of these functions
     "Github Nix Code" =
     {
       urls = lib.singleton
@@ -53,7 +54,7 @@
       urls = lib.singleton
       {
         template = "https://github.com/search";
-        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
+        params = lib.attrsToList
         {
           "type" = "code";
           "q" = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
