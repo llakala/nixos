@@ -19,7 +19,7 @@
     systemd-boot.configurationLimit = 20;
 
     efi.canTouchEfiVariables = true;
-    timeout = 3;
+    timeout = 1; # If not working, get rid of state via `bootctl set-default && sudo bootctl set-timeout`
   };
 
   boot.loader.grub.enable = lib.mkForce false; # No need to break our system accidentally
