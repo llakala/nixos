@@ -40,8 +40,8 @@
       imback = "stash pop";
 
       hire = "stage --patch"; # Stage specific changes, one by one
-      demote = "restore --staged --patch"; # Unstage specific staged changes
-      fire = "restore --patch"; # Undo an unstaged change
+      fire = "restore --staged --patch"; # Unstage specific staged changes
+      kill = "restore --patch"; # Undo an unstaged change
 
       staged = "diff --staged";
       unstaged = "diff";
