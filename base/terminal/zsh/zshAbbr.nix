@@ -40,8 +40,8 @@
 
       # Using our custom git aliases
       ghr = "git hire";
-      gdm = "git demote";
       gfr = "git fire";
+      gkl = "git kill";
 
       gfs = "git force";
 
