@@ -15,6 +15,10 @@
       cdn = "cd ${config.baseVars.configDirectory}";
 
       nd = "nix develop";
+      nr = "nix run";
+      nrn = "nix run nixpkgs#%";
+      nrp = "nix repl";
+      nrpn = "nix repl nixpkgs";
 
       src = "source";
 
