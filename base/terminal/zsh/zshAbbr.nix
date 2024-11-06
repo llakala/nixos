@@ -14,6 +14,7 @@
     {
       cdn = "cd ${config.baseVars.configDirectory}";
 
+      n = "nix";
       nd = "nix develop";
       nr = "nix run";
       nrn = "nix run nixpkgs#%";
