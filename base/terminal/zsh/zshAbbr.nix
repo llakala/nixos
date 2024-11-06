@@ -26,6 +26,7 @@
       g = "git";
       gst = "git status";
       glg = "git log";
+      gan = "git add -AN"; # Add all untracked files
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
