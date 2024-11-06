@@ -1,10 +1,7 @@
-{ pkgs, inputs, ... }:
-
 {
   hm.programs.helix =
   {
     enable = true;
-    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source from commit adding macro support
     defaultEditor = true; # Sets EDITOR environment variable
     settings.theme = "onedarker";
   };
