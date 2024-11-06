@@ -12,6 +12,7 @@ let
     # Select next word, with no spaces selected at all. Great for replacing via `q+c`
     q = "@emiw"; # Uses macros, added in unstable helix version
     A-q = "@emiW";
+    space.p = "@:sh python <C-r>%<ret>";
 
     space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
 
