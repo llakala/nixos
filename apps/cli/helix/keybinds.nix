@@ -15,7 +15,7 @@ let
 
     space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
 
-    C-r = ":config-reload"; # Ctrl+r. Would ideally be :cr, but no way to make custom command aliases :(
+    space.n = ":config-reload"; # For when we rebuild and want to apply changes
 
     X = "extend_line_above"; # Select line upwards
 
