@@ -24,7 +24,6 @@
 
       g = "git";
       gst = "git status";
-      gsw = "git switch";
       glg = "git log";
 
       gc = "git commit";
@@ -32,6 +31,10 @@
 
       gps = "git push";
       gpl = "git pull";
+
+      gsw = "git switch";
+      gswm = "git switch main";
+      gswc = "git switch -c";
 
       grb = "git rebase";
       grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
