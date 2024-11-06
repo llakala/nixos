@@ -27,6 +27,7 @@
       gst = "git status";
       glg = "git log";
       gan = "git add -AN"; # Add all untracked files
+      gcl = "git clone";
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
@@ -45,7 +46,6 @@
       gdf = "git diff HEAD"; # Including both unstaged and staged changes
       gdfs = "git diff --staged";
       gdfu = "git diff"; # Unstaged changes
-
 
       # Using our custom git aliases
       ghr = "git hire";
