@@ -23,6 +23,7 @@
       rebase.autoSquash = true; # Automatically make
 
       merge.conflictstyle = "diff3";
+      merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
 
       merge.tool = "meld";
       mergetool.meld.path = lib.getExe pkgs.meld;
