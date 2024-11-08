@@ -10,6 +10,7 @@
     config = # List of command line options to supply every time
     {
       style = "plain";
+      pager = "${lib.getExe pkgs.less} --raw-control-chars --wordwrap";
     };
 
     extraPackages = with pkgs.bat-extras;
