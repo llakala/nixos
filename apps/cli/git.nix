@@ -14,6 +14,9 @@
     {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
+
+      commit.verbose = true; # Show changes when writing commit message so we remember what we changed
+
       diff.algorithm = "histogram";
 
       pull.ff = "only";
