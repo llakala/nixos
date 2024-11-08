@@ -7,6 +7,11 @@
   {
     enable = true;
 
+    config = # List of command line options to supply every time
+    {
+      style = "plain";
+    };
+
     extraPackages = with pkgs.bat-extras;
     [
       batman # Prettier version of man
@@ -15,7 +20,7 @@
 
   environment.variables = # Make --help look pretty like batman
   {
-    MANPAGER = "sh -c 'col -bx | bat --language man --plain' ";
+    MANPAGER = "sh -c 'col -bx | bat --language man' ";
     MANROFFOPT = "-c";
   };
 
