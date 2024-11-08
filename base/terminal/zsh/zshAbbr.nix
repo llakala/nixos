@@ -28,6 +28,8 @@
       glg = "git log";
       gan = "git add -AN"; # Add all untracked files
       gcl = "git clone";
+      gbr = "git branch";
+      gin = "git init";
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
