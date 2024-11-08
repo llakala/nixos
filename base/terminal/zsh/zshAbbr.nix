@@ -14,6 +14,9 @@
     {
       cdn = "cd ${config.baseVars.configDirectory}";
 
+      m = "man";
+      py = "python";
+
       n = "nix";
       nd = "nix develop";
       nr = "nix run";
