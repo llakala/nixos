@@ -20,7 +20,8 @@
       push.useForceIfIncludes = true;
 
       rebase.autoStash = true; # Lets us use `git rebase -I` with uncommented changes
-      rebase.autoSquash = true; # Automatically make
+      rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
+
 
       merge.conflictstyle = "diff3";
       merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
