@@ -10,7 +10,7 @@
     difftastic.enable = true;
 
     
-    extraConfig =
+    extraConfig = # See https://git-scm.com/docs/git-config
     {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
