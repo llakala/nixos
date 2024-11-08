@@ -61,6 +61,8 @@
       grwm = "git reword --message"; # Get ready with me :3
 
       gam = "git amend";
+
+      ghs = "git history";
     };
   };
 
