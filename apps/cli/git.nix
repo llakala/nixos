@@ -13,7 +13,7 @@
     package = pkgs-unstable.gitFull;
     userName = config.baseVars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
-    difftastic.enable = true;
+    diff-so-fancy.enable = true;
 
     
     extraConfig = # See https://git-scm.com/docs/git-config
