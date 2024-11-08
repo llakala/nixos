@@ -15,6 +15,8 @@
     extraPackages = with pkgs.bat-extras;
     [
       batman # Prettier version of man
+      batdiff
+      batgrep # Oddly seems to require sudo
     ];
   };
 
