@@ -19,7 +19,7 @@
 
       diff.algorithm = "histogram";
 
-      pull.ff = "only";
+      pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
       push.useForceIfIncludes = true;
 
       rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
