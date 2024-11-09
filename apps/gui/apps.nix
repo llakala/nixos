@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs;
   [
-    modrinth-app
     gparted
     filezilla
     moonlight-qt
