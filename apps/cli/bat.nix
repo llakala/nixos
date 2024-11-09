@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
+let
+  lessOptions = config.programs.less.envVariables.LESS; # Reuse the LESS options we want to be used everywhere
+in
 {
   environment.shellAliases.man = "batman";
 
@@ -10,7 +13,7 @@
     config = # List of command line options to supply every time
     {
       style = "plain";
-      pager = "${lib.getExe pkgs.less} --raw-control-chars --wordwrap";
+      pager = "${lib.getExe pkgs.less} ${lessOptions}";
     };
 
     extraPackages = with pkgs.bat-extras;
