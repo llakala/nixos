@@ -13,12 +13,18 @@ in
 {
   hm.programs.helix =
   {
-    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source, pointing to commit adding macro support
+    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source, using the latest commit for binary caching
 
     settings.keys = # Extra binds to live alongside the binds declared in other files
     {
       normal = lib.mkAfter sharedBinds;
       select = lib.mkAfter sharedBinds;
     };
+  };
+
+  nix.settings = # Binary cache for Helix unstable. Use `extra` to append to previously defined ones
+  {
+    extra-substituters = lib.singleton "https://helix.cachix.org";
+    extra-trusted-public-keys = lib.singleton "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
   };
 }
