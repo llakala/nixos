@@ -40,6 +40,8 @@ let
     B = "no_op";
     A-b = "no_op";
     A-B = "no_op";
+    W = "no_op";
+    A-W = "no_op";
   };
 in
 {
@@ -47,21 +49,18 @@ in
   {
     normal = sharedBinds //
     {
-      # Beginning of next word
-      w = doAndDeselect [ "move_next_word_start" "move_char_right" ];
-      A-w = doAndDeselect [ "move_next_long_word_start" "move_char_right" ];
-
-      # Beginning of current word
-      W = doAndDeselect "move_prev_word_start";
-      A-W = doAndDeselect "move_prev_long_word_start";
-
       # End of current word
       e = doAndDeselect "move_next_word_end";
       A-e = doAndDeselect "move_next_long_word_end";
 
-      # End of previous word
-      E = doAndDeselect "move_prev_word_end";
-      A-E = doAndDeselect "move_prev_long_word_end";
+      # Beginning of current word
+      E = doAndDeselect "move_prev_word_start";
+      A-E = doAndDeselect "move_prev_long_word_start";
+
+
+      # Beginning of next word
+      w = doAndDeselect [ "move_next_word_start" "move_char_right" ];
+      A-w = doAndDeselect [ "move_next_long_word_start" "move_char_right" ];
 
       a = doAndDeselect "append_mode";
 
@@ -70,21 +69,18 @@ in
 
     select = sharedBinds //
     {
-      # Beginning of next word
-      w = "extend_next_word_start";
-      A-w = "extend_next_long_word_start";
-
-      # Beginning of current word
-      W = "extend_prev_word_start";
-      A-W = "extend_prev_long_word_start";
-
       # End of current word
       e = "extend_next_word_end";
       A-e = "extend_next_long_word_end";
 
-      # End of previous word
-      E = "extend_prev_word_end";
-      A-E = "extend_prev_long_word_end";
+      # Beginning of current word
+      E = "extend_prev_word_start";
+      A-E = "extend_prev_long_word_start";
+
+
+      # Beginning of next word
+      w = "extend_next_word_start";
+      A-w = "extend_next_long_word_start";
     };
 
     insert = # And we WILL only use normal mode for moving around
