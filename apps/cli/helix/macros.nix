@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  sharedBinds =
+  sharedBinds = # All binds used here rely on macros, introduced since the latest Helix stable release
   {
     # Select next word, with no spaces included. Great for replacing via `q+c`
     q = "@emiw";
