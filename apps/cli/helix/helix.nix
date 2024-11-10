@@ -22,6 +22,11 @@
     bufferline = "multiple";
     insert-final-newline = false;
 
+    whitespace =
+    {
+      render.newline = "all";# Would implement toggling here but it fails on latest commit, see https://github.com/helix-editor/helix/issues/11856
+      characters.newline = "↵";
+    };
   };
 
 }

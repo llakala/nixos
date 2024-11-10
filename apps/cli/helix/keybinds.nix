@@ -9,7 +9,6 @@ let
 
   sharedBinds = # Binds that should work in both normal and select mode
   {
-    space.x = ":toggle whitespace.render all none"; # ` x` shows whitespace
     space.n = ":config-reload"; # For when we rebuild and want to apply changes
 
     X = "select_line_above"; # Select line upwards from the cursor location
