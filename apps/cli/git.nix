@@ -20,6 +20,7 @@
     {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
+      apply.whitespace = "error";
 
       commit.verbose = true; # Show changes when writing commit message so we remember what we changed
 
