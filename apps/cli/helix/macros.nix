@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, ... }:
+{ lib, ... }:
 
 let
   sharedBinds =
@@ -11,16 +11,12 @@ let
   };
 in
 {
-  hm.programs.helix =
+  hm.programs.helix.settings.keys = # Extra binds to live alongside the binds declared in other files
   {
-    package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source, using the latest commit for binary caching
-
-    settings.keys = # Extra binds to live alongside the binds declared in other files
-    {
-      normal = lib.mkAfter sharedBinds;
-      select = lib.mkAfter sharedBinds;
-    };
+    normal = lib.mkAfter sharedBinds;
+    select = lib.mkAfter sharedBinds;
   };
+
 
   nix.settings = # Binary cache for Helix unstable. Use `extra` to append to previously defined ones
   {
