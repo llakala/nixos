@@ -35,9 +35,7 @@ let
     left = "no_op";
     right = "no_op";
 
-    b = "no_op";
     B = "no_op";
-    A-b = "no_op";
     A-B = "no_op";
     W = "no_op";
     A-W = "no_op";
@@ -56,6 +54,9 @@ in
       E = doAndDeselect "move_prev_word_start";
       A-E = doAndDeselect "move_prev_long_word_start";
 
+      # Same as above, but for vim muscles
+      b = doAndDeselect "move_prev_word_start";
+      A-b = doAndDeselect "move_prev_long_word_start";
 
       # Beginning of next word
       w = doAndDeselect [ "move_next_word_start" "move_char_right" ];
@@ -76,6 +77,9 @@ in
       E = "extend_prev_word_start";
       A-E = "extend_prev_long_word_start";
 
+      # Same as above, but for vim muscles
+      b = "extend_prev_word_start";
+      A-b = "extend_prev_long_word_start";
 
       # Beginning of next word
       w = "extend_next_word_start";
