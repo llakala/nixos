@@ -1,4 +1,4 @@
-{ lib, pkgs, self, ... }:
+{ lib, pkgs, pkgs-unstable, self, config, ... }:
 
 {
   hm.programs.helix.languages.language =
@@ -6,7 +6,7 @@
     {
       name = "nix";
       auto-format = false;
-      language-servers = lib.singleton "nil";
+      language-servers = lib.singleton "nixd";
     }
     {
       name = "python";
@@ -28,7 +28,20 @@
 
   hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
   {
-    nil.command = lib.getExe pkgs.nil;
+    nixd.command = lib.getExe pkgs-unstable.nixd;
+    nixd.args =
+    [
+      "--inlay-hints=true"
+      "--semantic-tokens=true"
+    ];
+    nixd.config.nixd.options = # DON'T MESS THIS KEY UP, IT WAS WHY THINGS WERE FAILING
+    let
+      hostOptions = "(builtins.getFlake \"${self}\").nixosConfigurations.${config.hostVars.hostName}.options";
+    in
+    {
+      nixos.expr = hostOptions;
+      home-manager.expr = hostOptions + ".home-manager.users.type.getSubOptions []";
+    };
 
     # We don't pass the pylsp exe, instead using the one from helix.extraPackages
 
