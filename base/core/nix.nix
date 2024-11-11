@@ -1,16 +1,12 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, inputs, pkgs-unstable, ... }:
 
 {
   nix.package = pkgs-unstable.nixVersions.latest;
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nix.settings =
   {
     experimental-features = "nix-command flakes";
-
-    nix-path =
-    [
-      "nixpkgs=${pkgs.path}"
-    ];
 
     substituters =
     [
