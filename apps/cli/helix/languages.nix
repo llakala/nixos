@@ -34,13 +34,13 @@
       "--inlay-hints=true"
       "--semantic-tokens=true"
     ];
-    nixd.config.nixd.options = # DON'T MESS THIS KEY UP, IT WAS WHY THINGS WERE FAILING
+    nixd.config.nixd = # DON'T MESS THIS KEY UP, IT WAS WHY THINGS WERE FAILING
     let
-      hostOptions = "(builtins.getFlake \"${self}\").nixosConfigurations.${config.hostVars.hostName}.options";
+      flake = "(builtins.getFlake \"${config.baseVars.configDirectory}\")";
+      hostOptions = flake + ".nixosConfigurations.${config.hostVars.hostName}.options";
     in
     {
-      nixos.expr = hostOptions;
-      home-manager.expr = hostOptions + ".home-manager.users.type.getSubOptions []";
+      options.nixos.expr = hostOptions;
     };
 
     # We don't pass the pylsp exe, instead using the one from helix.extraPackages
