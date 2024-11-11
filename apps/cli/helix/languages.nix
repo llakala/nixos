@@ -43,7 +43,10 @@
       options.nixos.expr = hostOptions;
     };
 
-    # We don't pass the pylsp exe, instead using the one from helix.extraPackages
+    pylsp.config.pylsp.plugins =
+    {
+      pycodestyle.enabled = true;
+    };
 
     mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
 
@@ -61,8 +64,14 @@
   let
     pylspInstance = pkgs.python3.withPackages
     (
-      ps:
-      [ ps.python-lsp-server ]
+      ps: with ps;
+      [
+        python-lsp-server
+
+        pylsp-rope
+        python-lsp-ruff
+        pylsp-mypy
+      ]
       ++ ps.python-lsp-server.optional-dependencies.all
     );
   in
