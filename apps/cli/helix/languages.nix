@@ -10,12 +10,6 @@
     }
 
     {
-      name = "python";
-      auto-format = false;
-      language-servers = lib.singleton "pylsp";
-    }
-
-    {
       name = "markdown";
       auto-format = false;
       language-servers = [ "mdpls" ];
@@ -49,11 +43,6 @@
       options.nixos.expr = hostOptions;
     };
 
-    pylsp.config.pylsp.plugins =
-    {
-      pycodestyle.enabled = true;
-    };
-
     mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
 
     bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
@@ -65,21 +54,4 @@
       config.provideFormatter = false;
     };
   };
-
-  hm.programs.helix.extraPackages =
-  let
-    pylspInstance = pkgs.python3.withPackages
-    (
-      ps: with ps;
-      [
-        python-lsp-server
-
-        pylsp-rope
-        python-lsp-ruff
-        pylsp-mypy
-      ]
-      ++ ps.python-lsp-server.optional-dependencies.all
-    );
-  in
-    lib.singleton pylspInstance;
 }
