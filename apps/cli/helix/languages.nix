@@ -8,11 +8,13 @@
       auto-format = false;
       language-servers = lib.singleton "nixd";
     }
+
     {
       name = "python";
       auto-format = false;
       language-servers = lib.singleton "pylsp";
     }
+
     {
       name = "markdown";
       auto-format = false;
@@ -28,12 +30,16 @@
 
   hm.programs.helix.languages.language-server = # Define language server executables here so helix can access them
   {
-    nixd.command = lib.getExe pkgs-unstable.nixd;
-    nixd.args =
-    [
-      "--inlay-hints=true"
-      "--semantic-tokens=true"
-    ];
+    nixd =
+    {
+      command = lib.getExe pkgs-unstable.nixd;
+      args =
+      [
+        "--inlay-hints=true"
+        "--semantic-tokens=true"
+      ];
+    };
+
     nixd.config.nixd = # DON'T MESS THIS KEY UP, IT WAS WHY THINGS WERE FAILING
     let
       flake = "(builtins.getFlake \"${config.baseVars.configDirectory}\")";
