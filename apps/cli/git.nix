@@ -16,7 +16,7 @@
     diff-so-fancy.enable = true;
 
     
-    extraConfig = # See https://git-scm.com/docs/git-config
+    iniContent = # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
     {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
