@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, self, config, ... }:
+{ lib, ... }:
 
 {
   hm.programs.helix.languages.language =
@@ -19,6 +19,11 @@
       name = "json";
       auto-format = false;
       language-servers = lib.singleton "vscode-json-language-server";
+    }
+    {
+      name = "python";
+      auto-format = false;
+      language-servers = lib.singleton "pylsp";
     }
   ];
 }
