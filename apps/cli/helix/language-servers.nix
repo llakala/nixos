@@ -34,7 +34,6 @@
     };
   };
 
-
   # Code referenced from:
   # https://github.com/maxbrunet/dotfiles/blob/9a114ea0f9c8cdeb0f07d762f329bdbbe2973e50/nix/common.nix#L138
   # https://github.com/NixOS/nixpkgs/issues/229337#issuecomment-1877951362
@@ -51,7 +50,8 @@
     );
   in
   {
-    command = newlsp;
+    command = lib.getExe newlsp;
+
     config.pylsp.plugins =
     {
       pycodestyle.enabled = true;
