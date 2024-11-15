@@ -3,10 +3,18 @@
 {
   hm.programs.helix.languages.language-server =
   {
-    mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
     marksman.command = lib.getExe pkgs.marksman;
-
     bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
+
+    mdpls =
+    {
+      command = lib.getExe self.packages.${pkgs.system}.mdpls;
+      config.markdown.preview = # https://github.com/euclio/mdpls?tab=readme-ov-file#configuration
+      {
+        auto = true; # Automatically open preview in browser when opening file
+        serveStatic = true; # Show images
+      };
+    };
 
     vscode-json-language-server =
     {
