@@ -12,7 +12,7 @@
     {
       name = "markdown";
       auto-format = false;
-      language-servers = [ "mdpls" ];
+      language-servers = [ "marksman" "mdpls" ];
     }
 
     {
@@ -20,6 +20,7 @@
       auto-format = false;
       language-servers = lib.singleton "vscode-json-language-server";
     }
+
     {
       name = "python";
       auto-format = false;

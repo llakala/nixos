@@ -4,6 +4,7 @@
   hm.programs.helix.languages.language-server =
   {
     mdpls.command = lib.getExe self.packages.${pkgs.system}.mdpls;
+    marksman.command = lib.getExe pkgs.marksman;
 
     bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
 
