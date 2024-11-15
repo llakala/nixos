@@ -25,5 +25,19 @@
       auto-format = false;
       language-servers = lib.singleton "pylsp";
     }
+
+    {
+      name = "vim";
+      scope = "source.vim";
+      file-types =
+      [
+        "vim"
+        { glob = ".vimrc"; }
+      ];
+      roots = lib.singleton "addon-info.json";
+      comment-token = "\"";
+      language-servers = lib.singleton "vim-language-server";
+    }
+
   ];
 }

@@ -13,6 +13,12 @@
       args = [ "--stdio" ];
       config.provideFormatter = false;
     };
+
+    vim-language-server =
+    {
+      command = lib.getExe pkgs.vim-language-server;
+      args = lib.singleton "--stdio";
+    };
   };
 
 
