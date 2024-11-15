@@ -39,5 +39,11 @@
       language-servers = lib.singleton "vim-language-server";
     }
 
+    {
+      name = "toml";
+      auto-format = false;
+      language-servers = lib.singleton "taplo";
+    }
+
   ];
 }

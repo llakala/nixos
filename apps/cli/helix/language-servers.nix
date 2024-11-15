@@ -19,6 +19,8 @@
       command = lib.getExe pkgs.vim-language-server;
       args = lib.singleton "--stdio";
     };
+
+    taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
   };
 
 
