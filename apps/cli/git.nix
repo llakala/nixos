@@ -13,9 +13,15 @@
     package = pkgs-unstable.gitFull;
     userName = config.baseVars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
-    diff-so-fancy.enable = true;
 
-    
+    diff-so-fancy =
+    {
+      enable = true;
+      pagerOpts = lib.splitString # Go from space-separated string to list
+        " "
+        config.programs.less.envVariables.LESS; # Reuse the global less options
+    };
+
     iniContent = # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
     {
       push.autoSetupRemote = true;
