@@ -1,6 +1,10 @@
 let
   navigationBinds = type: # Binds that should be `move` in normal mode and `extend` in select mode
   {
+    # Beginning of next word
+    w = "move_next_word_start";
+    A-w = "move_next_long_word_start";
+
     # End of current word
     e = "${type}_next_word_end";
     A-e = "${type}_next_long_word_end";
@@ -54,19 +58,16 @@ in
   {
     normal = sharedBinds // navigationBinds "move" //
     {
-      # Beginning of next word
-      w = [ "move_next_word_start" "move_char_right" ];
-      A-w = [ "move_next_long_word_start" "move_char_right" ];
-
+      # Doing `ea` shouldn't keep the text selected while inserting
       a = [ "append_mode" "collapse_selection" ];
+      i = [ "insert_mode" "collapse_selection" ];
+
       esc = "keep_primary_selection"; # Escape also removes cursors, like `,`
     };
 
     select = sharedBinds // navigationBinds "extend" //
     {
-      # Beginning of next word
-      w = "extend_next_word_start";
-      A-w = "extend_next_long_word_start";
+      # Empty right now, any select-specific binds would go here
     };
 
     insert = # And we WILL only use normal mode for moving around
