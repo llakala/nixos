@@ -25,6 +25,14 @@
       characters.newline = "↵";
     };
 
+    lsp =
+    {
+      display-inlay-hints = true; # Stuff like type hints (if supported by the language server)
+      display-messages = true;
+
+      display-signature-help-docs = false; # Disable documentation popup under parameter hints
+    };
+
     indent-guides.render = true; # Show where indentations are with |
     mouse = false; # you'll thank me later
     bufferline = "multiple";
