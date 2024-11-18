@@ -25,6 +25,9 @@ let
 
     X = "select_line_above"; # Select line upwards from the cursor location
 
+    "#" = "toggle_comments";
+    space.c = "no_op";
+
     # Use system clipboard everywhere
     y = "yank_to_clipboard";
     p = "paste_clipboard_after";
@@ -38,9 +41,7 @@ let
     H = "goto_first_nonwhitespace";
     L = "goto_line_end";
 
-    # More ergonomic alternative to `><`
-    tab = "indent";
-    S-tab = "unindent";
+    g.G = "goto_file_end"; # `g.g` is file beginning, it needs the reverse
 
     up = "no_op";
     down = "no_op";
@@ -58,7 +59,7 @@ in
   {
     normal = sharedBinds // navigationBinds "move" //
     {
-      # Doing `ea` shouldn't keep the text selected while inserting
+      # Doing something like `ea` or `bi` shouldn't keep the text selected while inserting
       a = [ "append_mode" "collapse_selection" ];
       i = [ "insert_mode" "collapse_selection" ];
 
