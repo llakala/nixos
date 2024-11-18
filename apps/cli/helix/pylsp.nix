@@ -28,7 +28,6 @@ let
   (
     with pkgs.python3Packages;
     [
-      pylsp-mypy
       pylsp-rope
       python-lsp-ruff
       pyls-isort
