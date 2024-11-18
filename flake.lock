@@ -232,11 +232,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731945065,
-        "narHash": "sha256-HTE644w/87eRX3ced8dFAMpIcfaSKGH14cwdP0zO92w=",
+        "lastModified": 1731951434,
+        "narHash": "sha256-tnVVHqCeWl2qXZUEE5LH4NeEonoq6RwGzzeEIgDidtw=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "1b8d5a9d04aabaddc70b29152d08a8b82ac909a7",
+        "rev": "b993be39d382aaefe41570de0075956b4097da13",
         "type": "github"
       },
       "original": {
