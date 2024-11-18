@@ -7,9 +7,13 @@
     unify
   ];
 
-  environment.variables = # Overriding default values so we don't have to pass `-d` and `-i` every time
+  environment.variables = # Overriding default values so we don't have to pass our arguments every time
   {
-    FLAKE = config.baseVars.configDirectory;
-    INPUTS_TRIGGERING_REBUILD = "nixpkgs nixpkgs-unstable home-manager rebuild-but-less-dumb"; # List of flake inputs, separated by spaces
+    RBLD_DIRECTORY = config.baseVars.configDirectory;
+    UNIFY_DIRECTORY = config.baseVars.configDirectory;
+
+    UNIFY_TRACKED_INPUTS = "nixpkgs nixpkgs-unstable home-manager rebuild-but-less-dumb";
+    UNIFY_COMMIT_MESSAGE = "flake: update flake.lock";
+    UNIFY_PRIMARY_BRANCHES = "main master";
   };
 }
