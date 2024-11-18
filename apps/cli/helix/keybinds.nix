@@ -1,13 +1,21 @@
 let
-  doAndDeselect = action: # Run a command and deselect immediately after. Accepts strings and lists.
-    if builtins.isString action then
-      [ action "collapse_selection" ]
-    else if builtins.isList action then
-      action ++ [ "collapse_selection" ]
-    else throw "Action ${action} was of type ${builtins.typeOf action}. It was expected to be a list or a string.";
+  navigationBinds = type: # Binds that should be `move` in normal mode and `extend` in select mode
+  {
+    # End of current word
+    e = "${type}_next_word_end";
+    A-e = "${type}_next_long_word_end";
+
+    # Beginning of current word
+    E = "${type}_prev_word_start";
+    A-E = "${type}_prev_long_word_start";
+
+    # Same as above, but for vim muscles
+    b = "${type}_prev_word_start";
+    A-b = "${type}_prev_long_word_start";
+  };
 
 
-  sharedBinds = # Binds that should work in both normal and select mode
+  sharedBinds = # Binds that should work exactly the same in both normal and select mode
   {
     space.n = ":config-reload"; # For when we rebuild and want to apply changes
 
@@ -44,43 +52,18 @@ in
 {
   hm.programs.helix.settings.keys =
   {
-    normal = sharedBinds //
+    normal = sharedBinds // navigationBinds "move" //
     {
-      # End of current word
-      e = doAndDeselect "move_next_word_end";
-      A-e = doAndDeselect "move_next_long_word_end";
-
-      # Beginning of current word
-      E = doAndDeselect "move_prev_word_start";
-      A-E = doAndDeselect "move_prev_long_word_start";
-
-      # Same as above, but for vim muscles
-      b = doAndDeselect "move_prev_word_start";
-      A-b = doAndDeselect "move_prev_long_word_start";
-
       # Beginning of next word
-      w = doAndDeselect [ "move_next_word_start" "move_char_right" ];
-      A-w = doAndDeselect [ "move_next_long_word_start" "move_char_right" ];
+      w = [ "move_next_word_start" "move_char_right" ];
+      A-w = [ "move_next_long_word_start" "move_char_right" ];
 
-      a = doAndDeselect "append_mode";
-
+      a = [ "append_mode" "collapse_selection" ];
       esc = "keep_primary_selection"; # Escape also removes cursors, like `,`
     };
 
-    select = sharedBinds //
+    select = sharedBinds // navigationBinds "extend" //
     {
-      # End of current word
-      e = "extend_next_word_end";
-      A-e = "extend_next_long_word_end";
-
-      # Beginning of current word
-      E = "extend_prev_word_start";
-      A-E = "extend_prev_long_word_start";
-
-      # Same as above, but for vim muscles
-      b = "extend_prev_word_start";
-      A-b = "extend_prev_long_word_start";
-
       # Beginning of next word
       w = "extend_next_word_start";
       A-w = "extend_next_long_word_start";
