@@ -3,9 +3,13 @@
 {
   hm.programs.helix.languages.language-server =
   {
-    marksman.command = lib.getExe pkgs.marksman;
     bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
+    typescript-language-server.command = lib.getExe pkgs.nodePackages.typescript-language-server;
 
+    taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
+
+
+    marksman.command = lib.getExe pkgs.marksman;
     mdpls =
     {
       command = lib.getExe self.packages.${pkgs.system}.mdpls;
@@ -28,8 +32,6 @@
       command = lib.getExe pkgs.vim-language-server;
       args = lib.singleton "--stdio";
     };
-
-    taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
   };
 
 
