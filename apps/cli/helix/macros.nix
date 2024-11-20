@@ -20,10 +20,10 @@ in
 
   nix.settings = # Binary cache for Helix unstable. Use `extra` to append to previously defined ones
   {
-    extra-substituters = lib.mkBefore
+    substituters = lib.mkBefore
     (
       lib.singleton "https://helix.cachix.org"
     );
-    extra-trusted-public-keys = lib.singleton "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
+    trusted-public-keys = lib.singleton "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
   };
 }
