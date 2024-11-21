@@ -27,6 +27,23 @@
       definedAliases = [ "@ghn" ];
     };
 
+
+    "Github Search Code" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search";
+        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
+        {
+          "type" = "code";
+          "q" = "NOT is:fork {searchTerms}";
+        };
+      };
+
+      iconUpdateURL = "https://github.com/favicon.ico";
+      definedAliases = [ "@ghs" ];
+    };
+
     "MyNixOS" =
     {
       urls = lib.singleton
