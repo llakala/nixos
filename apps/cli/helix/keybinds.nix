@@ -16,6 +16,10 @@ let
     # Same as above, but for vim muscles
     b = "${type}_prev_word_start";
     A-b = "${type}_prev_long_word_start";
+
+    # As recommended in https://docs.helix-editor.com/editor.html#editorsmart-tab-section
+    tab = "${type}_parent_node_end";
+    S-tab = "${type}_parent_node_start";
   };
 
 
@@ -77,6 +81,8 @@ in
       down = "no_op";
       left = "no_op";
       right = "no_op";
+
+      S-tab = "move_parent_node_start";
     };
   };
 }
