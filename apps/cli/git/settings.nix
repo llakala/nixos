@@ -9,6 +9,7 @@
     commit.verbose = true; # Show changes when writing commit message so we remember what we changed
 
     diff.algorithm = "histogram";
+    diff.wsErrorHighlight = "all"; # Highlight all whitespace errors, not just new ones
 
     pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
     push.useForceIfIncludes = true;
