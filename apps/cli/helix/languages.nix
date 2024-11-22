@@ -13,6 +13,7 @@
       name = "markdown";
       auto-format = false;
       language-servers = [ "marksman" "mdpls" ];
+      soft-wrap.enable = true;
     }
 
     {
