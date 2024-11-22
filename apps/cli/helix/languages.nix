@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   hm.programs.helix.languages.language =
@@ -45,6 +45,21 @@
       name = "toml";
       auto-format = false;
       language-servers = lib.singleton "taplo";
+    }
+
+    {
+      name = "bash";
+      language-servers = lib.singleton "bash-language-server";
+      formatter =
+      {
+        command = lib.getExe pkgs.shfmt;
+        args =
+        [
+          "-i" "2" # 2 spaces, not tabs
+          "--func-next-line" # Allman style brackets, as life should be
+          "--case-indent"
+        ];
+      };
     }
 
   ];
