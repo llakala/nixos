@@ -39,6 +39,7 @@
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
+      gcp = "git commit -p";
 
       gps = "git push";
       gpl = "git pull";
