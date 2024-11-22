@@ -37,6 +37,9 @@
     mouse = false; # you'll thank me later
     bufferline = "multiple";
     insert-final-newline = false;
+    smart-tab.enable = true;
+
+    color-modes = true;
 
     # Use inline diagnostics with settings recommended from https://docs.helix-editor.com/master/editor.html#editorinline-diagnostics-section
     end-of-line-diagnostics = "hint";
