@@ -46,6 +46,7 @@
 
       gsw = "git switch";
       gswm = "git switch main";
+      gswma = "git switch master";
       gswc = "git switch -c";
 
       grb = "git rebase";
