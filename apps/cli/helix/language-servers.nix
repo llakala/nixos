@@ -3,7 +3,6 @@
 {
   hm.programs.helix.languages.language-server =
   {
-    bash-language-server.command = lib.getExe pkgs.nodePackages.bash-language-server;
     typescript-language-server.command = lib.getExe pkgs.nodePackages.typescript-language-server;
 
     taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
@@ -31,6 +30,12 @@
     {
       command = lib.getExe pkgs.vim-language-server;
       args = lib.singleton "--stdio";
+    };
+
+    bash-language-server =
+    {
+      command = lib.getExe pkgs.nodePackages.bash-language-server;
+      environment.SHELLCHECK_ARGUMENTS = "-e SC2164"; # Couldn't get `config` block to work, so this is the best way to disable certain shellchecks in linting
     };
   };
 
