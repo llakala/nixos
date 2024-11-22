@@ -24,7 +24,7 @@
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = [ "@ghn" ];
+      definedAliases = [ "@gn" ];
     };
 
 
@@ -41,7 +41,7 @@
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = [ "@ghs" ];
+      definedAliases = [ "@gs" ];
     };
 
     "MyNixOS" =
@@ -63,7 +63,7 @@
       {
         template =  "https://noogle.dev/q?term={searchTerms}";
       };
-      definedAliases = [ "@nog" ];
+      definedAliases = [ "@ng" ];
     };
 
     "Nixpkgs" =
