@@ -34,12 +34,14 @@
       glg = "git log";
       gan = "git add -AN"; # Add all untracked files
       gcl = "git clone";
-      gbr = "git branch";
       gin = "git init";
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
       gcp = "git commit -p";
+
+      gbr = "git branch";
+      gbrd = "git branch -d";
 
       gps = "git push";
       gpl = "git pull";
