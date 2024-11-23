@@ -72,6 +72,7 @@
       grwm = "git reword --message"; # Get ready with me :3
 
       gam = "git amend";
+      gap = "git amend --patch";
 
       ghs = "git history";
     };
