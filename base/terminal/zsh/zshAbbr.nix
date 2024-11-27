@@ -38,7 +38,6 @@
 
       gc = "git commit";
       gcm = "git commit -m \"%\"";
-      gcp = "git commit -p";
 
       gbr = "git branch";
       gbrd = "git branch -d";
@@ -63,6 +62,7 @@
 
       # Using our custom git aliases
       ghr = "git hire";
+      ghc = "git commit --patch";
       gfr = "git fire";
       gkl = "git kill";
 
@@ -72,7 +72,7 @@
       grwm = "git reword --message"; # Get ready with me :3
 
       gam = "git amend";
-      gap = "git amend --patch";
+      gamp = "git amend --patch";
 
       ghs = "git history";
     };
