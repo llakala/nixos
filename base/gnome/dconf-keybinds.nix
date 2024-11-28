@@ -20,6 +20,7 @@
       switch-applications-backward = [ "<Shift><Super>Tab" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
+      activate-window-menu = []; # Previously Alt+Space
 
 
       toggle-fullscreen = ["F11"];
