@@ -25,7 +25,7 @@ in
     xkb-options =
     [
       "terminate:ctrl_alt_bksp"
-      "compose:rctrl" # Right control --> weird characters
+      "lv3:rwin_switch"
     ];
     sources = lib.singleton # Override gnome to use our custom layout, required
     (
