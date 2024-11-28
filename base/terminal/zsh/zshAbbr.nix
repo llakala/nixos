@@ -62,7 +62,8 @@
 
       # Using our custom git aliases
       ghr = "git hire";
-      ghc = "git commit --patch";
+      ghrc = "git commit --patch";
+
       gfr = "git fire";
       gkl = "git kill";
 
