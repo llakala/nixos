@@ -1,20 +1,11 @@
-{ pkgs, ... }:
-
-let
-  myFont =
-  {
-    name = "Monocraft";
-    package = pkgs.monocraft;
-    size = 12;
-  };
-in
 {
   hm.programs.kitty =
   {
     enable = true;
     # shellIntegration.enableZshIntegration = true; # Not needed since ZSH checks for the shell variable
 
-    font = myFont;
+    # We don't specify the font in Kitty since it broke as of 24.11
+    # Instead, we allow it to use the system monospace font
 
     theme = "Kaolin Aurora";
   };
@@ -26,6 +17,8 @@ in
     linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
 
     bold_is_bright = true;
+    font_size = 12;
+
     background_opacity = "0.98";
 
     copy_on_select = true;
