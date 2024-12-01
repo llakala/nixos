@@ -17,9 +17,9 @@ let
         (oldAttrs.buildInputs or [])
         ++ lib.singleton oldlsp;
 
-      propagatedBuildInputs = lib.remove
+      dependencies = lib.remove
         oldlsp
-        oldAttrs.propagatedBuildInputs;
+        oldAttrs.dependencies;
     }
   );
 
