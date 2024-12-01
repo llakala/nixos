@@ -32,17 +32,12 @@
   [
     gnome-extension-manager
     video-trimmer
-  ]
-  ++
-  (with pkgs.gnome;
-  [
     gnome-tweaks
     gnome-terminal
     gnome-disk-utility
     dconf-editor
     baobab
-  ]
-  );
+  ];
 
   environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
 }
