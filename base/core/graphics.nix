@@ -1,16 +1,12 @@
 { pkgs, ... }:
 
 {
-  hardware.opengl =
+  hardware.graphics =
   {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true; # OpenGL for 32 bit apps
 
-    extraPackages = with pkgs; # OpenCL support with AMD graphics
+    extraPackages = with pkgs;
     [
-      rocm-opencl-icd
-      rocm-opencl-runtime
     ];
   };
 }
