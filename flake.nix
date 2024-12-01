@@ -32,7 +32,7 @@
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = 
@@ -49,7 +49,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05"; # Use nixos branches instead of nixpkgs, it runs more tests
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     rebuild-but-less-dumb =
