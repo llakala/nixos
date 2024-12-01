@@ -1,15 +1,15 @@
-{ config, lib, pkgs-unstable, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.custom.programs.zed-editor;
 
-  settingsFormat = pkgs-unstable.formats.json { };
+  settingsFormat = pkgs.formats.json { };
 in
 {
   options.custom.programs.zed-editor =
   {
     enable = lib.mkEnableOption "Zed, a text editor.";
-    package = lib.mkPackageOption pkgs-unstable "zed-editor" { };
+    package = lib.mkPackageOption pkgs "zed-editor" { };
 
     settings = lib.mkOption
     {
