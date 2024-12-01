@@ -7,7 +7,7 @@
     # We don't specify the font in Kitty since it broke as of 24.11
     # Instead, we allow it to use the system monospace font
 
-    theme = "Kaolin Aurora";
+    themeFile = "Kaolin_Aurora"; # Reference exact names here https://github.com/kovidgoyal/kitty-themes/blob/389a222143ffb0ff38abea187fbc21b1221b94c0/themes.json#L2
   };
 
   hm.programs.kitty.settings =
