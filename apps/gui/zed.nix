@@ -1,5 +1,3 @@
-{ pkgs-unstable, ... }:
-
 {
 
   custom.programs.zed-editor.enable = false;
