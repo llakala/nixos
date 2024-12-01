@@ -1,8 +1,6 @@
 { pkgs-unstable, ... }:
 
 {
-
-
   hm.programs.vscode =
   {
     enable = true;
