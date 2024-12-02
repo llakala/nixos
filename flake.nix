@@ -96,5 +96,8 @@
     {
       "emanresu@framework" = { inherit nixosConfigurations; };
     };
+
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
   };
+
 }
