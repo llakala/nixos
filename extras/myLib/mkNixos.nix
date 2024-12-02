@@ -3,8 +3,8 @@
 let
   mkNixos = hostname: { system }: # Function to be exported
   lib.nixosSystem
-    {
-      inherit system;
+  {
+    inherit system;
 
     specialArgs =
     {
