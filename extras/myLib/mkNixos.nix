@@ -39,7 +39,7 @@ let
       ../../base/baseVars.nix
 
       ../../apps/core
-      ../../apps/cli
+      ../../apps/extras
       ../../apps/gui
 
       ../../hosts/${hostname}/config
