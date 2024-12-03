@@ -38,8 +38,8 @@ let
       ../../config/baseVars.nix
 
       ../../apps/core
-      ../../apps/extras
-      ../../apps/gui
+      ../../apps/programs
+      ../../apps/shell
 
       ../../hosts/${hostname}/config
       ../../hosts/${hostname}/hardware-configuration.nix
