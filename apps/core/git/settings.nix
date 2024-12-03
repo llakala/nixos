@@ -14,6 +14,8 @@
     pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
     push.useForceIfIncludes = true;
 
+    branch.sort = "-committerdate";
+
     rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
 
     merge.conflictstyle = "diff3";
