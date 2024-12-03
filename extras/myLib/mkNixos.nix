@@ -35,6 +35,7 @@ let
       ../../config/core
       ../../config/features
       ../../config/gnome
+      ../../config/system
       ../../config/baseVars.nix
 
       ../../apps/core
