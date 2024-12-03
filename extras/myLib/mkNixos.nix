@@ -1,6 +1,11 @@
 { lib, myLib, inputs, self, ... }:
 
 let
+  config = # Config to be used for all `pkgs` instances created
+  {
+    allowUnfree = true;
+  };
+
   mkNixos = hostname: { system }: # Function to be exported
   lib.nixosSystem
   {
@@ -10,7 +15,19 @@ let
     {
       inherit inputs myLib self;
 
-      pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+      pkgs = myLib.mkPkgs
+      {
+        inherit system config;
+        unpatchedInput = inputs.nixpkgs;
+        patches = [];
+      };
+
+      pkgs-unstable = myLib.mkPkgs
+      {
+        inherit system config;
+        unpatchedInput = inputs.nixpkgs-unstable;
+        patches = [];
+      };
     };
 
     modules = myLib.resolveAndFilter # Use custom function that grabs all files within a folder and filters out non-nix files
