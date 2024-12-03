@@ -1,4 +1,5 @@
 { lib, config, ... }:
+
 let
   cfg = config.custom.services.mimetypes;
   # allPackages = config.environment.systemPackages ++ config.home-manager.users.${config.hostVars.hostname}.home.packages; # We assume hostVars exists, but that shouldn't be a problem

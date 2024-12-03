@@ -1,11 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 
 {
-
   services.xserver =
   {
     enable = true;
@@ -29,8 +24,6 @@
   ];
 
 
-
-
   # Add some actually useful packages back
   environment.systemPackages = with pkgs;
   [
@@ -44,8 +37,7 @@
 
     totem # Video viewer
     loupe # Image viewer
-  ]
-  );
+  ];
 
   environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
 }
