@@ -57,6 +57,10 @@ let
     A-B = "no_op";
     W = "no_op";
     A-W = "no_op";
+
+    # We have `Hi` and `Ha` for this. Goto binds without selection feels evil anyways.
+    I = "no_op";
+    A = "no_op";
   };
 in
 {
