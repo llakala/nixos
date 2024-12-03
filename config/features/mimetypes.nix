@@ -1,4 +1,3 @@
-{ ... }:
 {
   custom.services.mimetypes =
   {
@@ -14,6 +13,5 @@
     imageViewer = "org.gnome.Loupe.desktop";
     videoViewer = "org.gnome.Totem.desktop";
   };
-
 
 }
