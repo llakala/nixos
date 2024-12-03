@@ -16,4 +16,9 @@
         config.programs.less.envVariables.LESS; # Reuse the global less options
     };
   };
+
+  environment.systemPackages = with pkgs-unstable;
+  [
+    git-extras
+  ];
 }
