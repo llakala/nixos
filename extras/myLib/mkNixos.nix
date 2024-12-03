@@ -40,8 +40,8 @@ let
 
       ../../apps/core
       ../../apps/dev
+      ../../apps/packages
       ../../apps/programs
-      ../../apps/shell
       ../../apps/terminal
 
       ../../hosts/${hostname}/config
