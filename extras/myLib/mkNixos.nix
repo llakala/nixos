@@ -35,7 +35,6 @@ let
       ../../config/core
       ../../config/features
       ../../config/gnome
-      ../../config/terminal
       ../../config/baseVars.nix
 
       ../../apps/core
