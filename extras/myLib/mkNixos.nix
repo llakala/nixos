@@ -32,11 +32,11 @@ let
 
     modules = myLib.resolveAndFilter # Use custom function that grabs all files within a folder and filters out non-nix files
     [
-      ../../base/core
-      ../../base/features
-      ../../base/gnome
-      ../../base/terminal
-      ../../base/baseVars.nix
+      ../../config/core
+      ../../config/features
+      ../../config/gnome
+      ../../config/terminal
+      ../../config/baseVars.nix
 
       ../../apps/core
       ../../apps/extras
