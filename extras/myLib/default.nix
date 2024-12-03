@@ -24,4 +24,6 @@ in
   mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix; # Don't send function args because they're passed at use-time
 
   forAllSystems = import ./forAllSystems.nix { inherit lib myLib nixpkgs; };
+
+  mkPkgs = import ./mkPkgs.nix;
 }
