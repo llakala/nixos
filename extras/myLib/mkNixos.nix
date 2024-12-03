@@ -38,6 +38,7 @@ let
       ../../base/terminal
       ../../base/baseVars.nix
 
+      ../../apps/core
       ../../apps/cli
       ../../apps/gui
 
