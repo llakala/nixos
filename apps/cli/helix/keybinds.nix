@@ -28,6 +28,7 @@ let
     space.n = ":config-reload"; # For when we rebuild and want to apply changes
 
     X = "select_line_above"; # Select line upwards from the cursor location
+    x = "select_line_below"; # Select line downwards from the cursor location
 
     "#" = "toggle_comments";
     space.c = "no_op";
