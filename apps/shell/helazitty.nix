@@ -10,13 +10,15 @@ in
 {
   hm.xdg.configFile = 
   {
-    "${yaziConfigDirectory}/yazi.toml".text = # toml
+    "${yaziConfigDirectory}/yazi.toml".text =
+    /* toml */
     ''
       [manager]
       ratio = [ 0, 8, 0 ]
     '';
 
-    "${yaziConfigDirectory}/keymap.toml".text = # toml
+    "${yaziConfigDirectory}/keymap.toml".text =
+    /* toml */
     ''
       [[manager.prepend_keymap]]
       on   = [ "l" ]
@@ -25,7 +27,8 @@ in
     '';
 
 
-    "${yaziConfigDirectory}/plugins/smart-enter.yazi/init.lua".text = # lua
+    "${yaziConfigDirectory}/plugins/smart-enter.yazi/init.lua".text =
+    /* lua */
     ''
       return 
       {

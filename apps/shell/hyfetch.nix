@@ -12,7 +12,8 @@
       mode = "rgb";
       color_align.mode = "horizontal";
 
-      args = # bash
+      args =
+      /* bash */
       ''
         --package_managers off
       ''; # Arguments passed into neofetch
