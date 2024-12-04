@@ -20,5 +20,6 @@
   environment.systemPackages = with pkgs-unstable;
   [
     git-extras
+    tig # cool git interface
   ];
 }
