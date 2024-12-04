@@ -18,5 +18,8 @@
 
     stage = "git add .";
     unstage = "git restore --staged .";
+
+    # Prettier formatting for `git branch`
+    pbranch = "branch --sort=-committerdate --format ' %(objectname:short) |%(HEAD)%(align:22,left)%(refname:short)%(end) | %(align:14,right)%(committerdate:relative)%(end) %0a--------------------------------------------------'";
   };
 }
