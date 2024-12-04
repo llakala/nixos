@@ -1,6 +1,6 @@
 {
   hm.programs.zsh.initExtra = # When exiting yazi, open terminal in path navigated to if requested
-  # bash
+  /* bash */
   ''
     function y()
     {

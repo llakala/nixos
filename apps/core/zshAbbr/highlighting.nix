@@ -1,6 +1,7 @@
 # Highlight our abbreviations for fast-syntax-highlighting. Code from https://zsh-abbr.olets.dev/advanced.html#fast-syntax-highlighting
 {
-  hm.programs.zsh.initExtra = # bash
+  hm.programs.zsh.initExtra =
+  /* bash */
   ''
     chroma_single_word()
     {

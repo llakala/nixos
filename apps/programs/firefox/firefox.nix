@@ -9,7 +9,7 @@
     (oldAttrs:
     {
       buildCommand = oldAttrs.buildCommand +
-      # bash
+      /* bash */
       ''
       wrapProgram $out/bin/firefox \
         --set MOZ_LOG "PlatformDecoderModule:5"
