@@ -11,7 +11,7 @@
     gc = "git commit";
     gcm = "git commit -m \"%\"";
 
-    gbr = "git branch";
+    gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
     gbrd = "git branch -d";
 
     gps = "git push";
