@@ -15,5 +15,8 @@
     kill = "restore --patch"; # Undo an unstaged change
 
     history = "log --patch";
+
+    stage = "git add .";
+    unstage = "git restore --staged .";
   };
 }

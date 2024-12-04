@@ -27,6 +27,9 @@
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
 
+    gstg = "git add ."; # Stage everything
+    guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
+
     # Use our custom `wdiff` alias for word-diff
     gdf = "git wdiff HEAD"; # Including both unstaged and staged changes
     gdfs = "git wdiff --staged";
