@@ -4,9 +4,9 @@ let
   # Binds that should be `move` in normal mode and `extend` in select mode
   navigationBinds = type:
   {
-    # Beginning of next word
-    w = "move_next_word_start";
-    A-w = "move_next_long_word_start";
+    # Beginning of next word. can't have selection trimmed or it never moves
+    w = "${type}_next_word_start";
+    A-w = "${type}_next_long_word_start";
 
     # End of current word
     e = trimSelections "${type}_next_word_end";
