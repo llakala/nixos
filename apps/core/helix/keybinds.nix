@@ -1,21 +1,24 @@
 let
-  navigationBinds = type: # Binds that should be `move` in normal mode and `extend` in select mode
+  trimSelections = keybind: [ keybind "trim_selections" ];
+
+  # Binds that should be `move` in normal mode and `extend` in select mode
+  navigationBinds = type:
   {
     # Beginning of next word
     w = "move_next_word_start";
     A-w = "move_next_long_word_start";
 
     # End of current word
-    e = "${type}_next_word_end";
-    A-e = "${type}_next_long_word_end";
+    e = trimSelections "${type}_next_word_end";
+    A-e = trimSelections "${type}_next_long_word_end";
 
     # Beginning of current word
-    E = "${type}_prev_word_start";
-    A-E = "${type}_prev_long_word_start";
+    E = trimSelections "${type}_prev_word_start";
+    A-E = trimSelections "${type}_prev_long_word_start";
 
     # Same as above, but for vim muscles
-    b = "${type}_prev_word_start";
-    A-b = "${type}_prev_long_word_start";
+    b = trimSelections "${type}_prev_word_start";
+    A-b = trimSelections "${type}_prev_long_word_start";
 
     # As recommended in https://docs.helix-editor.com/editor.html#editorsmart-tab-section
     tab = "${type}_parent_node_end";
