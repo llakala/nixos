@@ -25,9 +25,7 @@
 
     helix-unstable =
     {
-      url = "github:helix-editor/helix/cbbeca6c5227e65bebdbe9abbadbd2202ffc1005"; # Compile Helix from source to support macro keybinds. We don't have it follow nixpkgs so it doesn't recompile all the time
-      inputs.nixpkgs.follows = "nixpkgs-helix";
-      inputs.flake-utils.follows = "flake-utils";
+      url = "github:helix-editor/helix"; # Compile Helix from source to support macro keybinds. We don't have it follow nixpkgs so it doesn't recompile all the time
     };
 
     home-manager =
@@ -50,7 +48,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
-    nixpkgs-helix.url = "github:nixos/nixpkgs/e8c38b73aeb218e27163376a2d617e61a2ad9b59"; # Hack for Helix to be able to build tree-sitter
+    nixpkgs-helix.url = "github:nixos/nixpkgs/bc947f541ae55e999ffdb4013441347d83b00feb"; # Hack for Helix to be able to build tree-sitter
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     rebuild-but-less-dumb =
