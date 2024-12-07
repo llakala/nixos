@@ -25,6 +25,7 @@
     cava # Audio display
     ncdu # Scan folder size prettily
     tree # Show filetree for writing out in markdown
+    w3m # w3mman gives you manpage hyperlinks
 
     # Weird stuff
     appimage-run # Allow running appimages for when something isnt on nixpkgs
@@ -45,5 +46,6 @@
 
     # Big kits
     nodejs
+    typescript
   ];
 }
