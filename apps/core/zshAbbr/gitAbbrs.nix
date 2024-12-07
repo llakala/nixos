@@ -32,7 +32,7 @@
     grs = "git reset";
     grsh = "git reset --hard";
 
-    gstg = "git add ."; # Stage everything
+    gall = "git add ."; # Stage everything
     guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
 
     # Use our custom `wdiff` alias for word-diff
