@@ -29,8 +29,8 @@
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
 
-    grs = "git reset";
-    grsh = "git reset --hard";
+    grst = "git reset";
+    grsth = "git reset --hard";
 
     gall = "git add ."; # Stage everything
     guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
