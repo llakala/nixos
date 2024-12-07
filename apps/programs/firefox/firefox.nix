@@ -47,4 +47,6 @@
   };
 
   hm.home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme".source = inputs.firefox-gnome-theme;
+
+  environment.variables.BROWSER = "firefox"; # `man` likes having this
 }
