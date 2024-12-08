@@ -2,6 +2,6 @@
   programs.less =
   {
     enable = true;
-    envVariables.LESS = "--raw-control-chars --wordwrap";
+    envVariables.LESS = "--RAW-CONTROL-CHARS --wordwrap";
   };
 }
