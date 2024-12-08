@@ -35,10 +35,9 @@
     gall = "git add ."; # Stage everything
     guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
 
-    # Use our custom `wdiff` alias for word-diff
-    gdf = "git wdiff HEAD"; # Including both unstaged and staged changes
-    gdfs = "git wdiff --staged";
-    gdfu = "git wdiff"; # Unstaged changes
+    gdf = "git diff HEAD"; # Including both unstaged and staged changes
+    gdfs = "git diff --staged";
+    gdfu = "git diff"; # Unstaged changes
 
     # Using our custom git aliases
     ghr = "git hire";
