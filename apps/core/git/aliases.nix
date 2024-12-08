@@ -16,10 +16,10 @@
 
     history = "log --patch";
 
-    stage = "git add .";
-    unstage = "git restore --staged .";
+    stage = "add .";
+    unstage = "restore --staged .";
 
     # Prettier formatting for `git branch`
-    pbranch = "git branch --sort=-committerdate --format ' %(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
+    pbranch = "branch --sort=-committerdate --format ' %(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
   };
 }
