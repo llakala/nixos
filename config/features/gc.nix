@@ -13,6 +13,6 @@
     automatic = true;
     persistent = true; # If system is powered off when timer finishes, do it next time the system power on
     dates = "daily";
-    options = "--delete-older-than 14d"; # Delete old generations
+    options = "--delete-older-than 7d"; # Delete old generations
   };
 }
