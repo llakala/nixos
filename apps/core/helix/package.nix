@@ -3,27 +3,25 @@
 let
   patchList = # Adding unmerged QOL PRs
   [
-    (pkgs.fetchpatch {
-      url = "https://patch-diff.githubusercontent.com/raw/helix-editor/helix/pull/11164.diff";
-      hash = "sha256-GXyGD1WNENxphQPId+0ory3sYQftWqK7t2iBtMVU4nU=";
-    })
-
     # (pkgs.fetchpatch {
-    #   url = "https://patch-diff.githubusercontent.com/raw/helix-editor/helix/pull/11973.diff";
-    #   hash = "sha256-ATkJRh7GldSKhepfo46FUJVGylpPZEQHyw0c6Q0lyUc=";
+    #   url = "https://patch-diff.githubusercontent.com/raw/helix-editor/helix/pull/11164.patch";
+    #   hash = "sha256-AZOSEBZU6oWXmGoT61C+icw882MxNvdSnGBPm0Qwbq8=";
     # })
+
+    ./myPatch.patch
   ];
 
-  helixPackages = inputs.helix-unstable.packages.${pkgs.system}; # TODO ADD COMMENT
-  patchedHelix = pkgs.helix.overrideAttrs
+  helixPackages = inputs.helix-unstable.packages.${pkgs.system};
+  patchedHelix = helixPackages.helix-unwrapped.overrideAttrs
   (
     oldAttrs:
     {
       patches = (oldAttrs.patches or []) ++ patchList;
+      patchFlags = (oldAttrs.patchFlags or []) ++ [ "-p1" ];
     }
   );
 
 in
 {
-  hm.programs.helix.package = patchedHelix;
+  hm.programs.helix.package = helixPackages.helix.passthru.wrapper patchedHelix;
 }
