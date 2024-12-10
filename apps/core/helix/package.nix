@@ -8,7 +8,9 @@ let
     #   hash = "sha256-AZOSEBZU6oWXmGoT61C+icw882MxNvdSnGBPm0Qwbq8=";
     # })
 
-    ./myPatch.patch
+    ./patches/1.patch
+    ./patches/2.patch
+    # ./patches/3.patch
   ];
 
   helixPackages = inputs.helix-unstable.packages.${pkgs.system};
@@ -17,7 +19,7 @@ let
     oldAttrs:
     {
       patches = (oldAttrs.patches or []) ++ patchList;
-      patchFlags = (oldAttrs.patchFlags or []) ++ [ "-p1" ];
+      # patchFlags = (oldAttrs.patchFlags or []) ++ [ "-p1" ];
     }
   );
 
