@@ -122,11 +122,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1733787101,
-        "narHash": "sha256-Gon6pLw9q0ps4u29dHe1rySKWRwTIjhT/rO0un2QKqY=",
+        "lastModified": 1733858674,
+        "narHash": "sha256-u5IFTMAd/z9xJLizanF+HPpYOppS+eLgsLgDr2oalL8=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "5005c14e99ff5037ed29a8c0a9119a564943c768",
+        "rev": "89a7cde2f05fbf2eae212d9301301a8377432be5",
         "type": "github"
       },
       "original": {
@@ -163,11 +163,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733769654,
-        "narHash": "sha256-aVvYDt8eitZVF6fdOrSoIzYRkQ5Gh6kfRvqkiaDRLL0=",
+        "lastModified": 1733869277,
+        "narHash": "sha256-qFWxVV48wwiyvrAbGeSbZ5LAOv1Kv/lvDtibOhuc1/o=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e952e94955dcc6fa2120c1430789fc41363f5237",
+        "rev": "8772bae58c0a1390727aaf13802debfa29757d67",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1733481457,
-        "narHash": "sha256-IS3bxa4N1VMSh3/P6vhEAHQZecQ3oAlKCDvzCQSO5Is=",
+        "lastModified": 1733861262,
+        "narHash": "sha256-+jjPup/ByS0LEVIrBbt7FnGugJgLeG9oc+ivFASYn2U=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "e563803af3526852b6b1d77107a81908c66a9fcf",
+        "rev": "cf737e2eba82b603f54f71b10cb8fd09d22ce3f5",
         "type": "github"
       },
       "original": {
@@ -264,16 +264,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1732402759,
-        "narHash": "sha256-u4ibCwr4aORCNcSelbAuFBfqMsiMSFdnEeqlai2QKio=",
+        "lastModified": 1733870267,
+        "narHash": "sha256-4PMkL0rxMtHYtff5mGtfIwjpxGFNBG//BrL8YzZ32bE=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "b4647cd5f6b9964609cb2f3efdc015555621d3ba",
+        "rev": "942d76e3381535e5c32f9790ba8843b08d4d604c",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
-        "ref": "renameEnvVars",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
       }

@@ -54,7 +54,7 @@
 
     rebuild-but-less-dumb =
     {
-      url = "github:llakala/rebuild-but-less-dumb/renameEnvVars";
+      url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
