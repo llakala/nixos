@@ -32,7 +32,7 @@ in
     {
       desc = "Paste into a directory if we're hovering over it";
       on = lib.singleton "p";
-      run = "plugin --sync smart-paste";
+      run = "plugin smart-paste";
     }
 
     {
