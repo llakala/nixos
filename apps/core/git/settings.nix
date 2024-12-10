@@ -27,6 +27,10 @@
     merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
 
     merge.tool = "meld";
-    mergetool.meld.path = lib.getExe pkgs.meld;
+    mergetool.meld =
+    {
+      path = lib.getExe pkgs.meld;
+      useAutoMerge = true;
+    };
   };
 }
