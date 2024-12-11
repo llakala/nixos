@@ -3,10 +3,15 @@
   {
     g = "git";
     gst = "git status";
-    glg = "git log";
     gan = "git add -AN"; # Add all untracked files
     gcl = "git clone";
     gin = "git init";
+
+    glg = "git log";
+    glgp = "git log --patch";
+    ghs = "git history"; # Same as `glgp`, just an alias for intuition
+
+
 
     gc = "git commit";
     gcm = "git commit -m \"%\"";
@@ -53,7 +58,5 @@
 
     gam = "git amend";
     gamp = "git amend --patch";
-
-    ghs = "git history";
   };
 }
