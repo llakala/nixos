@@ -264,15 +264,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1733870267,
-        "narHash": "sha256-4PMkL0rxMtHYtff5mGtfIwjpxGFNBG//BrL8YzZ32bE=",
+        "lastModified": 1733946168,
+        "narHash": "sha256-h8e0/MukKRJqT6NZ5zie8EkA9hhMANDVkHyn+7YMFYI=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "942d76e3381535e5c32f9790ba8843b08d4d604c",
+        "rev": "8d0445bacdf3cd3acb26c3a16b78fc88f7144808",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
+        "ref": "onlySwitchSometimes",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
       }

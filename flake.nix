@@ -54,7 +54,7 @@
 
     rebuild-but-less-dumb =
     {
-      url = "github:llakala/rebuild-but-less-dumb";
+      url = "github:llakala/rebuild-but-less-dumb/onlySwitchSometimes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
