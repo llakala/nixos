@@ -1,2 +1,2 @@
-git log \
---pretty="format:------------------------------------------------------------------------%nCommit %C(yellow)%h%Creset (%Cblue%cr%Creset)%nBy %Cgreen%an%Creset (%C(magenta)%ae%Creset)%C(auto)%+D%Creset%n%n%B%-"
+git log --date=format:"%b %m, %Y" \
+--pretty="format:%Creset───────────────────────────────────────────────────────────────────────────────────────────────────────────%nCommit %C(ul red)%h%Creset (%Cblue%cr%Creset)%nBy %C(yellow)%cn%Creset, on %C(dim white)%cd%Creset%C(auto)%+D%Creset%n%n%w(72,2,2)%s%n%+b%-"
