@@ -1,0 +1,2 @@
+git log \
+--pretty="format:------------------------------------------------------------------------%nCommit %C(yellow)%h%Creset (%Cblue%cr%Creset)%nBy %Cgreen%an%Creset (%C(magenta)%ae%Creset)%C(auto)%+D%Creset%n%n%B%-"
