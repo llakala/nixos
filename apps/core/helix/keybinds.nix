@@ -39,7 +39,7 @@ let
     # Use system clipboard everywhere
     y = "yank_to_clipboard";
     p = "replace_selections_with_clipboard";
-    P = "paste_clipboard_after";
+    P = "paste_clipboard_before";
 
     # Don't yank when deleting and changing
     d = "delete_selection_noyank";
