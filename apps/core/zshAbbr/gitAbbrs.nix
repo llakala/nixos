@@ -33,7 +33,7 @@
 
     grb = "git rebase";
     grbm = "git rebase main";
-    grma = "git rebase master";
+    grbma = "git rebase master";
     grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
