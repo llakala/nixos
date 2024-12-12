@@ -10,6 +10,13 @@
   {
     directory.truncate_to_repo = false; # Show full path of current directory
 
+    character =
+    {
+      success_symbol = "[❯](bold green)";
+      error_symbol = "[✗](bold red)";
+      vimcmd_symbol = "[❮](bold blue)";
+    };
+
     git_branch.ignore_branches = [ "master" "main" ]; # Don't show git branch if on master/main
 
     cmd_duration.min_time = 30 * 1000; # 30 seconds
