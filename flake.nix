@@ -58,6 +58,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    eza-preview-yazi =
+    {
+      url = "github:ahkohd/eza-preview.yazi/nightly";
+      flake = false;
+    };
+
   };
 
 

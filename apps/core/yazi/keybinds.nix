@@ -11,6 +11,7 @@ in
       on = lib.singleton "i"; # Same as "o" for open, but for my helix muscle memory
       run = "open";
     }
+
     {
       desc = "Go to the NixOS configuration directory";
       on = ["g" "n"];
