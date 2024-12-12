@@ -6,6 +6,10 @@
     gan = "git add -AN"; # Add all untracked files
     gcl = "git clone";
     gin = "git init";
+    gch = "git checkout";
+
+    gfe = "git fetch";
+    gfeu = "git fetch upstream";
 
     glg = "git log";
     glgp = "git log --patch";
