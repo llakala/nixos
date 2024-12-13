@@ -32,6 +32,8 @@
     gswma = "git switch master";
     gswc = "git switch -c";
 
+    gswp = "git pswitch"; # Switch branches using custom alias with fzf. `p` at the end to differentiate from `gpsw`.
+
     grb = "git rebase";
     grbm = "git rebase main";
     grbma = "git rebase master";

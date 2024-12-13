@@ -18,6 +18,11 @@
     unstage = "restore --staged .";
 
     # Prettier formatting for `git branch`
-    pbranch = "branch --sort=-committerdate --format ' %(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
+    pbranch = "branch --sort=-committerdate --format '%(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
+
+    # Switch to branch using fzf. Reference links below
+    # https://esc.sh/blog/switch-git-branches-fzf/
+    # https://github.com/erees1/dotfiles/blob/b29a94e/git/aliases.zsh#L85-L97
+    pswitch = "!git switch $(git pbranch --color | fzf --ansi | rg '(?<=\\|[* ])[^\\s|]+' --pcre2 -oN --color=never)";
   };
 }
