@@ -281,16 +281,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1733949583,
+        "lastModified": 1734107302,
         "narHash": "sha256-RDZlsvymWJ5+vg7gTBWY3x5BqCLQqYFMXqoR1SDLv20=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "1cc71f8befb9018d2de8a160d90cc45d80613640",
+        "rev": "37b026ae12a51b3d50f210d1f78b56445246d9e0",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
-        "ref": "onlySwitchSometimes",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
       }
