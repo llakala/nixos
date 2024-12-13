@@ -8,14 +8,15 @@
     gin = "git init";
     gch = "git checkout";
 
+    grm = "git remote -v";
+    grmau = "git remote add upstream";
+
     gfe = "git fetch";
     gfeu = "git fetch upstream";
 
     glg = "git log";
     glgp = "git log --patch";
     ghs = "git history"; # Same as `glgp`, just an alias for intuition
-
-
 
     gc = "git commit";
     gcm = "git commit -m \"%\"";
