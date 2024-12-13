@@ -23,6 +23,6 @@
     # Switch to branch using fzf. Reference links below
     # https://esc.sh/blog/switch-git-branches-fzf/
     # https://github.com/erees1/dotfiles/blob/b29a94e/git/aliases.zsh#L85-L97
-    pswitch = "!git switch $(git pbranch --color | fzf --ansi | rg '(?<=\\|[* ])[^\\s|]+' --pcre2 -oN --color=never)";
+    pswitch = "!git switch $(git pbranch --color | fzf --ansi | rg '(?<=\\|[* ])[^\\s|]+' --pcre2 -oN --color=never | head -n1)";
   };
 }
