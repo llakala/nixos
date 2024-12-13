@@ -39,6 +39,9 @@
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
 
+    grbum = "git rebase upstream/main";
+    grbuma = "git rebase upstream/master";
+
     grst = "git reset";
     grsth = "git reset --hard";
 
