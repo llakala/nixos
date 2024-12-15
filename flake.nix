@@ -27,6 +27,7 @@
     {
       url = "github:helix-editor/helix"; # Compile Helix from source to support macro keybinds
       inputs.nixpkgs.follows = "nixpkgs-helix"; # So we don't have two instances of `nixpkgs` in flake.lock. We use the same rev from helix's flake.lock so we don't have to recompile
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     home-manager =
