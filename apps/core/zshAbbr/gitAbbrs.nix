@@ -1,5 +1,5 @@
 {
-  hm.programs.zsh.zsh-abbr.abbreviations = 
+  hm.programs.zsh.zsh-abbr.abbreviations =
   {
     g = "git";
     gst = "git status";
@@ -37,6 +37,7 @@
     grb = "git rebase";
     grbm = "git rebase main";
     grbma = "git rebase master";
+
     grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
@@ -44,15 +45,15 @@
     grbum = "git rebase upstream/main";
     grbuma = "git rebase upstream/master";
 
-    grst = "git reset";
-    grsth = "git reset --hard";
+    grs = "git reset";
+    grsh = "git reset --hard";
 
     gall = "git add ."; # Stage everything
     guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
 
-    gdf = "git diff HEAD"; # Including both unstaged and staged changes
-    gdfs = "git diff --staged";
-    gdfu = "git diff"; # Unstaged changes
+    gd = "git diff HEAD"; # Including both unstaged and staged changes
+    gds = "git diff --staged";
+    gdu = "git diff"; # Unstaged changes
 
     # Using our custom git aliases
     ghr = "git hire";
