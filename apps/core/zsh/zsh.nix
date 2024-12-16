@@ -16,6 +16,8 @@
     autocd = true; # If empty directory given as command, interpret it as cd
     shellAliases.zsrc = "source ~/.zshrc && exec zsh";
 
+    completionInit = ""; # Removes useless line from zshrc
+
     initExtra =
     /* bash */
     ''
