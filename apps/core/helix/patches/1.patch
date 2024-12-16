@@ -1,0 +1,97 @@
+From 8051595d01e3b8988531863a4939a3a555cf1029 Mon Sep 17 00:00:00 2001
+From: Jaakko Paju <36770267+JPaju@users.noreply.github.com>
+Date: Wed, 30 Oct 2024 23:53:54 +0200
+Subject: [PATCH 1/3] Add CSV language and grammar config
+
+---
+ languages.toml | 75 ++++----------------------------------------------
+ 1 file changed, 5 insertions(+), 70 deletions(-)
+
+diff --git a/languages.toml b/languages.toml
+index ae8cc7e9..cf9b345a 100644
+--- a/languages.toml
++++ b/languages.toml
+@@ -3914,75 +3914,10 @@ name = "cylc"
+ source = { git = "https://github.com/elliotfontaine/tree-sitter-cylc", rev = "30dd40d9bf23912e4aefa93eeb4c7090bda3d0f6" }
+ 
+ [[language]]
+-name = "quint"
+-scope = "source.quint"
+-file-types = ["qnt"]
+-language-servers = ["quint-language-server"]
+-comment-token = "//"
+-block-comment-tokens = { start = "/*", end = "*/" }
+-indent = { tab-width = 2, unit = "  " }
++name = "csv"
++file-types = ["csv"]
++scope = "source.csv"
+ 
+ [[grammar]]
+-name = "quint"
+-source = { git = "https://github.com/gruhn/tree-sitter-quint", rev = "eebbd01edfeff6404778c92efe5554e42e506a18" }
+-
+-[[language]]
+-name = "spade"
+-scope = "source.spade"
+-roots = ["swim.toml"]
+-file-types = ['spade']
+-injection-regex = "spade"
+-comment-tokens = ["//", "///"]
+-block-comment-tokens = [
+-  { start = "/*", end = "*/" },
+-  { start = "/**", end = "*/" },
+-]
+-language-servers = [ "spade-language-server" ]
+-indent = { tab-width = 4, unit = "    " }
+-
+-[language.auto-pairs] 
+-'(' = ')' 
+-'{' = '}' 
+-'[' = ']' 
+-'"' = '"' 
+-'<' = '>' 
+-
+-[[grammar]]
+-name = "spade"
+-source = { git = "https://gitlab.com/spade-lang/tree-sitter-spade/", rev = "4d5b141017c61fe7e168e0a5c5721ee62b0d9572" }
+-
+-[[language]]
+-name = "amber"
+-scope = "source.ab"
+-file-types = ["ab"]
+-comment-token = "//"
+-indent = { tab-width = 4, unit = "    " }
+-
+-[[grammar]]
+-name = "amber"
+-source = { git = "https://github.com/amber-lang/tree-sitter-amber", rev = "c6df3ec2ec243ed76550c525e7ac3d9a10c6c814" }
+-
+-[[language]]
+-name = "gpr"
+-scope = "source.gpr"
+-injection-regex = "gpr"
+-file-types = ["gpr"]
+-roots = ["alire.toml"]
+-comment-token = "--"
+-indent = { tab-width = 3, unit = "   " }
+-language-servers = ["ada-gpr-language-server"]
+-
+-[[grammar]]
+-name = "gpr"
+-source = { git = "https://github.com/brownts/tree-sitter-gpr", rev = "cea857d3c18d1385d1f5b66cd09ea1e44173945c" }
+-
+-[[language]]
+-name = "vento"
+-scope = "text.html.vto"
+-file-types = ["vto"]
+-block-comment-tokens = { start = "{{#", end = "#}}" }
+-indent = { tab-width = 4, unit = "    " }
+-
+-[[grammar]]
+-name = "vento"
+-source = { git = "https://github.com/ventojs/tree-sitter-vento", rev = "3321077d7446c1b3b017c294fd56ce028ed817fe" }
++name = "csv"
++source = { git = "https://github.com/weartist/rainbow-csv-tree-sitter", rev = "d3dbf916446131417e4c2ea9eb8591b23b466d27" }
+-- 
+2.47.0
+
