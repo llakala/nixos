@@ -5,6 +5,7 @@
   {
     enable = true;
     package = pkgs-unstable.yazi;
+    shellWrapperName = "y";
   };
 
   hm.programs.yazi.settings.opener.edit = # Custom options when opening a file
