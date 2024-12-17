@@ -24,6 +24,12 @@
         zvm_define_widget my_delete_bind
         zvm_bindkey vicmd 'd' my_delete_bind
       }
+
+      # Fix Ctrl+R, as recommended here https://github.com/jeffreytse/zsh-vi-mode/issues/242#issuecomment-2365253822
+      function zvm_after_init()
+      {
+        zvm_bindkey viins "^R" fzf-history-widget
+      }
     '';
   };
 }
