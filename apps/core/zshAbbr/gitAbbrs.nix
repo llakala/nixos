@@ -3,10 +3,29 @@
   {
     g = "git";
     gst = "git status";
-    gan = "git add -AN"; # Add all untracked files
     gcl = "git clone";
     gin = "git init";
     gch = "git checkout";
+
+
+    gad = "git add";
+    gadn = "git add -AN"; # Add all untracked files
+    gada = "git add .";
+
+    gun = "git unstage"; # Alias of `git restore --staged`
+    guna = "git unstage .";
+
+    ggb = "git goback"; # Alias of `git restore`
+    ggba = "git goback .";
+
+
+    # Using our custom patch-based git aliases
+    ghr = "git hire"; # Add staged changes
+    ghrc = "git commit --patch";
+
+    gfr = "git fire"; # Unstage staged changes via patch
+    gkl = "git kill"; # Delete unstaged changes
+
 
     grm = "git remote -v";
     grmau = "git remote add upstream";
@@ -26,6 +45,7 @@
 
     gps = "git push";
     gpl = "git pull";
+    gfs = "git force";
 
     gsw = "git switch";
     gswm = "git switch main";
@@ -45,24 +65,12 @@
     grbum = "git rebase upstream/main";
     grbuma = "git rebase upstream/master";
 
-    grs = "git reset";
-    grsh = "git reset --hard";
-
-    gall = "git add ."; # Stage everything
-    guns = "git restore --staged ."; # Unstage everything. Unfortunate name.
+    gre = "git reset";
+    greh = "git reset --hard";
 
     gd = "git diff HEAD"; # Including both unstaged and staged changes
     gds = "git diff --staged";
     gdu = "git diff"; # Unstaged changes
-
-    # Using our custom git aliases
-    ghr = "git hire";
-    ghrc = "git commit --patch";
-
-    gfr = "git fire";
-    gkl = "git kill";
-
-    gfs = "git force";
 
     grw = "git reword";
     grwm = "git reword --message"; # Get ready with me :3
