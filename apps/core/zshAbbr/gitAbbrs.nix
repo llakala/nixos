@@ -44,9 +44,12 @@
     gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
     gbrd = "git branch -d";
 
-    gps = "git push";
     gpl = "git pull";
-    gfs = "git force";
+    gps = "git push";
+    gfs = "git force"; # Force push via custom alias
+
+    gplum = "git pull upstream main";
+    gpluma = "git pull upstream master";
 
     gsw = "git switch";
     gswm = "git switch main";
