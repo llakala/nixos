@@ -37,6 +37,7 @@
     ffmpeg
     exiftool
     wl-clipboard # Wayland terminal stuff
+    ijq # Interactive jq
 
     # commands specifically for nix
     nil # Nix language server
