@@ -1,5 +1,19 @@
 { pkgs, lib, ... }:
 
+let
+  # My PR to add syntax highlighting when using `vv`
+  myPatch = pkgs.fetchpatch
+  {
+    url = "https://patch-diff.githubusercontent.com/raw/jeffreytse/zsh-vi-mode/pull/305.patch";
+    hash = "sha256-7vZDuNPGBSeRacP5s0d+wGwM9YiSB8IBe/VJ+7Li4sU=";
+  };
+
+  patchedPlugin = pkgs.zsh-vi-mode.overrideAttrs
+  {
+    patches = lib.singleton myPatch;
+  };
+
+in
 {
   hm.programs.zsh =
   {
@@ -9,7 +23,7 @@
     {
       name = "vi-mode";
       file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-      src = pkgs.zsh-vi-mode;
+      src = patchedPlugin;
     };
 
     initExtraFirst = # language for treesitter: bash
