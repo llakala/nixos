@@ -6,6 +6,7 @@
     nr = "nix run";
 
     nrn = "nix run nixpkgs#%";
+    nsn = "nix shell nixpkgs#%";
 
     nrp = "nix repl";
     nrpn = "nix repl nixpkgs";
