@@ -55,7 +55,7 @@
 
     rebuild-but-less-dumb =
     {
-      url = "github:llakala/rebuild-but-less-dumb";
+      url = "github:llakala/rebuild-but-less-dumb/create-fuiska";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

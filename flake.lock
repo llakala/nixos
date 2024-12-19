@@ -123,11 +123,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1734533540,
-        "narHash": "sha256-Ip8nwS/DMyoTnj0A1q5QoPOZ+Dt8ywyKeGC5p+fZ2J0=",
+        "lastModified": 1734542518,
+        "narHash": "sha256-9hBhC7sVQFyK6AyUR615/hCRgZ/KjltR776oXx5UQiY=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "13e5a2ee5a9368f9355700ad1bec744a407612cd",
+        "rev": "9e4da4b95052ecfc759d33d78255eb9956279d15",
         "type": "github"
       },
       "original": {
@@ -265,15 +265,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1734107302,
-        "narHash": "sha256-RDZlsvymWJ5+vg7gTBWY3x5BqCLQqYFMXqoR1SDLv20=",
+        "lastModified": 1734576724,
+        "narHash": "sha256-D8SuAu5WWfEaMy21MkXS3OKUZHkSgT68X5rpguZVPz0=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "37b026ae12a51b3d50f210d1f78b56445246d9e0",
+        "rev": "5548fea6d62f5c32850cbafacc7fd04ecb5d859e",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
+        "ref": "create-fuiska",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
       }

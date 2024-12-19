@@ -5,6 +5,7 @@
   [
     rbld
     unify
+    fuiska
   ];
 
   environment.variables = # Overriding default values so we don't have to pass our arguments every time
