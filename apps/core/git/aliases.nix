@@ -30,6 +30,8 @@
     # Switch to branch using fzf. Reference links below
     # https://esc.sh/blog/switch-git-branches-fzf/
     # https://github.com/erees1/dotfiles/blob/b29a94e/git/aliases.zsh#L85-L97
-    pswitch = "!git switch $(git pbranch --color | fzf --ansi | cut -d '|' -f2 | cut -c 2-)";
+    pswitch = "!git pbranch --color | \
+    fzf --ansi --reverse --delimiter='\|' --preview-window='bottom' \ --preview='echo {s2} | cut -c 2- | xargs git show --color | diff-so-fancy' | \
+    cut -d '|' -f2 | cut -c 2- | xargs git switch";
   };
 }
