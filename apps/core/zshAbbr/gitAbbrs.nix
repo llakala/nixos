@@ -9,11 +9,11 @@
 
 
     gad = "git add";
-    gada = "git add .";
+    gall = "git add .";
     gadn = "git add -AN"; # Add all untracked files
 
     gun = "git unstage"; # Alias of `git restore --staged`
-    guna = "git unstage .";
+    gnun = "git unstage .";
     gunn = "git unstage-new-files"; # Alias, unstage new file existence
 
     ggb = "git goback"; # Alias of `git restore`
