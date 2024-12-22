@@ -22,7 +22,9 @@
     fallback = true; # If binary cache fails, it's okay
   };
 
+  nixpkgs.config.allowUnfree = true; # for `pkgs` instance, `pkgs-unstable` gets it on creation
   time.timeZone = "America/New_York";
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   system.stateVersion = config.hostVars.stateVersion;

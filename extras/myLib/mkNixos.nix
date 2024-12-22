@@ -15,12 +15,12 @@ let
     {
       inherit inputs myLib self;
 
-      pkgs = myLib.mkPkgs
-      {
-        inherit system config;
-        unpatchedInput = inputs.nixpkgs;
-        patches = [];
-      };
+      # pkgs = myLib.mkPkgs
+      # {
+      #   inherit system config;
+      #   unpatchedInput = inputs.nixpkgs;
+      #   patches = [];
+      # };
 
       pkgs-unstable = myLib.mkPkgs
       {
