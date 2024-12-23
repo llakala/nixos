@@ -1,6 +1,5 @@
 # Run `cat` to see what a certain shortcut corresponds to
 bindkey "^I" autosuggest-accept # Tab
-bindkey "^ " complete-word # Ctrl + Space
 
 bindkey "^[[1;5C" forward-word # Ctrl + Left-Arrow
 bindkey "^[[1;5D" backward-word # Ctrl + Right-Arrow
