@@ -2,9 +2,9 @@
 
 {
   programs.zsh.enable = true; # Required to set environment.shells
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = lib.singleton pkgs.zsh;
   users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = lib.singleton "/share/zsh";
 
   hm.programs.zsh =
   {
