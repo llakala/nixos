@@ -6,5 +6,6 @@
     mdpls
     splitpatch
     colo
+    gasp
   ];
 }
