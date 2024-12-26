@@ -26,4 +26,5 @@ in
   forAllSystems = import ./forAllSystems.nix { inherit lib myLib nixpkgs; };
 
   mkPkgs = import ./mkPkgs.nix;
+  selfPackagesFromDirectoryRecursive = import ./selfPackagesFromDirectoryRecursive.nix { inherit lib; };
 }
