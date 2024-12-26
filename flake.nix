@@ -83,9 +83,15 @@
 
   in
   {
-    packages = myLib.forAllSystems 
-    (
-      pkgs: import ./extras/packages { inherit myLib pkgs; }
+    # Call all packages automatically in directory, while letting packages refer to each other
+    # via custom lib function
+    packages = myLib.forAllSystems
+    (pkgs:
+      myLib.selfPackagesFromDirectoryRecursive
+      {
+        inherit pkgs;
+        directory = ./extras/packages;
+      }
     );
 
     nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
