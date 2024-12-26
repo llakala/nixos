@@ -48,5 +48,6 @@
     # Big kits
     nodejs
     typescript
+    go
   ];
 }
