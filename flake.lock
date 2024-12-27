@@ -265,16 +265,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1735166283,
-        "narHash": "sha256-OCG4Axf64NpuP6Hb+/TZvjN2nQnabS/TXTNVjiou600=",
+        "lastModified": 1735323723,
+        "narHash": "sha256-ZxhBJCawf5M+jpDGO64Xfjv76fUYdI7QtgNjPj2cpaY=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "b1455a24d855296169e939fba9e826f5f45e38ce",
+        "rev": "72d33681fff6f13cb768caec48c04ec8e820ba53",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
-        "ref": "create-fuiska",
         "repo": "rebuild-but-less-dumb",
         "type": "github"
       }
