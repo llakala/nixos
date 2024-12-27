@@ -1,10 +1,9 @@
-{config, pkgs-unstable, ... }:
+{ config, pkgs-unstable, ... }:
 
 {
   hm.programs.yazi =
   {
     enable = true;
-    package = pkgs-unstable.yazi;
     shellWrapperName = "y";
   };
 
@@ -22,6 +21,24 @@
     sort_by = "natural";
     sort_dir_first = true;
 
+  };
+
+  hm.programs.yazi.package = pkgs-unstable.yazi.override
+  {
+    # Dependencies from the package definition, but without zoxide
+    # Lets Yazi reuse our zoxide definition so it tracks our yazi directories too
+    optionalDeps =  with pkgs-unstable;
+    [
+      jq
+      poppler_utils
+      _7zz
+      ffmpeg
+      fd
+      ripgrep
+      fzf
+      imagemagick
+      chafa
+    ];
   };
 
 }
