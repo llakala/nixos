@@ -24,6 +24,8 @@
       py = "python";
 
       src = "source";
+
+      gsp = "gasp"; # Our custom program for adding specific patches
     };
   };
 }
