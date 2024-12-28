@@ -33,7 +33,10 @@
       ];
     };
 
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+    formatter = myLib.forAllSystems
+    (pkgs:
+      pkgs.nixfmt-rfc-style
+    );
   };
 
 
