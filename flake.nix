@@ -103,6 +103,12 @@
       url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    yazi-plugins =
+    {
+      url = "github:yazi-rs/plugins";
+      flake = false;
+    };
   };
 
 }

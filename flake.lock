@@ -293,7 +293,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-helix": "nixpkgs-helix",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "rebuild-but-less-dumb": "rebuild-but-less-dumb"
+        "rebuild-but-less-dumb": "rebuild-but-less-dumb",
+        "yazi-plugins": "yazi-plugins"
       }
     },
     "rust-overlay": {
@@ -329,6 +330,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735034015,
+        "narHash": "sha256-X3R5bsnzGv1TVXOKdhAyspDMguVAyc9tvCxJlypUUAA=",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "71c4fc2e6fa1d6f70c85bf525842d6888d1ffa46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yazi-rs",
+        "repo": "plugins",
         "type": "github"
       }
     }
