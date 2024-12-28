@@ -1,6 +1,50 @@
 {
   description = "A no-longer simple NixOS flake";
 
+  outputs = { self, ... } @ inputs:
+  let
+    myLib = import ./extras/myLib { inherit self; };
+
+    # Declare nixosConfigurations within the let expression so we can reuse it for homeConfigurations
+    nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as host
+    {
+      framework.system = "x86_64-linux";
+
+      desktop.system = "x86_64-linux";
+    };
+
+  in
+  {
+    # Call all packages automatically in directory, while letting packages refer to each other
+    # via custom lib function
+    packages = myLib.forAllSystems
+    (pkgs:
+      myLib.selfPackagesFromDirectoryRecursive
+      {
+        inherit pkgs;
+        directory = ./extras/packages;
+      }
+    );
+
+    nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
+    {
+      imports = myLib.resolveAndFilter
+      [
+        ./extras/nixosModules
+      ];
+    };
+
+    inherit nixosConfigurations;
+
+    homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
+    {
+      "emanresu@framework" = { inherit nixosConfigurations; };
+    };
+
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+  };
+
+
   inputs =
   {
     disko =
@@ -64,51 +108,6 @@
       url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-
-  outputs = { self, ... } @ inputs: # Everything is passed via "inputs.NAME" to avoid clutter
-
-  let
-    myLib = import ./extras/myLib { inherit self; };
-
-    # Declare nixosConfigurations within the let expression so we can reuse it for homeConfigurations
-    nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as host
-    {
-      framework.system = "x86_64-linux";
-
-      desktop.system = "x86_64-linux";
-    };
-
-  in
-  {
-    # Call all packages automatically in directory, while letting packages refer to each other
-    # via custom lib function
-    packages = myLib.forAllSystems
-    (pkgs:
-      myLib.selfPackagesFromDirectoryRecursive
-      {
-        inherit pkgs;
-        directory = ./extras/packages;
-      }
-    );
-
-    nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
-    {
-      imports = myLib.resolveAndFilter
-      [
-        ./extras/nixosModules
-      ];
-    };
-
-    inherit nixosConfigurations;
-
-    homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
-    {
-      "emanresu@framework" = { inherit nixosConfigurations; };
-    };
-
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
   };
 
 }
