@@ -4,17 +4,16 @@
   outputs = { self, ... } @ inputs:
   let
     myLib = import ./extras/myLib { inherit self; };
-
-    # Declare nixosConfigurations within the let expression so we can reuse it for homeConfigurations
-    nixosConfigurations = builtins.mapAttrs myLib.mkNixos # Run mkNixos for each homeConfiguration, with key passed as host
+  in
+  {
+    # Run mkNixos for each host
+    nixosConfigurations = builtins.mapAttrs myLib.mkNixos
     {
       framework.system = "x86_64-linux";
 
       desktop.system = "x86_64-linux";
     };
 
-  in
-  {
     # Call all packages automatically in directory, while letting packages refer to each other
     # via custom lib function
     packages = myLib.forAllSystems
@@ -32,13 +31,6 @@
       [
         ./extras/nixosModules
       ];
-    };
-
-    inherit nixosConfigurations;
-
-    homeConfigurations = builtins.mapAttrs myLib.mkHome # Run mkHome for each homeConfiguration, with key passed as userhost
-    {
-      "emanresu@framework" = { inherit nixosConfigurations; };
     };
 
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
