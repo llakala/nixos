@@ -31,12 +31,6 @@ in
     }
 
     {
-      desc = "Paste into a directory if we're hovering over it";
-      on = lib.singleton "p";
-      run = "plugin smart-paste";
-    }
-
-    {
       desc = "When copying, copy to the system clipboard as well";
       on = lib.singleton "y";
       run =
@@ -60,7 +54,4 @@ in
       run = "quit";
     }
   ];
-
-  hm.xdg.configFile."yazi/plugins/smart-paste.yazi/init.lua".text = builtins.readFile ./plugins/smart-paste.lua;
-
 }
