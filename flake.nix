@@ -9,6 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    eza-preview-yazi =
+    {
+      url = "github:ahkohd/eza-preview.yazi/nightly";
+      flake = false;
+    };
+
     firefox-addons =
     {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -58,13 +64,6 @@
       url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    eza-preview-yazi =
-    {
-      url = "github:ahkohd/eza-preview.yazi/nightly";
-      flake = false;
-    };
-
   };
 
 
