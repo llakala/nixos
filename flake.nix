@@ -1,7 +1,7 @@
 {
   description = "A no-longer simple NixOS flake";
 
-  outputs = { self, ... } @ inputs:
+  outputs = { self, ... }:
   let
     myLib = import ./extras/myLib { inherit self; };
   in
