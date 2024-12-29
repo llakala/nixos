@@ -68,6 +68,12 @@
 
     flake-utils.url = "github:numtide/flake-utils"; # Not actually using this, but we need to pin other things to the same version
 
+    gasp =
+    {
+      url = "github:llakala/gasp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     helix-unstable =
     {
       url = "github:helix-editor/helix"; # Compile Helix from source to support macro keybinds

@@ -111,6 +111,26 @@
         "type": "github"
       }
     },
+    "gasp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735444427,
+        "narHash": "sha256-p8rjt66+F/l79eZDWoxboq7F46HXBR/uCazW3hxpE/w=",
+        "owner": "llakala",
+        "repo": "gasp",
+        "rev": "39a023c85227974ef21b4acdca79f941aa2d60a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "gasp",
+        "type": "github"
+      }
+    },
     "helix-unstable": {
       "inputs": {
         "crane": "crane",
@@ -285,6 +305,7 @@
         "firefox-addons": "firefox-addons",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-utils": "flake-utils",
+        "gasp": "gasp",
         "helix-unstable": "helix-unstable",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",

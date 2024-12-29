@@ -4,8 +4,6 @@
   environment.systemPackages = with self.packages.${pkgs.system};
   [
     mdpls
-    splitpatch
     colo
-    gasp
   ];
 }
