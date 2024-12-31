@@ -83,5 +83,40 @@
       };
       definedAliases = lib.singleton "@npkgs";
     };
+
+    "Home Manager Options" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://home-manager-options.extranix.com";
+        params = lib.attrsToList
+        {
+          "release" = "release-24.11";
+          "query" = "{searchTerms}";
+        };
+      };
+      definedAliases = lib.singleton "@oh";
+    };
+
+    "NixOS Options" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://search.nixos.org/options";
+        params = lib.attrsToList
+        {
+          channel = "24.11";
+          sort = "alpha_asc";
+
+          from = "0";
+          size = "100";
+
+          query = "{searchTerms}";
+        };
+      };
+
+      definedAliases = lib.singleton "@on";
+    };
+
   };
 }
