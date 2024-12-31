@@ -54,6 +54,8 @@
           "q" = "{searchTerms}";
         };
       };
+
+      iconUpdateURL = "https://mynixos.com/favicon.ico";
       definedAliases = lib.singleton "@mn";
     };
 
@@ -67,6 +69,8 @@
           term = "{searchTerms}";
         };
       };
+
+      iconUpdateURL = "https://noogle.dev/favicon.png";
       definedAliases = lib.singleton "@ng";
     };
 
@@ -81,6 +85,7 @@
           "q" = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
         };
       };
+
       definedAliases = lib.singleton "@npkgs";
     };
 
@@ -95,6 +100,8 @@
           "query" = "{searchTerms}";
         };
       };
+
+      iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
       definedAliases = lib.singleton "@oh";
     };
 
