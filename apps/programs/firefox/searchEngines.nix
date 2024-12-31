@@ -61,7 +61,11 @@
     {
       urls = lib.singleton
       {
-        template =  "https://noogle.dev/q?term={searchTerms}";
+        template = "https://noogle.dev/q";
+        params = lib.attrsToList
+        {
+          term = "{searchTerms}";
+        };
       };
       definedAliases = lib.singleton "@ng";
     };
