@@ -24,7 +24,7 @@
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = [ "@gn" ];
+      definedAliases = lib.singleton "@gn";
     };
 
 
@@ -41,7 +41,7 @@
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = [ "@gs" ];
+      definedAliases = lib.singleton "@gs";
     };
 
     "MyNixOS" =
@@ -54,7 +54,7 @@
           "q" = "{searchTerms}";
         };
       };
-      definedAliases = [ "@mn" ];
+      definedAliases = lib.singleton "@mn";
     };
 
     "Noogle" =
@@ -63,7 +63,7 @@
       {
         template =  "https://noogle.dev/q?term={searchTerms}";
       };
-      definedAliases = [ "@ng" ];
+      definedAliases = lib.singleton "@ng";
     };
 
     "Nixpkgs" =
@@ -77,8 +77,7 @@
           "q" = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
         };
       };
-      definedAliases = [ "@npkgs" ];
+      definedAliases = lib.singleton "@npkgs";
     };
-
   };
 }
