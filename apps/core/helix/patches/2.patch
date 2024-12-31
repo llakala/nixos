@@ -1,0 +1,26 @@
+From 6ef0fa1afe1bdb7377da6166a80b836539ba46fe Mon Sep 17 00:00:00 2001
+From: Jaakko Paju <36770267+JPaju@users.noreply.github.com>
+Date: Wed, 30 Oct 2024 23:54:45 +0200
+Subject: [PATCH 2/3] Add CSV highlight queries
+
+---
+ runtime/queries/csv/highlights.scm | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 runtime/queries/csv/highlights.scm
+
+diff --git a/runtime/queries/csv/highlights.scm b/runtime/queries/csv/highlights.scm
+new file mode 100644
+index 00000000..f843c5f4
+--- /dev/null
++++ b/runtime/queries/csv/highlights.scm
+@@ -0,0 +1,7 @@
++(first)@type
++(second)@function
++(third)@constant
++(fourth)@operator
++(fifth)@type
++(sixth)@function
++(seventh)@constant
+-- 
+2.47.0
+
