@@ -18,8 +18,8 @@
         template = "https://github.com/search";
         params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
         {
-          "type" = "code";
-          "q" = "lang:nix NOT is:fork {searchTerms}";
+          type = "code";
+          q = "lang:nix NOT is:fork {searchTerms}";
         };
       };
 
@@ -35,8 +35,8 @@
         template = "https://github.com/search";
         params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
         {
-          "type" = "code";
-          "q" = "NOT is:fork {searchTerms}";
+          type = "code";
+          q = "NOT is:fork {searchTerms}";
         };
       };
 
@@ -51,7 +51,7 @@
         template = "https://mynixos.com/search";
         params = lib.attrsToList
         {
-          "q" = "{searchTerms}";
+          q = "{searchTerms}";
         };
       };
 
@@ -81,8 +81,8 @@
         template = "https://github.com/search";
         params = lib.attrsToList
         {
-          "type" = "code";
-          "q" = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
+          type = "code";
+          q = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
         };
       };
 
@@ -96,8 +96,8 @@
         template = "https://home-manager-options.extranix.com";
         params = lib.attrsToList
         {
-          "release" = "release-24.11";
-          "query" = "{searchTerms}";
+          release = "release-24.11";
+          query = "{searchTerms}";
         };
       };
 
