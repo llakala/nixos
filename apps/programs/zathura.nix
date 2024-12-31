@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   hm.programs.zathura =
   {
