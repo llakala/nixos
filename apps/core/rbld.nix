@@ -13,7 +13,7 @@
     RBLD_DIRECTORY = config.baseVars.configDirectory;
     UNIFY_DIRECTORY = config.baseVars.configDirectory;
 
-    UNIFY_TRACKED_INPUTS = "nixpkgs nixpkgs-unstable home-manager rebuild-but-less-dumb";
+    UNIFY_TRACKED_INPUTS = "nixpkgs nixpkgs-unstable home-manager rebuild-but-less-dumb gasp";
     UNIFY_COMMIT_MESSAGE = "flake: update flake.lock";
     UNIFY_PRIMARY_BRANCHES = "main master";
   };
