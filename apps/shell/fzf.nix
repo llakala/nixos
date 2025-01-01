@@ -1,20 +1,25 @@
+{ lib, ... }:
 {
   hm.programs.fzf =
   {
     enable = true;
 
-    defaultOptions = # Needs a reboot to apply
-    [
-      "--multi"
-      "--exact"
-      "--ansi"
-      "--cycle"
-      "--reverse"
+    # Needs a reboot to apply
+    defaultOptions = lib.singleton
+    (
+      lib.cli.toGNUCommandLineShell {} # True values correspond to setting a flag
+      {
+        multi = true;
+        exact = true;
+        ansi = true;
+        cycle = true;
+        reverse = true;
 
-      "--highlight-line"
-      "--inline-info"
-      "--border"
-      "--no-separator"
-    ];
+        highlight-line = true;
+        inline-info = true;
+        border = true;
+        no-separator = true;
+      }
+    );
   };
 }
