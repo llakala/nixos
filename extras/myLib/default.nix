@@ -19,8 +19,6 @@ in
   mkNixos = import ./mkNixos.nix { inherit lib myLib inputs self; };
   mkHome = import ./mkHome.nix { inherit lib myLib; };
 
-  mkList = attrset: [ attrset ];
-
   mkUnfreeNixpkgs = import ./mkUnfreeNixpkgs.nix; # Don't send function args because they're passed at use-time
 
   forAllSystems = import ./forAllSystems.nix { inherit lib myLib nixpkgs; };
