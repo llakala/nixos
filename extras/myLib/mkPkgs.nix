@@ -1,4 +1,6 @@
-{ unpatchedInput, config, system, patches, ... }:
+{ ... }: # So callPackage understands we have no file inputs
+
+{ unpatchedInput, config, system, patches, ... }: # Function inputs
 if patches == [] then
   import unpatchedInput # Skip the IFD if possible
   {
