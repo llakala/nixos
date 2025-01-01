@@ -10,11 +10,11 @@
 
     gad = "git add";
     gall = "git add .";
-    gadn = "git add -AN"; # Add all untracked files
+    ganf = "git add -AN"; # Add all new files
 
     gun = "git unstage"; # Alias of `git restore --staged`
     gnun = "git unstage .";
-    gunn = "git unstage-new-files"; # Alias, unstage new file existence
+    gunf = "git unstage-new-files"; # Alias, unstage new file existence
 
     ggb = "git goback"; # Alias of `git restore`
     ggba = "git goback .";
