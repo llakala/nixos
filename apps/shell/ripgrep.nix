@@ -1,11 +1,13 @@
+{ lib, ... }:
+
 {
   hm.programs.ripgrep =
   {
     enable = true;
-    arguments =
-    [
-      "--smart-case"
-      "--pretty"
-    ];
+    arguments = lib.cli.toGNUCommandLine {}
+    {
+      smart-case = true;
+      pretty = true;
+    };
   };
 }
