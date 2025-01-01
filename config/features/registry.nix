@@ -7,7 +7,7 @@
     nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
     # Allow running unfree packages with nix3 commands via `nix run unfree#steam`
-    unfree.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
-    unfree-unstable.flake = pkgs.callPackage myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
+    unfree.flake = myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
+    unfree-unstable.flake = myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
   };
 }
