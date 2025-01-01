@@ -1,9 +1,16 @@
 {
   description = "A no-longer simple NixOS flake";
 
-  outputs = { self, ... }:
+  outputs = { self, ... } @ inputs:
   let
-    myLib = import ./extras/myLib { inherit self; };
+    lib = inputs.nixpkgs.lib;
+    utils = { inherit myLib lib inputs self; };
+
+    myLib = lib.packagesFromDirectoryRecursive
+    {
+      callPackage = lib.callPackageWith utils;
+      directory = ./extras/myLib;
+    };
   in
   {
     # Run mkNixos for each host
