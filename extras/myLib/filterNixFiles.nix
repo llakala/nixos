@@ -2,11 +2,11 @@
 
 let
   internals.filterFile = path:
-    if lib.pathIsDirectory path
-      then builtins.abort "Encountered subfolder ${path}! You must not have resolved all subfolders before filtering, you silly goose."
-    else if lib.hasSuffix ".nix" path
+    assert lib.assertMsg (lib.pathIsRegularFile path)
+      "Encountered subfolder ${path}! You must not have resolved all subfolders before filtering, you silly goose.";
+    if lib.hasSuffix ".nix" path
       then lib.singleton path
-    else []; # Reject non-nix files.
+      else []; # Reject non-nix files.
 in
   inputs: lib.concatMap # Return the inputted list, but any file that isn't a nix file is filtered out
   (
