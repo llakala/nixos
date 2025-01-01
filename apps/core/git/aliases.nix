@@ -33,7 +33,7 @@
     pswitch = /* bash */
     ''
       !git pbranch --color | \
-      fzf --ansi --reverse --delimiter='\|' --preview-window='bottom' \
+      fzf --delimiter='\|' --preview-window='bottom' \
       --preview='echo {s2} | cut -c 2- | xargs git show --color | diff-so-fancy' | \
       cut -d '|' -f2 | cut -c 2- | xargs git switch
     '';
