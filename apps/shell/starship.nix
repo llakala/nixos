@@ -9,6 +9,8 @@
   hm.programs.starship.settings =
   {
     line_break.disabled = true; # Everything on one line
+    package.disabled = true;
+
     palette = "custom";
     directory.truncate_to_repo = false; # Show full path of current directory
 
