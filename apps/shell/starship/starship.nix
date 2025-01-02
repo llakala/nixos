@@ -16,8 +16,6 @@
     {
       threshold = 10;
     };
-
-    right_format = "$cmd_duration$git_branch$time";
   };
 
 
@@ -40,6 +38,13 @@
   {
     min_time = 30 * 1000; # 30 seconds
     format = "[  $duration ]($style)"; # Character is a clock symbol
+  };
+
+
+  hm.programs.starship.settings.fill =
+  {
+    symbol = "─";
+    style = "fg:fill";
   };
 
 }

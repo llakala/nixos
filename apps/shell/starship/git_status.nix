@@ -1,4 +1,5 @@
 { lib, ... }:
+
 {
   hm.programs.starship.settings.git_status =
   {

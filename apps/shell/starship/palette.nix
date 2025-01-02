@@ -9,6 +9,9 @@
   {
     pink = "#ea76cb";
     orange = "#ff8800";
+
+    # Colors for specific modules
+    fill = "#44475A";
   };
 
 }
