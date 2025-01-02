@@ -15,12 +15,7 @@
     {
       urls = lib.singleton
       {
-        template = "https://github.com/search";
-        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
-        {
-          type = "code";
-          q = "lang:nix NOT is:fork {searchTerms}";
-        };
+        template = "https://github.com/search?type=code&q=lang:nix+NOT+is:fork+{searchTerms}";
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
@@ -32,42 +27,18 @@
     {
       urls = lib.singleton
       {
-        template = "https://github.com/search";
-        params = lib.attrsToList # Thanks to xunuwu on github for being a reference to use of these functions
-        {
-          type = "code";
-          q = "NOT is:fork {searchTerms}";
-        };
+        template = "https://github.com/search?type=code&q=NOT+is:fork+{searchTerms}";
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
       definedAliases = lib.singleton "@gs";
     };
 
-    "MyNixOS" =
-    {
-      urls = lib.singleton
-      {
-        template = "https://mynixos.com/search";
-        params = lib.attrsToList
-        {
-          q = "{searchTerms}";
-        };
-      };
-
-      iconUpdateURL = "https://mynixos.com/favicon.ico";
-      definedAliases = lib.singleton "@mn";
-    };
-
     "Noogle" =
     {
       urls = lib.singleton
       {
-        template = "https://noogle.dev/q";
-        params = lib.attrsToList
-        {
-          term = "{searchTerms}";
-        };
+        template = "https://noogle.dev/q?term={searchTerms}";
       };
 
       iconUpdateURL = "https://noogle.dev/favicon.png";
@@ -78,12 +49,7 @@
     {
       urls = lib.singleton
       {
-        template = "https://github.com/search";
-        params = lib.attrsToList
-        {
-          type = "code";
-          q = "repo:NixOS/nixpkgs lang:nix {searchTerms}";
-        };
+        template = "https://github.com/search?type=code&q=repo:NixOS/nixpkgs+lang:nix+{searchTerms}";
       };
 
       definedAliases = lib.singleton "@npkgs";
@@ -93,12 +59,7 @@
     {
       urls = lib.singleton
       {
-        template = "https://home-manager-options.extranix.com";
-        params = lib.attrsToList
-        {
-          release = "release-24.11";
-          query = "{searchTerms}";
-        };
+        template = "https://home-manager-options.extranix.com/?release=release-24.11&query={searchTerms}";
       };
 
       iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
@@ -109,17 +70,7 @@
     {
       urls = lib.singleton
       {
-        template = "https://search.nixos.org/options";
-        params = lib.attrsToList
-        {
-          channel = "24.11";
-          sort = "alpha_asc";
-
-          from = "0";
-          size = "100";
-
-          query = "{searchTerms}";
-        };
+        template = "https://search.nixos.org/options?channel=24.11&from=0&size=100&sort=alpha_asc&query={searchTerms}";
       };
 
       definedAliases = lib.singleton "@on";
