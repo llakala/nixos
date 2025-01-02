@@ -27,7 +27,11 @@
 
     git_branch.ignore_branches = [ "master" "main" ]; # Don't show git branch if on master/main
 
-    cmd_duration.min_time = 30 * 1000; # 30 seconds
+    cmd_duration =
+    {
+      min_time = 30 * 1000; # 30 seconds
+      format = "[  $duration ]($style)"; # Character is a clock symbol
+    };
 
     battery.display = lib.singleton
     {
