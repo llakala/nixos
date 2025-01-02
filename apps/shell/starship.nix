@@ -34,6 +34,7 @@
       threshold = 10;
     };
 
+    right_format = "$cmd_duration$git_branch$time";
   };
 
   hm.programs.starship.settings.git_status =
@@ -73,6 +74,12 @@
 
     style = "white";
     disabled = false;
+  };
+
+  hm.programs.starship.settings.time =
+  {
+    disabled = false;
+    time_format = "%I:%M %p"; # 9:47 PM
   };
 
 }
