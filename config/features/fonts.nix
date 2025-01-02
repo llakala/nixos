@@ -1,15 +1,17 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 
 let
-  myNerdFonts =
+  # Nerdfont installation was reworked in 24.11 to be a package set, rather than a
+  # package to override
+  myNerdFonts = with pkgs-unstable.nerd-fonts;
   [
-    "NerdFontsSymbolsOnly"
+    symbols-only
   ];
 
-  # Monocraft installs all versions by default, and I'm not sure of a way to select the non-ligature
-  # version. Instead, I just override so only this version is installed.
-  # I use 3.0, as 4.0 introduced bold and italics. I hate italics, and Kitty doesn't provide
-  # a decent way to disable them. So, as a workaround, we just use 3.0
+  # Monocraft installs all versions by default, and I'm not sure of a way to select the
+  # non-ligature version. Instead, I just override so only this version is installed.
+  # I use 3.0, as 4.0 introduced bold and italics. I hate italics, and Kitty doesn't
+  # provide a decent way to disable them. So, as a workaround, we just use 3.0
   noLigaMonocraft = pkgs.fetchurl
   {
     name = "Monocraft-no-ligatures.ttf";
@@ -27,11 +29,7 @@ in
   {
     enableDefaultPackages = true;
 
-    packages = with pkgs;
-    [
-      (nerdfonts.override { fonts = myNerdFonts; })
-      myMonocraft
-    ];
+    packages = myNerdFonts ++ lib.singleton myMonocraft;
 
     fontconfig =
     {
