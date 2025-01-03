@@ -11,15 +11,55 @@ in
     nativeMessagingHosts = lib.singleton pkgs.tridactyl-native;
   };
 
+  hm.programs.firefox.policies.Preferences =
+  {
+    "browser.autofocus" = false;
+  };
+
 
   hm.xdg.configFile."tridactyl/tridactylrc" =
   {
-    text =
+    text = # c
     ''
+      " if we unset something, have it reset
+      sanitise tridactyllocal tridactylsync
+
+      set modeindicatorshowkeys true
+      set hintnames short
+      set allowautofocus false
+
       bind j scrollline 5
       bind k scrollline -5
+      " tabs are more important than horizontal scrolling
+      bind h tabprev
+      bind l tabnext
+
+      bind H scrollpx -50
+      bind L scrollpx 50
+      bind J scrollpage +1
+      bind K scrollpage -1
+
+      bind q back
+      bind e forward
+
+      unbind <<
+      unbind >>
+      bind < tabmove -1
+      bind > tabmove +1
+
+      " Follow promising-looking links to visit the likely next and previous pages of content.
+      bind gh followpage prev
+      bind gl followpage next
 
       unbind <C-f>
+
+      " gi goes to github search
+      bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
+      " More relevant hints with github search
+      bindurl ^https://github.com/search f hint -Jc .search-title a
+
+      " More relevant hints when selecting videos
+      bindurl youtu((\.be)|(be\.com)) f hint -Jc [class~=yt-simple-endpoint]
 
       set searchurls.@gn https://github.com/search?type=code&q=lang:nix+NOT+is:fork+%s
       set searchurls.@gh https://github.com/search?type=code&q=NOT+is:fork+%s
