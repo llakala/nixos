@@ -1,6 +1,10 @@
 {
   hm.programs.firefox.policies.Preferences =
   {
+    "browser.urlbar.suggest.calculator" = true;
+    "browser.urlbar.unitConversion.enabled" = true;
+    "browser.urlbar.trimHttps" = true;
+
     "browser.urlbar.suggest.searches" = true; # Need this for basic search suggestions
     "browser.urlbar.shortcuts.bookmarks" = false;
     "browser.urlbar.shortcuts.history" = false;
@@ -15,6 +19,7 @@
     "browser.warnOnQuitShortcut" = false;
 
     "browser.tabs.loadInBackground" = true; # Load tabs automatically
+    "browser.tabs.closeTabByDblclick" = true;
 
     "media.ffmpeg.vaapi.enabled" = true; # Enable hardware acceleration
     "layers.acceleration.force-enabled" = true;
