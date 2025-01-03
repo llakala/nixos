@@ -1,7 +1,12 @@
 { pkgs, lib, ... }:
 
 {
-  programs.zsh.enable = true; # Required to set environment.shells
+  programs.zsh =
+  {
+    enable = true; # Required to set environment.shells
+    enableCompletion = false; # we are using home-manager zsh, so do not enable!
+  };
+
   users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = lib.singleton "/share/zsh";
 
