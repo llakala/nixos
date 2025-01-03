@@ -39,9 +39,11 @@
         "gnomeTheme.normalWidthTabs" = true;
         "gnomeTheme.hideSingleTab" = false;
 
-        # Normal firefox settings that happen to be blocked
+        # Normal firefox settings that happen to be blocked with policies
         "services.sync.declinedEngines" = "";
-        "apz.gtk.kinetic_scroll.enabled" = false; # Make scrolling slower
+
+        "sidebar.verticalTabs" = true;
+        "sidebar.main.tools" = "";
       };
     };
   };

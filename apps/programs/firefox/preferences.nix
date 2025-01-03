@@ -32,6 +32,9 @@
     "extensions.update.enabled" = false;
 
     "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
+
+    "browser.tabs.groups.enabled" = true;
+    "browser.tabs.groups.dragOverThresholdPercent" = 10;
   };
 
   hm.programs.firefox.policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
@@ -43,6 +46,7 @@
       PersonalToolbar = [ "personal-bookmarks" ];
       nav-bar =
       [
+        "sidebar-button" # For vertical tabs
         "back-button"
         "forward-button"
         "urlbar-container"
