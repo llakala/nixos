@@ -4,11 +4,11 @@
   hm.programs.starship.settings.format = lib.concatStrings
   [
     "$all" # Everything not specified below
+    "$git_branch"
 
     "$fill"
 
     "$cmd_duration"
-    "$git_branch"
     "$time"
     "$line_break"
     "$character"
