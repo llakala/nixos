@@ -5,7 +5,6 @@ fishPlugins.buildFishPlugin
   pname = "fish-helix";
   version = "IDK";
 
-  # Fetch from my own fork so the main file can be renamed
   src = fetchFromGitHub
   {
     owner = "sshilovsky";
