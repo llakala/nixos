@@ -1,4 +1,4 @@
-{ config, pkgs-unstable, ... }:
+{ config, ... }:
 
 {
   hm.programs.yazi =
