@@ -1,6 +1,8 @@
+{ pkgs, ... }:
 {
   programs.command-not-found.enable = false; # Broken
 
+  users.defaultUserShell = pkgs.fish;
   programs.fish =
   {
     enable = true;
