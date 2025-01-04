@@ -1,4 +1,5 @@
 { lib, config, ... }:
+
 let
   globalLessOpts = config.programs.less.envVariables.LESS;
 in

@@ -8,8 +8,8 @@
 # nix-store --query --hash $(nix store add-path path/to/FILE.sh --name 'FILE.sh')
 # The next rebuild seemingly takes forever, wait it out.
 # Now, mathematica should be installed!
-
 { pkgs, ... }:
+
 let
   subnautica = pkgs.mathematica.override
   {

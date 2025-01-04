@@ -1,4 +1,5 @@
 { inputs, lib, pkgs, ... }:
+
 let
   extensions = inputs.firefox-addons.packages.${pkgs.system};
 
