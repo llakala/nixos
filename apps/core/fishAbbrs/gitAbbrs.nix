@@ -1,5 +1,5 @@
 {
-  hm.programs.zsh.zsh-abbr.abbreviations =
+  hm.programs.fish.shellAbbrs =
   {
     g = "git";
     gst = "git status";
@@ -39,7 +39,12 @@
     ghs = "git history"; # Same as `glgp`, just an alias for intuition
 
     gc = "git commit";
-    gcm = "git commit -m \"%\"";
+
+    gcm =
+    {
+      setCursor = true;
+      expansion = "git commit -m \"%\"";
+    };
 
     gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
     gbrd = "git branch -d";
@@ -62,7 +67,12 @@
     grbm = "git rebase main";
     grbma = "git rebase master";
 
-    grbi = "git rebase -i HEAD~%"; # `grbi 2` will rebase from last 2 commits
+    grbi = # `grbi 2` will rebase from last 2 commits
+    {
+      setCursor = true;
+      expansion = "git rebase -i HEAD~%";
+    };
+
     grbc = "git rebase --continue";
     grba = "git rebase --abort";
 
