@@ -22,11 +22,4 @@
 
     set fish_greeting
   '';
-
-  hm.programs.fish.interactiveShellInit =
-  /* fish */
-  ''
-    fish_vi_key_bindings
-  '';
-
 }
