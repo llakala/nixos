@@ -12,6 +12,7 @@ in
     src = fish-helix;
   };
 
+  # For setting keymap, use `fish_key_reader`
   hm.programs.fish.interactiveShellInit =
   /* fish */
   ''
@@ -20,7 +21,7 @@ in
 
     set fish_cursor_default     block      blink
     set fish_cursor_insert      line       blink
-    set fish_cursor_replace_one underscore blink
-    set fish_cursor_visual      block
+    set fish_cursor_replace_one underscore
+    set fish_cursor_visual      underscore blink
     '';
 }
