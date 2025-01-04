@@ -49,6 +49,8 @@ let
     nodejs
     typescript
     go
+    cargo
+    rustc
   ];
 
   unstablePackages = with pkgs-unstable;
