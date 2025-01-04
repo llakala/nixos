@@ -1,7 +1,6 @@
 { pkgs, ... }:
-
-{
-  environment.systemPackages = with pkgs;
+let
+  stablePackages = with pkgs;
   [
     gparted
     filezilla
@@ -12,4 +11,14 @@
     gnome-feeds # rss feeds
     krita # Image editing
   ];
+
+  unstablePackages = with pkgs;
+  [
+    modrinth-app
+  ];
+
+
+in
+{
+  environment.systemPackages = stablePackages ++ unstablePackages;
 }
