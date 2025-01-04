@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
-{
-  environment.systemPackages = with pkgs;
+let
+  stablePackages = with pkgs;
   [
     # Basic utils
     coreutils
@@ -50,4 +50,13 @@
     typescript
     go
   ];
+
+  unstablePackages = with pkgs-unstable;
+  [
+    colo
+  ];
+
+in
+{
+  environment.systemPackages = stablePackages ++ unstablePackages;
 }

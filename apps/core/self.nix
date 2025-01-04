@@ -4,6 +4,5 @@
   environment.systemPackages = with self.packages.${pkgs.system};
   [
     mdpls
-    colo
   ];
 }
