@@ -5,16 +5,7 @@
   {
     enable = true;
 
-    package = pkgs.firefox.overrideAttrs
-    (oldAttrs:
-    {
-      buildCommand = oldAttrs.buildCommand +
-      /* bash */
-      ''
-      wrapProgram $out/bin/firefox \
-        --set MOZ_LOG "PlatformDecoderModule:5"
-      '';
-    });
+    package = pkgs.firefox;
 
 
     profiles.default =
