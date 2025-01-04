@@ -1,10 +1,10 @@
-{ pkgs, ... }:
-
 {
+  programs.command-not-found.enable = false; # Broken
 
   programs.fish =
   {
     enable = true;
+    useBabelfish = true; # Important: halves the startup time
   };
 
   hm.programs.fish =
