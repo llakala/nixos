@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   programs.command-not-found.enable = false; # Broken
 

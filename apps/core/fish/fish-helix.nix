@@ -1,4 +1,5 @@
 { lib, self, pkgs, ... }:
+
 let
   fish-helix = self.packages.${pkgs.system}.fish-helix;
 in
