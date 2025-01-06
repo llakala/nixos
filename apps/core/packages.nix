@@ -51,6 +51,7 @@ let
     go
     cargo
     rustc
+    ruby
   ];
 
   unstablePackages = with pkgs-unstable;
