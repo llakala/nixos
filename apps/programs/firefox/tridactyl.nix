@@ -20,14 +20,15 @@ in
 
   hm.xdg.configFile."tridactyl/tridactylrc" =
   {
-    text = # c
+    text = # java
     ''
       " if we unset something, have it reset
       sanitise tridactyllocal tridactylsync
 
       set modeindicatorshowkeys true
       set hintnames short
-      set allowautofocus false
+      set tabopenpos last
+      alias sort tabsort
 
       bind j scrollline 5
       bind k scrollline -5
@@ -35,13 +36,19 @@ in
       bind h tabprev
       bind l tabnext
 
-      bind H scrollpx -50
-      bind L scrollpx 50
+      bind H back
+      bind L forward
       bind J scrollpage +1
       bind K scrollpage -1
 
-      bind q back
-      bind e forward
+      bind a tab #
+
+      " t for tab, silly
+      bind t fillcmdline tab
+      bind b fillcmdline tabopen
+
+      bind q hint
+      bind f hint -Jc a,button,input
 
       unbind <<
       unbind >>
