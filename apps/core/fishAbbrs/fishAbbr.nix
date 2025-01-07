@@ -11,7 +11,7 @@
 
     src = "source";
 
-    gsp = "gasp"; # Our custom program for adding specific patches
+    gap = "gaap"; # Our custom program for adding specific patches
   };
 
 }
