@@ -5,6 +5,5 @@
   [
     gaap
     splitpatch
-    hip
   ];
 }
