@@ -20,9 +20,8 @@ in
     fish_vi_key_bindings # fish-helix expects this to be set or it breaks
     fish_helix_key_bindings
 
-    set fish_cursor_default     block      blink
-    set fish_cursor_insert      line       blink
-    set fish_cursor_replace_one underscore
-    set fish_cursor_visual      underscore blink
+    bind -M insert -k nul complete-and-search
+    bind -M insert \t accept-autosuggestion
+    bind -M insert \b backward-kill-word
     '';
 }
