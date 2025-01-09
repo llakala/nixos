@@ -51,6 +51,7 @@
     {
       name = "bash";
       language-servers = lib.singleton "bash-language-server";
+
       formatter =
       {
         command = lib.getExe pkgs.shfmt;
@@ -61,6 +62,7 @@
           "--case-indent"
         ];
       };
+
     }
 
   ];
