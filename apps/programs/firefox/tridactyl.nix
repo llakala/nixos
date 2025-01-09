@@ -60,6 +60,7 @@ in
       bind gl followpage next
 
       unbind <C-f>
+      unbind <C-a>
 
       " gi goes to github search
       bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
@@ -68,6 +69,11 @@ in
 
       " More relevant hints when selecting videos
       bindurl youtu((\.be)|(be\.com)) f hint -Jc [class~=yt-simple-endpoint]
+      bindurl youtube.com$ f hint -Jc [class~=yt-simple-endpoint]
+
+      " While watching a video, unbind `f`, and give its duty to `q`
+      unbindurl www.youtube.com/watch f
+      bindurl youtube.com/watch q hint -Jc [class~=yt-simple-endpoint]
 
       set searchurls.@gn https://github.com/search?type=code&q=lang:nix+NOT+is:fork+%s
       set searchurls.@gh https://github.com/search?type=code&q=NOT+is:fork+%s
