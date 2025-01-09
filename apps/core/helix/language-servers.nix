@@ -37,6 +37,12 @@
       command = lib.getExe pkgs.nodePackages.bash-language-server;
       environment.SHELLCHECK_ARGUMENTS = "-e SC2164"; # Couldn't get `config` block to work, so this is the best way to disable certain shellchecks in linting
     };
+
+    solargraph =
+    {
+      command = lib.getExe pkgs.rubyPackages.solargraph;
+      args = lib.singleton "stdio";
+    };
   };
 
 
