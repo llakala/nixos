@@ -11,7 +11,10 @@
 
     src = "source";
 
-    gap = "gaap"; # Our custom program for adding specific patches
+    # Our custom program for managing which hunks are staged
+    gsp = "gsap"; # Git Stage A Patch
+    gup = "guap"; # Git Unstage A Patch
+    gcp = "gcap"; # Git Clean A Patch
   };
 
 }
