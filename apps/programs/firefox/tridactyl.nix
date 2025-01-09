@@ -66,6 +66,13 @@ in
       bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
       " More relevant hints with github search
       bindurl ^https://github.com/search f hint -Jc .search-title a
+      bindurl github.com gi hint -Vc .AppHeader-searchButton
+      " More relevant hints on specific github pages
+      bindurl github.com/search f hint -Jc .search-title,[data-testid="link-to-search-result"]
+      bindurl github.com/.*/.*/issues(?!/) f hint -Jc a.h4,button,a.UnderlineNav-item,a.AppHeader-context-item " TODO: KEEP ADDING HERE
+      bindurl github.com/.*/.*/pulls(?!/) f hint -Jc a.h4,button,li
+      bindurl github.com/notifications f hint -Jc .notification-list-item-link,button
+      " TODO: Add bindurl for blobs
 
       " More relevant hints when selecting videos
       bindurl youtu((\.be)|(be\.com)) f hint -Jc [class~=yt-simple-endpoint]
