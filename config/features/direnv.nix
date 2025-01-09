@@ -12,7 +12,6 @@
 
   hm.programs.git.ignores = # Writes to above path
   [
-    ".envrc"
     ".direnv/"
   ];
 
