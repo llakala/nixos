@@ -1,8 +1,10 @@
+{ pkgs-unstable, ... }:
+
 {
   hm.programs.kitty =
   {
     enable = true;
-    # shellIntegration.enableZshIntegration = true; # Not needed since ZSH checks for the shell variable
+    package = pkgs-unstable.kitty;
 
     # We don't specify the font in Kitty since it broke as of 24.11
     # Instead, we allow it to use the system monospace font
@@ -14,17 +16,17 @@
   {
     scrollback_lines = 5000;
 
-    linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
+    underline_hyperlinks = "always";
 
-    bold_is_bright = true;
+    linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
     font_size = 12;
 
     background_opacity = "0.98";
 
     copy_on_select = true;
+    notify_on_cmd_finish = "unfocused 60.0 notify";
 
     confirm_os_window_close = 0; # Close instead of asking "Would you like to close?"
-
     tab_bar_edge = "top";
     tab_bar_style = "powerline";
   };
@@ -33,13 +35,7 @@
   {
     "ctrl+q" = "close_os_window"; # Quit application
     "ctrl+w" = "close_window"; #  Prioritizes internal windows > tabs
-
     "ctrl+t" = "new_tab";
-
-    "ctrl+k" = "new_window"; # Split screen
-    "ctrl+j" = "previous_window";
-    "ctrl+l" = "next_window";
-
 
     # Default binds should do nothing
     "ctrl+shift+t" = "no_op";
@@ -60,7 +56,4 @@
     command = "kitty";
     binding = "<Super>t";
   };
-
-  environment.variables.TERMINAL = "kitty";
-  environment.variables.TERM = "kitty";
 }
