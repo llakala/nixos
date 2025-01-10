@@ -20,6 +20,8 @@
     connect-timeout = 5; # Offline caches won't just hang
     warn-dirty = false; # No warnings if git isn't pushed
     fallback = true; # If binary cache fails, it's okay
+
+    allow-import-from-derivation = false;
   };
 
   nixpkgs.config.allowUnfree = true; # for `pkgs` instance, `pkgs-unstable` gets it on creation
