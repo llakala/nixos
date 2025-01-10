@@ -98,6 +98,12 @@
       flake = false;
     };
 
+    nixReadline =
+    {
+      url = "github:llakala/nix"; # My auto-updating fork of nix that adds readline support
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
