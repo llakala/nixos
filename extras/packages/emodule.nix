@@ -17,7 +17,7 @@ pkgs.writeShellApplication
     jq
   ];
 
-  text = # The way I do this with --impure feels hacky, but I don't know anything better
+  text = # NOTE: doesn't do `pkgs.pkgs` by default, follow the nix.dev tutorial to add it
   /* bash */
   ''
     FILE=$1
