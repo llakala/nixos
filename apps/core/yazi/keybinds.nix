@@ -19,7 +19,7 @@ in
     }
 
     {
-      desc = "Go to the projects folder for working on external Git repos";
+      desc = "Go to the projects folder for working on my personal repos";
       on = [ "g" "p" ];
       run = "cd ~/Documents/projects";
     }
@@ -29,6 +29,13 @@ in
       on = [ "g" "c" ];
       run = "cd ~/Documents/classes";
     }
+
+    {
+      desc = "Go to the repos directory for working on external Git repos";
+      on = [ "g" "r" ];
+      run = "cd ~/Documents/repos";
+    }
+
 
     {
       desc = "When copying, copy to the system clipboard as well";
