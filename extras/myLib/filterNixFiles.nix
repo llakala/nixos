@@ -1,4 +1,4 @@
-{ lib, myLib, ... }:
+{ lib }:
 
 let
   internals.filterFile = path:

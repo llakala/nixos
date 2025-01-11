@@ -1,4 +1,4 @@
-{ lib, myLib, ... }:
+{ lib }:
 
 let
   internals.extractFiles = dir: map # Return a list of files within `dir`

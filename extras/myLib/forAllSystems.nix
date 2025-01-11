@@ -1,4 +1,4 @@
-{ lib, inputs, myLib, ... }:
+{ lib, inputs }:
 
 function:
   lib.genAttrs lib.systems.flakeExposed

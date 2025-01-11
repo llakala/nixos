@@ -1,4 +1,4 @@
-{ lib, myLib, inputs, self, ... }:
+{ lib, myLib, inputs, self }:
 
 let
   config = # Config to be used for all `pkgs` instances created
