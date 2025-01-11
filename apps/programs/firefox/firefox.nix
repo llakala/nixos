@@ -16,10 +16,12 @@
         force = true;
         default = "DuckDuckGo";
       };
-      userChrome = ''
+      userChrome =
+      ''
         @import "firefox-gnome-theme/userChrome.css";
       '';
-      userContent = ''
+      userContent =
+      ''
         @import "firefox-gnome-theme/userContent.css";
       '';
       extraConfig = lib.readFile "${inputs.firefox-gnome-theme}/configuration/user.js";
