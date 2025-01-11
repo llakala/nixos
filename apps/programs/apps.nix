@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 let
   stablePackages = with pkgs;
   [
     gparted
+    teams-for-linux
     filezilla
     moonlight-qt
     spotify
@@ -13,7 +14,7 @@ let
     krita # Image editing
   ];
 
-  unstablePackages = with pkgs;
+  unstablePackages = with pkgs-unstable;
   [
     modrinth-app
   ];
