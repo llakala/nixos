@@ -1,4 +1,4 @@
-{ lib, fishPlugins, fetchFromGitHub, }:
+{ fishPlugins, fetchFromGitHub }:
 
 fishPlugins.buildFishPlugin
 {
