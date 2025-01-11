@@ -5,5 +5,6 @@
   [
     mdpls
     evalue
+    emodule
   ];
 }
