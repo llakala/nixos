@@ -24,8 +24,7 @@
     gnome-tour
   ];
 
-
-
+  programs.gnome-disks.enable = true;
 
   # Add some actually useful packages back
   environment.systemPackages = with pkgs;
@@ -34,7 +33,6 @@
     video-trimmer
     gnome-tweaks
     gnome-terminal
-    gnome-disk-utility
     dconf-editor
     baobab
     totem # Image viewer
