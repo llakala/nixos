@@ -1,0 +1,483 @@
+" MY CUSTOM BINDINGS
+nmap < <<
+nmap > >>
+
+vnoremap X k
+
+map gg G
+
+" Use v instead of m
+nnoremap e eviw
+vnoremap e <Esc>eviw
+
+" o puts cursor at beginning of selection
+nnoremap b bviwo
+vnoremap b <Esc>bviwo
+
+nnoremap H v^
+nnoremap L v$h
+
+vnoremap H o<Esc>v^
+vnoremap L o<Esc>v$h
+
+
+" CONTENTS FROM https://gist.github.com/ADIOP55550/666a143eb9c4bf28623217c035ce2da8
+" Based on comment by mchlstckl
+" https://www.reddit.com/r/HelixEditor/comments/14aqztf/comment/jocslxs/
+" Check the history of this gist for a changelist
+
+" Read NOTES and WARNINGS lower
+
+
+" Must be done first to tell other plugins that <space> is the leader key
+let mapleader=" "
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+set ideajoin
+set idearefactormode=keep
+set ignorecase
+set smartcase
+set incsearch
+set relativenumber
+set showmode
+set hlsearch
+set visualbell
+set commentary
+" Can be installed / enabled with command from the comment
+set surround " Plug 'tpope/vim-surround' " (https://github.com/tpope/vim-surround/blob/master/doc/surround.txt)
+set highlightedyank " Plug 'machakann/vim-highlightedyank' " (https://github.com/machakann/vim-highlightedyank/blob/master/doc/highlightedyank.txt)
+set argtextobj " Plug 'vim-scripts/argtextobj.vim' " (https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#argtextobj)
+set matchit " Plug 'chrisbra/matchit' " (https://github.com/adelarsq/vim-matchit/blob/master/doc/matchit.txt)
+
+
+" Recommended plugins:
+" ====================
+"
+" INFO:
+" This section contains plugins that I found useful.
+" Uncomment plugin to enable it
+" Plugins website:
+" https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
+
+" " Indent Object
+" " Docs: https://github.com/michaeljsmith/vim-indent-object/blob/master/doc/indent-object.txt
+" Plug 'michaeljsmith/vim-indent-object'
+
+" " Vim textobj entire
+" " Docs: https://github.com/kana/vim-textobj-entire/blob/master/doc/textobj-entire.txt
+" Plug 'kana/vim-textobj-entire'
+
+" " NERDTree
+" " Docs: https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+" Plug 'preservim/nerdtree'
+
+" " Exchange plugin
+" " Docs: https://github.com/tommcdo/vim-exchange/blob/master/doc/exchange.txt
+" Plug 'tommcdo/vim-exchange'
+
+" " Multiple cursors plugin
+" " Docs: https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins#multiple-cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" " Which key plugin
+" " Install: https://plugins.jetbrains.com/plugin/15976-which-key
+" " Docs: https://github.com/TheBlob42/idea-which-key?tab=readme-ov-file#installation
+" set which-key
+" set timeoutlen=10000
+
+" " Sneak plugin
+" " Install (alternative syntax): Plug 'justinmk/vim-sneak'
+" " Docs: https://github.com/Mishkun/ideavim-sneak
+" set sneak
+
+" " Quickscope plugin
+" " Install: https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope
+" " Docs: https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope
+" set quickscope
+" " Configure which keys to highlight on
+" " let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+" " Other plugins:
+" " ==============
+
+" " Vim paragraph motion
+" " Docs: https://github.com/dbakker/vim-paragraph-motion#vim-paragraph-motion
+" Plug 'dbakker/vim-paragraph-motion'
+
+" " EasyMotion plugin
+" " Requires: https://plugins.jetbrains.com/plugin/7086-acejump
+" " Install: https://plugins.jetbrains.com/plugin/13360-ideavim-easymotion/
+" " Docs: https://github.com/AlexPl292/IdeaVim-EasyMotion?tab=readme-ov-file#how-does-it-work
+" set easymotion
+
+" " Multicursor plugin (not recommended, honestly)
+" set multicursor
+
+" Key mappings:
+" =============
+
+" make x a line selection (READ WARNING below)
+nnoremap x V
+vnoremap x j
+
+" " WARNING:
+" " Remapping x to V and j makes it impossible to delete single character.
+" " You can use this to enable deleting with d, but then you cannot execute d<motion>
+
+nnoremap d x
+
+inoremap <A-BS> <Action>(EditorDeleteToWordStart)
+
+" Quick access with '\' leader
+" ============================
+
+" NOTE:
+" This actions are found useful by me.
+" You can (*should*) customize them to your liking.
+" Hence most of them are commented out (they require plugins)
+
+" IdeaVim utilites
+" ----------------
+
+" Quick edit ideavimrc file
+map \\e :e ~/.ideavimrc<CR>
+
+" Reload ideavim
+map \\r <Action>(IdeaVim.ReloadVimRc.reload)
+
+" Settings -> plugins quick access
+map \\p <Action>(WelcomeScreen.Plugins)
+
+" Allows to quickly toggle action identification (notification)
+map \\a <Action>(VimFindActionIdAction)
+
+" Scratch buffers and files
+" -------------------------
+map \\ss <Action>(NewScratchBuffer)
+map \\sb \\ss
+map \\sf <Action>(NewScratchFile)
+map \\sl <Action>(Scratch.ShowFilesPopup)
+
+" Editor utilities
+" ----------------
+map \\tf <Action>(ToggleFullScreen)
+map \\tz <Action>(ToggleDistractionFreeMode)
+map \\tw <Action>(EditorToggleShowWhitespaces)
+" Change theme
+map \\tt <Action>(ChangeLaf)
+" Switch theme (REQUIRES https://plugins.jetbrains.com/plugin/21998-theme-switcher)
+" map \\ts <Action>(com.intellij.themeswitcher.ThemeSwitcherAction)
+map \\tb <Action>(ToggleLineBreakpoint)
+map \\nc <Action>(ClearAllNotifications)
+map \\ti <Action>(ToggleInlayHintsGloballyAction)
+map \\tr <Action>(ToggleReadOnlyAttribute)
+" REQUIRES https://plugins.jetbrains.com/plugin/7499-gittoolbox
+" map \\tb <Action>(GitToolBox.ShowInlineBlame)
+" REQUIRES https://plugins.jetbrains.com/plugin/16873-test-data
+" map \\g <Action>(GenerateTestDataAction)
+
+" use \tm as m for marks to work
+noremap \\tm m
+
+" NerdTree
+" ========
+
+" " REQUIRES NerdTree
+" map \\nt :NERDTree<CR>
+" map \\nts :NERDTree<CR>
+" map \\nta :NERDTreeFocus<CR>
+" map \\ntt :NERDTreeToggle<CR>
+" map \\ntc :NERDTreeClose<CR>
+" map \\ntf :NERDTreeFind<CR>
+" map \\ntr :NERDTreeRefreshRoot<CR>
+" " END REQUIRES NerdTree
+
+" String manipulation
+" ===================
+
+" " REQUIRES String manipulation plugin (https://plugins.jetbrains.com/plugin/2162-string-manipulation)
+" " \\ = string manipulation popup window
+" map \\\\ <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
+"
+" vmap gU <Action>(osmedile.intellij.stringmanip.ToUpperCaseAction)
+" vmap gu <Action>(osmedile.intellij.stringmanip.ToLowerCaseAction)
+" vmap gC <Action>(StringManipulation.Group.SwitchCase)
+"
+" map g' <Action>(osmedile.intellij.stringmanip.swap.SwapQuote)
+" map g# <Action>(StringManipulation.Group.IncrementDecrement)
+" map g\\ <Action>(osmedile.intellij.stringmanip.RepeatAction)
+"
+" map <C-a> <Action>(osmedile.intellij.stringmanip.IncrementAction)
+" map <C-A-a> <Action>(osmedile.intellij.stringmanip.DuplicateAndIncrementAction)
+" map <C-x> <Action>(osmedile.intellij.stringmanip.DecrementAction)
+" map <C-A-x> <Action>(osmedile.intellij.stringmanip.DuplicateAndDecrementAction)
+" map <C-A-s> <Action>(StringManipulation.CreateSequenceAction)
+" map <A-S-s> <Action>(StringManipulation.IncrementDuplicateNumbersAction)
+" " END REQUIRES String manipulation plugin
+
+
+" Editor actions
+" ==============
+
+" IDEA contexts
+" -------------
+nmap \\cs <Action>(context.save)
+nmap \\cl <Action>(context.load)
+nmap \\cc <Action>(context.clear)
+nmap \\cf <Action>(tasks.and.contexts)
+
+" Indentation
+" -----------
+" This (un)indent selection does not get rid of the selection
+vmap < <Action>(EditorUnindentSelection)
+vmap > <Action>(EditorIndentLineOrSelection)
+
+" Other
+" -----
+
+vmap <C-r> <Action>(Replace)
+vmap s <Action>(Find)
+" Alt+s - adds a caret at the end of each selected line
+vmap <A-s> <Action>(EditorAddCaretPerSelectedLine)
+
+" Add another caret below current one
+map <A-c> <Action>(EditorCloneCaretBelow)
+" An alternative is: Ctrl, Ctrl + arrows
+
+" Move line up / down
+map <a-up> <Action>(MoveLineUp)
+map <a-k> <a-up>
+map <a-down> <Action>(MoveLineDown)
+map <a-j> <a-down>
+
+" Extend selection / shrink selection
+map <a-o> <Action>(EditorSelectWord)
+map <a-i> <Action>(EditorUnSelectWord)
+
+" Duplicate line up / down
+map <a-s-down> <Action>(EditorDuplicate)
+map <a-s-j> <a-s-down>
+map <a-s-up> <Action>(EditorDuplicate)<Action>(MoveLineUp)
+map <a-s-k> <a-s-up>
+
+" These two are moved to the multicursor section
+" vmap <C-n> <Action>(SelectNextOccurrence)
+" vmap <C-p> <Action>(UnselectPreviousOccurrence)
+
+" map m to v for 'miw' and similar actions
+nnoremap m v
+nnoremap mm %
+
+" Simulate % behavior
+nnoremap % ggVG
+
+" This was supposed to be a mapping for 'mim', but it is broken
+" vnoremap im %v%
+
+" Bookmarks
+" ---------
+map <C-A-k0> <Action>(ToggleBookmarkWithMnemonic)
+" This one collides with the one above, so i turned it off
+" nmap <C-A-k0> <Action>(ToggleBookmark0)
+map <C-A-k1> <Action>(ToggleBookmark1)
+map <C-A-k2> <Action>(ToggleBookmark2)
+map <C-A-k3> <Action>(ToggleBookmark3)
+map <C-A-k4> <Action>(ToggleBookmark4)
+map <C-A-k5> <Action>(ToggleBookmark5)
+map <C-A-k6> <Action>(ToggleBookmark6)
+map <C-A-k7> <Action>(ToggleBookmark7)
+map <C-A-k8> <Action>(ToggleBookmark8)
+map <C-A-k9> <Action>(ToggleBookmark9)
+
+" Undo and redo
+" -------------
+" OR: noremap U <C-r>
+map U <Action>($Redo)
+map u <Action>($Undo)
+
+" Editor utilities and settings
+" -----------------------------
+nmap <c-z> <Action>(ToggleDistractionFreeMode)
+map <c-c> <Action>(CommentByLineComment)
+
+" Ctrl+Enter = noh
+map <leader><cr> :nohlsearch<CR>
+
+" Jump history forward/back
+map <c-o> <Action>(Back)
+map <c-i> <Action>(Forward)
+
+map <leader>z <Action>(ChangeIdeScale)
+map <leader>uh <Action>(ToggleInlayHintsGloballyAction)
+map <leader>uw <Action>(EditorToggleShowWhitespaces)
+
+" Copy and paste
+" --------------
+map <leader>p <Action>($Paste)
+map <leader>P <Action>(PasteMultiple)
+map <leader>y <Action>($Copy)
+map <leader>Y <Action>(CopyReferencePopupGroup)
+
+" Builtin terminal
+" ----------------
+map <c-t> <Action>(ActivateTerminalToolWindow)
+map <leader>t <Action>(Terminal.OpenInTerminal)
+
+" Windows and tabs
+" ----------------
+map <c-w>v <Action>(SplitVertically)
+map <c-w>s <Action>(SplitHorizontally)
+map <c-w>W <Action>(MoveEditorToOppositeTabGroup)
+map <leader>T <Action>(EditorTabPopupMenu)
+
+map <c-w>w <Action>(NextWindow)
+map <leader>q <Action>(CloseContent)
+map <leader>Q <Action>(CloseAllEditors)
+map <leader>x <Action>(HideAllWindows)
+
+" previous/next tab
+map gp <Action>(PreviousTab)
+map gn <Action>(NextTab)
+
+" Goto actions
+" ------------
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
+map ]g <Action>(VcsShowNextChangeMarker)
+map [g <Action>(VcsShowPrevChangeMarker)
+map ]m <Action>(MethodDown)
+map [m <Action>(MethodUp)
+map ]p <Action>(EditorForwardParagraph)
+map [p <Action>(EditorBackwardParagraph)
+map ]P <Action>(EditorForwardParagraphWithSelection)
+map [P <Action>(EditorBackwardParagraphWithSelection)
+
+" Popup tool windows, pickers and panels
+" --------------------------------------
+map <leader>r <Action>(Refactorings.QuickListPopupAction)
+map <leader>= <Action>(ReformatCode)
+map <leader>j <Action>(RecentLocations)
+
+map gR <Action>(FindUsages)
+" show usages is a popup so it is 'default'
+map gr <Action>(ShowUsages)
+map gi <Action>(GotoImplementation)
+map gd <Action>(GotoDeclaration)
+map gT <Action>(GotoTest)
+map gy <Action>(GotoTypeDeclaration)
+" original binding
+" nmap gp <Action>(GotoSuperMethod)
+
+" intelliJ search popup
+map <leader>S <Action>(GotoSymbol)
+map <leader>s <Action>(FileStructurePopup)
+" OR alternatively
+" :nmap <leader>s <Action>(GotoSymbol)
+map <leader>F <Action>(FindInPath)
+map <leader>f <Action>(GotoFile)
+map <c-f> <Action>(ActivateFindToolWindow)
+
+map <leader>g <Action>(Vcs.QuickListPopupAction)
+map <leader>b <Action>(RecentFiles)
+
+map <leader>d <Action>(ActivateProblemsViewToolWindow)
+
+map <leader>n <Action>(Switcher)
+map <leader>B <Action>(RecentChangedFiles)
+" NOTE:
+" RecentChangedFiles displays list of edited files. To show all, press C-e
+" or you can simply show a list of all files
+" nmap <leader>B <Action>(GotoFile)
+
+" Mimics helix fuzzy-find command
+map <leader>? <Action>(GotoAction)
+" You can substitute this for <leader>? to search everything not only actions
+map <leader>e <Action>(SearchEverywhere)
+map <leader>o <Action>(ActivateProjectToolWindow)
+map <leader>O <Action>(SelectInProjectView)
+map <leader>E <Action>(EditorActions)
+
+" Helix-like motions
+" ------------------
+map gh 0
+map gs ^
+map gl $
+map ge G
+
+" Refactorings and LSP actions
+" ----------------------------
+map <leader>a <Action>(ShowIntentionActions)
+map <s-k> <Action>(ExpressionTypeInfo)
+map <leader>k <Action>(QuickJavaDoc)
+map <leader><A-k> <Action>(ShowHoverInfo)
+map <leader><A-S-k> <Action>(ShowErrorDescription)
+map <A-S-k> <Action>(ShowErrorDescription)
+map <leader>K <Action>(QuickImplementations)
+
+" REQUIRES HarpoonIJ
+
+" map <leader><C-h> :action SetHarpoon1<cr>
+" map <leader><C-j> :action SetHarpoon2<cr>
+" map <leader><C-k> :action SetHarpoon3<cr>
+" map <leader><C-l> :action SetHarpoon4<cr>
+"
+" map <C-h> :action GotoHarpoon1<cr>
+" map <C-j> :action GotoHarpoon2<cr>
+" map <C-k> :action GotoHarpoon3<cr>
+" map <C-l> :action GotoHarpoon4<cr>
+"
+" map <C-e> :action ShowHarpoon<cr>
+" map <C-a> :action AddToHarpoon<cr>
+
+" END REQUIRES HarpoonIJ
+
+" REQUIRES Harpooner
+
+" map <C-e> <Action>(com.github.erotourtes.harpoon.pluginsGroup)
+" map <leader><C-e> <Action>(HarpoonerAddFile)
+"
+" map <C-h> <Action>(HarpoonerOpenFile0)
+" map <C-j> <Action>(HarpoonerOpenFile1)
+" map <C-k> <Action>(HarpoonerOpenFile2)
+" map <C-l> <Action>(HarpoonerOpenFile3)
+" map <C-S-h> <Action>(HarpoonerOpenFile4)
+" map <C-S-j> <Action>(HarpoonerOpenFile5)
+" map <C-S-k> <Action>(HarpoonerOpenFile6)
+" map <C-S-l> <Action>(HarpoonerOpenFile7)
+
+" END REQUIRES Harpooner
+
+
+" REQUIRES multiple-cursors
+
+" " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+" map <C-n> <Plug>NextWholeOccurrence
+" " Does not work on column selection mode
+" map g<C-n> <Plug>NextOccurrence
+" vmap <C-S-n> <Plug>SkipOccurrence
+" map <C-p> <Plug>RemoveOccurrence
+"
+" " Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" " <A-n> is used to enter accented text e.g. ñ
+" " Alternatively use the Unicode hex keyboard in macOS
+" map <S-C-n> <Plug>AllWholeOccurrences
+" map g<S-C-n> <Plug>AllOccurrences
+
+" END REQUIRES multiple-cursors
+
+
+""" Running and Debugging
+nmap ,r <Action>(ContextRun)
+nmap ,R <Action>(Run)
+nmap ,s <Action>(Stop)
+nmap ,c <Action>(RunClass)
+nmap ,f <Action>(ChooseRunConfiguration)
+nmap ,t <Action>(ActivateRunToolWindow)
+nmap ,u <Action>(Rerun)
+nmap ,f <Action>(RerunFailedTests)
+nmap ,b <Action>(ToggleLineBreakpoint)
+nmap ,d <Action>(ContextDebug)
+nmap ,n <Action>(ActivateDebugToolWindow)
+nmap ,p <Action>(XDebugger.AttachToProcess)
