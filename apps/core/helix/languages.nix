@@ -18,6 +18,13 @@
     }
 
     {
+      name = "java";
+      auto-format = true;
+      language-servers = lib.singleton "jdtls";
+      formatter.command = lib.getExe pkgs.google-java-format;
+    }
+
+    {
       name = "json";
       auto-format = false;
       language-servers = lib.singleton "vscode-json-language-server";
