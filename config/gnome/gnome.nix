@@ -37,6 +37,7 @@
     baobab
     totem # Image viewer
     loupe # Video viewer
+    adwaita-icon-theme
   ];
 
   environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
