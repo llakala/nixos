@@ -12,10 +12,15 @@ pkgs.writeShellApplication
     "errtrace" # -E
   ];
 
+  runtimeInputs = with pkgs;
+  [
+    jq
+  ];
+
   text = # The way I do this with --impure feels hacky, but I don't know anything better
   /* bash */
   ''
     FILE=$1
-    nix eval --impure --expr "with import <nixpkgs> { }; callPackage ./$FILE { }"
+    nix eval --impure --json --expr "with import <nixpkgs> { }; callPackage ./$FILE { }" | jq
   '';
 }
