@@ -1,7 +1,8 @@
 { inputs, pkgs, lib, ... }:
 
 {
-  nix.package = inputs.nixReadline.packages.${pkgs.system}.default;
+  # TODO: BRING BACK WHEN I SYNC SUBSTITUTION AND FORK
+  # nix.package = inputs.nixReadline.packages.${pkgs.system}.default;
 
   nix.settings = # My custom binary cache for recompiled nix
   {
