@@ -24,4 +24,8 @@
 
   boot.loader.grub.enable = lib.mkForce false; # No need to break our system accidentally
 
+
+  # More unstable, but good for reporting bugs. Disable if things break
+  systemd.enableStrictShellChecks = true;
+
 }
