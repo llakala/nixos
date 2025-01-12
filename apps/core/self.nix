@@ -6,5 +6,6 @@
     mdpls
     evalue
     emodule
+    efunc
   ];
 }
