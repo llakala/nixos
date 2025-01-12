@@ -1,6 +1,6 @@
-{ pkgs }:
+{ writeShellApplication, pkgs }:
 
-pkgs.writeShellApplication
+writeShellApplication
 {
   name = "evalue"; # Evaluate a given nix file, with all the `callPackage` privileges we like
 

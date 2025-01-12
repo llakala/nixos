@@ -1,6 +1,6 @@
-{ pkgs }:
+{ writeShellApplication, pkgs }:
 
-pkgs.writeShellApplication
+writeShellApplication
 {
   name = "efunc"; # Evaluate a file containing a nix function, sending the function your given argument
 

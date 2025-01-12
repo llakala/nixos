@@ -1,11 +1,11 @@
-{ pkgs }:
+{ rustPlatform, fetchFromGitHub }:
 
-pkgs.rustPlatform.buildRustPackage
+rustPlatform.buildRustPackage
 {
   pname = "mdpls";
   version = "0-unstable";
 
-  src = pkgs.fetchFromGitHub
+  src = fetchFromGitHub
   {
     owner = "euclio";
     repo = "mdpls";

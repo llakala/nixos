@@ -1,6 +1,6 @@
-{ pkgs }:
+{ writeShellApplication, pkgs }:
 
-pkgs.writeShellApplication
+writeShellApplication
 {
   name = "emodule"; # Evaluate a given module using `evalModules`
 
