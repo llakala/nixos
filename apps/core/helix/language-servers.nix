@@ -13,7 +13,7 @@
 
       config =
       {
-        java.completion.guessMethodArguments = true;
+        java.inlayHints.parameterNames.enabled = "none";
       };
     };
 
