@@ -7,7 +7,15 @@
 
     taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
 
-    jdtls.command = lib.getExe pkgs.jdt-language-server;
+    jdtls =
+    {
+      command = lib.getExe pkgs.jdt-language-server;
+
+      config =
+      {
+        java.completion.guessMethodArguments = true;
+      };
+    };
 
     marksman.command = lib.getExe pkgs.marksman;
     mdpls =
