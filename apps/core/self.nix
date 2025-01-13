@@ -7,5 +7,6 @@
     evalue
     emodule
     efunc
+    jv
   ];
 }
