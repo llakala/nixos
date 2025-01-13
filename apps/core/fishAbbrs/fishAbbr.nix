@@ -8,6 +8,7 @@
 
     m = "man";
     py = "python";
+    j = "java";
 
     src = "source";
 
