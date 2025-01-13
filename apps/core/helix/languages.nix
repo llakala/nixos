@@ -21,7 +21,15 @@
       name = "java";
       auto-format = true;
       language-servers = lib.singleton "jdtls";
-      formatter.command = lib.getExe pkgs.google-java-format;
+      formatter =
+      {
+        command = lib.getExe pkgs.google-java-format;
+        args =
+        [
+          "--aosp" # Android code style
+           "-" # Read from stdin, required
+        ];
+      };
     }
 
     {
