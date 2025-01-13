@@ -39,6 +39,10 @@
     insert-final-newline = false;
     smart-tab.enable = true;
 
+    completion-timeout = 150;
+    completion-trigger-len = 1;
+    completion-replace = true;
+
     color-modes = true;
 
     # Use inline diagnostics with settings recommended from https://docs.helix-editor.com/master/editor.html#editorinline-diagnostics-section
