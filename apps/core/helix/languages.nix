@@ -19,7 +19,7 @@
 
     {
       name = "java";
-      auto-format = true;
+      auto-format = false;
       language-servers = lib.singleton "jdtls";
       formatter =
       {
