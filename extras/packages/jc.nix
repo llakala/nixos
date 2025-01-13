@@ -2,7 +2,7 @@
 
 writeShellApplication
 {
-  name = "jv";
+  name = "jc"; # Java Compile
 
   bashOptions =
   [
