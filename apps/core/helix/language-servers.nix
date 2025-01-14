@@ -64,7 +64,7 @@
     command = lib.getExe pkgs-unstable.nixd;
     args =
     [
-      "--inlay-hints=true"
+      "--inlay-hints=false" # Don't need package versions
       "--semantic-tokens=true"
     ];
     config.nixd = # DON'T MESS THIS KEY UP, IT WAS WHY THINGS WERE FAILING
