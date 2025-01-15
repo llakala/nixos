@@ -1,16 +1,8 @@
-{ writeShellApplication, pkgs }:
+{ myLib, pkgs }:
 
-writeShellApplication
+myLib.writeFishApplication
 {
   name = "emodule"; # Evaluate a given module using `evalModules`
-
-  bashOptions =
-  [
-    "nounset" # -u
-    "errexit" # -e
-    "pipefail"
-    "errtrace" # -E
-  ];
 
   runtimeInputs = with pkgs;
   [
@@ -18,9 +10,9 @@ writeShellApplication
   ];
 
   text = # NOTE: doesn't do `pkgs.pkgs` by default, follow the nix.dev tutorial to add it
-  /* bash */
+  /* fish */
   ''
-    FILE=$1
+    set FILE $argv[1]
     nix eval --impure --json --expr \
     "
       let

@@ -1,16 +1,8 @@
-{ writeShellApplication, pkgs }:
+{ myLib, pkgs }:
 
-writeShellApplication
+myLib.writeFishApplication
 {
   name = "jc"; # Java Compile
-
-  bashOptions =
-  [
-    "nounset" # -u
-    "errexit" # -e
-    "pipefail"
-    "errtrace" # -E
-  ];
 
   runtimeInputs = with pkgs;
   [
@@ -18,10 +10,10 @@ writeShellApplication
   ];
 
   text =
-  /* bash */
+  /* fish */
   ''
-    FILE=$1
-    NAME=$(basename "$FILE" .java)
+    set FILE $argv[1]
+    set NAME (basename "$FILE" .java)
     javac "$FILE" && java "$NAME"
   '';
 }

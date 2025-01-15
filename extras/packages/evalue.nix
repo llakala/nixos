@@ -1,16 +1,8 @@
-{ writeShellApplication, pkgs }:
+{ pkgs, myLib }:
 
-writeShellApplication
+myLib.writeFishApplication
 {
   name = "evalue"; # Evaluate a given nix file, with all the `callPackage` privileges we like
-
-  bashOptions =
-  [
-    "nounset" # -u
-    "errexit" # -e
-    "pipefail"
-    "errtrace" # -E
-  ];
 
   runtimeInputs = with pkgs;
   [
@@ -18,9 +10,9 @@ writeShellApplication
   ];
 
   text = # The way I do this with --impure feels hacky, but I don't know anything better
-  /* bash */
+  /* fish */
   ''
-    FILE=$1
+    set FILE $argv[1]
     nix eval --impure --json --expr "with import <nixpkgs> { }; callPackage ./$FILE { }" | jq
   '';
 }
