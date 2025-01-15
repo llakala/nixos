@@ -26,5 +26,8 @@ in
 
     # Ctrl+Z again to resume
     bind -M insert \cz 'fg 2>/dev/null; commandline -f repaint'
-    '';
+
+    # Ctrl+S to rerun previous command
+    bind -M insert \cS 'commandline $history[1]' 'commandline -f execute'
+  '';
 }
