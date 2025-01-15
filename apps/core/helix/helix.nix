@@ -7,7 +7,7 @@
     package = inputs.helix-unstable.packages.${pkgs.system}.default; # Compile helix from source, using the latest commit for binary caching
 
     defaultEditor = true; # Sets EDITOR environment variable
-    settings.theme = "onedarker";
+    settings.theme = "snazzy";
   };
 
   hm.programs.helix.settings.editor =
