@@ -18,7 +18,7 @@
     starship_transient_rprompt_func =
     /*fish */
     ''
-      starship module cmd_duration
+      starship module cmd_duration # Not currently working
     '';
 
   };
