@@ -23,5 +23,8 @@ in
     bind -M insert -k nul complete-and-search
     bind -M insert \t accept-autosuggestion
     bind -M insert \b backward-kill-word
+
+    # Ctrl+Z again to resume
+    bind -M insert \cz 'fg 2>/dev/null; commandline -f repaint'
     '';
 }
