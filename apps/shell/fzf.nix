@@ -1,4 +1,4 @@
-{ lib, myLib, ... }:
+{ lib, llakaLib, ... }:
 
 let
   options = lib.cli.toGNUCommandLineShell # True values correspond to setting a flag
@@ -15,7 +15,7 @@ let
     border = true;
     no-separator = true;
 
-    bind = myLib.mkFzfBinds
+    bind = llakaLib.mkFzfBinds
     {
       j = "down";
       k = "up";

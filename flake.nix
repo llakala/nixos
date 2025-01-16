@@ -6,7 +6,7 @@
     nixpkgs = inputs.nixpkgs;
     lib = nixpkgs.lib;
 
-    myLib = inputs.myLib.lib; # My custom lib functions, stored in a separate repo
+    llakaLib = inputs.llakaLib.lib; # My custom lib functions, stored in a separate repo
 
     mkNixos = hostname: { system }: lib.nixosSystem
     {
@@ -14,9 +14,9 @@
 
       specialArgs =
       {
-        inherit inputs myLib self;
+        inherit inputs llakaLib self;
 
-        pkgs-unstable = myLib.mkPkgs
+        pkgs-unstable = llakaLib.mkPkgs
         {
           inherit system;
           config.allowUnfree = true;
@@ -26,7 +26,7 @@
       };
 
       # Use custom function that grabs all files within a folder and filters out non-nix files
-      modules = myLib.resolveAndFilter
+      modules = llakaLib.resolveAndFilter
       [
         ./config/core
         ./config/features
@@ -57,9 +57,9 @@
 
     # Call all packages automatically in directory, while letting packages refer to each other
     # via custom lib function
-    packages = myLib.forAllSystems
+    packages = llakaLib.forAllSystems
     (pkgs:
-      myLib.collectDirectoryPackages
+      llakaLib.collectDirectoryPackages
       {
         inherit pkgs;
         directory = ./extras/packages;
@@ -68,13 +68,13 @@
 
     nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
     {
-      imports = myLib.resolveAndFilter
+      imports = llakaLib.resolveAndFilter
       [
         ./extras/nixosModules
       ];
     };
 
-    formatter = myLib.forAllSystems
+    formatter = llakaLib.forAllSystems
     (pkgs:
       pkgs.nixfmt-rfc-style
     );
@@ -113,7 +113,7 @@
     {
       url = "github:llakala/gasp";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.myLib.follows = "myLib"; # Reuse the same instance, so flake.lock doesn't get ugly
+      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     helix-unstable =
@@ -140,7 +140,7 @@
       flake = false;
     };
 
-    myLib =
+    llakaLib =
     {
       url = "github:llakala/llakaLib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -162,7 +162,7 @@
     {
       url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.myLib.follows = "myLib"; # Reuse the same instance, so flake.lock doesn't get ugly
+      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     yazi-plugins =

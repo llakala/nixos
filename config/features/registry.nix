@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, myLib, ... }:
+{ lib, inputs, llakaLib, ... }:
 
 {
   nix.registry = lib.mkForce
@@ -7,7 +7,7 @@
     nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
     # Allow running unfree packages with nix3 commands via `nix run unfree#steam`
-    unfree.flake = myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
-    unfree-unstable.flake = myLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
+    unfree.flake = llakaLib.mkUnfreeNixpkgs { path = inputs.nixpkgs; };
+    unfree-unstable.flake = llakaLib.mkUnfreeNixpkgs { path = inputs.nixpkgs-unstable; };
   };
 }

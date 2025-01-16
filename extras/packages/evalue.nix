@@ -1,6 +1,6 @@
-{ pkgs, myLib }:
+{ pkgs, llakaLib }:
 
-myLib.writeFishApplication
+llakaLib.writeFishApplication
 {
   name = "evalue"; # Evaluate a given nix file, with all the `callPackage` privileges we like
 
