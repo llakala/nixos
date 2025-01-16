@@ -17,18 +17,55 @@
     myLib =
     let
       utils = { inherit lib inputs myLib self; };
-    in
-      lib.packagesFromDirectoryRecursive
-      {
-        # Create an instance of callPackage, but with more things importable
-        callPackage = lib.callPackageWith (pkgs // utils );
+    in lib.packagesFromDirectoryRecursive
+    {
+      # Create an instance of callPackage, but with more things importable
+      callPackage = lib.callPackageWith (pkgs // utils );
 
-        directory = ./extras/myLib;
+      directory = ./extras/myLib;
+    };
+
+    mkNixos = hostname: { system }: lib.nixosSystem
+    {
+      inherit system;
+
+      specialArgs =
+      {
+        inherit inputs myLib self;
+
+        pkgs-unstable = myLib.mkPkgs
+        {
+          inherit system;
+          config.allowUnfree = true;
+          unpatchedInput = inputs.nixpkgs-unstable;
+          patches = [];
+        };
       };
+
+      # Use custom function that grabs all files within a folder and filters out non-nix files
+      modules = myLib.resolveAndFilter
+      [
+        ./config/core
+        ./config/features
+        ./config/gnome
+        ./config/baseVars.nix
+
+        ./apps/core
+        ./apps/programs
+        ./apps/shell
+
+        ./hosts/${hostname}/config
+        ./hosts/${hostname}/hardware-configuration.nix
+        ./hosts/${hostname}/${hostname}Vars.nix
+
+        self.nixosModules.default
+      ];
+    };
+
   in
   {
     # Run mkNixos for each host
-    nixosConfigurations = builtins.mapAttrs myLib.mkNixos
+    nixosConfigurations = builtins.mapAttrs mkNixos
     {
       framework.system = "x86_64-linux";
 
