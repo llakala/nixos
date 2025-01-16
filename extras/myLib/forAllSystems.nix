@@ -1,5 +1,5 @@
-{ lib, inputs }:
+{ lib, nixpkgs }:
 
 function:
   lib.genAttrs lib.systems.flakeExposed
-  (system: function inputs.nixpkgs.legacyPackages.${system})
+  (system: function nixpkgs.legacyPackages.${system})

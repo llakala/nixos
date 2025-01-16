@@ -3,7 +3,8 @@
 
   outputs = { self, ... } @ inputs:
   let
-    lib = inputs.nixpkgs.lib;
+    nixpkgs = inputs.nixpkgs;
+    lib = nixpkgs.lib;
 
     # Currently creating this for setting up a pkgs instance. I tried using `forAllSystems`
     # here, but it was creating an attrset that was different systems at top-level, which
@@ -16,7 +17,7 @@
     # We use laziness to rely on myLib, while creating myLib. Nix is magic
     myLib =
     let
-      utils = { inherit lib inputs myLib self; };
+      utils = { inherit lib nixpkgs myLib; };
     in lib.packagesFromDirectoryRecursive
     {
       # Create an instance of callPackage, but with more things importable
