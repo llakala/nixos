@@ -155,11 +155,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736702826,
-        "narHash": "sha256-y8ndigptBuZkQDpDZXfq6PxyvKZIUPOZ8cLNMPsHiQw=",
+        "lastModified": 1737048058,
+        "narHash": "sha256-n4Hj+Tf2e7fbs466oJ9DkYqVNx2Z2OvO+peSIqyTnP8=",
         "owner": "llakala",
         "repo": "gasp",
-        "rev": "e871967eb3c2fc5b0ac971be531437fa5e3196c3",
+        "rev": "f1ca3da93d4d581850caff049f3fb1c6c374b08e",
         "type": "github"
       },
       "original": {
@@ -279,6 +279,26 @@
       "original": {
         "owner": "dangooddd",
         "repo": "kanagawa.yazi",
+        "type": "github"
+      }
+    },
+    "myLib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737049756,
+        "narHash": "sha256-roRyExEz3/e6n9y6evWdj4rLgiP/Rt/1Rdp0UudFdbw=",
+        "owner": "llakala",
+        "repo": "llakaLib",
+        "rev": "71bdddc2528092f8c4db2b285253d0cadae0b30d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "llakaLib",
         "type": "github"
       }
     },
@@ -435,6 +455,7 @@
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
         "kanagawa-yazi": "kanagawa-yazi",
+        "myLib": "myLib",
         "nixReadline": "nixReadline",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
