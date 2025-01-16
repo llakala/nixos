@@ -113,6 +113,7 @@
     {
       url = "github:llakala/gasp";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.myLib.follows = "myLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     helix-unstable =
@@ -161,6 +162,7 @@
     {
       url = "github:llakala/rebuild-but-less-dumb";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.myLib.follows = "myLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     yazi-plugins =

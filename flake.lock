@@ -150,16 +150,19 @@
     },
     "gasp": {
       "inputs": {
+        "myLib": [
+          "myLib"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1737048058,
-        "narHash": "sha256-n4Hj+Tf2e7fbs466oJ9DkYqVNx2Z2OvO+peSIqyTnP8=",
+        "lastModified": 1737050147,
+        "narHash": "sha256-sglbnyRNZ52/z9ZIlS80oaLeBY9/bzUJLmi/OFRgngw=",
         "owner": "llakala",
         "repo": "gasp",
-        "rev": "f1ca3da93d4d581850caff049f3fb1c6c374b08e",
+        "rev": "dd5fd42fccf260f8c546d7846855b1d5ae39c0d7",
         "type": "github"
       },
       "original": {
@@ -425,16 +428,19 @@
     },
     "rebuild-but-less-dumb": {
       "inputs": {
+        "myLib": [
+          "myLib"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1736448577,
-        "narHash": "sha256-2Exfl/WrMEUgx/dTlhSW7zFnxPldjVmYmpsZ2C0aMrQ=",
+        "lastModified": 1737050733,
+        "narHash": "sha256-OtnLz9CqtEeL97XDsOCy+Lo5rykkUcuoWtmjlKIGUtU=",
         "owner": "llakala",
         "repo": "rebuild-but-less-dumb",
-        "rev": "215dc373419e51bdcbe4ef2a043ff9288f057cba",
+        "rev": "2b4c0f5c50a6ffd816e4596e93a35032ebae9dce",
         "type": "github"
       },
       "original": {
