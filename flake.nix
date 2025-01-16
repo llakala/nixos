@@ -39,7 +39,7 @@
     # via custom lib function
     packages = myLib.forAllSystems
     (pkgs:
-      myLib.selfPackagesFromDirectoryRecursive
+      myLib.collectDirectoryPackages
       {
         inherit pkgs;
         directory = ./extras/packages;
