@@ -16,6 +16,7 @@ let
     wget
     gnumake # make
     file
+    linuxPackages.perf
 
     # Extra commmands for personal preference
     jq
