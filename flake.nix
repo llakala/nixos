@@ -6,9 +6,27 @@
     nixpkgs = inputs.nixpkgs;
     lib = nixpkgs.lib;
 
-    llakaLib = inputs.llakaLib.lib; # My custom lib functions, stored in a separate repo
+    # It's a personal repo, not supporting other systems right now
+    supportedSystems = lib.singleton "x86_64-linux";
 
-    mkNixos = hostname: { system }: lib.nixosSystem
+    forAllSystems = function: lib.genAttrs
+      supportedSystems
+      (system: function nixpkgs.legacyPackages.${system});
+
+    # My custom lib functions, stored in a separate repo.
+    # This instance only holds pure functions, and isn't passed
+    # to anywhere. We just use it when we need a custom function,
+    # but don't have system access.
+    pureLlakaLib = inputs.llakaLib.pureLib;
+
+    # All custom lib functions, including system-dependent ones
+    # This creates the "main" llakaLib instance once it's passed
+    # a system parameter.
+    mkLlakaLib = system: inputs.llakaLib.fullLib.${system};
+
+    mkNixos = hostname:
+    { system }: let llakaLib = mkLlakaLib system;
+    in lib.nixosSystem
     {
       inherit system;
 
@@ -57,26 +75,29 @@
 
     # Call all packages automatically in directory, while letting packages refer to each other
     # via custom lib function
-    packages = llakaLib.forAllSystems
-    (pkgs:
-      llakaLib.collectDirectoryPackages
+    packages = forAllSystems
+    (
+      pkgs: let llakaLib = mkLlakaLib pkgs.system;
+      in llakaLib.collectDirectoryPackages
       {
         inherit pkgs;
         directory = ./extras/packages;
+
+        extras = { inherit llakaLib; }; # So custom packages can rely on llakaLib
       }
     );
 
     nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
     {
-      imports = llakaLib.resolveAndFilter
+      imports = pureLlakaLib.resolveAndFilter
       [
         ./extras/nixosModules
       ];
     };
 
-    formatter = llakaLib.forAllSystems
-    (pkgs:
-      pkgs.nixfmt-rfc-style
+    formatter = forAllSystems
+    (
+      pkgs: pkgs.nixfmt-rfc-style
     );
   };
 
@@ -142,7 +163,7 @@
 
     llakaLib =
     {
-      url = "github:llakala/llakaLib";
+      url = "github:llakala/llakaLib/purity";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
