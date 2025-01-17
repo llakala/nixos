@@ -33,7 +33,7 @@
 
     "widget.use-xdg-desktop-portal.file-picker" = 1; # Use new gtk file picker instead of legacy one
 
-    "browser.tabs.groups.enabled" = true;
+    # "browser.tabs.groups.enabled" = true; # Too glitchy right now
     "browser.tabs.groups.dragOverThresholdPercent" = 10;
   };
 
