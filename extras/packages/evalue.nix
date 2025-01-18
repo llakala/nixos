@@ -9,7 +9,8 @@ llakaLib.writeFishApplication
     jq
   ];
 
-  text = # The way I do this with --impure feels hacky, but I don't know anything better
+  # The way I do this with --impure feels hacky, but I don't know anything better
+  text =
   /* fish */
   ''
     set FILE $argv[1]

@@ -2,14 +2,17 @@
   custom.programs.vesktop =
   {
     enable = true;
-    settings = # Vesktop settings, ~/.config/vesktop/settings.json
+
+    # Vesktop settings, ~/.config/vesktop/settings.json
+    settings =
     {
       tray = false;
       hardwareAcceleration = true;
       discordBranch = "stable";
-
     };
-    vencord.settings = # Vencord settings, ~/.config/vesktop/settings/settings.json
+
+    # Vencord settings, ~/.config/vesktop/settings/settings.json
+    vencord.settings =
     {
 
     };

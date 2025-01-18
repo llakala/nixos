@@ -42,7 +42,8 @@ let
         ++ bundledPlugins
         ++ customPlugins; # A list of bundled pylsp plugins
 
-      disabledTests = # These tests apparently fail if we add any custom plugins
+      # These tests apparently fail if we add any custom plugins
+      disabledTests = #
         (oldAttrs.disabledTests or [])
         ++
         [
@@ -57,7 +58,8 @@ in
   {
     command = lib.getExe newlsp;
 
-    config.pylsp.plugins = # see https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+    # see https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+    config.pylsp.plugins =
     {
       pycodestyle.enabled = true; # Ruff doesn't show everything
     };

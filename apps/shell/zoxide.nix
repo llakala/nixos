@@ -2,7 +2,8 @@
 
 {
 
-  hm.programs.zoxide = # run "zoxide" to see manpages, etc
+  # run "zoxide" to see manpages, etc
+  hm.programs.zoxide =
   {
     enable = true;
     options = lib.singleton "--cmd cd"; # Give `cd` `z` functionality, `z` no longer does anything

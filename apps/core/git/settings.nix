@@ -1,7 +1,8 @@
 { lib, pkgs, ... }:
 
 {
-  hm.programs.git.iniContent = # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
+  # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
+  hm.programs.git.iniContent =
   {
     push.autoSetupRemote = true;
     init.defaultBranch = "main";

@@ -26,7 +26,8 @@ let
   };
 
 
-  sharedBinds = # Binds that should work exactly the same in both normal and select mode
+  # Binds that should work exactly the same in both normal and select mode
+  sharedBinds =
   {
     space.n = ":config-reload"; # For when we rebuild and want to apply changes
 

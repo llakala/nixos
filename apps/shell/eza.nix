@@ -2,7 +2,8 @@
 
 {
 
-  hm.programs.eza = # Replaces aliases already in its config
+  # Replaces aliases already in its config
+  hm.programs.eza =
   {
     enable = true;
 

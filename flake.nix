@@ -87,7 +87,8 @@
       }
     );
 
-    nixosModules.default = # for easier access, this lets us add all our modules by just importing self.nixosModules.default
+    # for easier access, this lets us add all our modules by just importing self.nixosModules.default
+    nixosModules.default =
     {
       imports = pureLlakaLib.resolveAndFilter
       [

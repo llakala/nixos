@@ -1,7 +1,8 @@
 { lib, pkgs, config, ... }:
 
 let
-  lessOptions = config.programs.less.envVariables.LESS; # Reuse the LESS options we want to be used everywhere
+  # Reuse the LESS options we want to be used everywhere
+  lessOptions = config.programs.less.envVariables.LESS;
 in
 {
   environment.shellAliases.man = "batman";
@@ -10,7 +11,8 @@ in
   {
     enable = true;
 
-    config = # List of command line options to supply every time
+    # List of command line options to supply every time
+    config =
     {
       style = "plain";
       pager = "${lib.getExe pkgs.less} ${lessOptions}";
@@ -30,5 +32,6 @@ in
     MANROFFOPT = "-c";
   };
 
-  hm.home.activation.batCache = lib.mkForce "";# Waiting for https://github.com/nix-community/home-manager/issues/5481 is fixed
+  # Waiting for https://github.com/nix-community/home-manager/issues/5481 to be fixed
+  hm.home.activation.batCache = lib.mkForce "";
 }

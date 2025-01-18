@@ -9,7 +9,8 @@ llakaLib.writeFishApplication
     jq
   ];
 
-  text = # NOTE: doesn't do `pkgs.pkgs` by default, follow the nix.dev tutorial to add it
+  # NOTE: doesn't do `pkgs.pkgs` by default, follow the nix.dev tutorial to add it
+  text =
   /* fish */
   ''
     set FILE $argv[1]

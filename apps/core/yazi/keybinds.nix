@@ -4,7 +4,8 @@ let
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy"; # Package used for smart-paste. Installed here so we don't rely on a package being installed
 in
 {
-  hm.programs.yazi.keymap.manager.prepend_keymap = # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
+  # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
+  hm.programs.yazi.keymap.manager.prepend_keymap =
   [
     {
       desc = "Open the selected files";

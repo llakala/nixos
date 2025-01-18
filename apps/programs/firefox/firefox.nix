@@ -26,7 +26,7 @@
       '';
       extraConfig = lib.readFile "${inputs.firefox-gnome-theme}/configuration/user.js";
 
-      settings = # Settings that aren't allowed to be set in policies
+      settings =
       {
         "gnomeTheme.activeTabContrast" = true;
         "gnomeTheme.normalWidthTabs" = true;

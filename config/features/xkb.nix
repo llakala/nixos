@@ -4,7 +4,8 @@ let
   layoutName = "custom";
 in
 {
-  services.xserver.xkb.extraLayouts.${layoutName} = # Changes to this seem to only apply after a gnome reboot
+  # Changes to this seem to only apply after a gnome reboot
+  services.xserver.xkb.extraLayouts.${layoutName} =
   {
     description = "Custom layout where CAPS is Escape, and ESC does nothing";
     languages = [ "eng" ];
@@ -27,7 +28,9 @@ in
       "terminate:ctrl_alt_bksp"
       "lv3:rwin_switch"
     ];
-    sources = lib.singleton # Override gnome to use our custom layout, required
+
+    # Override gnome to use our custom layout, required
+    sources = lib.singleton
     (
       lib.gvariant.mkTuple ["xkb" layoutName]
     );

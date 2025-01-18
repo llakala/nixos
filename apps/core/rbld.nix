@@ -8,7 +8,8 @@
     fuiska
   ];
 
-  environment.variables = # Overriding default values so we don't have to pass our arguments every time
+  # Overriding default values so we don't have to pass our arguments every time
+  environment.variables =
   {
     RBLD_DIRECTORY = config.baseVars.configDirectory;
     UNIFY_DIRECTORY = config.baseVars.configDirectory;
