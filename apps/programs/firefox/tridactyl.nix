@@ -20,7 +20,8 @@ in
 
   hm.xdg.configFile."tridactyl/tridactylrc" =
   {
-    text = # java
+    text =
+    /* java */
     ''
       " if we unset something, have it reset
       sanitise tridactyllocal tridactylsync
