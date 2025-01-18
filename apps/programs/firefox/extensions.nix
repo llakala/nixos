@@ -19,7 +19,7 @@ let
     terms-of-service-didnt-read
 
     auto-tab-discard
-    clearurls
+    # clearurls # Buggy with github search, not sure why
     link-cleaner
 
     redirector # For nixos wiki
