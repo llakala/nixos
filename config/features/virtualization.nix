@@ -23,7 +23,7 @@
   [
     quickemu # Easy virtual machines
     qemu-utils # Virtualization
-    # quickgui # TODO: BRING BACK WHEN https://github.com/NixOS/nixpkgs/issues/341893 IS FIXED
+    quickgui
   ];
 
 }

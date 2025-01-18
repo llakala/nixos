@@ -31,11 +31,6 @@
   };
 
 
-  services =
-  {
-    fstrim.enable = true; # Remove this in 24.11 since it's set by default
-  };
-
   services.fwupd = # Bios updates
   {
     enable = true;
