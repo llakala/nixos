@@ -11,7 +11,7 @@ let
     shortwave # Internet radio
     obsidian # Notes
     gnome-feeds # rss feeds
-    krita # Image editing
+    # krita # Image editing, currently broken
   ];
 
   unstablePackages = with pkgs-unstable;
