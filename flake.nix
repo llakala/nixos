@@ -19,13 +19,8 @@
     # but don't have system access.
     pureLlakaLib = inputs.llakaLib.pureLib;
 
-    # All custom lib functions, including system-dependent ones
-    # This creates the "main" llakaLib instance once it's passed
-    # a system parameter.
-    mkLlakaLib = system: inputs.llakaLib.fullLib.${system};
-
     mkNixos = hostname:
-    { system }: let llakaLib = mkLlakaLib system;
+    { system }: let llakaLib = inputs.llakaLib.fullLib.${system};
     in lib.nixosSystem
     {
       inherit system;
@@ -77,7 +72,7 @@
     # via custom lib function
     packages = forAllSystems
     (
-      pkgs: let llakaLib = mkLlakaLib pkgs.system;
+      pkgs: let llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
       in llakaLib.collectDirectoryPackages
       {
         inherit pkgs;
