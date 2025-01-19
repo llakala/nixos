@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737249704,
-        "narHash": "sha256-uiM0fM8Kpn9YmKR/XkEH2Gz6+FEc8maMHmYhlV1UIF4=",
+        "lastModified": 1737328544,
+        "narHash": "sha256-nhhEj3RDSTIPmxPfGggEWCbelTGDRXEcZSZ1g10LPrE=",
         "owner": "llakala",
         "repo": "gasp",
-        "rev": "0599f75210d51016bf58ed418fbdc68802316d64",
+        "rev": "f7480a48beedf8796cbcd8ab408f7d36cf19a2d1",
         "type": "github"
       },
       "original": {
