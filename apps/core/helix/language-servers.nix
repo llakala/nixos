@@ -7,6 +7,12 @@
 
     taplo.command = lib.getExe pkgs.taplo; # taplo-lsp is just an alias for taplo
 
+    fish-lsp =
+    {
+      command = lib.getExe pkgs.fish-lsp;
+      args = lib.singleton "start";
+    };
+
     jdtls =
     {
       command = lib.getExe pkgs.jdt-language-server;

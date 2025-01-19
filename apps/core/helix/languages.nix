@@ -64,6 +64,12 @@
     }
 
     {
+      name = "fish";
+      language-servers = lib.singleton "fish-lsp";
+    }
+
+
+    {
       name = "bash";
       language-servers = lib.singleton "bash-language-server";
 
