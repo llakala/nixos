@@ -20,9 +20,9 @@ let
       j = "down";
       k = "up";
 
-      i = "change-header(INSERT MODE)+enable-search+unbind(i,j,k)";
-      start = "change-header(NORMAL MODE)+disable-search";
-      esc = "change-header(NORMAL MODE)+disable-search+rebind(i,j,k)";
+      i = "change-header(INSERT MODE)+unbind(i,j,k)";
+      start = "unbind(down,up)+change-header(INSERT MODE)+unbind(i,j,k)";
+      esc = "change-header(NORMAL MODE)+rebind(i,j,k)";
     };
   };
 in
