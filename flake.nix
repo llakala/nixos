@@ -100,12 +100,6 @@
 
   inputs =
   {
-    disko =
-    {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     eza-preview-yazi =
     {
       url = "github:ahkohd/eza-preview.yazi/nightly";
@@ -136,7 +130,7 @@
     helix-unstable =
     {
       url = "github:helix-editor/helix"; # Compile Helix from source to support macro keybinds
-      inputs.nixpkgs.follows = "nixpkgs-helix"; # So we don't have two instances of `nixpkgs` in flake.lock. We use the same rev from helix's flake.lock so we don't have to recompile
+      inputs.nixpkgs.follows = "nixpkgs-helix"; # Same pin that helix is pinned to, so we get substitutor builds
       inputs.flake-utils.follows = "flake-utils";
     };
 
@@ -145,11 +139,13 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-unstable = 
-    {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+
+    # BRING BACK IF YOU NEED UNSTABLE MODULES
+    # home-manager-unstable =
+    # {
+    #   url = "github:nix-community/home-manager/master";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
 
     kanagawa-yazi =
     {
@@ -160,12 +156,6 @@
     llakaLib =
     {
       url = "github:llakala/llakaLib/purity";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixReadline =
-    {
-      url = "github:llakala/nix"; # My auto-updating fork of nix that adds readline support
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
