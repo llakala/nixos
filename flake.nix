@@ -23,18 +23,14 @@
     { system }: let llakaLib = inputs.llakaLib.fullLib.${system};
     in lib.nixosSystem
     {
-      inherit system;
-
       specialArgs =
       {
         inherit inputs llakaLib self;
 
-        pkgs-unstable = llakaLib.mkPkgs
+        pkgs-unstable = import inputs.nixpkgs-unstable
         {
-          inherit system;
           config.allowUnfree = true;
-          unpatchedInput = inputs.nixpkgs-unstable;
-          patches = [];
+          inherit system;
         };
       };
 
