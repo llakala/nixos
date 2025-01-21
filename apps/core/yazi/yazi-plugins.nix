@@ -3,14 +3,13 @@
 let
   plugins = inputs.yazi-plugins;
 
-  jump-to-char = plugins + "/jump-to-char.yazi";
-  chmod = plugins + "/chmod.yazi";
 in
 {
   hm.programs.yazi.plugins =
   {
-    inherit jump-to-char;
-    inherit chmod;
+    jump-to-char = plugins + "/jump-to-char.yazi";
+    chmod = plugins + "/chmod.yazi";
+    git = plugins + "/git.yazi";
   };
 
   hm.programs.yazi.keymap.manager.prepend_keymap =
@@ -29,4 +28,34 @@ in
     }
 
   ];
+
+
+  hm.programs.yazi.initLua =
+  /* lua */
+  ''
+    THEME.git = THEME.git or {}
+
+    THEME.git.modified_sign = "M"
+    THEME.git.added_sign = "A"
+    THEME.git.deleted_sign = "D"
+    THEME.git.untracked_sign = "A"
+
+    require("git"):setup()
+  '';
+
+  hm.programs.yazi.settings.plugin.prepend_fetchers =
+  [
+    {
+      id = "git";
+      name = "*";
+      run = "git";
+    }
+
+    {
+      id = "git";
+      name = "*/";
+      run = "git";
+    }
+  ];
+
 }
