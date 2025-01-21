@@ -45,8 +45,9 @@ in
       bind a tab #
 
       " t for tab, silly
-      bind t fillcmdline tab
-      bind b fillcmdline tabopen
+      bind t tabopen
+      bind o fillcmdline open
+      bind s fillcmdline tab
 
       bind q hint
       bind f hint -Jc a,button,input
