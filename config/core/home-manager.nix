@@ -4,7 +4,12 @@
   imports =
   [
     inputs.home-manager.nixosModules.home-manager
-    (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.hostVars.username]) # Let us use hm as shorthand for home-manager config
+
+    ( # Let us use hm as shorthand for home-manager config
+      lib.mkAliasOptionModule
+      [ "hm" ]
+      [ "home-manager" "users" config.hostVars.username ]
+    )
   ];
 
   environment.systemPackages = with pkgs;
