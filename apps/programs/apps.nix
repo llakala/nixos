@@ -11,6 +11,7 @@ let
     shortwave # Internet radio
     obsidian # Notes
     gnome-feeds # rss feeds
+    libreoffice
     # krita # Image editing, currently broken
   ];
 
