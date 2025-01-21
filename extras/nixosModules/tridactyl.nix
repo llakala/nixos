@@ -1,5 +1,7 @@
-# All logic from https://github.com/arcnmx/nixexprs/blob/master/modules/home/tridactyl.nix
+# All logic from https://github.com/arcnmx/nixexprs/blob/8cce84df087eb40f6c0681575f2551ffcb0e3ca8/modules/home/tridactyl.nix#L2
 # Reformatted to match my preferences and to no longer use `with lib;`
+# Many options removed so I can debug the module and only work with what I understand
+# Use the above link if you want to see the real functionality
 { config, lib, ... }:
 
 let
