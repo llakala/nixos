@@ -8,12 +8,6 @@ let
   cmdType = lib.types.str; # TODO: add fancier types for "js" etc that escape things and compose better
   settingType = lib.types.either lib.types.bool lib.types.str;
 
-  asFile = name: contentsOrPath:
-    if lib.types.path.check contentsOrPath
-      then contentsOrPath
-    else
-      builtins.toFile name contentsOrPath;
-
   configStrs =
   {
     cmd = cmd: cmd;
@@ -40,30 +34,6 @@ let
       if url == null then ".*"
       else url;
 
-    autocmdName = name:
-    (
-      lib.toUpper (lib.substring 0 1 name)
-    )
-    + lib.substring 1
-    (
-      lib.stringLength name
-    )
-    name;
-
-    autocmds = name: list: lib.concatStringsSep "\n"
-    (
-      map
-      (
-        value:
-        "autocmd ${configStrs.autocmdName name} ${configStrs.urlPattern value.urlPattern} ${configStrs.cmd value.cmd}"
-      )
-      list
-    );
-
-    autocontain = { urlPattern, container, isDomainPattern, ... }:
-      "autocontain${lib.optionalString (!isDomainPattern) " -u"} ${urlPattern} ${
-        if container == null then throw "default container unimplemented" else container
-      }";
 
     keyseq = mods: key:
     let
@@ -118,16 +88,6 @@ in
 {
   options.custom.tridactyl = {
     enable = lib.mkEnableOption "tridactyl Firefox plugin";
-    themes = lib.mkOption {
-      description = "tridactyl theme data";
-      type = lib.types.attrsOf
-      (
-        lib.types.either
-          lib.types.lines
-          lib.types.path
-      );
-      default = { };
-    };
 
     bindings = lib.mkOption
     {
@@ -245,152 +205,6 @@ in
       );
     };
 
-    sanitise =
-    {
-      local = lib.mkOption
-      {
-        type = lib.types.bool;
-        default = false;
-      };
-
-      sync = lib.mkOption
-      {
-        type = lib.types.bool;
-        default = false;
-      };
-
-      excmd = lib.mkOption
-      {
-        type = lib.types.str;
-        internal = true;
-        default = lib.concatStringsSep " "
-        [
-          "sanitise"
-          (lib.optionalString cfg.sanitise.local "tridactyllocal")
-          (lib.optionalString cfg.sanitise.sync "tridactylsync")
-        ]
-        + lib.optionalString
-          ( cfg.settings ? storageloc )
-          "\n${configStrs.setting "storageloc" cfg.settings.storageloc}";
-      };
-    };
-
-    autocontain = lib.mkOption
-    {
-      description = "Automatically open a domain in a specified container";
-      default = { };
-      type = lib.types.attrsOf
-      (
-        lib.types.submodule
-        (
-          { name, ... }:
-          {
-            options =
-            {
-              urlPattern = lib.mkOption
-              {
-                type = lib.types.str;
-                default = name;
-              };
-
-              isDomainPattern = lib.mkOption
-              {
-                type = lib.types.bool;
-                default = true;
-              };
-
-              container = lib.mkOption
-              {
-                type = lib.types.nullOr lib.types.str;
-              };
-            };
-          }
-        )
-      );
-    };
-
-    autocmd =
-    let
-      auType = lib.types.submodule
-      (
-        { ... }:
-        {
-          options =
-          {
-            urlPattern = lib.mkOption
-            {
-              type = lib.types.nullOr lib.types.str;
-              default = null;
-              description = "Regex pattern of url to match, or null to trigger always";
-            };
-
-            cmd = lib.mkOption
-            {
-              type = cmdType;
-              description = "Command to run when the event triggers.";
-            };
-          };
-        }
-      );
-      type = lib.types.listOf auType;
-      default = [ ];
-    in
-    {
-      triStart = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when the browser starts";
-      };
-
-      docStart = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when a page begins to load (DocStart)";
-      };
-
-      docLoad = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when a page is loaded (DOMContentLoaded)";
-      };
-
-      docEnd = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when a page is left (pagehide event)";
-      };
-
-      tabEnter = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when a tab is focused";
-      };
-
-      tabLeft = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when a tab is left";
-      };
-
-      fullscreenEnter = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when fullscreen mode is entered";
-      };
-
-      fullscreenLeft = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when fullscreen mode is left";
-      };
-
-      fullscreenChange = lib.mkOption
-      {
-        inherit type default;
-        description = "Commands to run when fullscreen mode is changed";
-      };
-    };
-
     extraConfig = lib.mkOption
     {
       type = lib.types.lines;
@@ -404,31 +218,10 @@ in
     [
       (
         lib.mkIf
-        (cfg.sanitise.local || cfg.sanitise.sync)
-        (lib.mkBefore cfg.sanitise.excmd)
-      )
-      (
-        lib.mkIf
         (cfg.exalias != { })
         (
           lib.concatStringsSep "\n"
             (lib.mapAttrsToList configStrs.alias cfg.exalias)
-        )
-      )
-      (
-        lib.mkIf
-        (cfg.autocmd != { })
-        (
-          lib.concatStringsSep "\n"
-            (lib.mapAttrsToList configStrs.autocmds cfg.autocmd)
-        )
-      )
-      (
-        lib.mkIf
-        (cfg.autocontain != { })
-        (
-          lib.concatStringsSep "\n"
-            (lib.mapAttrsToList (_: configStrs.autocontain) cfg.autocontain)
         )
       )
       (
@@ -467,14 +260,6 @@ in
     hm.xdg.configFile =
     {
       "tridactyl/tridactylrc".text = cfg.extraConfig;
-    }
-    // lib.mapAttrs'
-    (
-      name: source: lib.nameValuePair
-        "tridactyl/themes/${name}.css"
-        {
-          source = asFile "${name}.css" source;
-        }
-    ) cfg.themes;
+    };
   };
 }
