@@ -45,34 +45,6 @@
 
   };
 
-  # Modal bindings for managing tabs
-  hm.programs.kitty.extraConfig =
-  /* bash */
-  ''
-    # Flags have to be before the actual binding to work
-    # Doing something unknown leaves the mode
-    map --new-mode mt --on-unknown end ctrl+k
-
-    # Exit mode automatically when creating/deleting tabs
-    map --mode mt t combine : new_tab : pop_keyboard_mode
-    map --mode mt d combine : close_window : pop_keyboard_mode
-
-    map --mode mt h previous_tab
-    map --mode mt l next_tab
-    map --mode mt shift+h move_tab_backward
-    map --mode mt shift+l move_tab_forward
-
-    map --mode mt k scroll_line_up
-    map --mode mt j scroll_line_down
-    map --mode mt shift+k scroll_to_prompt -1
-    map --mode mt shift+j scroll_to_prompt 1
-
-    # Exit mode
-    map --mode mt i pop_keyboard_mode
-    map --mode mt esc pop_keyboard_mode
-
-  '';
-
   # Open terminal with Super+T
   hm.dconf.settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =
   [
