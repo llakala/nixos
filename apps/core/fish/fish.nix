@@ -10,11 +10,9 @@
     useBabelfish = true; # Important: halves the startup time
   };
 
-  hm.programs.fish =
-  {
-    enable = true;
-  };
+  hm.programs.fish.enable = true;
   hm.xdg.configFile."fish/config.fish".force = true;
+
 
   hm.programs.fish.shellInit =
   /* fish */
