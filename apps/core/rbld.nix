@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }:
 
 {
-  environment.systemPackages = with inputs.rebuild-but-less-dumb.packages.${pkgs.system};
+  environment.systemPackages = with inputs.rebuild-but-less-dumb.legacyPackages.${pkgs.system};
   [
     rbld
     unify
