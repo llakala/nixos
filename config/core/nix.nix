@@ -1,7 +1,9 @@
-{ config, inputs, ... }:
+{ config, inputs, pkgs-unstable, ... }:
 
 {
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  nix.package = pkgs-unstable.nixVersions.latest;
 
   nix.settings =
   {
