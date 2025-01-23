@@ -47,8 +47,8 @@ let
     c = "change_selection_noyank";
 
     # Beginning/end of line, selecting to match Helix paradigms
-    H = [ "collapse_selection" "select_mode" "goto_first_nonwhitespace" "normal_mode" ];
-    L = [ "collapse_selection" "select_mode" "goto_line_end" "normal_mode" ];
+    H = "extend_to_first_nonwhitespace";
+    L = "extend_to_line_end";
 
     g.G = "goto_file_end"; # `g.g` is file beginning, it needs the reverse
 
