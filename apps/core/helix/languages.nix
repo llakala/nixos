@@ -20,7 +20,15 @@
     {
       name = "java";
       auto-format = false;
+
       language-servers = lib.singleton "jdtls";
+
+      indent =
+      {
+        tab-width = 4;
+        unit = "    ";
+      };
+
       formatter =
       {
         command = lib.getExe pkgs.google-java-format;
