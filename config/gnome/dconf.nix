@@ -8,7 +8,7 @@
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
-        "code.desktop"
+        "vesktop.desktop"
         "obsidian.desktop"
        ];
     };
