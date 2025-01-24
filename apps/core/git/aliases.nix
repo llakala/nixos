@@ -20,9 +20,9 @@
     history = "log --patch";
 
     # Inverse of `--intent-to-add` from `git add`. Unadd the existence of all new files.
-    # Ideally this would be patch-based, but we'll take what we can get
-    # Can't take credit for this, see https://stackoverflow.com/questions/12994197/how-to-remove-only-intent-to-add-files-from-index-in-git
-    unstage-new-files = "!git diff --name-only --diff-filter=A -z | git restore --staged -q --pathspec-file-nul --pathspec-from-file=- > /dev/null 2>&1";
+    # I make a modification to also unstage deleted files, see my post in the conversation
+    # https://stackoverflow.com/questions/12994197/how-to-remove-only-intent-to-add-files-from-index-in-git
+    unstage-new-files = "!cat <(git diff --name-only --diff-filter=A -z) <(git diff --staged --name-only --diff-filter=D -z) | git restore --staged -q --pathspec-file-nul --pathspec-from-file=- >/dev/null 2>&1";
 
     # Prettier formatting for `git branch`
     pbranch = "branch --sort=-committerdate --format '%(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
