@@ -9,7 +9,7 @@ in
   [
     {
       desc = "Open the selected files";
-      on = lib.singleton "i"; # Same as "o" for open, but for my helix muscle memory
+      on = "i"; # Same as "o" for open, but for my helix muscle memory
       run = "open";
     }
 
@@ -46,7 +46,7 @@ in
 
     {
       desc = "When copying, copy to the system clipboard as well";
-      on = lib.singleton "y";
+      on = "y";
       run =
       [
         "yank"
