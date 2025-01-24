@@ -158,7 +158,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
-    nixpkgs-helix.url = "github:nixos/nixpkgs/bc947f541ae55e999ffdb4013441347d83b00feb"; # Hack for Helix to be able to build tree-sitter
+    nixpkgs-helix.url = "github:nixos/nixpkgs/9e4d5190a9482a1fb9d18adf0bdb83c6e506eaab"; # Hack for Helix to be able to build tree-sitter
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     rebuild-but-less-dumb =
