@@ -1,7 +1,10 @@
 { pkgs, config, lib, ... }:
 
 let
-  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy"; # Package used for smart-paste. Installed here so we don't rely on a package being installed
+  # Package used for smart-paste. Installed here so we don't rely
+  # on a system package being installed
+  wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+
 in
 {
   # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
