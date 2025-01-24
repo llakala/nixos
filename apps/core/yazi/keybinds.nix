@@ -14,6 +14,12 @@ in
     }
 
     {
+      desc = "Move cursor to the bottom";
+      on = [ "g" "G" ];
+      run = "arrow 99999999";
+    }
+
+    {
       desc = "Go to the NixOS configuration directory";
       on = ["g" "n"];
       run = "cd ${config.baseVars.configDirectory}";
