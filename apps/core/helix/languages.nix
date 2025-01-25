@@ -18,6 +18,15 @@
     }
 
     {
+      name = "hyprlang";
+      file-types =
+      [
+        { glob = "hypr/*.conf"; }
+        { glob = "*.hypr.conf"; }
+      ];
+    }
+
+    {
       name = "java";
       auto-format = false;
 
