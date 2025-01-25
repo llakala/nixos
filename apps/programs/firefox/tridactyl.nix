@@ -50,7 +50,11 @@ in
       bind s fillcmdline tab
 
       bind q hint
+      bind Q hint -b
+
       bind f hint -Jc a,button,input
+      bind F hint -Jbc a,button,input
+
 
       unbind <<
       unbind >>
