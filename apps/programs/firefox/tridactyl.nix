@@ -42,7 +42,7 @@ in
       bind J scrollpage +1
       bind K scrollpage -1
 
-      bind a tab #
+      bind a tab # " Last used tab
 
       " t for tab, silly
       bind t tabopen
@@ -72,14 +72,18 @@ in
       bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
       " More relevant hints with github search
       bindurl ^https://github.com/search f hint -Jc .search-title a
-
-      " More relevant hints when selecting videos
-      bindurl youtu((\.be)|(be\.com)) f hint -Jc [class~=yt-simple-endpoint]
-      bindurl youtube.com$ f hint -Jc [class~=yt-simple-endpoint]
+      bindurl ^https://github.com/search F hint -Jbc .search-title a
 
       " While watching a video, unbind `f`, and give its duty to `q`
-      unbindurl www.youtube.com/watch f
+      unbindurl youtube.com/watch f
+      unbindurl youtube.com/watch F
       bindurl youtube.com/watch q hint -Jc [class~=yt-simple-endpoint]
+      bindurl youtube.com/watch Q hint -Jbc [class~=yt-simple-endpoint]
+
+      " More relevant hints when selecting videos
+      bindurl youtube.com$ f hint -Jc [class~=yt-simple-endpoint]
+      bindurl youtube.com$ F hint -Jc [class~=yt-simple-endpoint]
+
 
       set searchurls.@gn https://github.com/search?type=code&q=lang:nix+NOT+is:fork+%s
       set searchurls.@gh https://github.com/search?type=code&q=NOT+is:fork+%s
