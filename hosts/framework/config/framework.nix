@@ -1,43 +1,4 @@
-{ inputs, pkgs, ... }:
-
 {
-  imports =
-  [
-    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-  ];
-
-
-  hardware.graphics =
-  {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs;
-    [
-      libvdpau-va-gl
-      vaapiVdpau
-    ];
-  };
-
-
-  custom.hardware.framework-laptop.keyboardBacklight =
-  {
-    enable = true;
-    brightness = 0;
-  };
-  custom.hardware.framework-laptop.fingerprintBacklight =
-  {
-    enable = true;
-    brightness = "medium";
-  };
-
-
-  services.fwupd = # Bios updates
-  {
-    enable = true;
-    extraRemotes = [ "lvfs-testing" ];
-  };
-
-
   hardware.wirelessRegulatoryDatabase = true; # Speed up wifi?
   boot.extraModprobeConfig =
   ''
