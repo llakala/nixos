@@ -31,7 +31,7 @@
       };
 
       iconUpdateURL = "https://github.com/favicon.ico";
-      definedAliases = lib.singleton "@gs";
+      definedAliases = lib.singleton "@gh";
     };
 
     "Noogle" =
