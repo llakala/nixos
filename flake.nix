@@ -44,8 +44,8 @@
         ./config/baseVars.nix
 
         ./apps/core
-        ./apps/programs
-        ./apps/shell
+        ./apps/extras
+        ./apps/gui
 
         ./hosts/${hostname}/config
         ./hosts/${hostname}/hardware-configuration.nix
