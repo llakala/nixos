@@ -3,41 +3,41 @@
 let
   stablePackages = with pkgs;
   [
-    # Basic utils
+    # Basic linux utils
     coreutils
     libgccjit # gcc
     usbutils # lsusb and friends
     bind # Networking utils
-    libva-utils # Check for hardware acceleration
-
-    # Basic commands that should be included
-    zip
-    unzip
     wget
     gnumake # make
-    file
-    linuxPackages.perf
-
-    # Extra commmands for personal preference
     jq
-    sd # Sed alternative
-    tldr
-    calc # It's just slang chat
-    cava # Audio display
+
+    # Useful stuff
+    xorg.xeyes # See if an app is running under xwayland or not
+    linuxPackages.perf
+    parallel
     ncdu # Scan folder size prettily
     tree # Show filetree for writing out in markdown
-    w3m # w3mman gives you manpage hyperlinks
+    wl-clipboard # Wayland terminal stuff
+    powertop # Check battery drain
+    ffmpeg
+    zip
+    unzip
+    file
 
     # Weird stuff
+    tldr # Mini-manpages
+    cava # Audio display
+    libva-utils # Check for hardware acceleration
+    sd # Sed alternative
+    fd # Search filenames, used by Yazi
+    calc # It's just slang chat
+    w3m # w3mman gives you manpage hyperlinks
     appimage-run # Allow running appimages for when something isnt on nixpkgs
-    powertop # Check battery drain
-    xorg.xeyes # See if an app is running under xwayland or not
     hwinfo
     age
     libsecret
-    ffmpeg
-    exiftool
-    wl-clipboard # Wayland terminal stuff
+    exiftool # Check metadata
     ijq # Interactive jq
 
     # commands specifically for nix
@@ -45,14 +45,6 @@ let
     nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
     nix-inspect
-
-    # Big kits
-    nodejs
-    typescript
-    go
-    cargo
-    rustc
-    ruby
   ];
 
   unstablePackages = with pkgs-unstable;

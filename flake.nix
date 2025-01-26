@@ -44,6 +44,7 @@
         ./config/baseVars.nix
 
         ./apps/core
+        ./apps/dev
         ./apps/extras
         ./apps/gui
 
