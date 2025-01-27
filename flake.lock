@@ -126,11 +126,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1737943827,
-        "narHash": "sha256-r3jDPIci3GL2MQZkgFICzVGANvltFTCTao77NPs5/XY=",
+        "lastModified": 1738010494,
+        "narHash": "sha256-rxYa1+urtinAES9SV4bP1cnQpz7MwZoNr+wsRr/E/Is=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "b00b475dfe96cca7ccaa0211b05b4159260377fc",
+        "rev": "0c8f0c0334d449dd71928a697cfba0207be74a63",
         "type": "github"
       },
       "original": {
@@ -207,11 +207,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737951733,
-        "narHash": "sha256-vbUPUIKORjlqden0Qx/YC0e0j8pAJLcOw2hOuOTchDo=",
+        "lastModified": 1738005692,
+        "narHash": "sha256-soj+RCMOAHz1FCWop2rPe0jc1ZVyTCfRhsb8Xslhxfs=",
         "owner": "llakala",
         "repo": "menu",
-        "rev": "32c0f1220b7baf8a585dd1c7a55a96b0c2dbfa4f",
+        "rev": "adc858088ac9f7db8bf31d01811058a5f08a5fba",
         "type": "github"
       },
       "original": {
@@ -342,11 +342,11 @@
     "yazi-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1737725721,
-        "narHash": "sha256-xY2yVCLLcXRyFfnmyP6h5Fw+4kwOZhEOCWVZrRwXnTA=",
+        "lastModified": 1738007154,
+        "narHash": "sha256-oXjOLLFF2NqLfbZFvAas65zTvWQYi+Qn/mx8WpauQK0=",
         "owner": "yazi-rs",
         "repo": "plugins",
-        "rev": "8ed253716c60f3279518ce34c74ca053530039d8",
+        "rev": "f202fa8969bd9c0c6ba6fb36066ae8044e73c9a7",
         "type": "github"
       },
       "original": {
