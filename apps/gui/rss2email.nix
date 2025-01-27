@@ -7,7 +7,7 @@
   {
     enable = true;
 
-    interval = "weekly";
+    interval = "daily";
     to = config.baseVars.email;
   };
 
