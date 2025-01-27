@@ -157,18 +157,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    menu =
+    {
+      url = "github:llakala/menu";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-helix.url = "github:nixos/nixpkgs/9e4d5190a9482a1fb9d18adf0bdb83c6e506eaab"; # Hack for Helix to be able to build tree-sitter
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    rebuild-but-less-dumb =
-    {
-      url = "github:llakala/rebuild-but-less-dumb";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
-    };
 
     yazi-plugins =
     {

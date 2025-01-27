@@ -197,6 +197,29 @@
         "type": "github"
       }
     },
+    "menu": {
+      "inputs": {
+        "llakaLib": [
+          "llakaLib"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737943430,
+        "narHash": "sha256-5xpqreCGo7UIf84EnSC0iNxh6idfNQO7OT02RZdYKd8=",
+        "owner": "llakala",
+        "repo": "menu",
+        "rev": "bc1273d0e83454f04f8a2f5421d451fa1f0ea10c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "menu",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1737590910,
@@ -261,29 +284,6 @@
         "type": "github"
       }
     },
-    "rebuild-but-less-dumb": {
-      "inputs": {
-        "llakaLib": [
-          "llakaLib"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737734639,
-        "narHash": "sha256-HQxQ4JFZua5eWauB7X5E2Xhh50OB8HzqXcJcx28Mpjg=",
-        "owner": "llakala",
-        "repo": "rebuild-but-less-dumb",
-        "rev": "49713cbfc99d5aae763cde20053b14c3d1c8badd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "llakala",
-        "repo": "rebuild-but-less-dumb",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "eza-preview-yazi": "eza-preview-yazi",
@@ -295,11 +295,11 @@
         "home-manager": "home-manager",
         "kanagawa-yazi": "kanagawa-yazi",
         "llakaLib": "llakaLib",
+        "menu": "menu",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-helix": "nixpkgs-helix",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "rebuild-but-less-dumb": "rebuild-but-less-dumb",
         "yazi-plugins": "yazi-plugins"
       }
     },
