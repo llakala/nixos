@@ -19,6 +19,7 @@
 
     pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
     push.useForceIfIncludes = true;
+    push.default = "current"; # Only push current branch, and don't force-push everything when force pushing
 
     branch.sort = "-committerdate";
     log.abbrevCommit = true; # Show short version of commit hashes by default
