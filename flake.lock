@@ -15,23 +15,6 @@
         "type": "github"
       }
     },
-    "eza-preview-yazi": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733098101,
-        "narHash": "sha256-L7i+uL2kAx3AUr5EAzRrduoV2m4+/tE1gCfbTOSuAc4=",
-        "owner": "ahkohd",
-        "repo": "eza-preview.yazi",
-        "rev": "245a1d9c61bbb94063e8ea0746a1a29ac81fee94",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ahkohd",
-        "ref": "nightly",
-        "repo": "eza-preview.yazi",
-        "type": "github"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": [
@@ -285,7 +268,6 @@
     },
     "root": {
       "inputs": {
-        "eza-preview-yazi": "eza-preview-yazi",
         "firefox-addons": "firefox-addons",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-utils": "flake-utils",

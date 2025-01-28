@@ -98,12 +98,6 @@
 
   inputs =
   {
-    eza-preview-yazi =
-    {
-      url = "github:ahkohd/eza-preview.yazi/nightly";
-      flake = false;
-    };
-
     firefox-addons =
     {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
