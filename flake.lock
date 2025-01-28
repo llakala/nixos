@@ -43,11 +43,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1737950601,
-        "narHash": "sha256-YqqJiLjAY0EWgVOtEv06EIoaNzgrzjpsXGrITNpAc/Y=",
+        "lastModified": 1738037010,
+        "narHash": "sha256-aJYv3EmI/fnvwd1L0xaaKxUf0R3QbDZ9EzCP2ijZLj8=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "0335c7d8263a7af3f1006ca71869aa0c93c07c4a",
+        "rev": "bddd81ca4dfa5ec11aef63e5d53b34b1a7c0e124",
         "type": "gitlab"
       },
       "original": {
@@ -101,11 +101,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737577679,
-        "narHash": "sha256-rkEQPS7S5ZswZJnJi0WT3pcKsxC24x5t0RYbMti/BOw=",
+        "lastModified": 1738025731,
+        "narHash": "sha256-uhzX9spcDZyaSZvTjbspoaDeNW7UIrL2IIApAd7zpE0=",
         "owner": "llakala",
         "repo": "gasp",
-        "rev": "c19c0790faddec07254f18d3eb304d6ad21f18de",
+        "rev": "7a7fcfb76610014502aa1d2aaca9dc5f65469126",
         "type": "github"
       },
       "original": {
@@ -126,11 +126,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1738010494,
-        "narHash": "sha256-rxYa1+urtinAES9SV4bP1cnQpz7MwZoNr+wsRr/E/Is=",
+        "lastModified": 1738073973,
+        "narHash": "sha256-+Bjgq2LuCrFQ8RA/25dWSAguFLH53TxoQZWuX7fb4gc=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "0c8f0c0334d449dd71928a697cfba0207be74a63",
+        "rev": "6049f2035be3e218da327b51d8e4bfd36242dd43",
         "type": "github"
       },
       "original": {
@@ -183,16 +183,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1737147681,
-        "narHash": "sha256-SUnLkoQ/fy/7srf/DDCub+zasoDk3OVSZ6M/HgqYUG0=",
+        "lastModified": 1738025451,
+        "narHash": "sha256-6QC1cFv/l5+Fk3OpTQmhCZjr7KBBXFC0OVaWtwkSG7k=",
         "owner": "llakala",
         "repo": "llakaLib",
-        "rev": "958293c385677e7d95f048b8c9f4477fa0b891eb",
+        "rev": "5e74156e2b84bf2f8cafe3c9e9884ddeedb968c3",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
-        "ref": "purity",
         "repo": "llakaLib",
         "type": "github"
       }
@@ -207,11 +206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738005692,
-        "narHash": "sha256-soj+RCMOAHz1FCWop2rPe0jc1ZVyTCfRhsb8Xslhxfs=",
+        "lastModified": 1738021224,
+        "narHash": "sha256-cxpvA6JztA+kp0sxNdjJcb2zIbL39jPwu7f/XNoa68s=",
         "owner": "llakala",
         "repo": "menu",
-        "rev": "adc858088ac9f7db8bf31d01811058a5f08a5fba",
+        "rev": "c8413e6b0a788388ebb68395c645a689ca7534cc",
         "type": "github"
       },
       "original": {

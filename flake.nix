@@ -153,7 +153,7 @@
 
     llakaLib =
     {
-      url = "github:llakala/llakaLib/purity";
+      url = "github:llakala/llakaLib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
