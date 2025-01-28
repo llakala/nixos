@@ -6,7 +6,6 @@
     mdpls
     evalue
     emodule
-    efunc
     jc
   ];
 }
