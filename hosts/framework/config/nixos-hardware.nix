@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 
 {
   imports =
@@ -9,7 +9,6 @@
   services.fwupd = # Bios updates
   {
     enable = true;
-    extraRemotes = lib.singleton "lvfs-testing";
   };
 
   # See https://github.com/NixOS/nixos-hardware/blob/dfad538/framework/13-inch/common/audio.nix
