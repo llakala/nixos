@@ -68,7 +68,7 @@
 
     # Call all packages automatically in directory, while letting packages refer to each other
     # via custom lib function
-    packages = forAllSystems
+    legacyPackages = forAllSystems
     (
       pkgs: let llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
       in llakaLib.collectDirectoryPackages

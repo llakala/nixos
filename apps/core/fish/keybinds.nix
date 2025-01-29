@@ -1,7 +1,7 @@
 { lib, self, pkgs, ... }:
 
 let
-  fish-helix = self.packages.${pkgs.system}.fish-helix;
+  fish-helix = self.legacyPackages.${pkgs.system}.fish-helix;
 in
 {
   environment.systemPackages = lib.singleton fish-helix; # To give us the binary

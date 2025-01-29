@@ -26,7 +26,7 @@
     marksman.command = lib.getExe pkgs.marksman;
     mdpls =
     {
-      command = lib.getExe self.packages.${pkgs.system}.mdpls;
+      command = lib.getExe self.legacyPackages.${pkgs.system}.mdpls;
       config.markdown.preview = # https://github.com/euclio/mdpls?tab=readme-ov-file#configuration
       {
         auto = true; # Automatically open preview in browser when opening file
