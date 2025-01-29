@@ -7,7 +7,7 @@
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_6_12; # 6.13 breaking some stuff
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest; # 6.13 breaking some stuff
 
     kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
