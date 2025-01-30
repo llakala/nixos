@@ -18,7 +18,7 @@
 
   hm.programs.yazi.settings.manager =
   {
-    sort_by = "natural";
+    sort_by = "extension";
     sort_dir_first = true;
 
   };
