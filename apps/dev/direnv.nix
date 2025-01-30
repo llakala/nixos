@@ -5,6 +5,14 @@
     silent = true;
   };
 
+
+  # Makes Nix not get rid of stuff direnv might be using, for better caching
+  nix.settings =
+  {
+    keep-derivations = true;
+    keep-outputs = true;
+  };
+
   programs.direnv.direnvrcExtra =
   ''
     use_flake()
