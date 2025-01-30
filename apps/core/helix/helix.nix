@@ -48,6 +48,8 @@
     # Use inline diagnostics with settings recommended from https://docs.helix-editor.com/master/editor.html#editorinline-diagnostics-section
     end-of-line-diagnostics = "hint";
     inline-diagnostics.cursor-line = "warning";
+
+    continue-comments = false; # I'd like to have this on a bind, but that currently doesn't exist
   };
 
 }

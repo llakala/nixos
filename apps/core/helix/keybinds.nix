@@ -6,19 +6,28 @@ let
   {
     # Beginning of next word. can't have selection trimmed or it never moves
     w = "${type}_next_word_start";
-    A-w = "${type}_next_long_word_start";
+    W = "${type}_next_long_word_start";
 
     # End of current word
     e = trimSelections "${type}_next_word_end";
-    A-e = trimSelections "${type}_next_long_word_end";
+    E = trimSelections "${type}_next_long_word_end";
 
-    # Beginning of current word
-    E = trimSelections "${type}_prev_word_start";
-    A-E = trimSelections "${type}_prev_long_word_start";
+    # Go back a word. Intended to make word movement easier by using word_end when
+    # going backwards in select mode, but it makes things completely break when the
+    # selection direction is left. Would fix, but Helix might not be long for being my
+    # default editor.
+    b =
+      if type == "move" then
+        trimSelections "${type}_prev_word_start"
+      else
+        "${type}_prev_word_start";
 
-    # Same as above, but for vim muscles
-    b = trimSelections "${type}_prev_word_start";
-    A-b = trimSelections "${type}_prev_long_word_start";
+    B =
+      if type == "move" then
+        trimSelections "${type}_prev_long_word_start"
+      else
+        trimSelections "${type}_prev_long_word_start";
+
 
     # As recommended in https://docs.helix-editor.com/editor.html#editorsmart-tab-section
     tab = "${type}_parent_node_end";
@@ -92,6 +101,10 @@ in
       right = "no_op";
 
       S-tab = "move_parent_node_start";
+
+      C-space = "completion";
+
+      C-backspace = "delete_word_backward";
     };
   };
 }
