@@ -1,14 +1,7 @@
-{ inputs, lib, pkgs-unstable, ... }:
+{ lib, pkgs-unstable, ... }:
 {
-  disabledModules = lib.singleton "installer/tools/tools.nix";
-
-  imports = lib.singleton
-    "${inputs.nixpkgs-unstable}/nixos/modules/installer/tools/tools.nix";
-
-  # Can't enable right now, because module expects to find nixos-rebuild-ng in `pkgs`
-  # Unsure whether I should make an issue for this - I have the weird case of using
-  # stable primarily, but still wanting unstable features sometimes.
-  system.rebuild.enableNg = false;
-
+  # Would add module, but can't, as there are stable and unstable conflicts
+  # These include the module expecting `nixos-rebuild-ng` in `pkgs`, and the
+  # new `replaceVarsWith` stuff not being in `pkgs` either.
   environment.systemPackages = lib.singleton pkgs-unstable.nixos-rebuild-ng;
 }
