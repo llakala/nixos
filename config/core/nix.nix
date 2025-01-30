@@ -1,9 +1,8 @@
-{ config, inputs, pkgs-unstable, ... }:
+{ config, inputs, lib, ... }:
 
 {
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  nix.package = pkgs-unstable.nixVersions.latest;
+  # Not 2.92 yet, see https://github.com/NixOS/nixpkgs/pull/375030
+  imports = lib.singleton inputs.lix-module.nixosModules.lixFromNixpkgs;
 
   nix.settings =
   {
@@ -34,9 +33,10 @@
     allow-import-from-derivation = false;
   };
 
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   nixpkgs.config.allowUnfree = true; # for `pkgs` instance, `pkgs-unstable` gets it on creation
-  time.timeZone = "America/New_York";
 
+  time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
   system.stateVersion = config.hostVars.stateVersion;
