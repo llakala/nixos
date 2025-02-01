@@ -218,16 +218,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1738387542,
-        "narHash": "sha256-AWmKJNwYDShebyowCYFBne4a6p85wwr9eNNd2fRuu2A=",
+        "lastModified": 1738436933,
+        "narHash": "sha256-ankUM9LUjPMdkp3lE9sZSuki8jvIy+H8mfAcgh59oIY=",
         "owner": "llakala",
         "repo": "llakaLib",
-        "rev": "cb410f7f25004386b5e69fea79c4cf44abe9e28a",
+        "rev": "64a3b5ffb45c0a0a18cfcf59dc61e89d4896ed7a",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
-        "ref": "completions",
         "repo": "llakaLib",
         "type": "github"
       }

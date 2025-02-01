@@ -7,6 +7,7 @@ llakaLib.writeFishApplication
   runtimeInputs = with pkgs;
   [
     jdk17
+    fd
   ];
 
   text =
@@ -15,5 +16,12 @@ llakaLib.writeFishApplication
     set FILE $argv[1]
     set NAME (basename "$FILE" .java)
     javac "$FILE" && java "$NAME"
+  '';
+
+  # Only show Java files.
+  fishCompletion =
+  /* fish */
+  ''
+    complete -c jc --no-files --argument "(fd -d 1 --extension java)"
   '';
 }
