@@ -11,6 +11,9 @@
       "nix-command"
       "flakes"
       "no-url-literals"
+
+      # Lix experimental features
+      "repl-flake" # Nix has merged this since 2.18, Lix hasn't yet
     ];
 
     substituters =
