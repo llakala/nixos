@@ -241,11 +241,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738533249,
-        "narHash": "sha256-oF+YTd4fxZI6S8d/chLIsHr9j23NVdOKWdv1uJjYXEg=",
+        "lastModified": 1738533684,
+        "narHash": "sha256-09CwJ2C0E0X8fKAZe27auRKqOt56UOCywEN5BA+hYrc=",
         "owner": "llakala",
         "repo": "menu",
-        "rev": "86c7ff9c490315f81d193bba5b58c7122914229f",
+        "rev": "f2f6feea15a0764dbcda27477aba5a39618769c1",
         "type": "github"
       },
       "original": {
