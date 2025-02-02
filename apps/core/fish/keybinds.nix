@@ -20,9 +20,9 @@ in
     fish_vi_key_bindings # fish-helix expects this to be set or it breaks
     fish_helix_key_bindings
 
-    bind -M insert -k nul complete-and-search
-    bind -M insert \t accept-autosuggestion
-    bind -M insert \b backward-kill-word
+    bind -M insert -k nul complete-and-search # Ctrl+Space
+    bind -M insert \t accept-autosuggestion # Tab
+    bind -M insert \b backward-kill-bigword # Ctrl+Backspace
 
     # Ctrl+Z again to resume
     # Credit to https://github.com/phortonssf/.dotfiles/blob/260e14851697762160626a6994546b524db08432/fish/.config/fish/functions/fore_ground.fish
