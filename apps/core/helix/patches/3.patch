@@ -1,0 +1,24 @@
+From ea617a779db8b3e12902775c5df85bffe500254b Mon Sep 17 00:00:00 2001
+From: Jaakko Paju <36770267+JPaju@users.noreply.github.com>
+Date: Thu, 31 Oct 2024 00:08:24 +0200
+Subject: [PATCH 3/3] Add CSV to lang-support.md
+
+---
+ book/src/generated/lang-support.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/book/src/generated/lang-support.md b/book/src/generated/lang-support.md
+index 0c3bf78e..f31807c4 100644
+--- a/book/src/generated/lang-support.md
++++ b/book/src/generated/lang-support.md
+@@ -29,6 +29,7 @@
+ | cpp | ✓ | ✓ | ✓ | `clangd` |
+ | crystal | ✓ | ✓ |  | `crystalline` |
+ | css | ✓ |  | ✓ | `vscode-css-language-server` |
++| csv | ✓ |  |  |  |
+ | cue | ✓ |  |  | `cuelsp` |
+ | cylc | ✓ | ✓ | ✓ |  |
+ | d | ✓ | ✓ | ✓ | `serve-d` |
+-- 
+2.47.0
+
