@@ -4,6 +4,9 @@
     n = "nix";
     nd = "nix develop";
     nr = "nix run";
+    ns = "nix shell";
+    ne = "nix eval";
+    nfu = "nix flake update";
 
     nrn =
     {
