@@ -11,7 +11,7 @@
     "Wikipedia (en)".metaData.hidden = true;
 
     # Thanks to xunuwu on github for being a reference for use of these functions
-    "Github Nix Code" =
+    "Github Search Nix" =
     {
       urls = lib.singleton
       {
@@ -23,7 +23,7 @@
     };
 
 
-    "Github Search Code" =
+    "Github Search" =
     {
       urls = lib.singleton
       {
