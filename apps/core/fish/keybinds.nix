@@ -25,9 +25,10 @@ in
     bind -M insert \b backward-kill-bigword # Ctrl+Backspace
 
     # Ctrl+Z again to resume
-    # Credit to https://github.com/phortonssf/.dotfiles/blob/260e14851697762160626a6994546b524db08432/fish/.config/fish/functions/fore_ground.fish
-    # This is the only one that doesn't leave the title malformed when pausing yazi
-    bind -M insert \cz 'commandline " fg; clear"; commandline -f execute'
+    # We run it as an actual command, since when I simply do 'fg' as the bind,
+    # it doesn't seem to reset fish_title correctly
+    # We have a function elsewhere to remove any instances of `fg` from history
+    bind -M insert \cz 'commandline fg; commandline -f execute'
 
     # Ctrl+S to rerun previous command
     bind -M insert \cS 'commandline $history[1]' 'commandline -f execute'

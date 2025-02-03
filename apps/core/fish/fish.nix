@@ -46,4 +46,16 @@
       echo -- (string sub -l 20 -- $command) (prompt_pwd)
     end
   '';
+
+  hm.programs.fish.functions."__commandline_ignore_history" =
+  {
+    onEvent = "fish_preexec";
+    body =
+    /* fish */
+    ''
+      set -l ignored_terms fg bg
+      history delete --exact --case-sensitive $ignored_terms
+    '';
+  };
+
 }
