@@ -34,6 +34,17 @@
       definedAliases = lib.singleton "@gh";
     };
 
+    "Github Search Fish" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search?type=code&q=lang:fish+NOT+is:fork+{searchTerms}";
+      };
+
+      iconUpdateURL = "https://fishshell.com/favicon.ico";
+      definedAliases = lib.singleton "@gf";
+    };
+
     "Noogle" =
     {
       urls = lib.singleton

@@ -86,6 +86,7 @@ in
 
 
       set searchurls.@gn https://github.com/search?type=code&q=lang:nix+NOT+is:fork+%s
+      set searchurls.@gf https://github.com/search?type=code&q=lang:fish+NOT+is:fork+%s
       set searchurls.@gh https://github.com/search?type=code&q=NOT+is:fork+%s
 
       set searchurls.@ng https://noogle.dev/q?term=%s
