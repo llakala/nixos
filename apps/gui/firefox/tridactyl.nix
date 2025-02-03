@@ -93,6 +93,8 @@ in
 
       set searchurls.@oh https://home-manager-options.extranix.com/?release=release-24.11&query=%s
       set searchurls.@on https://search.nixos.org/options?channel=24.11&from=0&size=100&sort=alpha_asc&query=%s
+
+      set searchurls.@hmgr https://github.com/search?type=code&q=repo:nix-community/home-manager+lang:nix+%s
     '';
 
     force = true;
