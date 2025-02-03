@@ -18,12 +18,4 @@ in
     normal = lib.mkAfter sharedBinds;
     select = lib.mkAfter sharedBinds;
   };
-
-
-  # Binary cache for Helix unstable
-  nix.settings =
-  {
-    substituters = lib.singleton "https://helix.cachix.org";
-    trusted-public-keys = lib.singleton "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
-  };
 }

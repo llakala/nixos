@@ -26,13 +26,6 @@
       inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
-    helix-unstable =
-    {
-      url = "github:helix-editor/helix"; # Compile Helix from source to support macro keybinds
-      inputs.nixpkgs.follows = "nixpkgs-helix"; # Same pin that helix is pinned to, so we get substitutor builds
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     home-manager =
     {
       url = "github:nix-community/home-manager/release-24.11";
@@ -74,7 +67,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
-    nixpkgs-helix.url = "github:nixos/nixpkgs/bc947f541ae55e999ffdb4013441347d83b00feb"; # Hack for Helix to be able to build tree-sitter
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     yazi-plugins =
