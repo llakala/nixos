@@ -1,4 +1,5 @@
 { pkgs, lib, ... }:
+
 let
   # Gives me better features over jdk17 version, like arrow key support
   # We need to wrap it in writeShellScriptBin to add it to `sytemPackages`
