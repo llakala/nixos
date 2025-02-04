@@ -7,7 +7,7 @@
   {
     enable = true;
 
-    interval = "daily";
+    interval = "1d"; # Check that this is functioning with `systemctl status rss2email.timer`
     to = config.baseVars.email;
   };
 
