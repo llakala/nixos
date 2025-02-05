@@ -50,15 +50,10 @@
   hm.programs.starship.settings.direnv =
   {
     disabled = false;
-    format = "[$symbol$loaded$allowed]($style)"; # Remove the slash
-    loaded_msg = ""; # If you're seeing this on Github, it's a leaf symbol
+    format = "[$loaded]($style)"; # Remove the slash
 
-    # Only show when it's broken
-    symbol = "";
-    allowed_msg = "";
-    denied_msg = "BAD";
-    unloaded_msg = "BAD";
-
+    loaded_msg = "";
+    unloaded_msg = "UNLOADED";
   };
 
 }
