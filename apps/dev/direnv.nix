@@ -3,6 +3,8 @@
   {
     enable = true;
     silent = true;
+
+    nix-direnv.enable = true;
   };
 
 
@@ -12,20 +14,6 @@
     keep-derivations = true;
     keep-outputs = true;
   };
-
-  programs.direnv.direnvrcExtra =
-  ''
-    use_flake()
-    {
-      watch_file flake.nix
-      watch_file flake.lock
-
-      watch_file packages/**/*.sh
-      watch_file packages/**/*.nix
-
-      eval "$(nix print-dev-env)"
-    }
-  '';
 
   hm.programs.git.extraConfig =
   {
