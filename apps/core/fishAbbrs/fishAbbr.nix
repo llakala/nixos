@@ -13,9 +13,13 @@
     src = "source";
 
     # Our custom program for managing which hunks are staged
-    ghpc = "ghp && git commit";
-    gfpc = "gfp && git commit";
-    gkpc = "gkp && git commit";
+    hp = "ghp";
+    fp = "gfp";
+    kp = "gkp";
+
+    hpc = "ghp && git commit";
+    fpc = "gfp && git commit";
+    kpc = "gkp && git commit";
 
   };
 
