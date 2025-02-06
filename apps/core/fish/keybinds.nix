@@ -24,12 +24,6 @@ in
     bind -M insert \t accept-autosuggestion # Tab
     bind -M insert \b backward-kill-bigword # Ctrl+Backspace
 
-    # Ctrl+Z again to resume
-    # We run it as an actual command, since when I simply do 'fg' as the bind,
-    # it doesn't seem to reset fish_title correctly
-    # We have a function elsewhere to remove any instances of `fg` from history
-    bind -M insert \cz 'commandline fg; commandline -f execute'
-
     # Ctrl+S to rerun previous command
     bind -M insert \cS 'commandline $history[1]' 'commandline -f execute'
   '';
