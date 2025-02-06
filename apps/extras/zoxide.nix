@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs-unstable, ... }:
 
 {
 
@@ -6,6 +6,7 @@
   hm.programs.zoxide =
   {
     enable = true;
+    package = pkgs-unstable.zoxide;
     options = lib.singleton "--cmd cd"; # Give `cd` `z` functionality, `z` no longer does anything
   };
 
