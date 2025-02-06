@@ -4,7 +4,6 @@
     g = "git";
     gcl = "git clone";
     gin = "git init";
-    gch = "git checkout";
 
     # Most commonly-run git commands get two letters
     gs = "git status";
@@ -17,13 +16,8 @@
     ganf = "git add -AN"; # Add all new files
     gunf = "git unstage-new-files"; # Alias, unstage new file existence
 
-    ggb = "git goback"; # Alias of `git restore`
-    ggba = "git goback .";
-
     # Using our custom patch-based git aliases
     ghr = "git hire"; # Add staged changes
-    ghrc = "git commit --patch";
-
     gfr = "git fire"; # Unstage staged changes via patch
     gkl = "git kill"; # Delete unstaged changes
 
@@ -33,8 +27,7 @@
     gfe = "git fetch";
     gfeu = "git fetch upstream";
 
-    glp = "git log --patch";
-    ghs = "git history"; # Same as `glgp`, just an alias for intuition
+    ghs = "git history"; # Same as `git log --patch`, just an alias for intuition
 
     gcm =
     {
@@ -52,11 +45,12 @@
     gfs = "git force"; # Force push via custom alias
 
     gsw = "git switch";
+    gswc = "git switch -c";
     gswm = "git switch main";
     gswma = "git switch master";
-    gswc = "git switch -c";
 
-    gswp = "git pswitch"; # Switch branches using custom alias with fzf. `p` at the end to differentiate from `gpsw`.
+    # Switch branches using custom alias with fzf
+    gswp = "git pswitch";
 
     grb = "git rebase";
     grbm = "git rebase main";
