@@ -9,13 +9,14 @@
 
   hm.xdg.portal.extraPortals = lib.singleton pkgs.xdg-desktop-portal-hyprland;
 
-  environment.systemPackages = with pkgs;
-  [
-    waybar
-    dunst
-    rofi-wayland
-    networkmanagerapplet
-  ];
+  # Removing for now as I'm not actually using Hyprland
+  # environment.systemPackages = with pkgs;
+  # [
+  #   waybar
+  #   dunst
+  #   rofi-wayland
+  #   networkmanagerapplet
+  # ];
 
   hm.xdg.configFile."hypr/hyprland.conf" =
   {
