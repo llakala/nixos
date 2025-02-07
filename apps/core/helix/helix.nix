@@ -6,7 +6,7 @@
     enable = true;
     package = pkgs-unstable.helix;
 
-    defaultEditor = true; # Sets EDITOR environment variable
+    defaultEditor = false; # Sets EDITOR environment variable
     settings.theme = "snazzy";
   };
 
