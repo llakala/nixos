@@ -19,11 +19,11 @@ end
 
 
 function nmap(key, map)
-  mkRemap('n', key, map)
+  mkRemap("n", key, map)
 end
 
 function vmap(key, map)
-  mkRemap('v', key, map)
+  mkRemap("v", key, map)
 end
 
 
