@@ -78,7 +78,8 @@
 
     yazi-plugins =
     {
-      url = "github:yazi-rs/plugins";
+      # TODO: unpin when https://nixpk.gs/pr-tracker.html?pr=380069 lands
+      url = "github:yazi-rs/plugins/02d18be03812415097e83c6a912924560e4cec6d";
       flake = false;
     };
   };
