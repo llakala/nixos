@@ -66,6 +66,13 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    neovimPlugins =
+    {
+      url = "github:NixNeovim/NixNeovimPlugins";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
