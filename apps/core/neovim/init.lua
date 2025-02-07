@@ -52,9 +52,8 @@ nnoremap("b", "bviwo")
 vnoremap("e", "<Esc>eviw")
 vnoremap("b", "<Esc>bviwo")
 
--- Select line with x
-nnoremap("x", "V")
-vnoremap("x", "j")
+vnoremap("i", "<Esc>`<i")
+vnoremap("a", "<Esc>`>a")
 
 noremap("d", "\"_x") -- Delete current character, and don't copy to clipboard
 noremap("c", "\"_s") -- Change, and don't copy to clipboard
