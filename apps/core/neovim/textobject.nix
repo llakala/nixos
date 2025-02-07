@@ -9,10 +9,9 @@ let
       owner = "kana";
       repo = "vim-textobj-line";
       rev = "0a78169a33c7ea7718b9fa0fad63c11c04727291";
-      sha256 = "0mppgcmb83wpvn33vadk0wq6w6pg9cq37818d1alk6ka0fdj7ack";
+      hash = "sha256-k6kjmwNqmklVaCigMzBL7xpuMAezqT2G3ZcPtCp791Y=";
     };
   };
-
 
 in
 {
