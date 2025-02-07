@@ -1,6 +1,6 @@
 -- Create a map with noremap set to false
 local function mkRemap(mode, key, map)
-  vim.keymap.set(mode, key, map, { noremap = false })
+  vim.keymap.set(mode, key, map)
 end
 
 -- Create a map with noremap set to false
@@ -64,6 +64,9 @@ noremap("U", "<C-r>") -- Redo
 noremap("H", "g^")
 noremap("L", "g$")
 
+noremap("<", "<<")
+noremap(">", ">>")
+
 noremap("%", "ggVG") -- Select entire file
 noremap("gG","G") -- gG to go to end of file
 
@@ -80,3 +83,4 @@ o.smartcase = true
 o.autoindent = true
 o.expandtab = true -- spaces as tab
 o.tabstop = 2 -- 2 spaces for tabs
+o.shiftwidth = 2 -- 2 spaces for tabs
