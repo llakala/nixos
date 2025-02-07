@@ -38,7 +38,8 @@ end
 
 -- System clipboard always
 noremap("y", "\"+y")
-noremap("p", "\"+p")
+noremap("p", "\"+P") -- Paste before
+noremap("P", "\"+p") -- Paste after
 
 -- Have j and k navigate visual lines rather than logical ones
 nmap("j", "gj")
