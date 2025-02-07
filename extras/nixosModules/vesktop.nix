@@ -40,7 +40,14 @@ in
 
   config = lib.mkIf cfg.enable
   {
-    environment.systemPackages = lib.singleton cfg.package;
+    environment.systemPackages = lib.singleton
+    (
+      cfg.package.override
+      {
+        withSystemVencord = true;
+      }
+    );
+
     hm.xdg.configFile =
     {
       "vesktop/settings.json" = lib.mkIf (cfg.settings != { })
