@@ -36,5 +36,6 @@
     # Non-Nix
     fish.url = "https://fishshell.com/blog/feed.xml";
     nushell.url = "https://www.nushell.sh/rss.xml";
+    axlefublr.url = "https://axlefublr.github.io/rss.xml";
   };
 }
