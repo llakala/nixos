@@ -38,7 +38,10 @@ in
       vnoremap("x", "jg_")
       vnoremap("X", "kg_")
 
-      vnoremap("d", "$d")
+      -- Good idea, but breaks `d` when I'm in visual mode and want to
+      -- delete something that isn't a line. TODO: come back to this when
+      -- I have more neovim experience and can make a custom mode
+      -- vnoremap("d", "$d")
     '';
   };
 }
