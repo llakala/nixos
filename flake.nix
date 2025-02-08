@@ -32,12 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # BRING BACK IF YOU NEED UNSTABLE MODULES
-    # home-manager-unstable =
-    # {
-    #   url = "github:nix-community/home-manager/master";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    home-manager-unstable =
+    {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     kanagawa-yazi =
     {
@@ -79,8 +78,7 @@
 
     yazi-plugins =
     {
-      # TODO: unpin when https://nixpk.gs/pr-tracker.html?pr=380069 lands
-      url = "github:yazi-rs/plugins/02d18be03812415097e83c6a912924560e4cec6d";
+      url = "github:yazi-rs/plugins";
       flake = false;
     };
   };

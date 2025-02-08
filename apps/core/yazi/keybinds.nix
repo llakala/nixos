@@ -19,7 +19,7 @@ in
     {
       desc = "Move cursor to the bottom";
       on = [ "g" "G" ];
-      run = "arrow 99999999";
+      run = "arrow bot";
     }
 
     {

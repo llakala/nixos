@@ -8,7 +8,7 @@
     run = "plugin smart-paste";
   };
 
-  hm.xdg.configFile."yazi/plugins/smart-paste.yazi/init.lua".text =
+  hm.xdg.configFile."yazi/plugins/smart-paste.yazi/main.lua".text =
   /* lua */
   ''
     --- @sync entry
