@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-unstable, lib, config, ... }:
 
 let
   flake = "(builtins.getFlake \"${config.baseVars.configDirectory}\")";
@@ -12,7 +12,7 @@ in
     require("lspconfig").nixd.setup({
       cmd =
       {
-        "${lib.getExe pkgs.nixd}",
+        "${lib.getExe pkgs-unstable.nixd}",
         "--inlay-hints=false",
         "-semantic-tokens=true" -- NEEDED, makes syntax highlighting much better
       },
