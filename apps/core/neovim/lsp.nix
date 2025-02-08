@@ -9,6 +9,8 @@ in
   hm.programs.neovim.extraLuaConfig =
   /* lua */
   ''
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+
     require("lspconfig").nixd.setup({
       cmd =
       {
