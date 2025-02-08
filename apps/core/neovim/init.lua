@@ -80,6 +80,10 @@ noremap("L", "g$")
 noremap("<", "<<")
 noremap(">", ">>")
 
+-- Don't deselect when indenting/unindenting multiple lines
+vnoremap("<", "<gv")
+vnoremap(">", ">gv")
+
 noremap("%", "ggVG") -- Select entire file
 noremap("gG","G") -- gG to go to end of file
 
