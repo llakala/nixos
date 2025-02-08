@@ -66,6 +66,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Check https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md for updates
     neovimPlugins =
     {
       url = "github:NixNeovim/NixNeovimPlugins";
