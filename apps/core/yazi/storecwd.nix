@@ -10,7 +10,7 @@
 
   # Store the current working directory when we suspend Yazi
   # From https://github.com/Axlefublr/dotfiles/blob/38525a7f900709efe5d0ea3005b670203626794d/yazi/plugins/storecwd.yazi/init.lua#L5
-  hm.xdg.configFile."yazi/plugins/storecwd.yazi/init.lua".text =
+  hm.xdg.configFile."yazi/plugins/storecwd.yazi/main.lua".text =
   /* lua */
   ''
     --- @sync entry
