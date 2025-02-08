@@ -47,11 +47,23 @@ nmap("k", "gk")
 vmap("j", "gj")
 vmap("k", "gk")
 
+-- Move around without selecting at all
+nnoremap("<A-e>", "e")
+nnoremap("<A-b>", "b")
+vnoremap("<A-e>", "<Esc>e")
+vnoremap("<A-b>", "<Esc>b")
+
+-- Move around, selecting one word at a time
 nnoremap("e", "eviw")
 nnoremap("b", "bviwo")
-
 vnoremap("e", "<Esc>eviw")
 vnoremap("b", "<Esc>bviwo")
+
+-- Move around, continuing selection
+nnoremap("E", "ve")
+nnoremap("B", "vb")
+vnoremap("E", "e")
+vnoremap("B", "b")
 
 vnoremap("i", "<Esc>`<i")
 vnoremap("a", "<Esc>`>a")
