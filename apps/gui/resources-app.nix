@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 
@@ -7,7 +7,7 @@
     resources
   ];
 
-  hm.dconf.settings =
+  hm.dconf.settings = assert config.features.desktop == "gnome";
   {
     # Ctrl+Alt+Delete to open Resources
     "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =

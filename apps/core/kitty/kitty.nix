@@ -1,4 +1,4 @@
-{ pkgs-unstable, ... }:
+{ pkgs-unstable, config, ... }:
 
 {
   hm.programs.kitty =
@@ -47,6 +47,7 @@
 
   # Open terminal with Super+T
   hm.dconf.settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =
+  assert config.features.desktop == "gnome";
   [
     "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/"
   ];

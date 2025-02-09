@@ -1,5 +1,9 @@
+{ config, ... }:
+
 {
-  hm.programs.starship.enableTransience = true;
+  hm.programs.starship.enableTransience =
+    assert config.features.prompt == "starship"; # Error if we ever stop using starship
+    true;
 
   hm.programs.fish.functions =
   {
