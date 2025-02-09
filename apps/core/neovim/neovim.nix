@@ -16,8 +16,9 @@
       plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
       type = "lua";
       config =
+      /* lua */
       ''
-        require'nvim-treesitter.configs'.setup
+        require"nvim-treesitter.configs".setup
         {
           highlight =
           {

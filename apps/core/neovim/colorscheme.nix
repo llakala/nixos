@@ -2,13 +2,13 @@
 
 let
   plugins = inputs.neovimPlugins.packages.${pkgs.system};
-
 in
 {
-  hm.programs.neovim =
+  hm.programs.neovim.plugins = lib.singleton
   {
-    plugins = lib.singleton plugins.onedarkpro-nvim;
-    extraLuaConfig =
+    plugin = plugins.onedarkpro-nvim;
+    type = "lua";
+    config =
     /* lua */
     ''
       vim.opt.termguicolors = true

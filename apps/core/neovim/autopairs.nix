@@ -1,11 +1,14 @@
 { pkgs, lib, ... }:
 
 {
-  hm.programs.neovim.plugins = lib.singleton pkgs.vimPlugins.nvim-autopairs;
-
-  hm.programs.neovim.extraLuaConfig =
-  /* lua */
-  ''
-    require("nvim-autopairs").setup()
-  '';
+  hm.programs.neovim.plugins = lib.singleton
+  {
+    plugin = pkgs.vimPlugins.nvim-autopairs;
+    type = "lua";
+    config =
+    /* lua */
+    ''
+      require("nvim-autopairs").setup()
+    '';
+  };
 }
