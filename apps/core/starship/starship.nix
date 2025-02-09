@@ -1,6 +1,8 @@
 { lib, ... }:
 
 {
+  features.prompt = "starship"; # If we ever stop using Starship, change this
+
   hm.programs.starship =
   {
     enable = true;
