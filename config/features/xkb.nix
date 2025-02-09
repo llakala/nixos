@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
   layoutName = "custom";
@@ -22,6 +22,7 @@ in
   };
 
   hm.dconf.settings."org/gnome/desktop/input-sources" =
+  assert config.features.desktop == "gnome";
   {
     xkb-options =
     [
