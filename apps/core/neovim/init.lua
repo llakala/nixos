@@ -1,6 +1,6 @@
--- Create a map with noremap set to false
+-- Create a map with noremap set to true
 local function mkRemap(mode, key, map)
-  vim.keymap.set(mode, key, map)
+  vim.keymap.set(mode, key, map, { remap = true })
 end
 
 -- Create a map with noremap set to false
