@@ -5,6 +5,7 @@ let
 in
 {
   environment.variables.EDITOR = "nvim";
+  features.editor = "neovim"; # If we ever stop using Neovim, change this
 
   environment.systemPackages = lib.singleton neovimPackage;
 }

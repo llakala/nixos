@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  features.shell = "fish"; # If we ever stop using Fish, change this
+
   programs.command-not-found.enable = false; # Broken
 
   users.defaultUserShell = pkgs.fish;
