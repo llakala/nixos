@@ -87,11 +87,16 @@ vnoremap(">", ">gv")
 noremap("%", "ggVG") -- Select entire file
 noremap("gG","G") -- gG to go to end of file
 
+-- Comment/uncomment lines, Neovim 0.10 feature
+nmap("#", "gcc")
+vmap("#", "gc")
+
 local o = vim.opt
 local g = vim.g -- Global variables
 
 o.clipboard = "unnamed"
 o.undofile = true -- Persistent undo
+o.mouse = "" -- Disable mouse
 
 o.cursorline = true
 o.hlsearch = true -- Highlight search matches
