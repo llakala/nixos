@@ -13,6 +13,7 @@ in
     /* lua */
     ''
       vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+      vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
 
       require("lspconfig").nixd.setup({
         cmd =
