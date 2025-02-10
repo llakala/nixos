@@ -32,6 +32,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Pinning to commit before recent shell-integration changes
+    home-manager-yazi =
+    {
+      url = "github:nix-community/home-manager/bf9a1a068919ccdfa7d130873936c5fd4c826e85";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager-unstable =
     {
       url = "github:nix-community/home-manager/master";

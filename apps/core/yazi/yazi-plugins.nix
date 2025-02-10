@@ -8,7 +8,7 @@ in
   hm = # Use unstable home-manager module for compatibility with Yazi package update
   {
     disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
-    imports = lib.singleton "${inputs.home-manager-unstable}/modules/programs/yazi.nix";
+    imports = lib.singleton "${inputs.home-manager-yazi}/modules/programs/yazi.nix";
   };
 
   hm.programs.yazi.plugins =
