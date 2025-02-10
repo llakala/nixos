@@ -37,7 +37,8 @@ end
 
 
 -- System clipboard always
-noremap("y", "\"+y")
+nnoremap("y", "v\"+y")
+vnoremap("y", "\"+ygv") -- Bring back selection after copying
 noremap("p", "\"+P") -- Paste before
 noremap("P", "\"+p") -- Paste after
 
