@@ -90,7 +90,11 @@ noremap("gG","G") -- gG to go to end of file
 
 -- Comment/uncomment lines, Neovim 0.10 feature
 nmap("#", "gcc")
-vmap("#", "gc")
+vmap("#", "gcgv")
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+-- From kickstart
+nnoremap("<Esc>", "<cmd>nohlsearch<CR>")
 
 local o = vim.opt
 local g = vim.g -- Global variables
