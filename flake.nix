@@ -63,6 +63,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    meovim =
+    {
+      url = "github:llakala/meovim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     menu =
     {
       url = "github:llakala/menu";
@@ -71,14 +78,6 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # Check https://github.com/NixNeovim/NixNeovimPlugins/blob/main/plugins.md for updates
-    neovimPlugins =
-    {
-      url = "github:NixNeovim/NixNeovimPlugins";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-utils.follows = "flake-utils";
-    };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";

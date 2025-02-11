@@ -256,13 +256,55 @@
         "type": "github"
       }
     },
-    "neovimPlugins": {
+    "meovim": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
         ],
+        "mnw": "mnw",
+        "neovimPlugins": "neovimPlugins",
         "nixpkgs": [
           "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739234013,
+        "narHash": "sha256-OcfPXomKLqn58E84nT4vHoWX/melw5ILEsDXmCDIUvc=",
+        "owner": "llakala",
+        "repo": "meovim",
+        "rev": "37dd1b61a00bb780af71718b0fd9f259011a2f50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "meovim",
+        "type": "github"
+      }
+    },
+    "mnw": {
+      "locked": {
+        "lastModified": 1738852285,
+        "narHash": "sha256-8Y1uyE6gGHxdU0Vcx2CMg/dAmDSxJw19aAl3TKbbo54=",
+        "owner": "Gerg-L",
+        "repo": "mnw",
+        "rev": "6ae73dc9cb72cea17bcc2e3d4670825f483e80e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "mnw",
+        "type": "github"
+      }
+    },
+    "neovimPlugins": {
+      "inputs": {
+        "flake-utils": [
+          "meovim",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "meovim",
+          "nixpkgs"
         ],
         "poetry2nix": "poetry2nix"
       },
@@ -283,6 +325,7 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
+          "meovim",
           "neovimPlugins",
           "poetry2nix",
           "nixpkgs"
@@ -353,11 +396,13 @@
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
+          "meovim",
           "neovimPlugins",
           "flake-utils"
         ],
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
+          "meovim",
           "neovimPlugins",
           "nixpkgs"
         ]
@@ -389,7 +434,7 @@
         "lix-module": "lix-module",
         "llakaLib": "llakaLib",
         "menu": "menu",
-        "neovimPlugins": "neovimPlugins",
+        "meovim": "meovim",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
