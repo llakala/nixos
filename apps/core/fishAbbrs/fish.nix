@@ -4,7 +4,7 @@
 
   hm.programs.fish.shellAbbrs =
   {
-    cdn = "cd ${config.baseVars.configDirectory}";
+    cn = "cd ${config.baseVars.configDirectory}";
 
     m = "man";
     py = "python";
