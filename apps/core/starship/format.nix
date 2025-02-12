@@ -9,6 +9,7 @@
 
     "$fill"
 
+    "$custom"
     "$cmd_duration"
     "$time"
     "$line_break"

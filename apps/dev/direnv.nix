@@ -4,7 +4,13 @@
     enable = true;
     silent = true;
 
-    nix-direnv.enable = true;
+    # Using Lorri instead
+    # nix-direnv.enable = true;
+  };
+
+  services.lorri =
+  {
+    enable = true;
   };
 
 
