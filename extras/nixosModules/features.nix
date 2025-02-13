@@ -32,7 +32,7 @@
       default = null;
     };
 
-    abbreviationsProvider = lib.mkOption
+    abbreviations = lib.mkOption
     {
       type = lib.types.str;
       description = "The chosen provider of abbrevations";

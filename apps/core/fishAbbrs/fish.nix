@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  features.abbreviationsProvider = "fish";
+  features.abbreviations = "fish";
 
   hm.programs.fish.shellAbbrs =
   {
