@@ -1,6 +1,8 @@
 { pkgs-unstable, config, ... }:
 
 {
+  features.terminal = "kitty"; # Change if I ever stop using Kitty
+
   hm.programs.kitty =
   {
     enable = true;
