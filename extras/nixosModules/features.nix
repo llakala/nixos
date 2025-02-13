@@ -45,5 +45,34 @@
       description = "The chosen program for accessing direnv functionality";
       default = null;
     };
+
+    browser = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen browser";
+      default = null;
+    };
+
+    terminal = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen terminal";
+      default = null;
+    };
+
+    fileManager = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen file manager";
+      default = null;
+    };
+
+    pdfViewer = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen PDF viewer";
+      default = null;
+    };
+
   };
 }

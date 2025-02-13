@@ -1,6 +1,8 @@
 { pkgs, inputs, lib, ...}:
 
 {
+  features.browser = "firefox"; # Change if we ever stop using Firefox (unlikely)
+
   hm.programs.firefox =
   {
     enable = true;

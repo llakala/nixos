@@ -1,6 +1,8 @@
 { config, ... }:
 
 {
+  features.fileManager = "yazi"; # Change if we ever stop using Yazi
+
   hm.programs.yazi =
   {
     enable = true;
