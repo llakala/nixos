@@ -88,5 +88,12 @@
       default = null;
     };
 
+    usingKittab = lib.mkOption
+    {
+      type = lib.types.bool;
+      description = "Whether kittab is setup and being used.";
+      default = false;
+    };
+
   };
 }

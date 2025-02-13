@@ -70,6 +70,8 @@ in
   config = lib.mkIf cfg.enable
   {
     xdg.mime.enable = true;
+
+    # NixOS stores these to /etc/xdg/mimeapps.list
     xdg.mime.defaultApplications =
     {
       "text/html" = cfg.browser;

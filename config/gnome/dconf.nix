@@ -1,13 +1,16 @@
+{ config, ... }:
+
 {
   hm.dconf.settings =
   {
     "org/gnome/shell" =
     {
       favorite-apps = # Taskbar apps
+      assert config.features.usingKittab == true;
       [
         "firefox.desktop"
         "org.gnome.Nautilus.desktop"
-        "kitty.desktop"
+        "kittab.desktop"
         "vesktop.desktop"
         "obsidian.desktop"
        ];

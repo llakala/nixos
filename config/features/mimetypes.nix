@@ -22,7 +22,8 @@ in
 
     terminal =
       assert feats.terminal == "kitty";
-      "kitty.desktop";
+      assert feats.usingKittab == true;
+      "kittab.desktop";
 
     pdfViewer =
       assert feats.pdfViewer == "evince";
