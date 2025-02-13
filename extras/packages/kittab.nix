@@ -1,29 +1,36 @@
-{ llakaLib, pkgs, ... }:
+{ llakaLib, ... }:
 
+/*
+Wrapping script around Kitty, to open new tabs in the existing OS window
+We do some hackiness to get around xdg problems. First, we make the kitty window
+use kittab as its name and class, so it doesn't open `kitty.desktop`, and instead stays
+confined to `kittab.desktop`. This means we can have kittab in our favorite apps list, and
+avoid duplication.
+Second, we remove `-e` from argv, because while the `kitty` command seems to work fine with
+it, `kitten @ launch` hates it.
+*/
 llakaLib.writeFishApplication
 {
-  name = "kittab"; # Wrapping script around Kitty, to open new tabs in the existing OS window
+  name = "kittab";
 
-  # Using runtime inputs seems to break things, so we rely on the system version.
+  # Using runtime inputs seems to break things, so we rely on the system version of kitty.
+
   text =
   /* fish */
   ''
-    set socket "unix:/tmp/mykitty"
+    set socket "unix:@mykitty"
 
-    function good_kitty
-      if ! kitten @ focus-window --to $socket &> /dev/null
-        # Create new window, with class and name set to reuse the kittab desktop entry
-        kitty --detach --directory="~" -o allow_remote_control=yes --listen-on $socket --class kittab --name kittab
-      end
-      kitten @ focus-window --to $socket &> /dev/null
+    if [ "$argv[1]" = "-e" ]
+        set -e argv[1]
     end
 
-    if kitten @ launch --type=tab --to $socket &> /dev/null
-      # Open tab in existing window
-      kitten @ focus-window --to $socket &> /dev/null
+    # Try opening a tab in existing window
+    if kitten @ launch --type=tab --to $socket $argv
+        kitten @ focus-window --to $socket &> /dev/null
+
+    # If we couln't launch a tab OS window must not exist. Create it.
     else
-      # Create new window, storing to socket
-      good_kitty
+        kitty --listen-on $socket --class kittab --name kittab $argv
     end
   '';
 }

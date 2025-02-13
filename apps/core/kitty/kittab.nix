@@ -1,24 +1,33 @@
-{ self, pkgs, lib, ... }:
+{ self, pkgs, ... }:
 
 let
   kittab = self.legacyPackages.${pkgs.system}.kittab;
-in
-{
-  features.usingKittab = true; # For assertions, so we can rely on kittab's existence
 
   # Create a new desktop entry that we'll use for opening Kitty
   # Within the Kittab script, we make Kitty open with class/name Kittab, so it doesn't
   # open `kitty.desktop`, but instead stays within `kittab.desktop`
-  # Also, for the curious, home-manager stores this at:
-  # /etc/profiles/per-user/MYUSERNAME/share/applications
-  hm.xdg.desktopEntries.kittab =
+  # Stored to /run/current-system/sw/share/applications
+  kittabEntry = pkgs.makeDesktopItem
   {
-    name = "Kittab";
-    genericName = "Text Editor";
-    exec = "${lib.getExe kittab}";
+    type = "Application";
+
+    name = "kittab"; # ${name}.desktop
+    desktopName = "Kittab";
+
+    genericName = "Terminal emulator";
+
+    exec = "kittab";
     icon = "kitty";
-    terminal = false;
-    categories = [ "Development" "IDE" ];
-    mimeType = [ "text/plain" ];
+    categories = [ "System" "TerminalEmulator" ]; # Apparently these are important, removing them broke things
   };
+
+in
+{
+  features.usingKittab = true; # For assertions, so we can rely on kittab's existence
+
+  environment.systemPackages =
+  [
+    kittab
+    kittabEntry
+  ];
 }
