@@ -2,7 +2,7 @@
 
 {
   hm.programs.starship.enableTransience =
-    assert config.features.prompt == "starship"; # Error if we ever stop using starship
+    assert config.features.shell == "fish"; # Error if we ever stop using fish
     true;
 
   hm.programs.fish.functions =
