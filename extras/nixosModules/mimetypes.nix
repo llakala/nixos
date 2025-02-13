@@ -79,6 +79,7 @@ in
       "x-scheme-handler/unknown" = cfg.browser;
 
       "text/*" = cfg.editor;
+      "text/plain" = cfg.editor;
       "application/x-zerosize" = cfg.editor; # Empty files
       "application/x-trash" = cfg.editor; # Backup files
       "application/json" = cfg.editor;
