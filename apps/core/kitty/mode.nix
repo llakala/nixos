@@ -10,25 +10,25 @@
   ''
     # Flags have to be before the actual binding to work
     # Doing something unknown leaves the mode
-    map --new-mode KITTAB --on-unknown end ctrl+k
+    map --new-mode KITMODE --on-unknown end ctrl+k
 
     # Exit mode automatically when creating/deleting tabs
-    map --mode KITTAB t new_tab
-    map --mode KITTAB d close_window
+    map --mode KITMODE t new_tab
+    map --mode KITMODE d close_window
 
-    map --mode KITTAB h previous_tab
-    map --mode KITTAB l next_tab
-    map --mode KITTAB shift+h move_tab_backward
-    map --mode KITTAB shift+l move_tab_forward
+    map --mode KITMODE h previous_tab
+    map --mode KITMODE l next_tab
+    map --mode KITMODE shift+h move_tab_backward
+    map --mode KITMODEshift+l move_tab_forward
 
-    map --mode KITTAB k scroll_line_up
-    map --mode KITTAB j scroll_line_down
-    map --mode KITTAB shift+k scroll_to_prompt -1
-    map --mode KITTAB shift+j scroll_to_prompt 1
+    map --mode KITMODE k scroll_line_up
+    map --mode KITMODE j scroll_line_down
+    map --mode KITMODE shift+k scroll_to_prompt -1
+    map --mode KITMODE shift+j scroll_to_prompt 1
 
     # Exit mode
-    map --mode KITTAB i pop_keyboard_mode
-    map --mode KITTAB esc pop_keyboard_mode
+    map --mode KITMODE i pop_keyboard_mode
+    map --mode KITMODE esc pop_keyboard_mode
 
   '';
 }
