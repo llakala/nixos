@@ -35,10 +35,13 @@
     gnome-terminal
     dconf-editor
     baobab
-    totem # Image viewer
-    loupe # Video viewer
+    loupe # Image viewer
+    totem # Video viewer
     adwaita-icon-theme
   ];
+
+  features.imageViewer = "loupe";
+  features.videoViewer = "totem";
 
   environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
 }

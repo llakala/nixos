@@ -1,17 +1,45 @@
+{ config, ... }:
+
+let
+  feats = config.features;
+in
 {
   custom.services.mimetypes =
   {
     enable = true;
 
-    browser = "firefox.desktop";
-    editor = "Helix.desktop";
-    fileManager = "org.gnome.Nautilus.desktop";
-    terminal = "kitty.desktop";
-    extractor = "org.gnome.Nautilus.desktop";
+    browser =
+      assert feats.browser == "firefox";
+      "firefox.desktop";
 
-    pdfViewer = "org.pwmt.zathura.desktop";
-    imageViewer = "org.gnome.Loupe.desktop";
-    videoViewer = "org.gnome.Totem.desktop";
+    editor =
+      assert feats.editor == "neovim";
+      "nvim.desktop";
+
+    fileManager =
+      assert feats.fileManager == "yazi";
+      "yazi.desktop";
+
+    terminal =
+      assert feats.terminal == "kitty";
+      "kitty.desktop";
+
+    pdfViewer =
+      assert feats.pdfViewer == "evince";
+      "org.gnome.Evince.desktop";
+
+    # Reusing file manager for extraction
+    extractor =
+      assert feats.fileManager == "yazi";
+      "yazi.desktop";
+
+    imageViewer =
+      assert feats.imageViewer == "loupe";
+      "org.gnome.Loupe.desktop";
+
+    videoViewer =
+      assert feats.videoViewer == "totem";
+      "org.gnome.Totem.desktop";
   };
 
 }

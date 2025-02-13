@@ -74,5 +74,19 @@
       default = null;
     };
 
+    imageViewer = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen image viewer";
+      default = null;
+    };
+
+    videoViewer = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen video viewer";
+      default = null;
+    };
+
   };
 }
