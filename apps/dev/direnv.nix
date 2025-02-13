@@ -1,4 +1,6 @@
 {
+  features.direnv = "lorri"; # Change if we ever stop using lorri
+
   programs.direnv =
   {
     enable = true;

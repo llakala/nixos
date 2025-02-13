@@ -38,5 +38,12 @@
       description = "The chosen provider of abbrevations";
       default = null;
     };
+
+    direnv = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The chosen program for accessing direnv functionality";
+      default = null;
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   # referenced from:
@@ -6,6 +6,7 @@
   # Theirs wasn't working for me, though (possibly a skill issue on my part)
   # I made `when` always be true, which may have fixed it
   hm.programs.starship.settings.custom.lorri =
+  assert config.features.direnv == "lorri";
   {
     description = "Whether lorri has finished evaluation yet";
     symbol = "";
