@@ -9,14 +9,11 @@
     shellWrapperName = "y";
   };
 
-  hm.programs.yazi.settings.opener.edit = # Custom options when opening a file
-  [
-    {
-      run = ''${config.baseVars.editor} "$@" '';
-      desc = "Open with the default editor.";
-      block = true;
-    }
-  ];
+  # We can't use xdg-open for opening files with editor,
+  # because it would start a new Kitty window
+  # Instead, Yazi just uses $EDITOR, which is fine.
+  # See the relevant issue for fixing that:
+  # https://github.com/llakala/nixos/issues/74
 
   hm.programs.yazi.settings.manager =
   {
