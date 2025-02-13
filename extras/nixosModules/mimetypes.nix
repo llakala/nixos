@@ -2,8 +2,6 @@
 
 let
   cfg = config.custom.services.mimetypes;
-  # allPackages = config.environment.systemPackages ++ config.home-manager.users.${config.hostVars.hostname}.home.packages; # We assume hostVars exists, but that shouldn't be a problem
-  # packageExists = package: builtins.elem package allPackages;
 in
 {
   options.custom.services.mimetypes =
@@ -14,52 +12,59 @@ in
     {
       type = lib.types.str;
       description = "The desktop entry for your browser of choice";
+      default = null;
     };
 
     editor = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your text editor of choice";
+      default = null;
     };
 
     terminal = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your terminal of choice.";
+      default = null;
     };
 
     extractor = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your file extractor/archiver of choice.";
+      default = null;
     };
 
     fileManager = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your file manager of choice.";
+      default = null;
     };
 
     imageViewer = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your image viewer of choice.";
+      default = null;
     };
 
     videoViewer = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your video viewer of choice.";
+      default = null;
     };
 
     pdfViewer = lib.mkOption
     {
       type = lib.types.str;
       description = "The desktop entry for your PDF viewer of choice.";
+      default = null;
     };
 
 
-    
   };
 
   config = lib.mkIf cfg.enable
@@ -95,7 +100,10 @@ in
     };
 
 
-    xdg.terminal-exec.enable = true; # From NixOS xdg module, not Home-Manager one
-    xdg.terminal-exec.settings.default = lib.singleton cfg.terminal;
+    xdg.terminal-exec =
+    {
+      enable = true;
+      settings.default = lib.singleton cfg.terminal;
+    };
   };
 }
