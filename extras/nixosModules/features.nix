@@ -1,99 +1,47 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
+let
+  mkFeature = description: lib.mkOption
+  {
+    type = lib.types.str;
+    description = "The chosen ${description}.";
+    default = null;
+  };
+
+  mkBoolFeature = description: lib.mkOption
+  {
+    type = lib.types.bool;
+    description = "Whether ${description} is being used.";
+  };
+
+in
 {
   options.features =
   {
+    shell = mkFeature "shell, which provides some form of initExtra access";
 
-    shell = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The primary shell, which provides some form of initExtra access";
-      default = null;
-    };
+    desktop = mkFeature "desktop environment";
 
-    desktop = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen desktop environment";
-      default = null;
-    };
+    prompt = mkFeature "shell prompt";
 
-    prompt = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen shell prompt";
-      default = null;
-    };
+    editor = mkFeature "editor";
 
-    editor = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen editor";
-      default = null;
-    };
+    abbreviations = mkFeature "provider of abbreviations";
 
-    abbreviations = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen provider of abbrevations";
-      default = null;
-    };
+    direnv = mkFeature "program for providing direnv functionality";
 
-    direnv = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen program for accessing direnv functionality";
-      default = null;
-    };
+    browser = mkFeature "browser";
 
-    browser = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen browser";
-      default = null;
-    };
+    terminal = mkFeature "terminal";
 
-    terminal = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen terminal";
-      default = null;
-    };
+    fileManager = mkFeature "file manager";
 
-    fileManager = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen file manager";
-      default = null;
-    };
+    pdfViewer = mkFeature "PDF viewer";
 
-    pdfViewer = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen PDF viewer";
-      default = null;
-    };
+    imageViewer = mkFeature "image viewer";
 
-    imageViewer = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen image viewer";
-      default = null;
-    };
+    videoViewer = mkFeature "video viewer";
 
-    videoViewer = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The chosen video viewer";
-      default = null;
-    };
-
-    usingKittab = lib.mkOption
-    {
-      type = lib.types.bool;
-      description = "Whether kittab is setup and being used.";
-      default = false;
-    };
-
+    usingKittab = mkBoolFeature "kittab";
   };
 }
