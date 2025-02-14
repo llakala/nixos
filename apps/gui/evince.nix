@@ -1,5 +1,5 @@
 {
-  features.pdfViewer = "evince";
+  features.pdfs = "evince";
   programs.evince =
   {
     enable = true;

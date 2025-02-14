@@ -17,7 +17,7 @@ in
       "nvim.desktop";
 
     fileManager =
-      assert feats.fileManager == "yazi";
+      assert feats.files == "yazi";
       "yazi.desktop";
 
     terminal =
@@ -26,20 +26,20 @@ in
       "kittab.desktop";
 
     pdfViewer =
-      assert feats.pdfViewer == "evince";
+      assert feats.pdfs == "evince";
       "org.gnome.Evince.desktop";
 
     # Reusing file manager for extraction
     extractor =
-      assert feats.fileManager == "yazi";
+      assert feats.files == "yazi";
       "yazi.desktop";
 
     imageViewer =
-      assert feats.imageViewer == "loupe";
+      assert feats.images == "loupe";
       "org.gnome.Loupe.desktop";
 
     videoViewer =
-      assert feats.videoViewer == "totem";
+      assert feats.videos == "totem";
       "org.gnome.Totem.desktop";
   };
 

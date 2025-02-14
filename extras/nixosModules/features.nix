@@ -34,13 +34,13 @@ in
 
     terminal = mkFeature "terminal";
 
-    fileManager = mkFeature "file manager";
+    files = mkFeature "file manager";
 
-    pdfViewer = mkFeature "PDF viewer";
+    pdfs = mkFeature "PDF viewer";
 
-    imageViewer = mkFeature "image viewer";
+    images = mkFeature "image viewer";
 
-    videoViewer = mkFeature "video viewer";
+    videos = mkFeature "video viewer";
 
     usingKittab = mkBoolFeature "kittab";
   };
