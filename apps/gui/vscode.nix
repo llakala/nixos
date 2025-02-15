@@ -1,11 +1,11 @@
-{ pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   hm.programs.vscode =
   {
     enable = true;
 
-    package = pkgs-unstable.vscode.override
+    package = pkgs.vscode.override
     {
       commandLineArgs =
       [ # Vscode isn't really ready

@@ -11,12 +11,12 @@ let
     shortwave # Internet radio
     obsidian # Notes
     libreoffice
+    modrinth-app
     # krita # Image editing, currently broken
   ];
 
   unstablePackages = with pkgs-unstable;
   [
-    modrinth-app
   ];
 
 
