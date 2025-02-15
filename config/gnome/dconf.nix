@@ -1,16 +1,26 @@
 { config, ... }:
 
+let
+  feats = config.features;
+in
 {
   hm.dconf.settings =
   {
     "org/gnome/shell" =
     {
       favorite-apps = # Taskbar apps
-      assert config.features.usingKittab == true;
+      assert feats.browser == "firefox";
+      assert feats.files == "yazi";
+      assert feats.terminal == "kitty";
+      assert feats.usingKittab == true;
+      assert feats.editor == "neovim";
+      assert feats.discord == "vesktop";
+      assert feats.math == "obsidian";
       [
         "firefox.desktop"
-        "org.gnome.Nautilus.desktop"
+        "yazi.desktop"
         "kittab.desktop"
+        "nvim.desktop"
         "vesktop.desktop"
         "obsidian.desktop"
        ];

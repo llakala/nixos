@@ -1,4 +1,6 @@
 {
+  features.discord = "vesktop"; # Change if we ever stop using vesktop
+
   custom.programs.vesktop =
   {
     enable = true;

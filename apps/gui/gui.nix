@@ -9,7 +9,6 @@ let
     moonlight-qt
     spotify
     shortwave # Internet radio
-    obsidian # Notes
     libreoffice
     modrinth-app
     # krita # Image editing, currently broken

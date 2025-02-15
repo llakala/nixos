@@ -42,6 +42,10 @@ in
 
     videos = mkFeature "video viewer";
 
+    discord = mkFeature "Discord client";
+
+    math = mkFeature "math notes";
+
     usingKittab = mkBoolFeature "kittab";
   };
 }
