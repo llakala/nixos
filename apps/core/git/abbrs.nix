@@ -75,8 +75,7 @@
     gre = "git reset";
     greh = "git reset --hard";
 
-    gd = "git diff HEAD"; # Including both unstaged and staged changes
-    gds = "git diff --staged";
+    gd = "git diff --staged"; # Staged changes
     gdu = "git diff"; # Unstaged changes
 
     grw = "git reword";
