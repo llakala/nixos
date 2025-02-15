@@ -10,10 +10,12 @@
     # Most commonly-run git commands get two letters
     gs = "git status";
     gc = "git commit";
-    ga = "git add .";
     gn = "git unstage ."; # Alias of `git restore --staged`
     gl = "git log";
     gp = "git push";
+
+    ga = "git add .";
+    gac = "git commit .";
 
     ganf = "git add -AN"; # Add all new files
     gunf = "git unstage-new-files"; # Alias, unstage new file existence
