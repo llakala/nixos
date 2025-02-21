@@ -1,7 +1,6 @@
 {
   hm.programs.fish.shellAbbrs =
   {
-    n = "nix";
     nd = "nix develop";
     nr = "nix run";
     ns = "nix shell";
