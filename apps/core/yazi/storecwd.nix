@@ -1,16 +1,24 @@
 { lib, config, ... }:
 
 {
-  hm.programs.yazi.keymap.manager.prepend_keymap = lib.singleton
-  {
-    desc = "Suspend Yazi, writing the current directory to a file";
-    on = "<C-z>";
-    run = "plugin storecwd";
-  };
+  hm.programs.yazi.keymap.manager.prepend_keymap =
+  [
+    {
+      desc = "Suspend Yazi, writing the current directory to a file";
+      on = "<C-z>";
+      run = "plugin suspendcwd";
+    }
+
+    {
+      desc = "Open file and write the current directory to a file";
+      on = "o";
+      run = "plugin opencwd";
+    }
+  ];
 
   # Store the current working directory when we suspend Yazi
   # From https://github.com/Axlefublr/dotfiles/blob/38525a7f900709efe5d0ea3005b670203626794d/yazi/plugins/storecwd.yazi/init.lua#L5
-  hm.xdg.configFile."yazi/plugins/storecwd.yazi/main.lua".text =
+  hm.xdg.configFile."yazi/plugins/suspendcwd.yazi/main.lua".text =
   /* lua */
   ''
     --- @sync entry
@@ -22,8 +30,24 @@
           file:write(cwd)
           file:close()
         end
-        ya.err("HIIIII")
         ya.manager_emit('suspend', {})
+      end,
+    }
+  '';
+
+  hm.xdg.configFile."yazi/plugins/opencwd.yazi/main.lua".text =
+  /* lua */
+  ''
+    --- @sync entry
+    return {
+      entry = function()
+        local cwd = tostring(cx.active.current.cwd)
+        local file = io.open('/tmp/yazi-cwd-suspend', 'w')
+        if file then
+          file:write(cwd)
+          file:close()
+        end
+        ya.manager_emit('open', {})
       end,
     }
   '';
