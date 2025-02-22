@@ -268,11 +268,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740092347,
-        "narHash": "sha256-FgY9c1srukzf1DPzBSLfwvrnT3+C6lDRE+MWhvggB/I=",
+        "lastModified": 1740191409,
+        "narHash": "sha256-B41iiMMw2D+LfCgLa9n/F7cAFQc7H3GmIbceORgypsU=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "618e89d370d608f1583b60354a551b9d7278110b",
+        "rev": "ae0560097f03726a2c698918a87771f018f2a0df",
         "type": "github"
       },
       "original": {
