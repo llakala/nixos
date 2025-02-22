@@ -10,6 +10,7 @@
     # nix-direnv.enable = true;
   };
 
+  # Sometimes fails - run `systemctl restart --user lorri` to fix
   services.lorri =
   {
     enable = true;
