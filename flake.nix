@@ -19,6 +19,13 @@
 
     flake-utils.url = "github:numtide/flake-utils"; # Not actually using this, but we need to pin other things to the same version
 
+    git-repo-manager =
+    {
+      url = "github:hakoerber/git-repo-manager/develop";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     gasp =
     {
       url = "github:llakala/gasp";

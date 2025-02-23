@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "git-repo-manager",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724006180,
+        "narHash": "sha256-PVxPj0Ga2fMYMtcT9ARCthF+4U71YkOT7ZjgD/vf1Aw=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "7ce92819802bc583b7e82ebc08013a530f22209f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": [
@@ -94,6 +115,32 @@
       "original": {
         "owner": "llakala",
         "repo": "gasp",
+        "type": "github"
+      }
+    },
+    "git-repo-manager": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1738686683,
+        "narHash": "sha256-9Wh8xlyTsNNGUjXkN9phqMG0VZAdGb7beURe3N8CVWw=",
+        "owner": "hakoerber",
+        "repo": "git-repo-manager",
+        "rev": "fd5cd60c1dc9c225d7851fe935a7bdbafb268d69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hakoerber",
+        "ref": "develop",
+        "repo": "git-repo-manager",
         "type": "github"
       }
     },
@@ -427,6 +474,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-utils": "flake-utils",
         "gasp": "gasp",
+        "git-repo-manager": "git-repo-manager",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
         "home-manager-yazi": "home-manager-yazi",
@@ -439,6 +487,27 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "yazi-plugins": "yazi-plugins"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "git-repo-manager",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724293269,
+        "narHash": "sha256-x/XhOAszT/ejditCHUtGOjQcVg2AQhrC/QVew3i7kTI=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "6dc6d34a3a217457d7044dcce32b6d537480a6a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {
