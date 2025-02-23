@@ -51,12 +51,17 @@
 
     /* Remove bookmark star */
     #star-button-box {
-      display:none !important;
+      display: none !important;
     }
 
     /* Remove "Protection shield" icon */
     #tracking-protection-icon-container {
-      display: none;
+      display: none !important;
+    }
+
+    #vertical-pinned-tabs-container,
+    scrollbox {
+      scrollbar-width: auto !important;
     }
   '';
 }
