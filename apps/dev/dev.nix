@@ -9,5 +9,6 @@
     cargo
     rustc
     ruby
+    lua
   ];
 }
