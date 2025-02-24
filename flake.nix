@@ -75,6 +75,7 @@
       url = "github:llakala/meovim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.llakaLib.follows = "llakaLib";
     };
 
     menu =
