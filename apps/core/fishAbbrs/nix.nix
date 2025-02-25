@@ -29,6 +29,8 @@
     nrpn = "nix repl nixpkgs";
     nrpf = "nixos-rebuild repl";
 
+    nba = "nix-build -A";
+
     ndr = "nix-direnv-reload";
   };
 }
