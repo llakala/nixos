@@ -11,9 +11,9 @@ in
   hm.programs.yazi.keymap.manager.prepend_keymap =
   [
     {
-      desc = "Open the selected files";
-      on = "i"; # Same as "o" for open, but for my helix muscle memory
-      run = "open";
+      desc = "Disable Yazi tabs"; # Trying to only use Neovim tabs
+      on = "t";
+      run = "noop";
     }
 
     {
