@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   # Package used for smart-paste. Installed here so we don't rely
@@ -21,31 +21,6 @@ in
       on = [ "g" "G" ];
       run = "arrow bot";
     }
-
-    {
-      desc = "Go to the NixOS configuration directory";
-      on = ["g" "n"];
-      run = "cd ${config.baseVars.configDirectory}";
-    }
-
-    {
-      desc = "Go to the projects folder for working on my personal repos";
-      on = [ "g" "p" ];
-      run = "cd ~/Documents/projects";
-    }
-
-    {
-      desc = "Go to the classes directory for working on homework";
-      on = [ "g" "c" ];
-      run = "cd ~/Documents/classes";
-    }
-
-    {
-      desc = "Go to the repos directory for working on external Git repos";
-      on = [ "g" "r" ];
-      run = "cd ~/Documents/repos";
-    }
-
 
     {
       desc = "When copying, copy to the system clipboard as well";
