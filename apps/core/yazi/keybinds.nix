@@ -17,6 +17,12 @@ in
     }
 
     {
+      desc = "Go to the top of the git repo";
+      on = [ "g" "r" ];
+      run = "shell -- ya emit cd \"$(git rev-parse --show-toplevel)\"";
+    }
+
+    {
       desc = "Move cursor to the bottom";
       on = [ "g" "G" ];
       run = "arrow bot";
