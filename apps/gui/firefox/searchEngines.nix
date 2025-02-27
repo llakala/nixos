@@ -45,6 +45,17 @@
       definedAliases = lib.singleton "@gf";
     };
 
+    "Github Search Lua" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search?type=code&q=lang:lua+NOT+is:fork+{searchTerms}";
+      };
+
+      iconUpdateURL = "https://github.com/favicon.ico";
+      definedAliases = lib.singleton "@gl";
+    };
+
     "Noogle" =
     {
       urls = lib.singleton
