@@ -1,10 +1,12 @@
 {
-  hostName = "mypc";
+  hostVars =
+  {
+    hostName = "desktop";
 
-  username = "username";
-  homeDirectory = "/home/username";
+    username = "emanresu";
 
-  scalingFactor = 1; # 100% scaling
+    scalingFactor = 1; # 100% scaling
 
-  stateVersion = "23.11";
+    stateVersion = "24.05";
+  };
 }
