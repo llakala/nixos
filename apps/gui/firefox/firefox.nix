@@ -29,5 +29,7 @@
     };
   };
 
+  hm.home.file.".mozilla/firefox/profiles.ini".force = true;
+
   environment.variables.BROWSER = "firefox"; # `man` likes having this
 }
