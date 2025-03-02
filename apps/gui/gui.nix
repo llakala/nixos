@@ -10,7 +10,7 @@ let
     spotify
     shortwave # Internet radio
     libreoffice
-    modrinth-app
+    prismlauncher
     # krita # Image editing, currently broken
   ];
 
