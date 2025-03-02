@@ -31,6 +31,7 @@
         "file://${config.hostVars.homeDirectory}/VMS"
       ];
     };
+    xdg.configFile."gtk-3.0/bookmarks".force = true;
 
     xdg.userDirs =
     {
