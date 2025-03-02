@@ -6,6 +6,12 @@ in
 {
   options.hostVars =
   {
+    configDirectory = lib.mkOption
+    {
+      type = lib.types.str;
+      description = "The directory of the local nixos configuration.";
+      default = null;
+    };
 
     hostName = lib.mkOption
     {
@@ -47,6 +53,9 @@ in
 
   config.assertions =
   [
+    {
+      assertion = options.hostVars.configDirectory.isDefined;
+    }
     {
       assertion = options.hostVars.hostName.isDefined;
     }

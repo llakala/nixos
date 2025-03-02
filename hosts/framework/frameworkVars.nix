@@ -1,6 +1,7 @@
 {
   hostVars =
   {
+    configDirectory = "/etc/nixos";
     hostName = "framework";
     username = "emanresu";
 

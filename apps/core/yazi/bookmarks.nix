@@ -32,7 +32,7 @@
     {
       desc = "Go to the NixOS configuration directory";
       on = ["b" "n"];
-      run = "cd ${config.baseVars.configDirectory}";
+      run = "cd ${config.hostVars.configDirectory}";
     }
 
     {

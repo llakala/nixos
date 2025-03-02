@@ -3,13 +3,6 @@
 {
   options.baseVars =
   {
-    configDirectory = lib.mkOption
-    {
-      type = lib.types.str;
-      description = "The directory of the local nixos configuration.";
-      default = null;
-    };
-
     editor = lib.mkOption
     {
       type = lib.types.str;
@@ -34,9 +27,6 @@
 
   config.assertions =
   [
-    {
-      assertion = options.baseVars.configDirectory.isDefined;
-    }
     {
       assertion = options.baseVars.editor.isDefined;
     }

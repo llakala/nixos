@@ -63,7 +63,7 @@
 
   hm.programs.helix.languages.language-server.nixd =
   let
-    flake = "(builtins.getFlake \"${config.baseVars.configDirectory}\")";
+    flake = "(builtins.getFlake \"${config.hostVars.configDirectory}\")";
     hostOptions = flake + ".nixosConfigurations.${config.hostVars.hostName}.options";
   in
   {

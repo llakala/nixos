@@ -1,6 +1,7 @@
 {
   hostVars =
   {
+    configDirectory = "~/Documents/repos/nixos";
     hostName = "desktop";
 
     username = "emanresu";
