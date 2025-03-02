@@ -7,6 +7,8 @@ https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/science/math/math
 
 Next, download the installer for the proper version. You can choose a version here:
 https://account.wolfram.com/products/downloads/mathematica
+This is the link to the version I'm using here:
+https://account.wolfram.com/dl/Mathematica?version=14.1&platform=Linux&downloadManager=false&includesDocumentation=false
 
 Add the downloaded file to the nix store via:
 nix-store --add-fixed sha256 /home/emanresu/Downloads/Wolfram_14.1.0_LIN.sh
