@@ -1,10 +1,13 @@
+let
+  username = "emanresu";
+in
 {
   hostVars =
   {
-    configDirectory = "~/Documents/repos/nixos";
+    configDirectory = "/home/${username}/Documents/projects/nixos";
     hostName = "desktop";
 
-    username = "emanresu";
+    inherit username;
 
     scalingFactor = 1; # 100% scaling
 
