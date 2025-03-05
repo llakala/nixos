@@ -19,17 +19,17 @@ let
       end,
     }
   '';
-
 in
 {
+
+  hm.xdg.configFile =
+  {
+    "yazi/plugins/suspendcwd.yazi/main.lua".text = mkCwd "suspend";
+    "yazi/plugins/opencwd.yazi/main.lua".text = mkCwd "open";
+  };
+
   hm.programs.yazi.keymap.manager.prepend_keymap =
   [
-    {
-      desc = "Close Yazi and write the current directory to a file";
-      on = "<Esc>";
-      run = "plugin closecwd";
-    }
-
     {
       desc = "Suspend Yazi, writing the current directory to a file";
       on = "<C-z>";
@@ -42,15 +42,6 @@ in
       run = "plugin opencwd";
     }
   ];
-
-  hm.xdg.configFile =
-  {
-    "yazi/plugins/suspendcwd.yazi/main.lua".text = mkCwd "suspend";
-    "yazi/plugins/opencwd.yazi/main.lua".text = mkCwd "open";
-    "yazi/plugins/closecwd.yazi/main.lua".text = mkCwd "close";
-  };
-
-
 
   # When pressing Ctrl+y, go to the last directory we were in with Yazi
   # Yazi recommends an alternative where you run `$shell` and it goes into fish, but then
