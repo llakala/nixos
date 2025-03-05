@@ -5,7 +5,8 @@ let
 
 in
 {
-  hm = # Use unstable home-manager module for compatibility with Yazi package update
+  # Use unstable home-manager module for compatibility with Yazi package update
+  hm =
   {
     disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
     imports = lib.singleton "${inputs.home-manager-yazi}/modules/programs/yazi.nix";
