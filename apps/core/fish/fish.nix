@@ -1,18 +1,24 @@
-{ pkgs, ... }:
+{ pkgs-unstable, ... }:
 
 {
   features.shell = "fish"; # If we ever stop using Fish, change this
 
   programs.command-not-found.enable = false; # Broken
 
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs-unstable.fish;
   programs.fish =
   {
     enable = true;
+    package = pkgs-unstable.fish; # Don't know if/where this is used over the home-manager package, but I'm trying to make sure 4.0 is used everywhere
     useBabelfish = true; # Important: halves the startup time
   };
 
-  hm.programs.fish.enable = true;
+  hm.programs.fish =
+  {
+    enable = true;
+    package = pkgs-unstable.fish;
+  };
+
   hm.xdg.configFile."fish/config.fish".force = true;
 
 
