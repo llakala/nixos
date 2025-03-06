@@ -8,7 +8,7 @@
     {
       on = "F";
       run = "plugin modified";
-      desc = "WIP";
+      desc = "Show all files that Git marks as modified within the current directory";
     }
   ];
 }
