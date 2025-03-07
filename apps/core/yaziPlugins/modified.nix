@@ -6,7 +6,7 @@
   hm.programs.yazi.keymap.manager.prepend_keymap =
   [
     {
-      on = "F";
+      on = "M";
       run = "plugin modified";
       desc = "Show all files that Git marks as modified within the current directory";
     }
