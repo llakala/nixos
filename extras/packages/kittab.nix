@@ -1,26 +1,24 @@
-{ llakaLib, ... }:
+{ llakaLib }:
 
 /*
 Wrapping script around Kitty, to open new tabs in the existing OS window
-We do some hackiness to get around xdg problems. First, we make the kitty window
-use kittab as its name and class, so it doesn't open `kitty.desktop`, and instead stays
-confined to `kittab.desktop`. This means we can have kittab in our favorite apps list, and
-avoid duplication.
-Second, we remove `-e` from argv, because while the `kitty` command seems to work fine with
-it, `kitten @ launch` hates it.
+We make the kitty window use kittab as its name and class, so it doesn't open
+`kitty.desktop`, and instead stays confined to `kittab.desktop`. This means we can
+have kittab in our favorite apps list, and avoid duplication.
 */
 llakaLib.writeFishApplication
 {
   name = "kittab";
 
   # Using runtime inputs seems to break things, so we rely on the system version of kitty.
-
   # Based on https://github.com/kovidgoyal/kitty/discussions/7936#discussioncomment-10863308
   text =
   /* fish */
   ''
     set socket "unix:@mykitty"
 
+    # we remove `-e` from argv, because while the `kitty` command seems to work fine with
+    # it, `kitten @ launch` hates it.
     if [ "$argv[1]" = "-e" ]
         set -e argv[1]
     end
