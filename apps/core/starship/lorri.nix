@@ -21,7 +21,7 @@
     # directories, and will only activate for subdirectories.
     /* bash */
     ''
-      timeout 1 lorri internal stream-events --kind snapshot | ${lib.getExe pkgs.jq} -r --arg pwd "$PWD" 'if .[keys[0]].nix_file | split("/") | del(.[-1]) | join("/") as $dir | $pwd | contains($dir) then {Completed: "✓", Started: "⌛", Failure: "❌"}[keys[0]] else "" end'
+      timeout 2 lorri internal stream-events --kind snapshot | ${lib.getExe pkgs.jq} -r --arg pwd "$PWD" 'if .[keys[0]].nix_file | split("/") | del(.[-1]) | join("/") as $dir | $pwd | contains($dir) then {Completed: "✓", Started: "⌛", Failure: "❌"}[keys[0]] else "" end'
     '';
     when = "true";
     shell = lib.singleton "sh";
