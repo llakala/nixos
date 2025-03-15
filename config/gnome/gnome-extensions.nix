@@ -47,7 +47,7 @@ in
       paste-button = false;
 
       enable-keybindings = false;
-      history-size = 50;
+      history-size = 150;
     };
 
     "org/gnome/shell/extensions/just-perfection" =
