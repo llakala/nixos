@@ -56,6 +56,17 @@
       definedAliases = lib.singleton "@gl";
     };
 
+    "Github Search Gleam" =
+    {
+      urls = lib.singleton
+      {
+        template = "https://github.com/search?type=code&q=lang:gleam+NOT+is:fork+{searchTerms}";
+      };
+
+      iconUpdateURL = "https://github.com/favicon.ico";
+      definedAliases = lib.singleton "@gg";
+    };
+
     "Noogle" =
     {
       urls = lib.singleton
