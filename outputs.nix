@@ -35,7 +35,6 @@ let
       ./config/core
       ./config/features
       ./config/gnome
-      ./config/hyprland
       ./config/baseVars.nix
 
       ./apps/core
