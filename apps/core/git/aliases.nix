@@ -2,7 +2,7 @@
   hm.programs.git.aliases =
   {
     amend = "commit --amend --no-edit";
-    reword = "commit --amend";
+    reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
 
     brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
