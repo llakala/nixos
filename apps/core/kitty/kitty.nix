@@ -16,6 +16,10 @@
 
   hm.programs.kitty.settings =
   {
+    allow_remote_control = true;
+    listen_on = "unix:@kitty";
+    enabled_layouts = "splits:split_axis=horizontal";
+
     scrollback_lines = 5000;
 
     underline_hyperlinks = "always";
