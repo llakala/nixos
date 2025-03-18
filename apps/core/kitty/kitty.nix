@@ -1,12 +1,9 @@
-{ pkgs-unstable, config, ... }:
-
 {
   features.terminal = "kitty"; # Change if I ever stop using Kitty
 
   hm.programs.kitty =
   {
     enable = true;
-    package = pkgs-unstable.kitty;
 
     # We don't specify the font in Kitty since it broke as of 24.11
     # Instead, we allow it to use the system monospace font
@@ -48,6 +45,5 @@
     "ctrl+shift+enter" = "no_op";
     "ctrl+shift+[" = "no_op";
     "ctrl+shift+]" = "no_op";
-
   };
 }

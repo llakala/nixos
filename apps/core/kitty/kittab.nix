@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ self, pkgs, pkgs-unstable, ... }:
 
 let
   kittab = self.legacyPackages.${pkgs.system}.kittab;
@@ -17,7 +17,10 @@ let
     genericName = "Terminal emulator";
 
     exec = "kittab";
-    icon = "kitty";
+
+    # Reuse the icon from Kitty. Fun fact - if you just set this to "kitty", you
+    # get a nix store in your $PATH. So, we do this instead.
+    icon = "${pkgs-unstable.kitty}/share/icons/hicolor/256x256/apps/kitty.png";
     categories = [ "System" "TerminalEmulator" ]; # Apparently these are important, removing them broke things
   };
 
@@ -25,9 +28,14 @@ in
 {
   features.usingKittab = true; # For assertions, so we can rely on kittab's existence
 
-  environment.systemPackages =
-  [
-    kittab
-    kittabEntry
-  ];
+  hm.programs.kitty.package = pkgs.symlinkJoin
+  {
+    name = "kittab";
+    paths =
+    [
+      kittab
+      kittabEntry
+      pkgs-unstable.kitty
+    ];
+  };
 }
