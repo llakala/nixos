@@ -52,7 +52,23 @@ let
 
 in
 {
-  # Run mkNixos for each host
+  # Run mkNixos for each host. mapAttrs is magic here.
+  #
+  # mkNixos expects two arguments - a string representing the hostname,
+  # and an attrset with a value for the key `system`. An example call of
+  # `mkNixos` without `mapAttrs` would be:
+  # `mkNixos "framework" { system = "x86_64-linux"; }`.
+  #
+  # Now, `mapAttrs` is very simple: it takes `key = value` and turns it
+  # into `key value`.
+  #
+  # This is useful because `framework.system = val;` is just syntactic
+  # sugar for `framework = { system = val; }` so, `mapAttrs` receives
+  # that unsugared and separates the key and the value, to:
+  # `"framework" { system = "x86_64-linux"; }`.
+  #
+  # Which, if you remember the mkNixos description, is exactly what we
+  # wanted!
   nixosConfigurations = builtins.mapAttrs mkNixos
   {
     framework.system = "x86_64-linux";
