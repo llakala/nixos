@@ -50,17 +50,4 @@
     "ctrl+shift+]" = "no_op";
 
   };
-
-  # Open terminal with Super+T
-  hm.dconf.settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =
-  assert config.features.desktop == "gnome";
-  [
-    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal/"
-  ];
-  hm.dconf.settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open-terminal" =
-  {
-    name = "Open terminal";
-    command = "kitty";
-    binding = "<Super>t";
-  };
 }
