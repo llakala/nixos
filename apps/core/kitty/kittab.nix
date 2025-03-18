@@ -1,4 +1,4 @@
-{ self, pkgs, pkgs-unstable, ... }:
+{ self, pkgs, pkgs-unstable, lib, ... }:
 
 let
   kittab = self.legacyPackages.${pkgs.system}.kittab;
@@ -18,9 +18,7 @@ let
 
     exec = "kittab";
 
-    # Reuse the icon from Kitty. Fun fact - if you just set this to "kitty", you
-    # get a nix store in your $PATH. So, we do this instead.
-    icon = "${pkgs-unstable.kitty}/share/icons/hicolor/256x256/apps/kitty.png";
+    icon = "kitty";
     categories = [ "System" "TerminalEmulator" ]; # Apparently these are important, removing them broke things
   };
 
