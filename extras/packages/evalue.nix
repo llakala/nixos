@@ -30,6 +30,6 @@ llakaLib.writeFishApplication
         exit 1
     end
 
-    nix eval --impure --json --expr "let pkgs = import <nixpkgs> { }; in (pkgs.callPackage $FILE { }) $ARG" | jq
+    nix eval --impure --expr "let pkgs = import <nixpkgs> { }; in (pkgs.callPackage $FILE { }) $ARG"
   '';
 }
