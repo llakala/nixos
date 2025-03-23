@@ -17,7 +17,12 @@
       flake = false;
     };
 
-    flake-utils.url = "github:numtide/flake-utils"; # Not actually using this, but we need to pin other things to the same version
+    # Not actually using this, but we need to pin other things to the same version
+    flake-utils =
+    {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
 
     git-repo-manager =
     {
@@ -87,8 +92,27 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nixcord =
+    {
+      # Doesn't build unless I pin to this commit
+      # See https://github.com/KaylorBen/nixcord/issues/88
+      url = "github:kaylorben/nixcord?rev=c1a2a14393dba951994442199b9adfe14bb78a99";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    systems.url = "github:nix-systems/default";
+
+    treefmt-nix =
+    {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     yazi-plugins =
     {

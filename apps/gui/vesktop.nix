@@ -1,22 +1,36 @@
+{ inputs, lib, ... }:
+
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
 
-  custom.programs.vesktop =
+  hm.imports = lib.singleton inputs.nixcord.homeManagerModules.nixcord;
+
+  # See https://github.com/KaylorBen/nixcord/blob/main/docs/main.md
+  hm.programs.nixcord =
   {
     enable = true;
+    discord.enable = false;
+    discord.vencord.unstable = false;
+    vesktop.enable = true;
+  };
 
-    # Vesktop settings, ~/.config/vesktop/settings.json
-    settings =
+  # See https://github.com/KaylorBen/nixcord/blob/main/docs/plugins.md
+  hm.programs.nixcord.config.plugins =
+  {
+    betterSettings.enable = true;
+    noUnblockToJump.enable = true;
+    showAllMessageButtons.enable = true;
+
+    messageClickActions =
     {
-      tray = false;
-      hardwareAcceleration = true;
-      discordBranch = "stable";
+      enable = true;
+      enableDeleteOnClick = false;
     };
 
-    # Vencord settings, ~/.config/vesktop/settings/settings.json
-    vencord.settings =
+    noBlockedMessages =
     {
-
+      enable = true;
+      ignoreBlockedMessages = false;
     };
   };
 }
