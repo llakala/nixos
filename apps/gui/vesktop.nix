@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, lib, pkgs-unstable, ... }:
 
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
@@ -9,8 +9,11 @@
   hm.programs.nixcord =
   {
     enable = true;
+
+    # We don't need the normal discord client installed
     discord.enable = false;
-    discord.vencord.unstable = false;
+
+    discord.vencord.package = pkgs-unstable.vencord;
     vesktop.enable = true;
   };
 
@@ -19,7 +22,7 @@
   {
     betterSettings.enable = true;
     noUnblockToJump.enable = true;
-    showAllMessageButtons.enable = true;
+    noReplyMention.enable = true;
 
     messageClickActions =
     {
@@ -27,6 +30,7 @@
       enableDeleteOnClick = false;
     };
 
+    # Sadly doesn't seem to be working
     noBlockedMessages =
     {
       enable = true;
