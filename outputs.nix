@@ -1,7 +1,6 @@
-{ self, ... } @ inputs:
+{ self, nixpkgs, ... } @ inputs:
 
 let
-  nixpkgs = inputs.nixpkgs;
   lib = nixpkgs.lib;
 
   # It's a personal repo, not supporting other systems right now
