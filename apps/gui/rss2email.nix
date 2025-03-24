@@ -1,21 +1,38 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  # Check config options with `nix shell nixpkgs#rss2email --command sh -c "man r2e"`
+  # Package seems to be required, yet not added to derivation. Something
+  # to look into.
+  environment.systemPackages = lib.singleton pkgs.system-sendmail;
+
+  # Check config options with:
+  # `nix shell nixpkgs#rss2email --command sh -c "man r2e"`
   # or just `man r2e` if it's already installed
+  # Check that it's functioning with:
+  # `systemctl status rss2email`
+  # And:
+  # `systemctl status rss2email.timer`
+  #
+  # Note that this isn't actually functioning yet - I don't get any errors,
+  # but it just doesn't seem to ever email me.
   services.rss2email =
   {
     enable = true;
 
-    interval = "1d"; # Check that this is functioning with `systemctl status rss2email.timer`
+    # Follows systemd time format, see `man systemd.time` for examples
+    interval = "1d";
+    # interval = "1m"; # For testing
+
     to = config.baseVars.email;
+
+    # Pretty sure this might be a soft requirement for things to function
+    config.from = "test@example.org";
   };
 
   # Many of these referenced from https://floss.social/@tomodachi94/112690423986002174
   # Plus some personal additions
   services.rss2email.feeds =
   {
-    tvix.url = "https://tvl.fyi/feed.atom";
     lix.url = "https://lix.systems/blog/index.xml";
     determinate.url = "https://determinate.systems/rss.xml"; # Determinate is a plague on Nix, but I'd still like to know what they're doing
     clan.url = "https://docs.clan.lol/feed_rss_created.xml";
@@ -32,6 +49,9 @@
     vtimofeenko.url = "https://vtimofeenko.com/index.xml";
     oddlama.url = "https://oddlama.org/rss.xml";
     isabelroses.url = "https://isabelroses.com/feed.xml";
+
+    # For testing - an rss feed that updates every 30 seconds.
+    # aaaaaaa.url = "https://lorem-rss.herokuapp.com/feed?unit=second&?interval=30";
 
     # Non-Nix
     fish.url = "https://fishshell.com/blog/feed.xml";
