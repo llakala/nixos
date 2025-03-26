@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs-unstable, ... }:
+{ inputs, lib, pkgs-unstable, pkgs, ... }:
 
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
@@ -36,5 +36,17 @@
       enable = true;
       ignoreBlockedMessages = false;
     };
+  };
+
+  hm.xdg.configFile."vesktop/settings/settings.json" =
+  {
+    text = builtins.toJSON
+    {
+      discordBranch = "stable";
+      minimizeToTray = false;
+      arRPC = false;
+      customTitleBar = false;
+    };
+    force = true;
   };
 }
