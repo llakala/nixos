@@ -72,7 +72,7 @@
     llakaLib =
     {
       url = "github:llakala/llakaLib";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     meovim =

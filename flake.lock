@@ -279,15 +279,15 @@
     "llakaLib": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
-        "lastModified": 1740717561,
-        "narHash": "sha256-SIsjGsFQNCc2mjBozZC/yi3Oygijpgbb3YJk+1zLSq0=",
+        "lastModified": 1743435452,
+        "narHash": "sha256-02nO7klvqS4gPLOb9eSqY95rxzpdimqXXA9rkHnvg+M=",
         "owner": "llakala",
         "repo": "llakaLib",
-        "rev": "3fdc4e0eedb11617f3f4d01f290cd6555cde2f4d",
+        "rev": "b2e71681aeec7fded01bd93a7af30252307c90c0",
         "type": "github"
       },
       "original": {
@@ -334,11 +334,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743387276,
-        "narHash": "sha256-k2LBrT43AsOQNJUeMk75n92VTBbjkOKG+4mL1v6xJJo=",
+        "lastModified": 1743434255,
+        "narHash": "sha256-uKaVC13M2U70ZAMifpjHrHQduXqADdYkZKZlpBIsSRs=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "a799c96d7444759e4ca2ceaf0cdcac77aae35265",
+        "rev": "1f1a8ce873ce37412e091fb7b7134030142f043c",
         "type": "github"
       },
       "original": {
