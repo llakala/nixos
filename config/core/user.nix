@@ -12,5 +12,6 @@
 
   users.mutableUsers = false; # Makes it so we can only do password stuff via nixos, safer for not bricking system
 
-  security.sudo.wheelNeedsPassword = false; # Passwordless sudo
+  # No more passwordless sudo!
+  security.sudo.wheelNeedsPassword = true;
 }
