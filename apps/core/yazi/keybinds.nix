@@ -11,12 +11,6 @@ in
   hm.programs.yazi.keymap.manager.prepend_keymap =
   [
     {
-      desc = "Disable Yazi tabs"; # Trying to only use Neovim tabs
-      on = "t";
-      run = "noop";
-    }
-
-    {
       desc = "Go to the top of the git repo";
       on = [ "g" "r" ];
       run = "shell -- ya emit cd \"$(git rev-parse --show-toplevel)\"";
