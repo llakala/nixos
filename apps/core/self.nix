@@ -4,7 +4,6 @@
 {
   environment.systemPackages = with self.legacyPackages.${pkgs.system};
   [
-    mdpls
     evalue
     emodule
     jc
