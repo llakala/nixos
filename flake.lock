@@ -598,16 +598,17 @@
     "yazi-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1743766384,
-        "narHash": "sha256-Lx+TliqMuaXpjaUtjdUac7ODg2yc3yrd1mSWJo9Mz2Q=",
+        "lastModified": 1742369805,
+        "narHash": "sha256-80mR86UWgD11XuzpVNn56fmGRkvj0af2cFaZkU8M31I=",
         "owner": "yazi-rs",
         "repo": "plugins",
-        "rev": "9a095057d698aaaedc4dd23d638285bd3fd647e9",
+        "rev": "273019910c1111a388dd20e057606016f4bd0d17",
         "type": "github"
       },
       "original": {
         "owner": "yazi-rs",
         "repo": "plugins",
+        "rev": "273019910c1111a388dd20e057606016f4bd0d17",
         "type": "github"
       }
     }
