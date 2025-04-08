@@ -17,6 +17,13 @@
       flake = false;
     };
 
+    flake-compat =
+    {
+      url = "git+https://git.lix.systems/lix-project/flake-compat";
+      # Optional, this repo's flake.nix just imports their default.nix, so this skips a step
+      flake = false;
+    };
+
     # Not actually using this, but we need to pin other things to the same version
     flake-utils =
     {
@@ -69,6 +76,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
     llakaLib =
     {
       url = "github:llakala/llakaLib";
