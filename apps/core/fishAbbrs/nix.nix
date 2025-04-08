@@ -5,7 +5,9 @@
     nr = "nix run";
     ns = "nix shell";
     ne = "nix eval";
+
     nfu = "nix flake update";
+    nfl = "nix flake lock";
 
     nrn =
     {
