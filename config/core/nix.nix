@@ -1,8 +1,7 @@
-{ config, inputs, lib, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
-  # Not 2.92 yet, see https://github.com/NixOS/nixpkgs/pull/375030
-  imports = lib.singleton inputs.lix-module.nixosModules.lixFromNixpkgs;
+  imports = lib.singleton inputs.lix-module.nixosModules.default;
 
   nix.settings =
   {
@@ -16,14 +15,18 @@
       "repl-flake" # Nix has merged this since 2.18, Lix hasn't yet
     ];
 
-    substituters =
+    extra-substituters =
     [
+      # Lix binary cache
+      "https://hysoftworks.cachix.org"
+
       "https://nix-community.cachix.org"
     ];
 
-    trusted-public-keys =
+    extra-trusted-public-keys =
     [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hysoftworks.cachix.org-1:EH71U+Xg+W9gnTH67flctY8eHWLOTzQ8iJfM5N+LTuY="
     ];
 
     trusted-users =

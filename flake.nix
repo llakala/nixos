@@ -64,10 +64,20 @@
 
     lix-module =
     {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.lix.follows = "lix";
     };
+
+    lix =
+    {
+      # No, this is not helix the editor - it's a Lix fork with `:open` to use the
+      # editor in the repl
+      url = "github:hysoftworks/helix/helix";
+      flake = false;
+    };
+
     llakaLib =
     {
       url = "github:llakala/llakaLib";
