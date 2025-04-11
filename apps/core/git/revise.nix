@@ -14,7 +14,8 @@
     grvum = "git revise upstream/main";
     grvuma = "git revise upstream/master";
 
-    grvi = # `grvi 2` will revise from last 2 commits
+    # `grvi 2` will revise from last 2 commits
+    grvi =
     {
       setCursor = true;
       expansion = "git revise -i HEAD~%";

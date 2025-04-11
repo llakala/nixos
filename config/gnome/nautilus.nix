@@ -10,12 +10,14 @@
   {
     dconf.settings =
     {
-    "org/gtk/gtk4/settings/file-chooser" = # Within Nautilus
+      # Within Nautilus
+      "org/gtk/gtk4/settings/file-chooser" =
       {
         show-hidden = true;
       };
 
-      "org/gtk/settings/file-chooser" = # When downloading files
+      # When downloading files
+      "org/gtk/settings/file-chooser" =
       {
         show-hidden = true;
       };

@@ -3,7 +3,8 @@
   documentation.man.generateCaches = false;
   hm.programs.man.generateCaches = false;
 
-  documentation = # Apparently speeds up rebuilds
+  # Apparently speeds up rebuilds
+  documentation =
   {
     nixos.enable = false;
   };

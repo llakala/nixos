@@ -3,7 +3,8 @@
 {
 
 
-  virtualisation = # WITH AN S, NOT A Z
+  # WITH AN S, NOT A Z
+  virtualisation =
   {
     libvirtd.enable = false; # Until https://github.com/NixOS/nixpkgs/issues/338314 is fixed
     spiceUSBRedirection.enable = true; # Give permission for USB drives to be passed through spice

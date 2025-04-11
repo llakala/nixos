@@ -29,7 +29,8 @@
     core.excludesFile = "~/.config/git/ignore";
   };
 
-  hm.programs.git.ignores = # Writes to above path
+  # Writes to above path
+  hm.programs.git.ignores =
   [
     ".direnv/"
   ];

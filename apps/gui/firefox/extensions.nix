@@ -45,7 +45,8 @@ in
       origins = [];
     };
 
-    "{b0a674f9-f848-9cfd-0feb-583d211308b0}" = # Movie-web
+    # Movie-web
+    "{b0a674f9-f848-9cfd-0feb-583d211308b0}" =
     {
       "permissions" = [ "<all_urls>" ];
       "origins" = [ "<all_urls>" ];

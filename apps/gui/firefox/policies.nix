@@ -39,7 +39,8 @@
       Fingerprinting = true;
     };
 
-    FirefoxHome = # Make new tab only show search
+    # Make new tab only show search
+    FirefoxHome =
     {
       Search = true;
       TopSites = false;

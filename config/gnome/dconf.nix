@@ -8,7 +8,8 @@ in
   {
     "org/gnome/shell" =
     {
-      favorite-apps = # Taskbar apps
+      # Taskbar apps
+      favorite-apps =
       assert feats.browser == "firefox";
       assert feats.files == "yazi";
       assert feats.terminal == "kitty";

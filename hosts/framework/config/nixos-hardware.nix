@@ -6,7 +6,8 @@
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
-  services.fwupd = # Bios updates
+  # Bios updates
+  services.fwupd =
   {
     enable = true;
   };

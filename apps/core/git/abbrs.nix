@@ -57,7 +57,8 @@
     grbm = "git rebase main";
     grbma = "git rebase master";
 
-    grbi = # `grbi 2` will rebase from last 2 commits
+    # `grbi 2` will rebase from last 2 commits
+    grbi =
     {
       setCursor = true;
       expansion = "git rebase -i HEAD~%";

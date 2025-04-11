@@ -26,7 +26,8 @@ in
     ];
   };
 
-  environment.variables = # Make --help look pretty like batman
+  # Make --help look pretty like batman
+  environment.variables =
   {
     MANPAGER = "sh -c 'col -bx | bat --language man' ";
     MANROFFOPT = "-c";
