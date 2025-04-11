@@ -1,9 +1,15 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
+
 {
   hm.xdg.portal =
   {
-    extraPortals = lib.singleton pkgs.xdg-desktop-portal-gnome;
-    config.common.default = "gnome";
+    extraPortals = with pkgs;
+    [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+
+    config.common.default = ["gnome" "gtk" ];
   };
 
 }
