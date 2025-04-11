@@ -3,7 +3,8 @@
 
   hm.programs.fish.shellAbbrs =
   {
-    cn = "cd nixos"; # We make it generic, and leave Zoxide to find the proper directory.
+    # We make it generic, and leave Zoxide to find the proper directory.
+    cn = "cd nixos";
 
     m = "man";
     py = "python";

@@ -1,5 +1,6 @@
 {
-  features.terminal = "kitty"; # Change if I ever stop using Kitty
+  # Change if I ever stop using Kitty
+  features.terminal = "kitty";
 
   hm.programs.kitty =
   {
@@ -8,7 +9,8 @@
     # We don't specify the font in Kitty since it broke as of 24.11
     # Instead, we allow it to use the system monospace font
 
-    themeFile = "Kaolin_Aurora"; # Reference exact names here https://github.com/kovidgoyal/kitty-themes/blob/389a222143ffb0ff38abea187fbc21b1221b94c0/themes.json#L2
+    # Reference exact names here https://github.com/kovidgoyal/kitty-themes/blob/389a222143ffb0ff38abea187fbc21b1221b94c0/themes.json#L2
+    themeFile = "Kaolin_Aurora";
   };
 
   hm.programs.kitty.settings =
@@ -21,7 +23,8 @@
 
     underline_hyperlinks = "always";
 
-    linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
+    # Make titlebar normal gnome titlebar rather than ugly kitty one
+    linux_display_server = "x11";
     font_size = 12;
 
     background_opacity = "0.98";
@@ -29,15 +32,19 @@
     copy_on_select = true;
     notify_on_cmd_finish = "unfocused 60.0 notify";
 
-    confirm_os_window_close = 0; # Close instead of asking "Would you like to close?"
+    # Close instead of asking "Would you like to close?"
+    confirm_os_window_close = 0;
     tab_bar_edge = "top";
     tab_bar_style = "powerline";
   };
 
   hm.programs.kitty.keybindings =
   {
-    "ctrl+q" = "close_os_window"; # Quit application
-    "ctrl+w" = "close_window"; #  Prioritizes internal windows > tabs
+    # Quit application
+    "ctrl+q" = "close_os_window";
+
+    #  Prioritizes internal windows > tabs
+    "ctrl+w" = "close_window";
     "ctrl+t" = "new_tab";
 
     # Default binds should do nothing

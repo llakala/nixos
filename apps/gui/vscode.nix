@@ -8,7 +8,9 @@
     package = pkgs.vscode.override
     {
       commandLineArgs =
-      [ # Vscode isn't really ready
+
+      # Vscode isn't really ready
+      [
       ];
     };
   };

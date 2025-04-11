@@ -34,7 +34,8 @@ in
       ];
     }
 
-    { # Swapped `q` and `Q`, since returning to the previous directory is what I want more often
+    # Swapped `q` and `Q`, since returning to the previous directory is what I want more often
+    {
       desc = "Exit normally, returning to wherever you previously were before entering Yazi";
       on = "q";
       run = "quit --no-cwd-file";

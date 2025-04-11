@@ -1,5 +1,6 @@
 {
-  hardware.wirelessRegulatoryDatabase = true; # Speed up wifi?
+  # Speed up wifi?
+  hardware.wirelessRegulatoryDatabase = true;
   boot.extraModprobeConfig =
   ''
     options cfg80211 ieee80211_regdom="US"
@@ -10,7 +11,8 @@
   # boot.kernelPatches =
   # [
   #   {
-  #     # Until next kernel, use this for battery according to https://community.frame.work/t/guide-fw13-ryzen-power-management/42988/68
+  # Until next kernel, use this for battery according to https://community.frame.work/t/guide-fw13-ryzen-power-management/42988/68
+  #    
   #     patch = pkgs.fetchpatch2
   #     {
   #       name = "amdgpu-vcn-1.diff";

@@ -3,9 +3,15 @@
 {
   environment.systemPackages = with inputs.gasp.legacyPackages.${pkgs.system};
   [
-    ghp # Git Hire Patch (stage)
-    gfp # Git Fire Patch (unstage)
-    gkp # Git Kill Patch (reset)
+
+    # Git Hire Patch (stage)
+    ghp
+
+    # Git Fire Patch (unstage)
+    gfp
+
+    # Git Kill Patch (reset)
+    gkp
 
     splitpatch
   ];

@@ -1,7 +1,8 @@
 { lib, ... }:
 
 {
-  features.files = "yazi"; # Change if we ever stop using Yazi
+  # Change if we ever stop using Yazi
+  features.files = "yazi";
 
   hm.programs.yazi =
   {

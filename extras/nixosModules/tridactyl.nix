@@ -7,7 +7,8 @@
 let
   cfg = config.custom.tridactyl;
 
-  cmdType = lib.types.str; # TODO: add fancier types for "js" etc that escape things and compose better
+  # TODO: add fancier types for "js" etc that escape things and compose better
+  cmdType = lib.types.str;
   settingType = lib.types.either lib.types.bool lib.types.str;
 
   configStrs =

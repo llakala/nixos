@@ -2,7 +2,8 @@
 
 llakaLib.writeFishApplication
 {
-  name = "evalue"; # Evaluate a given nix file using `callPackage`
+  # Evaluate a given nix file using `callPackage`
+  name = "evalue";
 
   runtimeInputs = with pkgs;
   [

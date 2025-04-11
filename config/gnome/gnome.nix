@@ -1,11 +1,14 @@
 { pkgs, lib, ... }:
 
 {
-  features.desktop = "gnome"; # If we ever stop using Gnome, change this
+  # If we ever stop using Gnome, change this
+  features.desktop = "gnome";
   services.xserver =
   {
     enable = true;
-    excludePackages = with pkgs; [xterm]; # Remove weird xterm
+
+    # Remove weird xterm
+    excludePackages = with pkgs; [xterm];
 
     # Enable Gnome
     desktopManager.gnome.enable = true;
@@ -15,8 +18,12 @@
   services.gnome =
   {
     core-utilities.enable = false;
-    evolution-data-server.enable = lib.mkForce false; # Disable Events and Tasks Reminders from always running in the background
-    sushi.enable = true; # Nautilus previewing
+
+    # Disable Events and Tasks Reminders from always running in the background
+    evolution-data-server.enable = lib.mkForce false;
+
+    # Nautilus previewing
+    sushi.enable = true;
   };
 
   environment.gnome.excludePackages = with pkgs;
@@ -38,5 +45,6 @@
     adwaita-icon-theme
   ];
 
-  environment.shellAliases.logout = "kill -9 -1"; # Logout of gnome, very helpful for applying changes to `environment.variables`
+  # Logout of gnome, very helpful for applying changes to `environment.variables`
+  environment.shellAliases.logout = "kill -9 -1";
 }

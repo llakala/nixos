@@ -9,7 +9,8 @@ in
 
     inherit username;
 
-    scalingFactor = 1; # 100% scaling
+    # 100% scaling
+    scalingFactor = 1;
 
     stateVersion = "24.05";
   };

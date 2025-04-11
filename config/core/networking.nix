@@ -9,17 +9,22 @@
     wireless.enable = lib.mkForce false;
 
     firewall.enable = true;
-    resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
+
+    # Wifi doesn't work unless I do this
+    resolvconf.dnsExtensionMechanism = false;
   };
 
   users.users.${config.hostVars.username}.extraGroups = [ "networkmanager"];
 
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
+  # Enable ip forwarding
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1; 
 
   hardware.bluetooth =
   {
     enable = true;
-    powerOnBoot = false; # Why not save some battery
+
+    # Why not save some battery
+    powerOnBoot = false;
   };
 
   services.openssh.enable = true;

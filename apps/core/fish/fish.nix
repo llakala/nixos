@@ -1,15 +1,19 @@
 { pkgs, ... }:
 
 {
-  features.shell = "fish"; # If we ever stop using Fish, change this
+  # If we ever stop using Fish, change this
+  features.shell = "fish";
 
-  programs.command-not-found.enable = false; # Broken
+  # Broken
+  programs.command-not-found.enable = false;
 
   users.defaultUserShell = pkgs.fish;
   programs.fish =
   {
     enable = true;
-    useBabelfish = true; # Important: halves the startup time
+
+    # Important: halves the startup time
+    useBabelfish = true;
   };
 
   hm.programs.fish.enable = true;

@@ -16,7 +16,9 @@
       /* bash */
       ''
         --package_managers off
-      ''; # Arguments passed into neofetch
+
+      # Arguments passed into neofetch
+      '';
     };
   };
 }

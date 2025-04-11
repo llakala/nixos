@@ -2,7 +2,8 @@
 
 llakaLib.writeFishApplication
 {
-  name = "jc"; # Java Compile
+  # Java Compile
+  name = "jc";
 
   runtimeInputs = with pkgs;
   [

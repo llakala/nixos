@@ -1,7 +1,8 @@
 { inputs, lib, pkgs-unstable, pkgs, ... }:
 
 {
-  features.discord = "vesktop"; # Change if we ever stop using vesktop
+  # Change if we ever stop using vesktop
+  features.discord = "vesktop";
 
   hm.imports = lib.singleton inputs.nixcord.homeManagerModules.nixcord;
 

@@ -15,7 +15,8 @@ let
         local active = cx.active
         local current = active.current
 
-        local esc = active.mode.is_visual or #active.selected > 0 or current.files.filter or current.cwd.is_search
+        #active.selected > 0 or current.files.filter or current.cwd.is_search
+        local esc = active.mode.is_visual or
 
         if esc then
           ya.manager_emit("escape", {})

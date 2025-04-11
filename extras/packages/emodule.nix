@@ -2,7 +2,8 @@
 
 llakaLib.writeFishApplication
 {
-  name = "emodule"; # Evaluate a given module using `evalModules`
+  # Evaluate a given module using `evalModules`
+  name = "emodule";
 
   runtimeInputs = with pkgs;
   [

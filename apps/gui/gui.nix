@@ -8,11 +8,15 @@ let
     filezilla
     moonlight-qt
     spotify
-    shortwave # Internet radio
+
+    # Internet radio
+    shortwave
     libreoffice
     prismlauncher
     mediawriter
-    # krita # Image editing, currently broken
+
+    # Image editing, currently broken
+    # krita
   ];
 
   unstablePackages = with pkgs-unstable;

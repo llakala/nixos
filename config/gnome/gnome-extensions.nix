@@ -7,9 +7,15 @@ let
     clipboard-indicator
     just-perfection
     alphabetical-app-grid
-    tiling-assistant # When tiling one app, suggest another app to tile
-    status-area-horizontal-spacing # Put things on the top right closer together
-    sane-airplane-mode # Airplane mode won't auto enable
+
+    # When tiling one app, suggest another app to tile
+    tiling-assistant
+
+    # Put things on the top right closer together
+    status-area-horizontal-spacing
+
+    # Airplane mode won't auto enable
+    sane-airplane-mode
   ];
 
 in
@@ -22,9 +28,12 @@ in
     "org/gnome/shell" =
     {
       disabled-extensions = [];
-      disable-user-extensions = false; # Hopefully enables all extensions after reboot
 
-      enabled-extensions = map (extension: extension.extensionUuid) gnomeExtensions; # Enable all gnomeExtensions
+      # Hopefully enables all extensions after reboot
+      disable-user-extensions = false;
+
+      # Enable all gnomeExtensions
+      enabled-extensions = map (extension: extension.extensionUuid) gnomeExtensions;
     };
 
 
@@ -43,7 +52,8 @@ in
 
     "org/gnome/shell/extensions/clipboard-indicator" =
     {
-      move-item-first = true; # Move to top of the list when selected
+      # Move to top of the list when selected
+      move-item-first = true;
       paste-button = false;
 
       enable-keybindings = false;
@@ -56,16 +66,21 @@ in
       panel-in-overview = true;
       calendar = false;
 
-      window-demands-attention-focus = true; # Just make window appear when it's done with a task
+      # Just make window appear when it's done with a task
+      window-demands-attention-focus = true;
 
 
-      switcher-popup-delay = true; # No delay with alt-tab
-      startup-status = 1; # Start on overview when rebooting
+      # No delay with alt-tab
+      switcher-popup-delay = true;
+
+      # Start on overview when rebooting
+      startup-status = 1;
     };
 
     "org/gnome/shell/extensions/tiling-assistant" =
     {
-      restore-window = []; # Let us use Super+Down
+      # Let us use Super+Down
+      restore-window = [];
 
       tile-left-half = ["<Super>a" "<Super>Left"];
       tile-right-half = ["<Super>d" "<Super>Right"];
@@ -73,13 +88,17 @@ in
       tile-bottom-half = ["<Super>s"];
 
       enable-advanced-experimental-features = true;
-      default-move-mode = 2; # Indirectly disables edge tiling via the GUI, so we only do it via keybinds
+
+      # Indirectly disables edge tiling via the GUI, so we only do it via keybinds
+      default-move-mode = 2;
     };
 
     "org/gnome/shell/extensions/sane-airplane-mode" =
     {
       enable-airplane-mode = false;
-      enable-bluetooth = false; # Misleading: actually means when turning off airplane mode, bluetooth doesn't go on
+
+      # Misleading: actually means when turning off airplane mode, bluetooth doesn't go on
+      enable-bluetooth = false;
     };
   };
 }

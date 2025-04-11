@@ -13,7 +13,9 @@
       "no-url-literals"
 
       # Lix experimental features
-      "repl-flake" # Nix has merged this since 2.18, Lix hasn't yet
+
+      # Nix has merged this since 2.18, Lix hasn't yet
+      "repl-flake"
     ];
 
     substituters =
@@ -29,21 +31,30 @@
     trusted-users =
     [
       "root"
-      "@wheel" # Lets me use nix flakes that require nixConfig.
+
+      # Lets me use nix flakes that require nixConfig.
+      "@wheel"
     ];
 
-    connect-timeout = 5; # Offline caches won't just hang
-    warn-dirty = false; # No warnings if git isn't pushed
-    fallback = true; # If binary cache fails, it's okay
+    # Offline caches won't just hang
+    connect-timeout = 5;
 
-    keep-going = true; # If a derivation fails, build the others. We'll fix the failed one later
+    # No warnings if git isn't pushed
+    warn-dirty = false;
+
+    # If binary cache fails, it's okay
+    fallback = true;
+
+    # If a derivation fails, build the others. We'll fix the failed one later
+    keep-going = true;
     max-jobs = "auto";
 
     allow-import-from-derivation = false;
   };
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-  nixpkgs.config.allowUnfree = true; # for `pkgs` instance, `pkgs-unstable` gets it on creation
+  # for `pkgs` instance, `pkgs-unstable` gets it on creation
+  nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";

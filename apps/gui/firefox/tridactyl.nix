@@ -42,7 +42,8 @@ in
       bind J scrollpage +1
       bind K scrollpage -1
 
-      bind a tab # " Last used tab
+      # " Last used tab
+      bind a tab
 
       " t for tab, silly
       bind t tabopen

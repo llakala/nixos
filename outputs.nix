@@ -1,5 +1,6 @@
 { self, nixpkgs, ... } @ inputs:
 
+
 let
   lib = nixpkgs.lib;
 
@@ -88,7 +89,8 @@ in
       inherit pkgs;
       directory = ./extras/packages;
 
-      extras = { inherit llakaLib; }; # So custom packages can rely on llakaLib
+      # So custom packages can rely on llakaLib
+      extras = { inherit llakaLib; };
     }
   );
 

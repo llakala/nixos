@@ -6,8 +6,11 @@
   # WITH AN S, NOT A Z
   virtualisation =
   {
-    libvirtd.enable = false; # Until https://github.com/NixOS/nixpkgs/issues/338314 is fixed
-    spiceUSBRedirection.enable = true; # Give permission for USB drives to be passed through spice
+    # Until https://github.com/NixOS/nixpkgs/issues/338314 is fixed
+    libvirtd.enable = false;
+
+    # Give permission for USB drives to be passed through spice
+    spiceUSBRedirection.enable = true;
   };
 
   virtualisation.docker =
@@ -22,8 +25,12 @@
 
   environment.systemPackages = with pkgs;
   [
-    quickemu # Easy virtual machines
-    qemu-utils # Virtualization
+
+    # Easy virtual machines
+    quickemu
+
+    # Virtualization
+    qemu-utils
     quickgui
   ];
 

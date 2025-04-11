@@ -8,7 +8,9 @@
     DisableFirefoxScreenshots = true;
 
     DisplayBookmarksToolbar = "never";
-    DisplayMenuBar = "never"; # Previously appeared when pressing alt
+
+    # Previously appeared when pressing alt
+    DisplayMenuBar = "never";
 
     OverrideFirstRunPage = "";
     PictureInPicture.Enabled = false;
@@ -53,13 +55,15 @@
 
     Handlers.schemes.vscode =
     {
-      action = "useSystemDefault"; # Open VSCode app
+      # Open VSCode app
+      action = "useSystemDefault";
       ask = false;
     };
 
     Handlers.schemes.element =
     {
-      action = "useSystemDefault"; # Open Element app
+      # Open Element app
+      action = "useSystemDefault";
       ask = false;
     };
   };

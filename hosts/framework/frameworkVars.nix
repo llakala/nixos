@@ -5,7 +5,8 @@
     hostName = "framework";
     username = "emanresu";
 
-    scalingFactor = 2; # 200% scaling
+    # 200% scaling
+    scalingFactor = 2;
 
     stateVersion = "24.05";
   };

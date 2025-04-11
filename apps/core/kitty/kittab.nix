@@ -11,7 +11,8 @@ let
   {
     type = "Application";
 
-    name = "kittab"; # ${name}.desktop
+    # ${name}.desktop
+    name = "kittab";
     desktopName = "Kittab";
 
     genericName = "Terminal emulator";
@@ -19,12 +20,15 @@ let
     exec = "kittab";
 
     icon = "kitty";
-    categories = [ "System" "TerminalEmulator" ]; # Apparently these are important, removing them broke things
+
+    # Apparently these are important, removing them broke things
+    categories = [ "System" "TerminalEmulator" ];
   };
 
 in
 {
-  features.usingKittab = true; # For assertions, so we can rely on kittab's existence
+  # For assertions, so we can rely on kittab's existence
+  features.usingKittab = true;
 
   hm.programs.kitty.package = pkgs.symlinkJoin
   {

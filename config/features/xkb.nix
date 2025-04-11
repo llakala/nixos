@@ -9,7 +9,9 @@ in
   {
     description = "Custom layout where CAPS is Escape, and ESC does nothing";
     languages = [ "eng" ];
-    symbolsFile = pkgs.writeText layoutName # This name doesn't matter, it can be anything
+
+    # This name doesn't matter, it can be anything
+    symbolsFile = pkgs.writeText layoutName
     ''
       xkb_symbols
       {

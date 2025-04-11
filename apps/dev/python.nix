@@ -1,7 +1,9 @@
 { pkgs, lib, ... }:
 
 let
-   myPython = pkgs.python3; # Python version for our packages to reference
+
+   # Python version for our packages to reference
+   myPython = pkgs.python3;
 
    myPythonPackages = pythonPackages: with pythonPackages;
    [
@@ -28,7 +30,8 @@ in
 
    environment.variables =
    {
-      PIP_REQUIRE_VIRTUALENV = "true"; # For non virtual environments, we should use Nix
+      # For non virtual environments, we should use Nix
+      PIP_REQUIRE_VIRTUALENV = "true";
    };
 
 }

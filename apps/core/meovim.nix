@@ -7,12 +7,15 @@ in
   environment.variables.EDITOR = "nvim";
 
   hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; # Error if we ever change shell
+
+  # Error if we ever change shell
+  assert config.features.abbreviations == "fish";
   {
     n = "nvim";
   };
 
-  features.editor = "neovim"; # If we ever stop using Neovim, change this
+  # If we ever stop using Neovim, change this
+  features.editor = "neovim";
 
   environment.systemPackages = lib.singleton neovimPackage;
 }

@@ -1,7 +1,9 @@
 { config, ... }:
 {
   hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; # Error if we ever change shell
+
+  # Error if we ever change shell
+  assert config.features.abbreviations == "fish";
   {
     g = "git";
     gcl = "git clone";
@@ -10,15 +12,20 @@
     # Most commonly-run git commands get two letters
     gs = "git status";
     gc = "git commit";
-    gn = "git unstage ."; # Alias of `git restore --staged`
+
+    # Alias of `git restore --staged`
+    gn = "git unstage .";
     gl = "git log";
     gp = "git push";
 
     ga = "git add .";
     gac = "git commit .";
 
-    gd = "git diff --staged"; # Staged changes
-    gdu = "git diff"; # Unstaged changes
+    # Staged changes
+    gd = "git diff --staged";
+
+    # Unstaged changes
+    gdu = "git diff";
 
     gsw = "git switch";
     gswc = "git switch -c";
@@ -29,29 +36,43 @@
     gplum = "git pull upstream main";
     gpluma = "git pull upstream master";
 
-    gfs = "git force"; # Force push via custom alias
+    # Force push via custom alias
+    gfs = "git force";
 
     grw = "git reword";
-    grwm = "git reword --message"; # Get ready with me :3
+
+    # Get ready with me :3
+    grwm = "git reword --message";
 
     gam = "git amend";
     gamp = "git amend --patch";
 
-    ganf = "git add -AN"; # Add all new files
-    gunf = "git unstage-new-files"; # Alias, unstage new file existence
+    # Add all new files
+    ganf = "git add -AN";
 
-    gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
+    # Alias, unstage new file existence
+    gunf = "git unstage-new-files";
+
+    # Call our alias for `git branch` that adds formatting
+    gbr = "git pbranch";
     gbrd = "git branch -d";
 
     # Switch branches using custom alias with fzf
     gswp = "git pswitch";
 
     # Using our custom patch-based git aliases
-    ghr = "git hire"; # Add staged changes
-    gfr = "git fire"; # Unstage staged changes via patch
-    gkl = "git kill"; # Delete unstaged changes
 
-    ghs = "git history"; # Same as `git log --patch`, just an alias for intuition
+    # Add staged changes
+    ghr = "git hire";
+
+    # Unstage staged changes via patch
+    gfr = "git fire";
+
+    # Delete unstaged changes
+    gkl = "git kill";
+
+    # Same as `git log --patch`, just an alias for intuition
+    ghs = "git history";
 
     grb = "git rebase";
     grbm = "git rebase main";

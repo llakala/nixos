@@ -28,8 +28,12 @@
       enable = true;
       gtk3.bookmarks =
       [
-        "file:///" # Root
-        "file://${config.hostVars.configDirectory}" # nixos config directory
+
+        # Root
+        "file:///"
+
+        # nixos config directory
+        "file://${config.hostVars.configDirectory}"
         "file://${config.hostVars.homeDirectory}/VMS"
       ];
     };

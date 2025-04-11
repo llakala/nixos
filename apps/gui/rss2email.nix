@@ -21,7 +21,9 @@
 
     # Follows systemd time format, see `man systemd.time` for examples
     interval = "1d";
-    # interval = "1m"; # For testing
+
+    # For testing
+    # interval = "1m";
 
     to = config.baseVars.email;
 
@@ -34,7 +36,9 @@
   services.rss2email.feeds =
   {
     lix.url = "https://lix.systems/blog/index.xml";
-    determinate.url = "https://determinate.systems/rss.xml"; # Determinate is a plague on Nix, but I'd still like to know what they're doing
+
+    # Determinate is a plague on Nix, but I'd still like to know what they're doing
+    determinate.url = "https://determinate.systems/rss.xml";
     clan.url = "https://docs.clan.lol/feed_rss_created.xml";
 
     ayats.url = "https://ayats.org/feed.xml";

@@ -1,7 +1,8 @@
 { pkgs, ...}:
 
 {
-  features.browser = "firefox"; # Change if we ever stop using Firefox (unlikely)
+  # Change if we ever stop using Firefox (unlikely)
+  features.browser = "firefox";
 
   hm.programs.firefox =
   {
@@ -31,5 +32,6 @@
 
   hm.home.file.".mozilla/firefox/profiles.ini".force = true;
 
-  environment.variables.BROWSER = "firefox"; # `man` likes having this
+  # `man` likes having this
+  environment.variables.BROWSER = "firefox";
 }

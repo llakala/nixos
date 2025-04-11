@@ -20,9 +20,13 @@ in
 
     extraPackages = with pkgs.bat-extras;
     [
-      batman # Prettier version of man
+
+      # Prettier version of man
+      batman
       batdiff
-      batgrep # Oddly seems to require sudo
+
+      # Oddly seems to require sudo
+      batgrep
     ];
   };
 

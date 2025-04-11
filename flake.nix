@@ -34,7 +34,9 @@
     {
       url = "github:llakala/gasp";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
+
+      # Reuse the same instance, so flake.lock doesn't get ugly
+      inputs.llakaLib.follows = "llakaLib";
     };
 
     home-manager =
@@ -86,7 +88,9 @@
     {
       url = "github:llakala/menu";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
+
+      # Reuse the same instance, so flake.lock doesn't get ugly
+      inputs.llakaLib.follows = "llakaLib";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -102,7 +106,8 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
+    # Use nixos branches instead of nixpkgs, it runs more tests
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     systems.url = "github:nix-systems/default";

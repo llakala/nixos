@@ -5,23 +5,30 @@
   {
     "org/gnome/mutter/wayland/keybindings" =
     {
-      restore-shortcuts = []; # Never reset shortcuts to default
+      # Never reset shortcuts to default
+      restore-shortcuts = [];
     };
 
     "org/gnome/shell/keybindings" =
     {
-      toggle-application-view = []; # Super+A is useful
-      toggle-quick-settings = [ ]; # Super+S is also useful
+      # Super+A is useful
+      toggle-application-view = [];
+
+      # Super+S is also useful
+      toggle-quick-settings = [ ];
     };
 
     # Make apps immediately appear in alt tab menu
     "org/gnome/desktop/wm/keybindings" =
     {
-      switch-applications = [ "<Super>Tab" ]; # Legacy alt-tab menu
+      # Legacy alt-tab menu
+      switch-applications = [ "<Super>Tab" ];
       switch-applications-backward = [ "<Shift><Super>Tab" ];
       switch-windows = [ "<Alt>Tab" ];
       switch-windows-backward = [ "<Shift><Alt>Tab" ];
-      activate-window-menu = []; # Previously Alt+Space
+
+      # Previously Alt+Space
+      activate-window-menu = [];
 
 
       toggle-fullscreen = ["F11"];
@@ -33,12 +40,18 @@
     {
       screenreader = [];
 
-      home = ["<Super>e"]; # Open file explorer
-      www = ["<Super>f"]; # Open web browser
-      control-center = ["<Super>i"]; # Open settings
+      # Open file explorer
+      home = ["<Super>e"];
+
+      # Open web browser
+      www = ["<Super>f"];
+
+      # Open settings
+      control-center = ["<Super>i"];
       search = ["<Super>space"];
 
-      logout = ["<Control><Alt>BackSpace"]; # Power off
+      # Power off
+      logout = ["<Control><Alt>BackSpace"];
     };
 
 

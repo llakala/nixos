@@ -1,7 +1,8 @@
 { lib, ... }:
 
 {
-  features.prompt = "starship"; # If we ever stop using Starship, change this
+  # If we ever stop using Starship, change this
+  features.prompt = "starship";
 
   hm.programs.starship =
   {
@@ -10,9 +11,11 @@
 
   hm.programs.starship.settings =
   {
-    directory.truncate_to_repo = false; # Show full path of current directory
+    # Show full path of current directory
+    directory.truncate_to_repo = false;
 
-    git_branch.ignore_branches = [ "master" "main" ]; # Don't show git branch if on master/main
+    # Don't show git branch if on master/main
+    git_branch.ignore_branches = [ "master" "main" ];
 
     battery.display = lib.singleton
     {
@@ -24,7 +27,9 @@
   hm.programs.starship.settings.time =
   {
     disabled = false;
-    time_format = "%I:%M %p"; # 9:47 PM
+
+    # 9:47 PM
+    time_format = "%I:%M %p";
   };
 
 
@@ -38,8 +43,11 @@
 
   hm.programs.starship.settings.cmd_duration =
   {
-    min_time = 30 * 1000; # 30 seconds
-    format = "[  $duration ]($style)"; # Character is a clock symbol
+    # 30 seconds
+    min_time = 30 * 1000;
+
+    # Character is a clock symbol
+    format = "[  $duration ]($style)";
   };
 
 
@@ -52,7 +60,9 @@
   hm.programs.starship.settings.direnv =
   {
     disabled = false;
-    format = "[$loaded]($style)"; # Remove the slash
+
+    # Remove the slash
+    format = "[$loaded]($style)";
 
     loaded_msg = "";
     unloaded_msg = "UNLOADED";

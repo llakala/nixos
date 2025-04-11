@@ -8,7 +8,9 @@ let
   (
     _: val:
     if (notBool val) then val
-    else if val then "enabled" # Already true, so no need for ==
+
+    # Already true, so no need for ==
+    else if val then "enabled"
     else "disabled"
 
   );
@@ -21,7 +23,9 @@ in
     settings = boolsToYaml
     {
       editor = config.baseVars.editor;
-      git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
+
+      # TODO: make this use ssh when proper secrets are set up
+      git_protocol = "https";
       prefer_editor_prompt = true;
     };
 

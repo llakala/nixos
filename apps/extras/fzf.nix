@@ -1,7 +1,9 @@
 { lib, llakaLib, pkgs-unstable, ... }:
 
 let
-  options = lib.cli.toGNUCommandLineShell # True values correspond to setting a flag
+
+  # True values correspond to setting a flag
+  options = lib.cli.toGNUCommandLineShell
   {}
   {
     multi = true;

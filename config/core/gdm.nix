@@ -3,7 +3,9 @@
   services.xserver.displayManager.gdm =
   {
     enable = true;
-    autoSuspend = true; # Suspend doesn't work without this
+
+    # Suspend doesn't work without this
+    autoSuspend = true;
     banner = ":3 :3 :3";
   };
 

@@ -24,7 +24,8 @@
 
     "net/nokyan/Resources" =
     {
-      network-bits = true; # Use mbps instead of mb/s
+      # Use mbps instead of mb/s
+      network-bits = true;
       graph-data-points = 100;
       sidebar-details = true;
 

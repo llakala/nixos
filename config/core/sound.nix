@@ -12,7 +12,8 @@
     jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; # Fixes jack until https://github.com/NixOS/nixpkgs/issues/265128 is fixed
+  # Fixes jack until https://github.com/NixOS/nixpkgs/issues/265128 is fixed
+  environment.systemPackages = with pkgs;
   [
     pipewire.jack
   ];

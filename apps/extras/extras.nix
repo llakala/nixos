@@ -5,44 +5,86 @@ let
   [
     # Basic linux utils
     coreutils
-    libgccjit # gcc
-    usbutils # lsusb and friends
-    bind # Networking utils
+
+    # gcc
+    libgccjit
+
+    # lsusb and friends
+    usbutils
+
+    # Networking utils
+    bind
     wget
-    gnumake # make
+
+    # make
+    gnumake
     jq
 
     # Useful stuff
-    xorg.xeyes # See if an app is running under xwayland or not
+
+    # See if an app is running under xwayland or not
+    xorg.xeyes
     linuxPackages.perf
     parallel
-    ncdu # Scan folder size prettily
-    tree # Show filetree for writing out in markdown
-    wl-clipboard # Wayland terminal stuff
-    powertop # Check battery drain
+
+    # Scan folder size prettily
+    ncdu
+
+    # Show filetree for writing out in markdown
+    tree
+
+    # Wayland terminal stuff
+    wl-clipboard
+
+    # Check battery drain
+    powertop
     ffmpeg
     zip
     unzip
     file
 
     # Weird stuff
-    tldr # Mini-manpages
-    cava # Audio display
-    libva-utils # Check for hardware acceleration
-    sd # Sed alternative
-    fd # Search filenames, used by Yazi
-    calc # It's just slang chat
-    w3m # w3mman gives you manpage hyperlinks
-    appimage-run # Allow running appimages for when something isnt on nixpkgs
+
+    # Mini-manpages
+    tldr
+
+    # Audio display
+    cava
+
+    # Check for hardware acceleration
+    libva-utils
+
+    # Sed alternative
+    sd
+
+    # Search filenames, used by Yazi
+    fd
+
+    # It's just slang chat
+    calc
+
+    # w3mman gives you manpage hyperlinks
+    w3m
+
+    # Allow running appimages for when something isnt on nixpkgs
+    appimage-run
     hwinfo
     age
     libsecret
-    exiftool # Check metadata
-    ijq # Interactive jq
+
+    # Check metadata
+    exiftool
+
+    # Interactive jq
+    ijq
 
     # commands specifically for nix
-    nil # Nix language server
-    nix-output-monitor # NOT CALLED NOM
+
+    # Nix language server
+    nil
+
+    # NOT CALLED NOM
+    nix-output-monitor
     nixfmt-rfc-style
     nix-inspect
   ];

@@ -10,7 +10,8 @@
     extraGroups = [ "wheel" ];
   };
 
-  users.mutableUsers = false; # Makes it so we can only do password stuff via nixos, safer for not bricking system
+  # Makes it so we can only do password stuff via nixos, safer for not bricking system
+  users.mutableUsers = false;
 
   security.sudo =
   {

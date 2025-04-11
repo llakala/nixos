@@ -82,8 +82,12 @@ in
 
       "text/*" = cfg.editor;
       "text/plain" = cfg.editor;
-      "application/x-zerosize" = cfg.editor; # Empty files
-      "application/x-trash" = cfg.editor; # Backup files
+
+      # Empty files
+      "application/x-zerosize" = cfg.editor;
+
+      # Backup files
+      "application/x-trash" = cfg.editor;
       "application/json" = cfg.editor;
       "text/markdown" = cfg.editor;
 

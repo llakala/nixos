@@ -20,6 +20,8 @@ in
   environment.systemPackages = with pkgs;
   [
     gradle
-    babelfish # Seems to be required for java setup
+
+    # Seems to be required for java setup
+    babelfish
   ] ++ lib.singleton myJshell;
 }

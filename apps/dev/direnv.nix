@@ -1,5 +1,6 @@
 {
-  features.direnv = "lorri"; # Change if we ever stop using lorri
+  # Change if we ever stop using lorri
+  features.direnv = "lorri";
 
   programs.direnv =
   {

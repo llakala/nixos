@@ -10,7 +10,8 @@
   [
     inputs.home-manager.nixosModules.home-manager
 
-    ( # Let us use hm as shorthand for home-manager config
+    # Let us use hm as shorthand for home-manager config
+    (
       lib.mkAliasOptionModule
       [ "hm" ]
       [ "home-manager" "users" config.hostVars.username ]
@@ -19,7 +20,9 @@
 
   environment.systemPackages = with pkgs;
   [
-    home-manager # Lets us run commands like `home-manager switch`
+
+    # Lets us run commands like `home-manager switch`
+    home-manager
   ];
 
   hm =

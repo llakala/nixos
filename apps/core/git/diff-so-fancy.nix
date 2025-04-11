@@ -7,7 +7,9 @@ in
   hm.programs.git.diff-so-fancy =
   {
     enable = true;
-    markEmptyLines = false; # So nothing else looks like `red reverse`
+
+    # So nothing else looks like `red reverse`
+    markEmptyLines = false;
 
     # Convert from space-separated string to list of strings
     pagerOpts = lib.splitString " " globalLessOpts;

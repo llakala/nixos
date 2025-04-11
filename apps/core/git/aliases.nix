@@ -2,15 +2,21 @@
   hm.programs.git.aliases =
   {
     amend = "commit --amend --no-edit";
-    reword = "commit --amend --only"; # --only means staged changes aren't included
+
+    # --only means staged changes aren't included
+    reword = "commit --amend --only";
     force = "push --force-with-lease --force-if-includes";
 
-    brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
+    # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
+    brb = "stash push --staged";
     imback = "stash pop";
 
 
-    unstage = "restore --staged"; # Unstage changes
-    goback = "restore"; # Undo unstaged changes
+    # Unstage changes
+    unstage = "restore --staged";
+
+    # Undo unstaged changes
+    goback = "restore";
 
     # Patch versions of add, unstage, and goback
     hire = "add --patch";

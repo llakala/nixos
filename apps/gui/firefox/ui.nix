@@ -10,7 +10,9 @@
       PersonalToolbar = [ "personal-bookmarks" ];
       nav-bar =
       [
-        "sidebar-button" # For vertical tabs
+
+        # For vertical tabs
+        "sidebar-button"
         "back-button"
         "forward-button"
         "urlbar-container"

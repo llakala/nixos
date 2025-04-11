@@ -33,12 +33,18 @@ in
       color-scheme = "prefer-dark";
 
       clock-format = "12h";
-      clock-show-weekday = true; # Show day of the week on top bar
-      clock-show-date = false; # Don't show the date
+
+      # Show day of the week on top bar
+      clock-show-weekday = true;
+
+      # Don't show the date
+      clock-show-date = false;
 
 
       enable-hot-corners = false;
-      font-antialiasing = "rgba"; # Aliasing with lcd screen instead of grayscale
+
+      # Aliasing with lcd screen instead of grayscale
+      font-antialiasing = "rgba";
 
     };
 
@@ -50,7 +56,9 @@ in
     "org/gnome/desktop/wm/preferences" =
     {
       num-workspaces = 1;
-      button-layout = "appmenu:minimize,close"; # Show minimize and close button for windows
+
+      # Show minimize and close button for windows
+      button-layout = "appmenu:minimize,close";
       action-right-click-titlebar = "toggle-shade";
     };
 
@@ -72,7 +80,8 @@ in
 
     "org/gnome/desktop/peripherals/mouse" =
     {
-      accel-profile = "flat"; # No mouse acceleration
+      # No mouse acceleration
+      accel-profile = "flat";
       speed = -0.50969;
     };
 

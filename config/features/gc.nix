@@ -5,7 +5,9 @@
   nix.optimise =
   {
     automatic = true;
-    dates = lib.singleton "daily"; # Only runs daily, preferred over auto-optimise-store, which runs every rebuild and makes rebuilds take longer.
+
+    # Only runs daily, preferred over auto-optimise-store, which runs every rebuild and makes rebuilds take longer.
+    dates = lib.singleton "daily";
   };
 
   # Deletes old stuff from the store that's now unreachable.
@@ -13,8 +15,12 @@
   nix.gc =
   {
     automatic = true;
-    persistent = true; # If system is powered off when timer finishes, do it next time the system power on
+
+    # If system is powered off when timer finishes, do it next time the system power on
+    persistent = true;
     dates = "daily";
-    options = "--delete-older-than 7d"; # Delete old generations
+
+    # Delete old generations
+    options = "--delete-older-than 7d";
   };
 }
