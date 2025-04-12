@@ -115,8 +115,7 @@
 
     yazi-plugins =
     {
-      # Pinned to commit until yazi version in nixpkgs updates
-      url = "github:yazi-rs/plugins/273019910c1111a388dd20e057606016f4bd0d17";
+      url = "github:yazi-rs/plugins";
       flake = false;
     };
   };

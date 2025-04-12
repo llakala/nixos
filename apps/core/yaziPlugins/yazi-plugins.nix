@@ -40,12 +40,12 @@ in
   hm.programs.yazi.initLua =
   /* lua */
   ''
-    THEME.git = THEME.git or {}
+    th.git = th.git or {}
 
-    THEME.git.modified_sign = "M"
-    THEME.git.added_sign = "A"
-    THEME.git.deleted_sign = "D"
-    THEME.git.untracked_sign = "A"
+    th.git.modified_sign = "M"
+    th.git.added_sign = "A"
+    th.git.deleted_sign = "D"
+    th.git.untracked_sign = "A"
 
     require("git"):setup()
   '';
