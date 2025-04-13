@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  programs.yazi.settings.keymap.manager.prepend_keymap =
   [
 
     # Remove the default bookmarks for home and downloads, since we use `b` instead

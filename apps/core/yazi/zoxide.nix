@@ -1,7 +1,7 @@
 { pkgs-unstable, ... }:
 
 {
-  hm.programs.yazi.package = pkgs-unstable.yazi.override
+  programs.yazi.package = pkgs-unstable.yazi.override
   {
     # Dependencies from the package definition, but without zoxide
     # Lets Yazi reuse our zoxide definition so it tracks our yazi directories too
@@ -21,14 +21,5 @@
     ];
   };
 
-  # Makes yazi update the zoxide database on navigation
-  # From https://github.com/sxyazi/yazi/discussions/860
-  hm.programs.yazi.initLua =
-  /* lua */
-  ''
-    require("zoxide"):setup
-    {
-      update_db = true,
-    }
-  '';
+  # See the init.lua for other zoxide snippets
 }

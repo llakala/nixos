@@ -1,34 +1,14 @@
 { config, ... }:
 
-let
-  # Function to perform some Yazi action and write current directory to file
-  # Referenced from: https://github.com/Axlefublr/dotfiles/blob/38525a7f900709efe5d0ea3005b670203626794d/yazi/plugins/storecwd.yazi/init.lua#L5
-  mkCwd = action:
-  /* lua */
-  ''
-    --- @sync entry
-    return {
-      entry = function()
-        local cwd = tostring(cx.active.current.cwd)
-        local file = io.open('/tmp/yazi-cwd-suspend', 'w')
-        if file then
-          file:write(cwd)
-          file:close()
-        end
-        ya.manager_emit('${action}', {})
-      end,
-    }
-  '';
-in
 {
 
-  hm.xdg.configFile =
-  {
-    "yazi/plugins/suspendcwd.yazi/main.lua".text = mkCwd "suspend";
-    "yazi/plugins/opencwd.yazi/main.lua".text = mkCwd "open";
-  };
+  # programs.yazi.plugins =
+  # {
+  #   suspendcwd = ./suspendcwd;
+  #   opencwd = ./opencwd;
+  # };
 
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  programs.yazi.settings.keymap.manager.prepend_keymap =
   [
     {
       desc = "Suspend Yazi, writing the current directory to a file";
@@ -36,11 +16,11 @@ in
       run = "plugin suspendcwd";
     }
 
-    {
-      desc = "Open file and write the current directory to a file";
-      on = "o";
-      run = "plugin opencwd";
-    }
+    # {
+    #   desc = "Open file and write the current directory to a file";
+    #   on = "o";
+    #   run = "plugin opencwd";
+    # }
   ];
 
   # When pressing Ctrl+y, go to the last directory we were in with Yazi

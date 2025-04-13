@@ -8,7 +8,7 @@ let
 in
 {
   # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  programs.yazi.settings.keymap.manager.prepend_keymap =
   [
     {
       desc = "Go to the top of the git repo";

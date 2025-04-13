@@ -1,12 +1,15 @@
-{ lib, ... }:
+{ lib, inputs, ... }:
 
 {
   features.files = "yazi"; # Change if we ever stop using Yazi
 
-  hm.programs.yazi =
+  disabledModules = lib.singleton "programs/yazi.nix";
+  imports = lib.singleton (inputs.nixpkgs-unstable + "/nixos/modules/programs/yazi.nix");
+
+  programs.yazi =
   {
     enable = true;
-    shellWrapperName = "y";
+    initLua = ./init.lua;
   };
 
   # We can't use xdg-open for opening files with editor,
@@ -19,7 +22,7 @@
   # Yazi seems to be using mpv by default, but we want it to reuse mimetypes
   # See the source code where it's set:
   # https://github.com/sxyazi/yazi/blob/ce9092e73e5c73f4bb48d7cd0c52e8d9fedaf30f/yazi-config/preset/yazi-default.toml#L55
-  hm.programs.yazi.settings.opener =
+  programs.yazi.settings.yazi.opener =
   {
     play = lib.singleton
     {
@@ -29,7 +32,7 @@
     };
   };
 
-  hm.programs.yazi.settings.manager =
+  programs.yazi.settings.yazi.manager =
   {
     sort_by = "extension";
     sort_dir_first = true;

@@ -1,25 +1,18 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 
 let
   plugins = inputs.yazi-plugins;
 
 in
 {
-  # Use unstable home-manager module for compatibility with Yazi package update
-  hm =
-  {
-    disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
-    imports = lib.singleton "${inputs.home-manager-yazi}/modules/programs/yazi.nix";
-  };
-
-  hm.programs.yazi.plugins =
+  programs.yazi.plugins =
   {
     jump-to-char = plugins + "/jump-to-char.yazi";
     chmod = plugins + "/chmod.yazi";
     git = plugins + "/git.yazi";
   };
 
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  programs.yazi.settings.keymap.manager.prepend_keymap =
   [
     {
       on = "f";
@@ -36,21 +29,8 @@ in
 
   ];
 
-
-  hm.programs.yazi.initLua =
-  /* lua */
-  ''
-    th.git = th.git or {}
-
-    th.git.modified_sign = "M"
-    th.git.added_sign = "A"
-    th.git.deleted_sign = "D"
-    th.git.untracked_sign = "A"
-
-    require("git"):setup()
-  '';
-
-  hm.programs.yazi.settings.plugin.prepend_fetchers =
+  # Check the init.lua in the `yazi` for where I set theme stuff
+  programs.yazi.settings.yazi.plugin.prepend_fetchers =
   [
     {
       id = "git";

@@ -2,9 +2,9 @@
 
 {
 
-  hm.programs.yazi =
+  programs.yazi =
   {
-    theme =
+    settings.theme =
     {
       flavor.use = "kanagawa";
     };
