@@ -43,10 +43,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Pinning to commit before recent shell-integration changes
+    # My home-manager fork, which:
+    #
+    # - points to an older Home-Manager commit, since they didn't backport some lib
+    # functions on the latest version, which made overriding the module impossible
+    #
+    # - Removes the assertions from the module, to prevent IFD
     home-manager-yazi =
     {
-      url = "github:nix-community/home-manager/bf9a1a068919ccdfa7d130873936c5fd4c826e85";
+      url = "github:llakala/home-manager/fix-yazi-ifd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -111,12 +116,6 @@
     {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    yazi-plugins =
-    {
-      url = "github:yazi-rs/plugins";
-      flake = false;
     };
   };
 

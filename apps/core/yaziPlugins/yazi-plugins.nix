@@ -1,11 +1,8 @@
-{ inputs, lib, ... }:
+{ inputs, lib, pkgs-unstable, ... }:
 
-let
-  plugins = inputs.yazi-plugins;
-
-in
 {
-  # Use unstable home-manager module for compatibility with Yazi package update
+  # Use my home-manager fork, for compatibility with Yazi package update, and for
+  # removing IFD
   hm =
   {
     disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
@@ -14,9 +11,10 @@ in
 
   hm.programs.yazi.plugins =
   {
-    jump-to-char = plugins + "/jump-to-char.yazi";
-    chmod = plugins + "/chmod.yazi";
-    git = plugins + "/git.yazi";
+    inherit (pkgs-unstable.yaziPlugins)
+      jump-to-char
+      chmod
+      git;
   };
 
   hm.programs.yazi.keymap.manager.prepend_keymap =
