@@ -2,14 +2,8 @@
 
 {
   features.desktop = "gnome"; # If we ever stop using Gnome, change this
-  services.xserver =
-  {
-    enable = true;
-    excludePackages = with pkgs; [xterm]; # Remove weird xterm
-
-    # Enable Gnome
-    desktopManager.gnome.enable = true;
-  };
+  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.defaultSession = "gnome";
 
 
   services.gnome =
