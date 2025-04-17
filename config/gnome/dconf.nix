@@ -36,10 +36,10 @@ in
       clock-show-weekday = true; # Show day of the week on top bar
       clock-show-date = false; # Don't show the date
 
-
       enable-hot-corners = false;
       font-antialiasing = "rgba"; # Aliasing with lcd screen instead of grayscale
 
+      cursor-theme = "Adwaita";
     };
 
     "org/gnome/settings-daemon/plugins/power" =
