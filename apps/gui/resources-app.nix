@@ -1,13 +1,12 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
-
   environment.systemPackages = with pkgs;
   [
     resources
   ];
 
-  hm.dconf.settings = assert config.features.desktop == "gnome";
+  hm.dconf.settings = lib.mkIf (config.features.desktop == "gnome")
   {
     # Ctrl+Alt+Delete to open Resources
     "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings =

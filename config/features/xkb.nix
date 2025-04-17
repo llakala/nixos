@@ -25,7 +25,7 @@ in
   services.xserver.xkb.layout = layoutName;
 
   hm.dconf.settings."org/gnome/desktop/input-sources" =
-  assert config.features.desktop == "gnome";
+  lib.mkIf (config.features.desktop == "gnome")
   {
     xkb-options =
     [
