@@ -1,4 +1,4 @@
-{ lib, options, ... }:
+{ lib, ... }:
 
 {
   options.baseVars =
@@ -24,17 +24,4 @@
       default = null;
     };
   };
-
-  config.assertions =
-  [
-    {
-      assertion = options.baseVars.editor.isDefined;
-    }
-    {
-      assertion = options.baseVars.fullName.isDefined;
-    }
-    {
-      assertion = options.baseVars.email.isDefined;
-    }
-  ];
 }
