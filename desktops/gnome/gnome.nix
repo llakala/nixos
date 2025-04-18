@@ -2,9 +2,9 @@
 
 {
   features.desktop = "gnome"; # If we ever stop using Gnome, change this
+
   services.xserver.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "gnome";
-
 
   services.gnome =
   {

@@ -33,13 +33,14 @@ let
     [
       ./config/core
       ./config/features
-      ./config/gnome
       ./config/baseVars.nix
 
       ./apps/core
       ./apps/dev
       ./apps/extras
       ./apps/gui
+
+      ./desktops
 
       ./hosts/${hostname}/config
       ./hosts/${hostname}/hardware-configuration.nix
