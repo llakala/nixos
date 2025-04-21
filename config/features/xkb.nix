@@ -21,7 +21,8 @@ in
     '';
   };
 
-  # Don't forget this - it actually makes the layout apply.
+  # Don't forget this - it actually makes the layout apply (on non-stupid
+  # desktops, Gnome still needs a little more work)
   services.xserver.xkb.layout = layoutName;
 
   hm.dconf.settings."org/gnome/desktop/input-sources" =
@@ -32,6 +33,12 @@ in
       "terminate:ctrl_alt_bksp"
       "lv3:rwin_switch"
     ];
+
+    # Override gnome to use our custom layout, since it doesn't obey otherwise.
+    sources = lib.singleton
+    (
+      lib.gvariant.mkTuple ["xkb" layoutName]
+    );
   };
 
 }
