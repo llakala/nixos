@@ -54,6 +54,10 @@ in
     {
       panel = false;
       panel-in-overview = true;
+
+      # Disable request for payment on boot
+      support-notifier-type = 0;
+
       calendar = false;
 
       window-demands-attention-focus = true; # Just make window appear when it's done with a task
