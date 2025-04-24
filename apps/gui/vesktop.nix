@@ -13,7 +13,16 @@
     # We don't need the normal discord client installed
     discord.enable = false;
 
-    discord.vencord.package = pkgs-unstable.vencord;
+    # New Vesktop version broken without this - see
+    # https://github.com/NixOS/nixpkgs/pull/399932
+    discord.vencord.package = pkgs-unstable.vencord.overrideAttrs (o: {
+      postInstall =
+        (o.postInstall or "")
+        + ''
+          cp package.json $out
+        '';
+    });
+
     vesktop.enable = true;
   };
 
