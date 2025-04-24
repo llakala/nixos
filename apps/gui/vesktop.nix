@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs-unstable, pkgs, ... }:
+{ inputs, lib, pkgs-unstable, ... }:
 
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
