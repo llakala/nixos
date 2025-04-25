@@ -47,5 +47,10 @@ in
     math = mkFeature "math notes";
 
     usingKittab = mkBoolFeature "kittab";
+
+    taskbar = lib.mkOption {
+      type = with lib.types; listOf str;
+      description = "The default desktop files for the taskbar";
+    };
   };
 }
