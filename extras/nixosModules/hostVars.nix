@@ -41,6 +41,14 @@ in
       default = null;
     };
 
+    fractionalScalingFactor = lib.mkOption
+    {
+      type = lib.types.float;
+      description =
+        "The scaling factor for the desktop, if the desktop supports fractional scaling (basically, if it's not Gnome)";
+      default = null;
+    };
+
     stateVersion = lib.mkOption
     {
       type = lib.types.str;
