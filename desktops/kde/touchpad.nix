@@ -11,7 +11,10 @@ in
     ${touchpadName} =
     {
       NaturalScroll = true;
-      DisableWhileTyping = true;
+      DisableWhileTyping = false;
+
+      # Two-finger right click
+      ClickMethod = 2;
     };
   };
 }
