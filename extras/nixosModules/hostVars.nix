@@ -1,4 +1,4 @@
-{ lib, config, options, ... }:
+{ lib, config, ... }:
 
 let
   cfg = config.hostVars;
@@ -57,27 +57,4 @@ in
       default = null;
     };
   };
-
-
-  config.assertions =
-  [
-    {
-      assertion = options.hostVars.configDirectory.isDefined;
-    }
-    {
-      assertion = options.hostVars.hostName.isDefined;
-    }
-    {
-      assertion = options.hostVars.username.isDefined;
-    }
-    {
-      assertion = options.hostVars.homeDirectory.isDefined;
-    }
-    {
-      assertion = options.hostVars.scalingFactor.isDefined;
-    }
-    {
-      assertion = options.hostVars.stateVersion.isDefined;
-    }
-  ];
 }
