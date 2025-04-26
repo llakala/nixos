@@ -21,7 +21,6 @@
     gtk2.configLocation = "${config.hostVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 
-  hm.programs.plasma.workspace.wallpaper =
-    pkgs.kdePackages.plasma-workspace-wallpapers
-    + "/share/wallpapers/ScarletTree/contents/images/5120x2880.png";
+  # Pretty orange tree :3
+  hm.programs.plasma.workspace.wallpaper = ./wallpaper.png;
 }
