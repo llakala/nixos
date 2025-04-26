@@ -7,7 +7,7 @@
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_6_12; # 6.13 breaking some stuff on stable, see https://github.com/NixOS/nixpkgs/issues/375730#issuecomment-2625157971
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
