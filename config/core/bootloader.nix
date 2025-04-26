@@ -19,7 +19,11 @@
     systemd-boot.configurationLimit = 20;
 
     efi.canTouchEfiVariables = true;
-    timeout = lib.mkForce 1; # If not working, get rid of state via `bootctl set-default && sudo bootctl set-timeout`
+
+    # Setting this super high to fix issues where windows is autoselected, and
+    # if chosen, it bricks my install
+    # If not working, get rid of state via `bootctl set-default && sudo bootctl set-timeout`
+    timeout = lib.mkForce 9999;
   };
 
   boot.loader.grub.enable = lib.mkForce false; # No need to break our system accidentally
