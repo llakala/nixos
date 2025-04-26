@@ -11,9 +11,7 @@ let
 
       termcolor
       pretty-errors
-
       pycodestyle
-      pretty-errors
 
       pip
    ];
