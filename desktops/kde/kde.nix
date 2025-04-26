@@ -1,4 +1,4 @@
-{ lib, inputs, config, ... }:
+{ lib, inputs, config, pkgs, ... }:
 {
   services.desktopManager.plasma6.enable = true;
 
@@ -16,4 +16,8 @@
     # overrideConfig = true;
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
   };
+
+  hm.programs.plasma.workspace.wallpaper =
+    pkgs.kdePackages.plasma-workspace-wallpapers
+    + "/share/wallpapers/ScarletTree/contents/images/5120x2880.png";
 }
