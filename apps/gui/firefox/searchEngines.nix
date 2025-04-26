@@ -4,7 +4,7 @@
   hm.programs.firefox.profiles.default.search.engines =
   {
     # Disable all the stupid "This time, search with" icons
-    google.metaData.hidden = true;
+    ddg.metaData.hidden = true;
     bing.metaData.hidden = true;
     ebay.metaData.hidden = true;
     amazondotcom.metaData.hidden = true;

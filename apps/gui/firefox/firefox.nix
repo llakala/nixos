@@ -15,7 +15,9 @@
       search =
       {
         force = true;
-        default = "ddg";
+
+        # DuckDuckGo has been excruciatingly awful lately
+        default = "google";
       };
 
       settings =
