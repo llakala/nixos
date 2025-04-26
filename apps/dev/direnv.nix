@@ -6,8 +6,7 @@
     enable = true;
     silent = true;
 
-    # Using Lorri instead
-    # nix-direnv.enable = true;
+    nix-direnv.enable = true;
   };
 
   # Sometimes fails - run `systemctl restart --user lorri` to fix
