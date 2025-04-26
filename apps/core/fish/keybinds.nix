@@ -19,8 +19,10 @@ in
   hm.programs.fish.interactiveShellInit =
   /* fish */
   ''
-    fish_vi_key_bindings # fish-helix expects this to be set or it breaks
-    fish_helix_key_bindings
+    fish_vi_key_bindings
+
+    # Not working very well on Fish 4.0: see https://github.com/sshilovsky/fish-helix/issues/9
+    # fish_helix_key_bindings
 
     bind -M insert ctrl-space complete-and-search
     bind -M insert tab accept-autosuggestion
