@@ -15,9 +15,8 @@
           config.features.taskbar;
       }
 
-      # If no configuration is needed, specifying only the name of the
-      # widget will add them with the default configuration.
       "org.kde.plasma.marginsseparator"
+
       {
         systemTray.items =
         {
