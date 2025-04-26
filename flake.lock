@@ -164,16 +164,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1744743431,
-        "narHash": "sha256-iyn/WBYDc7OtjSawbegINDe/gIkok888kQxk3aVnkgg=",
+        "lastModified": 1745627989,
+        "narHash": "sha256-mOCdFmxocBPae7wg7RYWOtJzWMJk34u9493ItY0dVqw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c61bfe3ae692f42ce688b5865fac9e0de58e1387",
+        "rev": "4d2d32231797bfa7213ae5e8ac89d25f8caaae82",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-24.11",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -195,27 +195,6 @@
       "original": {
         "owner": "nix-community",
         "ref": "master",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager-yazi": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744579305,
-        "narHash": "sha256-fnSk72qIre3F8xYgs9Qpt5290ZiF49Urv72qHsX/MNw=",
-        "owner": "llakala",
-        "repo": "home-manager",
-        "rev": "e57cf4f4757fac2ed10137935d290d27afca6d45",
-        "type": "github"
-      },
-      "original": {
-        "owner": "llakala",
-        "ref": "fix-yazi-ifd",
         "repo": "home-manager",
         "type": "github"
       }
@@ -454,16 +433,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1745487689,
-        "narHash": "sha256-FQoi3R0NjQeBAsEOo49b5tbDPcJSMWc3QhhaIi9eddw=",
+        "lastModified": 1745526057,
+        "narHash": "sha256-ITSpPDwvLBZBnPRS2bUcHY3gZSwis/uTe255QgMtTLA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5630cf13cceac06cefe9fc607e8dfa8fb342dde3",
+        "rev": "f771eb401a46846c1aebd20552521b233dd7e18b",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-24.11",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -544,7 +523,6 @@
         "git-repo-manager": "git-repo-manager",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
-        "home-manager-yazi": "home-manager-yazi",
         "kanagawa-yazi": "kanagawa-yazi",
         "lix-module": "lix-module",
         "llakaLib": "llakaLib",

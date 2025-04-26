@@ -39,19 +39,7 @@
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # My home-manager fork, which:
-    #
-    # - points to an older Home-Manager commit, since they didn't backport some lib
-    # functions on the latest version, which made overriding the module impossible
-    #
-    # - Removes the assertions from the module, to prevent IFD
-    home-manager-yazi =
-    {
-      url = "github:llakala/home-manager/fix-yazi-ifd";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -107,7 +95,10 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Use nixos branches instead of nixpkgs, it runs more tests
+    # Use nixos branches instead of nixpkgs, it runs more tests
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # This temporarily refers to the same as `nixpkgs` until 25.05 comes out and
+    # I branch my nixpkgs input off
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     plasma-manager =

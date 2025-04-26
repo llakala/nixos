@@ -41,15 +41,16 @@ let
     ijq # Interactive jq
 
     # commands specifically for nix
-    nil # Nix language server
     nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
     nix-inspect
+
+    # Shows colors in the terminal. I packaged this!
+    colo
   ];
 
   unstablePackages = with pkgs-unstable;
   [
-    colo
   ];
 
 in

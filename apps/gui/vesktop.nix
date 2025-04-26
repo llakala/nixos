@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs-unstable, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
@@ -15,7 +15,7 @@
 
     # New Vesktop version broken without this - see
     # https://github.com/NixOS/nixpkgs/pull/399932
-    discord.vencord.package = pkgs-unstable.vencord.overrideAttrs (o: {
+    discord.vencord.package = pkgs.vencord.overrideAttrs (o: {
       postInstall =
         (o.postInstall or "")
         + ''

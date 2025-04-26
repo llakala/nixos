@@ -1,4 +1,4 @@
-{ config, pkgs-unstable, ... }:
+{ config, pkgs-unstable, pkgs, ... }:
 
 {
   hm.programs.git =
@@ -9,7 +9,7 @@
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
   };
 
-  environment.systemPackages = with pkgs-unstable;
+  environment.systemPackages = with pkgs;
   [
     git-extras
     tig # cool git interface

@@ -1,14 +1,6 @@
 { inputs, lib, pkgs-unstable, ... }:
 
 {
-  # Use my home-manager fork, for compatibility with Yazi package update, and for
-  # removing IFD
-  hm =
-  {
-    disabledModules = lib.singleton "${inputs.home-manager}/modules/programs/yazi.nix";
-    imports = lib.singleton "${inputs.home-manager-yazi}/modules/programs/yazi.nix";
-  };
-
   hm.programs.yazi.plugins =
   {
     inherit (pkgs-unstable.yaziPlugins)

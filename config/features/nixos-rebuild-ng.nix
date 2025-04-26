@@ -1,9 +1,10 @@
 { lib, pkgs-unstable, ... }:
 
 {
-  # Would add module, but can't, as there are stable and unstable conflicts
-  # These include the module expecting `nixos-rebuild-ng` in `pkgs`, and the
-  # new `replaceVarsWith` stuff not being in `pkgs` either.
+  # Module doesn't seem to support a custom nix package yet. It does reuse the
+  # one from `nix.settings`, which might work, but that'll have to be
+  # investigated another time. For now, this shadows the other package and works
+  # fine.
   environment.systemPackages = lib.singleton
   (
     pkgs-unstable.nixos-rebuild-ng.override

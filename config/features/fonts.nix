@@ -1,9 +1,8 @@
-{ pkgs, pkgs-unstable, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
-  # Nerdfont installation was reworked in 24.11 to be a package set, rather than a
-  # package to override
-  myNerdFonts = with pkgs-unstable.nerd-fonts;
+
+  myNerdFonts = with pkgs.nerd-fonts;
   [
     symbols-only
   ];

@@ -1,4 +1,4 @@
-{ pkgs-unstable, config, ... }:
+{ pkgs, config, ... }:
 
 {
   hm.xdg =
@@ -12,7 +12,7 @@
   hm.xdg.portal =
   {
     enable = true;
-    extraPortals = with pkgs-unstable;
+    extraPortals = with pkgs;
     [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-termfilechooser
@@ -37,7 +37,7 @@
     text = assert config.features.files == "yazi";
     ''
       [filechooser]
-      cmd=${pkgs-unstable.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+      cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
     '';
   };
 }
