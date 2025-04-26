@@ -49,6 +49,14 @@ in
       default = null;
     };
 
+    touchpadName = lib.mkOption
+    {
+      type = with lib.types; nullOr str;
+      # Check this for KDE with `nix run github:nix-community/plasma-manager`
+      description = "The internal name of your touchpad. If null, assumes your host doesn't have a touchpad.";
+      default = null;
+    };
+
     stateVersion = lib.mkOption
     {
       type = lib.types.str;
