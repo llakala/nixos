@@ -34,7 +34,7 @@ in
 {
   hm.programs.firefox.profiles.default =
   {
-    extensions = ryceeAddons ++ customAddons;
+    extensions.packages = ryceeAddons ++ customAddons;
   };
 
   hm.programs.firefox.policies."3rdparty".extensions =

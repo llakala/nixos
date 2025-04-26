@@ -4,11 +4,11 @@
   hm.programs.firefox.profiles.default.search.engines =
   {
     # Disable all the stupid "This time, search with" icons
-    "Google".metaData.hidden = true;
-    "Bing".metaData.hidden = true;
-    "eBay".metaData.hidden = true;
-    "Amazon.com".metaData.hidden = true;
-    "Wikipedia (en)".metaData.hidden = true;
+    google.metaData.hidden = true;
+    bing.metaData.hidden = true;
+    ebay.metaData.hidden = true;
+    amazondotcom.metaData.hidden = true;
+    wikipedia.metaData.hidden = true;
 
     # Thanks to xunuwu on github for being a reference for use of these functions
     "Github Search Nix" =
@@ -18,7 +18,7 @@
         template = "https://github.com/search?type=code&q=lang:nix+NOT+is:fork+{searchTerms}";
       };
 
-      iconUpdateURL = "https://github.com/favicon.ico";
+      icon = "https://github.com/favicon.ico";
       definedAliases = lib.singleton "@gn";
     };
 
@@ -30,7 +30,7 @@
         template = "https://github.com/search?type=code&q=NOT+is:fork+{searchTerms}";
       };
 
-      iconUpdateURL = "https://github.com/favicon.ico";
+      icon = "https://github.com/favicon.ico";
       definedAliases = lib.singleton "@gh";
     };
 
@@ -41,7 +41,7 @@
         template = "https://github.com/search?type=code&q=lang:fish+NOT+is:fork+{searchTerms}";
       };
 
-      iconUpdateURL = "https://fishshell.com/favicon.ico";
+      icon = "https://fishshell.com/favicon.ico";
       definedAliases = lib.singleton "@gf";
     };
 
@@ -52,7 +52,7 @@
         template = "https://github.com/search?type=code&q=lang:lua+NOT+is:fork+{searchTerms}";
       };
 
-      iconUpdateURL = "https://github.com/favicon.ico";
+      icon = "https://github.com/favicon.ico";
       definedAliases = lib.singleton "@gl";
     };
 
@@ -63,7 +63,7 @@
         template = "https://github.com/search?type=code&q=lang:gleam+NOT+is:fork+{searchTerms}";
       };
 
-      iconUpdateURL = "https://github.com/favicon.ico";
+      icon = "https://github.com/favicon.ico";
       definedAliases = lib.singleton "@gg";
     };
 
@@ -74,7 +74,7 @@
         template = "https://noogle.dev/q?term={searchTerms}";
       };
 
-      iconUpdateURL = "https://noogle.dev/favicon.png";
+      icon = "https://noogle.dev/favicon.png";
       definedAliases = lib.singleton "@ng";
     };
 
@@ -106,7 +106,7 @@
         template = "https://home-manager-options.extranix.com/?release=release-24.11&query={searchTerms}";
       };
 
-      iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+      icon = "https://home-manager-options.extranix.com/images/favicon.png";
       definedAliases = lib.singleton "@oh";
     };
 

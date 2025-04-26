@@ -8,7 +8,7 @@ in
 {
   hm.programs.firefox =
   {
-    profiles.default.extensions = lib.singleton tridactyl;
+    profiles.default.extensions.packages = lib.singleton tridactyl;
     nativeMessagingHosts = lib.singleton pkgs.tridactyl-native;
   };
 
