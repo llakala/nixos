@@ -21,7 +21,6 @@
 
     underline_hyperlinks = "always";
 
-    linux_display_server = "x11"; # Make titlebar normal gnome titlebar rather than ugly kitty one
     font_size = 12;
 
     background_opacity = "0.98";
