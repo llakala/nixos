@@ -25,11 +25,11 @@
             "org.kde.plasma.battery"
             "org.kde.plasma.clipboard"
             "org.kde.plasma.networkmanagement"
-            "org.kde.plasma.volume"
           ];
           hidden =
           [
             "org.kde.plasma.brightness"
+            "org.kde.plasma.volume"
           ];
         };
       }
