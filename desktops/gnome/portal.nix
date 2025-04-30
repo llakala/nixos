@@ -1,15 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  hm.xdg.portal =
+  hm.xdg.portal = lib.mkIf (config.features.desktop == "gnome")
   {
-    extraPortals = with pkgs;
-    [
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-
-    config.common.default = ["gnome" "gtk" ];
+    configPackages = lib.singleton pkgs.xdg-desktop-portal-gnome;
   };
-
 }
