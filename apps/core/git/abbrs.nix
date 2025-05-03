@@ -46,6 +46,11 @@
     # Switch branches using custom alias with fzf
     gswp = "git pswitch";
 
+    gsh = "git stash --staged";
+    gsha = "git stash --include-untracked"; # Stash everything
+    gshl = "git stash list --patch";
+    gshp = "git stash pop";
+
     # Using our custom patch-based git aliases
     ghr = "git hire"; # Add staged changes
     gfr = "git fire"; # Unstage staged changes via patch
