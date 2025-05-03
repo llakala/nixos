@@ -28,6 +28,9 @@ in
     bind -M insert tab accept-autosuggestion
     bind -M insert ctrl-backspace backward-kill-bigword
 
+    # Old Ctrl+C behavior, before 4.0
+    bind -M insert ctrl-c cancel-commandline
+
     # Rerun previous command
     bind -M insert ctrl-s 'commandline $history[1]' 'commandline -f execute'
   '';
