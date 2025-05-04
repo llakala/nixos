@@ -28,18 +28,16 @@ let
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
     };
 
-    # Use custom function that grabs all files within a folder and filters out non-nix files
+    # Use custom function that grabs all files within a folder and filters out
+    # non-nix files. We choose to grab from subfolders when we want to have a
+    # contract that some specific file actually exists.
     modules = llakaLib.resolveAndFilter
     [
       ./config/core
       ./config/features
       ./config/baseVars.nix
 
-      ./apps/core
-      ./apps/dev
-      ./apps/extras
-      ./apps/gui
-
+      ./apps
       ./desktops
 
       ./hosts/${hostname}/config
