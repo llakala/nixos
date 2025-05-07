@@ -17,8 +17,9 @@
     ga = "git add .";
     gac = "git commit .";
 
-    gd = "git diff --staged"; # Staged changes
+    gd = "git pdiff"; # Staged changes if anything is staged. If not, unstaged changes.
     gdu = "git diff"; # Unstaged changes
+    gds = "git diff --staged"; # Staged changes
 
     gsw = "git switch";
     gswc = "git switch -c";

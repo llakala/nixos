@@ -37,5 +37,15 @@
       --preview='echo {s2} | cut -c 2- | xargs git show --color | diff-so-fancy' | \
       cut -d '|' -f2 | cut -c 2- | xargs git switch
     '';
+
+    # If anything is staged, show the staged changes. If not, show the whole diff.
+    pdiff = /* bash */
+    ''
+      !if $(git diff --cached --exit-code >/dev/null); then
+        git diff
+      else
+        git diff --staged
+      fi
+    '';
   };
 }
