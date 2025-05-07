@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, ... }:
 
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
@@ -12,16 +12,6 @@
 
     # We don't need the normal discord client installed
     discord.enable = false;
-
-    # New Vesktop version broken without this - see
-    # https://github.com/NixOS/nixpkgs/pull/399932
-    discord.vencord.package = pkgs.vencord.overrideAttrs (o: {
-      postInstall =
-        (o.postInstall or "")
-        + ''
-          cp package.json $out
-        '';
-    });
 
     vesktop.enable = true;
   };
