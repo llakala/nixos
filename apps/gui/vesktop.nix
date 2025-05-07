@@ -3,7 +3,7 @@
 {
   features.discord = "vesktop"; # Change if we ever stop using vesktop
 
-  hm.imports = lib.singleton inputs.nixcord.homeManagerModules.nixcord;
+  hm.imports = lib.singleton inputs.nixcord.homeModules.nixcord;
 
   # See https://github.com/KaylorBen/nixcord/blob/main/docs/main.md
   hm.programs.nixcord =

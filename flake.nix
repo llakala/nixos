@@ -86,9 +86,7 @@
 
     nixcord =
     {
-      # Doesn't build unless I pin to this commit
-      # See https://github.com/KaylorBen/nixcord/issues/88
-      url = "github:kaylorben/nixcord?rev=c1a2a14393dba951994442199b9adfe14bb78a99";
+      url = "github:kaylorben/nixcord";
 
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
