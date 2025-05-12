@@ -57,6 +57,14 @@ in
       default = null;
     };
 
+    mouseName = lib.mkOption
+    {
+      type = with lib.types; nullOr str;
+      # Check this for KDE with `nix run github:nix-community/plasma-manager`
+      description = "The internal name of your mouse. If null, assumes your host doesn't have a mouse.";
+      default = null;
+    };
+
     stateVersion = lib.mkOption
     {
       type = lib.types.str;
