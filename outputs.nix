@@ -102,6 +102,14 @@ in
     ];
   };
 
+  devShells = forAllSystems
+  (
+    pkgs:
+    {
+      default = import ./extras/shell.nix { inherit pkgs inputs; };
+    }
+  );
+
   formatter = forAllSystems
   (
     pkgs: pkgs.nixfmt-rfc-style
