@@ -6,6 +6,7 @@ let
     yazi
     git
     kitty
+    gh
 
     erlang
     gleam
