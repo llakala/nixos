@@ -3,8 +3,10 @@
 let
   lib = nixpkgs.lib;
 
-  # It's a personal repo, not supporting other systems right now
-  supportedSystems = lib.singleton "x86_64-linux";
+  # I occasionally work on a random mac and need devshell access, so the darwin
+  # setup is nice. I don't guarantee any support for rebuilding with
+  # aarch64-darwin, though.
+  supportedSystems = [ "x86_64-linux" "aarch64-darwin"];
 
   forAllSystems = function: lib.genAttrs
     supportedSystems
