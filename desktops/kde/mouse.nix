@@ -12,7 +12,7 @@ in
       # Disable mouse acceleration
       PointerAccelerationProfile = 1;
 
-      PointerAcceleration = 0.400;
+      PointerAcceleration = 0.0;
     };
   };
 }
