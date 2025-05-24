@@ -39,7 +39,7 @@
 
     home-manager =
     {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -94,9 +94,7 @@
     };
 
     # Use nixos branches instead of nixpkgs, it runs more tests
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # This temporarily refers to the same as `nixpkgs` until 25.05 comes out and
-    # I branch my nixpkgs input off
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     plasma-manager =
