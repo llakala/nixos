@@ -48,7 +48,8 @@
     gswp = "git pswitch";
 
     gsh = "git stash --staged";
-    gsha = "git stash --include-untracked"; # Stash everything
+    gshu = "git stash -k -u"; # Stash everything that isn't staged
+    gsha = "git stash -u"; # Stash everything
     gshl = "git stash list --patch";
     gshp = "git stash pop";
 
