@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs-unstable, ... }:
+{ pkgs-unstable, ... }:
 
 {
   hm.programs.yazi.plugins =
@@ -6,7 +6,8 @@
     inherit (pkgs-unstable.yaziPlugins)
       jump-to-char
       chmod
-      git;
+      git
+      smart-paste;
   };
 
   hm.programs.yazi.keymap.manager.prepend_keymap =
@@ -24,6 +25,11 @@
       desc = "Chmod on selected files";
     }
 
+    {
+      on = "p";
+      desc = "Paste into a directory if we're hovering over it";
+      run = "plugin smart-paste";
+    }
   ];
 
 
