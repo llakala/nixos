@@ -89,8 +89,6 @@
       url = "github:kaylorben/nixcord";
 
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     # Use nixos branches instead of nixpkgs, it runs more tests
@@ -105,12 +103,6 @@
     };
 
     systems.url = "github:nix-systems/default";
-
-    treefmt-nix =
-    {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
 }
