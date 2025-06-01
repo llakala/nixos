@@ -26,8 +26,8 @@ in
       "kittab.desktop";
 
     pdfViewer =
-      assert feats.pdfs == "evince";
-      "org.gnome.Evince.desktop";
+      assert feats.pdfs == "zathura";
+      "zathura.desktop";
 
     # Reusing file manager for extraction
     extractor =
