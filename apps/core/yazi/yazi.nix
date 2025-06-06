@@ -29,7 +29,7 @@
     };
   };
 
-  hm.programs.yazi.settings.manager =
+  hm.programs.yazi.settings.mgr =
   {
     sort_by = "extension";
     sort_dir_first = true;

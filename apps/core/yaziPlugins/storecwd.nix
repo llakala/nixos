@@ -28,7 +28,7 @@ in
     "yazi/plugins/opencwd.yazi/main.lua".text = mkCwd "open";
   };
 
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  hm.programs.yazi.keymap.mgr.prepend_keymap =
   [
     {
       desc = "Suspend Yazi, writing the current directory to a file";

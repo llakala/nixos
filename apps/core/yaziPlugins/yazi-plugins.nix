@@ -10,7 +10,7 @@
       smart-paste;
   };
 
-  hm.programs.yazi.keymap.manager.prepend_keymap =
+  hm.programs.yazi.keymap.mgr.prepend_keymap =
   [
     {
       on = "f";

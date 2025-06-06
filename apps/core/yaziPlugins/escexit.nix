@@ -39,7 +39,7 @@ in
     "yazi/plugins/escexit.yazi/main.lua".text = escexit;
   };
 
-  hm.programs.yazi.keymap.manager.prepend_keymap = lib.singleton
+  hm.programs.yazi.keymap.mgr.prepend_keymap = lib.singleton
   {
     desc = "Either exit the current menu, or quit Yazi and write the current directory to a file";
     on = "<Esc>";
