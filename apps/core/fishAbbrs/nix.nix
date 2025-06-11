@@ -27,6 +27,13 @@
       expansion = "nix shell nixpkgs#%";
     };
 
+
+    "ns." =
+    {
+      setCursor = true;
+      expansion = "nix shell .#%";
+    };
+
     nrp = "nix repl";
     nrpn = "nix repl nixpkgs";
     nrpf = "nixos-rebuild repl";
