@@ -22,7 +22,8 @@
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; # Error if we ever change shell
   {
-    fsk = "fuiska";
+    f = "fuiska";
+    r = "rbld";
   };
 
 }
