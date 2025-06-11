@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   environment.systemPackages = with inputs.gasp.legacyPackages.${pkgs.system};
@@ -9,4 +9,13 @@
 
     splitpatch
   ];
+
+
+  hm.programs.fish.shellAbbrs =
+  assert config.features.abbreviations == "fish"; # Error if we ever change shell
+  {
+    hp = "ghp";
+    fp = "gfp";
+    kp = "gkp";
+  };
 }

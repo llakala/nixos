@@ -18,4 +18,11 @@
     UNIFY_COMMIT_MESSAGE = "flake: update flake.lock";
     UNIFY_PRIMARY_BRANCHES = "main master";
   };
+
+  hm.programs.fish.shellAbbrs =
+  assert config.features.abbreviations == "fish"; # Error if we ever change shell
+  {
+    fsk = "fuiska";
+  };
+
 }
