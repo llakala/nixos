@@ -7,6 +7,11 @@
 
     unstage = "restore --staged"; # Unstage changes
 
+    # --soft is needed - means that `undo` will put the undone changes into
+      # staging, and `redo` will commit only the staged changes you just undid.
+    undo = "reset --soft HEAD^";
+    redo = "reset --soft HEAD^";
+
     # Patch versions of add, unstage, and goback
     hire = "add --patch";
     fire = "unstage --patch";

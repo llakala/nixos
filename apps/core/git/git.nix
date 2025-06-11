@@ -11,7 +11,6 @@
 
   environment.systemPackages = with pkgs;
   [
-    git-extras
     tig # cool git interface
   ];
 }
