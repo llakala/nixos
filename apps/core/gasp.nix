@@ -14,8 +14,8 @@
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; # Error if we ever change shell
   {
-    hp = "ghp";
-    fp = "gfp";
-    kp = "gkp";
+    h = "ghp";
+    f = "gfp";
+    k = "gkp";
   };
 }
