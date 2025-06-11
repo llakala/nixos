@@ -5,8 +5,6 @@ let
   lessOptions = config.programs.less.envVariables.LESS;
 in
 {
-  environment.shellAliases.man = "batman";
-
   hm.programs.bat =
   {
     enable = true;
@@ -20,13 +18,13 @@ in
 
     extraPackages = with pkgs.bat-extras;
     [
-      batman # Prettier version of man
       batdiff
       batgrep # Oddly seems to require sudo
     ];
   };
 
-  # Make --help look pretty like batman
+  # Whenever instantiating a manpage, use bat! We don't need a shell alias or
+  # `batman` - this serves the same thing.
   environment.variables =
   {
     MANPAGER = "sh -c 'col -bx | bat --language man' ";
