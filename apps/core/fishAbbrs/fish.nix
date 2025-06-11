@@ -10,8 +10,6 @@
     j = "java";
 
     src = "source";
-
-    c = "cd";
   };
 
 }

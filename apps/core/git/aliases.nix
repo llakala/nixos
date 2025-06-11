@@ -5,12 +5,7 @@
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
 
-    brb = "stash push --staged"; # Leave a branch temporarily. Staged files are stashed, while unstaged will travel with us to the other branch
-    imback = "stash pop";
-
-
     unstage = "restore --staged"; # Unstage changes
-    goback = "restore"; # Undo unstaged changes
 
     # Patch versions of add, unstage, and goback
     hire = "add --patch";
@@ -36,16 +31,6 @@
       fzf --delimiter='\|' --preview-window='bottom' \
       --preview='echo {s2} | cut -c 2- | xargs git show --color | diff-so-fancy' | \
       cut -d '|' -f2 | cut -c 2- | xargs git switch
-    '';
-
-    # If anything is staged, show the staged changes. If not, show the whole diff.
-    pdiff = /* bash */
-    ''
-      !if $(git diff --cached --exit-code >/dev/null); then
-        git diff
-      else
-        git diff --staged
-      fi
     '';
   };
 }

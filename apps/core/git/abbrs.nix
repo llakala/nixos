@@ -4,92 +4,66 @@
   assert config.features.abbreviations == "fish"; # Error if we ever change shell
   {
     g = "git";
-    gcl = "git clone";
-    gin = "git init";
+    cl = "git clone";
 
-    # Most commonly-run git commands get two letters
-    gs = "git status";
-    gc = "git commit";
-    gn = "git unstage ."; # Alias of `git restore --staged`
-    gl = "git log";
-    gp = "git push";
+    s = "git status";
 
-    ga = "git add .";
-    gac = "git commit .";
+    a = "git add .";
+    n = "git unstage ."; # Alias of `git restore --staged`
 
-    gd = "git pdiff"; # Staged changes if anything is staged. If not, unstaged changes.
-    gdu = "git diff"; # Unstaged changes
-    gds = "git diff --staged"; # Staged changes
+    c = "git commit";
+    ac = "git commit .";
+    rw = "git reword";
+    am = "git amend";
 
-    gsw = "git switch";
-    gswc = "git switch -c";
-    gswm = "git switch main";
-    gswma = "git switch master";
+    d = "git diff --staged"; # Staged changes
+    du = "git diff"; # Unstaged changes. Use `command du` for actual `du`
 
-    gpl = "git pull";
-    gplum = "git pull upstream main";
-    gpluma = "git pull upstream master";
+    p = "git push";
+    pl = "git pull";
+    fs = "git force"; # Force push via custom alias
+    plum = "git pull upstream main";
+    pluma = "git pull upstream master";
 
-    gfs = "git force"; # Force push via custom alias
+    l = "git log";
+    hs = "git history"; # Same as `git log --patch`, just an alias for intuition
 
-    grw = "git reword";
-    grwm = "git reword --message"; # Get ready with me :3
+    an = "git add -AN"; # Add all new files
+    un = "git unstage-new-files"; # Alias, unstage new file existence
 
-    gam = "git amend";
-    gamp = "git amend --patch";
+    sw = "git switch";
+    swc = "git switch -c";
+    swp = "git pswitch"; # Switch branches using custom alias with fzf
+    swm = "git switch main";
+    swma = "git switch master";
 
-    ganf = "git add -AN"; # Add all new files
-    gunf = "git unstage-new-files"; # Alias, unstage new file existence
+    shs = "git stash --staged";
+    shu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
+    sha = "git stash --include-untracked"; # Stash everything
+    shp = "git stash pop";
 
-    gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
-    gbrd = "git branch -d";
+    br = "git pbranch"; # Call our alias for `git branch` that adds formatting
+    brd = "git branch -d";
 
-    # Switch branches using custom alias with fzf
-    gswp = "git pswitch";
+    rbm = "git rebase main";
+    rbma = "git rebase master";
 
-    gsh = "git stash --staged";
-    gshu = "git stash -k -u"; # Stash everything that isn't staged
-    gsha = "git stash -u"; # Stash everything
-    gshl = "git stash list --patch";
-    gshp = "git stash pop";
-
-    # Using our custom patch-based git aliases
-    ghr = "git hire"; # Add staged changes
-    gfr = "git fire"; # Unstage staged changes via patch
-    gkl = "git kill"; # Delete unstaged changes
-
-    ghs = "git history"; # Same as `git log --patch`, just an alias for intuition
-
-    grb = "git rebase";
-    grbm = "git rebase main";
-    grbma = "git rebase master";
-
-    # `grbi 2` will rebase from last 2 commits
-    grbi =
+    # `rbi 2` will rebase from last 2 commits
+    rbi =
     {
       setCursor = true;
       expansion = "git rebase -i HEAD~%";
     };
 
-    grbc = "git rebase --continue";
-    grba = "git rebase --abort";
+    rbc = "git rebase --continue";
+    rba = "git rebase --abort";
 
-    grbum = "git rebase upstream/main";
-    grbuma = "git rebase upstream/master";
+    rbum = "git rebase upstream/main";
+    rbuma = "git rebase upstream/master";
 
-    gre = "git reset";
-    greh = "git reset --hard";
-
-    grm = "git remote -v";
-    grmau = "git remote add upstream";
-
-    gfe = "git fetch";
-    gfeu = "git fetch upstream";
-
-    gcm =
-    {
-      setCursor = true;
-      expansion = "git commit -m \"%\"";
-    };
+    # Using our custom patch-based git aliases
+    hr = "git hire"; # Add staged changes
+    fr = "git fire"; # Unstage staged changes via patch
+    kl = "git kill"; # Delete unstaged changes
   };
 }
