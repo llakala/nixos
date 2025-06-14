@@ -1,69 +1,72 @@
 { config, ... }:
 {
+  # I try to use single-letter abbrs for things I do all the time. Stuff like
+  # `git status`, `git commit`, etc, don't need a `g` prefix. However, anything
+  # requiring 2+ letters, like `am`, should keep the `g` prefix. This balances
+  # quick access and memorability for weird abbrs.
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; # Error if we ever change shell
   {
     g = "git";
-    cl = "git clone";
-
     s = "git status";
+    gcl = "git clone";
 
     a = "git add .";
     n = "git unstage ."; # Alias of `git restore --staged`
+    gan = "git add -AN"; # Add all new files
+    gun = "git unstage-new-files"; # Alias, unstage new file existence
 
     c = "git commit";
-    ac = "git commit .";
-    rw = "git reword";
-    am = "git amend";
+    gac = "git commit .";
+    grw = "git reword";
+    gam = "git amend";
 
     d = "git diff --staged"; # Staged changes
-    du = "git diff"; # Unstaged changes. Use `command du` for actual `du`
-
-    p = "git push";
-    pl = "git pull";
-    fs = "git force"; # Force push via custom alias
-    plum = "git pull upstream main";
-    pluma = "git pull upstream master";
+    gdu = "git diff"; # Unstaged changes
 
     l = "git log";
-    hs = "git history"; # Same as `git log --patch`, just an alias for intuition
+    ghs = "git history"; # Same as `git log --patch`, just an alias for intuition
 
-    an = "git add -AN"; # Add all new files
-    un = "git unstage-new-files"; # Alias, unstage new file existence
+    p = "git push";
+    gfs = "git force"; # Force push via custom alias
 
-    sw = "git switch";
-    swc = "git switch -c";
-    swp = "git pswitch"; # Switch branches using custom alias with fzf
-    swm = "git switch main";
-    swma = "git switch master";
+    gpl = "git pull";
+    gplum = "git pull upstream main";
+    gpluma = "git pull upstream master";
 
-    shs = "git stash --staged";
-    shu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
-    sha = "git stash --include-untracked"; # Stash everything
-    shp = "git stash pop";
+    gsw = "git switch";
+    gswc = "git switch -c";
+    gswp = "git pswitch"; # Switch branches using custom alias with fzf
+    gswm = "git switch main";
+    gswma = "git switch master";
 
-    br = "git pbranch"; # Call our alias for `git branch` that adds formatting
-    brd = "git branch -d";
+    gsh = "git stash --staged";
+    gshu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
+    gsha = "git stash --include-untracked"; # Stash everything
+    gshp = "git stash pop";
 
-    rbm = "git rebase main";
-    rbma = "git rebase master";
+    gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
+    gbrd = "git branch -d";
+
+    grbm = "git rebase main";
+    grbma = "git rebase master";
 
     # `rbi 2` will rebase from last 2 commits
-    rbi =
+    grbi =
     {
       setCursor = true;
       expansion = "git rebase -i HEAD~%";
     };
 
-    rbc = "git rebase --continue";
-    rba = "git rebase --abort";
+    grbc = "git rebase --continue";
+    grba = "git rebase --abort";
 
-    rbum = "git rebase upstream/main";
-    rbuma = "git rebase upstream/master";
+    grbum = "git rebase upstream/main";
+    grbuma = "git rebase upstream/master";
 
     # Using our custom patch-based git aliases
-    hr = "git hire"; # Add staged changes
-    fr = "git fire"; # Unstage staged changes via patch
-    kl = "git kill"; # Delete unstaged changes
+    ghr = "git hire"; # Add staged changes
+    gfr = "git fire"; # Unstage staged changes via patch
+    gkl = "git kill"; # Delete unstaged changes
   };
 }
