@@ -69,7 +69,7 @@
 
     meovim =
     {
-      url = "github:llakala/meovim";
+      url = "github:llakala/meovim/no-tex";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
       inputs.llakaLib.follows = "llakaLib";

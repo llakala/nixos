@@ -328,15 +328,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1751900033,
-        "narHash": "sha256-OmCvyKY1R1ge2J64+Y5OhedIZE8St/QfLFUKvfbsH2E=",
+        "lastModified": 1751901180,
+        "narHash": "sha256-h0s2zm+dUiJph7y7a+S61pUbetlqej3vy2WgNwmKDXc=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "ebdb1926e05aac9e9510c75f5188a4f728f021e9",
+        "rev": "a3d0a56abc65e3cdad2c0a0485f3602bbec4f213",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
+        "ref": "no-tex",
         "repo": "meovim",
         "type": "github"
       }
