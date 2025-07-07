@@ -6,7 +6,7 @@ let
   # I occasionally work on a random mac and need devshell access, so the darwin
   # setup is nice. I don't guarantee any support for rebuilding with
   # aarch64-darwin, though.
-  supportedSystems = [ "x86_64-linux" "aarch64-darwin"];
+  supportedSystems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
   forAllSystems = function: lib.genAttrs
     supportedSystems
