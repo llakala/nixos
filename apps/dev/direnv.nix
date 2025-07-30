@@ -22,16 +22,4 @@
     keep-derivations = true;
     keep-outputs = true;
   };
-
-  hm.programs.git.extraConfig =
-  {
-    core.excludesFile = "~/.config/git/ignore";
-  };
-
-  # Writes to above path
-  hm.programs.git.ignores =
-  [
-    ".direnv/"
-  ];
-
 }

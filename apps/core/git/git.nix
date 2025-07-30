@@ -1,16 +1,13 @@
-{ config, pkgs-unstable, pkgs, ... }:
+{ pkgs-unstable, pkgs, ... }:
 
 {
-  hm.programs.git =
-  {
-    enable = true;
-    package = pkgs-unstable.gitFull;
-    userName = config.baseVars.fullName; # Full name associated with commits
-    userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
-  };
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs-unstable) git;
 
-  environment.systemPackages = with pkgs;
-  [
-    tig # cool git interface
-  ];
+    inherit (pkgs)
+      difftastic
+      meld
+      tig
+      diff-so-fancy;
+  };
 }
