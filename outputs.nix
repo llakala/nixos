@@ -40,11 +40,11 @@ let
       ./config/baseVars.nix
 
       ./apps
-      ./desktops
+      ./extras/desktops
 
-      ./hosts/${hostname}/config
-      ./hosts/${hostname}/hardware-configuration.nix
-      ./hosts/${hostname}/${hostname}Vars.nix
+      ./extras/hosts/${hostname}/config
+      ./extras/hosts/${hostname}/hardware-configuration.nix
+      ./extras/hosts/${hostname}/${hostname}Vars.nix
 
       self.nixosModules.default
     ];
