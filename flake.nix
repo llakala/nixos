@@ -10,11 +10,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-gnome-theme =
-    {
-      url = "github:rafaelmardojai/firefox-gnome-theme";
-      flake = false;
-    };
 
     # Not actually using this, but we need to pin other things to the same version
     flake-utils =

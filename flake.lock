@@ -37,22 +37,6 @@
         "type": "gitlab"
       }
     },
-    "firefox-gnome-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754312136,
-        "narHash": "sha256-9veVYpPCwKNjIK5gOigl5nEUN6tmrSHXUv4bVZkRuOE=",
-        "owner": "rafaelmardojai",
-        "repo": "firefox-gnome-theme",
-        "rev": "6f173d0873dd33c5653dee89a831af3e49db3e36",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rafaelmardojai",
-        "repo": "firefox-gnome-theme",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "locked": {
         "lastModified": 1733328505,
@@ -449,7 +433,6 @@
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
-        "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-utils": "flake-utils",
         "gasp": "gasp",
         "git-repo-manager": "git-repo-manager",
