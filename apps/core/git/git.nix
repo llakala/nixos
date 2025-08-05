@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    git
-    difftastic
-    meld
-    tig
-    diff-so-fancy
+  hm.programs.git =
+  {
+    enable = true;
+    package = pkgs.gitFull;
+    userName = config.baseVars.fullName; # Full name associated with commits
+    userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
+  };
+
+  environment.systemPackages = with pkgs;
+  [
+    tig # cool git interface
   ];
 }
