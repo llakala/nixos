@@ -9,7 +9,6 @@ let
     moonlight-qt
     spotify
     shortwave # Internet radio
-    libreoffice
     prismlauncher
     mediawriter
     # krita # Image editing, currently broken
