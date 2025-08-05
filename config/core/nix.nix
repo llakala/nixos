@@ -42,7 +42,7 @@
   };
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-  nixpkgs.config.allowUnfree = true; # for `pkgs` instance, `pkgs-unstable` gets it on creation
+  nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";

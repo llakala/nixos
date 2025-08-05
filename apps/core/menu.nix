@@ -14,7 +14,7 @@
     RBLD_DIRECTORY = config.hostVars.configDirectory;
     UNIFY_DIRECTORY = config.hostVars.configDirectory;
 
-    UNIFY_TRACKED_INPUTS = "nixpkgs nixpkgs-unstable home-manager menu gasp meovim";
+    UNIFY_TRACKED_INPUTS = "nixpkgs home-manager menu gasp meovim";
     UNIFY_COMMIT_MESSAGE = "flake: update flake.lock";
     UNIFY_PRIMARY_BRANCHES = "main master";
   };

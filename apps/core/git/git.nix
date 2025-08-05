@@ -1,13 +1,11 @@
-{ pkgs-unstable, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = builtins.attrValues {
-    inherit (pkgs-unstable) git;
-
-    inherit (pkgs)
-      difftastic
-      meld
-      tig
-      diff-so-fancy;
-  };
+  environment.systemPackages = with pkgs; [
+    git
+    difftastic
+    meld
+    tig
+    diff-so-fancy
+  ];
 }

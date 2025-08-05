@@ -25,9 +25,6 @@ let
     specialArgs =
     {
       inherit inputs llakaLib self;
-
-      # We never use unfree packages from unstable, to avoid re-instantiating nixpkgs
-      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
     };
 
     # Use custom function that grabs all files within a folder and filters out

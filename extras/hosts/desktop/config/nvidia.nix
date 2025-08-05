@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   imports = lib.singleton inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime;
@@ -7,4 +7,7 @@
   hardware.nvidia.powerManagement.enable = true;
 
   hardware.nvidia.open = true;
+
+  # Nvidia isn't building on 6.16 right now
+  boot.kernelPackages = pkgs.linuxPackages_6_15;
 }

@@ -1,4 +1,4 @@
-{ lib, llakaLib, pkgs-unstable, ... }:
+{ lib, llakaLib, ... }:
 
 let
   options = lib.cli.toGNUCommandLineShell # True values correspond to setting a flag
@@ -30,7 +30,6 @@ in
   hm.programs.fzf =
   {
     enable = true;
-    package = pkgs-unstable.fzf;
 
     # Needs a reboot to apply
     # True values correspond to setting a flag

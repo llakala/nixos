@@ -1,4 +1,4 @@
-{ lib, pkgs-unstable, ... }:
+{ lib, pkgs, ... }:
 
 {
   # Module doesn't seem to support a custom nix package yet. It does reuse the
@@ -7,9 +7,9 @@
   # fine.
   environment.systemPackages = lib.singleton
   (
-    pkgs-unstable.nixos-rebuild-ng.override
+    pkgs.nixos-rebuild-ng.override
     {
-      nix = pkgs-unstable.lix;
+      nix = pkgs.lix;
       withNgSuffix = false;
       withReexec = false;
     }

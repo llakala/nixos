@@ -1,8 +1,7 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
-let
-  stablePackages = with pkgs;
-  [
+{
+  environment.systemPackages = with pkgs; [
     # Basic linux utils
     coreutils
     libgccjit # gcc
@@ -48,12 +47,4 @@ let
     # Shows colors in the terminal. I packaged this!
     colo
   ];
-
-  unstablePackages = with pkgs-unstable;
-  [
-  ];
-
-in
-{
-  environment.systemPackages = stablePackages ++ unstablePackages;
 }

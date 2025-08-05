@@ -1,4 +1,4 @@
-{ self, pkgs, pkgs-unstable, lib, ... }:
+{ self, pkgs, lib, ... }:
 
 let
   kittab = self.legacyPackages.${pkgs.system}.kittab;
@@ -33,7 +33,7 @@ in
     [
       kittab
       kittabEntry
-      pkgs-unstable.kitty
+      pkgs.kitty
     ];
   };
 }

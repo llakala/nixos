@@ -1,9 +1,9 @@
-{ pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   hm.programs.yazi.plugins =
   {
-    inherit (pkgs-unstable.yaziPlugins)
+    inherit (pkgs.yaziPlugins)
       jump-to-char
       chmod
       git

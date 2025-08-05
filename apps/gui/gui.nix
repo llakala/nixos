@@ -1,8 +1,7 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
-let
-  stablePackages = with pkgs;
-  [
+{
+  environment.systemPackages = with pkgs; [
     gparted
     teams-for-linux
     filezilla
@@ -13,13 +12,4 @@ let
     mediawriter
     # krita # Image editing, currently broken
   ];
-
-  unstablePackages = with pkgs-unstable;
-  [
-  ];
-
-
-in
-{
-  environment.systemPackages = stablePackages ++ unstablePackages;
 }

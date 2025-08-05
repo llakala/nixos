@@ -4,7 +4,6 @@
   programs.java =
   {
     enable = true;
-    package = pkgs.jdk23;
   };
 
   environment.systemPackages = with pkgs;
