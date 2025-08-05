@@ -8,7 +8,6 @@
     moonlight-qt
     spotify
     shortwave # Internet radio
-    prismlauncher
     mediawriter
     # krita # Image editing, currently broken
   ];
