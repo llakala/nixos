@@ -1,13 +1,9 @@
-{ pkgs, ...}:
-
 {
   features.browser = "firefox"; # Change if we ever stop using Firefox (unlikely)
 
   hm.programs.firefox =
   {
     enable = true;
-
-    package = pkgs.firefox;
 
     profiles.default =
     {
