@@ -1,8 +1,7 @@
-{ config, inputs, lib, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
-  # Not 2.92 yet, see https://github.com/NixOS/nixpkgs/pull/375030
-  imports = lib.singleton inputs.lix-module.nixosModules.lixFromNixpkgs;
+  nix.package = pkgs.lix;
 
   nix.settings =
   {
