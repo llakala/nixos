@@ -11,7 +11,7 @@ in
 
     scalingFactor = 1; # 100% scaling
 
-    mouseName = "todo";
+    touchpadName = "Libinput/1739/53227/PNP0C50:00 06CB:CFEB Touchpad";
 
     stateVersion = "25.05";
   };
