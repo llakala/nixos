@@ -3,7 +3,7 @@ let
   mouseName = config.hostVars.mouseName;
 in
 {
-  # Some hosts won't have a touchpad, so they won't set this - so we gate behind
+  # Some hosts won't have a mousepad, so they won't set this - so we gate behind
   # an `if`.
   hm.programs.plasma.configFile.kcminputrc = lib.mkIf (mouseName != null)
   {
