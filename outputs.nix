@@ -69,6 +69,7 @@ in
   nixosConfigurations = builtins.mapAttrs mkNixos
   {
     framework.system = "x86_64-linux";
+    palpot.system = "x86_64-linux";
 
     desktop.system = "x86_64-linux";
 
