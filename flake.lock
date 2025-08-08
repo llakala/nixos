@@ -233,11 +233,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754086568,
-        "narHash": "sha256-D8uy4TXJBY7970k5BH76kE82KGFUwGCVIF/8aE07dXY=",
+        "lastModified": 1754515708,
+        "narHash": "sha256-E/6z2BxgE1eEZb1lPlxSELjB8BNRz9rqUWhd9jtOTug=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "31df1cf601f2dac94209b3abccb527621e05c4e7",
+        "rev": "15a7bd5ff8258b27334e1935b3c6b287ad3d0b90",
         "type": "github"
       },
       "original": {
@@ -274,11 +274,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1753367672,
-        "narHash": "sha256-UJwgakDpWLFxRf+0nwq6J31l7ewmmu/WLJ5FkcbQNv0=",
+        "lastModified": 1754231280,
+        "narHash": "sha256-yB0Zjljp0zEK9hVeZPJyjkTVAWbpxVPXOxQVbwKs0k8=",
         "owner": "NixNeovim",
         "repo": "NixNeovimPlugins",
-        "rev": "cb9b25c8620014bf6365a6fd60810ab66781d9ad",
+        "rev": "59570bd0d4f4787c3c1e7a06667720469a2e7638",
         "type": "github"
       },
       "original": {
