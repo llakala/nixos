@@ -1,38 +1,11 @@
-{ lib, llakaLib, ... }:
-
-let
-  options = lib.cli.toGNUCommandLineShell # True values correspond to setting a flag
-  {}
-  {
-    multi = true;
-    exact = true;
-    ansi = true;
-    cycle = true;
-    reverse = true;
-
-    highlight-line = true;
-    inline-info = true;
-    border = true;
-    no-separator = true;
-
-    bind = llakaLib.mkFzfBinds
-    {
-      j = "down";
-      k = "up";
-
-      i = "change-header(INSERT MODE)+unbind(i,j,k)";
-      start = "unbind(down,up)+change-header(INSERT MODE)+unbind(i,j,k)";
-      esc = "change-header(NORMAL MODE)+rebind(i,j,k)";
-    };
-  };
-in
 {
-  hm.programs.fzf =
-  {
+  hm.programs.fzf = {
     enable = true;
-
-    # Needs a reboot to apply
-    # True values correspond to setting a flag
-    defaultOptions = lib.singleton options;
   };
+
+  # Basic vim bindings! Inspired from:
+  # https://github.com/junegunn/fzf/blob/e5cd7f0a3a73ef598267c1e9f29b0fe9a80925ab/CHANGELOG.md?plain=1#L300
+  hm.programs.fish.interactiveShellInit = ''
+    set FZF_DEFAULT_OPTS '--with-shell="sh -c" --no-input --bind \'start:unbind(down,up)+hide-input,j:down,k:up,i:show-input+unbind(i,j,k)\' --bind \'esc:transform:if [[ "$FZF_INPUT_STATE" = enabled ]]; then echo "hide-input+rebind(i,j,k)"; else echo abort; fi\'''
+  '';
 }
