@@ -1,8 +1,7 @@
 {
   custom.programs.zed-editor.enable = false;
 
-  custom.programs.zed-editor.settings =
-  {
+  custom.programs.zed-editor.settings = {
     assistant.enabled = false; # AI stupid stuff
     features.inline_completion_provider = "none";
 

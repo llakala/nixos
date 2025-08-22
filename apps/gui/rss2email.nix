@@ -15,8 +15,7 @@
   #
   # Note that this isn't actually functioning yet - I don't get any errors,
   # but it just doesn't seem to ever email me.
-  services.rss2email =
-  {
+  services.rss2email = {
     enable = true;
 
     # Follows systemd time format, see `man systemd.time` for examples
@@ -31,8 +30,7 @@
 
   # Many of these referenced from https://floss.social/@tomodachi94/112690423986002174
   # Plus some personal additions
-  services.rss2email.feeds =
-  {
+  services.rss2email.feeds = {
     lix.url = "https://lix.systems/blog/index.xml";
     determinate.url = "https://determinate.systems/rss.xml"; # Determinate is a plague on Nix, but I'd still like to know what they're doing
     clan.url = "https://docs.clan.lol/feed_rss_created.xml";

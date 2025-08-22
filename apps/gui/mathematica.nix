@@ -27,20 +27,16 @@ this. if you see this and know a method, please make an issue to let me know!
 { pkgs, ... }:
 
 let
-  subnautica = pkgs.mathematica.override
-  {
-    source = pkgs.requireFile
-    {
+  subnautica = pkgs.mathematica.override {
+    source = pkgs.requireFile {
       name = "Wolfram_14.1.0_LIN.sh"; # Name of shell script we installed
       sha256 = "17z5aq7qaind1zkyandf1aq76iy0a0yqmj8qmc0wrc15s5k1lg1q";
       message = "you fucked up bbg";
       hashMode = "recursive";
     };
   };
-in
-{
-  environment.systemPackages =
-  [
+in {
+  environment.systemPackages = [
     subnautica
   ];
 }

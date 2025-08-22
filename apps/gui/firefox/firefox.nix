@@ -1,23 +1,19 @@
 {
   features.browser = "firefox"; # Change if we ever stop using Firefox (unlikely)
 
-  hm.programs.firefox =
-  {
+  hm.programs.firefox = {
     enable = true;
 
-    profiles.default =
-    {
+    profiles.default = {
       isDefault = true;
-      search =
-      {
+      search = {
         force = true;
 
         # DuckDuckGo has been excruciatingly awful lately
         default = "google";
       };
 
-      settings =
-      {
+      settings = {
         # Normal firefox settings that happen to be blocked with policies
         "services.sync.declinedEngines" = "";
 

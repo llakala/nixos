@@ -1,15 +1,12 @@
 { lib, ... }:
 
 {
-  hm.programs.firefox.policies.Preferences."browser.uiCustomization.state" = builtins.toJSON
-  {
-    placements =
-    {
+  hm.programs.firefox.policies.Preferences."browser.uiCustomization.state" = builtins.toJSON {
+    placements = {
       widget-overflow-fixed-list = [];
       toolbar-menubar = [ "menubar-items" ];
       PersonalToolbar = [ "personal-bookmarks" ];
-      nav-bar =
-      [
+      nav-bar = [
         "sidebar-button" # For vertical tabs
         "back-button"
         "forward-button"
@@ -17,13 +14,11 @@
         "downloads-button"
         "unified-extensions-button"
       ];
-      TabsToolbar =
-      [
+      TabsToolbar = [
         "firefox-view-button"
         "tabbrowser-tabs"
       ];
-      unified-extensions-area =
-      [
+      unified-extensions-area = [
         "sponsorblocker_ajay_app-browser-action"
         "ublock0_raymondhill_net-browser-action"
         "gdpr_cavi_au_dk-browser-action"
@@ -41,8 +36,7 @@
     newElementCount = 3;
   };
 
-  hm.programs.firefox.profiles.default.userChrome = lib.mkAfter
-  /* css */
+  hm.programs.firefox.profiles.default.userChrome = lib.mkAfter # css
   ''
     /* Remove useless separator */
     .titlebar-spacer {

@@ -1,6 +1,5 @@
 {
-  hm.programs.firefox.policies =
-  {
+  hm.programs.firefox.policies = {
     DontCheckDefaultBrowser = true;
     DisableTelemetry = true;
     DisableFirefoxStudies = true;
@@ -19,29 +18,25 @@
 
     Homepage.StartPage = "previous-session";
 
-    UserMessaging =
-    {
+    UserMessaging = {
       UrlbarInterventions = false;
       SkipOnboarding = true;
     };
 
-    FirefoxSuggest =
-    {
+    FirefoxSuggest = {
       WebSuggestions = false;
       SponsoredSuggestions = false;
       ImproveSuggest = false;
     };
 
-    EnableTrackingProtection =
-    {
+    EnableTrackingProtection = {
       Value = true;
       Cryptomining = true;
       Fingerprinting = true;
     };
 
     # Make new tab only show search
-    FirefoxHome =
-    {
+    FirefoxHome = {
       Search = true;
       TopSites = false;
       SponsoredTopSites = false;
@@ -51,17 +46,14 @@
       Snippets = false;
     };
 
-    Handlers.schemes.vscode =
-    {
+    Handlers.schemes.vscode = {
       action = "useSystemDefault"; # Open VSCode app
       ask = false;
     };
 
-    Handlers.schemes.element =
-    {
+    Handlers.schemes.element = {
       action = "useSystemDefault"; # Open Element app
       ask = false;
     };
   };
-
 }

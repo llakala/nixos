@@ -1,6 +1,5 @@
 {
-  hm.programs.firefox.policies.Preferences =
-  {
+  hm.programs.firefox.policies.Preferences = {
     "browser.urlbar.suggest.calculator" = true;
     "browser.urlbar.unitConversion.enabled" = true;
     "browser.urlbar.trimHttps" = true;
