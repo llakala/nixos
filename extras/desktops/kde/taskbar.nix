@@ -1,4 +1,5 @@
 { lib, config, ... }:
+
 {
   hm.programs.plasma.panels = lib.singleton {
     location = "bottom";

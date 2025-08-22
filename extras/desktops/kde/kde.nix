@@ -1,4 +1,5 @@
 { lib, inputs, config, ... }:
+
 {
   features.desktop = "plasma"; # If we ever stop using KDE, change this
   services.desktopManager.plasma6.enable = true;

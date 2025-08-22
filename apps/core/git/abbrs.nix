@@ -1,4 +1,5 @@
 { config, ... }:
+
 {
   # I try to use single-letter abbrs for things I do all the time. Stuff like
   # `git status`, `git commit`, etc, don't need a `g` prefix. However, anything
