@@ -1,11 +1,9 @@
 {
   hostVars = {
-    configDirectory = "/etc/nixos";
     hostName = "temp";
-    username = "nixos"; # We'll use the default user rather than creating a new one
+    configDirectory = "/etc/nixos";
+    stateVersion = "24.11";
 
     scalingFactor = 1;
-
-    stateVersion = "24.11";
   };
 }

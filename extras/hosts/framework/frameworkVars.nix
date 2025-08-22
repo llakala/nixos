@@ -1,11 +1,10 @@
 {
-  hostVars = {
-    configDirectory = "/etc/nixos";
+  hostVars =
+  {
     hostName = "framework";
-    username = "emanresu";
+    configDirectory = "/etc/nixos";
+    stateVersion = "24.05";
 
     scalingFactor = 2; # 200% scaling
-
-    stateVersion = "24.05";
   };
 }

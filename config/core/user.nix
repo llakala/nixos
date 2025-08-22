@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  users.users.${config.hostVars.username} = {
+  users.users.${config.baseVars.username} = {
     isNormalUser = true;
     description = config.baseVars.fullName;
 

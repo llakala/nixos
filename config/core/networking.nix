@@ -11,7 +11,7 @@
     resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
   };
 
-  users.users.${config.hostVars.username}.extraGroups = [ "networkmanager"];
+  users.users.${config.baseVars.username}.extraGroups = [ "networkmanager"];
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
 

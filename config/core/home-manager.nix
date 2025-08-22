@@ -12,7 +12,7 @@
     ( # Let us use hm as shorthand for home-manager config
       lib.mkAliasOptionModule
       [ "hm" ]
-      [ "home-manager" "users" config.hostVars.username ]
+      [ "home-manager" "users" config.baseVars.username ]
     )
   ];
 
@@ -25,8 +25,8 @@
   };
 
   hm.home = {
-    username = config.hostVars.username;
-    homeDirectory = config.hostVars.homeDirectory;
+    username = config.baseVars.username;
+    homeDirectory = config.baseVars.homeDirectory;
     stateVersion = config.hostVars.stateVersion;
   };
 

@@ -17,7 +17,7 @@
   };
 
   hm.gtk = {
-    gtk2.configLocation = "${config.hostVars.homeDirectory}/.config/.gtkrc-2.0";
+    gtk2.configLocation = "${config.baseVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 
   # Pretty orange tree :3
