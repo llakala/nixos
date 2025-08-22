@@ -1,6 +1,5 @@
 {
-  programs.less =
-  {
+  programs.less = {
     enable = true;
 
     # -+F always uses the pager, even if the text can fit on the whole screen.
@@ -8,8 +7,7 @@
   };
 
   # Requires relog to apply
-  programs.less.commands =
-  {
+  programs.less.commands = {
     h = "left-scroll";
     l = "right-scroll";
   };

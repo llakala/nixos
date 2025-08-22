@@ -3,21 +3,17 @@
 let
   # Reuse the LESS options we want to be used everywhere
   lessOptions = config.programs.less.envVariables.LESS;
-in
-{
-  hm.programs.bat =
-  {
+in {
+  hm.programs.bat = {
     enable = true;
 
     # List of command line options to supply every time
-    config =
-    {
+    config = {
       style = "plain";
       pager = "${lib.getExe pkgs.less} ${lessOptions}";
     };
 
-    extraPackages = with pkgs.bat-extras;
-    [
+    extraPackages = with pkgs.bat-extras; [
       batdiff
       batgrep # Oddly seems to require sudo
     ];
@@ -25,8 +21,7 @@ in
 
   # Whenever instantiating a manpage, use bat! We don't need a shell alias or
   # `batman` - this serves the same thing.
-  environment.variables =
-  {
+  environment.variables = {
     MANPAGER = "sh -c 'col -bx | bat --language man' ";
     MANROFFOPT = "-c";
   };

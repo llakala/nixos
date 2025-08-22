@@ -1,13 +1,9 @@
 {
-
   environment.shellAliases.neofetch = "hyfetch";
 
-  
-  hm.programs.hyfetch =
-  {
+  hm.programs.hyfetch = {
     enable = true;
-    settings =
-    {
+    settings = {
       preset = "transgender";
       mode = "rgb";
       color_align.mode = "horizontal";

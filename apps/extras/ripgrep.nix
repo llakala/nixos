@@ -1,8 +1,7 @@
 { lib, ... }:
 
 {
-  hm.programs.ripgrep =
-  {
+  hm.programs.ripgrep = {
     enable = true;
     arguments = lib.cli.toGNUCommandLine {}
     {

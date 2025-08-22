@@ -2,7 +2,6 @@
 
 let
   package = inputs.git-repo-manager.packages.${pkgs.system}.default;
-in
-{
+in {
   environment.systemPackages = lib.singleton package;
 }

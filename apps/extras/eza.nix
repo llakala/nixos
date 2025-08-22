@@ -1,10 +1,8 @@
 { lib, ... }:
 
 {
-
   # Replaces aliases already in its config
-  hm.programs.eza =
-  {
+  hm.programs.eza = {
     enable = true;
 
     icons = "auto";

@@ -1,8 +1,7 @@
 { pkgs, config, lib, ... }:
 
 {
-  environment.systemPackages = with pkgs;
-  [
+  environment.systemPackages = with pkgs; [
     nvd
   ];
 
