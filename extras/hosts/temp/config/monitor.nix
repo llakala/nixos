@@ -4,8 +4,7 @@
   hm.xdg.configFile."monitors.xml" = {
     force = true;
 
-    text =
-    /* xml */
+    text = # xml
     ''
       <monitors version="2">
         <configuration>

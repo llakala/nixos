@@ -4,8 +4,7 @@
   hm.xdg.configFile."monitors.xml" = {
     force = true;
 
-    text =
-    /* xml */
+    text = # xml
     ''
       <monitors version="2">
         <configuration>
@@ -13,7 +12,7 @@
           <logicalmonitor>
             <x>0</x>
             <y>0</y>
-            <scale>1</scale>
+            <scale>${builtins.toString config.hostVars.scalingFactor}</scale>
             <primary>yes</primary>
             <monitor>
               <monitorspec>

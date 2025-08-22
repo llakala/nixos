@@ -8,8 +8,7 @@ llakaLib.writeFishApplication {
     fd
   ];
 
-  text =
-  /* fish */
+  text = # fish
   ''
     set FILE $argv[1]
     set NAME (basename "$FILE" .java)
@@ -17,8 +16,7 @@ llakaLib.writeFishApplication {
   '';
 
   # Only show Java files.
-  fishCompletion =
-  /* fish */
+  fishCompletion = # fish
   ''
     complete -c jc --no-files --argument "(fd -d 1 --extension java)"
   '';

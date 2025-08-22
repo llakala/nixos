@@ -7,8 +7,7 @@ llakaLib.writeFishApplication {
     jq
   ];
 
-  text =
-  /* fish */
+  text = # fish
   ''
 
     switch (count $argv)
