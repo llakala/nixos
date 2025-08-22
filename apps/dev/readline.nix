@@ -1,17 +1,14 @@
 {
-  hm.programs.readline =
-  {
+  hm.programs.readline = {
     enable = true;
 
-    bindings =
-    {
+    bindings = {
       "\\t" = "menu-complete";
       "\\e[Z" = "menu-complete-backward";
       "\\C-w" = "backward-kill-word";
     };
 
-    variables =
-    {
+    variables = {
       editing-mode = "vi";
       show-mode-in-prompt = true;
 
