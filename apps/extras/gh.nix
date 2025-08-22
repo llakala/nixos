@@ -19,11 +19,5 @@ in {
       git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
       prefer_editor_prompt = true;
     };
-
-    extensions = with pkgs; [
-      gh-dash
-    ];
   };
-
-
 }
