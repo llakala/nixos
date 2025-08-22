@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ hostVars, lib, ... }:
 let
-  mouseName = config.hostVars.mouseName;
+  mouseName = hostVars.mouseName or null;
 in {
   # Some hosts won't have a mouse and won't set this - so we gate behind
   # an `if`.

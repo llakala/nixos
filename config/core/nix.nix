@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ hostVars, inputs, pkgs, ... }:
 
 {
   nix.package = pkgs.lixPackageSets.latest.lix;
@@ -39,5 +39,5 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  system.stateVersion = config.hostVars.stateVersion;
+  system.stateVersion = hostVars.stateVersion;
 }

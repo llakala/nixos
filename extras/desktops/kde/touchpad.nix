@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ hostVars, lib, ... }:
 let
-  touchpadName = config.hostVars.touchpadName;
+  touchpadName = hostVars.touchpadName or null;
 in {
   # Some hosts won't have a touchpad, so they won't set this - so we gate behind
   # an `if`. We don't use the `input` module because it requires other metadata

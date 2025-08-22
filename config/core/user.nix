@@ -1,9 +1,9 @@
-{ config, ... }:
+{ baseVars, ... }:
 
 {
-  users.users.${config.baseVars.username} = {
+  users.users.${baseVars.username} = {
     isNormalUser = true;
-    description = config.baseVars.fullName;
+    description = baseVars.fullName;
 
     hashedPassword = "$y$j9T$MGJ3p2bsJzeGrB6.3zN7s.$RobkJp7ROyz3FSS9nDqAp412hjhRuCv/GMaB7Swo8Y5";
     extraGroups = [ "wheel" ];

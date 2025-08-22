@@ -1,9 +1,9 @@
-# To find which file is causing a backup failure on rebuild, run:
+# To find baseVars file is causing a backup failure on rebuild, run:
 # `journalctl -e --unit home-manager-emanresu.service`
 # Of course, replacing `emanresu` with your username if you're not me
 # The error doesn't show on rebuild when home-manager is installed as a
 # NixOS module, so you have to check there.
-{ config, lib, inputs, pkgs, ... }:
+{ baseVars, lib, inputs, pkgs, hostVars, ... }:
 
 {
   imports = [
@@ -12,7 +12,7 @@
     ( # Let us use hm as shorthand for home-manager config
       lib.mkAliasOptionModule
       [ "hm" ]
-      [ "home-manager" "users" config.baseVars.username ]
+      [ "home-manager" "users" baseVars.username ]
     )
   ];
 
@@ -25,9 +25,9 @@
   };
 
   hm.home = {
-    username = config.baseVars.username;
-    homeDirectory = config.baseVars.homeDirectory;
-    stateVersion = config.hostVars.stateVersion;
+    username = baseVars.username;
+    homeDirectory = baseVars.homeDirectory;
+    stateVersion = hostVars.stateVersion;
   };
 
   home-manager.useUserPackages = true;

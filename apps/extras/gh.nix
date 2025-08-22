@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ baseVars, lib, pkgs, ... }:
 
 let
   notBool = val: ! builtins.isBool val;
@@ -15,7 +15,7 @@ in {
     enable = true;
 
     settings = boolsToYaml {
-      editor = config.baseVars.editor;
+      editor = baseVars.editor;
       git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
       prefer_editor_prompt = true;
     };

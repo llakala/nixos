@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, pkgs, config, hostVars, ... }:
 
 {
   environment.systemPackages = with inputs.menu.legacyPackages.${pkgs.system}; [
@@ -9,8 +9,8 @@
 
   # Overriding default values so we don't have to pass our arguments every time
   environment.variables = {
-    RBLD_DIRECTORY = config.hostVars.configDirectory;
-    UNIFY_DIRECTORY = config.hostVars.configDirectory;
+    RBLD_DIRECTORY = hostVars.configDirectory;
+    UNIFY_DIRECTORY = hostVars.configDirectory;
 
     UNIFY_TRACKED_INPUTS = "nixpkgs home-manager menu gasp meovim";
     UNIFY_COMMIT_MESSAGE = "flake: update flake.lock";

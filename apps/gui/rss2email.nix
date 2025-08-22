@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ baseVars, lib, pkgs, ... }:
 
 {
   # Package seems to be required, yet not added to derivation. Something
@@ -22,7 +22,7 @@
     interval = "1d";
     # interval = "1m"; # For testing
 
-    to = config.baseVars.email;
+    to = baseVars.email;
 
     # Pretty sure this might be a soft requirement for things to function
     config.from = "test@example.org";

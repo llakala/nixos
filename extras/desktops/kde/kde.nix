@@ -1,4 +1,4 @@
-{ lib, inputs, config, ... }:
+{ lib, inputs, baseVars, ... }:
 
 {
   features.desktop = "plasma"; # If we ever stop using KDE, change this
@@ -17,7 +17,7 @@
   };
 
   hm.gtk = {
-    gtk2.configLocation = "${config.baseVars.homeDirectory}/.config/.gtkrc-2.0";
+    gtk2.configLocation = "${baseVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 
   # Pretty orange tree :3

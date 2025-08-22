@@ -18,27 +18,29 @@ let
   # but don't have system access.
   pureLlakaLib = inputs.llakaLib.pureLib;
 
-  mkNixos = hostname: { system }: let
+  # Variables that apply to all hosts, for querying things like the username
+  # without hardcoding it within config
+  baseVars = import ./extras/baseVars.nix;
+
+  mkNixos = hostname: { system, hostVars }: let
     llakaLib = inputs.llakaLib.fullLib.${system};
   in lib.nixosSystem {
     specialArgs = {
-      inherit inputs llakaLib self;
+      inherit inputs llakaLib self baseVars;
+      hostVars = hostVars // { inherit hostname; };
     };
 
     # Use custom function that grabs all files within a folder and filters out
     # non-nix files. We choose to grab from subfolders when we want to have a
     # contract that some specific file actually exists.
     modules = llakaLib.resolveAndFilter [
-      ./config/core
-      ./config/features
-      ./config/baseVars.nix
+      ./config
 
       ./apps
       ./extras/desktops
 
       ./extras/hosts/${hostname}/config
       ./extras/hosts/${hostname}/hardware-configuration.nix
-      ./extras/hosts/${hostname}/${hostname}Vars.nix
 
       self.nixosModules.default
     ];
@@ -48,26 +50,22 @@ in {
   # Run mkNixos for each host. mapAttrs is magic here.
   #
   # mkNixos expects two arguments - a string representing the hostname,
-  # and an attrset with a value for the key `system`. An example call of
+  # and an attrset with some extra parameters. An example call of
   # `mkNixos` without `mapAttrs` would be:
   # `mkNixos "framework" { system = "x86_64-linux"; }`.
   #
   # Now, `mapAttrs` is very simple: it takes `key = value` and turns it
   # into `key value`.
   #
-  # This is useful because `framework.system = val;` is just syntactic
-  # sugar for `framework = { system = val; }` so, `mapAttrs` receives
-  # that unsugared and separates the key and the value, to:
-  # `"framework" { system = "x86_64-linux"; }`.
+  # This is useful because it lets us understand each host's key as its
+  # hostname, and its value as extra parameters (like its system and extra
+  # hostVars).
   #
   # Which, if you remember the mkNixos description, is exactly what we
   # wanted!
-  nixosConfigurations = builtins.mapAttrs mkNixos {
-    framework.system = "x86_64-linux";
-    palpot.system = "x86_64-linux";
-    desktop.system = "x86_64-linux";
-    iso.system = "x86_64-linux";
-  };
+  nixosConfigurations =
+    builtins.mapAttrs mkNixos
+    (import ./extras/hosts.nix { inherit baseVars; });
 
   # Call all packages automatically in directory, while letting packages refer to each other
   # via custom lib function

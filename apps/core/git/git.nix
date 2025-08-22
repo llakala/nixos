@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ baseVars, pkgs, ... }:
 
 {
   hm.programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = config.baseVars.fullName; # Full name associated with commits
+    userName = baseVars.fullName; # Full name associated with commits
     userEmail = "78693624+quatquatt@users.noreply.github.com"; # github noreply email
   };
 

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ hostVars, ... }:
 
 {
   hm.programs.yazi.keymap.mgr.prepend_keymap = [
@@ -30,7 +30,7 @@
     {
       desc = "Go to the NixOS configuration directory";
       on = ["b" "n"];
-      run = "cd ${config.hostVars.configDirectory}";
+      run = "cd ${hostVars.configDirectory}";
     }
 
     {
