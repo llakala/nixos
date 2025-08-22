@@ -6,8 +6,7 @@ let
   # to stop filtering/searching easily. Referenced from:
   # https://github.com/sxyazi/yazi/pull/1042
   # oh, and we also store the CWD on quit
-  escexit =
-  /* lua */
+  escexit = # lua
   ''
     --- @sync entry
     return {
@@ -32,15 +31,12 @@ let
       end,
     }
   '';
-in
-{
-  hm.xdg.configFile =
-  {
+in {
+  hm.xdg.configFile = {
     "yazi/plugins/escexit.yazi/main.lua".text = escexit;
   };
 
-  hm.programs.yazi.keymap.mgr.prepend_keymap = lib.singleton
-  {
+  hm.programs.yazi.keymap.mgr.prepend_keymap = lib.singleton {
     desc = "Either exit the current menu, or quit Yazi and write the current directory to a file";
     on = "<Esc>";
     run = "plugin escexit";

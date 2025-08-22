@@ -1,15 +1,11 @@
 { inputs, ... }:
 
 {
-
-  hm.programs.yazi =
-  {
-    theme =
-    {
+  hm.programs.yazi = {
+    theme = {
       flavor.use = "kanagawa";
     };
-    flavors =
-    {
+    flavors = {
       kanagawa = inputs.kanagawa-yazi;
     };
   };

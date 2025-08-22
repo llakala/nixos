@@ -6,8 +6,7 @@
   programs.command-not-found.enable = false; # Broken
 
   users.defaultUserShell = pkgs.fish;
-  programs.fish =
-  {
+  programs.fish = {
     enable = true;
     useBabelfish = true; # Important: halves the startup time
   };
@@ -16,8 +15,7 @@
   hm.xdg.configFile."fish/config.fish".force = true;
 
 
-  hm.programs.fish.interactiveShellInit =
-  /* fish */
+  hm.programs.fish.interactiveShellInit = # fish
   ''
     set fish_greeting
 
@@ -30,8 +28,7 @@
 
   # Rewriting the fish_title function to print the full prompt_pwd. Sourced from:
   # https://github.com/fish-shell/fish-shell/blob/945a53/share/functions/fish_title.fish#L8
-  hm.programs.fish.functions.fish_title =
-  /* fish */
+  hm.programs.fish.functions.fish_title = # fish
   ''
     # An override for the current command is passed as the first parameter.
     # This is used by `fg` to show the true process name, among others.

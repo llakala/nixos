@@ -5,8 +5,7 @@
   # requiring 2+ letters, like `am`, should keep the `g` prefix. This balances
   # quick access and memorability for weird abbrs.
   hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; # Error if we ever change shell
-  {
+  assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     g = "git";
     s = "git status";
     gcl = "git clone";
@@ -39,7 +38,6 @@
     gswp = "git pswitch"; # Switch branches using custom alias with fzf
     gswm = "git switch main";
     gswma = "git switch master";
-
     gsh = "git stash --staged";
     gshu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
     gsha = "git stash --include-untracked"; # Stash everything
@@ -52,8 +50,7 @@
     grbma = "git rebase master";
 
     # `rbi 2` will rebase from last 2 commits
-    grbi =
-    {
+    grbi = {
       setCursor = true;
       expansion = "git rebase -i HEAD~%";
     };

@@ -1,6 +1,5 @@
 {
-  hm.programs.git.aliases =
-  {
+  hm.programs.git.aliases = {
     amend = "commit --amend --no-edit";
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
@@ -30,7 +29,7 @@
     # Switch to branch using fzf. Reference links below
     # https://esc.sh/blog/switch-git-branches-fzf/
     # https://github.com/erees1/dotfiles/blob/b29a94e/git/aliases.zsh#L85-L97
-    pswitch = /* bash */
+    pswitch = # bash
     ''
       !git pbranch --color | \
       fzf --delimiter='\|' --preview-window='bottom' \

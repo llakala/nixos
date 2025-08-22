@@ -5,11 +5,9 @@ let
   # on a system package being installed
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 
-in
-{
+in {
   # keymap.toml settings, documented here https://yazi-rs.github.io/docs/configuration/keymap
-  hm.programs.yazi.keymap.mgr.prepend_keymap =
-  [
+  hm.programs.yazi.keymap.mgr.prepend_keymap = [
     {
       desc = "Go to the top of the git repo";
       on = [ "g" "r" ];
@@ -25,8 +23,7 @@ in
     {
       desc = "When copying, copy to the system clipboard as well";
       on = "y";
-      run =
-      [
+      run = [
         "yank"
         ''
           shell --confirm 'for path in "$@"; do echo "file://$path"; done | ${wl-copy} -t text/uri-list'

@@ -2,11 +2,9 @@
 
 let
   globalLessOpts = config.programs.less.envVariables.LESS;
-in
-{
+in {
   # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
-  hm.programs.git.iniContent =
-  {
+  hm.programs.git.iniContent = {
     push.autoSetupRemote = true;
     init.defaultBranch = "main";
     rerere.enabled = true;
@@ -35,8 +33,7 @@ in
     merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
 
     merge.tool = "meld";
-    mergetool.meld =
-    {
+    mergetool.meld = {
       path = lib.getExe pkgs.meld;
       useAutoMerge = true;
     };

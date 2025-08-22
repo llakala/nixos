@@ -1,6 +1,5 @@
 {
-  hm.programs.fish.shellAbbrs =
-  {
+  hm.programs.fish.shellAbbrs = {
     nd = "nix develop";
     nr = "nix run";
     ns = "nix shell";
@@ -9,27 +8,23 @@
     nfu = "nix flake update";
     nfl = "nix flake lock";
 
-    nrn =
-    {
+    nrn = {
       setCursor = true;
       expansion = "nix run nixpkgs#%";
     };
 
-    "nr." =
-    {
+    "nr." = {
       setCursor = true;
       expansion = "nix run .#%";
     };
 
-    nsn =
-    {
+    nsn = {
       setCursor = true;
       expansion = "nix shell nixpkgs#%";
     };
 
 
-    "ns." =
-    {
+    "ns." = {
       setCursor = true;
       expansion = "nix shell .#%";
     };

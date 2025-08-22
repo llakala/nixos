@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  hm.programs.yazi.plugins =
-  {
+  hm.programs.yazi.plugins = {
     inherit (pkgs.yaziPlugins)
       jump-to-char
       chmod
@@ -10,8 +9,7 @@
       smart-paste;
   };
 
-  hm.programs.yazi.keymap.mgr.prepend_keymap =
-  [
+  hm.programs.yazi.keymap.mgr.prepend_keymap = [
     {
       on = "f";
       run = "plugin jump-to-char";
@@ -33,8 +31,7 @@
   ];
 
 
-  hm.programs.yazi.initLua =
-  /* lua */
+  hm.programs.yazi.initLua = # lua
   ''
     th.git = th.git or {}
 
@@ -46,8 +43,7 @@
     require("git"):setup()
   '';
 
-  hm.programs.yazi.settings.plugin.prepend_fetchers =
-  [
+  hm.programs.yazi.settings.plugin.prepend_fetchers = [
     {
       id = "git";
       name = "*";

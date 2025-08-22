@@ -1,4 +1,4 @@
-{ self, pkgs, lib, ... }:
+{ self, pkgs, ... }:
 
 let
   kittab = self.legacyPackages.${pkgs.system}.kittab;
@@ -7,8 +7,7 @@ let
   # Within the Kittab script, we make Kitty open with class/name Kittab, so it doesn't
   # open `kitty.desktop`, but instead stays within `kittab.desktop`
   # Stored to /run/current-system/sw/share/applications
-  kittabEntry = pkgs.makeDesktopItem
-  {
+  kittabEntry = pkgs.makeDesktopItem {
     type = "Application";
 
     name = "kittab"; # ${name}.desktop
@@ -22,15 +21,12 @@ let
     categories = [ "System" "TerminalEmulator" ]; # Apparently these are important, removing them broke things
   };
 
-in
-{
+in {
   features.usingKittab = true; # For assertions, so we can rely on kittab's existence
 
-  hm.programs.kitty.package = pkgs.symlinkJoin
-  {
+  hm.programs.kitty.package = pkgs.symlinkJoin {
     name = "kittab";
-    paths =
-    [
+    paths = [
       kittab
       kittabEntry
       pkgs.kitty

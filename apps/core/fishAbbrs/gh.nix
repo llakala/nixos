@@ -1,6 +1,5 @@
 {
-  hm.programs.fish.shellAbbrs =
-  {
+  hm.programs.fish.shellAbbrs = {
     ghb = "gh browse";
     "ghb." = "gh browse .";
 
@@ -11,7 +10,5 @@
     ghprsw = "gh pr checkout";
     ghprcr = "gh pr create";
     ghprmg = "gh pr merge";
-
   };
-
 }

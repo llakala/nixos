@@ -4,8 +4,7 @@
   # If someone knows of a better way to disable all this, let me know!
   # I just took from the existing template for no version numbers,
   # did `builtins.toTOML`, and some vim find/replace to create this.
-  hm.programs.starship.settings =
-  {
+  hm.programs.starship.settings = {
     buf.format = "";
     bun.format = "";
     cmake.format = "";

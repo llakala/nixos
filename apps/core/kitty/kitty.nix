@@ -1,8 +1,7 @@
 {
   features.terminal = "kitty"; # Change if I ever stop using Kitty
 
-  hm.programs.kitty =
-  {
+  hm.programs.kitty = {
     enable = true;
 
     # We don't specify the font in Kitty since it broke as of 24.11
@@ -11,8 +10,7 @@
     themeFile = "Kaolin_Aurora"; # Reference exact names here https://github.com/kovidgoyal/kitty-themes/blob/389a222143ffb0ff38abea187fbc21b1221b94c0/themes.json#L2
   };
 
-  hm.programs.kitty.settings =
-  {
+  hm.programs.kitty.settings = {
     allow_remote_control = true;
     listen_on = "unix:@kitty";
     enabled_layouts = "splits:split_axis=horizontal";
@@ -33,8 +31,7 @@
     tab_bar_style = "powerline";
   };
 
-  hm.programs.kitty.keybindings =
-  {
+  hm.programs.kitty.keybindings = {
     "ctrl+q" = "close_os_window"; # Quit application
     "ctrl+w" = "close_window"; #  Prioritizes internal windows > tabs
     "ctrl+t" = "new_tab";

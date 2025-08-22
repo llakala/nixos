@@ -1,8 +1,7 @@
 { lib, ... }:
 
 {
-  hm.programs.starship.settings.git_status =
-  {
+  hm.programs.starship.settings.git_status = {
     modified = "M";
     staged = "S";
     untracked = "A";
@@ -20,8 +19,7 @@
   };
 
   # Referenced from https://github.com/clotodex/nix-config/blob/c878ff5d5ae674b49912387ea9253ce985cbd3cd/shell/starship.nix#L82
-  hm.programs.starship.settings.git_status.format = lib.concatStrings
-  [
+  hm.programs.starship.settings.git_status.format = lib.concatStrings [
     "[("
 
       "(\\["

@@ -2,12 +2,10 @@
 
 let
   globalLessOpts = config.programs.less.envVariables.LESS;
-in
-{
+in {
   environment.systemPackages = lib.singleton pkgs.diff-so-fancy;
 
-  hm.programs.git.iniContent =
-  {
+  hm.programs.git.iniContent = {
     interactive.diffFilter = "diff-so-fancy --patch";
 
     # Auto-select the start of each diffed file, so `n` and `N` will go between them

@@ -1,16 +1,14 @@
 { inputs, pkgs, config, ... }:
 
 {
-  environment.systemPackages = with inputs.menu.legacyPackages.${pkgs.system};
-  [
+  environment.systemPackages = with inputs.menu.legacyPackages.${pkgs.system}; [
     rbld
     unify
     fuiska
   ];
 
   # Overriding default values so we don't have to pass our arguments every time
-  environment.variables =
-  {
+  environment.variables = {
     RBLD_DIRECTORY = config.hostVars.configDirectory;
     UNIFY_DIRECTORY = config.hostVars.configDirectory;
 
@@ -20,8 +18,7 @@
   };
 
   hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; # Error if we ever change shell
-  {
+  assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     fsk = "fuiska";
     r = "rbld";
   };

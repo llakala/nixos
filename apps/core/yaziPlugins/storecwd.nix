@@ -3,8 +3,7 @@
 let
   # Function to perform some Yazi action and write current directory to file
   # Referenced from: https://github.com/Axlefublr/dotfiles/blob/38525a7f900709efe5d0ea3005b670203626794d/yazi/plugins/storecwd.yazi/init.lua#L5
-  mkCwd = action:
-  /* lua */
+  mkCwd = action: # lua
   ''
     --- @sync entry
     return {
@@ -19,17 +18,14 @@ let
       end,
     }
   '';
-in
-{
+in {
 
-  hm.xdg.configFile =
-  {
+  hm.xdg.configFile = {
     "yazi/plugins/suspendcwd.yazi/main.lua".text = mkCwd "suspend";
     "yazi/plugins/opencwd.yazi/main.lua".text = mkCwd "open";
   };
 
-  hm.programs.yazi.keymap.mgr.prepend_keymap =
-  [
+  hm.programs.yazi.keymap.mgr.prepend_keymap = [
     {
       desc = "Suspend Yazi, writing the current directory to a file";
       on = "<C-z>";
@@ -51,8 +47,8 @@ in
   # a fish function, but had no luck. I think it's because Yazi is the one that gets suspended.
   # Maybe there's some way? If you see this and think you have an idea, let me know via an issue
   # or email.
-  hm.programs.fish.interactiveShellInit = assert config.features.shell == "fish";
-  /* fish */
+  hm.programs.fish.interactiveShellInit =
+  assert config.features.shell == "fish"; # fish
   ''
     bind -M insert \cy 'cd (cat /tmp/yazi-cwd-suspend); commandline -f repaint'
   '';

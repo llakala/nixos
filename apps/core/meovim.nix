@@ -2,8 +2,7 @@
 
 let
   neovimPackage = inputs.meovim.packages.${pkgs.system}.default;
-in
-{
+in {
   environment.variables.EDITOR = "nvim";
 
   # For when you want nvim as your manpager! I use bat by default for better
@@ -12,8 +11,7 @@ in
   environment.shellAliases.vman = "MANPAGER='nvim +Man!' man";
 
   hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; # Error if we ever change shell
-  {
+  assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     v = "nvim";
   };
 
