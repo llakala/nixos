@@ -50,4 +50,11 @@
     unloaded_msg = "UNLOADED";
   };
 
+  hm.programs.starship.settings.nix_shell =
+  {
+    disabled = false;
+    format = "[$symbol$state( \($name\))]($style)";
+    heuristic = true;
+  };
+
 }
