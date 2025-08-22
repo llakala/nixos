@@ -1,12 +1,10 @@
 { pkgs, ... }:
 
 {
-  hardware.graphics =
-  {
+  hardware.graphics = {
     enable = true;
 
-    extraPackages = with pkgs;
-    [
+    extraPackages = with pkgs; [
     ];
   };
 }

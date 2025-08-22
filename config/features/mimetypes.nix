@@ -2,10 +2,8 @@
 
 let
   feats = config.features;
-in
-{
-  custom.services.mimetypes =
-  {
+in {
+  custom.services.mimetypes = {
     enable = true;
 
     browser =

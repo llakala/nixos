@@ -1,8 +1,7 @@
 { config, ... }:
 
 {
-  users.users.${config.hostVars.username} =
-  {
+  users.users.${config.hostVars.username} = {
     isNormalUser = true;
     description = config.baseVars.fullName;
 
@@ -12,8 +11,7 @@
 
   users.mutableUsers = false; # Makes it so we can only do password stuff via nixos, safer for not bricking system
 
-  security.sudo =
-  {
+  security.sudo = {
     # No more passwordless sudo!
     wheelNeedsPassword = true;
 

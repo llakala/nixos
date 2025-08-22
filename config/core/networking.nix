@@ -1,8 +1,7 @@
 { config, lib, ... }:
 
 {
-  networking =
-  {
+  networking = {
     hostName = config.hostVars.hostName;
 
     networkmanager.enable = true;
@@ -16,8 +15,7 @@
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
 
-  hardware.bluetooth =
-  {
+  hardware.bluetooth = {
     enable = true;
     powerOnBoot = false; # Why not save some battery
   };

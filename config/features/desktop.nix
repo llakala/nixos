@@ -1,9 +1,8 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  services.xserver =
-  {
+  services.xserver = {
     enable = true;
-    excludePackages = with pkgs; [xterm]; # Remove weird xterm
+    excludePackages = with pkgs; [ xterm ]; # Remove weird xterm
   };
 }

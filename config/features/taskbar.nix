@@ -2,8 +2,7 @@
 
 let
   feats = config.features;
-in
-{
+in {
   features.taskbar =
     assert feats.browser == "firefox";
     assert feats.files == "yazi";

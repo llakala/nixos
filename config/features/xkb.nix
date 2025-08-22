@@ -2,14 +2,13 @@
 
 let
   layoutName = "custom";
-in
-{
-  services.xserver.xkb.extraLayouts.${layoutName} =
-  {
+in {
+  services.xserver.xkb.extraLayouts.${layoutName} = {
     description = "Custom layout where CAPS is Escape, and ESC does nothing";
     languages = lib.singleton "eng";
-    symbolsFile = pkgs.writeText layoutName # This name doesn't matter, it can be anything
-    ''
+
+    # The layout name doesn't matter, it can be anything
+    symbolsFile = pkgs.writeText layoutName ''
       xkb_symbols
       {
         include "us(basic)"

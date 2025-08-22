@@ -2,8 +2,7 @@
 
 {
 
-  boot =
-  {
+  boot = {
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
     initrd.kernelModules = [ ];
@@ -12,8 +11,7 @@
     kernelParams = [ "boot.shell_on_fail" ]; # Open terminal environment if we fail to boot
   };
 
-  boot.loader =
-  {
+  boot.loader = {
     systemd-boot.enable = true;
     systemd-boot.editor = false; # We shouldn't be editing boot params imperatively
     systemd-boot.configurationLimit = 20;
@@ -27,7 +25,6 @@
   };
 
   boot.loader.grub.enable = lib.mkForce false; # No need to break our system accidentally
-
 
   # More unstable, but good for reporting bugs. Disable if things break
   systemd.enableStrictShellChecks = true;

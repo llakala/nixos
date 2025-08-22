@@ -1,6 +1,5 @@
 {
-  environment.shellAliases =
-  {
+  environment.shellAliases = {
     ":q" = "exit";
   };
 }
