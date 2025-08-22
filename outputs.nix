@@ -65,11 +65,8 @@ in {
   nixosConfigurations = builtins.mapAttrs mkNixos {
     framework.system = "x86_64-linux";
     palpot.system = "x86_64-linux";
-
     desktop.system = "x86_64-linux";
-
     iso.system = "x86_64-linux";
-    temp.system = "x86_64-linux";
   };
 
   # Call all packages automatically in directory, while letting packages refer to each other
