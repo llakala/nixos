@@ -1,23 +1,19 @@
 { lib, ... }:
 
 let
-  mkFeature = description: lib.mkOption
-  {
+  mkFeature = description: lib.mkOption {
     type = lib.types.str;
     description = "The chosen ${description}.";
     default = null;
   };
 
-  mkBoolFeature = description: lib.mkOption
-  {
+  mkBoolFeature = description: lib.mkOption {
     type = lib.types.bool;
     description = "Whether ${description} is being used.";
   };
 
-in
-{
-  options.features =
-  {
+in {
+  options.features = {
     shell = mkFeature "shell, which provides some form of initExtra access";
 
     desktop = mkFeature "desktop environment";

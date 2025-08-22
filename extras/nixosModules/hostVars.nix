@@ -2,63 +2,53 @@
 
 let
   cfg = config.hostVars;
-in
-{
-  options.hostVars =
-  {
-    configDirectory = lib.mkOption
-    {
+in {
+  options.hostVars = {
+    configDirectory = lib.mkOption {
       type = lib.types.str;
       description = "The directory of the local nixos configuration.";
       default = null;
     };
 
-    hostName = lib.mkOption
-    {
+    hostName = lib.mkOption {
       type = lib.types.str;
       description = "The hostname for the current host.";
       default = null;
     };
 
-    username = lib.mkOption
-    {
+    username = lib.mkOption {
       type = lib.types.str;
       description = "The username for the current host.";
       default = null;
     };
 
-    homeDirectory = lib.mkOption
-    {
+    homeDirectory = lib.mkOption {
       type = lib.types.str;
       description = "The directory for the user's folders. This should only be set if it's in a non-default location.";
       default = "/home/${cfg.username}";
     };
 
-    scalingFactor = lib.mkOption
-    {
+    scalingFactor = lib.mkOption {
       type = lib.types.int;
       description = "The scaling factor for the desktop. A scalingFactor of 1 --> 100% scaling.";
       default = null;
     };
 
-    touchpadName = lib.mkOption
-    {
+    touchpadName = lib.mkOption {
       type = with lib.types; nullOr str;
       # Check this for KDE with `nix run github:nix-community/plasma-manager`
       description = "The internal name of your touchpad. If null, assumes your host doesn't have a touchpad.";
       default = null;
     };
 
-    mouseName = lib.mkOption
-    {
+    mouseName = lib.mkOption {
       type = with lib.types; nullOr str;
       # Check this for KDE with `nix run github:nix-community/plasma-manager`
       description = "The internal name of your mouse. If null, assumes your host doesn't have a mouse.";
       default = null;
     };
 
-    stateVersion = lib.mkOption
-    {
+    stateVersion = lib.mkOption {
       type = lib.types.str;
       description = "The version cycle of NixOS during which this host was installed.";
       example = "24.05";

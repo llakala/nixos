@@ -4,32 +4,26 @@ let
   cfg = config.custom.programs.zed-editor;
 
   settingsFormat = pkgs.formats.json { };
-in
-{
-  options.custom.programs.zed-editor =
-  {
+in {
+  options.custom.programs.zed-editor = {
     enable = lib.mkEnableOption "Zed, a text editor.";
     package = lib.mkPackageOption pkgs "zed-editor" { };
 
-    settings = lib.mkOption
-    {
+    settings = lib.mkOption {
       type = settingsFormat.type;
       description = ''
         Configuration settings to be put in {file}`$XDG_CONFIG_HOME/zed/settings.json`}.
       '';
       default = { };
-      example =
-      {
+      example = {
         "autosave" = "off";
         "confirm_quit" = true;
       };
     };
 
-
   };
 
-  config = lib.mkIf cfg.enable
-  {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
 
     hm.xdg.configFile."zed/settings.json".source = settingsFormat.generate "zed-settings" cfg.settings;
