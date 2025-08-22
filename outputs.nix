@@ -18,20 +18,17 @@ let
   # but don't have system access.
   pureLlakaLib = inputs.llakaLib.pureLib;
 
-  mkNixos = hostname:
-  { system }: let llakaLib = inputs.llakaLib.fullLib.${system};
-  in lib.nixosSystem
-  {
-    specialArgs =
-    {
+  mkNixos = hostname: { system }: let
+    llakaLib = inputs.llakaLib.fullLib.${system};
+  in lib.nixosSystem {
+    specialArgs = {
       inherit inputs llakaLib self;
     };
 
     # Use custom function that grabs all files within a folder and filters out
     # non-nix files. We choose to grab from subfolders when we want to have a
     # contract that some specific file actually exists.
-    modules = llakaLib.resolveAndFilter
-    [
+    modules = llakaLib.resolveAndFilter [
       ./config/core
       ./config/features
       ./config/baseVars.nix
@@ -47,8 +44,7 @@ let
     ];
   };
 
-in
-{
+in {
   # Run mkNixos for each host. mapAttrs is magic here.
   #
   # mkNixos expects two arguments - a string representing the hostname,
@@ -66,8 +62,7 @@ in
   #
   # Which, if you remember the mkNixos description, is exactly what we
   # wanted!
-  nixosConfigurations = builtins.mapAttrs mkNixos
-  {
+  nixosConfigurations = builtins.mapAttrs mkNixos {
     framework.system = "x86_64-linux";
     palpot.system = "x86_64-linux";
 
@@ -79,37 +74,27 @@ in
 
   # Call all packages automatically in directory, while letting packages refer to each other
   # via custom lib function
-  legacyPackages = forAllSystems
-  (
-    pkgs: let llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
-    in llakaLib.collectDirectoryPackages
-    {
-      inherit pkgs;
-      directory = ./extras/packages;
+  legacyPackages = forAllSystems (pkgs: let
+    llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
+  in llakaLib.collectDirectoryPackages {
+    inherit pkgs;
+    directory = ./extras/packages;
 
-      extras = { inherit llakaLib; }; # So custom packages can rely on llakaLib
-    }
-  );
+    extras = { inherit llakaLib; }; # So custom packages can rely on llakaLib
+  });
 
   # for easier access, this lets us add all our modules by just importing self.nixosModules.default
-  nixosModules.default =
-  {
-    imports = pureLlakaLib.resolveAndFilter
-    [
+  nixosModules.default = {
+    imports = pureLlakaLib.resolveAndFilter [
       ./extras/nixosModules
     ];
   };
 
-  devShells = forAllSystems
-  (
-    pkgs:
-    {
-      default = import ./extras/shell.nix { inherit pkgs inputs; };
-    }
-  );
+  devShells = forAllSystems (pkgs: {
+    default = import ./extras/shell.nix { inherit pkgs inputs; };
+  });
 
-  formatter = forAllSystems
-  (
-    pkgs: pkgs.nixfmt-rfc-style
+  formatter = forAllSystems (pkgs:
+    pkgs.nixfmt-rfc-style
   );
 }
