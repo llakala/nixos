@@ -26,11 +26,8 @@
 
     # Weird stuff
     tldr # Mini-manpages
-    cava # Audio display
     libva-utils # Check for hardware acceleration
-    sd # Sed alternative
     fd # Search filenames, used by Yazi
-    calc # It's just slang chat
     w3m # w3mman gives you manpage hyperlinks
     appimage-run # Allow running appimages for when something isnt on nixpkgs
     hwinfo
