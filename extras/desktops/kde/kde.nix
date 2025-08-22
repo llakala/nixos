@@ -8,16 +8,14 @@
   services.displayManager.defaultSession = "plasma";
 
   hm.imports = lib.singleton inputs.plasma-manager.homeManagerModules.plasma-manager;
-  hm.programs.plasma =
-  {
+  hm.programs.plasma = {
     enable = true;
     immutableByDefault = true;
     # overrideConfig = true;
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
   };
 
-  hm.gtk =
-  {
+  hm.gtk = {
     gtk2.configLocation = "${config.hostVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 

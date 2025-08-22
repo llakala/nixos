@@ -1,10 +1,8 @@
 { lib, config, ... }:
 {
-  hm.programs.plasma.panels = lib.singleton
-  {
+  hm.programs.plasma.panels = lib.singleton {
     location = "bottom";
-    widgets =
-    [
+    widgets = [
       {
         kickoff.icon = "nix-snowflake-white";
       }
@@ -18,16 +16,13 @@
       "org.kde.plasma.marginsseparator"
 
       {
-        systemTray.items =
-        {
-          shown =
-          [
+        systemTray.items = {
+          shown = [
             "org.kde.plasma.battery"
             "org.kde.plasma.clipboard"
             "org.kde.plasma.networkmanagement"
           ];
-          hidden =
-          [
+          hidden = [
             "org.kde.plasma.brightness"
             "org.kde.plasma.volume"
           ];
