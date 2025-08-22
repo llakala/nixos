@@ -2,8 +2,7 @@
 
 {
   # Compile ISO with `nix build .#nixosConfigurations.iso.config.system.build.isoImage`
-  imports =
-  [
+  imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares.nix"
   ];
 

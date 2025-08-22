@@ -1,12 +1,10 @@
 { pkgs, ... }:
 
 {
-  hardware.graphics =
-  {
+  hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs;
-    [
+    extraPackages = with pkgs; [
       libvdpau-va-gl
       vaapiVdpau
     ];

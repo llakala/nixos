@@ -1,9 +1,7 @@
 let
   username = "emanresu";
-in
-{
-  hostVars =
-  {
+in {
+  hostVars = {
     configDirectory = "/home/${username}/Documents/projects/nixos";
     hostName = "desktop";
 

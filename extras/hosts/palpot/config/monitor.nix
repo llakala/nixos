@@ -1,8 +1,7 @@
 { config, ... }:
 
 {
-  hm.xdg.configFile."monitors.xml" =
-  {
+  hm.xdg.configFile."monitors.xml" = {
     force = true;
 
     text =

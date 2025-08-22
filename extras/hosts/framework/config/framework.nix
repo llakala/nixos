@@ -1,7 +1,6 @@
 {
   hardware.wirelessRegulatoryDatabase = true; # Speed up wifi?
-  boot.extraModprobeConfig =
-  ''
+  boot.extraModprobeConfig = ''
     options cfg80211 ieee80211_regdom="US"
   '';
 

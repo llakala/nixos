@@ -1,14 +1,11 @@
 {
-  custom.hardware.framework-laptop =
-  {
-    keyboardBacklight =
-    {
+  custom.hardware.framework-laptop = {
+    keyboardBacklight = {
       enable = true;
       brightness = 0;
     };
 
-    fingerprintBacklight =
-    {
+    fingerprintBacklight = {
       enable = true;
       brightness = "medium";
     };
