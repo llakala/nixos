@@ -1,12 +1,10 @@
 { fishPlugins, fetchFromGitHub }:
 
-fishPlugins.buildFishPlugin
-{
+fishPlugins.buildFishPlugin {
   pname = "fish-helix";
   version = "IDK";
 
-  src = fetchFromGitHub
-  {
+  src = fetchFromGitHub {
     owner = "sshilovsky";
     repo = "fish-helix";
     rev = "8a5c7999ec67ae6d70de11334aa888734b3af8d7";

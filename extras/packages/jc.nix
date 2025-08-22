@@ -1,11 +1,9 @@
 { llakaLib, pkgs }:
 
-llakaLib.writeFishApplication
-{
+llakaLib.writeFishApplication {
   name = "jc"; # Java Compile
 
-  runtimeInputs = with pkgs;
-  [
+  runtimeInputs = with pkgs; [
     jdk17
     fd
   ];

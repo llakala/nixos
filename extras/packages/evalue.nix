@@ -1,11 +1,9 @@
 { pkgs, llakaLib }:
 
-llakaLib.writeFishApplication
-{
+llakaLib.writeFishApplication {
   name = "evalue"; # Evaluate a given nix file using `callPackage`
 
-  runtimeInputs = with pkgs;
-  [
+  runtimeInputs = with pkgs; [
     jq
   ];
 
