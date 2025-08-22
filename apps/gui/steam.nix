@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 
 {
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -15,5 +14,4 @@
 
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
-
 }

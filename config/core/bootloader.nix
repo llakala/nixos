@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-
   boot = {
     blacklistedKernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [  ];
@@ -28,5 +27,4 @@
 
   # More unstable, but good for reporting bugs. Disable if things break
   systemd.enableStrictShellChecks = true;
-
 }
