@@ -9,5 +9,6 @@
     rustc
     ruby
     lua
+    gcc
   ];
 }
