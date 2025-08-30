@@ -12,5 +12,6 @@
 
   hm.programs.plasma.shortcuts.kwin = {
     "Window Maximize" = "Meta+Space";
+    "Window Quick Tile Top" = "Meta+Up";
   };
 }
