@@ -7,6 +7,7 @@
   hm.programs.starship.settings = {
     buf.format = "";
     bun.format = "";
+    c.format = "";
     cmake.format = "";
     cobol.format = "";
     crystal.format = "";
