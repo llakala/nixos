@@ -12,27 +12,28 @@ let
     supportedSystems
     (system: function nixpkgs.legacyPackages.${system});
 
-  # My custom lib functions, stored in a separate repo.
-  # This instance only holds pure functions, and isn't passed
-  # to anywhere. We just use it when we need a custom function,
-  # but don't have system access.
+  # My custom lib functions, stored in a separate repo. This instance only holds
+  # pure functions, and isn't passed to anywhere. We just use it when we need a
+  # custom function but don't have system access.
   pureLlakaLib = inputs.llakaLib.pureLib;
 
 in {
   nixosConfigurations = import ./hosts.nix { inherit inputs self; };
 
-  # Call all packages automatically in directory, while letting packages refer to each other
-  # via custom lib function
+  # Call all packages automatically in directory, while letting packages refer
+  # to each other via custom lib function
   legacyPackages = forAllSystems (pkgs: let
     llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
   in llakaLib.collectDirectoryPackages {
     inherit pkgs;
     directory = ./extras/packages;
 
-    extras = { inherit llakaLib; }; # So custom packages can rely on llakaLib
+    # So custom packages can rely on llakaLib
+    extras = { inherit llakaLib; };
   });
 
-  # for easier access, this lets us add all our modules by just importing self.nixosModules.default
+  # for easier access, this lets us add all our modules by just importing
+  # self.nixosModules.default
   nixosModules.default = {
     imports = pureLlakaLib.resolveAndFilter [
       ./extras/nixosModules
