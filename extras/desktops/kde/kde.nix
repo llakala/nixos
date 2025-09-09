@@ -8,7 +8,7 @@
   # to rebuild - it'll fail and tell you the valid options
   services.displayManager.defaultSession = "plasma";
 
-  hm.imports = lib.singleton inputs.plasma-manager.homeManagerModules.plasma-manager;
+  hm.imports = lib.singleton inputs.plasma-manager.homeModules.plasma-manager;
   hm.programs.plasma = {
     enable = true;
     immutableByDefault = true;

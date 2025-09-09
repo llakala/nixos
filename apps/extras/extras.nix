@@ -13,7 +13,7 @@
 
     # Useful stuff
     xorg.xeyes # See if an app is running under xwayland or not
-    linuxPackages.perf
+    perf
     parallel
     ncdu # Scan folder size prettily
     tree # Show filetree for writing out in markdown
