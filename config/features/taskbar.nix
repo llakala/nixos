@@ -9,13 +9,11 @@ in {
     assert feats.terminal == "kitty";
     assert feats.usingKittab == true;
     assert feats.editor == "neovim";
-    assert feats.discord == "vesktop";
     [
       "firefox.desktop"
       "yazi.desktop"
       "kittab.desktop"
       "nvim.desktop"
-      "vesktop.desktop"
     ];
 
 }

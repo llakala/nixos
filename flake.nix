@@ -56,12 +56,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixcord = {
-      url = "github:kaylorben/nixcord";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Use nixos branches instead of nixpkgs, it runs more tests
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
