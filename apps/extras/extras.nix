@@ -40,6 +40,7 @@
     nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
     nix-inspect
+    nix-tree
 
     # Shows colors in the terminal. I packaged this!
     colo
