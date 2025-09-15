@@ -46,11 +46,34 @@ in {
     ];
   };
 
-  devShells = forAllSystems (pkgs: {
-    default = import ./extras/shell.nix { inherit pkgs inputs; };
+  devShells = forAllSystems (pkgs: _: {
+    default = pkgs.mkShellNoCC {
+      packages = builtins.attrValues {
+        inherit (pkgs)
+          fish
+          yazi
+          git
+          kitty
+          gh
+          erlang
+          gleam
+          rebar3
+          elixir;
+
+        nvim = inputs.meovim.packages.${pkgs.system}.default;
+
+        inherit (inputs.menu.legacyPackages.${pkgs.system})
+          rbld
+          unify
+          fuiska;
+
+        inherit (inputs.gasp.legacyPackages.${pkgs.system})
+          ghp
+          gfp
+          gkp;
+      };
+    };
   });
 
-  formatter = forAllSystems (pkgs:
-    pkgs.nixfmt-rfc-style
-  );
+  formatter = forAllSystems (pkgs: _: pkgs.nixfmt-rfc-style);
 }
