@@ -8,13 +8,17 @@ let
   # aarch64-darwin, though.
   supportedSystems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
-  forAllSystems = function: lib.genAttrs
-    supportedSystems
-    (system: function nixpkgs.legacyPackages.${system});
+  # Parameterize system. I give access to both `pkgs` and my custom lib
+  # functions, but can ignore one/both depending on what each output needs.
+  forAllSystems = unappliedOutput: lib.genAttrs supportedSystems (
+    system: unappliedOutput
+      nixpkgs.legacyPackages.${system}
+      inputs.llakaLib.fullLib.${system}
+  );
 
-  # My custom lib functions, stored in a separate repo. This instance only holds
-  # pure functions, and isn't passed to anywhere. We just use it when we need a
-  # custom function but don't have system access.
+  # Separate instance of llakaLib, which only holds pure functions (aka nothing
+  # dependent on system). Most functions are in this set, so this is useful when
+  # I'm in an environment without system access
   pureLlakaLib = inputs.llakaLib.pureLib;
 
 in {
@@ -22,15 +26,17 @@ in {
 
   # Call all packages automatically in directory, while letting packages refer
   # to each other via custom lib function
-  legacyPackages = forAllSystems (pkgs: let
-    llakaLib = inputs.llakaLib.fullLib.${pkgs.system};
-  in llakaLib.collectDirectoryPackages {
-    inherit pkgs;
-    directory = ./extras/packages;
+  legacyPackages = forAllSystems (pkgs: llakaLib:
+    llakaLib.collectDirectoryPackages {
+      inherit pkgs;
+      directory = ./extras/packages;
 
-    # So custom packages can rely on llakaLib
-    extras = { inherit llakaLib; };
-  });
+      # So custom packages can rely on llakaLib. We need to use the full version
+      # here, since I have some functions like `writeFishApplication`, that need
+      # `pkgs` to function.
+      extras = { inherit llakaLib; };
+    }
+  );
 
   # for easier access, this lets us add all our modules by just importing
   # self.nixosModules.default
