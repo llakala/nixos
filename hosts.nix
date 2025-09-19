@@ -43,10 +43,11 @@ let
   # `hostVars.scalngFactor`! I try to keep most of my config applicable to all
   # hosts, so this is a great way of keeping that purity.
   mkNixos = hostname: { system, hostVars }: let
-    llakaLib = inputs.llakaLib.fullLib.${system};
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
+    myLib = import ./extras/myLib/default.nix { inherit pkgs; };
   in lib.nixosSystem {
     specialArgs = {
-      inherit inputs llakaLib self baseVars;
+      inherit inputs myLib self baseVars;
 
       # Use our inferred hostname from mapAttrs
       hostVars = hostVars // { inherit hostname; };
@@ -54,7 +55,7 @@ let
 
     # Use a custom function that recursively imports any folder, while
     # not touching any individual files or modules.
-    modules = llakaLib.resolveAndFilter [
+    modules = myLib.resolveAndFilter [
       ./config
 
       ./apps
@@ -63,7 +64,7 @@ let
       ./extras/hosts/${hostname}/config
       ./extras/hosts/${hostname}/hardware-configuration.nix
 
-      self.nixosModules.default
+      ./extras/nixosModules
     ];
   };
 
