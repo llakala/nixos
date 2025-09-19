@@ -61,8 +61,8 @@ let
       ./apps
       ./extras/desktops
 
-      ./extras/hosts/${hostname}/config
-      ./extras/hosts/${hostname}/hardware-configuration.nix
+      ./hosts/${hostname}/config
+      ./hosts/${hostname}/hardware-configuration.nix
 
       ./extras/nixosModules
     ];
