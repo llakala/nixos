@@ -49,6 +49,14 @@
       definedAliases = lib.singleton "@gg";
     };
 
+    "Github Search Typst" = {
+      urls = lib.singleton {
+        template = "https://github.com/search?type=code&q=lang:typst+NOT+is:fork+{searchTerms}";
+      };
+      icon = "https://github.com/favicon.ico";
+      definedAliases = lib.singleton "@gt";
+    };
+
     "Noogle" = {
       urls = lib.singleton {
         template = "https://noogle.dev/q?term={searchTerms}";
