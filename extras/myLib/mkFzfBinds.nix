@@ -4,14 +4,12 @@
 { lib }:
 
 let
-  delimiterList = map lib.stringToCharacters
-  [
+  delimiterList = map lib.stringToCharacters [
     "()" "[]" "{}" "<>"
     "~" "!" "@" "#" "$" "%" "^" "&" "*" ";" "/" "|"
   ];
 
-  withArg = name: arg:
-  {
+  withArg = name: arg: {
     inherit name arg;
   };
 
@@ -25,21 +23,18 @@ let
     delimiterList;
 
 
-  mkAction = actionName: actionArgs:
-  map
-  (
+  mkAction = actionName: actionArgs: map (
     actionArg:
     let
       delimiterPair = mkDelimiterPair actionArg;
     in
       if actionArg == null then actionName
-      else lib.concatStrings
-        [
-          actionName
-          (lib.head delimiterPair)
-          actionArg
-          (lib.last delimiterPair)
-        ]
+      else lib.concatStrings [
+        actionName
+        (lib.head delimiterPair)
+        actionArg
+        (lib.last delimiterPair)
+      ]
   ) actionArgs;
 
   mkActionList = actions: lib.concatMap
@@ -57,15 +52,16 @@ let
       lib.toList actions
   );
 
-in lib.mapAttrsToList
-(key: actions:
-  let
-    actionList = mkActionList actions;
+  final = binds: lib.mapAttrsToList
+    (key: actions:
+      let
+        actionList = mkActionList actions;
+      in lib.concatStrings [
+        key
+        ":"
+        (builtins.concatStringsSep "+" actionList)
+      ]
+    )
+    binds;
 
-  in lib.concatStrings
-  [
-    key
-    ":"
-    ( builtins.concatStringsSep "+" actionList )
-  ]
-)
+in final

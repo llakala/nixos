@@ -4,38 +4,30 @@ let
   # Equivalent to `writeShellApplication`
   # We don't actually expose this, instead exposing a wrapping function that lets us specify
   # fishCompletions
-  _writeFishApplication =
-  { name, text, meta ? {}, runtimeInputs ? [ ] }:
-  writeTextFile
-  {
+  _writeFishApplication = { name, text, meta ? {}, runtimeInputs ? [ ] }:
+  writeTextFile {
     inherit name meta;
     executable = true;
     destination = "/bin/${name}";
     allowSubstitutes = false; # It's my own scripts, they're not going to be substituted
-    text =
-    ''
+
+    text = ''
       #!${lib.getExe pkgs.fish}
     ''
-
-    + lib.optionalString (runtimeInputs != [ ])
-    ''
+    + lib.optionalString (runtimeInputs != [ ]) ''
        fish_add_path --path (string split : "${lib.makeBinPath runtimeInputs}")
     ''
-    +
-    ''
-      ${text}
-    '';
+    + text;
   };
 
   # Creates a derivation for the given fish completion. Exposed via `final`
   writeFishCompletion = name: fishCompletion:
-  if fishCompletion == null then null
-  else writeTextFile
-  {
-    name = "${name}.fish";
-    destination = "/share/fish/vendor_completions.d/${name}.fish";
-    text = fishCompletion;
-  };
+    if fishCompletion == null then null
+    else writeTextFile {
+      name = "${name}.fish";
+      destination = "/share/fish/vendor_completions.d/${name}.fish";
+      text = fishCompletion;
+    };
 
   # Final function to be actually exposed. Wraps both `_WriteFishApplication`
   # and `writeFishCompletion`. If completions exist, we symlinkJoin the two derivations,
@@ -45,24 +37,20 @@ let
   # rather than using intersectAttrs, since it had bad UX with passing arguments that
   # _writeFishApplication didn't actually support. If you know of a cleaner way to make a function
   # take all the arguments of another function, plus extras, let me kno!
-  final =
-  {
+  final = {
     name,
     text,
     meta ? {},
     runtimeInputs ? [ ],
     fishCompletion ? null
-  }:
-  let
-    app = _writeFishApplication
-    {
+  }: let
+    app = _writeFishApplication {
       inherit name text meta runtimeInputs;
     };
     completions = writeFishCompletion name fishCompletion;
   in
     if completions == null then app
-    else symlinkJoin
-    {
+    else symlinkJoin {
       inherit name;
       meta = app.meta;
       paths = lib.singleton app ++ lib.singleton completions;
