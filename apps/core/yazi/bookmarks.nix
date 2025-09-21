@@ -28,12 +28,6 @@
     }
 
     {
-      desc = "Go to the NixOS configuration directory";
-      on = ["b" "n"];
-      run = "cd ${hostVars.configDirectory}";
-    }
-
-    {
       desc = "Go to the projects folder for working on my personal repos";
       on = [ "b" "p" ];
       run = "cd ~/Documents/projects";
@@ -49,6 +43,12 @@
       desc = "Go to the repos directory for working on external Git repos";
       on = [ "b" "r" ];
       run = "cd ~/Documents/repos";
+    }
+
+    {
+      desc = "Go to the notes directory for taking notes in class";
+      on = [ "b" "n" ];
+      run = "cd ~/Documents/notes";
     }
   ];
 }
