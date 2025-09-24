@@ -188,21 +188,17 @@
     },
     "meovim": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
         "mnw": "mnw",
-        "neovimPlugins": "neovimPlugins",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1758559413,
-        "narHash": "sha256-nAcHyzmFtx6hXT/Mo0OpvrnynEj9iEWHNLrmjkjQafs=",
+        "lastModified": 1758678238,
+        "narHash": "sha256-uKUukxXonvGyU/i4JDVusyXH5TCt0/V8ZzC0hRUYEbo=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "f03f4937a58513f602a39356d78faa8e1db4bd7e",
+        "rev": "7bf9c332e30f28857869fd37980339dd79576a9a",
         "type": "github"
       },
       "original": {
@@ -223,55 +219,6 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "mnw",
-        "type": "github"
-      }
-    },
-    "neovimPlugins": {
-      "inputs": {
-        "flake-utils": [
-          "meovim",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "meovim",
-          "nixpkgs"
-        ],
-        "poetry2nix": "poetry2nix"
-      },
-      "locked": {
-        "lastModified": 1757600915,
-        "narHash": "sha256-WV/UJlY4ImcCTNLIseMg+2YwKhCKd67Red2SUbTaUng=",
-        "owner": "NixNeovim",
-        "repo": "NixNeovimPlugins",
-        "rev": "5812a8ef85e68aa0642ec84dea231c2ba78d145c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixNeovim",
-        "repo": "NixNeovimPlugins",
-        "type": "github"
-      }
-    },
-    "nix-github-actions": {
-      "inputs": {
-        "nixpkgs": [
-          "meovim",
-          "neovimPlugins",
-          "poetry2nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1688870561,
-        "narHash": "sha256-4UYkifnPEw1nAzqqPOTL2MvWtm3sNGw1UTYTalkTcGY=",
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "rev": "165b1650b753316aa7f1787f3005a8d2da0f5301",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
         "type": "github"
       }
     },
@@ -327,34 +274,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
-    "poetry2nix": {
-      "inputs": {
-        "flake-utils": [
-          "meovim",
-          "neovimPlugins",
-          "flake-utils"
-        ],
-        "nix-github-actions": "nix-github-actions",
-        "nixpkgs": [
-          "meovim",
-          "neovimPlugins",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1689849924,
-        "narHash": "sha256-d259Z2S7CS7Na04qQNQ6LYQILuI7cf4Rpe76qc4mz40=",
-        "owner": "nix-community",
-        "repo": "poetry2nix",
-        "rev": "1d7eda9336f336392d24e9602be5cb9be7ae405c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "poetry2nix",
         "type": "github"
       }
     },
