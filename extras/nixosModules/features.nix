@@ -28,6 +28,8 @@ in {
 
     browser = mkFeature "browser";
 
+    fuzzyCd = mkFeature "fuzzy cd command";
+
     terminal = mkFeature "terminal";
 
     files = mkFeature "file manager";

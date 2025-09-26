@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   environment.systemPackages = [ pkgs.fzf ];
+  programs.fish.interactiveShellInit = lib.mkOrder 200 ''
+    ${lib.getExe pkgs.fzf} --fish | source
+  '';
 
   # Basic vim bindings! Inspired from:
   # https://github.com/junegunn/fzf/blob/e5cd7f0a3a73ef598267c1e9f29b0fe9a80925ab/CHANGELOG.md?plain=1#L300
