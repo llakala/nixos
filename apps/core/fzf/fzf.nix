@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   environment.systemPackages = [ pkgs.fzf ];
@@ -17,5 +17,6 @@
     --bind 'i:show-input+trigger(start),esc:hide-input+trigger(start)'
     --bind 'j:down,k:up,f:jump-accept'
     --bind 'start:toggle-bind(i,j,k,f)'
+    --bind 'ctrl-l:accept'
   '';
 }
