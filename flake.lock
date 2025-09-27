@@ -66,22 +66,6 @@
         "type": "github"
       }
     },
-    "kanagawa-yazi": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1756179652,
-        "narHash": "sha256-nGFiAgVWfq7RkuGGCt07zm3z7ZTGiIPIR319ojPfdUk=",
-        "owner": "dangooddd",
-        "repo": "kanagawa.yazi",
-        "rev": "a0b1d9dec31387b5f8a82c96044e6419b6c46534",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dangooddd",
-        "repo": "kanagawa.yazi",
-        "type": "github"
-      }
-    },
     "llakaLib": {
       "inputs": {
         "nixpkgs": [
@@ -221,7 +205,6 @@
         "firefox-addons": "firefox-addons",
         "gasp": "gasp",
         "home-manager": "home-manager",
-        "kanagawa-yazi": "kanagawa-yazi",
         "llakaLib": "llakaLib",
         "menu": "menu",
         "meovim": "meovim",

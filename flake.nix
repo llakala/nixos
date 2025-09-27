@@ -20,11 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kanagawa-yazi = {
-      url = "github:dangooddd/kanagawa.yazi";
-      flake = false;
-    };
-
     llakaLib = {
       url = "github:llakala/llakaLib";
       inputs.nixpkgs.follows = "nixpkgs";
