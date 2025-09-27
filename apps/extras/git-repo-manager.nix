@@ -1,7 +1,7 @@
-{ inputs, lib, pkgs, ... }:
+{ self, lib, pkgs, ... }:
 
 let
-  package = inputs.git-repo-manager.packages.${pkgs.system}.default;
+  package = self.legacyPackages.${pkgs.system}.git-repo-manager;
 in {
   environment.systemPackages = lib.singleton package;
 }

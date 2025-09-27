@@ -9,18 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Not actually using this, but we need to pin other things to the same version
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
-
-    git-repo-manager = {
-      url = "github:hakoerber/git-repo-manager/develop";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     gasp = {
       url = "github:llakala/gasp";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,8 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    systems.url = "github:nix-systems/default";
   };
 
 }

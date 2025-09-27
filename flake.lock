@@ -1,20 +1,5 @@
 {
   "nodes": {
-    "crane": {
-      "locked": {
-        "lastModified": 1753316655,
-        "narHash": "sha256-tzWa2kmTEN69OEMhxFy+J2oWSvZP5QhEgXp3TROOzl0=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "f35a3372d070c9e9ccb63ba7ce347f0634ddf3d2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -37,26 +22,6 @@
         "type": "gitlab"
       }
     },
-    "flake-utils": {
-      "inputs": {
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "gasp": {
       "inputs": {
         "llakaLib": [
@@ -77,32 +42,6 @@
       "original": {
         "owner": "llakala",
         "repo": "gasp",
-        "type": "github"
-      }
-    },
-    "git-repo-manager": {
-      "inputs": {
-        "crane": "crane",
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1758004733,
-        "narHash": "sha256-IBb586L4RX4tj04EMIq01151SI6WWZjzSjrgA1eIfvA=",
-        "owner": "hakoerber",
-        "repo": "git-repo-manager",
-        "rev": "d860b3bf07273cf5cf25d2b7960e8ffe85d22324",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hakoerber",
-        "ref": "develop",
-        "repo": "git-repo-manager",
         "type": "github"
       }
     },
@@ -280,9 +219,7 @@
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
-        "flake-utils": "flake-utils",
         "gasp": "gasp",
-        "git-repo-manager": "git-repo-manager",
         "home-manager": "home-manager",
         "kanagawa-yazi": "kanagawa-yazi",
         "llakaLib": "llakaLib",
@@ -290,44 +227,7 @@
         "meovim": "meovim",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "plasma-manager": "plasma-manager",
-        "systems": "systems"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "git-repo-manager",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1753757591,
-        "narHash": "sha256-3okLvry8fRWZhJZP75pPC9P6U1dcu84VOCPhPLXYozI=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "b372cf71b4125d420d7648cbd898ab8f5c355be2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
+        "plasma-manager": "plasma-manager"
       }
     }
   },
