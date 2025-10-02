@@ -1,16 +1,14 @@
 { lib }:
 
 let
+  # Handles both modules and single files
   handlePath = path:
     if lib.isPath path && lib.pathIsDirectory path
       then lib.filesystem.listFilesRecursive path
     else
-      # Handles both modules and single files
       lib.singleton path;
 
-  handlePaths = paths:
-    builtins.concatMap
-    handlePath paths;
+  handlePaths = paths: builtins.concatMap handlePath paths;
 
 in
   paths: builtins.filter
