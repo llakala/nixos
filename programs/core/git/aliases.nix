@@ -4,8 +4,6 @@
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
 
-    unstage = "restore --staged"; # Unstage changes
-
     # --soft is needed - means that `undo` will put the undone changes into
       # staging, and `redo` will commit only the staged changes you just undid.
     undo = "reset --soft HEAD^";
@@ -13,8 +11,8 @@
 
     # Patch versions of add, unstage, and goback
     hire = "add --patch";
-    fire = "unstage --patch";
-    kill = "goback --patch";
+    fire = "restore --staged --patch";
+    kill = "restore --patch";
 
     history = "log --patch";
 
