@@ -5,7 +5,7 @@ end)
 function git_search()
   local cwd = get_cwd()
   -- Both staged and unstaged changes
-  local child = Command("git"):args({ "diff", "HEAD", "--name-only" }):cwd(cwd):stdout(Command.PIPED):spawn()
+  local child = Command("git"):arg({ "diff", "HEAD", "--name-only" }):cwd(cwd):stdout(Command.PIPED):spawn()
   local files = {}
 
   while true do
@@ -27,7 +27,6 @@ function git_search()
     end
 
     ya.manager_emit("search_do", { via = "rg", args = args })
-
   else
     ya.notify({ title = "Git search", content = "No changed files", timeout = 4 })
   end
