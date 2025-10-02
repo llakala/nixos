@@ -58,7 +58,6 @@ let
       ./system
 
       ./various/nixosModules
-      ./various/desktops
 
       ./various/hosts/${hostname}/config
       ./various/hosts/${hostname}/hardware-configuration.nix
