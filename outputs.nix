@@ -29,7 +29,7 @@ in {
   legacyPackages = forAllSystems (pkgs: llakaLib:
     llakaLib.collectDirectoryPackages {
       inherit pkgs;
-      directory = ./extras/packages;
+      directory = ./various/packages;
 
       # So custom packages can rely on llakaLib. We need to use the full version
       # here, since I have some functions like `writeFishApplication`, that need
@@ -42,7 +42,7 @@ in {
   # self.nixosModules.default
   nixosModules.default = {
     imports = pureLlakaLib.resolveAndFilter [
-      ./extras/nixosModules
+      ./various/nixosModules
     ];
   };
 

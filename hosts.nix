@@ -4,7 +4,7 @@ let
 
   # Variables that apply to all hosts, for querying things like the username
   # without hardcoding it within config
-  baseVars = import ./extras/baseVars.nix;
+  baseVars = import ./various/baseVars.nix;
 
   # Given some hostname and some additional data about the host, creates it.
   #
@@ -55,13 +55,12 @@ let
     # Use a custom function that recursively imports any folder, while
     # not touching any individual files or modules.
     modules = llakaLib.resolveAndFilter [
-      ./config
+      ./programs
+      ./system
+      ./various/desktops
 
-      ./apps
-      ./extras/desktops
-
-      ./extras/hosts/${hostname}/config
-      ./extras/hosts/${hostname}/hardware-configuration.nix
+      ./various/hosts/${hostname}/config
+      ./various/hosts/${hostname}/hardware-configuration.nix
 
       self.nixosModules.default
     ];
