@@ -6,42 +6,26 @@ let
   # without hardcoding it within config
   baseVars = import ./various/baseVars.nix;
 
-  # Given some hostname and some additional data about the host, creates it.
+  # Given some hostname and some additional parameters about the host, create a
+  # lib.nixosSystem entrypoint for it.
   #
-  # There are a few things about this function that are important to note. First
-  # of all, for any host `foo`, we auto-import some files from
-  # `extras/hosts/foo`. This locks every host into providing a hardware
-  # configuration, as well as a folder with generic extra config.
+  # For some host `foo`, we auto-import some files from `extras/hosts/foo`. This
+  # locks every host into providing a hardware configuration, as well as a
+  # folder with generic extra config.
   #
-  # Secondly, we do some parameter magic. You'll notice that `hostname` is taken
-  # separately from the rest of the parameters. This may appear useless at
-  # first, but it becomes useful when calling `mkNixos` with `builtins.mapAttrs`.
+  # You'll notice that `hostname` is taken separately from the rest of the
+  # parameters. This is useful when calling `mkNixos` with `builtins.mapAttrs`.
+  # `mapAttrs` takes `{ key = value; }` and turns it into `key value`. This
+  # allows us to interpret each host's key as its hostname, and its value as
+  # extra parameters. Each host now doesn't have to redeclare its hostname in
+  # the parameters - it's automatically inferred by the key!
   #
-  # Now, `mapAttrs` is very simple: it takes `{ key = value; }` and turns it
-  # into `key value`. But this is specifically useful for our case, because it
-  # lets us understand each host's key as its hostname, and its value as extra
-  # parameters.
-  #
-  # Take this example host:
-  #
-  # foo = {
-  #   param1 = "hi";
-  #   param2 = "bye!"
-  # };
-  #
-  # `mapAttrs` turns this into:
-  #
-  # "foo" { param1 = "hi"; param2 = "bye"; }
-  #
-  # This means we don't have to redeclare what the hostname is in the parameters
-  # - it's automatically inferred by the key!
-  #
-  # Finally, note that every host declares some set of hostVars, which are
-  # autocally passed nto `specialArgs`. This lets us handle slight differences
-  # between hosts. If two hosts only differ by their scaling factor, we don't
-  # have to duplicate the configuration - we just use the dynamic value of
-  # `hostVars.scalngFactor`! I try to keep most of my config applicable to all
-  # hosts, so this is a great way of keeping that purity.
+  # The parameters mainly consist of hostVars, which are autocally passed nto
+  # `specialArgs`. This lets us handle slight differences between hosts. If two
+  # hosts only differ by their scaling factor, we don't have to duplicate the
+  # configuration - we just use the dynamic value of `hostVars.scalngFactor`! I
+  # try to keep most of my config applicable to all hosts, so this is a great
+  # way of keeping that purity.
   mkNixos = hostname: { system, hostVars }: let
     pkgs = inputs.nixpkgs.legacyPackages.${system};
     myLib = import ./various/myLib/default.nix { inherit pkgs; };
@@ -53,6 +37,7 @@ let
       hostVars = hostVars // { inherit hostname; };
     };
 
+    # Any folders are automatically expanded to all the files within them
     modules = myLib.recursivelyImport [
       ./programs
       ./system
