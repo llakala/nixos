@@ -20,9 +20,6 @@
     gtk2.configLocation = "${baseVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 
-  # Pretty orange tree :3
-  hm.programs.plasma.workspace.wallpaper = ./wallpaper.png;
-
   # On by default - I'll save on my closure size
   services.orca.enable = false;
   services.speechd.enable = false;
