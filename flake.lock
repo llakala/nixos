@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758950826,
-        "narHash": "sha256-ddx9KhJz8G9eSTTJ9b03b0MsUcK8FBS/BDRGkIleCOE=",
+        "lastModified": 1759190887,
+        "narHash": "sha256-LvBqeaMzXVo3AWaa7CSAsfvpBCvJr5tziSP38iA4Jwc=",
         "owner": "llakala",
         "repo": "meovim",
-        "rev": "41ad8ac80a5f29010cc70249518c83c3e8cf2a0f",
+        "rev": "dff717a59a8b08c3fdad370e248fe8ee83e59c80",
         "type": "github"
       },
       "original": {
@@ -132,11 +132,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1756659871,
-        "narHash": "sha256-v6Rh4aQ6RKjM2N02kK9Usn0Ix7+OY66vNpeklc1MnGE=",
+        "lastModified": 1758834834,
+        "narHash": "sha256-Y7IvY4F8vajZyp3WGf+KaiIVwondEkMFkt92Cr9NZmg=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "ed6cc3e48557ba18266e598a5ebb6602499ada16",
+        "rev": "cfbc7d1cc832e318d0863a5fc91d940a96034001",
         "type": "github"
       },
       "original": {
