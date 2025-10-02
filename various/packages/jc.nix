@@ -4,7 +4,7 @@ myLib.writeFishApplication {
   name = "jc"; # Java Compile
 
   runtimeInputs = with pkgs; [
-    jdk17
+    jdk
     fd
   ];
 
