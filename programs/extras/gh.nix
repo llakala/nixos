@@ -1,4 +1,4 @@
-{ baseVars, lib, pkgs, ... }:
+{ lib, config, ... }:
 
 let
   notBool = val: ! builtins.isBool val;
@@ -15,7 +15,10 @@ in {
     enable = true;
 
     settings = boolsToYaml {
-      editor = baseVars.editor;
+      editor =
+        assert config.features.editor == "neovim";
+        "nvim";
+
       git_protocol = "https"; # TODO: make this use ssh when proper secrets are set up
       prefer_editor_prompt = true;
     };
