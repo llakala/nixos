@@ -16,7 +16,7 @@ let
 in {
   nixosConfigurations = import ./hosts.nix { inherit inputs self; };
 
-  legacyPackages = forAllSystems (pkgs: myLib:
+  packages = forAllSystems (pkgs: myLib:
     let
       callPackage = lib.callPackageWith (pkgs // { inherit myLib; });
     in {
