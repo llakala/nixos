@@ -1,6 +1,6 @@
-{ llakaLib, pkgs }:
+{ myLib, pkgs }:
 
-llakaLib.writeFishApplication {
+myLib.writeFishApplication {
   name = "emodule"; # Evaluate a given module using `evalModules`
 
   runtimeInputs = with pkgs; [
