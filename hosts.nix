@@ -53,9 +53,7 @@ let
       hostVars = hostVars // { inherit hostname; };
     };
 
-    # Use a custom function that recursively imports any folder, while
-    # not touching any individual files or modules.
-    modules = myLib.resolveAndFilter [
+    modules = myLib.recursivelyImport [
       ./programs
       ./system
 

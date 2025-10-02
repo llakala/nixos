@@ -3,6 +3,6 @@
 in {
   mkUnfreeNixpkgs = callPackage ./mkUnfreeNixpkgs.nix {};
   mkPackageSet = callPackage ./mkPackageSet.nix {};
-  resolveAndFilter = callPackage ./resolveAndFilter.nix {};
+  recursivelyImport = callPackage ./recursivelyImport.nix {};
   writeFishApplication = callPackage ./writeFishApplication.nix {};
 }
