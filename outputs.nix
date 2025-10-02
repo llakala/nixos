@@ -16,18 +16,17 @@ let
 in {
   nixosConfigurations = import ./hosts.nix { inherit inputs self; };
 
-  # Call all packages automatically in directory, while letting packages refer
-  # to each other via custom lib function
-  legacyPackages = forAllSystems (pkgs: myLib: myLib.mkPackageSet {
-    filepaths = {
-      emodule = ./various/packages/emodule.nix;
-      evalue = ./various/packages/evalue.nix;
-      git-repo-manager = ./various/packages/git-repo-manager.nix;
-      jc = ./various/packages/jc.nix;
-      kittab = ./various/packages/kittab.nix;
-    };
-    extras = { inherit myLib; };
-  });
+  legacyPackages = forAllSystems (pkgs: myLib:
+    let
+      callPackage = lib.callPackageWith (pkgs // { inherit myLib; });
+    in {
+      emodule = callPackage ./various/packages/emodule.nix {};
+      evalue = callPackage ./various/packages/evalue.nix {};
+      git-repo-manager = callPackage ./various/packages/git-repo-manager.nix {};
+      jc = callPackage ./various/packages/jc.nix {};
+      kittab = callPackage ./various/packages/kittab.nix {};
+    }
+  );
 
   devShells = forAllSystems (pkgs: _: {
     default = pkgs.mkShellNoCC {
