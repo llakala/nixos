@@ -2,59 +2,25 @@
 
 let
   cfg = config.custom.services.mimetypes;
+
+  mkMimetypeOption = programDescription: lib.mkOption {
+    type = lib.types.str;
+    description = "The desktop entry for your ${programDescription} of choice";
+    default = null;
+  };
 in {
   options.custom.services.mimetypes = {
     enable = lib.mkEnableOption "managing what apps are used for certain filetypes via the XDG specification";
 
-    browser = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your browser of choice";
-      default = null;
-    };
+    browser = mkMimetypeOption "browser";
+    editor = mkMimetypeOption "text editor";
+    fileManager = mkMimetypeOption "file manager";
+    terminal = mkMimetypeOption "terminal";
+    extractor = mkMimetypeOption "file extractor/archiver";
 
-    editor = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your text editor of choice";
-      default = null;
-    };
-
-    terminal = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your terminal of choice.";
-      default = null;
-    };
-
-    extractor = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your file extractor/archiver of choice.";
-      default = null;
-    };
-
-    fileManager = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your file manager of choice.";
-      default = null;
-    };
-
-    imageViewer = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your image viewer of choice.";
-      default = null;
-    };
-
-    videoViewer = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your video viewer of choice.";
-      default = null;
-    };
-
-    pdfViewer = lib.mkOption {
-      type = lib.types.str;
-      description = "The desktop entry for your PDF viewer of choice.";
-      default = null;
-    };
-
-
+    imageViewer = mkMimetypeOption "image viewer";
+    videoViewer = mkMimetypeOption "video viewer";
+    pdfViewer = mkMimetypeOption "PDF viewer";
   };
 
   config = lib.mkIf cfg.enable {
