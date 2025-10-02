@@ -1,11 +1,8 @@
-{ lib, ... }:
-
 {
   features.fuzzyCd = "zoxide";
 
   hm.programs.zoxide = {
     enable = true;
-    options = lib.singleton "--cmd cd"; # Give `cd` `z` functionality, `z` no longer does anything
   };
 
   # I have Yazi set up to auto-update the zoxide database based on where I go --
@@ -14,5 +11,4 @@
   # src gets higher precedence. This isn't what we want! To get around this, we
   # filter out subdirs of `src`, so we don't open the wrong directory.
   environment.variables._ZO_EXCLUDE_DIRS = "*/src/*";
-
 }
