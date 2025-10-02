@@ -14,7 +14,7 @@ let
   # folder with generic extra config.
   #
   # You'll notice that `hostname` is taken separately from the rest of the
-  # parameters. This is useful when calling `mkNixos` with `builtins.mapAttrs`.
+  # parameters. This is useful when calling `mkHost` with `builtins.mapAttrs`.
   # `mapAttrs` takes `{ key = value; }` and turns it into `key value`. This
   # allows us to interpret each host's key as its hostname, and its value as
   # extra parameters. Each host now doesn't have to redeclare its hostname in
@@ -26,7 +26,7 @@ let
   # configuration - we just use the dynamic value of `hostVars.scalngFactor`! I
   # try to keep most of my config applicable to all hosts, so this is a great
   # way of keeping that purity.
-  mkNixos = hostname: { system, hostVars }: let
+  mkHost = hostname: { system, hostVars }: let
     pkgs = inputs.nixpkgs.legacyPackages.${system};
     myLib = import ./various/myLib/default.nix { inherit pkgs; };
   in lib.nixosSystem {
@@ -49,7 +49,7 @@ let
     ];
   };
 
-in builtins.mapAttrs mkNixos {
+in builtins.mapAttrs mkHost {
   desktop = {
     system = "x86_64-linux";
 
