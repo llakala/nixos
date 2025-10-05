@@ -31,9 +31,8 @@
     };
 
     menu = {
-      url = "github:llakala/menu";
+      url = "github:llakala/menu/cleanup"; # TODO: point back to main once PR merged
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

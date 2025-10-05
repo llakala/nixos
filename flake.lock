@@ -88,23 +88,21 @@
     },
     "menu": {
       "inputs": {
-        "llakaLib": [
-          "llakaLib"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1746399202,
-        "narHash": "sha256-eo8/ZVZQDUNjYNIayzcGpyc0gcbisRO9jOK4q5zC1lc=",
+        "lastModified": 1759674762,
+        "narHash": "sha256-2WwqCWMe+J/WNsExrHpbVTvsuziqQlhw1wndhNcr26U=",
         "owner": "llakala",
         "repo": "menu",
-        "rev": "d37e7a90458cbfa9f772b6c06137c344ae2ff286",
+        "rev": "8b6ff4c8aa2ea1c88aca1cf0902d96e2f972f86a",
         "type": "github"
       },
       "original": {
         "owner": "llakala",
+        "ref": "cleanup",
         "repo": "menu",
         "type": "github"
       }
