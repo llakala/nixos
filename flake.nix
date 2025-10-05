@@ -12,16 +12,10 @@
     gasp = {
       url = "github:llakala/gasp";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.llakaLib.follows = "llakaLib"; # Reuse the same instance, so flake.lock doesn't get ugly
     };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    llakaLib = {
-      url = "github:llakala/llakaLib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -24,19 +24,16 @@
     },
     "gasp": {
       "inputs": {
-        "llakaLib": [
-          "llakaLib"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1749350238,
-        "narHash": "sha256-dZYXN4UE2FR51mLV5yemtVuxQrwLspy9wKUMX7HLRlU=",
+        "lastModified": 1759689847,
+        "narHash": "sha256-qrlXbiP/MAWxjjIyBqBXlRDxk5zhSLjPqvxWbSonsOI=",
         "owner": "llakala",
         "repo": "gasp",
-        "rev": "fb0c5e9c4750a0294daa25df2b1dce3bc4edc23e",
+        "rev": "6414ad55b51a119abb344f911b935208e5951b59",
         "type": "github"
       },
       "original": {
@@ -63,26 +60,6 @@
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "llakaLib": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1746399052,
-        "narHash": "sha256-nUgP55/0K7QcAVN+NaNhDHlC4EZWa0VgHVPQDs4Gr3E=",
-        "owner": "llakala",
-        "repo": "llakaLib",
-        "rev": "78e744b1ea60c1baf2c66962570316db940a445a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "llakala",
-        "repo": "llakaLib",
         "type": "github"
       }
     },
@@ -203,7 +180,6 @@
         "firefox-addons": "firefox-addons",
         "gasp": "gasp",
         "home-manager": "home-manager",
-        "llakaLib": "llakaLib",
         "menu": "menu",
         "meovim": "meovim",
         "nixos-hardware": "nixos-hardware",
