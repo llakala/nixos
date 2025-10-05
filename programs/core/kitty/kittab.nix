@@ -1,7 +1,7 @@
 { self, pkgs, ... }:
 
 let
-  kittab = self.packages.${pkgs.system}.kittab;
+  kittab = self.packages.kittab;
 
   # Create a new desktop entry that we'll use for opening Kitty
   # Within the Kittab script, we make Kitty open with class/name Kittab, so it doesn't

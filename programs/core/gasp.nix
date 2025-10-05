@@ -1,14 +1,15 @@
-{ inputs, pkgs, config, ... }:
+{ sources, pkgs, config, ... }:
 
-{
-  environment.systemPackages = with inputs.gasp.legacyPackages.${pkgs.system}; [
+let
+  gasp = import "${sources.gasp}/packages/default.nix" { inherit pkgs; };
+in {
+  environment.systemPackages = with gasp; [
     ghp # Git Hire Patch (stage)
     gfp # Git Fire Patch (unstage)
     gkp # Git Kill Patch (reset)
 
     splitpatch
   ];
-
 
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; { # Error if we ever change shell

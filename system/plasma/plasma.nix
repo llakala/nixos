@@ -1,4 +1,4 @@
-{ lib, inputs, baseVars, ... }:
+{ lib, sources, baseVars, ... }:
 
 {
   features.desktop = "plasma"; # If we ever stop using KDE, change this
@@ -8,7 +8,7 @@
   # to rebuild - it'll fail and tell you the valid options
   services.displayManager.defaultSession = "plasma";
 
-  hm.imports = lib.singleton inputs.plasma-manager.homeModules.plasma-manager;
+  hm.imports = lib.singleton "${sources.plasma-manager}/modules";
   hm.programs.plasma = {
     enable = true;
     immutableByDefault = true;

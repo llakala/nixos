@@ -3,21 +3,18 @@
 # Of course, replacing `emanresu` with your username if you're not me
 # The error doesn't show on rebuild when home-manager is installed as a
 # NixOS module, so you have to check there.
-{ baseVars, lib, inputs, pkgs, hostVars, ... }:
+{ baseVars, lib, sources, hostVars, ... }:
 
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
+    (import "${sources.home-manager}/nixos")
 
-    ( # Let us use hm as shorthand for home-manager config
+    # Let us use hm as shorthand for home-manager config
+    (
       lib.mkAliasOptionModule
       [ "hm" ]
       [ "home-manager" "users" baseVars.username ]
     )
-  ];
-
-  environment.systemPackages = with pkgs; [
-    home-manager # Lets us run commands like `home-manager switch`
   ];
 
   hm.programs.home-manager = {

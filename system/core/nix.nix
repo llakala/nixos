@@ -1,4 +1,4 @@
-{ hostVars, inputs, pkgs, ... }:
+{ hostVars, pkgs, ... }:
 
 {
   nix.package = pkgs.lixPackageSets.latest.lix;
@@ -33,7 +33,6 @@
     allow-import-from-derivation = false;
   };
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "America/New_York";
