@@ -1,9 +1,11 @@
-{ inputs, pkgs, ... }:
+{ sources, pkgs, ... }:
 
 let
+  rycee-exprs = import "${sources.firefox-addons}/default.nix" { inherit pkgs; };
+
   # Search extension names with below command:
   # nix flake show --json "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons" --all-systems | jq -r '.packages."x86_64-linux" | keys[]' | rg QUERY
-  ryceeAddons = with inputs.firefox-addons.packages.${pkgs.system}; [
+  ryceeAddons = with rycee-exprs.firefox-addons; [
     ublock-origin
     sponsorblock
     return-youtube-dislikes

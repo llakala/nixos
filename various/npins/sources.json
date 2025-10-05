@@ -1,0 +1,115 @@
+{
+  "pins": {
+    "firefox-addons": {
+      "type": "Git",
+      "repository": {
+        "type": "GitLab",
+        "repo_path": "rycee/nur-expressions",
+        "server": "https://gitlab.com/"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "eff82f4fb13a381248ba1432a641894b6c0e4442",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=eff82f4fb13a381248ba1432a641894b6c0e4442",
+      "hash": "1kzbjhq0nl0rnldjsx68snxp5zd2hccvj4i04kya0kqm7hnxk4xl"
+    },
+    "gasp": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "llakala",
+        "repo": "gasp"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "6414ad55b51a119abb344f911b935208e5951b59",
+      "url": "https://github.com/llakala/gasp/archive/6414ad55b51a119abb344f911b935208e5951b59.tar.gz",
+      "hash": "1qmh4wm6smpwmb7vhj71kj9z244mayh0ccijisqhac7z4dp5gfda"
+    },
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "06e268d66bbf6d606b349a4f0be3af66ab3ea2be",
+      "url": "https://github.com/nix-community/home-manager/archive/06e268d66bbf6d606b349a4f0be3af66ab3ea2be.tar.gz",
+      "hash": "05dv57cg1jlxx8cz8q56wnqgjrw13wsgvwy23xcs3svn80b703zq"
+    },
+    "menu": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "llakala",
+        "repo": "menu"
+      },
+      "branch": "cleanup",
+      "submodules": false,
+      "revision": "4330860fbdf1b9180af85d7684b881bd6840c8de",
+      "url": "https://github.com/llakala/menu/archive/4330860fbdf1b9180af85d7684b881bd6840c8de.tar.gz",
+      "hash": "0yfpsb8ab0cnc04vn3b1mmp33hlwmncgkmj8f09xrfhzb9b5gzn6"
+    },
+    "meovim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "llakala",
+        "repo": "meovim"
+      },
+      "branch": "flakeless-entrypoint",
+      "submodules": false,
+      "revision": "f8e238fc20c7f03fb47ab5efe50163f1be83b5a4",
+      "url": "https://github.com/llakala/meovim/archive/f8e238fc20c7f03fb47ab5efe50163f1be83b5a4.tar.gz",
+      "hash": "1bzmhvcbg2kw25cy7ixfrs8b0f71zddbng5mh4h5vzwzgzkd4znx"
+    },
+    "mnw": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Gerg-L",
+        "repo": "mnw"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "cfbc7d1cc832e318d0863a5fc91d940a96034001",
+      "url": "https://github.com/Gerg-L/mnw/archive/cfbc7d1cc832e318d0863a5fc91d940a96034001.tar.gz",
+      "hash": "0s369nzhlxnzj82l64nxi711a8kaibzikmlxrbcsigbwh5ijzck3"
+    },
+    "nixos-hardware": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixos-hardware"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "3441b5242af7577230a78ffb03542add264179ab",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/3441b5242af7577230a78ffb03542add264179ab.tar.gz",
+      "hash": "11rrw51qkhnvbxggwdl2vg2rgng8mv737q79whm7s3205615x5mj"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixos-unstable",
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre870157.7df7ff7d8e00/nixexprs.tar.xz",
+      "hash": "1f5zj0dvb29i77qzcnxxzaasp38l98dvfmdabbs7yh8cw4wsy86p"
+    },
+    "plasma-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "plasma-manager"
+      },
+      "branch": "trunk",
+      "submodules": false,
+      "revision": "205dcfd4a30d4a5d1b4f28defee69daa7c7252cd",
+      "url": "https://github.com/nix-community/plasma-manager/archive/205dcfd4a30d4a5d1b4f28defee69daa7c7252cd.tar.gz",
+      "hash": "11f1484w37vj0bxlyy3rj4cif2p71zxwm44m4n1ksb9b0bi18ygi"
+    }
+  },
+  "version": 5
+}

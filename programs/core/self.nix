@@ -1,8 +1,8 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 
 {
   # Custom packages from my flake, added to systemPackages for testing
-  environment.systemPackages = with self.packages.${pkgs.system}; [
+  environment.systemPackages = with self.packages; [
     evalue
     emodule
     jc

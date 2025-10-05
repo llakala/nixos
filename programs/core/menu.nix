@@ -1,7 +1,9 @@
-{ inputs, pkgs, config, hostVars, ... }:
+{ sources, pkgs, config, hostVars, ... }:
 
-{
-  environment.systemPackages = with inputs.menu.legacyPackages.${pkgs.system}; [
+let
+  menu = import "${sources.menu}/packages/default.nix" { inherit pkgs; };
+in {
+  environment.systemPackages = with menu; [
     rbld
     unify
     fuiska

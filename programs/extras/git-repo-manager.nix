@@ -1,7 +1,7 @@
-{ self, lib, pkgs, ... }:
+{ self, lib, ... }:
 
 let
-  package = self.packages.${pkgs.system}.git-repo-manager;
+  package = self.packages.git-repo-manager;
 in {
   environment.systemPackages = lib.singleton package;
 }

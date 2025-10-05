@@ -1,7 +1,7 @@
-{ inputs, pkgs, lib, config, ... }:
+{ sources, pkgs, lib, config, ... }:
 
 let
-  neovimPackage = inputs.meovim.packages.${pkgs.system}.default;
+  neovimPackage = import "${sources.meovim}/default.nix" { inherit pkgs; mnw = import sources.mnw; };
 in {
   environment.variables.EDITOR = "nvim";
 
