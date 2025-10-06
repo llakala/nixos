@@ -1,7 +1,7 @@
-{ pkgs ? (import ./various/npins).nixpkgs {} }:
+{ pkgs ? import (import ./various/npins).nixpkgs {} }:
+
 let
   inherit (pkgs) lib;
-
   myLib = import ./various/myLib/default.nix { inherit pkgs; };
   callPackage = lib.callPackageWith (pkgs // { inherit myLib; });
 in {
