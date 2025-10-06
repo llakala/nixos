@@ -1,4 +1,4 @@
-{ pkgs ? import (import ./various/npins).nixpkgs {} }:
+{ sources ? import ./various/npins, pkgs ? import sources.nixpkgs {} }:
 
 let
   inherit (pkgs) lib;
