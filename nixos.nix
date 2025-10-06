@@ -1,6 +1,5 @@
 let
   sources = import ./various/npins;
-  pkgs = import sources.nixpkgs {};
   nixosSystem = import "${sources.nixpkgs}/nixos/lib/eval-config.nix";
 
   # Variables that apply to all hosts, for querying things like the username
@@ -27,9 +26,13 @@ let
   # configuration - we just use the dynamic value of `hostVars.scalngFactor`! I
   # try to keep most of my config applicable to all hosts, so this is a great
   # way of keeping that purity.
-  mkHost = hostname: { hostVars }: let
+  mkHost = hostname: { system, hostVars }: let
+    pkgs = import sources.nixpkgs { inherit system; };
     myLib = import ./various/myLib/default.nix { inherit pkgs; };
   in nixosSystem {
+    # Technically unnecessary, but keeps our impl pure
+    inherit system;
+
     specialArgs = {
       inherit sources myLib baseVars;
       self.packages = import ./packages.nix { inherit pkgs; };
@@ -52,6 +55,8 @@ let
 
 in builtins.mapAttrs mkHost {
   desktop = {
+    system = "x86_64-linux";
+
     hostVars = {
       mouseName = "Libinput/1133/16500/Logitech G305";
       scalingFactor = 1;
@@ -62,6 +67,8 @@ in builtins.mapAttrs mkHost {
   };
 
   framework = {
+    system = "x86_64-linux";
+
     hostVars = {
       scalingFactor = 2;
 
@@ -71,6 +78,8 @@ in builtins.mapAttrs mkHost {
   };
 
   palpot = {
+    system = "x86_64-linux";
+
     hostVars = {
       scalingFactor = 1;
       touchpadName = "Libinput/1739/53227/PNP0C50:00 06CB:CFEB Touchpad";
