@@ -35,7 +35,7 @@ let
 
     specialArgs = {
       inherit sources myLib baseVars;
-      self.packages = import ./packages.nix { inherit pkgs; };
+      self.packages = import ./packages.nix { inherit pkgs sources; };
 
       # Use our inferred hostname from mapAttrs
       hostVars = hostVars // { inherit hostname; };
