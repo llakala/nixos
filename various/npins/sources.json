@@ -46,10 +46,10 @@
         "owner": "llakala",
         "repo": "menu"
       },
-      "branch": "cleanup",
+      "branch": "main",
       "submodules": false,
-      "revision": "4330860fbdf1b9180af85d7684b881bd6840c8de",
-      "url": "https://github.com/llakala/menu/archive/4330860fbdf1b9180af85d7684b881bd6840c8de.tar.gz",
+      "revision": "7fea0706ea65a13441058b0b6e35e7f52198a4fd",
+      "url": "https://github.com/llakala/menu/archive/7fea0706ea65a13441058b0b6e35e7f52198a4fd.tar.gz",
       "hash": "sha256-xv5XVlofutwTcEjW+ZitnMIxbq1hDbsJYJaBpdDS13k="
     },
     "meovim": {
