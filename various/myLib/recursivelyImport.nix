@@ -1,18 +1,18 @@
 { lib }:
 
 let
-  # Handles both modules and single files
-  handlePath = path:
-    if lib.isPath path && lib.pathIsDirectory path
-      then lib.filesystem.listFilesRecursive path
-    else
-      lib.singleton path;
+  inherit (lib) concatMap hasSuffix;
+  inherit (builtins) isPath filter readFileType;
 
-  handlePaths = paths: builtins.concatMap handlePath paths;
+  expandIfFolder = elem:
+    if !isPath elem || readFileType elem != "directory"
+      then [ elem ]
+    else lib.filesystem.listFilesRecursive elem;
 
 in
-  paths: builtins.filter
-    # After being handled, we either get something that's not a path (typically
-    # a module), or a path that ends with ".nix"
-    (path: !builtins.isPath path || lib.hasSuffix ".nix" (toString path))
-    (handlePaths paths)
+  list: filter
+    # Filter out any path that doesn't look like `*.nix`. Don't forget to use
+    # toString to prevent copying paths to the store unnecessarily
+    (elem: !isPath elem || hasSuffix ".nix" (toString elem))
+    # Expand any folder to all the files within it.
+    (concatMap expandIfFolder list)
