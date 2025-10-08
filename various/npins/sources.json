@@ -59,10 +59,10 @@
         "owner": "llakala",
         "repo": "meovim"
       },
-      "branch": "flakeless-entrypoint",
+      "branch": "main",
       "submodules": false,
-      "revision": "720242d670d6f0e77f40a9b2770e46eb7b24df80",
-      "url": "https://github.com/llakala/meovim/archive/720242d670d6f0e77f40a9b2770e46eb7b24df80.tar.gz",
+      "revision": "18f6818239d4009f261a6616e3c6b061d1990d4d",
+      "url": "https://github.com/llakala/meovim/archive/18f6818239d4009f261a6616e3c6b061d1990d4d.tar.gz",
       "hash": "sha256-3X7S5n+f/10ggbU8u1r74TiwkM6ux+NZEXyKt9iG9a8="
     },
     "mnw": {
