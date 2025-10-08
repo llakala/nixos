@@ -14,5 +14,5 @@ in
   paths: builtins.filter
     # After being handled, we either get something that's not a path (typically
     # a module), or a path that ends with ".nix"
-    (path: !builtins.isPath path || lib.hasSuffix ".nix" path)
+    (path: !builtins.isPath path || lib.hasSuffix ".nix" (toString path))
     (handlePaths paths)
