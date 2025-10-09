@@ -5,8 +5,6 @@
     # Basic linux utils
     coreutils
     libgccjit # gcc
-    usbutils # lsusb and friends
-    bind # Networking utils
     wget
     gnumake # make
     jq
@@ -27,14 +25,9 @@
 
     # Weird stuff
     tldr # Mini-manpages
-    libva-utils # Check for hardware acceleration
-    fd # Search filenames, used by Yazi
-    w3m # w3mman gives you manpage hyperlinks
+    fd
     appimage-run # Allow running appimages for when something isnt on nixpkgs
     hwinfo
-    age
-    libsecret
-    exiftool # Check metadata
     ijq # Interactive jq
 
     # commands specifically for nix
