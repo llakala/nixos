@@ -23,6 +23,7 @@
     zip
     unzip
     file
+    hyperfine
 
     # Weird stuff
     tldr # Mini-manpages
