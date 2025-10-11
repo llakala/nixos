@@ -17,10 +17,6 @@
     )
   ];
 
-  hm.programs.home-manager = {
-    enable = true;
-  };
-
   hm.home = {
     username = baseVars.username;
     homeDirectory = baseVars.homeDirectory;
