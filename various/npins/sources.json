@@ -30,14 +30,14 @@
       "type": "Git",
       "repository": {
         "type": "GitHub",
-        "owner": "nix-community",
+        "owner": "llakala",
         "repo": "home-manager"
       },
-      "branch": "master",
+      "branch": "minimal-entrypoint",
       "submodules": false,
-      "revision": "6f4021da5d2bb5ea7cb782ff413ecb7062066820",
-      "url": "https://github.com/nix-community/home-manager/archive/6f4021da5d2bb5ea7cb782ff413ecb7062066820.tar.gz",
-      "hash": "sha256-B39NxeKCnK3DJlmJKIts6njcXcVVASLUChDNmRl4dxQ="
+      "revision": "c06da7085d8cfadd0ddbb466e385006603ea00ac",
+      "url": "https://github.com/llakala/home-manager/archive/c06da7085d8cfadd0ddbb466e385006603ea00ac.tar.gz",
+      "hash": "sha256-BDRsHz61Ro/GvvXS6ByoMA7Sk2RJf3YaGCF+rhz9eSY="
     },
     "menu": {
       "type": "Git",
