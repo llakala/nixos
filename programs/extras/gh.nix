@@ -24,7 +24,8 @@ in {
     };
   };
 
-  hm.programs.fish.shellAbbrs = assert config.features.abbreviations == "fish"; {
+  hm.programs.fish.shellAbbrs =
+  assert config.features.abbreviations == "fish"; {
     ghrpv = "gh repo view --web";
     ghrpf = "gh repo fork --remote --clone";
 

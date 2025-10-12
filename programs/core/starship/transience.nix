@@ -3,7 +3,8 @@
 {
   # Error if we ever stop using fish
   hm.programs.starship.enableTransience =
-    assert config.features.shell == "fish"; true;
+    assert config.features.shell == "fish";
+    true;
 
   hm.programs.fish.functions = {
     starship_transient_prompt_func = # fish

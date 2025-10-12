@@ -29,7 +29,9 @@
 
   hm.xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
     force = true;
-    text = assert config.features.files == "yazi"; ''
+
+    text =
+    assert config.features.files == "yazi"; ''
       [filechooser]
       cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
     '';

@@ -8,7 +8,8 @@ let
   };
 
 in {
-  hm.programs.fish.shellAbbrs = assert config.features.abbreviations == "fish"; {
+  hm.programs.fish.shellAbbrs =
+  assert config.features.abbreviations == "fish"; {
     nd = "nix develop";
     ne = "nix eval";
 
