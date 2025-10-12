@@ -1,4 +1,4 @@
-{ hostVars, pkgs, sources, ... }:
+{ hostVars, pkgs, ... }:
 
 {
   nix.package = pkgs.lixPackageSets.latest.lix;
@@ -22,10 +22,6 @@
       "@wheel" # Lets me use nix flakes that require nixConfig.
     ];
 
-    # Disable the global registry, which pins random flakes that eelco decided
-    # should be first-class citizens for some reason
-    flake-registry = "";
-
     connect-timeout = 5; # Offline caches won't just hang
     warn-dirty = false; # No warnings if git isn't pushed
     fallback = true; # If binary cache fails, it's okay
@@ -35,19 +31,6 @@
 
     allow-import-from-derivation = false;
   };
-
-  # Keep nix registry synced with our pinned npins input
-  nixpkgs.flake = {
-    source = sources.nixpkgs;
-    setNixPath = false;
-    setFlakeRegistry = true;
-  };
-
-  # Keeps <nixpkgs> pinned to the current nixpkgs revision. Requires relog to
-  # apply
-  nix.nixPath = [
-    "nixpkgs=${sources.nixpkgs.outPath}"
-  ];
 
   nixpkgs.config.allowUnfree = true;
 

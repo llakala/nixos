@@ -1,5 +1,7 @@
+{ config, ... }:
+
 {
-  hm.programs.fish.shellAbbrs = {
+  hm.programs.fish.shellAbbrs = assert config.features.abbreviations == "fish"; {
     nd = "nix develop";
     ne = "nix eval";
 
