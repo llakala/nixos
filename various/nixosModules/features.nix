@@ -24,8 +24,6 @@ in {
 
     abbreviations = mkFeature "provider of abbreviations";
 
-    direnv = mkFeature "program for providing direnv functionality";
-
     browser = mkFeature "browser";
 
     fuzzyCd = mkFeature "fuzzy cd command";

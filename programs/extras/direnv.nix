@@ -1,6 +1,4 @@
 {
-  features.direnv = "nix-direnv"; # Change if we ever stop using lorri
-
   programs.direnv = {
     enable = true;
     silent = true;
@@ -16,5 +14,4 @@
   hm.programs.git.ignores = [
     ".direnv/"
   ];
-
 }
