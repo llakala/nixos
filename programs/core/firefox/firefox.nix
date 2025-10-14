@@ -1,5 +1,6 @@
 {
-  features.browser = "firefox"; # Change if we ever stop using Firefox (unlikely)
+  features.browser = "firefox";
+  features.pdfs = "firefox";
 
   hm.programs.firefox = {
     enable = true;

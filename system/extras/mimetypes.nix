@@ -24,8 +24,8 @@ in {
       "kittab.desktop";
 
     pdfViewer =
-      assert feats.pdfs == "zathura";
-      "zathura.desktop";
+      assert feats.pdfs == "firefox";
+      "firefox.desktop";
 
     # Reusing file manager for extraction
     extractor =
