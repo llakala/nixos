@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "cffa2e20e30efdd267a0b44c2f4e81c58f22648f",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=cffa2e20e30efdd267a0b44c2f4e81c58f22648f",
-      "hash": "sha256-4l8Y6X30p2i0Bql+BaBSoKYj0D16JnVgUWVgNUN2jEc="
+      "revision": "b37dfe9a29574b11182dac6b9b2bdb6b55948520",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=b37dfe9a29574b11182dac6b9b2bdb6b55948520",
+      "hash": "sha256-zoEJAw7naU8QZiH4x4JN/lgUgdA4H2Stk1N2KgWA1TI="
     },
     "gasp": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e121f3773fa596ecaba5b22e518936a632d72a90",
-      "url": "https://github.com/nix-community/home-manager/archive/e121f3773fa596ecaba5b22e518936a632d72a90.tar.gz",
-      "hash": "sha256-U9SkK45314urw9P7MmjhEgiQwwD/BTj+T3HTuz1JU1Q="
+      "revision": "c53e65ec92f38d30e3c14f8d628ab55d462947aa",
+      "url": "https://github.com/nix-community/home-manager/archive/c53e65ec92f38d30e3c14f8d628ab55d462947aa.tar.gz",
+      "hash": "sha256-zfY4F4CpeUjTGgecIJZ+M7vFpwLc0Gm9epM/iMQd4w8="
     },
     "menu": {
       "type": "Git",
@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "41e2c748245abcd19d5e96ebda0e1727cfa75a3c",
-      "url": "https://github.com/llakala/menu/archive/41e2c748245abcd19d5e96ebda0e1727cfa75a3c.tar.gz",
-      "hash": "sha256-ic290us5Sp0WFJ5CQRXtMCYSnONyvN/AGdkGlPQCr0A="
+      "revision": "40f8951e3e10f934ed84aacfec5be01f14555b10",
+      "url": "https://github.com/llakala/menu/archive/40f8951e3e10f934ed84aacfec5be01f14555b10.tar.gz",
+      "hash": "sha256-ul7qatOVW5qw9/4dAgZU8Jz9P5ldmqKB1dIqcTjDtNE="
     },
     "meovim": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "3ea05545b6dea6f4e304446709ddcd4b2e05ce6d",
-      "url": "https://github.com/llakala/meovim/archive/3ea05545b6dea6f4e304446709ddcd4b2e05ce6d.tar.gz",
-      "hash": "sha256-LWxJ2pLsMu9Xw4iSgCHalYKveEKWPaygG2WuKZelZRI="
+      "revision": "7ced82ddd96b773eb9b866719c555f521ad3432c",
+      "url": "https://github.com/llakala/meovim/archive/7ced82ddd96b773eb9b866719c555f521ad3432c.tar.gz",
+      "hash": "sha256-O3qrodqMpz9ezDwx9lkFEVJeh3B5xskMwYMa4TZYib4="
     },
     "mnw": {
       "type": "Git",
@@ -94,8 +94,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre876718.cf3f5c4def3c/nixexprs.tar.xz",
-      "hash": "sha256-YW++h8MBX+fDBm9uaZaFi6HoUDNdqUpvOeq1AfF1490="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre878042.544961dfcce8/nixexprs.tar.xz",
+      "hash": "sha256-RoIm6fgfvnkNQldHrbBhtAaFyiWJV5KF4D0dI41Fr90="
     },
     "npins": {
       "type": "Git",
