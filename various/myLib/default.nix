@@ -3,4 +3,5 @@
 in {
   recursivelyImport = callPackage ./recursivelyImport.nix {};
   writeFishApplication = callPackage ./writeFishApplication.nix {};
+  getWrapperModules = callPackage ./getWrapperModules.nix {};
 }

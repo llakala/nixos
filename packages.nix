@@ -10,4 +10,7 @@ in {
   git-repo-manager = callPackage ./various/packages/git-repo-manager.nix {};
   jc = callPackage ./various/packages/jc.nix {};
   kittab = callPackage ./various/packages/kittab.nix {};
+
+  # TODO: generate automatically
+  less = callPackage ./wrappers/less/package.nix {};
 }

@@ -41,16 +41,17 @@ let
       hostVars = hostVars // { inherit hostname; };
     };
 
-    # Any folders are automatically expanded to all the files within them
-    modules = myLib.recursivelyImport [
-      ./programs
-      ./system
+    modules =
+      # Any folders are automatically expanded to all the files within them
+      myLib.recursivelyImport [
+        ./programs
+        ./system
 
-      ./various/nixosModules
+        ./various/nixosModules
 
-      ./various/hosts/${hostname}/config
-      ./various/hosts/${hostname}/hardware-configuration.nix
-    ];
+        ./various/hosts/${hostname}/config
+        ./various/hosts/${hostname}/hardware-configuration.nix
+      ] ++ myLib.getWrapperModules ./wrappers;
   };
 
 in builtins.mapAttrs mkHost {

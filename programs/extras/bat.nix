@@ -1,16 +1,13 @@
 { lib, pkgs, config, ... }:
 
-let
-  # Reuse the LESS options we want to be used everywhere
-  lessOptions = config.programs.less.envVariables.LESS;
-in {
+{
   hm.programs.bat = {
     enable = true;
 
     # List of command line options to supply every time
     config = {
       style = "plain";
-      pager = "${lib.getExe pkgs.less} ${lessOptions}";
+      pager = "less ${config.custom.lessConfig}";
     };
 
     extraPackages = with pkgs.bat-extras; [
