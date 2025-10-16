@@ -49,7 +49,7 @@
     bind --erase --preset alt-left
     bind --erase --preset alt-right
 
-    bind ctrl-shift-m __fish_man_page
+    bind ctrl-m __fish_man_page
     bind --erase --preset alt-h
   '';
 }
