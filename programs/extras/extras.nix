@@ -2,41 +2,39 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Basic linux utils
+    # Basic utils
+    ffmpeg
+    file
+    gnumake
+    ncdu
+    tree # Show filetree for writing out in markdown
+    unzip
     wget
-    gnumake # make
-    jq
-    hwinfo
+    zip
 
     # Useful stuff
-    xorg.xeyes # See if an app is running under xwayland or not
-    perf
-    parallel
-    gparted
-    ncdu # Scan folder size prettily
-    tree # Show filetree for writing out in markdown
-    wl-clipboard # Wayland terminal stuff
-    powertop # Check battery drain
-    ffmpeg
-    zip
-    unzip
-    file
-    hyperfine
     fd
+    gparted
+    hyperfine
+    jq
+    parallel
+    perf
+    powertop # Check battery drain
+    wl-clipboard
+    xorg.xeyes # See if an app is running under xwayland or not
 
     # Weird stuff
-    tldr # Mini-manpages
-    shortwave # Internet radio
     colo # Shows colors in the terminal
-    resources
-    mediawriter
-    appimage-run # Allow running appimages for when something isnt on nixpkgs
     ijq # Interactive jq
+    mediawriter
+    resources
+    shortwave # Internet radio
+    tldr # Mini-manpages
 
     # commands specifically for nix
-    nix-output-monitor # NOT CALLED NOM
     nixfmt-rfc-style
     nix-inspect
+    nix-output-monitor # NOT CALLED NOM
     nix-tree
   ];
 }
