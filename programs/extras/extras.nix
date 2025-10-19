@@ -3,8 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     # Basic linux utils
-    coreutils
-    libgccjit # gcc
     wget
     gnumake # make
     jq
