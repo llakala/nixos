@@ -34,7 +34,8 @@
     bind ctrl-j down-or-execute # Custom function - see above
     bind ctrl-k up-line
 
-    bind ctrl-backspace backward-kill-bigword
+    # Incentivise me to use ctrl+l for completions rather than arrow keys
+    bind right forward-char-passive
 
     # Old Ctrl+C behavior, before 4.0
     bind ctrl-c cancel-commandline
@@ -48,6 +49,7 @@
     bind shift-right forward-word
     bind --erase --preset alt-left
     bind --erase --preset alt-right
+    bind ctrl-backspace backward-kill-bigword
 
     bind ctrl-m __fish_man_page
     bind --erase --preset alt-h
