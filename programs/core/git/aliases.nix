@@ -1,5 +1,5 @@
 {
-  hm.programs.git.aliases = {
+  hm.programs.git.settings.alias = {
     amend = "commit --amend --no-edit";
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
