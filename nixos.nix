@@ -25,7 +25,7 @@ let
     specialArgs = {
       inherit sources myLib baseVars hostVars;
       self = {
-        packages = import ./packages.nix { inherit pkgs sources; };
+        packages = import ./packages.nix { inherit pkgs sources myLib; };
       };
     };
 
