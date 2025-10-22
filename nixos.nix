@@ -9,18 +9,6 @@ let
 
   myLib = import ./various/myLib/default.nix { inherit pkgs; };
 
-  # For a given host, call `lib.nixosSystem`, passing the provided parameters.
-  #
-  # To handle differences between hosts,we auto-import some files from
-  # `extras/hosts/${hostname}`. This locks every host into providing a hardware
-  # configuration, as well as a folder with generic extra config.
-  #
-  # Each host passes something we call hostVars, which are automatically passed
-  # into `specialArgs`. This lets us handle slight differences between hosts. If
-  # two hosts only differ by their scaling factor, we don't have to duplicate
-  # the configuration - we just use the dynamic value of hostVars.scalngFactor!
-  # I try to keep most of my config applicable to all hosts, so this is a great
-  # way of keeping that purity.
   mkHost = hostVars: nixosSystem {
     specialArgs = {
       inherit sources myLib baseVars hostVars;
@@ -29,18 +17,25 @@ let
       };
     };
 
-    # Any folders are automatically expanded to all the files within them
+    # I use a custom recursive importer, that will "expand" any folders in this
+    # list to all the files within that folder.
     modules = myLib.recursivelyImport [
       ./programs
       ./system
       ./various/nixosModules
 
+        # To handle differences between hosts, each host provides a folder with
+        # config specific to them
       ./various/hosts/${hostVars.hostname}/config
       ./various/hosts/${hostVars.hostname}/hardware-configuration.nix
     ];
   };
 
 in {
+  # Each host passes something we call hostVars, which are automatically passed
+  # into `specialArgs`. If two hosts only differ by their scaling factor, we
+  # don't have to duplicate the configuration - we just use the dynamic value of
+  # hostVars.scalingFactor!
   desktop = mkHost {
     hostname = "desktop";
     configDirectory = "/home/${baseVars.username}/Documents/projects/nixos";
