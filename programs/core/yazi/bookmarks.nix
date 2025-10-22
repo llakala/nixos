@@ -1,18 +1,16 @@
-{ hostVars, ... }:
-
 {
   hm.programs.yazi.keymap.mgr.prepend_keymap = [
     # Remove the default bookmarks for home and downloads, since we use `b` instead
     {
-      on = ["g" "h"];
+      on = [ "g" "h" ];
       run = "noop";
     }
     {
-      on = ["g" "d"];
+      on = [ "g" "d" ];
       run = "noop";
     }
     {
-      on = ["g" "c"];
+      on = [ "g" "c" ];
       run = "noop";
     }
 
@@ -33,18 +31,15 @@
       run = "cd ~/Documents/projects";
     }
     {
-
       desc = "Go to the classes directory for working on homework";
       on = [ "b" "c" ];
       run = "cd ~/Documents/classes";
     }
-
     {
       desc = "Go to the repos directory for working on external Git repos";
       on = [ "b" "r" ];
       run = "cd ~/Documents/repos";
     }
-
     {
       desc = "Go to the notes directory for taking notes in class";
       on = [ "b" "n" ];
