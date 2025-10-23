@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "60f04fa045bbe3bf05b2d9504e028c2ab5dd0824",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=60f04fa045bbe3bf05b2d9504e028c2ab5dd0824",
-      "hash": "sha256-pVXPc7SZ7/rUzI+ULimgY3heq05EZND5YSREnyx6nrI="
+      "revision": "4e0b79686a41e34e76aa72aef7f834a4daf8b6c3",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=4e0b79686a41e34e76aa72aef7f834a4daf8b6c3",
+      "hash": "sha256-h1hNPjW3DLrIbT4cTv/27mN0DfsrSSU9mJa4xRmtGeE="
     },
     "gasp": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "c3a5e5f0df6f53aa4b51adc0107796cc407c641c",
-      "url": "https://github.com/nix-community/home-manager/archive/c3a5e5f0df6f53aa4b51adc0107796cc407c641c.tar.gz",
-      "hash": "sha256-Ij3H0qkzZ66X9934kH0JYoI3b/F2vamrDD9abT5Pi70="
+      "revision": "9b4a2a7c4fbd75b422f00794af02d6edb4d9d315",
+      "url": "https://github.com/nix-community/home-manager/archive/9b4a2a7c4fbd75b422f00794af02d6edb4d9d315.tar.gz",
+      "hash": "sha256-IwpfaKg5c/WWQiy8b5QGaVPMvoEQ2J6kpwRFdpVpBNQ="
     },
     "menu": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "4862545b1229e67a9eba2b30fdcfbcbf34e5c47d",
-      "url": "https://github.com/llakala/meovim/archive/4862545b1229e67a9eba2b30fdcfbcbf34e5c47d.tar.gz",
-      "hash": "sha256-ClY4c4PQs71wgrSpUr2opYePAC7qxCMueOuixrKKS7s="
+      "revision": "185bb363196e151238f0f332cb00869833c7950e",
+      "url": "https://github.com/llakala/meovim/archive/185bb363196e151238f0f332cb00869833c7950e.tar.gz",
+      "hash": "sha256-rf2/d2Z5RTCI3rHUD5IofraK9zVlS0T5z6wiud5UKM0="
     },
     "mnw": {
       "type": "Git",
@@ -119,9 +119,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "205dcfd4a30d4a5d1b4f28defee69daa7c7252cd",
-      "url": "https://github.com/nix-community/plasma-manager/archive/205dcfd4a30d4a5d1b4f28defee69daa7c7252cd.tar.gz",
-      "hash": "sha256-8XkU4gIrLT2DJZWQyvsP5woXGZF5eE/7AnKfwQkiwYU="
+      "revision": "27dfa61b64d0cdb8e4ba6f3aaa4d4e067d64cb5c",
+      "url": "https://github.com/nix-community/plasma-manager/archive/27dfa61b64d0cdb8e4ba6f3aaa4d4e067d64cb5c.tar.gz",
+      "hash": "sha256-JNJesbe9MMN1Brq41BHEpuH+Z+Zg74y/nI5AFZX84Vw="
     }
   },
   "version": 7
