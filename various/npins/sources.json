@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "4e0b79686a41e34e76aa72aef7f834a4daf8b6c3",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=4e0b79686a41e34e76aa72aef7f834a4daf8b6c3",
-      "hash": "sha256-h1hNPjW3DLrIbT4cTv/27mN0DfsrSSU9mJa4xRmtGeE="
+      "revision": "f7cb4f5b05fd542a7c2b6d612b6340c3c59f1314",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=f7cb4f5b05fd542a7c2b6d612b6340c3c59f1314",
+      "hash": "sha256-X3vyI+bD9bC5Yqpxv+ENPa20k+nTF4a8Xc+YGDYmQNY="
     },
     "gasp": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "6414ad55b51a119abb344f911b935208e5951b59",
-      "url": "https://github.com/llakala/gasp/archive/6414ad55b51a119abb344f911b935208e5951b59.tar.gz",
-      "hash": "sha256-qrlXbiP/MAWxjjIyBqBXlRDxk5zhSLjPqvxWbSonsOI="
+      "revision": "7d932655be0cccc4209ad5acbe8cfcb0a56dddde",
+      "url": "https://github.com/llakala/gasp/archive/7d932655be0cccc4209ad5acbe8cfcb0a56dddde.tar.gz",
+      "hash": "sha256-WD7rs325DivDNCtPMPlE6m5wDiFJzglSMZ8b4Vg1LFw="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "9b4a2a7c4fbd75b422f00794af02d6edb4d9d315",
-      "url": "https://github.com/nix-community/home-manager/archive/9b4a2a7c4fbd75b422f00794af02d6edb4d9d315.tar.gz",
-      "hash": "sha256-IwpfaKg5c/WWQiy8b5QGaVPMvoEQ2J6kpwRFdpVpBNQ="
+      "revision": "5c71d4a730bd3c972befff343bb074421e345937",
+      "url": "https://github.com/nix-community/home-manager/archive/5c71d4a730bd3c972befff343bb074421e345937.tar.gz",
+      "hash": "sha256-QxCyKWBmuzI+eMhYV1JmbZsiUnBNATRP1EW34OBt5Vg="
     },
     "menu": {
       "type": "Git",
