@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f7cb4f5b05fd542a7c2b6d612b6340c3c59f1314",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=f7cb4f5b05fd542a7c2b6d612b6340c3c59f1314",
-      "hash": "sha256-X3vyI+bD9bC5Yqpxv+ENPa20k+nTF4a8Xc+YGDYmQNY="
+      "revision": "30690e168e5fcb599cf7c4a4e09368dd3c573621",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=30690e168e5fcb599cf7c4a4e09368dd3c573621",
+      "hash": "sha256-Z3qLXGiB3Xk3SWW6l3bKeENhJxrUtsvCRRS0JgilVaU="
     },
     "gasp": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "5c71d4a730bd3c972befff343bb074421e345937",
-      "url": "https://github.com/nix-community/home-manager/archive/5c71d4a730bd3c972befff343bb074421e345937.tar.gz",
-      "hash": "sha256-QxCyKWBmuzI+eMhYV1JmbZsiUnBNATRP1EW34OBt5Vg="
+      "revision": "64020f453bdf3634bf88a6bbce7f3e56183c8b2b",
+      "url": "https://github.com/nix-community/home-manager/archive/64020f453bdf3634bf88a6bbce7f3e56183c8b2b.tar.gz",
+      "hash": "sha256-RHABglEx32ruvQ+4OqPibeZC/reBfDEBaqKJF0pe4YE="
     },
     "menu": {
       "type": "Git",
@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "ed7149a2cc78ab363890f2fb04b0112f66e97e05",
-      "url": "https://github.com/llakala/menu/archive/ed7149a2cc78ab363890f2fb04b0112f66e97e05.tar.gz",
-      "hash": "sha256-vdhZRfnGlECOO7cNiByjcwIVWKe8jq6mr2SoU7hlZ1A="
+      "revision": "f6eb1b9c7504b04596f69bd97d829fa1131de0ae",
+      "url": "https://github.com/llakala/menu/archive/f6eb1b9c7504b04596f69bd97d829fa1131de0ae.tar.gz",
+      "hash": "sha256-bPOaV9euY6gBXrkW1R+UOfYW9MgGbD//t3ltDQa0gLU="
     },
     "meovim": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "185bb363196e151238f0f332cb00869833c7950e",
-      "url": "https://github.com/llakala/meovim/archive/185bb363196e151238f0f332cb00869833c7950e.tar.gz",
-      "hash": "sha256-rf2/d2Z5RTCI3rHUD5IofraK9zVlS0T5z6wiud5UKM0="
+      "revision": "c5573a361dd9a0124d2c19ec524cf4bea9c5a5cb",
+      "url": "https://github.com/llakala/meovim/archive/c5573a361dd9a0124d2c19ec524cf4bea9c5a5cb.tar.gz",
+      "hash": "sha256-TYzWAaO4n8l9d8wQ6SaPTn+naBWe6JzhpcT7sEE164o="
     },
     "mnw": {
       "type": "Git",
