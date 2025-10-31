@@ -15,14 +15,13 @@ in {
 
     extraPackages = with pkgs.bat-extras; [
       batdiff
-      batgrep # Oddly seems to require sudo
     ];
   };
 
   # Whenever instantiating a manpage, use bat! We don't need a shell alias or
   # `batman` - this serves the same thing.
   environment.variables = {
-    MANPAGER = "sh -c 'col -bx | bat --language man' ";
+    MANPAGER = "sh -c 'col -bx | bat --language man'";
     MANROFFOPT = "-c";
   };
 

@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "28b757500a873e4faa4222a36f674e62d081abb3",
-      "url": "https://github.com/llakala/meovim/archive/28b757500a873e4faa4222a36f674e62d081abb3.tar.gz",
-      "hash": "sha256-HJu297/C9IGDoTfmJAXoJal5CtUyq6uGlJVjr83LtAE="
+      "revision": "2e0287634f73ee0f78ac0b85c3f64136d1fc0ee0",
+      "url": "https://github.com/llakala/meovim/archive/2e0287634f73ee0f78ac0b85c3f64136d1fc0ee0.tar.gz",
+      "hash": "sha256-7qNZ+LBV95Q60K0usv9QiGRpfklhDwQtqSb3bxQa+ug="
     },
     "mnw": {
       "type": "Git",
@@ -94,8 +94,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre880095.5e2a59a5b1a8/nixexprs.tar.xz",
-      "hash": "sha256-u0JUo46QSoXnjLaezAM75wRNuxVMVbm5OxHH122TeTY="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre886100.08dacfca559e/nixexprs.tar.xz",
+      "hash": "sha256-PKG8NzUgzoac3iAe12zo2EjcXJTAPWE+2dh0+t35J4M="
     },
     "npins": {
       "type": "Git",
