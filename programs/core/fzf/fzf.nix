@@ -13,6 +13,7 @@
     # they can safely inherit from this, and add their own settings on top of
     # this. It also doesn't start in normal mode
     FZF_DEFAULT_OPTS = ''
+      --cycle
       --with-shell=\"sh -c\"
       --bind 'i:show-input+trigger(start),esc:hide-input+trigger(start)'
       --bind 'j:down,k:up,f:jump-accept'
