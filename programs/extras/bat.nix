@@ -15,6 +15,7 @@ in {
 
     extraPackages = with pkgs.bat-extras; [
       batdiff
+      batgrep
     ];
   };
 
