@@ -1,5 +1,18 @@
 {
   "pins": {
+    "adios": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "adisbladis",
+        "repo": "adios"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "146407e681d478b075e4b1a0f4fe540b7d991edc",
+      "url": "https://github.com/adisbladis/adios/archive/146407e681d478b075e4b1a0f4fe540b7d991edc.tar.gz",
+      "hash": "sha256-opy6iEpm7e68o0Yl1Uoz6/6lFOduoeGofcObVEqAQbQ="
+    },
     "firefox-addons": {
       "type": "Git",
       "repository": {
