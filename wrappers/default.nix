@@ -7,6 +7,7 @@ let
 
   root = {
     modules = {
+      less = import ./less { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
     };
   };

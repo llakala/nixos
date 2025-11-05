@@ -1,8 +1,6 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, self, ... }:
 
-let
-  globalLessOpts = config.programs.less.envVariables.LESS;
-in {
+{
   # See https://git-scm.com/docs/git-config. Need to do `iniContent` to force default value
   hm.programs.git.iniContent = {
     push.autoSetupRemote = true;
@@ -13,7 +11,7 @@ in {
 
     commit.verbose = true; # Show changes when writing commit message so we remember what we changed
 
-    core.pager = "less ${globalLessOpts}";
+    core.pager = lib.getExe self.wrappers.less.drv;
 
     diff.algorithm = "histogram";
     diff.renames = "copies"; # Be as smart for renames as possible
