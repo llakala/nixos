@@ -7,6 +7,7 @@ let
 
   root = {
     modules = {
+      bat = import ./bat { inherit adios; };
       less = import ./less { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
     };
