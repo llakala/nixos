@@ -1,11 +1,9 @@
 { myLib }:
 
-/*
-Wrapping script around Kitty, to open new tabs in the existing OS window
-We make the kitty window use kittab as its name and class, so it doesn't open
-`kitty.desktop`, and instead stays confined to `kittab.desktop`. This means we can
-have kittab in our favorite apps list, and avoid duplication.
-*/
+# Wrapping script around Kitty, to open new tabs in the existing OS window
+# We make the kitty window use kittab as its name and class, so it doesn't open
+# `kitty.desktop`, and instead stays confined to `kittab.desktop`. This means we can
+# have kittab in our favorite apps list, and avoid duplication.
 myLib.writeFishApplication {
   name = "kittab";
 
