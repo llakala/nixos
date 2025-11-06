@@ -1,0 +1,1 @@
+--height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak="pathname,index"
