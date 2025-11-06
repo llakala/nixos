@@ -8,6 +8,7 @@ let
   root = {
     modules = {
       bat = import ./bat { inherit adios; };
+      gh = import ./gh { inherit adios; };
       less = import ./less { inherit adios; };
       ripgrep = import ./ripgrep { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
