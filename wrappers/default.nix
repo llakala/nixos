@@ -10,6 +10,7 @@ let
       bat = import ./bat { inherit adios; };
       fzf = import ./fzf { inherit adios; };
       gh = import ./gh { inherit adios; };
+      kitty = import ./kitty { inherit adios; };
       less = import ./less { inherit adios; };
       ripgrep = import ./ripgrep { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
