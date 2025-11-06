@@ -12,6 +12,7 @@ let
       less = import ./less { inherit adios; };
       ripgrep = import ./ripgrep { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
+      zoxide = import ./zoxide { inherit adios; };
     };
   };
 
