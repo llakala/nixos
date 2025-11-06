@@ -14,7 +14,7 @@ let
       inherit sources myLib baseVars hostVars;
       self = {
         packages = import ./packages.nix { inherit pkgs sources myLib; };
-        wrappers = import ./wrappers { inherit sources pkgs; };
+        wrappers = import ./wrappers { inherit pkgs sources myLib; };
       };
     };
 

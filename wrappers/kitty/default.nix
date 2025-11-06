@@ -7,6 +7,7 @@ in
 
   inputs = {
     nixpkgs.path = "/nixpkgs";
+    self.path = "/self";
   };
 
   options.configFile = {
