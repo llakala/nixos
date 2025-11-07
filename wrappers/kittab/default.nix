@@ -39,6 +39,7 @@ in
           options.desktopEntry
           inputs.kitty.drv
         ];
+        meta.mainProgram = "kittab";
       };
   };
 }
