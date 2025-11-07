@@ -11,8 +11,9 @@ in
 
   options.extraPreferences = {
     type = types.string;
-    default = import ./extraPreferences.nix;
+    defaultFunc = { options, ... }: import ./extraPreferences.nix { inherit (options) userChrome; };
   };
+
   options.extensions = {
     type = types.attrs;
     default = import ./extensions.nix;
