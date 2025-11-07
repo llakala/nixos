@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "146407e681d478b075e4b1a0f4fe540b7d991edc",
-      "url": "https://github.com/adisbladis/adios/archive/146407e681d478b075e4b1a0f4fe540b7d991edc.tar.gz",
-      "hash": "sha256-opy6iEpm7e68o0Yl1Uoz6/6lFOduoeGofcObVEqAQbQ="
+      "revision": "f854234dc9754d485ce390c071e8787f726f3c2c",
+      "url": "https://github.com/adisbladis/adios/archive/f854234dc9754d485ce390c071e8787f726f3c2c.tar.gz",
+      "hash": "sha256-/w+64IswnHw4x7HnwU3VecKpSKNDZLUlmUFciNgBpZY="
     },
     "gasp": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "aa6936bb637e46a49cf1292486200ba41dd4bcf7",
-      "url": "https://github.com/nix-community/home-manager/archive/aa6936bb637e46a49cf1292486200ba41dd4bcf7.tar.gz",
-      "hash": "sha256-Y5950vzoyJ8+u4U6dlI/2VEbf3JQnIJsmRWWWcsgpRg="
+      "revision": "0562fef070a1027325dd4ea10813d64d2c967b39",
+      "url": "https://github.com/nix-community/home-manager/archive/0562fef070a1027325dd4ea10813d64d2c967b39.tar.gz",
+      "hash": "sha256-33YUsWpPyeBZEWrKQ2a1gkRZ7i0XCC/2MYpU6BVeQSU="
     },
     "menu": {
       "type": "Git",
@@ -74,9 +74,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "cfbc7d1cc832e318d0863a5fc91d940a96034001",
-      "url": "https://github.com/Gerg-L/mnw/archive/cfbc7d1cc832e318d0863a5fc91d940a96034001.tar.gz",
-      "hash": "sha256-Y7IvY4F8vajZyp3WGf+KaiIVwondEkMFkt92Cr9NZmg="
+      "revision": "362b2a7ca74a26caf4de50b8626b376158e70a1d",
+      "url": "https://github.com/Gerg-L/mnw/archive/362b2a7ca74a26caf4de50b8626b376158e70a1d.tar.gz",
+      "hash": "sha256-OkkHf2tUm7RDkq55haCvtAJWS7nnfr02FnHp7zWlea4="
     },
     "nixos-hardware": {
       "type": "Git",
@@ -87,9 +87,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "256770618502d2eda892af3ae91da5e386ce9586",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/256770618502d2eda892af3ae91da5e386ce9586.tar.gz",
-      "hash": "sha256-T4+TNfXlF/gHbcNCC2HY7sMGBKgqNzyYeMBWmcbH7/o="
+      "revision": "52113c4f5cfd1e823001310e56d9c8d0699a6226",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/52113c4f5cfd1e823001310e56d9c8d0699a6226.tar.gz",
+      "hash": "sha256-hv1mG5j5PTbnWbtHHomzTus77pIxsc4x8VrMjc7+/YE="
     },
     "nixpkgs": {
       "type": "Channel",
@@ -119,9 +119,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "8e9e76efa3cc811c230512b40d8cfde06e40da5b",
-      "url": "https://github.com/nix-community/plasma-manager/archive/8e9e76efa3cc811c230512b40d8cfde06e40da5b.tar.gz",
-      "hash": "sha256-KREKZiBAkAnqJC+jvY+vSbLlrg8j6DFEU7Lv+tgOlHI="
+      "revision": "6296d7100cc84b2ff732b7c103a50c2856974cf6",
+      "url": "https://github.com/nix-community/plasma-manager/archive/6296d7100cc84b2ff732b7c103a50c2856974cf6.tar.gz",
+      "hash": "sha256-Vbhluvk15qwiyNDyPd9tjJh9gxIfUjbKVT79c05Pd3I="
     }
   },
   "version": 7
