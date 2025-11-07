@@ -6,10 +6,13 @@
 
 let
   inherit (pkgs) lib;
-  callPackage = lib.callPackageWith (pkgs // { inherit myLib; });
-in {
-  emodule = callPackage ./various/packages/emodule.nix { };
-  evalue = callPackage ./various/packages/evalue.nix { };
-  git-repo-manager = callPackage ./various/packages/git-repo-manager.nix { };
-  jc = callPackage ./various/packages/jc.nix { };
-}
+  callPackage = lib.callPackageWith (pkgs // { inherit myLib; localPackages = packages; });
+  packages = {
+    emodule = callPackage ./various/packages/emodule.nix {};
+    evalue = callPackage ./various/packages/evalue.nix {};
+    git-repo-manager = callPackage ./various/packages/git-repo-manager.nix {};
+    jc = callPackage ./various/packages/jc.nix {};
+    satod = callPackage ./various/packages/satod/package.nix {};
+    splitpatch = callPackage ./various/packages/splitpatch.nix {};
+  };
+in packages

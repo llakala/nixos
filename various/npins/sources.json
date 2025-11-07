@@ -13,19 +13,6 @@
       "url": "https://github.com/adisbladis/adios/archive/f854234dc9754d485ce390c071e8787f726f3c2c.tar.gz",
       "hash": "sha256-/w+64IswnHw4x7HnwU3VecKpSKNDZLUlmUFciNgBpZY="
     },
-    "gasp": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "llakala",
-        "repo": "gasp"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "7d932655be0cccc4209ad5acbe8cfcb0a56dddde",
-      "url": "https://github.com/llakala/gasp/archive/7d932655be0cccc4209ad5acbe8cfcb0a56dddde.tar.gz",
-      "hash": "sha256-WD7rs325DivDNCtPMPlE6m5wDiFJzglSMZ8b4Vg1LFw="
-    },
     "home-manager": {
       "type": "Git",
       "repository": {
