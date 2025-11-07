@@ -61,13 +61,13 @@
     }
     {
       Name = "Home Manager Options";
-      URLTemplate = "https://home-manager-options.extranix.com/?release=release-24.11&query={searchTerms}";
+      URLTemplate = "https://home-manager-options.extranix.com/?release=master&query={searchTerms}";
       IconURL = "https://home-manager-options.extranix.com/images/favicon.png";
       Alias = "@oh";
     }
     {
       Name = "NixOS Options";
-      URLTemplate = "https://search.nixos.org/options?channel=24.11&from=0&size=100&sort=alpha_asc&query={searchTerms}";
+      URLTemplate = "https://search.nixos.org/options?channel=unstable&from=0&size=100&sort=alpha_asc&query={searchTerms}";
       Alias = "@on";
     }
   ];
