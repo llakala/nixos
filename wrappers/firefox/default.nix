@@ -34,8 +34,6 @@ in
     default = import ./searchEngines.nix;
   };
 
-  # As I don't believe there's a way to add this to the wrapper, we just provide
-  # the option, and expect something like hm/hjem to symlink it
   options.userChrome = {
     type = types.path;
     default = ./userChrome.css;
