@@ -12,6 +12,7 @@ let
   root = {
     modules = {
       bat = import ./bat { inherit adios; };
+      firefox = import ./firefox { inherit adios; };
       fzf = import ./fzf { inherit adios; };
       gh = import ./gh { inherit adios; };
       kittab = import ./kittab { inherit adios; };

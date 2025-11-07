@@ -13,19 +13,6 @@
       "url": "https://github.com/adisbladis/adios/archive/146407e681d478b075e4b1a0f4fe540b7d991edc.tar.gz",
       "hash": "sha256-opy6iEpm7e68o0Yl1Uoz6/6lFOduoeGofcObVEqAQbQ="
     },
-    "firefox-addons": {
-      "type": "Git",
-      "repository": {
-        "type": "GitLab",
-        "repo_path": "rycee/nur-expressions",
-        "server": "https://gitlab.com/"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "0de5e9e965527818fd977a05435e131aa12b78fe",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=0de5e9e965527818fd977a05435e131aa12b78fe",
-      "hash": "sha256-MbOdNKj9aoanoturpoUM2yx0r5/dSMz/Jm9bPg8HJNw="
-    },
     "gasp": {
       "type": "Git",
       "repository": {
