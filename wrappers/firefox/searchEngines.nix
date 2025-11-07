@@ -5,8 +5,16 @@
     "eBay"
     "Amazon.com"
     "Wikipedia (en)"
+    "Google"
+    "Perplexity"
   ];
+  Default = "Google (udm14)";
   Add = [
+    {
+      Name = "Google (udm14)";
+      URLTemplate = "https://www.google.com/search?q={searchTerms}&udm=14";
+      IconURL = "https://www.google.com/favicon.ico";
+    }
     {
       Name = "Github Search Nix";
       URLTemplate = "https://github.com/search?type=code&q=lang:nix+NOT+is:fork+{searchTerms}";

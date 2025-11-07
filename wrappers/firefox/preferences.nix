@@ -10,9 +10,6 @@
 
   "browser.tabs.tabMinWidth" = 75; # Make tabs able to be smaller to prevent scrolling
 
-  "browser.urlbar.placeholderName" = "DuckDuckGo";
-  "browser.urlbar.placeholderName.private" = "DuckDuckGo";
-
   "browser.aboutConfig.showWarning" = false; # No warning when going to config
   "browser.warnOnQuitShortcut" = false;
 
