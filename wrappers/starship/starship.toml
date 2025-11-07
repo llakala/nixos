@@ -1,4 +1,4 @@
-format = "$directory$direnv$git_branch$fill$custom$cmd_duration$time$line_break$character"
+format = "$directory$git_status$direnv$git_branch$fill$custom$cmd_duration$time$line_break$character"
 palette = "custom"
 
 [[battery.display]]
