@@ -20,6 +20,7 @@ let
       less = import ./less { inherit adios; };
       ripgrep = import ./ripgrep { inherit adios; };
       self = import ./self { inherit adios; };
+      starship = import ./starship { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
       zoxide = import ./zoxide { inherit adios; };
     };

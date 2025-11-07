@@ -1,10 +1,14 @@
-{ config, ... }:
+{ self, lib, ... }:
 
 {
-  # Error if we ever stop using fish
-  hm.programs.starship.enableTransience =
-    assert config.features.shell == "fish";
-    true;
+  features.prompt = "starship"; # If we ever stop using Starship, change this
+
+  environment.systemPackages = [ self.wrappers.starship.drv ];
+
+  hm.programs.fish.interactiveShellInit = ''
+    ${lib.getExe self.wrappers.starship.drv} init fish | source
+    enable_transience
+  '';
 
   hm.programs.fish.functions = {
     starship_transient_prompt_func = # fish
@@ -22,6 +26,5 @@
     ''
       starship module cmd_duration # Not currently working
     '';
-
   };
 }
