@@ -1,5 +1,54 @@
-{
-  hm.programs.git.settings.alias = {
+{ inputs }:
+let
+  inherit (inputs.nixpkgs) lib pkgs;
+in
+inputs.gh.iniConfig
+// inputs.less.iniConfig
+// {
+  user = {
+    name = "Eman Resu";
+    email = "78693624+quatquatt@users.noreply.github.com";
+  };
+
+  init.defaultBranch = "main";
+  branch.sort = "-committerdate";
+
+  commit.verbose = true; # Show changes when writing commit message so we remember what we changed
+  status.showUntrackedFiles = "all";
+
+  rerere.enabled = true;
+  rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
+
+  diff.algorithm = "histogram";
+  diff.renames = "copies"; # Be as smart for renames as possible
+  diff.colorMoved = true;
+  diff.wsErrorHighlight = "all"; # Highlight all whitespace errors, not just new ones
+
+  # TODO: move into diff-so-fancy module once infrec is fixed
+  interactive.diffFilter = "diff-so-fancy --patch";
+  pager.diff = "diff-so-fancy | ${lib.getExe inputs.less.drv}";
+  diff-so-fancy.markEmptyLines = false; # So nothing else looks like `red reverse`
+
+  apply.whitespace = "error";
+
+  pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
+  push.autoSetupRemote = true;
+  push.useForceIfIncludes = true;
+  push.default = "current"; # Only push current branch, and don't force-push everything when force pushing
+
+  log.abbrevCommit = true; # Show short version of commit hashes by default
+  log.follow = true; # Show short version of commit hashes by default
+
+  merge.conflictstyle = "diff3";
+  merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
+
+  merge.tool = "meld";
+  mergetool.meld = {
+    path = lib.getExe pkgs.meld;
+    useAutoMerge = true;
+  };
+
+  alias = {
     amend = "commit --amend --no-edit";
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";

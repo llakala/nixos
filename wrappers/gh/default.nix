@@ -14,6 +14,12 @@ in
     default = ./gh;
   };
 
+  # For consumption by the git wrapper
+  options.iniConfig = {
+    type = types.attrs;
+    defaultFunc = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
+  };
+
   options.drv = {
     type = types.derivation;
     defaultFunc =

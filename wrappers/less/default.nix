@@ -13,9 +13,16 @@ in
     type = types.string;
     defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./LESS;
   };
+
   options.keybinds = {
     type = types.string;
     defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./lesskey;
+  };
+
+  # For consumption by the git wrapper
+  options.iniConfig = {
+    type = types.attrs;
+    defaultFunc = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
   };
 
   options.drv = {

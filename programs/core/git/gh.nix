@@ -1,11 +1,7 @@
-{ config, self, lib, ... }:
+{ config, self, ... }:
 
 {
   environment.systemPackages = [ self.wrappers.gh.drv ];
-
-  hm.programs.git.iniContent = {
-    credential."https://github.com".helper = "${lib.getExe self.wrappers.gh.drv} auth git-credential";
-  };
 
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; {
