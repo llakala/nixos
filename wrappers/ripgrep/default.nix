@@ -11,7 +11,7 @@ in
 
   options.flags = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./ripgreprc;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./ripgreprc;
   };
 
   options.drv = {

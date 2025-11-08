@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f854234dc9754d485ce390c071e8787f726f3c2c",
-      "url": "https://github.com/adisbladis/adios/archive/f854234dc9754d485ce390c071e8787f726f3c2c.tar.gz",
-      "hash": "sha256-/w+64IswnHw4x7HnwU3VecKpSKNDZLUlmUFciNgBpZY="
+      "revision": "9c1a2a4c462581f491e27dd83b009eb56cdd5157",
+      "url": "https://github.com/adisbladis/adios/archive/9c1a2a4c462581f491e27dd83b009eb56cdd5157.tar.gz",
+      "hash": "sha256-os79BztDcYX4Vl5ezr4XykzWyeVZnqZSGtrZEQZDCK0="
     },
     "home-manager": {
       "type": "Git",

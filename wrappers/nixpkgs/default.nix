@@ -9,7 +9,7 @@
     };
     lib = {
       type = adios.types.attrs;
-      defaultFunc = { options, ... }: options.pkgs.lib;
+      defaultFunc = { options }: options.pkgs.lib;
     };
   };
 }

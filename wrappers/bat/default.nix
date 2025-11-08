@@ -12,7 +12,7 @@ in
 
   options.flags = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./BAT_CONFIG;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./BAT_CONFIG;
  };
 
   options.drv = {

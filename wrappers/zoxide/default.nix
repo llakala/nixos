@@ -11,7 +11,7 @@ in
 
   options.flags = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./ZOXIDE_FLAGS;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./ZOXIDE_FLAGS;
   };
 
   # I have Yazi set up to auto-update the zoxide database based on where I go --
@@ -21,7 +21,7 @@ in
   # filter out subdirs of `src`, so we don't open the wrong directory.
   options.excludedDirs = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./_ZO_EXCLUDE_DIRS;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./_ZO_EXCLUDE_DIRS;
   };
 
   options.drv = {

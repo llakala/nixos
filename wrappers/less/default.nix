@@ -11,12 +11,12 @@ in
 
   options.flags = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./LESS;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./LESS;
   };
 
   options.keybinds = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./lesskey;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./lesskey;
   };
 
   # For consumption by the git wrapper

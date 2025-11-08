@@ -12,14 +12,14 @@ in
 
   options.defaultOpts = {
     type = types.string;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.lib.fileContents ./FZF_DEFAULT_OPTS;
+    defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./FZF_DEFAULT_OPTS;
   };
 
   options.ctrl-r = {
     type = types.struct "ctrl-r" {
       opts = types.string;
     };
-    defaultFunc = { inputs, ... }: {
+    defaultFunc = { inputs }: {
       opts = inputs.nixpkgs.lib.fileContents ./FZF_CTRL_R_OPTS;
     };
   };
@@ -29,7 +29,7 @@ in
       opts = types.string;
       command = types.string;
     };
-    defaultFunc = { inputs, ... }:
+    defaultFunc = { inputs }:
       let
         inherit (inputs.nixpkgs) lib;
       in {
@@ -42,6 +42,6 @@ in
   # just provide the options here, so they can be injected into the shell itself
   options.drv = {
     type = types.derivation;
-    defaultFunc = { inputs, ... }: inputs.nixpkgs.pkgs.fzf;
+    defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fzf;
   };
 }

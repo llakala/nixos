@@ -17,7 +17,7 @@ in
 
   options.themeFile = {
     type = types.string;
-    defaultFunc = { inputs, ... }: "${inputs.nixpkgs.pkgs.kitty-themes}/share/kitty-themes/themes/Kaolin_Aurora.conf";
+    defaultFunc = { inputs }: "${inputs.nixpkgs.pkgs.kitty-themes}/share/kitty-themes/themes/Kaolin_Aurora.conf";
   };
 
   options.drv = {

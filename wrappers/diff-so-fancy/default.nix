@@ -10,7 +10,7 @@ in {
   options.drv = {
     type = types.derivation;
     defaultFunc =
-      {inputs, ... }:
+      {inputs }:
       let
         inherit (inputs.nixpkgs) pkgs;
         inherit (pkgs) symlinkJoin makeWrapper;
