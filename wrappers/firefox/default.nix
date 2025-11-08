@@ -13,32 +13,26 @@ in
     type = types.string;
     defaultFunc = { options }: import ./extraPreferences.nix { inherit (options) userChrome; };
   };
-
   options.extensions = {
     type = types.attrs;
     default = import ./extensions.nix;
   };
-
   options.policies = {
     type = types.attrs;
     default = import ./policies.nix;
   };
-
   options.preferences = {
     type = types.attrs;
     default = import ./preferences.nix;
   };
-
   options.searchEngines = {
     type = types.attrs;
     default = import ./searchEngines.nix;
   };
-
   options.userChrome = {
     type = types.path;
     default = ./userChrome.css;
   };
-
   options.ui = {
     type = types.string;
     default = builtins.readFile ./ui.json;

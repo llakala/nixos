@@ -2,6 +2,8 @@
 let
   inherit (adios) types;
 in {
+  name = "diff-so-fancy";
+
   inputs = {
     nixpkgs.path = "/nixpkgs";
     git.path = "/git";

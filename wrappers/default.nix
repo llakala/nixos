@@ -10,6 +10,7 @@ let
   adios = import "${sources.adios}/adios";
 
   root = {
+    name = "root";
     modules = {
       bat = import ./bat { inherit adios; };
       diff-so-fancy = import ./diff-so-fancy { inherit adios; };
