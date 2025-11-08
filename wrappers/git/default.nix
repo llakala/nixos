@@ -52,7 +52,7 @@ in
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           wrapProgram $out/bin/git \
-            --set GIT_CONFIG_GLOBAL ${options.configDir}/git/config \
+            --set XDG_CONFIG_HOME ${options.configDir}
         '';
         meta.mainProgram = "git";
       };
