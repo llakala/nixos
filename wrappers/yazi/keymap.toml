@@ -1,0 +1,96 @@
+[[mgr.prepend_keymap]]
+desc = "Exit normally, returning to wherever you previously were before entering Yazi"
+on = "q"
+run = "quit --no-cwd-file"
+
+[[mgr.prepend_keymap]]
+desc = "Exit to wherever we currently are within the filetree"
+on = "Q"
+run = "quit"
+
+[[mgr.prepend_keymap]]
+desc = "When copying, copy to the system clipboard as well"
+on = "y"
+run = ["yank", "shell --confirm 'for path in \"$@\"; do echo \"file://$path\"; done | wl-copy -t text/uri-list'\n"]
+
+[[mgr.prepend_keymap]]
+desc = "Paste into a directory if we're hovering over it"
+on = "p"
+run = "plugin smart-paste"
+
+[[mgr.prepend_keymap]]
+desc = "Jump to char"
+on = "f"
+run = "plugin jump-to-char"
+
+[[mgr.prepend_keymap]]
+desc = "Chmod on selected files"
+on = ["c", "m"]
+run = "plugin chmod"
+
+[[mgr.prepend_keymap]]
+desc = "Either exit the current menu, or quit Yazi and write the current directory to a file"
+on = "<Esc>"
+run = "plugin escexit"
+
+[[mgr.prepend_keymap]]
+desc = "Suspend Yazi, writing the current directory to a file"
+on = "<C-z>"
+run = "plugin suspendcwd"
+
+[[mgr.prepend_keymap]]
+desc = "Open file and write the current directory to a file"
+on = "o"
+run = "plugin opencwd"
+
+[[mgr.prepend_keymap]]
+desc = "Go to the top of the git repo"
+on = ["g", "r"]
+run = "shell -- ya emit cd \"$(git rev-parse --show-toplevel)\""
+
+[[mgr.prepend_keymap]]
+desc = "Show all files that Git marks as modified within the current directory"
+on = "M"
+run = "plugin modified"
+
+[[mgr.prepend_keymap]]
+on = ["g", "h"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on = ["g", "d"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on = ["g", "c"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+desc = "Go home"
+on = ["b", "h"]
+run = "cd ~"
+
+[[mgr.prepend_keymap]]
+desc = "Goto ~/Downloads"
+on = ["b", "d"]
+run = "cd ~/Downloads"
+
+[[mgr.prepend_keymap]]
+desc = "Go to the projects folder for working on my personal repos"
+on = ["b", "p"]
+run = "cd ~/Documents/projects"
+
+[[mgr.prepend_keymap]]
+desc = "Go to the classes directory for working on homework"
+on = ["b", "c"]
+run = "cd ~/Documents/classes"
+
+[[mgr.prepend_keymap]]
+desc = "Go to the repos directory for working on external Git repos"
+on = ["b", "r"]
+run = "cd ~/Documents/repos"
+
+[[mgr.prepend_keymap]]
+desc = "Go to the notes directory for taking notes in class"
+on = ["b", "n"]
+run = "cd ~/Documents/notes"

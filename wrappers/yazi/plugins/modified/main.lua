@@ -1,3 +1,6 @@
+-- My custom plugin to show only modified files
+-- Core code logic from:
+-- https://github.com/twio142/yazi-plugins/blob/81a5f92c4a089cd877ecf4101f48469a4e87c189/advanced-search.yazi/main.lua
 local get_cwd = ya.sync(function()
   return tostring(cx.active.current.cwd)
 end)

@@ -9,7 +9,7 @@ in pkgs.mkShellNoCC {
   packages = builtins.attrValues {
     inherit (pkgs)
       fish
-      yazi
+      yazi # TODO: use wrapper
       git
       kitty
       gh

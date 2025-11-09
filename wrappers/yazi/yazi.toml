@@ -1,0 +1,17 @@
+[mgr]
+sort_by = "extension"
+sort_dir_first = true
+
+[opener]
+play = [
+  # Yazi seems to be using mpv by default, but we want it to reuse mimetypes
+  # See the source code where it's set:
+  # https://github.com/sxyazi/yazi/blob/ce902e73e5c73f4bb48d7cd0c52e8dfedaf30f/yazi-config/preset/yazi-default.toml#L55
+  { desc = "Open", orphan = true, run = "xdg-open \"$@\"" }
+]
+
+[plugin]
+prepend_fetchers = [
+  { name = "*", id = "git", run = "git" },
+  { name = "*/", id = "git", run = "git" }
+]
