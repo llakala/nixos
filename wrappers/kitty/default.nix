@@ -36,8 +36,8 @@ in
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           mkdir -p $out/kitty
-          ln -sf ${options.configFile} $out/kitty/kitty.conf
-          ln -sf ${options.themeFile} $out/kitty/current-theme.conf
+          ln -s ${options.configFile} $out/kitty/kitty.conf
+          ln -s ${options.themeFile} $out/kitty/current-theme.conf
           wrapProgram $out/bin/kitty \
             --set KITTY_CONFIG_DIRECTORY $out/kitty \
         '';
