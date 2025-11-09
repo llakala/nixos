@@ -1,0 +1,4 @@
+# For schema, see:
+# https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser/blob/main/README.md#configuration
+[filechooser]
+  default_dir=$HOME/Downloads

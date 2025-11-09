@@ -24,6 +24,7 @@ let
       ripgrep = import ./ripgrep { inherit adios; };
       self = import ./self { inherit adios; };
       starship = import ./starship { inherit adios; };
+      termfilechooser = import ./termfilechooser { inherit adios; };
       nixpkgs = import ./nixpkgs { inherit adios; };
       zoxide = import ./zoxide { inherit adios; };
     };
