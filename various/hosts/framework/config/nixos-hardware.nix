@@ -1,7 +1,7 @@
-{ sources, lib, ... }:
+{ sources, ... }:
 
 {
-  imports = lib.singleton "${sources.nixos-hardware}/framework/13-inch/7040-amd";
+  imports = [ "${sources.nixos-hardware}/framework/13-inch/7040-amd" ];
 
   # Bios updates
   services.fwupd = {

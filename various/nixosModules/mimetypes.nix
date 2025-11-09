@@ -59,7 +59,7 @@ in {
 
     xdg.terminal-exec = {
       enable = true;
-      settings.default = lib.singleton cfg.terminal;
+      settings.default = [ cfg.terminal ];
     };
   };
 }

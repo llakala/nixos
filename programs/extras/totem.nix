@@ -1,6 +1,6 @@
-{ lib, pkgs,  ... }:
+{ pkgs,  ... }:
 
 {
-  environment.systemPackages = lib.singleton pkgs.totem;
+  environment.systemPackages = [ pkgs.totem ];
   features.videos = "totem"; # Change if we ever stop using Totem
 }

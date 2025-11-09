@@ -1,10 +1,10 @@
-{ lib, ... }:
-
 {
   # Finds identical files and deduplicates them. Just `nix-store --optimise` on a timer.
   nix.optimise = {
     automatic = true;
-    dates = lib.singleton "daily"; # Only runs daily, preferred over auto-optimise-store, which runs every rebuild and makes rebuilds take longer.
+    # Only runs daily - preferred over auto-optimise-store, which runs every
+    # rebuild and makes rebuilds take longer.
+    dates = [ "daily" ];
   };
 
   # Deletes old stuff from the store that's now unreachable.

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   myNerdFonts = with pkgs.nerd-fonts; [
@@ -22,11 +22,11 @@ in {
   fonts = {
     enableDefaultPackages = true;
 
-    packages = myNerdFonts ++ lib.singleton myMonocraft;
+    packages = myNerdFonts ++ [ myMonocraft ];
 
     fontconfig = {
       enable = true;
-      defaultFonts.monospace = lib.singleton "Monocraft";
+      defaultFonts.monospace = [ "Monocraft" ];
     };
   };
 }

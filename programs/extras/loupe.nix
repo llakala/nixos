@@ -1,7 +1,7 @@
-{ lib, pkgs,  ... }:
+{ pkgs,  ... }:
 
 {
-  environment.systemPackages = lib.singleton pkgs.loupe;
+  environment.systemPackages = [ pkgs.loupe ];
 
   features.images = "loupe"; # Change if we ever stop using Loupe
 }

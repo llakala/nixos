@@ -1,4 +1,4 @@
-{ sources, pkgs, lib, config, ... }:
+{ sources, pkgs, config, ... }:
 
 let
   neovimPackage = import "${sources.meovim}/default.nix" { inherit pkgs; mnw = import sources.mnw; };
@@ -17,5 +17,5 @@ in {
 
   features.editor = "neovim"; # If we ever stop using Neovim, change this
 
-  environment.systemPackages = lib.singleton neovimPackage;
+  environment.systemPackages = [ neovimPackage ];
 }

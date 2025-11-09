@@ -1,7 +1,7 @@
-{ sources, lib, pkgs, ... }:
+{ sources, pkgs, ... }:
 
 {
-  imports = lib.singleton "${sources.nixos-hardware}/common/gpu/nvidia";
+  imports = [ "${sources.nixos-hardware}/common/gpu/nvidia" ];
 
   # This fixes suspend! Important
   hardware.nvidia.powerManagement.enable = true;

@@ -1,9 +1,9 @@
-{ lib, pkgs, hostVars, sources, config, ... }:
+{ pkgs, hostVars, sources, config, ... }:
 
 let
   npins = pkgs.callPackage (sources.npins + "/npins.nix") {};
 in {
-  environment.systemPackages = lib.singleton npins;
+  environment.systemPackages = [ npins ];
   environment.variables.NPINS_DIRECTORY = "${hostVars.configDirectory}/various/npins";
 
   hm.programs.fish.shellAbbrs =

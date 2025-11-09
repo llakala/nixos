@@ -1,7 +1,7 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 
 {
-  hm.xdg.portal = lib.mkIf (config.features.desktop == "kde") {
-    configPackages = lib.singleton pkgs.kdePackages.xdg-desktop-portal-kde;
+  xdg.portal = assert config.features.desktop == "plasma"; {
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
   };
 }

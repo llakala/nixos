@@ -1,11 +1,11 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   layoutName = "custom";
 in {
   services.xserver.xkb.extraLayouts.${layoutName} = {
     description = "Custom layout where CAPS is Escape, and ESC does nothing";
-    languages = lib.singleton "eng";
+    languages = [ "eng" ];
 
     # The layout name doesn't matter, it can be anything
     symbolsFile = pkgs.writeText layoutName ''

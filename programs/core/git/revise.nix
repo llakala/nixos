@@ -1,8 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 
 {
   # Better git rebase, according to people smarter than me
-  environment.systemPackages = lib.singleton pkgs.git-revise;
+  environment.systemPackages = [ pkgs.git-revise ];
 
   hm.programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; { # Error if we ever change shell

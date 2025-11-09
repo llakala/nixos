@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   myPythonPackages = pythonPackages: with pythonPackages; [
@@ -11,7 +11,9 @@ let
     pip
   ];
 in {
-  environment.systemPackages = lib.singleton (pkgs.python3.withPackages myPythonPackages);
+  environment.systemPackages = [
+    (pkgs.python3.withPackages myPythonPackages)
+  ];
 
   environment.shellAliases.pep8 = "pycodestyle";
 
