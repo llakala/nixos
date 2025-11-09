@@ -12,20 +12,20 @@ let
   root = {
     name = "root";
     modules = {
+      nixpkgs = import ./nixpkgs { inherit adios; };
+      self = import ./self { inherit adios; };
       bat = import ./bat { inherit adios; };
       diff-so-fancy = import ./diff-so-fancy { inherit adios; };
       firefox = import ./firefox { inherit adios; };
       fzf = import ./fzf { inherit adios; };
-      git = import ./git { inherit adios; };
       gh = import ./gh { inherit adios; };
+      git = import ./git { inherit adios; };
       kittab = import ./kittab { inherit adios; };
       kitty = import ./kitty { inherit adios; };
       less = import ./less { inherit adios; };
       ripgrep = import ./ripgrep { inherit adios; };
-      self = import ./self { inherit adios; };
       starship = import ./starship { inherit adios; };
       termfilechooser = import ./termfilechooser { inherit adios; };
-      nixpkgs = import ./nixpkgs { inherit adios; };
       zoxide = import ./zoxide { inherit adios; };
     };
   };
