@@ -9,7 +9,7 @@ in
     nixpkgs.path = "/nixpkgs";
   };
 
-  options.configPath = {
+  options.configFile = {
     type = types.path;
     default = ./starship.toml;
  };
@@ -28,7 +28,7 @@ in
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           wrapProgram $out/bin/starship \
-            --set STARSHIP_CONFIG ${options.configPath}
+            --set STARSHIP_CONFIG ${options.configFile}
         '';
         meta.mainProgram = "starship";
       };
