@@ -1,6 +1,11 @@
-{ config, ... }:
+{ self, config, ... }:
 
 {
+  environment.systemPackages = [
+    self.wrappers.git.drv
+    self.wrappers.diff-so-fancy.drv # TODO: don't install once I can avoid infrec
+  ];
+
   # I try to use single-letter abbrs for things I do all the time. Stuff like
   # `git status`, `git commit`, etc, don't need a `g` prefix. However, anything
   # requiring 2+ letters, like `am`, should keep the `g` prefix. This balances
@@ -50,7 +55,7 @@
     grbm = "git rebase main";
     grbma = "git rebase master";
 
-    # `rbi 2` will rebase from last 2 commits
+    # `grbi 2` will rebase from last 2 commits
     grbi = {
       setCursor = true;
       expansion = "git rebase -i HEAD~%";
