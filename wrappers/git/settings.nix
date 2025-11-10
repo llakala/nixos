@@ -76,7 +76,7 @@ inputs.gh.iniConfig
     unstage-new-files = "!cat <(git diff --name-only --diff-filter=A -z) <(git diff --staged --name-only --diff-filter=D -z) | git restore --staged -q --pathspec-file-nul --pathspec-from-file=- >/dev/null 2>&1";
 
     # Prettier formatting for `git branch`
-    pbranch = "branch --sort=-committerdate --format '%(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)%(color:reset)%0a--------------------------------------------------'";
+    pbranch = "branch --sort=-committerdate --format '%(color:dim white)%(objectname:short)%(color:reset) |%(color:green)%(HEAD)%(color:bold yellow)%(align:22,left)%(refname:short)%(end)%(color:reset) | %(color:cyan)%(align:14,right)%(committerdate:relative)%(end)'";
 
     # Switch to branch using fzf. Reference links below
     # https://esc.sh/blog/switch-git-branches-fzf/
@@ -84,8 +84,8 @@ inputs.gh.iniConfig
     pswitch = # bash
     ''
       !git pbranch --color | \
-      fzf --delimiter='\|' --preview-window='bottom' \
-      --preview='echo {s2} | cut -c 2- | xargs git show --color | diff-so-fancy' | \
+      fzf --ansi --delimiter='\|' --preview-window='bottom' \
+      --preview='echo {s2} | cut -c 2- | xargs git show | diff-so-fancy' | \
       cut -d '|' -f2 | cut -c 2- | xargs git switch
     '';
   };
