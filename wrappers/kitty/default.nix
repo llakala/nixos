@@ -7,7 +7,6 @@ in
 
   inputs = {
     nixpkgs.path = "/nixpkgs";
-    self.path = "/self";
   };
 
   options.configFile = {
@@ -16,8 +15,8 @@ in
   };
 
   options.themeFile = {
-    type = types.string;
-    defaultFunc = { inputs }: "${inputs.nixpkgs.pkgs.kitty-themes}/share/kitty-themes/themes/Kaolin_Aurora.conf";
+    type = types.union [ types.string types.path ];
+    defaultFunc = { inputs }: import ./theme.nix { inherit inputs; };
   };
 
   options.drv = {
