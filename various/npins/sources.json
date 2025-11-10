@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "9c1a2a4c462581f491e27dd83b009eb56cdd5157",
-      "url": "https://github.com/adisbladis/adios/archive/9c1a2a4c462581f491e27dd83b009eb56cdd5157.tar.gz",
-      "hash": "sha256-os79BztDcYX4Vl5ezr4XykzWyeVZnqZSGtrZEQZDCK0="
+      "revision": "4715ed487b1116b03f59775b21af9e73456e0943",
+      "url": "https://github.com/adisbladis/adios/archive/4715ed487b1116b03f59775b21af9e73456e0943.tar.gz",
+      "hash": "sha256-cD86FL+gyvllU+AXdISllKoLOpBCewLXfDUAFi1FOwk="
     },
     "home-manager": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "b8645b18b0f5374127bbade6de7381ef0b3d5720",
-      "url": "https://github.com/nix-community/home-manager/archive/b8645b18b0f5374127bbade6de7381ef0b3d5720.tar.gz",
-      "hash": "sha256-E428EuouA4nFTNlLuqlL4lVR78X+EbBIqDqsBFnB79w="
+      "revision": "37a3d97f2873e0f68711117c34d04b7c7ead8f4e",
+      "url": "https://github.com/nix-community/home-manager/archive/37a3d97f2873e0f68711117c34d04b7c7ead8f4e.tar.gz",
+      "hash": "sha256-t2U/GLLXHa2+kJkwnFNRVc2fEJ/lUfyZXBE5iKzJdcs="
     },
     "menu": {
       "type": "Git",
@@ -106,9 +106,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "6296d7100cc84b2ff732b7c103a50c2856974cf6",
-      "url": "https://github.com/nix-community/plasma-manager/archive/6296d7100cc84b2ff732b7c103a50c2856974cf6.tar.gz",
-      "hash": "sha256-Vbhluvk15qwiyNDyPd9tjJh9gxIfUjbKVT79c05Pd3I="
+      "revision": "7911a0f8a44c7e8b29d031be3149ee8943144321",
+      "url": "https://github.com/nix-community/plasma-manager/archive/7911a0f8a44c7e8b29d031be3149ee8943144321.tar.gz",
+      "hash": "sha256-odsk96Erywk5hs0dhArF38zb7Oe0q6LZ70gXbxAPKno="
     }
   },
   "version": 7
