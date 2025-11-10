@@ -56,9 +56,12 @@ inputs.gh.iniConfig
     unstage = "restore --staged";
 
     # --soft is needed - means that `undo` will put the undone changes into
-      # staging, and `redo` will commit only the staged changes you just undid.
-    undo = "reset --soft HEAD^";
-    redo = "reset --soft HEAD^";
+    # staging, and `redo` will commit only the staged changes you just undid.
+    # Note that redo doesn't work when done multiple times - I did some
+    # stackoverflow searching, and achieving this is more complicated than is
+    # worth it to me
+    undo = "reset --soft HEAD~";
+    redo = "reset --soft ORIG_HEAD";
 
     # Patch versions for staging, unstaging, and restoring changes
     hire = "add --patch";
