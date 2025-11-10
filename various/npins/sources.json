@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "36390de14be636111227a950e5de5c52f42e6889",
-      "url": "https://github.com/llakala/meovim/archive/36390de14be636111227a950e5de5c52f42e6889.tar.gz",
-      "hash": "sha256-ehgTIxhuIsrLdU0YwABjvZAGcnHTf85rCbafq3MHjfk="
+      "revision": "0a60e764f15720efbcbfa2febbcb813a2fc6c93b",
+      "url": "https://github.com/llakala/meovim/archive/0a60e764f15720efbcbfa2febbcb813a2fc6c93b.tar.gz",
+      "hash": "sha256-VuB/uFn9QVbCsP5d1GrSOaTruJqTlHAH62MMtdnkL+w="
     },
     "mnw": {
       "type": "Git",
