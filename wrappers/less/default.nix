@@ -13,7 +13,6 @@ in
     type = types.string;
     defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./LESS;
   };
-
   options.keybinds = {
     type = types.string;
     defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./lesskey;

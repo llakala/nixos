@@ -9,7 +9,7 @@ in
     nixpkgs.path = "/nixpkgs";
   };
 
-  options.path = {
+  options.configDir = {
     type = types.path;
     default = ./gh;
   };
@@ -34,7 +34,7 @@ in
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           wrapProgram $out/bin/gh \
-            --set GH_CONFIG_DIR "${options.path}" \
+            --set GH_CONFIG_DIR "${options.configDir}" \
         '';
         meta.mainProgram = "gh";
       };

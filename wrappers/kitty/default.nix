@@ -13,7 +13,6 @@ in
     type = types.path;
     default = ./kitty.conf;
   };
-
   options.themeFile = {
     type = types.union [ types.string types.path ];
     defaultFunc = { inputs }: import ./theme.nix { inherit inputs; };

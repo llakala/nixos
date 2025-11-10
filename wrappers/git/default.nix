@@ -13,11 +13,8 @@ in
 
   options.iniConfig = {
     type = types.attrs;
-    defaultFunc =
-      { inputs }:
-      (import ./settings.nix { inherit inputs; });
+    defaultFunc = { inputs }: import ./settings.nix { inherit inputs; };
   };
-
   options.ignoreFile = {
     type = types.path;
     default = ./ignore;
