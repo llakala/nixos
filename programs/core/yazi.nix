@@ -13,7 +13,7 @@
   # tried watching for SIGTSTP with a fish function, but had no luck. I think
   # it's because Yazi is the one that gets suspended. Maybe there's some way? If
   # you see this and think you have an idea, let me know via an issue or email.
-  hm.programs.fish.interactiveShellInit =
+  programs.fish.interactiveShellInit =
   assert config.features.shell == "fish"; # fish
   ''
     bind -M insert \cy 'cd (cat /tmp/yazi-cwd-suspend); commandline -f repaint'

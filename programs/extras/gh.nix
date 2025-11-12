@@ -3,7 +3,7 @@
 {
   environment.systemPackages = [ self.wrappers.gh.drv ];
 
-  hm.programs.fish.shellAbbrs =
+  programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; {
     ghrpv = "gh repo view --web";
     ghrpf = "gh repo fork --remote --clone";

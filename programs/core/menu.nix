@@ -22,7 +22,7 @@ in {
     IMANPU_DIRECTORY = "${hostVars.configDirectory}/various/npins";
   };
 
-  hm.programs.fish.shellAbbrs =
+  programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     fsk = "fuiska";
     r = "rbld";

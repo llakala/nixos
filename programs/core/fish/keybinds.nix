@@ -24,7 +24,7 @@
   # For setting keymap, use `fish_key_reader`
   # As of fish 4.0, this now uses more sane keybinding names - so update your
   # old binds to match the new style!
-  hm.programs.fish.interactiveShellInit = # fish
+  programs.fish.interactiveShellInit = # fish
   ''
     fish_default_key_bindings
 

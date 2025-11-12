@@ -14,7 +14,7 @@
   hm.programs.fish.enable = true;
   hm.xdg.configFile."fish/config.fish".force = true;
 
-  hm.programs.fish.interactiveShellInit = # fish
+  programs.fish.interactiveShellInit = # fish
   ''
     set fish_greeting
 

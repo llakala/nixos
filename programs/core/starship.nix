@@ -5,7 +5,7 @@
 
   environment.systemPackages = [ self.wrappers.starship.drv ];
 
-  hm.programs.fish.interactiveShellInit = # fish
+  programs.fish.interactiveShellInit = # fish
   ''
     ${lib.getExe self.wrappers.starship.drv} init fish | source
     enable_transience

@@ -10,7 +10,7 @@ in {
   # better.
   environment.shellAliases.vman = "MANPAGER='nvim +Man!' man";
 
-  hm.programs.fish.shellAbbrs =
+  programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     v = "nvim";
   };

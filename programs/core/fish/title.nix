@@ -1,5 +1,5 @@
 {
-  hm.programs.fish.interactiveShellInit = # fish
+  programs.fish.interactiveShellInit = # fish
   ''
     # Rewriting the fish_title function to print the full prompt_pwd. Sourced from:
     # https://github.com/fish-shell/fish-shell/blob/945a53/share/functions/fish_title.fish#L8

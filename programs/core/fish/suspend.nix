@@ -1,5 +1,5 @@
 {
-  hm.programs.fish.interactiveShellInit = # fish
+  programs.fish.interactiveShellInit = # fish
   ''
     # Ctrl+Z to resume
     # Don't ask me how this works, I have no clue! But it means repeatedly

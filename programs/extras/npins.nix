@@ -6,7 +6,7 @@ in {
   environment.systemPackages = [ npins ];
   environment.variables.NPINS_DIRECTORY = "${hostVars.configDirectory}/various/npins";
 
-  hm.programs.fish.shellAbbrs =
+  programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; {
     npu = "npins update";
   };

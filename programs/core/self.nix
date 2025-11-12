@@ -9,7 +9,7 @@
     satod
   ];
 
-  hm.programs.fish.shellAbbrs =
+  programs.fish.shellAbbrs =
   assert config.features.abbreviations == "fish"; { # Error if we ever change shell
     h = "satod hire";
     f = "satod fire";

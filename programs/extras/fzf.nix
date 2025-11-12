@@ -10,7 +10,7 @@
     FZF_CTRL_R_OPTS = self.wrappers.fzf.ctrl-r.opts;
   };
 
-  hm.programs.fish.interactiveShellInit = ''
+  programs.fish.interactiveShellInit = ''
     ${lib.getExe self.wrappers.fzf.drv} --fish | source
   '';
 }
