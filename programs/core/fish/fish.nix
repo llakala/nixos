@@ -14,7 +14,6 @@
   hm.programs.fish.enable = true;
   hm.xdg.configFile."fish/config.fish".force = true;
 
-
   hm.programs.fish.interactiveShellInit = # fish
   ''
     set fish_greeting
@@ -23,26 +22,23 @@
     set fish_cursor_insert      line       blink
     set fish_cursor_replace_one underscore
     set fish_cursor_visual      underscore blink
-  '';
 
+    # Rewriting the fish_title function to print the full prompt_pwd. Sourced from:
+    # https://github.com/fish-shell/fish-shell/blob/945a53/share/functions/fish_title.fish#L8
+    # Note that this doesn't seem to work properly. May be a kitty issue
+    function fish_title
+      if set -q argv[1]
+        echo -- (string sub -l 20 -- $argv[1]) (prompt_pwd)
 
-  # Rewriting the fish_title function to print the full prompt_pwd. Sourced from:
-  # https://github.com/fish-shell/fish-shell/blob/945a53/share/functions/fish_title.fish#L8
-  hm.programs.fish.functions.fish_title = # fish
-  ''
-    # An override for the current command is passed as the first parameter.
-    # This is used by `fg` to show the true process name, among others.
-    if set -q argv[1]
-      echo -- (string sub -l 20 -- $argv[1]) (prompt_pwd)
+      else
+        set -l command (status current-command)
 
-    else
-      set -l command (status current-command)
+        if [ $command = fish ]
+          set command
+        end
 
-      if [ $command = fish ]
-        set command
+        echo -- (string sub -l 20 -- $command) (prompt_pwd)
       end
-
-      echo -- (string sub -l 20 -- $command) (prompt_pwd)
     end
   '';
 }

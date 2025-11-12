@@ -5,14 +5,12 @@
 
   environment.systemPackages = [ self.wrappers.starship.drv ];
 
-  hm.programs.fish.interactiveShellInit = ''
+  hm.programs.fish.interactiveShellInit = # fish
+  ''
     ${lib.getExe self.wrappers.starship.drv} init fish | source
     enable_transience
-  '';
 
-  hm.programs.fish.functions = {
-    starship_transient_prompt_func = # fish
-    ''
+    function starship_transient_prompt_func
       echo # newline before horizontal line
 
       set_color "#44475A"
@@ -20,11 +18,12 @@
       set_color normal
 
       starship module character
-    '';
+    end
 
-    starship_transient_rprompt_func = # fish
-    ''
-      starship module cmd_duration # Not currently working
-    '';
-  };
+
+    # Not currently working
+    function starship_transient_rprompt_func
+      starship module cmd_duration
+    end
+  '';
 }

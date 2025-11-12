@@ -3,26 +3,28 @@
   # none of that is true, execute current command!
   # Logic inspired from fish builtin function:
   # https://github.com/fish-shell/fish-shell/blob/78e8f87e54d9d82c08cccd5cafc95126afe07274/share/functions/down-or-search.fish#L2
-  hm.programs.fish.functions.down-or-execute = # fish
+  hm.xdg.configFile."fish/functions/down-or-execute.fish".text = # fish
   ''
-    if commandline --search-mode; or commandline --paging-mode
+    function down-or-execute
+        if commandline --search-mode; or commandline --paging-mode
+            commandline -f down-line
+            return
+        end
+        set -l lnum (commandline -L)
+        set -l line_count (count (commandline))
+
+        if [ $lnum = $line_count ]
+            commandline -f execute
+        end
+
         commandline -f down-line
-        return
     end
-    set -l lnum (commandline -L)
-    set -l line_count (count (commandline))
-
-    if [ $lnum = $line_count ]
-      commandline -f execute
-    end
-
-    commandline -f down-line
   '';
 
   # For setting keymap, use `fish_key_reader`
   # As of fish 4.0, this now uses more sane keybinding names - so update your
   # old binds to match the new style!
-  hm.programs.fish.functions.fish_user_key_bindings = # fish
+  hm.programs.fish.interactiveShellInit = # fish
   ''
     fish_default_key_bindings
 
