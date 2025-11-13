@@ -44,12 +44,12 @@ in
       inherit (pkgs) linkFarm;
     in
     linkFarm "yazi-config" ([
-      { name = "yazi.toml"; path = options.settingsFile; }
-      { name = "keymap.toml"; path = options.keymapFile; }
-      { name = "init.lua"; path = options.initLua; }
+      { name = "yazi/yazi.toml"; path = options.settingsFile; }
+      { name = "yazi/keymap.toml"; path = options.keymapFile; }
+      { name = "yazi/init.lua"; path = options.initLua; }
     ]
     ++ mapAttrsToList (name: path: {
-      name = "plugins/${name}";
+      name = "yazi/plugins/${name}";
       inherit path;
     }) options.plugins);
   };
@@ -65,12 +65,12 @@ in
       in
       symlinkJoin {
         name = "yazi-wrapped";
-        paths = [ pkgs.yazi-unwrapped ];
+        paths = [ pkgs.yazi-unwrapped options.configDir ];
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           wrapProgram $out/bin/yazi \
             --prefix PATH : ${makeBinPath options.extraPackages} \
-            --set YAZI_CONFIG_HOME ${options.configDir}
+            --set YAZI_CONFIG_HOME $out/yazi
         '';
         meta.mainProgram = "yazi";
       };
