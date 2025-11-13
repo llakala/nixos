@@ -1,0 +1,86 @@
+{
+  "policies": {
+    "SearchEngines": {
+      "Remove": [
+        "DuckDuckGo",
+        "Bing",
+        "eBay",
+        "Amazon.com",
+        "Wikipedia (en)",
+        "Google",
+        "Perplexity"
+      ],
+      "Default": "Google (udm14)",
+      "Add": [
+        {
+          "Name": "Google (udm14)",
+          "IconURL": "https://www.google.com/favicon.ico",
+          "URLTemplate": "https://www.google.com/search?q={searchTerms}&udm=14"
+        },
+        {
+          "Name": "Github Search Nix",
+          "Alias": "@gn",
+          "IconURL": "https://github.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=lang:nix+NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Github Search",
+          "Alias": "@gh",
+          "IconURL": "https://github.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Github Search Fish",
+          "Alias": "@gf",
+          "IconURL": "https://fishshell.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=lang:fish+NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Github Search Lua",
+          "Alias": "@gl",
+          "IconURL": "https://github.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=lang:lua+NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Github Search Gleam",
+          "Alias": "@gg",
+          "IconURL": "https://github.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=lang:gleam+NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Github Search Typst",
+          "Alias": "@gt",
+          "IconURL": "https://github.com/favicon.ico",
+          "URLTemplate": "https://github.com/search?type=code&q=lang:typst+NOT+is:fork+{searchTerms}"
+        },
+        {
+          "Name": "Noogle",
+          "Alias": "@ng",
+          "IconURL": "https://noogle.dev/favicon.png",
+          "URLTemplate": "https://noogle.dev/q?term={searchTerms}"
+        },
+        {
+          "Name": "Nixpkgs",
+          "Alias": "@npkgs",
+          "URLTemplate": "https://github.com/search?type=code&q=repo:NixOS/nixpkgs+lang:nix+{searchTerms}"
+        },
+        {
+          "Name": "Home Manager",
+          "Alias": "@hmgr",
+          "URLTemplate": "https://github.com/search?type=code&q=repo:nix-community/home-manager+lang:nix+{searchTerms}"
+        },
+        {
+          "Name": "Home Manager Options",
+          "Alias": "@oh",
+          "IconURL": "https://home-manager-options.extranix.com/images/favicon.png",
+          "URLTemplate": "https://home-manager-options.extranix.com/?release=master&query={searchTerms}"
+        },
+        {
+          "Name": "NixOS Options",
+          "Alias": "@on",
+          "URLTemplate": "https://search.nixos.org/options?channel=unstable&from=0&size=100&sort=alpha_asc&query={searchTerms}"
+        }
+      ]
+    }
+  }
+}

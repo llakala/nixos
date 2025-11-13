@@ -1,0 +1,68 @@
+{
+  "policies": {
+    "DontCheckDefaultBrowser": true,
+    "DisableFirefoxScreenshots": true,
+    "DisableFirefoxStudies": true,
+    "DisablePocket": true,
+    "DisableTelemetry": true,
+    "DisplayBookmarksToolbar": "never",
+    "DisplayMenuBar": "never",
+    "OverrideFirstRunPage": "",
+    "PictureInPicture": {
+      "Enabled": false
+    },
+    "PromptForDownloadLocation": false,
+    "HardwareAcceleration": true,
+    "TranslateEnabled": true,
+    "Homepage": {
+      "StartPage": "previous-session"
+    },
+    "UserMessaging": {
+      "SkipOnboarding": true,
+      "UrlbarInterventions": false
+    },
+    "FirefoxSuggest": {
+      "ImproveSuggest": false,
+      "SponsoredSuggestions": false,
+      "WebSuggestions": false
+    },
+    "EnableTrackingProtection": {
+      "Cryptomining": true,
+      "Fingerprinting": true,
+      "Value": true
+    },
+    "FirefoxHome": {
+      "Highlights": false,
+      "Pocket": false,
+      "Search": true,
+      "Snippets": false,
+      "SponsoredPocket": false,
+      "SponsoredTopSites": false,
+      "TopSites": false
+    },
+    "Handlers": {
+      "schemes": {
+        "element": {
+          "action": "useSystemDefault",
+          "ask": false
+        },
+        "vscode": {
+          "action": "useSystemDefault",
+          "ask": false
+        }
+      }
+    },
+    "3rdparty": {
+      "extensions": {
+        "gdpr@cavi.au.dk": {
+          "origins": [
+            "<all_urls>"
+          ],
+          "permissions": [
+            "<all_urls>"
+          ]
+        }
+      }
+    }
+  }
+}

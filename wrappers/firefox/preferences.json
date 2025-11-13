@@ -1,0 +1,29 @@
+{
+  "browser.aboutConfig.showWarning": false,
+  "browser.warnOnQuitShortcut": false,
+
+  "browser.urlbar.suggest.calculator": true,
+  "browser.urlbar.unitConversion.enabled": true,
+  "browser.urlbar.trimHttps": true,
+
+  "browser.urlbar.suggest.searches": true,
+  "browser.urlbar.shortcuts.bookmarks": false,
+  "browser.urlbar.shortcuts.history": false,
+  "browser.urlbar.shortcuts.tabs": false,
+
+  "browser.tabs.tabMinWidth": 75,
+  "browser.tabs.loadInBackground": true,
+  "browser.tabs.closeTabByDblclick": true,
+  "browser.tabs.groups.dragOverThresholdPercent": 10,
+
+  "media.ffmpeg.vaapi.enabled": true,
+  "layers.acceleration.force-enabled": true,
+  "gfx.webrender.all": true,
+
+  "browser.in-content.dark-mode": true,
+  "ui.systemUsesDarkTheme": true,
+  "widget.use-xdg-desktop-portal.file-picker": 1,
+
+  "extensions.autoDisableScopes": 0,
+  "extensions.update.enabled": false
+}

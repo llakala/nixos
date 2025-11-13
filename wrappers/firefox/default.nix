@@ -9,33 +9,27 @@ in
     nixpkgs.path = "/nixpkgs";
   };
 
-  options.extraPreferences = {
-    type = types.string;
-    defaultFunc = { options }: import ./extraPreferences.nix { inherit (options) userChrome; };
+  options.preferencesFiles = {
+    type = types.listOf (types.union [
+      types.derivation
+      types.path
+    ]);
+    defaultFunc = { inputs }: let
+      inherit (inputs.nixpkgs) pkgs;
+    in [
+      ./preferences.json
+      (pkgs.replaceVars ./autoConfig.js { userChromeFile = ./userChrome.css; })
+    ];
   };
-  options.extensions = {
-    type = types.attrs;
-    default = import ./extensions.nix;
-  };
-  options.policies = {
-    type = types.attrs;
-    default = import ./policies.nix;
-  };
-  options.preferences = {
-    type = types.attrs;
-    default = import ./preferences.nix;
-  };
-  options.searchEngines = {
-    type = types.attrs;
-    default = import ./searchEngines.nix;
-  };
-  options.userChrome = {
-    type = types.path;
-    default = ./userChrome.css;
-  };
-  options.ui = {
-    type = types.string;
-    default = builtins.readFile ./ui.json;
+
+  options.policiesFiles = {
+    type = types.listOf types.path;
+    default = [
+      ./extensions.json
+      ./policies.json
+      ./searchEngines.json
+      ./ui.json
+    ];
   };
 
   options.drv = {
@@ -44,17 +38,18 @@ in
       { options, inputs }:
       let
         inherit (inputs.nixpkgs) pkgs;
-        inherit (pkgs) wrapFirefox;
+        inherit (pkgs) wrapFirefox writeText;
+        inherit (builtins) isPath;
       in
       wrapFirefox pkgs.firefox-unwrapped {
-        extraPrefs = options.extraPreferences;
-        extraPolicies = options.policies // {
-          Preferences = options.preferences // {
-            "browser.uiCustomization.state" = options.ui;
-          };
-          SearchEngines = options.searchEngines;
-          ExtensionSettings = options.extensions;
-        };
+        extraPrefsFiles = map (file:
+          if isPath file then
+            writeText "preferences.json" (builtins.readFile file)
+          else file
+        ) options.preferencesFiles;
+        extraPoliciesFiles = map (file:
+          writeText "policies.json" (builtins.readFile file)
+        ) options.policiesFiles;
       };
   };
 }
