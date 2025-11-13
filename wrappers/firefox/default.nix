@@ -24,14 +24,15 @@ in
       writeText "userChrome.css" (readFile ./userChrome.css);
   };
 
-  options.autoConfig = {
-    type = types.derivation;
-    defaultFunc =
-      { inputs, options }:
-      let
-        inherit (inputs.nixpkgs) pkgs;
-      in
-      pkgs.replaceVars ./autoConfig.js { userChromeFile = options.userChromeFile; };
+  options.autoConfigFiles = {
+    type = types.listOf types.derivation;
+    defaultFunc = { inputs, options }: let
+      inherit (inputs.nixpkgs) pkgs;
+      inherit (pkgs) replaceVars;
+    in
+    [
+      (replaceVars ./autoConfig.js { userChromeFile = options.userChromeFile; })
+    ];
   };
 
   options.policiesFiles = {
@@ -54,7 +55,7 @@ in
         inherit (builtins) readFile;
       in
       wrapFirefox pkgs.firefox-unwrapped {
-        extraPrefsFiles = [ options.autoConfig ];
+        extraPrefsFiles = options.autoConfigFiles;
         extraPoliciesFiles = map (file:
           writeText "policies.json" (readFile file)
         ) options.policiesFiles;
