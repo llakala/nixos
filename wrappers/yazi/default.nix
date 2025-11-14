@@ -25,12 +25,7 @@ in
     defaultFunc = { inputs }: import ./extraPackages.nix { inherit inputs; };
   };
   options.plugins = {
-    type = types.attrsOf (
-      types.union [
-        types.path
-        types.derivation
-      ]
-    );
+    type = types.attrsOf (types.union [ types.path types.derivation ]);
     defaultFunc = { inputs }: import ./plugins.nix { inherit inputs; };
   };
 
