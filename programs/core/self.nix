@@ -5,7 +5,6 @@
   environment.systemPackages = with self.packages; [
     evalue
     emodule
-    jc
     satod
   ];
 
