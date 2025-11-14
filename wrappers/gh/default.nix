@@ -33,8 +33,9 @@ in
         paths = [ pkgs.gh ];
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
+          ln -s ${options.configDir} $out/gh
           wrapProgram $out/bin/gh \
-            --set GH_CONFIG_DIR "${options.configDir}" \
+            --set GH_CONFIG_DIR $out/gh \
         '';
         meta.mainProgram = "gh";
       };
