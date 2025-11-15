@@ -13,9 +13,10 @@
       "browser.urlbar.shortcuts.history": false,
       "browser.urlbar.shortcuts.tabs": false,
 
-      "browser.tabs.tabMinWidth": 75,
+      "browser.tabs.groups.smart.enabled": false,
       "browser.tabs.loadInBackground": true,
       "browser.tabs.closeTabByDblclick": true,
+      "browser.tabs.tabMinWidth": 75,
       "browser.tabs.groups.dragOverThresholdPercent": 10,
 
       "media.ffmpeg.vaapi.enabled": true,
