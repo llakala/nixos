@@ -71,5 +71,8 @@
     ghr = "git hire"; # Add staged changes
     gfr = "git fire"; # Unstage staged changes via patch
     gkl = "git kill"; # Delete unstaged changes
+
+    gud = "git undo";
+    grd = "git redo";
   };
 }
