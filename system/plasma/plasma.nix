@@ -4,7 +4,10 @@
   features.desktop = "plasma"; # If we ever stop using KDE, change this
   services.desktopManager.plasma6.enable = true;
 
-  environment.plasma6.excludePackages = [ pkgs.kdePackages.okular ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    okular
+    dolphin
+  ];
 
   # If you ever need to figure out the name, set this to an empty string and try
   # to rebuild - it'll fail and tell you the valid options
