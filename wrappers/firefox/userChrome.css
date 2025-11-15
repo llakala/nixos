@@ -12,8 +12,3 @@
 #tracking-protection-icon-container {
   display: none !important;
 }
-
-#vertical-pinned-tabs-container,
-scrollbox {
-  scrollbar-width: auto !important;
-}
