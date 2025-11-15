@@ -2,11 +2,6 @@
 
 let
   myPythonPackages = pythonPackages: with pythonPackages; [
-    pandas
-    matplotlib
-    numpy
-    termcolor
-    pretty-errors
     pycodestyle
     pip
   ];
