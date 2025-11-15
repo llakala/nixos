@@ -1,23 +1,22 @@
 {
   "policies": {
     "Preferences": {
+      "privacy.globalprivacycontrol.enabled": true,
+
       "browser.aboutConfig.showWarning": false,
       "browser.warnOnQuitShortcut": false,
+      "browser.link.open_newwindow.override.external": 7,
+      "media.webspeech.synth.dont_notify_on_error": true,
 
       "browser.urlbar.suggest.calculator": true,
       "browser.urlbar.unitConversion.enabled": true,
       "browser.urlbar.trimHttps": true,
-
       "browser.urlbar.suggest.searches": true,
-      "browser.urlbar.shortcuts.bookmarks": false,
-      "browser.urlbar.shortcuts.history": false,
-      "browser.urlbar.shortcuts.tabs": false,
+
+      "browser.toolbars.bookmarks.visibility": "never",
 
       "browser.tabs.groups.smart.enabled": false,
-      "browser.tabs.loadInBackground": true,
-      "browser.tabs.closeTabByDblclick": true,
-      "browser.tabs.tabMinWidth": 75,
-      "browser.tabs.groups.dragOverThresholdPercent": 10,
+      "browser.ml.chat.enabled": false,
 
       "media.ffmpeg.vaapi.enabled": true,
       "layers.acceleration.force-enabled": true,
