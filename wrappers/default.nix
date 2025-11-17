@@ -44,4 +44,4 @@ let
 in
   # We have each wrapper `foo` point to all its options, so you can do
   # `(import ./wrappers {}).foo.some-option`
-  mapAttrs (_: wrapper: wrapper.args.options) eval.tree.modules
+  mapAttrs (_: wrapper: wrapper.args.options) eval.root.modules
