@@ -23,7 +23,7 @@ truncate_to_repo = false # Show full path of current directory
 [direnv]
 disabled = false
 format = "[$loaded]($style)"
-loaded_msg = ""
+loaded_msg = ""
 # Trailing space goes in the unloaded message, so it doesn't always trigger
 unloaded_msg = "UNLOADED "
 
