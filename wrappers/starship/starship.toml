@@ -1,4 +1,4 @@
-format = "$directory$git_status$direnv$git_branch$fill$custom$cmd_duration$time$line_break$character"
+format = "$directory$git_status$direnv$git_branch$fill$cmd_duration$time$line_break$character"
 palette = "custom"
 
 [[battery.display]]
@@ -63,7 +63,6 @@ disabled = true
 [palettes.custom]
 fill = "#44475A"
 orange = "#ff8800"
-pink = "#ea76cb"
 
 [time]
 disabled = false
