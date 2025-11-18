@@ -45,13 +45,15 @@ in {
     nrn = setCursor "nix run nixpkgs#%";
     "nr." = setCursor "nix run .#%";
 
-    ns = "nix shell";
-    nsn = setCursor "nix shell nixpkgs#%";
+    ns = "nix-shell";
+    nsn = "nix-shell -p";
+
     "ns." = setCursor "nix shell .#%";
 
-    nb = "nix build";
+    nb = "nix-build";
     nba = "nix-build -A";
-    nbn = setCursor "nix build nixpkgs#%";
+    nbn = "nix-build <nixpkgs> -A";
+
     "nb." = setCursor "nix build .#%";
 
     nrp = "nix repl";
