@@ -2,6 +2,7 @@
   "policies": {
     "Preferences": {
       "privacy.globalprivacycontrol.enabled": true,
+      "media.eme.enabled": true,
 
       "browser.aboutConfig.showWarning": false,
       "browser.warnOnQuitShortcut": false,
