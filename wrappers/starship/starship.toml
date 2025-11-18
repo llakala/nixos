@@ -14,7 +14,11 @@ format = "[  $duration ]($style)" # If you don't have a nerdfont on, this is 
 min_time = 30_000 # 30 seconds
 
 [directory]
+truncation_length = 4
 truncate_to_repo = false # Show full path of current directory
+
+[directory.substitutions]
+"~/" = ""
 
 [direnv]
 disabled = false
