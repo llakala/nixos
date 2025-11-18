@@ -24,7 +24,8 @@ truncate_to_repo = false # Show full path of current directory
 disabled = false
 format = "[$loaded]($style)"
 loaded_msg = ""
-unloaded_msg = "UNLOADED"
+# Trailing space goes in the unloaded message, so it doesn't always trigger
+unloaded_msg = "UNLOADED "
 
 [fill]
 style = "fg:fill"
@@ -47,19 +48,11 @@ ahead = "[+$count](green)"
 behind = "[-$count](red)"
 diverged = "[+$ahead_count](green),[-$behind_count](red)"
 format = """\
-  [(\
-    (\\[\
-      [($conflicted)](orange)\
-      [($stashed)](white)\
-      [($staged)](blue)\
-      [($deleted)](red)\
-      [($renamed)](yellow)\
-      [($modified)](yellow)\
-      [($untracked)](green)\
-    \\])\
-    ( \\[$ahead_behind\\])\
-    )]\
-    ($style)"""
+  [\
+    (\\[[$conflicted](orange)[$stashed](white)[$staged](blue)[$deleted](red)[$renamed](yellow)[$modified](yellow)[$untracked](green)\\] )\
+    (\\[$ahead_behind\\] )\
+  ]($style)\
+"""
 
 [nix_shell]
 disabled = true
