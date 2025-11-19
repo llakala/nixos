@@ -5,18 +5,16 @@ set fish_cursor_insert      line       blink
 set fish_cursor_replace_one underscore
 set fish_cursor_visual      underscore blink
 
-# Ctrl+Z to resume
-# Don't ask me how this works, I have no clue! But it means repeatedly
-# pressing Ctrl+Z to suspend and unsuspend doesn't create a new line every
-# time - which is wonderful. Thanks to krobelus on Matrix for the snippet!
+# This makes it so repeatedly pressing Ctrl+Z to suspend and unsuspend
+# doesn't create a new line every time - which is wonderful. Thanks to
+# krobelus on Matrix for the original snippet!
 #
-# Also note that this does leave the first part of the command in your title
-# when running multiple times - but that's a Fish bug I've had forever, and
-# I'll accept it if it means we don't have to deal with constant repaints.
-bind \cz 'fg 2>/dev/null'
+# Note - don't forget to check is_foreground! This prevents a
+# frustrating issue where a multiline prompt would rerender incorrectly
+# when triggering complete-or-search.
 functions --copy fish_job_summary job_summary
-function fish_job_summary
-    if contains STOPPED $argv
+function fish_job_summary -a job_id is_foreground cmd_line signal_or_end_name signal_desc proc_pid proc_name
+    if [ "$signal_or_end_name" = STOPPED ]; and [ "$is_foreground" -eq 0 ]
         return
     end
     job_summary $argv
@@ -59,6 +57,8 @@ bind ctrl-c cancel-commandline
 
 # Rerun previous command
 bind ctrl-s 'commandline $history[1]' 'commandline -f execute'
+
+bind \cz 'fg 2>/dev/null'
 
 bind ctrl-left backward-bigword
 bind ctrl-right forward-bigword
