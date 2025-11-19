@@ -4,7 +4,7 @@
   hm.home.file.".inputrc".text = /* readline */ ''
     $include /etc/inputrc
 
-    "\C-h": backward-kill-word # ctrl+backspace
+    "\C-h": unix-word-rubout # ctrl+backspace
 
     # Moving through history will use the prefix of the entered command
     "\e[A": history-search-backward # up
