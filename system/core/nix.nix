@@ -52,7 +52,7 @@ in {
 
     nb = "nix-build";
     nba = "nix-build -A";
-    nbn = "nix-build <nixpkgs> -A";
+    nbn = "nix-build '<nixpkgs>' -A";
 
     "nb." = setCursor "nix build .#%";
 
