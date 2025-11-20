@@ -1,6 +1,6 @@
 {
   sources ? import ./various/npins,
-  pkgs ? import sources.nixpkgs { },
+  pkgs ? import sources.nixpkgs {},
   myLib ? import ./various/myLib/default.nix { inherit pkgs; }
 }:
 

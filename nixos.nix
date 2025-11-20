@@ -1,6 +1,6 @@
 let
   sources = import ./various/npins;
-  pkgs = import sources.nixpkgs { }; # Read impurely from `builtins.currentSystem`
+  pkgs = import sources.nixpkgs {}; # Read impurely from `builtins.currentSystem`
   nixosSystem = import "${sources.nixpkgs}/nixos/lib/eval-config.nix";
 
   # Variables that apply to all hosts, to query things like the username without

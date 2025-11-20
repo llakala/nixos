@@ -4,7 +4,7 @@
   name,
   text,
   meta ? {},
-  runtimeInputs ? [ ],
+  runtimeInputs ? [],
   fishCompletion ? null
 }:
 
@@ -19,7 +19,7 @@ let
     text = ''
       #!${lib.getExe pkgs.fish}
     ''
-    + lib.optionalString (runtimeInputs != [ ]) ''
+    + lib.optionalString (runtimeInputs != []) ''
        fish_add_path --path (string split : "${lib.makeBinPath runtimeInputs}")
     ''
     + text;

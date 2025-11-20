@@ -27,6 +27,6 @@ myLib.writeFishApplication {
         exit 1
     end
 
-    nix eval --impure --expr "let pkgs = import <nixpkgs> { }; in (pkgs.callPackage $FILE { }) $ARG"
+    nix eval --impure --expr "let pkgs = import <nixpkgs> {}; in (pkgs.callPackage $FILE {}) $ARG"
   '';
 }
