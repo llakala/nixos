@@ -11,6 +11,10 @@
   };
 
   hm.programs.plasma.configFile.kwinrc = {
+    # Disable "hot corners"
+    ElectricBorders.TopLeft = "";
+    Effect-overview.BorderActivate = 9;
+
     TabBox = {
       LayoutName = "sidebar";
       ShowTabBox = false;
