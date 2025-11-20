@@ -1,9 +1,10 @@
 {
-  # Finds identical files and deduplicates them. Just `nix-store --optimise` on a timer.
+  # Finds identical files and deduplicates them.
+  # Just `nix-store --optimise` on a timer.
+  # Preferred over `auto-optimise-store`, which runs every
+  # rebuild and makes them take longer
   nix.optimise = {
     automatic = true;
-    # Only runs daily - preferred over auto-optimise-store, which runs every
-    # rebuild and makes rebuilds take longer.
     dates = [ "daily" ];
   };
 
@@ -11,8 +12,8 @@
   # Just `nix-collect-garbage` / `nix-store --gc`) on a timer.
   nix.gc = {
     automatic = true;
-    persistent = true; # If system is powered off when timer finishes, do it next time the system power on
+    persistent = true; # If system is powered off when timer finishes, do it next time the system powers on
     dates = "daily";
-    options = "--delete-older-than 7d"; # Delete old generations
+    options = "--delete-older-than 7d";
   };
 }
