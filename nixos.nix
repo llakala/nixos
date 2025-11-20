@@ -56,7 +56,7 @@ in {
     hostname = "palpot";
     configDirectory = "/home/${baseVars.username}/Documents/projects/nixos";
     stateVersion = "25.05";
-    touchpadName = "Libinput/1739/53227/PNP0C50:00 06CB:CFEB Touchpad";
+    touchpadName = "Libinput/1739/53227/VEN_06CB:00 06CB:CFEB Touchpad";
     scalingFactor = 1;
   };
 
