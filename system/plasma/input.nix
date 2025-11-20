@@ -8,8 +8,8 @@ in {
     # Matching the Gnome defaults I'm used to
     {
       Keyboard = {
-        repeatDelay = 500;
-        repeatRate = 30;
+        RepeatDelay = 500;
+        RepeatRate = 30;
       };
     }
 
