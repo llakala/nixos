@@ -44,26 +44,11 @@ in {
     mouseName = "Libinput/1133/16500/Logitech G305";
     scalingFactor = 1;
   };
-
-  framework = mkHost {
-    hostname = "framework";
-    configDirectory = "/etc/nixos";
-    stateVersion = "24.05";
-    scalingFactor = 2;
-  };
-
   palpot = mkHost {
     hostname = "palpot";
     configDirectory = "/home/${baseVars.username}/Documents/projects/nixos";
     stateVersion = "25.05";
     touchpadName = "Libinput/1739/53227/VEN_06CB:00 06CB:CFEB Touchpad";
-    scalingFactor = 1;
-  };
-
-  iso = mkHost {
-    hostname = "iso";
-    configDirectory = "/etc/nixos";
-    stateVersion = "24.11";
     scalingFactor = 1;
   };
 }
