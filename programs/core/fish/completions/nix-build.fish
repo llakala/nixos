@@ -1,19 +1,20 @@
-function _nixpkgs_completions
-    # Lie to nix and pretend we're generating the flakey completions
+function _get_completions
+    set -l tokens (__fish_print_cmd_args_without_options)
     set -l current_token (commandline --current-token)
-    set -l old_args (env NIX_GET_COMPLETIONS=2 nix build "nixpkgs#$current_token")
 
-    for arg in $old_args
-        # nix gives the completions in the form of: "nixpkgs#foo"
-        # We need to get just the foo part.
-        # TODO: is there a faster way to do this?
-        set -a new_args (string sub --start=9 $arg)
+    set -l file
+    if set -q tokens[2]
+        set file "$tokens[2]"
+    else
+        set file ./default.nix
     end
 
-    string collect -- $new_args[2..-1]
+    # Lie to nix and pretend we're generating nix3 completions. This even works
+    # for `<nixpkgs>`!
+    set args (env NIX_GET_COMPLETIONS=4 nix build -f $file $current_token)
+    string collect -- $args[2..-1]
 end
 
 complete -c nix-build \
     -x -s A -l attr \
-    -n "__fish_seen_subcommand_from '<nixpkgs>'" \
-    -a '(_nixpkgs_completions)'
+    -a '(_get_completions)'
