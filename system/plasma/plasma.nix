@@ -16,8 +16,7 @@
   hm.imports = [ "${sources.plasma-manager}/modules" ];
   hm.programs.plasma = {
     enable = true;
-    immutableByDefault = true;
-    # overrideConfig = true;
+    overrideConfig = true; # Reset any imperative settings on login
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
   };
 
