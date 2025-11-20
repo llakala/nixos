@@ -23,6 +23,13 @@
       src = "source";
     };
   };
-
-  hm.xdg.configFile."fish/functions/down-or-execute.fish".source = ./down-or-execute.fish;
+  hm.xdg.configFile."fish/completions" = {
+    source = ./completions;
+    force = true;
+  };
+  hm.xdg.configFile."fish/functions" = {
+    source = ./functions;
+    force = true;
+    recursive = true;
+  };
 }
