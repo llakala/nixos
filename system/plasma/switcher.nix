@@ -5,6 +5,9 @@
 
     "Walk Through Windows Alternative" = "Alt+Tab";
     "Walk Through Windows Alternative (Reverse)" = "Alt+Shift+Tab";
+
+    "Window Maximize" = "Meta+Space";
+    "Window Quick Tile Top" = "Meta+Up";
   };
 
   hm.programs.plasma.configFile.kwinrc = {
