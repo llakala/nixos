@@ -1,8 +1,7 @@
 { adios }:
 let
   inherit (adios) types;
-in
-{
+in {
   inputs = {
     nixpkgs.path = "/nixpkgs";
   };

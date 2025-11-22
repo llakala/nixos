@@ -1,8 +1,7 @@
 { inputs }:
 let
   inherit (inputs.nixpkgs) pkgs;
-in
-{
+in {
   "jump-to-char.yazi" = pkgs.yaziPlugins.jump-to-char;
   "chmod.yazi" = pkgs.yaziPlugins.chmod;
   "git.yazi" = pkgs.yaziPlugins.git;

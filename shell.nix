@@ -9,7 +9,6 @@ let
   meovim = import "${sources.meovim}/default.nix" { inherit pkgs; mnw = import sources.mnw; };
   packages = import ./packages.nix { inherit sources pkgs myLib; };
   wrappers = import ./wrappers { inherit sources pkgs myLib; };
-
 in
 pkgs.mkShellNoCC {
   packages = [

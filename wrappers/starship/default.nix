@@ -1,8 +1,7 @@
 { adios }:
 let
   inherit (adios) types;
-in
-{
+in {
   name = "starship";
 
   inputs = {

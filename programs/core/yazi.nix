@@ -1,9 +1,9 @@
-{ config, self, ... }:
+{ config, self, lib, ... }:
 
 {
   features.files = "yazi"; # Change if we ever stop using Yazi
 
-  environment.systemPackages = [ self.wrappers.yazi.drv ];
+  environment.systemPackages = [ (lib.hiPrio self.wrappers.yazi.drv) ];
 
   # When pressing Ctrl+y, go to the last directory we were in with Yazi Yazi
   # recommends an alternative where you run `$shell` and it goes into fish, but

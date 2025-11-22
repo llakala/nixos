@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   features.math = "typst";
   environment.systemPackages = [
