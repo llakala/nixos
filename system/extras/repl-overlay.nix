@@ -1,6 +1,6 @@
 {
   # Lix-only feature
   nix.settings.repl-overlays = [
-    ./repl-overlay
+    ./_overlay.nix
   ];
 }
