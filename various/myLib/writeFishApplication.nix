@@ -5,7 +5,7 @@
   text,
   meta ? {},
   runtimeInputs ? [],
-  fishCompletion ? null
+  completiions ? null
 }:
 
 let
@@ -26,11 +26,11 @@ let
   };
 
   # Creates a derivation for the given fish completion. Thanks to let laziness,
-  # if fishCompletions is null, this will never be evaluated
-  completions = writeTextFile {
+  # if `completions` is null, this will never be evaluated
+  completionsFile = writeTextFile {
     name = "${name}.fish";
     destination = "/share/fish/vendor_completions.d/${name}.fish";
-    text = fishCompletion;
+    text = completiions;
   };
 
 in
@@ -39,8 +39,8 @@ in
   # https://github.com/iynaix/dotfiles/blob/81fb43d72d001bc41041303bc2651d964713e607/lib.nix#L27
   # My logic is basically the same, but I cleaned it up for readability, and
   # don't use `intersectAttrs`
-  if fishCompletion == null then application
+  if completiions == null then application
   else symlinkJoin {
     inherit name meta;
-    paths = [ application completions ];
+    paths = [ application completionsFile ];
   }
