@@ -2,8 +2,6 @@
 
 stdenv.mkDerivation {
   pname = "splitpatch";
-
-  # TODO: bump to latest version
   version = "0-unstable-2025-03-04";
 
   src = fetchFromGitHub {
