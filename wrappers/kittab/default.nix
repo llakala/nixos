@@ -14,14 +14,14 @@ in {
     type = types.derivation;
     defaultFunc =
       { inputs }:
-      import ./desktopEntry.nix { inherit (inputs.nixpkgs) pkgs; };
+      import ./desktopEntry.nix { inherit inputs; };
   };
 
   options.kittab = {
     type = types.derivation;
     defaultFunc =
       { inputs }:
-      import ./kittab.nix { inherit (inputs.self) myLib; };
+      import ./kittab.nix { inherit inputs; };
   };
 
   options.drv = {
