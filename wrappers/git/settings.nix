@@ -16,6 +16,10 @@ inputs.gh.iniConfig
   commit.verbose = true; # Show changes when writing commit message so we remember what we changed
   status.showUntrackedFiles = "all";
 
+  # File only contains a single newline, so the comment below a commit giving
+  # instructions gets pushed down a line, and `ip` motions work normally!
+  commit.template = toString ./template;
+
   rerere.enabled = true;
   rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
 
