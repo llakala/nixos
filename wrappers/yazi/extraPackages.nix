@@ -6,7 +6,6 @@ in with pkgs; [
   jq
   poppler-utils
   _7zz
-  ffmpeg
   fd
   ripgrep
   fzf
