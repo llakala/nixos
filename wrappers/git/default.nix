@@ -19,24 +19,34 @@ in {
     default = ./ignore;
   };
 
-  options.drv = {
+  options.configDir = {
     type = types.derivation;
     defaultFunc =
       { options, inputs }:
       let
         inherit (inputs.nixpkgs) pkgs lib;
-        inherit (pkgs) symlinkJoin makeWrapper writeText;
+        inherit (pkgs) linkFarm writeText;
         inherit (lib.generators) toGitINI;
-        gitconfig = writeText "config" (toGitINI options.iniConfig);
       in
+      linkFarm "gitconfig" [
+        { name = "git/config"; path = writeText "config" (toGitINI options.iniConfig); }
+        { name = "git/ignore"; path = options.ignoreFile; }
+      ];
+  };
+
+  options.drv = {
+    type = types.derivation;
+    defaultFunc =
+      { options, inputs }:
+      let
+        inherit (inputs.nixpkgs) pkgs;
+        inherit (pkgs) symlinkJoin makeWrapper;
+        in
       symlinkJoin {
         name = "git-wrapped";
-        paths = [ pkgs.gitFull ];
+        paths = [ pkgs.gitFull options.configDir ];
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
-          mkdir -p $out/git
-          ln -s ${gitconfig} $out/git/config
-          ln -s ${options.ignoreFile} $out/git/ignore
           wrapProgram $out/bin/git \
             --set XDG_CONFIG_HOME $out
         '';

@@ -29,7 +29,7 @@ in {
         postBuild = /* bash */ ''
           wrapProgram $out/bin/starship \
             --set STARSHIP_CONFIG ${options.configFile} \
-            --set XDG_CONFIG_HOME ${inputs.git.drv} # Makes starship follow /git/ignore for git status module
+            --set XDG_CONFIG_HOME ${inputs.git.configDir} # Makes starship follow /git/ignore for git status module
         '';
         meta.mainProgram = "starship";
       };

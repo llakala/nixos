@@ -23,7 +23,7 @@ in {
         buildInputs = [ makeWrapper ];
         postBuild = /* bash */ ''
           wrapProgram $out/bin/diff-so-fancy \
-            --set GIT_CONFIG_GLOBAL "${inputs.git.drv}/git/config" \
+            --set GIT_CONFIG_GLOBAL "${inputs.git.configDir}/git/config" \
         '';
         meta.mainProgram = "diff-so-fancy";
       };
