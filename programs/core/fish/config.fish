@@ -52,8 +52,9 @@ bind ctrl-k up-line
 # Incentivise me to use ctrl+l for completions rather than arrow keys
 bind right forward-char-passive
 
-# Old Ctrl+C behavior, before 4.0
-bind ctrl-c cancel-commandline
+# Custom command so ctrl-c exits the pager if you're within it, and cancels the
+# current command anywhere else
+bind ctrl-c cancel-or-commandline
 
 # Rerun previous command
 bind ctrl-s 'commandline $history[1]' 'commandline -f execute'
