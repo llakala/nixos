@@ -30,7 +30,7 @@ inputs.gh.iniConfig
 
   # TODO: move into diff-so-fancy module once infrec is fixed
   interactive.diffFilter = "diff-so-fancy --patch";
-  pager.diff = "diff-so-fancy | ${lib.getExe inputs.less.drv}";
+  pager.diff = "diff-so-fancy | ${lib.getExe inputs.less.drv} -+F"; # Disable quit-if-one-screen for diffs
   diff-so-fancy.markEmptyLines = false; # So nothing else looks like `red reverse`
 
   apply.whitespace = "error";
