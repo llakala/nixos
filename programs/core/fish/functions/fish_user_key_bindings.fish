@@ -21,10 +21,10 @@ function fish_user_key_bindings
 
     bind ctrl-left backward-bigword
     bind ctrl-right forward-bigword
-    bind shift-left backward-word
-    bind shift-right forward-word
-    bind --erase --preset alt-left
-    bind --erase --preset alt-right
+    bind alt-left backward-word
+    bind alt-right forward-word
+    bind --erase --preset shift-left
+    bind --erase --preset shift-right
     bind ctrl-backspace backward-kill-bigword
 
     bind ctrl-m __fish_man_page
