@@ -1,1 +1,1 @@
---RAW-CONTROL-CHARS --wordwrap --quit-if-one-screen
+--RAW-CONTROL-CHARS --wordwrap --clear-screen --quit-if-one-screen
