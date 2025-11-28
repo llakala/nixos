@@ -12,7 +12,6 @@ in {
     experimental-features = [
       "nix-command"
       "flakes"
-      "no-url-literals"
     ];
 
     trusted-users = [
