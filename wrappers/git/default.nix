@@ -10,47 +10,46 @@ in {
     less.path = "/less";
   };
 
-  options.iniConfig = {
-    type = types.attrs;
-    defaultFunc = { inputs }: import ./settings.nix { inherit inputs; };
-  };
-  options.ignoreFile = {
-    type = types.path;
-    default = ./ignore;
-  };
+  options = {
+    ignoreFile = {
+      type = types.path;
+      default = ./ignore;
+    };
+    iniConfig = {
+      type = types.attrs;
+      defaultFunc = { inputs }: import ./settings.nix { inherit inputs; };
+    };
 
-  options.configDir = {
-    type = types.derivation;
-    defaultFunc =
-      { options, inputs }:
-      let
-        inherit (inputs.nixpkgs) pkgs lib;
-        inherit (pkgs) linkFarm writeText;
-        inherit (lib.generators) toGitINI;
-      in
-      linkFarm "gitconfig" [
-        { name = "git/config"; path = writeText "config" (toGitINI options.iniConfig); }
-        { name = "git/ignore"; path = options.ignoreFile; }
-      ];
-  };
-
-  options.drv = {
-    type = types.derivation;
-    defaultFunc =
-      { options, inputs }:
-      let
-        inherit (inputs.nixpkgs) pkgs;
-        inherit (pkgs) symlinkJoin makeWrapper;
+    configDir = {
+      type = types.derivation;
+      defaultFunc =
+        { options, inputs }:
+        let
+          inherit (inputs.nixpkgs) pkgs lib;
+          inherit (pkgs) linkFarm writeText;
+          inherit (lib.generators) toGitINI;
         in
-      symlinkJoin {
-        name = "git-wrapped";
-        paths = [ pkgs.gitFull options.configDir ];
-        buildInputs = [ makeWrapper ];
-        postBuild = /* bash */ ''
-          wrapProgram $out/bin/git \
-            --set XDG_CONFIG_HOME $out
-        '';
-        meta.mainProgram = "git";
-      };
+        linkFarm "gitconfig" [
+          { name = "git/config"; path = writeText "config" (toGitINI options.iniConfig); }
+          { name = "git/ignore"; path = options.ignoreFile; }
+        ];
+    };
   };
+
+  impl =
+    { options, inputs }:
+    let
+      inherit (inputs.nixpkgs) pkgs;
+      inherit (pkgs) symlinkJoin makeWrapper;
+    in
+    symlinkJoin {
+      name = "git-wrapped";
+      paths = [ pkgs.gitFull options.configDir ];
+      buildInputs = [ makeWrapper ];
+      postBuild = /* bash */ ''
+        wrapProgram $out/bin/git \
+          --set XDG_CONFIG_HOME $out
+      '';
+      meta.mainProgram = "git";
+    };
 }
