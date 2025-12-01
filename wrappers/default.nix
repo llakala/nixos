@@ -14,7 +14,7 @@ let
     modules = adios.lib.importModules ./.;
   };
 
-  eval = (adios root).eval {
+  tree = (adios root).eval {
     options = {
       "/nixpkgs" = {
         inherit pkgs lib;
@@ -27,4 +27,4 @@ let
 in
   # We have each wrapper `foo` point to all its options, so you can do
   # `(import ./wrappers {}).foo.some-option`
-  mapAttrs (_: wrapper: wrapper.args.options) eval.root.modules
+  mapAttrs (_: wrapper: wrapper.args.options) tree.root.modules
