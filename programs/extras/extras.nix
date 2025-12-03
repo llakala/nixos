@@ -29,6 +29,7 @@
     ijq # Interactive jq
     mediawriter
     resources
+    krita
     shortwave # Internet radio
     tldr # Mini-manpages
 
