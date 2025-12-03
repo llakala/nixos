@@ -1,2 +1,4 @@
 h left-scroll
 l right-scroll
+/ forw-search ^W
+? back-search ^W
