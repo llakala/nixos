@@ -1,4 +1,5 @@
 h left-scroll
 l right-scroll
+\e/ forw-search ^R
 #line-edit
 \e abort

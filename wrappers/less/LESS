@@ -1,1 +1,1 @@
---RAW-CONTROL-CHARS --clear-screen --quit-if-one-screen --redraw-on-quit --tilde --incsearch --wordwrap --ignore-case --search-options=W
+--RAW-CONTROL-CHARS --clear-screen --quit-if-one-screen --redraw-on-quit --tilde --incsearch --wordwrap --ignore-case --search-options=WR
