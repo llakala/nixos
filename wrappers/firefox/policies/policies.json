@@ -3,7 +3,6 @@
     "DontCheckDefaultBrowser": true,
     "DisableFirefoxScreenshots": true,
     "DisableFirefoxStudies": true,
-    "DisablePocket": true,
     "DisableTelemetry": true,
     "DisplayBookmarksToolbar": "never",
     "DisplayMenuBar": "never",
@@ -32,28 +31,19 @@
     "EnableTrackingProtection": {
       "Cryptomining": true,
       "Fingerprinting": true,
+      "EmailTracking": true,
       "Value": true
     },
     "FirefoxHome": {
+      "Search": true,
+      "TopSites": false,
+      "SponsoredTopSites": false,
       "Highlights": false,
       "Pocket": false,
-      "Search": true,
-      "Snippets": false,
       "SponsoredPocket": false,
-      "SponsoredTopSites": false,
-      "TopSites": false
-    },
-    "Handlers": {
-      "schemes": {
-        "element": {
-          "action": "useSystemDefault",
-          "ask": false
-        },
-        "vscode": {
-          "action": "useSystemDefault",
-          "ask": false
-        }
-      }
+      "Stories": false,
+      "SponsoredStories": false,
+      "Snippets": false,
     },
     "3rdparty": {
       "extensions": {
