@@ -41,7 +41,7 @@ inputs.gh.iniConfig
   push.default = "current"; # Only push current branch, and don't force-push everything when force pushing
 
   log.abbrevCommit = true; # Show short version of commit hashes by default
-  log.follow = true; # Show short version of commit hashes by default
+  log.follow = true;
   log.date = "format:%I:%M %p%Z %a %b %-d %Y"; # a la "01:29 AM Wed Dec 3 2025"
 
   merge.conflictstyle = "diff3";
