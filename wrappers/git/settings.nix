@@ -33,7 +33,7 @@ inputs.gh.iniConfig
   pager.diff = "diff-so-fancy | ${lib.getExe inputs.less.drv} -+F"; # Disable quit-if-one-screen for diffs
   diff-so-fancy.markEmptyLines = false; # So nothing else looks like `red reverse`
 
-  apply.whitespace = "error";
+  apply.whitespace = "warn";
 
   pull.ff = "only"; # Prevent merging if changes are trivial, but if they're not, require an explicit merge
   push.autoSetupRemote = true;
