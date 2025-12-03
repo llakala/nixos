@@ -26,6 +26,7 @@ function fish_user_key_bindings
     bind --erase --preset shift-left
     bind --erase --preset shift-right
     bind ctrl-backspace backward-kill-bigword
+    bind alt-backspace backward-kill-word
 
     bind ctrl-m __fish_man_page
     bind --erase --preset alt-h
