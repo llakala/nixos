@@ -16,9 +16,6 @@
 
       "browser.toolbars.bookmarks.visibility": "never",
 
-      "browser.tabs.groups.smart.enabled": false,
-      "browser.ml.chat.enabled": false,
-
       "media.ffmpeg.vaapi.enabled": true,
       "layers.acceleration.force-enabled": true,
       "gfx.webrender.all": true,

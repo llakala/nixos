@@ -11,6 +11,9 @@
     "PictureInPicture": {
       "Enabled": false
     },
+    "GenerativeAI": {
+      "Enabled": false,
+    },
     "PromptForDownloadLocation": false,
     "HardwareAcceleration": true,
     "TranslateEnabled": true,
