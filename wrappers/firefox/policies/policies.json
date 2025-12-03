@@ -11,7 +11,7 @@
       "Enabled": false
     },
     "GenerativeAI": {
-      "Enabled": false,
+      "Enabled": false
     },
     "PromptForDownloadLocation": false,
     "HardwareAcceleration": true,
@@ -43,7 +43,7 @@
       "SponsoredPocket": false,
       "Stories": false,
       "SponsoredStories": false,
-      "Snippets": false,
+      "Snippets": false
     },
     "3rdparty": {
       "extensions": {
