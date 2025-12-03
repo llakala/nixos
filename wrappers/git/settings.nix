@@ -42,6 +42,7 @@ inputs.gh.iniConfig
 
   log.abbrevCommit = true; # Show short version of commit hashes by default
   log.follow = true; # Show short version of commit hashes by default
+  log.date = "format:%I:%M %p%Z %a %b %-d %Y"; # a la "01:29 AM Wed Dec 3 2025"
 
   merge.conflictstyle = "diff3";
   merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
