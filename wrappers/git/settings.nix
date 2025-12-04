@@ -18,7 +18,7 @@ inputs.gh.iniConfig
 
   # File only contains a single newline, so the comment below a commit giving
   # instructions gets pushed down a line, and `ip` motions work normally!
-  commit.template = toString ./template;
+  commit.template = "${./template}";
 
   rerere.enabled = true;
   rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
