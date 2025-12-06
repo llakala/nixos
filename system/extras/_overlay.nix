@@ -49,3 +49,7 @@ in {
     sources = loadPath sourcesPath;
   }
 )
+// (optionalAttrs (isValidPath "nixos.nix") {
+  config = (loadPath "nixos.nix").palpot.config;
+  options = (loadPath "nixos.nix").palpot.options;
+})
