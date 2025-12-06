@@ -1,19 +1,21 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 
 {
   features.shell = "fish"; # If we ever stop using Fish, change this
   features.abbreviations = "fish";
 
-  programs.command-not-found.enable = false; # Broken
-
-  hm.programs.fish.enable = true;
+  programs.command-not-found.enable = false;
+  hm.programs.fish = {
+    enable = true;
+    package = self.wrappers.fish.drv;
+  };
   hm.xdg.configFile."fish/config.fish".force = true;
 
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.fish; # TODO: use wrapper for this
   programs.fish = {
     enable = true;
+    package = self.wrappers.fish.drv;
     useBabelfish = true; # Important: halves the startup time
-    interactiveShellInit = builtins.readFile ./config.fish;
 
     shellAbbrs = {
       m = "man";
@@ -22,14 +24,5 @@
 
       src = "source";
     };
-  };
-  hm.xdg.configFile."fish/completions" = {
-    source = ./completions;
-    force = true;
-  };
-  hm.xdg.configFile."fish/functions" = {
-    source = ./functions;
-    force = true;
-    recursive = true;
   };
 }

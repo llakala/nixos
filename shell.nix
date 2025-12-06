@@ -18,9 +18,9 @@ pkgs.mkShellNoCC {
     wrappers.git.drv
     wrappers.kittab.drv
     wrappers.yazi.drv
+    wrappers.fish.drv
     packages.satod
     packages.evalue
     menu.imanpu
-    pkgs.fish
   ];
 }
