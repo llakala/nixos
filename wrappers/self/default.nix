@@ -4,7 +4,9 @@ let
 in {
   name = "self";
 
-  options.myLib = {
-    type = types.attrs;
+  options = {
+    myLib = {
+      type = types.attrs;
+    };
   };
 }
