@@ -7,11 +7,11 @@
         "owner": "llakala",
         "repo": "adios"
       },
-      "branch": "try-adding-input-impls",
+      "branch": "providers-and-consumers",
       "submodules": false,
-      "revision": "1d39950cc896398f19ad80a2520fe1131a374f49",
-      "url": "https://github.com/llakala/adios/archive/1d39950cc896398f19ad80a2520fe1131a374f49.tar.gz",
-      "hash": "sha256-nrERagR4+PQPxk+cZ1VeeYWMrOIEZwA3RK8GBlXi838="
+      "revision": "ad81d3814c699f7d8221222c075b0b651ddff0a5",
+      "url": "https://github.com/llakala/adios/archive/ad81d3814c699f7d8221222c075b0b651ddff0a5.tar.gz",
+      "hash": "sha256-deG8HSpfRKR/KUyzKg/E2ozcotSo0ewPEQ4VvUSnV5w="
     },
     "home-manager": {
       "type": "Git",

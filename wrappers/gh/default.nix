@@ -13,10 +13,11 @@ in {
       type = types.path;
       default = ./gh;
     };
-    # For consumption by the git wrapper
-    iniConfig = {
-      type = types.attrs;
-      defaultFunc = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
+  };
+
+  mutations = {
+    "/git" = {
+      iniConfig = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
     };
   };
 

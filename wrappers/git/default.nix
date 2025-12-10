@@ -6,9 +6,9 @@ in {
 
   inputs = {
     nixpkgs.path = "/nixpkgs";
-    gh.path = "/gh";
-    less.path = "/less";
   };
+
+  mutators = [ "/gh" "/less" "/diff-so-fancy" ];
 
   options = {
     ignoreFile = {
@@ -17,7 +17,18 @@ in {
     };
     iniConfig = {
       type = types.attrs;
-      defaultFunc = { inputs }: import ./settings.nix { inherit inputs; };
+      mutable = true;
+      mutator = {
+        type = types.attrs;
+        mergeFunc =
+          { mutators, inputs }:
+          let
+            inherit (inputs.nixpkgs) lib;
+            inherit (builtins) foldl' attrValues;
+            settings = import ./settings.nix { inherit inputs; };
+          in
+          foldl' (acc: elem: lib.recursiveUpdate acc elem) {} ([ settings ] ++ attrValues mutators);
+      };
     };
 
     configDir = {
