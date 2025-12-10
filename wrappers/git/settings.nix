@@ -1,11 +1,8 @@
 { inputs }:
 let
   inherit (inputs.nixpkgs) lib pkgs;
-  lessWrapper = inputs.less {};
 in
-inputs.gh.iniConfig
-// inputs.less.iniConfig
-// {
+{
   user = {
     name = "Eman Resu";
     email = "78693624+quatquatt@users.noreply.github.com";
@@ -28,11 +25,6 @@ inputs.gh.iniConfig
   diff.renames = "copies"; # Be as smart for renames as possible
   diff.colorMoved = true;
   diff.wsErrorHighlight = "all"; # Highlight all whitespace errors, not just new ones
-
-  # TODO: move into diff-so-fancy module once infrec is fixed
-  interactive.diffFilter = "diff-so-fancy --patch";
-  pager.diff = "diff-so-fancy | ${lib.getExe lessWrapper} -+F"; # Disable quit-if-one-screen for diffs
-  diff-so-fancy.markEmptyLines = false; # So nothing else looks like `red reverse`
 
   apply.whitespace = "warn";
 

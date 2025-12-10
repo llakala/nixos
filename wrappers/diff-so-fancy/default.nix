@@ -6,6 +6,13 @@
   inputs = {
     nixpkgs.path = "/nixpkgs";
     git.path = "/git";
+    less.path = "/less";
+  };
+
+  mutations = {
+    "/git" = {
+      iniConfig = { inputs }: import ./iniConfig.nix { inherit inputs; };
+    };
   };
 
   impl =
