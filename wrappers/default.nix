@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (pkgs) lib;
+  lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   inherit (lib) foldlAttrs;
   adios = import "${sources.adios}/adios";

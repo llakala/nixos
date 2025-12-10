@@ -1,7 +1,7 @@
 _: final: prev:
 let
   pkgs = import <nixpkgs> {};
-  lib = pkgs.lib;
+  lib = import <nixpkgs/lib>;
 
   inherit (builtins) pathExists all functionArgs attrValues isAttrs getFlake getEnv;
   inherit (lib) optionalAttrs findFirst;
