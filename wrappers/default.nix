@@ -7,7 +7,6 @@
 let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
-  inherit (lib) foldlAttrs;
   adios = import "${sources.adios}/adios";
 
   root = {
@@ -30,13 +29,8 @@ in
 # `(import ./wrappers {}).foo.some-option`
 mapAttrs (
   _: wrapper:
-  foldlAttrs (
-    acc: arg: value:
-    # Remove the functor from the args if it exists, instead preferring to access
-    # the final result through `.drv`
-    if arg == "__functor" then
-      acc // { drv = wrapper {}; }
-    else
-      acc // { ${arg} = value; }
-  ) {} wrapper.args.options
+  if wrapper.args.options ? __functor then
+    (removeAttrs wrapper.args.options [ "__functor" ]) // { drv = wrapper {}; }
+  else
+    wrapper.args.options
 ) tree.root.modules
