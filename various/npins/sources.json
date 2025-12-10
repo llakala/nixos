@@ -4,14 +4,14 @@
       "type": "Git",
       "repository": {
         "type": "GitHub",
-        "owner": "adisbladis",
+        "owner": "llakala",
         "repo": "adios"
       },
-      "branch": "master",
+      "branch": "try-adding-input-impls",
       "submodules": false,
-      "revision": "6754e85bce51ea198fa405394fb5b57d67555e7d",
-      "url": "https://github.com/adisbladis/adios/archive/6754e85bce51ea198fa405394fb5b57d67555e7d.tar.gz",
-      "hash": "sha256-f7GHSqsGJGkbtIS4YHTk8Zs5rI2IGyqGsJ0qbF1J9Tg="
+      "revision": "1d39950cc896398f19ad80a2520fe1131a374f49",
+      "url": "https://github.com/llakala/adios/archive/1d39950cc896398f19ad80a2520fe1131a374f49.tar.gz",
+      "hash": "sha256-nrERagR4+PQPxk+cZ1VeeYWMrOIEZwA3RK8GBlXi838="
     },
     "home-manager": {
       "type": "Git",

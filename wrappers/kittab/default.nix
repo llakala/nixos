@@ -10,35 +10,30 @@ in {
     kitty.path = "/kitty";
   };
 
-  options.desktopEntry = {
-    type = types.derivation;
-    defaultFunc =
-      { inputs }:
-      import ./desktopEntry.nix { inherit inputs; };
+  options = {
+    desktopEntry = {
+      type = types.derivation;
+      defaultFunc = { inputs }: import ./desktopEntry.nix { inherit inputs; };
+    };
+    kittab = {
+      type = types.derivation;
+      defaultFunc = { inputs }: import ./kittab.nix { inherit inputs; };
+    };
   };
 
-  options.kittab = {
-    type = types.derivation;
-    defaultFunc =
-      { inputs }:
-      import ./kittab.nix { inherit inputs; };
-  };
-
-  options.drv = {
-    type = types.derivation;
-    defaultFunc =
-      { options, inputs }:
-      let
-        inherit (inputs.nixpkgs) pkgs;
-      in
-      pkgs.symlinkJoin {
-        name = "kittab-wrapped";
-        paths = [
-          options.kittab
-          options.desktopEntry
-          inputs.kitty.drv
-        ];
-        meta.mainProgram = "kittab";
-      };
-  };
+  impl =
+    { options, inputs }:
+    let
+      inherit (inputs.nixpkgs) pkgs;
+      kittyWrapper = inputs.kitty {};
+    in
+    pkgs.symlinkJoin {
+      name = "kittab-wrapped";
+      paths = [
+        options.kittab
+        options.desktopEntry
+        kittyWrapper
+      ];
+      meta.mainProgram = "kittab";
+    };
 }

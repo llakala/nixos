@@ -7,6 +7,7 @@
 let
   inherit (pkgs) lib;
   inherit (builtins) mapAttrs;
+  inherit (lib) foldlAttrs;
   adios = import "${sources.adios}/adios";
 
   root = {
@@ -25,6 +26,17 @@ let
     };
   };
 in
-  # We have each wrapper `foo` point to all its options, so you can do
-  # `(import ./wrappers {}).foo.some-option`
-  mapAttrs (_: wrapper: wrapper.args.options) tree.root.modules
+# We have each wrapper `foo` point to all its options, so you can do
+# `(import ./wrappers {}).foo.some-option`
+mapAttrs (
+  _: wrapper:
+  foldlAttrs (
+    acc: arg: value:
+    # Remove the functor from the args if it exists, instead preferring to access
+    # the final result through `.drv`
+    if arg == "__functor" then
+      acc // { drv = wrapper {}; }
+    else
+      acc // { ${arg} = value; }
+  ) {} wrapper.args.options
+) tree.root.modules
