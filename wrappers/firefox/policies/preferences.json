@@ -16,6 +16,8 @@
 
       "browser.toolbars.bookmarks.visibility": "never",
 
+      "services.sync.engine.tabs": false,
+
       "media.ffmpeg.vaapi.enabled": true,
       "layers.acceleration.force-enabled": true,
       "gfx.webrender.all": true,
