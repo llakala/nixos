@@ -44,7 +44,13 @@ in {
     };
   };
 
-  # Injecting the options into the drv itself seemed to be very buggy - so I
-  # just provide the options here, so they can be injected into the shell itself
-  impl = { inputs }: inputs.nixpkgs.pkgs.fzf;
+  mutations."/fish".interactiveShellInit =
+    { inputs }:
+    let
+      inherit (inputs.nixpkgs) pkgs lib;
+    in
+    # fish
+    ''
+      ${lib.getExe pkgs.fzf} --fish | source
+    '';
 }

@@ -1,10 +1,6 @@
-{ self, lib, ... }:
+{ self, ... }:
 
 {
   features.fuzzyCd = "zoxide";
   environment.systemPackages = [ self.wrappers.zoxide.drv ];
-
-  programs.fish.interactiveShellInit = ''
-    ${lib.getExe self.wrappers.zoxide.drv} init fish ${self.wrappers.zoxide.flags} | source
-  '';
 }

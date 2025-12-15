@@ -25,6 +25,17 @@ in {
     };
   };
 
+  mutations."/fish".interactiveShellInit =
+    { inputs, options }:
+    let
+      inherit (inputs.nixpkgs) lib;
+      finalWrapper = options {};
+    in
+    # fish
+    ''
+      ${lib.getExe finalWrapper} init fish ${options.flags} | source
+    '';
+
   impl =
     { options, inputs }:
     let

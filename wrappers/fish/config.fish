@@ -21,7 +21,6 @@ function fish_job_summary -a job_id is_foreground cmd_line signal_or_end_name si
     job_summary $argv
 end
 
-
 # Rewriting the fish_title function to print the full prompt_pwd. Sourced from:
 # https://github.com/fish-shell/fish-shell/blob/945a53/share/functions/fish_title.fish#L8
 function fish_title

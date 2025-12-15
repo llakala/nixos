@@ -1,4 +1,4 @@
-{ self, lib, ... }:
+{ self, ... }:
 
 {
   environment.systemPackages = [ self.wrappers.fzf.drv ];
@@ -9,8 +9,4 @@
     FZF_ALT_C_OPTS = self.wrappers.fzf.alt-c.opts;
     FZF_CTRL_R_OPTS = self.wrappers.fzf.ctrl-r.opts;
   };
-
-  programs.fish.interactiveShellInit = ''
-    ${lib.getExe self.wrappers.fzf.drv} --fish | source
-  '';
 }
