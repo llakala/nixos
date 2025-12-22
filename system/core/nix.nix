@@ -1,11 +1,6 @@
 { hostVars, pkgs, config, ... }:
 
-let
-  setCursor = expansion: {
-    setCursor = true;
-    inherit expansion;
-  };
-in {
+{
   nix.package = pkgs.lixPackageSets.latest.lix;
 
   nix.settings = {
@@ -31,32 +26,4 @@ in {
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = hostVars.stateVersion;
-
-  hm.programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; {
-    nd = "nix develop";
-    ne = "nix eval";
-
-    nfu = "nix flake update";
-    nfl = "nix flake lock";
-
-    nr = "nix run";
-    nrn = setCursor "nix run nixpkgs#%";
-    "nr." = setCursor "nix run .#%";
-
-    ns = "nix-shell";
-    nsn = "nix-shell -p";
-
-    "ns." = setCursor "nix shell .#%";
-
-    nb = "nix-build";
-    nba = "nix-build -A";
-    nbn = "nix-build '<nixpkgs>' -A";
-
-    "nb." = setCursor "nix build .#%";
-
-    nrp = "nix repl";
-    nrpn = "nix repl nixpkgs";
-    nrpf = "nixos-rebuild repl";
-  };
 }

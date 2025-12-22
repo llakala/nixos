@@ -16,9 +16,8 @@ in {
   };
 
   mutations = {
-    "/git" = {
-      iniConfig = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
-    };
+    "/git".iniConfig = { options, inputs }: import ./iniConfig.nix { inherit options inputs; };
+    "/fish".abbreviations = _: import ./abbreviations.nix;
   };
 
   impl =

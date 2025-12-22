@@ -10,6 +10,8 @@ in {
 
   mutators = [ "/gh" "/less" "/diff-so-fancy" ];
 
+  mutations."/fish".abbreviations = _: import ./abbreviations.nix;
+
   options = {
     ignoreFile = {
       type = types.path;

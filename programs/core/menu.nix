@@ -1,4 +1,4 @@
-{ sources, pkgs, config, hostVars, ... }:
+{ sources, pkgs, hostVars, ... }:
 
 let
   menu = import "${sources.menu}/packages/default.nix" { inherit pkgs; };
@@ -13,11 +13,4 @@ in {
     UNIFY_DIRECTORY = hostVars.configDirectory; # Also used by fuiska
     IMANPU_DIRECTORY = "${hostVars.configDirectory}/various/npins";
   };
-
-  programs.fish.shellAbbrs =
-  assert config.features.abbreviations == "fish"; { # Error if we ever change shell
-    fsk = "fuiska";
-    imp = "imanpu";
-  };
-
 }
