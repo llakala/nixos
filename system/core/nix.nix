@@ -1,4 +1,4 @@
-{ hostVars, pkgs, config, ... }:
+{ hostVars, pkgs, ... }:
 
 {
   nix.package = pkgs.lixPackageSets.latest.lix;
