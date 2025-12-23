@@ -1,8 +1,10 @@
 { self, ... }:
 
 {
-  features.browser = "firefox";
-  features.pdfs = "firefox";
+  features = {
+    browser = "firefox";
+    pdfs = "firefox";
+  };
 
   environment.systemPackages = [ self.wrappers.firefox.drv ];
 
