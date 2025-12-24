@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "923cf3e1c97fe62407def1a0e0a8ce6462fd7d71",
-      "url": "https://github.com/llakala/meovim/archive/923cf3e1c97fe62407def1a0e0a8ce6462fd7d71.tar.gz",
-      "hash": "sha256-44fNMzgjztW37q0C62Y83qDybo7wEyZt7YM3qcoZvUU="
+      "revision": "3dc71cfbb3d1a96c4cfb78e3c04decc035bf2f9c",
+      "url": "https://github.com/llakala/meovim/archive/3dc71cfbb3d1a96c4cfb78e3c04decc035bf2f9c.tar.gz",
+      "hash": "sha256-ZJRbFNAym3JX8esAHUuVk9xMaA0NJcb71SjiLcwamXw="
     },
     "mnw": {
       "type": "Git",
@@ -64,6 +64,20 @@
       "revision": "6605bc394235fef09ae372faca744647e1fb0303",
       "url": "https://github.com/Gerg-L/mnw/archive/6605bc394235fef09ae372faca744647e1fb0303.tar.gz",
       "hash": "sha256-9cgRWRe+mg2qLnRq9tfj4TpcXGu8+xgvugHnrJWjtb0="
+    },
+    "neovim": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "neovim",
+        "repo": "neovim"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "d7b882697b5dc307a6396ec6163e41dfc74b076d",
+      "url": "https://github.com/neovim/neovim/archive/d7b882697b5dc307a6396ec6163e41dfc74b076d.tar.gz",
+      "hash": "sha256-E3rgpI0RihLwo40Tr5Fxh47nRLzY4SSamixP0P3ZG8w=",
+      "frozen": true
     },
     "nixos-hardware": {
       "type": "Git",
