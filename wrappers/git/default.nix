@@ -5,6 +5,7 @@ in {
   name = "git";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -53,16 +54,13 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "git-wrapped";
-      paths = [ pkgs.gitFull options.configDir ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/git \
-          --set XDG_CONFIG_HOME $out
-      '';
-      meta.mainProgram = "git";
+    inputs.mkWrapper {
+      name = "git"; # Default derivation name is git-with-svn
+      package = pkgs.gitFull;
+      extraPaths = [ options.configDir ];
+      environment = {
+        XDG_CONFIG_HOME = "$out";
+      };
     };
 }

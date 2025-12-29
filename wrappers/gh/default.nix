@@ -5,6 +5,7 @@ in {
   name = "gh";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -24,17 +25,14 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "gh-wrapped";
-      paths = [ pkgs.gh ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        ln -s ${options.configDir} $out/gh
-        wrapProgram $out/bin/gh \
-          --set GH_CONFIG_DIR $out/gh \
-      '';
-      meta.mainProgram = "gh";
+    inputs.mkWrapper {
+      package = pkgs.gh;
+      symlinks = {
+        "$out/gh" = options.configDir;
+      };
+      environment = {
+        GH_CONFIG_DIR = "$out/gh";
+      };
     };
 }

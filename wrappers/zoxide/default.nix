@@ -5,6 +5,7 @@ in {
   name = "zoxide";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -40,18 +41,11 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "zoxide-wrapped";
-      paths = [ pkgs.zoxide ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        # We don't add `options.flags` here, and instead inject them at the
-        # shell init stage
-        wrapProgram $out/bin/zoxide \
-          --set _ZO_EXCLUDE_DIRS "${options.excludedDirs}"
-      '';
-      meta.mainProgram = "zoxide";
+    inputs.mkWrapper {
+      package = pkgs.zoxide;
+      environment = {
+        _ZO_EXCLUDE_DIRS = options.excludedDirs;
+      };
     };
 }

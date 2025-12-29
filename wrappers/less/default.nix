@@ -5,6 +5,7 @@ in {
   name = "less";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -29,17 +30,12 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "less-wrapped";
-      paths = [ pkgs.less ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/less \
-          --set LESS "${options.flags}" \
-          --set LESSKEY_CONTENT "${options.keybinds}"
-      '';
-      meta.mainProgram = "less";
+    inputs.mkWrapper {
+      package = pkgs.less;
+      environment = {
+        LESS = options.flags;
+        LESSKEY_CONTENT = options.keybinds;
+      };
     };
 }

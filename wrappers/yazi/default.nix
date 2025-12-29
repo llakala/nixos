@@ -3,6 +3,7 @@ let
   inherit (adios) types;
 in {
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -75,17 +76,15 @@ in {
     let
       inherit (inputs.nixpkgs) pkgs lib;
       inherit (lib) makeBinPath;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "yazi-wrapped";
-      paths = [ pkgs.yazi-unwrapped options.configDir ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/yazi \
-          --prefix PATH : ${makeBinPath options.extraPackages} \
-          --set YAZI_CONFIG_HOME $out/yazi
+    inputs.mkWrapper {
+      package = pkgs.yazi-unwrapped;
+      extraPaths = [ options.configDir ];
+      wrapperArgs = ''
+        --prefix PATH : ${makeBinPath options.extraPackages}
       '';
-      meta.mainProgram = "yazi";
+      environment = {
+        YAZI_CONFIG_HOME = "$out/yazi";
+      };
     };
 }

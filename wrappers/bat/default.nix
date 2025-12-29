@@ -5,6 +5,7 @@ in {
   name = "bat";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
     less.path = "/less";
   };
@@ -20,18 +21,13 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs lib;
-      inherit (pkgs) symlinkJoin makeWrapper;
       lessWrapper = inputs.less {};
     in
-    symlinkJoin {
-      name = "bat-wrapped";
-      paths = [ pkgs.bat ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/bat \
-          --add-flags "${options.flags}" \
-          --add-flags "--pager='${lib.getExe lessWrapper} -RFX'"
+    inputs.mkWrapper {
+      package = pkgs.bat;
+      wrapperArgs = ''
+        --add-flags "${options.flags}" \
+        --add-flags "--pager='${lib.getExe lessWrapper} -RFX'"
       '';
-      meta.mainProgram = "bat";
     };
 }

@@ -5,6 +5,7 @@ in {
   name = "starship";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
     git.path = "/git";
   };
@@ -47,17 +48,12 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "starship-wrapped";
-      paths = [ pkgs.starship ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/starship \
-          --set STARSHIP_CONFIG ${options.configFile} \
-          --set XDG_CONFIG_HOME ${inputs.git.configDir} # Makes starship follow /git/ignore for git status module
-      '';
-      meta.mainProgram = "starship";
+    inputs.mkWrapper {
+      package = pkgs.starship;
+      environment = {
+        STARSHIP_CONFIG = options.configFile;
+        XDG_CONFIG_HOME = inputs.git.configDir; # Makes starship follow /git/ignore for git status module
+      };
     };
 }

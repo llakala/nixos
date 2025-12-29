@@ -5,6 +5,7 @@ in {
   name = "termfilechooser";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -19,17 +20,18 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "termfilechooser-wrapped";
-      paths = [ pkgs.xdg-desktop-portal-termfilechooser ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
+    inputs.mkWrapper {
+      package = pkgs.xdg-desktop-portal-termfilechooser;
+      binaryPath = "$out/libexec/xdg-desktop-portal-termfilechooser";
+      preWrap = ''
         mkdir -p $out/xdg-desktop-portal-termfilechooser
-        ln -s ${options.configFile} $out/xdg-desktop-portal-termfilechooser/config
-        wrapProgram $out/libexec/xdg-desktop-portal-termfilechooser \
-          --set XDG_CONFIG_HOME $out
       '';
+      symlinks = {
+        "$out/xdg-desktop-portal-termfilechooser-config" = options.configFile;
+      };
+      environment = {
+        XDG_CONFIG_HOME = "$out";
+      };
     };
 }

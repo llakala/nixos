@@ -5,6 +5,7 @@ in {
   name = "fish";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -93,17 +94,16 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin;
     in
-    symlinkJoin {
-      name = "fish-wrapped";
-      paths = [ pkgs.fish ];
-      postBuild = /* bash */ ''
+    inputs.mkWrapper {
+      package = pkgs.fish;
+      preWrap = ''
         rm -r $out/share/fish/vendor_completions.d $out/share/fish/vendor_functions.d
-        ln -s ${options.completions} $out/share/fish/vendor_completions.d
-        ln -s ${options.functions} $out/share/fish/vendor_functions.d
-        ln -s ${options.interactiveShellInit} $out/share/fish/vendor_conf.d/config.fish
       '';
-      meta.mainProgram = "fish";
+      symlinks = {
+        "$out/share/fish/vendor_completions.d" = options.completions;
+        "$out/share/fish/vendor_functions.d" = options.functions;
+        "$out/share/fish/vendor_conf.d/config.fish" = options.interactiveShellInit;
+      };
     };
 }

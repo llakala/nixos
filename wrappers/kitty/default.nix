@@ -5,6 +5,7 @@ in {
   name = "kitty";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -36,19 +37,18 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "kitty-wrapped";
-      paths = [ pkgs.kitty ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
+    inputs.mkWrapper {
+      package = pkgs.kitty;
+      preWrap = ''
         mkdir -p $out/kitty
-        ln -s ${options.configFile} $out/kitty/kitty.conf
-        ln -s ${options.themeFile} $out/kitty/current-theme.conf
-        wrapProgram $out/bin/kitty \
-          --set KITTY_CONFIG_DIRECTORY $out/kitty \
       '';
-      meta.mainProgram = "kitty";
+      symlinks = {
+        "$out/kitty/kitty.conf" = options.configFile;
+        "$out/kitty/current-theme.conf" = options.themeFile;
+      };
+      environment = {
+        KITTY_CONFIG_DIRECTORY = "$out/kitty";
+      };
     };
 }

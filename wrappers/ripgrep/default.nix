@@ -5,6 +5,7 @@ in {
   name = "ripgrep";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
   };
 
@@ -19,16 +20,11 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "ripgrep-wrapped";
-      paths = [ pkgs.ripgrep ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/rg \
-          --add-flags "${options.flags}" \
+    inputs.mkWrapper {
+      package = pkgs.ripgrep;
+      wrapperArgs = ''
+        --add-flags ${options.flags}
       '';
-      meta.mainProgram = "rg";
     };
 }

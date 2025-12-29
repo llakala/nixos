@@ -4,6 +4,7 @@
   name = "diff-so-fancy";
 
   inputs = {
+    mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
     git.path = "/git";
     less.path = "/less";
@@ -19,16 +20,11 @@
     { inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) symlinkJoin makeWrapper;
     in
-    symlinkJoin {
-      name = "diff-so-fancy-wrapped";
-      paths = [ pkgs.diff-so-fancy ];
-      buildInputs = [ makeWrapper ];
-      postBuild = /* bash */ ''
-        wrapProgram $out/bin/diff-so-fancy \
-          --set GIT_CONFIG_GLOBAL "${inputs.git.configDir}/git/config" \
-      '';
-      meta.mainProgram = "diff-so-fancy";
+    inputs.mkWrapper {
+      package = pkgs.diff-so-fancy;
+      environment = {
+        GIT_CONFIG_GLOBAL = "${inputs.git.configDir}/git/config";
+      };
     };
 }
