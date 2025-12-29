@@ -1,8 +1,6 @@
-{ pkgs, hostVars, sources, ... }:
+{ pkgs, hostVars, ... }:
 
-let
-  npins = pkgs.callPackage (sources.npins + "/npins.nix") {};
-in {
-  environment.systemPackages = [ npins ];
+{
+  environment.systemPackages = [ pkgs.npins ];
   environment.variables.NPINS_DIRECTORY = "${hostVars.configDirectory}/various/npins";
 }
