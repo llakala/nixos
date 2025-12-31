@@ -9,8 +9,6 @@ in {
     nixpkgs.path = "/nixpkgs";
   };
 
-  mutators = [ "/gh" "/less" "/diff-so-fancy" ];
-
   mutations."/fish".abbreviations = _: import ./abbreviations.nix;
 
   options = {
@@ -19,19 +17,17 @@ in {
       default = ./ignore;
     };
     iniConfig = {
+      mutators = [ "/gh" "/less" "/diff-so-fancy" ];
       type = types.attrs;
-      mutable = true;
-      mutator = {
-        type = types.attrs;
-        mergeFunc =
-          { mutators, inputs }:
-          let
-            inherit (inputs.nixpkgs) lib;
-            inherit (builtins) foldl' attrValues;
-            settings = import ./settings.nix { inherit inputs; };
-          in
-          foldl' (acc: elem: lib.recursiveUpdate acc elem) {} ([ settings ] ++ attrValues mutators);
-      };
+      mutatorType = types.attrs;
+      mergeFunc =
+        { mutators, inputs }:
+        let
+          inherit (inputs.nixpkgs) lib;
+          inherit (builtins) foldl' attrValues;
+          settings = import ./settings.nix { inherit inputs; };
+        in
+        foldl' (acc: elem: lib.recursiveUpdate acc elem) {} ([ settings ] ++ attrValues mutators);
     };
 
     configDir = {

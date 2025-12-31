@@ -9,9 +9,9 @@
       },
       "branch": "providers-and-consumers",
       "submodules": false,
-      "revision": "ad81d3814c699f7d8221222c075b0b651ddff0a5",
-      "url": "https://github.com/llakala/adios/archive/ad81d3814c699f7d8221222c075b0b651ddff0a5.tar.gz",
-      "hash": "sha256-deG8HSpfRKR/KUyzKg/E2ozcotSo0ewPEQ4VvUSnV5w="
+      "revision": "03804ee00e770dc7f2c3e9a0c9a59958c6bdba5d",
+      "url": "https://github.com/llakala/adios/archive/03804ee00e770dc7f2c3e9a0c9a59958c6bdba5d.tar.gz",
+      "hash": "sha256-gXuaz6zxRuIiSr97Zsc/6VaMxJsvn9B1BrhOEB1woVI="
     },
     "home-manager": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d2e0458d6531885600b346e161c38790dc356fa8",
-      "url": "https://github.com/nix-community/home-manager/archive/d2e0458d6531885600b346e161c38790dc356fa8.tar.gz",
-      "hash": "sha256-JR7A2xS3EBPWFeONzhqez5vp7nKEsp7eLj2Ks210Srk="
+      "revision": "e4e78a2cbeaddd07ab7238971b16468cc1d14daf",
+      "url": "https://github.com/nix-community/home-manager/archive/e4e78a2cbeaddd07ab7238971b16468cc1d14daf.tar.gz",
+      "hash": "sha256-GKgwu5//R+cLdKysZjGqvUEEOGXXLdt93sNXeb2M/Lk="
     },
     "menu": {
       "type": "Git",
@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "8c72e5ba09266ebc3d361336452a0773cc00b173",
-      "url": "https://github.com/llakala/meovim/archive/8c72e5ba09266ebc3d361336452a0773cc00b173.tar.gz",
-      "hash": "sha256-X1AYJD2alL8SxrYTf6Ju/dmUZHNYyJiTGdnzgozc4NU="
+      "revision": "189ad56dbf06be104de7ad31bb417c3c42804a9d",
+      "url": "https://github.com/llakala/meovim/archive/189ad56dbf06be104de7ad31bb417c3c42804a9d.tar.gz",
+      "hash": "sha256-msSwJUT4IlxXo6ibRKxPUW9CkvoktyNV8yT1B40QERw="
     },
     "mnw": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "195457be955922b1d0497ddc62422cc6fc2943ab",
-      "url": "https://github.com/Gerg-L/mnw/archive/195457be955922b1d0497ddc62422cc6fc2943ab.tar.gz",
-      "hash": "sha256-fzehEyKX2aT5z0zJGDKz+VQ6akjS3XbLBbJV+fOlFKo="
+      "revision": "75bb637454b0fbbb5ed652375a4bf7ffd28bcf6f",
+      "url": "https://github.com/Gerg-L/mnw/archive/75bb637454b0fbbb5ed652375a4bf7ffd28bcf6f.tar.gz",
+      "hash": "sha256-kSvWF3Xt2HW9hmV5V7i8PqeWJIBUKmuKoHhOgj3Znzs="
     },
     "neovim": {
       "type": "Git",
@@ -88,15 +88,15 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "c5db9569ac9cc70929c268ac461f4003e3e5ca80",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/c5db9569ac9cc70929c268ac461f4003e3e5ca80.tar.gz",
-      "hash": "sha256-UXVtN77D7pzKmzOotFTStgZBqpOcf8cO95FcupWp4Zo="
+      "revision": "40b1a28dce561bea34858287fbb23052c3ee63fe",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/40b1a28dce561bea34858287fbb23052c3ee63fe.tar.gz",
+      "hash": "sha256-ljDBUDpD1Cg5n3mJI81Hz5qeZAwCGxon4kQW3Ho3+6Q="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre916364.3e2499d5539c/nixexprs.tar.xz",
-      "hash": "sha256-gtanTxYMENOVHWdS4QgxxKGPaSqvcNJVw0KBfaF5/Bo="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre919991.cad22e7d996a/nixexprs.tar.xz",
+      "hash": "sha256-tdHyrSL/0C0BaqArOPtWZBWWabXXIxVUirIFRUKGb74="
     },
     "plasma-manager": {
       "type": "Git",

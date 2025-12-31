@@ -9,16 +9,6 @@ in {
     nixpkgs.path = "/nixpkgs";
   };
 
-  mutators = [
-    "/fzf"
-    "/git"
-    "/gh"
-    "/kitty"
-    "/starship"
-    "/yazi"
-    "/zoxide"
-  ];
-
   options.functions = {
     type = types.path;
     default = ./functions;
@@ -28,66 +18,62 @@ in {
     default = ./completions;
   };
   options.abbreviations = {
+    mutators = [ "/gh" "/git" ];
     type = types.string;
-    mutable = true;
-    mutator = {
-      type =
-        let
-          abbrWithCursor = types.struct "abbrWithCursor" {
-            setCursor = types.bool;
-            expansion = types.string;
-          };
-        in
-        types.attrsOf (types.union [
-          types.string
-          (abbrWithCursor.override { unknown = false; })
-        ]);
-      mergeFunc =
-        { mutators, inputs }:
-        let
-          inherit (builtins) isString concatLists concatStringsSep;
-          inherit (inputs.nixpkgs.lib) mapAttrsToList;
-          # We use wrapping single quotes around our abbrs, so replace any
-          # internal single quotes if they exist
-          escapeSingleQuotes = str: builtins.replaceStrings [ "'" ] [ "\\'" ] str;
-          abbrToString =
-            input: output:
-            if isString output then
-              "abbr --add -- ${input} '${escapeSingleQuotes output}'"
-            else if output.setCursor == true then
-              "abbr --add --set-cursor -- ${input} '${escapeSingleQuotes output.expansion}'"
-            else
-              "abbr --add -- ${input} '${escapeSingleQuotes output.expansion}'";
-          moduleToAbbrList = _: module: mapAttrsToList abbrToString module;
-          allAbbrs = concatLists (mapAttrsToList moduleToAbbrList (
-            mutators // { "/fish" = import ./abbreviations.nix; })
-          );
-        in
-        concatStringsSep "\n" allAbbrs;
-    };
+    mutatorType =
+      let
+        abbrWithCursor = types.struct "abbrWithCursor" {
+          setCursor = types.bool;
+          expansion = types.string;
+        };
+      in
+      types.attrsOf (types.union [
+        types.string
+        (abbrWithCursor.override { unknown = false; })
+      ]);
+    mergeFunc =
+      { mutators, inputs }:
+      let
+        inherit (builtins) isString concatLists concatStringsSep;
+        inherit (inputs.nixpkgs.lib) mapAttrsToList;
+        # We use wrapping single quotes around our abbrs, so replace any
+        # internal single quotes if they exist
+        escapeSingleQuotes = str: builtins.replaceStrings [ "'" ] [ "\\'" ] str;
+        abbrToString =
+          input: output:
+          if isString output then
+            "abbr --add -- ${input} '${escapeSingleQuotes output}'"
+          else if output.setCursor == true then
+            "abbr --add --set-cursor -- ${input} '${escapeSingleQuotes output.expansion}'"
+          else
+            "abbr --add -- ${input} '${escapeSingleQuotes output.expansion}'";
+        moduleToAbbrList = _: module: mapAttrsToList abbrToString module;
+        allAbbrs = concatLists (mapAttrsToList moduleToAbbrList (
+          mutators // { "/fish" = import ./abbreviations.nix; })
+        );
+      in
+      concatStringsSep "\n" allAbbrs;
   };
   options.interactiveShellInit = {
+    mutators = [ "/fzf" "/kitty" "/starship" "/yazi" "/zoxide" ];
     type = types.derivation;
-    mutable = true;
-    mutator = {
-      type = types.string;
-      mergeFunc =
-        { mutators, inputs, options }:
-        let
-          inherit (builtins) readFile attrValues concatStringsSep;
-          inherit (inputs.nixpkgs.pkgs) writeText;
-          # Append the extra shell init from each of the mutators after our
-          # "base" config, with newlines in between
-          mergedFishConfig = concatStringsSep "\n" (
-            [
-              (readFile ./config.fish)
-              (options.abbreviations)
-            ]
-            ++ attrValues mutators
-          );
-        in
-        writeText "config.fish" mergedFishConfig;
-    };
+    mutatorType = types.string;
+    mergeFunc =
+      { mutators, inputs, options }:
+      let
+        inherit (builtins) readFile attrValues concatStringsSep;
+        inherit (inputs.nixpkgs.pkgs) writeText;
+        # Append the extra shell init from each of the mutators after our
+        # "base" config, with newlines in between
+        mergedFishConfig = concatStringsSep "\n" (
+          [
+            (readFile ./config.fish)
+            (options.abbreviations)
+          ]
+          ++ attrValues mutators
+        );
+      in
+      writeText "config.fish" mergedFishConfig;
   };
 
   impl =
