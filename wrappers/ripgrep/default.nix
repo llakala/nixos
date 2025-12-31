@@ -22,9 +22,10 @@ in {
       inherit (inputs.nixpkgs) pkgs;
     in
     inputs.mkWrapper {
+      name = "rg";
       package = pkgs.ripgrep;
       wrapperArgs = ''
-        --add-flags ${options.flags}
+        --add-flags '${options.flags}'
       '';
     };
 }
