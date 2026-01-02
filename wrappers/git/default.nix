@@ -22,12 +22,11 @@ in {
       mutatorType = types.attrs;
       mergeFunc =
         { mutators, inputs }:
-        let
-          inherit (inputs.nixpkgs) lib;
-          inherit (builtins) foldl' attrValues;
-          settings = import ./settings.nix { inherit inputs; };
-        in
-        foldl' (acc: elem: lib.recursiveUpdate acc elem) {} ([ settings ] ++ attrValues mutators);
+        adios.lib.mergeFuncs.deeplyMergeAttrs {
+          mutators = mutators // {
+            settings = import ./settings.nix { inherit inputs; };
+          };
+        };
     };
 
     configDir = {
