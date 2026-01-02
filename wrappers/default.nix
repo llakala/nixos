@@ -1,7 +1,7 @@
 {
   sources ? import ../various/npins,
-  pkgs ? import sources.nixpkgs {},
-  myLib ? import ../various/myLib/default.nix { inherit pkgs; }
+  pkgs ? import sources.nixpkgs { },
+  myLib ? import ../various/myLib/default.nix { inherit pkgs; },
 }:
 
 let
@@ -11,26 +11,20 @@ let
 
   root = {
     name = "root";
-    modules = adios.lib.importModules ./.;
+    modules = adios.lib.importModules ./modules;
   };
 
-  tree = (adios root).eval {
+  tree = (adios root.eval {
     options = {
       "/nixpkgs" = {
         inherit pkgs lib;
       };
-      "/self" = {
-        inherit myLib;
-      };
     };
-  };
+  });
+
+  wrapperModules = mapAttrs (name: module: module.args.options) tree.root.modules;
+  wrappers = myLib.callNixFiles ./config (pkgs // {
+    inherit wrappers wrapperModules;
+  });
 in
-# We have each wrapper `foo` point to all its options, so you can do
-# `(import ./wrappers {}).foo.some-option`
-mapAttrs (
-  _: wrapper:
-  if wrapper.args.options ? __functor then
-    (removeAttrs wrapper.args.options [ "__functor" ]) // { drv = wrapper {}; }
-  else
-    wrapper.args.options
-) tree.root.modules
+  wrappers

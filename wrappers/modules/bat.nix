@@ -7,27 +7,23 @@ in {
   inputs = {
     mkWrapper.path = "/mkWrapper";
     nixpkgs.path = "/nixpkgs";
-    less.path = "/less";
   };
 
   options = {
     flags = {
       type = types.string;
-      defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./BAT_CONFIG;
     };
   };
 
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs) pkgs lib;
-      lessWrapper = inputs.less {};
+      inherit (inputs.nixpkgs) pkgs;
     in
     inputs.mkWrapper {
       package = pkgs.bat;
       wrapperArgs = ''
-        --add-flags "${options.flags}" \
-        --add-flags "--pager='${lib.getExe lessWrapper} -RFX'"
+        --add-flags "${options.flags}"
       '';
     };
 }
