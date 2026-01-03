@@ -1,0 +1,23 @@
+{ adios }:
+{
+  name = "diff-so-fancy";
+
+  inputs = {
+    mkWrapper.path = "/mkWrapper";
+    nixpkgs.path = "/nixpkgs";
+    git.path = "/git";
+  };
+
+  impl =
+    { inputs }:
+    let
+      inherit (inputs.nixpkgs) pkgs;
+      gitWrapper = inputs.git {};
+    in
+    inputs.mkWrapper {
+      package = pkgs.diff-so-fancy;
+      environment = {
+        GIT_CONFIG_GLOBAL = "${gitWrapper}/git/config"; # TODO add comment
+      };
+    };
+}

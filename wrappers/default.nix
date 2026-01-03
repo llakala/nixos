@@ -11,10 +11,15 @@ let
 
   root = {
     name = "root";
-    modules = adios.lib.importModules ./.;
+    modules = adios.lib.importModules ./modules;
   };
 
-  tree = (adios root).eval {
+  overrides = {
+    name = "overridden-root";
+    modules = adios.lib.importModules ./config;
+  };
+
+  tree = (adios (lib.recursiveUpdate root overrides)).eval {
     options = {
       "/nixpkgs" = {
         inherit pkgs lib;
