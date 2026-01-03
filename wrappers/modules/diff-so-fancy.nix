@@ -17,7 +17,8 @@
     inputs.mkWrapper {
       package = pkgs.diff-so-fancy;
       environment = {
-        GIT_CONFIG_GLOBAL = "${gitWrapper}/git/config"; # TODO add comment
+        # If you don't have this, diff-so-fancy can't find your gitconfig
+        GIT_CONFIG_GLOBAL = "${gitWrapper}/git/config";
       };
     };
 }
