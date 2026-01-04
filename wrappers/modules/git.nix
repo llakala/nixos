@@ -26,12 +26,12 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.pkgs) gitFull writeText;
+      inherit (inputs.nixpkgs.pkgs) git writeText;
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
-      package = gitFull;
+      package = git;
       preWrap = ''
         mkdir -p $out/git
       '';
