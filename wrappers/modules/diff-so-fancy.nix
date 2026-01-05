@@ -1,5 +1,7 @@
 { adios }:
-{
+let
+  inherit (adios) types;
+in {
   name = "diff-so-fancy";
 
   inputs = {
@@ -8,14 +10,20 @@
     git.path = "/git";
   };
 
+  options = {
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.diff-so-fancy;
+    };
+  };
+
   impl =
-    { inputs }:
+    { inputs, options }:
     let
-      inherit (inputs.nixpkgs) pkgs;
       gitWrapper = inputs.git {};
     in
     inputs.mkWrapper {
-      package = pkgs.diff-so-fancy;
+      inherit (options) package;
       environment = {
         # If you don't have this, diff-so-fancy can't find your gitconfig
         GIT_CONFIG_GLOBAL = "${gitWrapper}/git/config";

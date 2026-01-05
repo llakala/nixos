@@ -16,24 +16,25 @@ in {
     configFile = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.bat;
+    };
   };
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     assert !(options ? flags && options ? configFile);
     if options ? flags then
       inputs.mkWrapper {
-        package = pkgs.bat;
+        inherit (options) package;
         wrapperArgs = ''
           --add-flags "${options.flags}"
         '';
       }
     else
       inputs.mkWrapper {
-        package = pkgs.bat;
+        inherit (options) package;
         environment = {
           BAT_CONFIG_PATH = options.configFile;
         };

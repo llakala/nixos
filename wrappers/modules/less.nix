@@ -19,16 +19,17 @@ in {
     keybindsFile = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.less;
+    };
   };
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     assert !(options ? keybinds && options ? keybindsFile);
     inputs.mkWrapper {
-      package = pkgs.less;
+      inherit (options) package;
       environment = {
         LESS = options.flags;
         LESSKEY_CONTENT = options.keybinds or null;

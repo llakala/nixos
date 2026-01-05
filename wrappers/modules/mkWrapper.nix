@@ -108,5 +108,6 @@ in {
         options.postWrap
       ];
       meta.mainProgram = options.name;
+      passthru = options.package.passthru or {};
     };
 }

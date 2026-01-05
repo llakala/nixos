@@ -25,16 +25,20 @@ in {
     plugins = {
       type = types.attrsOf (types.union [ types.path types.derivation ]);
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.yazi-unwrapped;
+    };
   };
 
   impl =
     { inputs, options }:
     let
-      inherit (inputs.nixpkgs) pkgs lib;
+      inherit (inputs.nixpkgs) lib;
       inherit (lib) makeBinPath;
     in
     inputs.mkWrapper {
-      package = pkgs.yazi-unwrapped;
+      inherit (options) package;
       preWrap = ''
         mkdir -p $out/yazi/plugins
       '';

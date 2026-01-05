@@ -17,6 +17,10 @@ in {
     excludedDirs = {
       type = types.string;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.zoxide;
+    };
   };
 
   mutations."/fish".interactiveShellInit =
@@ -32,12 +36,9 @@ in {
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
-    if !options ? excludedDirs then pkgs.zoxide
+    if !options ? excludedDirs then options.package
     else inputs.mkWrapper {
-      package = pkgs.zoxide;
+      inherit (options) package;
       environment = {
         _ZO_EXCLUDE_DIRS = options.excludedDirs;
       };

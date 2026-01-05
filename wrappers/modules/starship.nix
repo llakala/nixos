@@ -14,6 +14,10 @@ in {
     configFile = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.starship;
+    };
   };
 
   mutations."/fish".interactiveShellInit =
@@ -29,11 +33,8 @@ in {
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     inputs.mkWrapper {
-      package = pkgs.starship;
+      inherit (options) package;
       environment = {
         STARSHIP_CONFIG = options.configFile;
         XDG_CONFIG_HOME = inputs.git {}; # Makes starship follow /git/ignore for git status module

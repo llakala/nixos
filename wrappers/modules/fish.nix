@@ -50,7 +50,6 @@ in {
         in
         concatStringsSep "\n" allAbbrs;
     };
-
     interactiveShellInit = {
       type = types.string;
       mutatorType = types.string;
@@ -63,15 +62,19 @@ in {
             attrValues mutators ++ [ options.abbreviations ]
           );
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fish;
+    };
   };
 
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.pkgs) fish writeText;
+      inherit (inputs.nixpkgs.pkgs) writeText;
     in
     inputs.mkWrapper {
-      package = fish;
+      inherit (options) package;
       preWrap = ''
         rm -r $out/share/fish/vendor_completions.d $out/share/fish/vendor_functions.d
       '';

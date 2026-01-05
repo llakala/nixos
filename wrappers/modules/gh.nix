@@ -13,6 +13,10 @@ in {
     configDir = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.gh;
+    };
   };
 
   mutations = {
@@ -28,11 +32,8 @@ in {
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     inputs.mkWrapper {
-      package = pkgs.gh;
+      inherit (options) package;
       environment = {
         GH_CONFIG_DIR = options.configDir;
       };

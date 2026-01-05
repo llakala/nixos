@@ -13,15 +13,16 @@ in {
     configFile = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.xdg-desktop-portal-termfilechooser;
+    };
   };
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     inputs.mkWrapper {
-      package = pkgs.xdg-desktop-portal-termfilechooser;
+      inherit (options) package;
       binaryPath = "$out/libexec/xdg-desktop-portal-termfilechooser";
       preWrap = ''
         mkdir -p $out/xdg-desktop-portal-termfilechooser

@@ -25,15 +25,19 @@ in {
         };
       };
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fzf;
+    };
   };
 
   mutations."/fish".interactiveShellInit =
-    { inputs }:
+    { inputs, options }:
     let
-      inherit (inputs.nixpkgs) pkgs lib;
+      inherit (inputs.nixpkgs) lib;
     in
     # fish
     ''
-      ${lib.getExe pkgs.fzf} --fish | source
+      ${lib.getExe options.package} --fish | source
     '';
 }

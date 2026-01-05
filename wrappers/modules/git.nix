@@ -21,17 +21,21 @@ in {
     iniConfigFile = {
       type = types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.git;
+    };
   };
 
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.pkgs) git writeText;
+      inherit (inputs.nixpkgs.pkgs) writeText;
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
-      package = git;
+      inherit (options) package;
       preWrap = ''
         mkdir -p $out/git
       '';

@@ -16,28 +16,26 @@ in {
     themeFile = {
       type = types.union [ types.string types.path ];
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.kitty;
+    };
   };
 
   mutations."/fish".interactiveShellInit =
-    { inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
+    { options }:
     # fish
     ''
       # We can't use the `shell_integration` output of our wrapper, since wrappers
       # don't preserve attributes like this
-      source "${pkgs.kitty.shell_integration}/fish/vendor_conf.d/kitty-shell-integration.fish"
-      set --prepend fish_complete_path "${pkgs.kitty.shell_integration}/fish/vendor_completions.d"
+      source "${options.package.shell_integration}/fish/vendor_conf.d/kitty-shell-integration.fish"
+      set --prepend fish_complete_path "${options.package.shell_integration}/fish/vendor_completions.d"
     '';
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     inputs.mkWrapper {
-      package = pkgs.kitty;
+      inherit (options) package;
       preWrap = ''
         mkdir -p $out/kitty
       '';

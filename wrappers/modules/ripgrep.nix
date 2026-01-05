@@ -13,16 +13,17 @@ in {
     flags = {
       type = types.string;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.ripgrep;
+    };
   };
 
   impl =
     { options, inputs }:
-    let
-      inherit (inputs.nixpkgs) pkgs;
-    in
     inputs.mkWrapper {
       name = "rg";
-      package = pkgs.ripgrep;
+      inherit (options) package;
       wrapperArgs = ''
         --add-flags '${options.flags}'
       '';

@@ -18,6 +18,10 @@ in {
     policiesFiles = {
       type = types.listOf types.path;
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.firefox-unwrapped;
+    };
   };
 
   impl =
@@ -27,7 +31,7 @@ in {
       inherit (pkgs) wrapFirefox writeText;
       inherit (builtins) readFile;
     in
-    wrapFirefox pkgs.firefox-unwrapped {
+    wrapFirefox options.package {
       extraPrefsFiles = options.autoConfigFiles;
       extraPoliciesFiles = map
         (file: writeText "policies.json" (readFile file))
