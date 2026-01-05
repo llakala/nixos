@@ -1,8 +1,17 @@
 { adios }:
 {
   options = {
-    flags.default =
-      "--RAW-CONTROL-CHARS --clear-screen --quit-if-one-screen --redraw-on-quit --tilde --incsearch --wordwrap --ignore-case --search-options=WR";
+    flags.default = [
+      "--RAW-CONTROL-CHARS"
+      "--clear-screen"
+      "--quit-if-one-screen"
+      "--redraw-on-quit"
+      "--tilde"
+      "--incsearch"
+      "--wordwrap"
+      "--ignore-case"
+      "--search-options=WR"
+    ];
     keybindsFile.default = ./lesskey;
   };
 

@@ -11,7 +11,7 @@ in {
 
   options = {
     flags = {
-      type = types.string;
+      type = types.listOf types.string;
     };
     keybinds = {
       type = types.string;
@@ -27,11 +27,14 @@ in {
 
   impl =
     { options, inputs }:
+    let
+      inherit (builtins) concatStringsSep;
+    in
     assert !(options ? keybinds && options ? keybindsFile);
     inputs.mkWrapper {
       inherit (options) package;
       environment = {
-        LESS = options.flags;
+        LESS = concatStringsSep " " options.flags;
         LESSKEY_CONTENT = options.keybinds or null;
         LESSKEYIN = options.keybindsFile or null;
       };

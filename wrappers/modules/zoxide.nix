@@ -11,8 +11,8 @@ in {
 
   options = {
     flags = {
-      type = types.string;
-      default = "";
+      type = types.listOf types.string;
+      default = [];
     };
     excludedDirs = {
       type = types.string;
@@ -27,11 +27,12 @@ in {
     { inputs, options }:
     let
       inherit (inputs.nixpkgs) lib;
+      inherit (builtins) concatStringsSep;
       finalWrapper = options {};
     in
     # fish
     ''
-      ${lib.getExe finalWrapper} init fish ${options.flags} | source
+      ${lib.getExe finalWrapper} init fish ${concatStringsSep " " options.flags} | source
     '';
 
   impl =
