@@ -77,27 +77,30 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.lib) foldlAttrs;
       inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeBinaryWrapper lndir;
-      inherit (builtins) concatStringsSep;
-      environmentStr = foldlAttrs (
-        acc: name: value:
-        if value == null then
-          acc
-        else if acc == "" then
-          acc + "--set ${name} \"${value}\""
-        else
-          acc + " --set ${name} \"${value}\""
-      ) "" options.environment;
-      symlinkedStr = foldlAttrs (
-        acc: symlink: destination:
-        if destination == null then
-          acc
-        else if acc == "" then
-          acc + "ln -s ${destination} ${symlink}"
-        else
-          acc + "\nln -s ${destination} ${symlink}"
-      ) "" options.symlinks;
+      inherit (builtins) concatStringsSep attrValues mapAttrs filter;
+      environmentStr = concatStringsSep " " (
+        filter (x: x != null) (
+          attrValues (
+            mapAttrs (
+              name: value:
+              if value == null then null
+              else "--set ${name} \"${value}\""
+            ) options.environment
+          )
+        )
+      );
+      symlinkedStr = concatStringsSep "\n" (
+        filter (x: x != null) (
+          attrValues (
+            mapAttrs (
+              symlink: destination:
+              if destination == null then null
+              else "ln -s ${destination} ${symlink}"
+            ) options.symlinks
+          )
+        )
+      );
       flagsStr = concatStringsSep " " (
         map (flag: "--add-flag \"${flag}\"") options.flags
       );
