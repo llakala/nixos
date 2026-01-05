@@ -34,7 +34,8 @@ in {
   impl =
     { inputs, options }:
     let
-      inherit (inputs.nixpkgs.lib) makeBinPath foldlAttrs;
+      inherit (inputs.nixpkgs.lib) makeBinPath;
+      inherit (builtins) listToAttrs attrValues mapAttrs;
     in
     inputs.mkWrapper {
       inherit (options) package;
@@ -45,12 +46,14 @@ in {
         "$out/yazi/yazi.toml" = options.settingsFile;
         "$out/yazi/keymap.toml" = options.keymapFile;
         "$out/yazi/init.lua" = options.initLuaFile;
-      } // foldlAttrs (
-        acc: name: path:
-        acc // {
-          "$out/yazi/plugins/${name}" = path;
-        }
-      ) {} options.plugins;
+      } // listToAttrs (
+        attrValues (
+          mapAttrs (name: value: {
+            name = "$out/yazi/plugins/${name}";
+            inherit value;
+          }) options.plugins
+        )
+      );
       wrapperArgs = ''
         --prefix PATH : ${makeBinPath options.extraPackages}
       '';
