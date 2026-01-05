@@ -11,7 +11,7 @@ in {
 
   options = {
     flags = {
-      type = types.string;
+      type = types.listOf types.string;
     };
     configFile = {
       type = types.path;
@@ -27,10 +27,7 @@ in {
     assert !(options ? flags && options ? configFile);
     if options ? flags then
       inputs.mkWrapper {
-        inherit (options) package;
-        wrapperArgs = ''
-          --add-flags "${options.flags}"
-        '';
+        inherit (options) package flags;
       }
     else
       inputs.mkWrapper {

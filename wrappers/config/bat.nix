@@ -11,6 +11,6 @@
         inherit (inputs.nixpkgs) lib;
         lessWrapper = inputs.less {};
       in
-      "--style=plain --pager='${lib.getExe lessWrapper} -RFX'";
+      [ "--style=plain" "--pager='${lib.getExe lessWrapper} -RFX'" ];
   };
 }

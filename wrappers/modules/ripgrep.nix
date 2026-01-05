@@ -11,7 +11,7 @@ in {
 
   options = {
     flags = {
-      type = types.string;
+      type = types.listOf types.string;
     };
     package = {
       type = types.derivation;
@@ -23,9 +23,6 @@ in {
     { options, inputs }:
     inputs.mkWrapper {
       name = "rg";
-      inherit (options) package;
-      wrapperArgs = ''
-        --add-flags '${options.flags}'
-      '';
+      inherit (options) package flags;
     };
 }

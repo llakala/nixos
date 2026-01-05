@@ -67,13 +67,19 @@ in {
       '';
       default = {};
     };
+    flags = {
+      type = types.listOf types.string;
+      description = "Flags to be appended to the executed program.";
+      default = [];
+    };
   };
 
   impl =
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.lib) foldlAttrs;
-      inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeWrapper lndir;
+      inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeBinaryWrapper lndir;
+      inherit (builtins) concatStringsSep;
       environmentStr = foldlAttrs (
         acc: name: value:
         if value == null then
@@ -92,10 +98,13 @@ in {
         else
           acc + "\nln -s ${destination} ${symlink}"
       ) "" options.symlinks;
+      flagsStr = concatStringsSep " " (
+        map (flag: "--add-flag \"${flag}\"") options.flags
+      );
     in
       stdenvNoCC.mkDerivation {
         name = "${options.name}-wrapped";
-        buildInputs = [ makeWrapper ];
+        buildInputs = [ makeBinaryWrapper ];
         paths = map (path: "${path}") (
           [ options.package ] ++ options.extraPaths
         );
@@ -115,11 +124,11 @@ in {
           ${options.preWrap}
           ${symlinkedStr}
           ${
-            if environmentStr == "" && options.wrapperArgs == "" then
+            if environmentStr == "" && options.wrapperArgs == "" && options.flags == [] then
               ""
             else
             ''
-              wrapProgram ${options.binaryPath} ${environmentStr} ${options.wrapperArgs}
+              wrapProgram ${options.binaryPath} ${environmentStr} ${flagsStr} ${options.wrapperArgs}
             ''
           }
           ${options.postWrap}
