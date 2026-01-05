@@ -73,8 +73,7 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.lib) foldlAttrs;
-      inherit (inputs.nixpkgs.pkgs) symlinkJoin makeWrapper;
-      inherit (builtins) concatStringsSep;
+      inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeWrapper lndir;
       environmentStr = foldlAttrs (
         acc: name: value:
         if value == null then
@@ -94,22 +93,36 @@ in {
           acc + "\nln -s ${destination} ${symlink}"
       ) "" options.symlinks;
     in
-    symlinkJoin {
-      name = "${options.name}-wrapped";
-      paths = [ options.package ] ++ options.extraPaths;
-      buildInputs = [ makeWrapper ];
-      postBuild = concatStringsSep "\n" [
-        options.preWrap
-        symlinkedStr
-        (
-          if environmentStr == "" && options.wrapperArgs == "" then
-            ""
-          else
-            "wrapProgram ${options.binaryPath} ${environmentStr} ${options.wrapperArgs}"
-        )
-        options.postWrap
-      ];
-      meta.mainProgram = options.name;
-      passthru = options.package.passthru or {};
-    };
+      stdenvNoCC.mkDerivation {
+        name = "${options.name}-wrapped";
+        buildInputs = [ makeWrapper ];
+        paths = map (path: "${path}") (
+          [ options.package ] ++ options.extraPaths
+        );
+        meta.mainProgram = options.name;
+        passthru = options.package.passthru or {};
+
+        preferLocalBuild = true;
+        allowSubstitutes = false;
+        enableParallelBuilding = true;
+        passAsFile = [ "buildCommand" "paths" ];
+
+        buildCommand = ''
+          mkdir -p $out
+          for i in $(cat $pathsPath); do
+            ${lndir}/bin/lndir -silent $i $out
+          done
+          ${options.preWrap}
+          ${symlinkedStr}
+          ${
+            if environmentStr == "" && options.wrapperArgs == "" then
+              ""
+            else
+            ''
+              wrapProgram ${options.binaryPath} ${environmentStr} ${options.wrapperArgs}
+            ''
+          }
+          ${options.postWrap}
+        '';
+      };
 }
