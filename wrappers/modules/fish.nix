@@ -32,11 +32,11 @@ in {
       mergeFunc =
         { mutators, inputs }:
         let
-          inherit (builtins) isString concatLists concatStringsSep;
+          inherit (builtins) isString concatLists concatStringsSep replaceStrings;
           inherit (inputs.nixpkgs.lib) mapAttrsToList;
           # We use wrapping single quotes around our abbrs, so replace any
           # internal single quotes if they exist
-          escapeSingleQuotes = str: builtins.replaceStrings [ "'" ] [ "\\'" ] str;
+          escapeSingleQuotes = str: replaceStrings [ "'" ] [ "\\'" ] str;
           abbrToString =
             input: output:
             if isString output then

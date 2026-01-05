@@ -72,8 +72,10 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs) pkgs lib;
-      environmentStr = lib.foldlAttrs (
+      inherit (inputs.nixpkgs.lib) foldlAttrs;
+      inherit (inputs.nixpkgs.pkgs) symlinkJoin makeWrapper;
+      inherit (builtins) concatStringsSep;
+      environmentStr = foldlAttrs (
         acc: name: value:
         if value == null then
           acc
@@ -82,7 +84,7 @@ in {
         else
           acc + " --set ${name} \"${value}\""
       ) "" options.environment;
-      symlinkedStr = lib.foldlAttrs (
+      symlinkedStr = foldlAttrs (
         acc: symlink: destination:
         if destination == null then
           acc
@@ -92,11 +94,11 @@ in {
           acc + "\nln -s ${destination} ${symlink}"
       ) "" options.symlinks;
     in
-    pkgs.symlinkJoin {
+    symlinkJoin {
       name = "${options.name}-wrapped";
       paths = [ options.package ] ++ options.extraPaths;
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = builtins.concatStringsSep "\n" [
+      buildInputs = [ makeWrapper ];
+      postBuild = concatStringsSep "\n" [
         options.preWrap
         symlinkedStr
         (

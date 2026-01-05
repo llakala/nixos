@@ -27,8 +27,7 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs) pkgs;
-      inherit (pkgs) wrapFirefox writeText;
+      inherit (inputs.nixpkgs.pkgs) wrapFirefox writeText;
       inherit (builtins) readFile;
     in
     wrapFirefox options.package {
