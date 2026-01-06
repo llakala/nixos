@@ -9,17 +9,59 @@ in {
   };
 
   options = {
-    userChromeFile = {
-      type = types.derivation;
-    };
     autoConfigFiles = {
-      type = types.listOf types.derivation;
+      type = types.listOf (types.union [
+        types.derivation
+        types.path
+      ]);
+      description = ''
+        `autoconfig.js` files to be injected into the Firefox derivation.
+
+        See the Firefox documentation:
+        https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig
+      '';
+    };
+    policies = {
+      type = types.attrs;
+      description = ''
+        Policies to be injected into the Firefox derivation.
+
+        `policies.Preferences` can be used to inject preferences.
+
+        Note that this option is disjoint with the `policiesFiles` option - only
+        one should be used.
+      '';
     };
     policiesFiles = {
       type = types.listOf types.path;
+      description = ''
+        JSON files containing policies to be injected into the Firefox derivation.
+
+        To inject preferences, code like this can be used:
+        ```json
+        {
+          "policies": {
+            "Preferences": {
+              "YOUR_PREFERENCES": "here"
+            }
+          }
+        }
+        ```
+
+        See the Firefox documentation:
+        https://support.mozilla.org/en-US/kb/customizing-firefox-using-policiesjson
+
+        Note that this option is disjoint with the `policies` option - only one
+        should be used.
+      '';
     };
+
     package = {
       type = types.derivation;
+      description = ''
+        The Firefox package to be wrapped.
+        Note that this should use a `-unwrapped` variant.
+        '';
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.firefox-unwrapped;
     };
   };
@@ -27,13 +69,21 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.pkgs) wrapFirefox writeText;
-      inherit (builtins) readFile;
+      inherit (inputs.nixpkgs.pkgs) wrapFirefox;
+      inherit (builtins) filter attrNames;
+      filterNullAttrs = set: removeAttrs set (filter (name: isNull set.${name}) (attrNames set));
     in
-    wrapFirefox options.package {
-      extraPrefsFiles = options.autoConfigFiles;
-      extraPoliciesFiles = map
-        (file: writeText "policies.json" (readFile file))
-        options.policiesFiles;
-    };
+    assert !(options ? policies && options ? policiesFiles);
+    wrapFirefox options.package (filterNullAttrs {
+      extraPrefsFiles = options.autoConfigFiles or null;
+      extraPolicies = options.policies or null;
+      # From my testing, these need to be coerced to store paths.
+      # If you know of a workaround to allow impure paths to be used here,
+      # please make a PR!
+      extraPoliciesFiles =
+        if options ? policiesFiles then
+          map (file: "${file}") options.policiesFiles
+        else
+          null;
+    });
 }
