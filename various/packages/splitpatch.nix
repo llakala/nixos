@@ -7,8 +7,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "llakala";
     repo = "splitpatch";
-    rev = "3fff10e02fc2c7abd7de8c3cc3f2fab2a87f5ff8";
-    hash = "sha256-i+zLHI43A9yFmWnKouZzDIXjINTw/DaI9kLIIsra0ww=";
+    rev = "08e4491186951f08bbea3e7c972a0f86a4a8d046";
+    hash = "sha256-8xiigSnYY8fofcd5az8GUNcplmba5eUbLG1mU7e4KWA=";
   };
 
   buildInputs = [
