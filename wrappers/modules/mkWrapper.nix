@@ -79,7 +79,7 @@ in {
     let
       inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeBinaryWrapper lndir;
       inherit (builtins) attrNames concatMap concatStringsSep;
-      environmentStr = concatStringsSep "\n" (
+      environmentStr = concatStringsSep " " (
         concatMap (
           var:
           let
