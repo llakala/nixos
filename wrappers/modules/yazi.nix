@@ -11,19 +11,19 @@ in {
 
   options = {
     settingsFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     keymapFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     initLuaFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     extraPackages = {
       type = types.listOf types.derivation;
     };
     plugins = {
-      type = types.attrsOf (types.union [ types.path types.derivation ]);
+      type = types.attrsOf types.pathLike;
     };
     package = {
       type = types.derivation;

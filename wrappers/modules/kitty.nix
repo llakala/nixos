@@ -11,10 +11,10 @@ in {
 
   options = {
     configFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     themeFile = {
-      type = types.union [ types.string types.path ];
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;

@@ -45,20 +45,16 @@ in {
     };
     environment = {
       type = types.attrsOf (types.union [
-        types.string
-        types.path
-        types.derivation
-        (types.typedef "null" isNull)
+        types.null
+        types.pathLike
       ]);
       description = "Environment variables to be set during the execution of the wrapped program";
       default = {};
     };
     symlinks = {
       type = types.attrsOf (types.union [
-        types.string
-        types.derivation
-        types.path
-        (types.typedef "null" isNull)
+        types.null
+        types.pathLike
       ]);
       description = ''
         Symlinks to be included in the resulting derivation.

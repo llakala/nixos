@@ -17,7 +17,7 @@ in {
       type = types.string;
     };
     keybindsFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;

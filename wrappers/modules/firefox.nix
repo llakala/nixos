@@ -10,10 +10,7 @@ in {
 
   options = {
     autoConfigFiles = {
-      type = types.listOf (types.union [
-        types.derivation
-        types.path
-      ]);
+      type = types.listOf types.pathLike;
       description = ''
         `autoconfig.js` files to be injected into the Firefox derivation.
 
@@ -33,7 +30,7 @@ in {
       '';
     };
     policiesFiles = {
-      type = types.listOf types.path;
+      type = types.listOf types.pathLike;
       description = ''
         JSON files containing policies to be injected into the Firefox derivation.
 

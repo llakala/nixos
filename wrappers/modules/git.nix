@@ -11,7 +11,7 @@ in {
 
   options = {
     ignoreFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     iniConfig = {
       type = types.attrs;
@@ -19,7 +19,7 @@ in {
       mergeFunc = adios.lib.mergeFuncs.mergeAttrsRecursively;
     };
     iniConfigFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;

@@ -12,13 +12,13 @@ in {
   options = {
     # TODO: add rfc42 variants of these
     completionsFiles = {
-      type = types.listOf types.path;
-      mutatorType = types.listOf types.path;
+      type = types.listOf types.pathLike;
+      mutatorType = types.listOf types.pathLike;
       mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
     functionsFiles = {
-      type = types.listOf types.path;
-      mutatorType = types.listOf types.path;
+      type = types.listOf types.pathLike;
+      mutatorType = types.listOf types.pathLike;
       mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
 

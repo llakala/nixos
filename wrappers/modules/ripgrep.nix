@@ -14,7 +14,7 @@ in {
       type = types.listOf types.string;
     };
     configFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;

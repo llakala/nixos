@@ -8,15 +8,27 @@ let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   adios = import "${sources.adios}/adios";
+  importModules = import "${sources.adios}/adios/lib/importModules.nix" {
+    adios = adios // rec {
+      types = adios.types // {
+        null = types.typedef "null" isNull;
+        pathLike = types.union [
+          types.path
+          types.derivation
+          types.string
+        ];
+      };
+    };
+};
 
   root = {
     name = "root";
-    modules = adios.lib.importModules ./modules;
+    modules = importModules ./modules;
   };
 
   overrides = {
     name = "overridden-root";
-    modules = adios.lib.importModules ./config;
+    modules = importModules ./config;
   };
 
   tree = (adios (lib.recursiveUpdate root overrides)).eval {

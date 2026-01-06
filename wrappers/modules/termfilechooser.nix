@@ -11,7 +11,7 @@ in {
 
   options = {
     configFile = {
-      type = types.path;
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;
