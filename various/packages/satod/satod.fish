@@ -65,10 +65,12 @@ trap cleanup_state EXIT # Delete TMPDIR on exit, even if user exits early
 
 cd $TMPDIR
 echo $ORIGINAL_DIFF >"ORIGINAL.patch"
-splitpatch -H "ORIGINAL.patch" >/dev/null # Split up patch into individual hunks
+splitpatch -f -H "ORIGINAL.patch" >/dev/null # Split up patch into individual hunks
 rm "ORIGINAL.patch" # Don't need it anymore now that the hunks are split up
 
-set applied_patches (fzf -m --preview-window="top" --preview="cat {} | diff-so-fancy")
+# I'm on a fork of splitpatch with some custom changes, including making it use
+# \ for folder separators to make it more scriptable.
+set applied_patches (ls | string replace --all \\ / | fzf -m --preview-window="top" --preview='files=$(ls) index=$(math {n} + 1) cat $files[$index] | diff-so-fancy')
 
 cd $DIRECTORY
 for patch in $applied_patches

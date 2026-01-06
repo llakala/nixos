@@ -5,10 +5,10 @@ stdenv.mkDerivation {
   version = "0-unstable-2025-03-04";
 
   src = fetchFromGitHub {
-    owner = "jaalto";
+    owner = "llakala";
     repo = "splitpatch";
-    rev = "d35dbf194a112ab8b8408d5f27ba5373be4c4a53";
-    hash = "sha256-4nMykkDhNQBITq5rgRlj20W/S5B2Fy3pUXXJ9wA/kTQ=";
+    rev = "3fff10e02fc2c7abd7de8c3cc3f2fab2a87f5ff8";
+    hash = "sha256-i+zLHI43A9yFmWnKouZzDIXjINTw/DaI9kLIIsra0ww=";
   };
 
   buildInputs = [
