@@ -1,4 +1,3 @@
-status is-interactive || exit 0
 set fish_greeting
 
 set fish_cursor_default     block      blink

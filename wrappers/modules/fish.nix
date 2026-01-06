@@ -10,12 +10,14 @@ in {
   };
 
   options = {
-    functions = {
-      type = types.path;
+    # TODO: add rfc42 variants of these
+    completionsFiles = {
+      type = types.listOf types.path;
     };
-    completions = {
-      type = types.path;
+    functionsFiles = {
+      type = types.listOf types.path;
     };
+
     abbreviations = {
       type = types.string;
       mutatorType =
@@ -50,6 +52,7 @@ in {
         in
         concatStringsSep "\n" allAbbrs;
     };
+    # TODO: add rfc42 variant of this
     interactiveShellInit = {
       type = types.string;
       mutatorType = types.string;
@@ -58,10 +61,13 @@ in {
         let
           inherit (builtins) attrValues concatStringsSep;
         in
-          concatStringsSep "\n" (
-            attrValues mutators ++ [ options.abbreviations ]
-          );
+        concatStringsSep "\n" (
+          [ "status is-interactive || exit 0" ]
+          ++ attrValues mutators
+          ++ [ options.abbreviations ]
+        );
     };
+
     package = {
       type = types.derivation;
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fish;
@@ -72,16 +78,24 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.pkgs) writeText;
+      inherit (builtins) listToAttrs;
     in
     inputs.mkWrapper {
       inherit (options) package;
-      preWrap = ''
-        rm -r $out/share/fish/vendor_completions.d $out/share/fish/vendor_functions.d
-      '';
       symlinks = {
-        "$out/share/fish/vendor_completions.d" = options.completions;
-        "$out/share/fish/vendor_functions.d" = options.functions;
         "$out/share/fish/vendor_conf.d/config.fish" = writeText "config.fish" options.interactiveShellInit;
-      };
+      }
+      // listToAttrs (
+        map (path: {
+          name = "$out/share/fish/vendor_completions.d/${baseNameOf path}";
+          value = path;
+        }) options.completionsFiles
+      )
+      // listToAttrs  (
+        map (path: {
+          name = "$out/share/fish/vendor_functions.d/${baseNameOf path}";
+          value = path;
+        }) options.functionsFiles
+      );
     };
 }
