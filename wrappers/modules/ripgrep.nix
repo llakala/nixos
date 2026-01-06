@@ -13,6 +13,9 @@ in {
     flags = {
       type = types.listOf types.string;
     };
+    configFile = {
+      type = types.path;
+    };
     package = {
       type = types.derivation;
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.ripgrep;
@@ -21,8 +24,17 @@ in {
 
   impl =
     { options, inputs }:
-    inputs.mkWrapper {
+    let
+      inherit (builtins) filter attrNames;
+      filterNullAttrs = set: removeAttrs set (filter (name: isNull set.${name}) (attrNames set));
+    in
+    assert !(options ? flags && options ? files);
+    inputs.mkWrapper (filterNullAttrs {
       name = "rg";
-      inherit (options) package flags;
-    };
+      inherit (options) package;
+      flags = options.flags or null;
+      environment = {
+        RIPGREP_CONFIG_PATH = options.configFile or null;
+      };
+    });
 }
