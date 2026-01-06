@@ -78,28 +78,26 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeBinaryWrapper lndir;
-      inherit (builtins) concatStringsSep attrValues mapAttrs filter;
-      environmentStr = concatStringsSep " " (
-        filter (x: x != null) (
-          attrValues (
-            mapAttrs (
-              name: value:
-              if value == null then null
-              else "--set ${name} \"${value}\""
-            ) options.environment
-          )
-        )
+      inherit (builtins) attrNames concatMap concatStringsSep;
+      environmentStr = concatStringsSep "\n" (
+        concatMap (
+          var:
+          let
+            value = options.environment.${var};
+          in
+          if value == null then []
+          else [ "--set ${var} \"${value}\"" ]
+        ) (attrNames options.environment)
       );
       symlinkedStr = concatStringsSep "\n" (
-        filter (x: x != null) (
-          attrValues (
-            mapAttrs (
-              symlink: destination:
-              if destination == null then null
-              else "ln -s ${destination} ${symlink}"
-            ) options.symlinks
-          )
-        )
+        concatMap (
+          symlink:
+          let
+            destination = options.symlinks.${symlink};
+          in
+          if destination == null then []
+          else [ "ln -s ${destination} ${symlink}" ]
+        ) (attrNames options.symlinks)
       );
       flagsStr = concatStringsSep " " (
         map (flag: "--add-flag \"${flag}\"") options.flags
