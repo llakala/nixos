@@ -13,9 +13,13 @@ in {
     # TODO: add rfc42 variants of these
     completionsFiles = {
       type = types.listOf types.path;
+      mutatorType = types.listOf types.path;
+      mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
     functionsFiles = {
       type = types.listOf types.path;
+      mutatorType = types.listOf types.path;
+      mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
 
     abbreviations = {
