@@ -71,6 +71,7 @@ set applied_patches (ls | string replace --all \\ / | fzf -m --preview-window="t
 
 cd $DIRECTORY
 for patch in $applied_patches
+    set patch (string replace --all / \\ $patch)
     apply_diff $TMPDIR $patch
 end
 
