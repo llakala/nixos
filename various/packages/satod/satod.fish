@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
 set FZF_DEFAULT_OPTS \
-    --border --cycle --exact --highlight-line --multi --no-separator --reverse --ansi --preview-window='75%' \
-    --bind=ctrl-l:accept
+    --border --highlight-line --no-separator --ansi --preview-window='75%' --preview-window="top" \
+    --cycle --multi --reverse --scheme=path --tiebreak="pathname,index" --with-nth=2..
 
 set DIRECTORY (pwd -P)
 
@@ -61,18 +61,18 @@ set TMPDIR (mktemp -d)
 trap cleanup_state EXIT # Delete TMPDIR on exit, even if user exits early
 
 cd $TMPDIR
-echo $ORIGINAL_DIFF >"ORIGINAL.patch"
-splitpatch -f -H "ORIGINAL.patch" >/dev/null # Split up patch into individual hunks
-rm "ORIGINAL.patch" # Don't need it anymore now that the hunks are split up
+echo $ORIGINAL_DIFF >original.patch
+splitpatch -f -H original.patch >/dev/null # Split up patch into individual hunks
+rm original.patch # Don't need it anymore now that the hunks are split up
 
 # I'm on a fork of splitpatch with some custom changes, including making it use
 # \ for folder separators to make it more scriptable.
-set applied_patches (ls | string replace --all \\ / | fzf -m --preview-window="top" --preview='files=$(ls) index=$(math {n} + 1) cat $files[$index] | diff-so-fancy')
+set applied_patches (FZF_DEFAULT_COMMAND='for file in (ls); echo $file $(string replace --all \\\\ / $file); end' fzf --preview='files=$(ls) cat $files[(math {n} + 1)] | diff-so-fancy')
 
 cd $DIRECTORY
 for patch in $applied_patches
-    set patch (string replace --all / \\ $patch)
-    apply_diff $TMPDIR $patch
+    set patch (string split " " $patch)
+    apply_diff $TMPDIR $patch[1]
 end
 
 # $TMPDIR is cleaned up here automatically
