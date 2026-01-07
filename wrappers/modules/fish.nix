@@ -10,11 +10,18 @@ in {
   };
 
   options = {
-    # TODO: add rfc42 variants of these
+    # TODO: add mergeFunc for completions and functions options
+    completions = {
+      type = types.attrsOf types.string;
+    };
     completionsFiles = {
       type = types.listOf types.pathLike;
       mutatorType = types.listOf types.pathLike;
       mergeFunc = adios.lib.mergeFuncs.concatLists;
+    };
+
+    functions = {
+      type = types.attrsOf types.string;
     };
     functionsFiles = {
       type = types.listOf types.pathLike;
@@ -56,6 +63,7 @@ in {
         in
         concatStringsSep "\n" allAbbrs;
     };
+
     # TODO: add rfc42 variant of this
     interactiveShellInit = {
       type = types.string;
@@ -82,24 +90,50 @@ in {
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.pkgs) writeText;
-      inherit (builtins) listToAttrs;
+      inherit (builtins) listToAttrs attrNames;
     in
+    assert !(options ? functions && options ? functionsFiles);
+    assert !(options ? completions && options ? completionsFiles);
     inputs.mkWrapper {
       inherit (options) package;
       symlinks = {
         "$out/share/fish/vendor_conf.d/config.fish" = writeText "config.fish" options.interactiveShellInit;
       }
-      // listToAttrs (
-        map (path: {
-          name = "$out/share/fish/vendor_completions.d/${baseNameOf path}";
-          value = path;
-        }) options.completionsFiles
+      // (
+        if options ? completionsFiles then
+          listToAttrs (
+            map (path: {
+              name = "$out/share/fish/vendor_completions.d/${baseNameOf path}";
+              value = path;
+            }) options.completionsFiles
+          )
+        else if options ? completions then
+          listToAttrs (
+            map (path: {
+              name = "$out/share/fish/vendor_completions.d/${path}.fish";
+              value = writeText path options.completions.${path};
+            }) (attrNames options.completions)
+          )
+        else
+          {}
       )
-      // listToAttrs  (
-        map (path: {
-          name = "$out/share/fish/vendor_functions.d/${baseNameOf path}";
-          value = path;
-        }) options.functionsFiles
+      // (
+        if options ? functionsFiles then
+          listToAttrs (
+            map (path: {
+              name = "$out/share/fish/vendor_functions.d/${baseNameOf path}";
+              value = path;
+            }) options.functionsFiles
+          )
+        else if options ? functions then
+          listToAttrs (
+            map (path: {
+              name = "$out/share/fish/vendor_functions.d/${path}.fish";
+              value = writeText path options.functions.${path};
+            }) (attrNames options.functions)
+          )
+        else
+          {}
       );
     };
 }
