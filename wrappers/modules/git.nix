@@ -33,6 +33,7 @@ in {
       inherit (inputs.nixpkgs.pkgs) writeText;
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
+    assert !(options ? iniConfig && options ? iniConfigFile);
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
       inherit (options) package;
