@@ -13,6 +13,9 @@ in {
     configFile = {
       type = types.pathLike;
     };
+    settings = {
+      type = types.attrs;
+    };
     themeFile = {
       type = types.pathLike;
     };
@@ -34,14 +37,33 @@ in {
 
   impl =
     { options, inputs }:
+    let
+      inherit (builtins) concatStringsSep;
+      inherit (inputs.nixpkgs) pkgs lib;
+      # Slightly modified from hjr source - the one defined in hm does a lot of
+      # extra nonsense, that im hoping isnt necessary
+      generator = pkgs.formats.keyValue {
+        listToValue = list: concatStringsSep " " (map toString list);
+        mkKeyValue = lib.generators.mkKeyValueDefault {
+          mkValueString = value:
+            if value == true then "yes"
+            else if value == false then "no"
+            else lib.generators.mkValueStringDefault {} value;
+        } " ";
+      };
+    in
+    assert !(options ? configFile && options ? settings);
     inputs.mkWrapper {
       inherit (options) package;
       preWrap = ''
         mkdir -p $out/kitty
       '';
       symlinks = {
-        "$out/kitty/kitty.conf" = options.configFile;
-        "$out/kitty/current-theme.conf" = options.themeFile;
+        "$out/kitty/kitty.conf" =
+          if options ? configFile then options.configFile
+          else if options ? settings then generator.generate "kitty" options.settings
+          else null;
+        "$out/kitty/current-theme.conf" = options.themeFile or null;
       };
       environment = {
         KITTY_CONFIG_DIRECTORY = "$out/kitty";
