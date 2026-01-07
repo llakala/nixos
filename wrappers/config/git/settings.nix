@@ -33,14 +33,13 @@ in
   push.useForceIfIncludes = true;
   push.default = "current"; # Only push current branch, and don't force-push everything when force pushing
 
-  log.abbrevCommit = true; # Show short version of commit hashes by default
   log.follow = true;
   log.date = "format:%I:%M %p%Z %a %b %-d %Y"; # a la "01:29 AM Wed Dec 3 2025"
 
   # Slightly modified version of the default log format, to just add color and
   # the relative date. If you'd like to see what the default is so you can
   # customize it, I have a reproduction up at https://www.reddit.com/r/git/comments/18szkj9/comment/ns109r0
-  format.pretty = "format:commit %C(auto)%h%d%nAuthor: %C(brightgreen)%an%Creset %C(dim normal)<%ae>%C(auto)%nDate:   %C(brightblue)%ad%C(auto) (%C(blue)%ar%C(auto))%n%n%w(76,4,4)%B%-%n";
+  format.pretty = "format:commit %C(auto)%H%d%nAuthor: %C(brightgreen)%an%Creset %C(dim normal)<%ae>%C(auto)%nDate:   %C(brightblue)%ad%C(auto) (%C(blue)%ar%C(auto))%n%n%w(76,4,4)%B%-%n";
 
   merge.conflictstyle = "diff3";
   merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
