@@ -9,9 +9,9 @@
       },
       "branch": "providers-and-consumers",
       "submodules": false,
-      "revision": "2159b7c1fc06eac9680ec03e1c2bfc9cb3cc20dd",
-      "url": "https://github.com/llakala/adios/archive/2159b7c1fc06eac9680ec03e1c2bfc9cb3cc20dd.tar.gz",
-      "hash": "sha256-//ixsX4fOXvlmz4i+rJ9VQV2ZXuSw8fovtIDUEiJLh0="
+      "revision": "51c353acf23df588c81631f0af7bf60d07490536",
+      "url": "https://github.com/llakala/adios/archive/51c353acf23df588c81631f0af7bf60d07490536.tar.gz",
+      "hash": "sha256-ARk5yjARbmc0+JHBx+/mUxc8o/kDCmfgSFbZdaJiD5g="
     },
     "home-manager": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f894bc4ffde179d178d8deb374fcf9855d1a82b7",
-      "url": "https://github.com/nix-community/home-manager/archive/f894bc4ffde179d178d8deb374fcf9855d1a82b7.tar.gz",
-      "hash": "sha256-RDTUBDQBi9D4eD9iJQWtUDN/13MDLX+KmE+TwwNUp2s="
+      "revision": "4e8b7bef66c60735982369f3151b93e62fe37da7",
+      "url": "https://github.com/nix-community/home-manager/archive/4e8b7bef66c60735982369f3151b93e62fe37da7.tar.gz",
+      "hash": "sha256-rmAerMcKMYusVs5B88RAKAYUiENrO+d4bjvpQkkaaks="
     },
     "menu": {
       "type": "Git",
@@ -48,9 +48,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "a80c4ddf770b7f0688cee11e8e73ad6988b0056a",
-      "url": "https://github.com/llakala/meovim/archive/a80c4ddf770b7f0688cee11e8e73ad6988b0056a.tar.gz",
-      "hash": "sha256-kB3kr8AajWTCFlUj8URjnNWAOIM33t9gQ+CBrWi841Q="
+      "revision": "1f9679feef9f98641278104cf2eaed6d1cb25f0d",
+      "url": "https://github.com/llakala/meovim/archive/1f9679feef9f98641278104cf2eaed6d1cb25f0d.tar.gz",
+      "hash": "sha256-9MptTLj5AiQA4E/3auYpAzwtbiDJIl9Jikf+n2qJS74="
     },
     "mnw": {
       "type": "Git",
@@ -107,9 +107,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "b24ed4b272256dfc1cc2291f89a9821d5f9e14b4",
-      "url": "https://github.com/nix-community/plasma-manager/archive/b24ed4b272256dfc1cc2291f89a9821d5f9e14b4.tar.gz",
-      "hash": "sha256-56LwV51TX/FhgX+5LCG6akQ5KrOWuKgcJa+eUsRMxsc="
+      "revision": "51816be33a1ff0d4b22427de83222d5bfa96d30e",
+      "url": "https://github.com/nix-community/plasma-manager/archive/51816be33a1ff0d4b22427de83222d5bfa96d30e.tar.gz",
+      "hash": "sha256-d5Q1GmQ+sW1Bt8cgDE0vOihzLaswsm8cSdg8124EqXE="
     }
   },
   "version": 7
