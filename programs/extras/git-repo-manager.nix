@@ -1,7 +1,5 @@
 { self, ... }:
 
-let
-  package = self.packages.git-repo-manager;
-in {
-  environment.systemPackages = [ package ];
+{
+  environment.systemPackages = [ self.packages.git-repo-manager ];
 }
