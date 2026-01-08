@@ -1,4 +1,3 @@
-
 { adios }:
 let
   inherit (adios) types;
@@ -99,36 +98,37 @@ in {
         map (flag: "--add-flag \"${flag}\"") options.flags
       );
     in
-      stdenvNoCC.mkDerivation {
-        name = "${options.name}-wrapped";
-        buildInputs = [ makeBinaryWrapper ];
-        paths = map (path: "${path}") (
-          [ options.package ] ++ options.extraPaths
-        );
-        meta.mainProgram = options.name;
-        passthru = options.package.passthru or {};
+    stdenvNoCC.mkDerivation {
+      name = "${options.name}-wrapped";
+      buildInputs = [ makeBinaryWrapper ];
+      paths = map (path: "${path}") ([ options.package ] ++ options.extraPaths);
+      meta.mainProgram = options.name;
+      passthru = options.package.passthru or { };
 
-        preferLocalBuild = true;
-        allowSubstitutes = false;
-        enableParallelBuilding = true;
-        passAsFile = [ "buildCommand" "paths" ];
+      preferLocalBuild = true;
+      allowSubstitutes = false;
+      enableParallelBuilding = true;
+      passAsFile = [
+        "buildCommand"
+        "paths"
+      ];
 
-        buildCommand = ''
-          mkdir -p $out
-          for i in $(cat $pathsPath); do
-            ${lndir}/bin/lndir -silent $i $out
-          done
-          ${options.preWrap}
-          ${symlinkedStr}
-          ${
-            if environmentStr == "" && options.wrapperArgs == "" && options.flags == [] then
-              ""
-            else
+      buildCommand = ''
+        mkdir -p $out
+        for i in $(cat $pathsPath); do
+          ${lndir}/bin/lndir -silent $i $out
+        done
+        ${options.preWrap}
+        ${symlinkedStr}
+        ${
+          if environmentStr == "" && options.wrapperArgs == "" && options.flags == [] then
+            ""
+          else
             ''
               wrapProgram ${options.binaryPath} ${environmentStr} ${flagsStr} ${options.wrapperArgs}
             ''
-          }
-          ${options.postWrap}
-        '';
-      };
+        }
+        ${options.postWrap}
+      '';
+    };
 }
