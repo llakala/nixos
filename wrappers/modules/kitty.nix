@@ -16,9 +16,14 @@ in {
     configFile = {
       type = types.pathLike;
     };
+
+    theme = {
+      type = types.string;
+    };
     themeFile = {
       type = types.pathLike;
     };
+
     package = {
       type = types.derivation;
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.kitty;
@@ -53,6 +58,7 @@ in {
       };
     in
     assert !(options ? configFile && options ? settings);
+    assert !(options ? themeFile && options ? theme);
     inputs.mkWrapper {
       inherit (options) package;
       preWrap = ''
@@ -63,7 +69,9 @@ in {
           if options ? configFile then options.configFile
           else if options ? settings then generator.generate "kitty" options.settings
           else null;
-        "$out/kitty/current-theme.conf" = options.themeFile or null;
+
+        "$out/kitty/current-theme.conf" =
+          options.themeFile or "${inputs.nixpkgs.pkgs.kitty-themes}/share/kitty-themes/themes/${options.theme}.conf";
       };
       environment = {
         KITTY_CONFIG_DIRECTORY = "$out/kitty";
