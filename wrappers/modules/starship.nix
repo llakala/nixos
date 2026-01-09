@@ -11,6 +11,9 @@ in {
   };
 
   options = {
+    settings = {
+      type = types.attrs;
+    };
     configFile = {
       type = types.pathLike;
     };
@@ -33,11 +36,24 @@ in {
 
   impl =
     { options, inputs }:
-    inputs.mkWrapper {
-      inherit (options) package;
-      environment = {
-        STARSHIP_CONFIG = options.configFile;
-        XDG_CONFIG_HOME = inputs.git {}; # Makes starship follow /git/ignore for git status module
+    let
+      generator = inputs.nixpkgs.pkgs.formats.toml {};
+    in
+    assert !(options ? configFile && options ? settings);
+    if options ? configFile then
+      inputs.mkWrapper {
+        inherit (options) package;
+        environment = {
+          STARSHIP_CONFIG = options.configFile;
+          XDG_CONFIG_HOME = inputs.git {}; # Makes starship follow /git/ignore for git status module
+        };
+      }
+    else
+      inputs.mkWrapper {
+        inherit (options) package;
+        environment = {
+          STARSHIP_CONFIG = generator.generate "starship.toml" options.settings;
+          XDG_CONFIG_HOME = inputs.git {};
+        };
       };
-    };
 }
