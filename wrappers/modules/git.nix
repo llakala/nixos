@@ -41,7 +41,7 @@ in {
         mkdir -p $out/git
       '';
       symlinks = {
-        "$out/git/config" = options.configFile or writeText "config" (toGitINI options.settings);
+        "$out/git/config" = options.configFile or (writeText "config" (toGitINI options.settings));
         "$out/git/ignore" = options.ignoreFile or null;
       };
       environment = {
