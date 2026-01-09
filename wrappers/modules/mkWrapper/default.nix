@@ -46,6 +46,10 @@ in {
       type = types.attrsOf (types.union [
         types.null
         types.pathLike
+        (types.struct "readFromFileAtRuntime" {
+          readFromFile = types.bool;
+          value = types.pathLike;
+        })
       ]);
       description = "Environment variables to be set during the execution of the wrapped program";
       default = {};
@@ -72,16 +76,21 @@ in {
   impl =
     { options, inputs }:
     let
-      inherit (inputs.nixpkgs.pkgs) stdenvNoCC makeBinaryWrapper lndir;
-      inherit (builtins) attrNames concatMap concatStringsSep;
+      inherit (inputs.nixpkgs.pkgs) stdenvNoCC callPackage lndir;
+      inherit (builtins) attrNames concatMap concatStringsSep isAttrs;
+      makeBinaryWrapper = callPackage ./makeBinaryWrapper/package.nix {};
       environmentStr = concatStringsSep " " (
         concatMap (
           var:
           let
             value = options.environment.${var};
           in
-          if value == null then []
-          else [ "--set ${var} \"${value}\"" ]
+          if value == null then
+            []
+          else if isAttrs value && value ? readFromFile && value.readFromFile == true then
+            [ "--set-from-file ${var} \"${value.value}\"" ]
+          else
+            [ "--set ${var} \"${value}\"" ]
         ) (attrNames options.environment)
       );
       symlinkedStr = concatStringsSep "\n" (
