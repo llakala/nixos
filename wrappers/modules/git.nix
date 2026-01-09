@@ -18,9 +18,14 @@ in {
     configFile = {
       type = types.pathLike;
     };
+
+    ignoredPaths = {
+      type = types.listOf types.string;
+    };
     ignoreFile = {
       type = types.pathLike;
     };
+
     package = {
       type = types.derivation;
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.git;
@@ -30,10 +35,12 @@ in {
   impl =
     { options, inputs }:
     let
+      inherit (builtins) concatStringsSep;
       inherit (inputs.nixpkgs.pkgs) writeText;
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
     assert !(options ? settings && options ? configFile);
+    assert !(options ? ignoreFile && options ? ignoredPaths);
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
       inherit (options) package;
@@ -42,7 +49,8 @@ in {
       '';
       symlinks = {
         "$out/git/config" = options.configFile or (writeText "config" (toGitINI options.settings));
-        "$out/git/ignore" = options.ignoreFile or null;
+        "$out/git/ignore" =
+          options.ignoreFile or (writeText "ignore" (concatStringsSep "\n" options.ignoredPaths));
       };
       environment = {
         XDG_CONFIG_HOME = "$out";
