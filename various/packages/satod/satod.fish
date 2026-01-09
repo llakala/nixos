@@ -2,7 +2,7 @@
 
 set FZF_DEFAULT_OPTS \
     --border --highlight-line --no-separator --ansi --preview-window='75%' --preview-window="top" \
-    --cycle --multi --reverse --scheme=path --tiebreak="pathname,index" --with-nth=2..
+    --cycle --multi --reverse --scheme=path --tiebreak="pathname,index" --with-nth=2.. --bind='ctrl-l:accept'
 
 set DIRECTORY (pwd -P)
 
@@ -67,7 +67,7 @@ rm original.patch # Don't need it anymore now that the hunks are split up
 
 # I'm on a fork of splitpatch with some custom changes, including making it use
 # \ for folder separators to make it more scriptable.
-set applied_patches (FZF_DEFAULT_COMMAND='for file in (ls); echo $file $(string replace --all \\\\ / $file); end' fzf --preview='files=$(ls) cat $files[(math {n} + 1)] | diff-so-fancy')
+set applied_patches (FZF_DEFAULT_COMMAND='for file in (ls); echo $file $(string replace --all \\\\ / $file); end' fzf --preview='file=(string split " " {}) cat $file[1] | diff-so-fancy')
 
 cd $DIRECTORY
 for patch in $applied_patches
