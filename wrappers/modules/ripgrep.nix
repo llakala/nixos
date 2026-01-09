@@ -24,17 +24,18 @@ in {
 
   impl =
     { options, inputs }:
-    let
-      inherit (builtins) filter attrNames;
-      filterNullAttrs = set: removeAttrs set (filter (name: isNull set.${name}) (attrNames set));
-    in
-    assert !(options ? flags && options ? files);
-    inputs.mkWrapper (filterNullAttrs {
-      name = "rg";
-      inherit (options) package;
-      flags = options.flags or null;
-      environment = {
-        RIPGREP_CONFIG_PATH = options.configFile or null;
+    assert !(options ? flags && options ? configFile);
+    if options ? flags then
+      inputs.mkWrapper {
+        name = "rg";
+        inherit (options) package;
+        flags = options.flags;
+      }
+    else
+      inputs.mkWrapper {
+        name = "rg";
+        environment = {
+          RIPGREP_CONFIG_PATH = options.configFile;
+        };
       };
-    });
 }
