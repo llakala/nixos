@@ -10,6 +10,7 @@ in {
 
   # Rather than injecting this into an actual wrapper, I recommend reading from
   # args.options of the fzf wrapper, and setting these in a nixpkgs context.
+  # TODO: see if I can avoid this
   options = {
     defaultOpts = {
       type = types.string;

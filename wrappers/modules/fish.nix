@@ -64,7 +64,7 @@ in {
         concatStringsSep "\n" allAbbrs;
     };
 
-    # TODO: add rfc42 variant of this
+    # TODO: add impure variant of this
     interactiveShellInit = {
       type = types.string;
       mutatorType = types.string;

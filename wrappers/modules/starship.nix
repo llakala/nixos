@@ -44,7 +44,7 @@ in {
       inherit (options) package;
       environment = {
         STARSHIP_CONFIG = options.configFile or generator.generate "starship.toml" options.settings;
-        XDG_CONFIG_HOME = inputs.git {};
+        XDG_CONFIG_HOME = inputs.git {}; # TODO: make this optional
       };
     };
 }
