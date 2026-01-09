@@ -32,6 +32,12 @@ in {
     };
   };
 
+  mutations."/starship".wrapperAttrs =
+    { options }:
+    {
+      environment.XDG_CONFIG_HOME = options {};
+    };
+
   impl =
     { options, inputs }:
     let

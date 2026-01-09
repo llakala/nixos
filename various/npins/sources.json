@@ -9,9 +9,9 @@
       },
       "branch": "providers-and-consumers",
       "submodules": false,
-      "revision": "51c353acf23df588c81631f0af7bf60d07490536",
-      "url": "https://github.com/llakala/adios/archive/51c353acf23df588c81631f0af7bf60d07490536.tar.gz",
-      "hash": "sha256-ARk5yjARbmc0+JHBx+/mUxc8o/kDCmfgSFbZdaJiD5g="
+      "revision": "557651beb3c87f12bfad5bacbe8fa0ab9fdc6b1b",
+      "url": "https://github.com/llakala/adios/archive/557651beb3c87f12bfad5bacbe8fa0ab9fdc6b1b.tar.gz",
+      "hash": "sha256-fU87WH7vHdAjtBrT6KgNbwc/K1Iw2cKHEMf633D4lm8="
     },
     "home-manager": {
       "type": "Git",

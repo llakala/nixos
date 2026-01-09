@@ -2,6 +2,7 @@
 {
   options = {
     configFile.default = ./starship.toml;
+    wrapperAttrs.mutators = [ "/git" ];
   };
 
   mutations = {
