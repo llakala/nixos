@@ -40,7 +40,7 @@ in {
     { options, inputs }:
     let
       inherit (builtins) mapAttrs;
-      generator = inputs.nixpkgs.pkgs.formats.yaml { };
+      generator = inputs.nixpkgs.pkgs.formats.yaml {};
       mapBools = mapAttrs (
         _: value:
         if value == true then "enabled"

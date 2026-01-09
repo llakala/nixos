@@ -16,12 +16,14 @@ in {
     configFile = {
       type = types.pathLike;
     };
+
     keybinds = {
       type = types.string;
     };
     keybindsFile = {
       type = types.pathLike;
     };
+
     package = {
       type = types.derivation;
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.less;
@@ -33,8 +35,8 @@ in {
     let
       inherit (builtins) concatStringsSep;
     in
-    assert !(options ? keybinds && options ? keybindsFile);
     assert !(options ? flags && options ? configFile);
+    assert !(options ? keybinds && options ? keybindsFile);
     inputs.mkWrapper {
       inherit (options) package;
       environment = {

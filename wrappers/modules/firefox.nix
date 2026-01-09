@@ -18,6 +18,7 @@ in {
         https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig
       '';
     };
+
     policies = {
       type = types.attrs;
       description = ''

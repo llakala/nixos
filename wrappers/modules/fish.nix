@@ -92,8 +92,8 @@ in {
       inherit (inputs.nixpkgs.pkgs) writeText;
       inherit (builtins) listToAttrs attrNames;
     in
-    assert !(options ? functions && options ? functionsFiles);
     assert !(options ? completions && options ? completionsFiles);
+    assert !(options ? functions && options ? functionsFiles);
     inputs.mkWrapper {
       inherit (options) package;
       symlinks = {

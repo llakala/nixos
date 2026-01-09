@@ -28,8 +28,7 @@ in {
     if options ? flags then
       inputs.mkWrapper {
         name = "rg";
-        inherit (options) package;
-        flags = options.flags;
+        inherit (options) package flags;
       }
     else
       inputs.mkWrapper {

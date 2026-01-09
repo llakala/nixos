@@ -40,7 +40,7 @@ in {
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
     assert !(options ? settings && options ? configFile);
-    assert !(options ? ignoreFile && options ? ignoredPaths);
+    assert !(options ? ignoredPaths && options ? ignoreFile);
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
       inherit (options) package;

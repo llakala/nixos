@@ -57,8 +57,8 @@ in {
         } " ";
       };
     in
-    assert !(options ? configFile && options ? settings);
-    assert !(options ? themeFile && options ? theme);
+    assert !(options ? settings && options ? configFile);
+    assert !(options ? theme && options ? themeFile);
     inputs.mkWrapper {
       inherit (options) package;
       preWrap = ''

@@ -112,7 +112,7 @@ in {
       buildInputs = [ makeBinaryWrapper ];
       paths = map (path: "${path}") ([ options.package ] ++ options.extraPaths);
       meta.mainProgram = options.name;
-      passthru = options.package.passthru or { };
+      passthru = options.package.passthru or {};
 
       preferLocalBuild = true;
       allowSubstitutes = false;

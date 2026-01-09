@@ -27,7 +27,7 @@ in {
     let
       generator = inputs.nixpkgs.pkgs.formats.toml {};
     in
-    assert !(options ? configFile && options ? settings);
+    assert !(options ? settings && options ? configFile);
     inputs.mkWrapper {
       inherit (options) package;
       binaryPath = "$out/libexec/xdg-desktop-portal-termfilechooser";
