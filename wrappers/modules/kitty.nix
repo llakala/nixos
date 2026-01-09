@@ -10,11 +10,11 @@ in {
   };
 
   options = {
-    configFile = {
-      type = types.pathLike;
-    };
     settings = {
       type = types.attrs;
+    };
+    configFile = {
+      type = types.pathLike;
     };
     themeFile = {
       type = types.pathLike;

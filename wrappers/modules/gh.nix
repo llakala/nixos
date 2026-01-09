@@ -10,11 +10,11 @@ in {
   };
 
   options = {
-    configDir = {
-      type = types.pathLike;
-    };
     settings = {
       type = types.attrs;
+    };
+    configDir = {
+      type = types.pathLike;
     };
     hosts = {
       type = types.attrs;
