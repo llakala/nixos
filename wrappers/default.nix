@@ -8,6 +8,7 @@ let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   adios = import "${sources.adios}/adios";
+
   importModules = import "${sources.adios}/adios/lib/importModules.nix" {
     adios = adios // rec {
       types = adios.types // {
@@ -19,7 +20,7 @@ let
         ];
       };
     };
-};
+  };
 
   root = {
     name = "root";
