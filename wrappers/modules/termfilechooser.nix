@@ -10,6 +10,9 @@ in {
   };
 
   options = {
+    settings = {
+      type = types.attrs;
+    };
     configFile = {
       type = types.pathLike;
     };
@@ -21,6 +24,10 @@ in {
 
   impl =
     { options, inputs }:
+    let
+      generator = inputs.nixpkgs.pkgs.formats.toml {};
+    in
+    assert !(options ? configFile && options ? settings);
     inputs.mkWrapper {
       inherit (options) package;
       binaryPath = "$out/libexec/xdg-desktop-portal-termfilechooser";
@@ -28,7 +35,7 @@ in {
         mkdir -p $out/xdg-desktop-portal-termfilechooser
       '';
       symlinks = {
-        "$out/xdg-desktop-portal-termfilechooser-config" = options.configFile;
+        "$out/xdg-desktop-portal-termfilechooser/config" = options.configFile or generator.generate "config" options.settings;
       };
       environment = {
         XDG_CONFIG_HOME = "$out";
