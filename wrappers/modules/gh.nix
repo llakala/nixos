@@ -26,7 +26,7 @@ in {
   };
 
   mutations = {
-    "/git".iniConfig =
+    "/git".settings =
       { inputs, options }:
       let
         inherit (inputs.nixpkgs) lib;

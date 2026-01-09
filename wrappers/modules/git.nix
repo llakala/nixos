@@ -10,15 +10,15 @@ in {
   };
 
   options = {
-    ignoreFile = {
-      type = types.pathLike;
-    };
-    iniConfig = {
+    settings = {
       type = types.attrs;
       mutatorType = types.attrs;
       mergeFunc = adios.lib.mergeFuncs.mergeAttrsRecursively;
     };
-    iniConfigFile = {
+    configFile = {
+      type = types.pathLike;
+    };
+    ignoreFile = {
       type = types.pathLike;
     };
     package = {
@@ -33,7 +33,7 @@ in {
       inherit (inputs.nixpkgs.pkgs) writeText;
       inherit (inputs.nixpkgs.lib.generators) toGitINI;
     in
-    assert !(options ? iniConfig && options ? iniConfigFile);
+    assert !(options ? settings && options ? configFile);
     inputs.mkWrapper {
       name = "git"; # Default derivation name is git-with-svn
       inherit (options) package;
@@ -41,7 +41,7 @@ in {
         mkdir -p $out/git
       '';
       symlinks = {
-        "$out/git/config" = options.iniConfigFile or writeText "config" (toGitINI options.iniConfig);
+        "$out/git/config" = options.configFile or writeText "config" (toGitINI options.settings);
         "$out/git/ignore" = options.ignoreFile or null;
       };
       environment = {
