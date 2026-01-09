@@ -10,6 +10,7 @@ let
   adios = import "${sources.adios}/adios";
 
   importModules = import "${sources.adios}/adios/lib/importModules.nix" {
+    # Add my custom types
     adios = adios // rec {
       types = adios.types // {
         null = types.typedef "null" isNull;
@@ -22,17 +23,16 @@ let
     };
   };
 
+  # Take the actual modules providing APIs (soon to be upstreamed into their own
+  # repo), and merge the attrsets deeply (think of it like a fancy version of
+  # //). This allows my config to not just call impls, but add inputs, add
+  # computed values, etc.
   root = {
     name = "root";
-    modules = importModules ./modules;
+    modules = lib.recursiveUpdate (importModules ./modules) (importModules ./config);
   };
 
-  overrides = {
-    name = "overridden-root";
-    modules = importModules ./config;
-  };
-
-  tree = (adios (lib.recursiveUpdate root overrides)).eval {
+  tree = (adios root).eval {
     options = {
       "/nixpkgs" = {
         inherit pkgs lib;
