@@ -13,11 +13,11 @@ in {
     settings = {
       type = types.attrs;
     };
-    configDir = {
-      type = types.pathLike;
-    };
     hosts = {
       type = types.attrs;
+    };
+    configDir = {
+      type = types.pathLike;
     };
     package = {
       type = types.derivation;
