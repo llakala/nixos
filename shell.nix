@@ -15,6 +15,8 @@ let
   wrappers = import ./wrappers { inherit sources pkgs myLib; };
 in
 pkgs.mkShellNoCC {
+  allowSubstitutes = false;
+
   packages = [
     meovim
     wrappers.firefox.drv
