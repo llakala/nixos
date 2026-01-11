@@ -12,7 +12,7 @@ in {
     autoConfigFiles = {
       type = types.listOf types.pathLike;
       description = ''
-        `autoconfig.js` files to be injected into the Firefox derivation.
+        `autoconfig.js` files to be injected into the wrapped package.
 
         See the Firefox documentation:
         https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig
@@ -22,18 +22,17 @@ in {
     policies = {
       type = types.attrs;
       description = ''
-        Policies to be injected into the Firefox derivation.
+        Policies to be injected into the wrapped package.
 
         `policies.Preferences` can be used to inject preferences.
 
-        Note that this option is disjoint with the `policiesFiles` option - only
-        one should be used.
+        Disjoint with the `policiesFiles` option.
       '';
     };
     policiesFiles = {
       type = types.listOf types.pathLike;
       description = ''
-        JSON files containing policies to be injected into the Firefox derivation.
+        JSON files containing policies to be injected into the wrapped package.
 
         To inject preferences, code like this can be used:
         ```json
@@ -49,8 +48,7 @@ in {
         See the Firefox documentation:
         https://support.mozilla.org/en-US/kb/customizing-firefox-using-policiesjson
 
-        Note that this option is disjoint with the `policies` option - only one
-        should be used.
+        Disjoint with the `policies` option.
       '';
     };
 

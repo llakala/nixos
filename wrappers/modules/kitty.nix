@@ -13,7 +13,7 @@ in {
     settings = {
       type = types.attrs;
       description = ''
-        Settings written to the final package's `kitty.conf`.
+        Settings to be injected into the wrapped package's `kitty.conf`.
 
         See the kitty documentation:
         https://sw.kovidgoyal.net/kitty/conf.html
@@ -24,7 +24,7 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        `kitty.conf` file to be included in the final package.
+        `kitty.conf` file to be injected into the wrapped package.
 
         See the kitty documentation:
         https://sw.kovidgoyal.net/kitty/conf.html
@@ -46,7 +46,7 @@ in {
     themeFile = {
       type = types.pathLike;
       description = ''
-        File containing a Kitty theme, to be automatically used.
+        Path containing a Kitty theme to be used.
       '';
     };
 

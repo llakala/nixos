@@ -13,7 +13,7 @@ in {
     settings = {
       type = types.attrs;
       description = ''
-        Settings written to the final package's `config.yml`.
+        Settings to be injected into the wrapped package's `config.yml`.
 
         See the documentation:
         https://cli.github.com/manual/gh_config
@@ -24,7 +24,7 @@ in {
     hosts = {
       type = types.attrs;
       description = ''
-        Host information written to the final package's `hosts.yml`.
+        Host information to be injected into the wrapped package's `hosts.yml`.
 
         Disjoint with the `configDir` option.
       '';
@@ -32,7 +32,7 @@ in {
     configDir = {
       type = types.pathLike;
       description = ''
-        Folder containing gh configuration, to be injected into the final package.
+        Folder containing gh configuration files to be injected into the wrapped package.
 
         This folder should contain a `config.yml` and/or a `hosts.yml`.
 

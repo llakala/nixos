@@ -13,7 +13,7 @@ in {
     flags = {
       type = types.listOf types.string;
       description = ''
-        Flags to be used by default when running bat.
+        Flags to be appended by default when running bat.
 
         Disjoint with the `configFile` option.
       '';
@@ -21,7 +21,7 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        File containing the flags to be used by default when running bat.
+        File containing the flags to be appended by default when running bat.
 
         Disjoint with the `flags` option.
       '';

@@ -14,7 +14,9 @@ in {
     completions = {
       type = types.attrsOf types.string;
       description = ''
-        Custom completions to be used for each command.
+        Custom completions to be injected into the wrapped package.
+
+        Each attribute should map the name of a command to inline fish script defining how the command should be completed.
 
         Disjoint with the `completionFiles` option.
       '';
@@ -22,7 +24,7 @@ in {
     completionsFiles = {
       type = types.listOf types.pathLike;
       description = ''
-        Files containing custom completions to be added.
+        Files containing custom completions to be injected into the wrapped package.
 
         Disjoint with the `completions` option.
       '';
@@ -33,7 +35,9 @@ in {
     functions = {
       type = types.attrsOf types.string;
       description = ''
-        Custom functions to be added.
+        Custom functions to be injected into the wrapped package.
+
+        Each attribute should map the name of a function to inline fish script defining its functionality.
 
         Disjoint with the `functionsFiles` option.
       '';
@@ -41,7 +45,7 @@ in {
     functionsFiles = {
       type = types.listOf types.pathLike;
       description = ''
-        Files containing custom functions to be added.
+        Files containing custom functions to be injected into the wrapped package.
 
         Disjoint with the `functions` option.
       '';
@@ -52,7 +56,9 @@ in {
     abbreviations = {
       type = types.string;
       description = ''
-        Custom abbreviations to be added, with each abbreviation mapped to its expanded form.
+        Custom abbreviations to be injected into the wrapped package.
+
+        Each attribute should map an abbreviation to its expanded form.
       '';
       mutatorType =
         let
@@ -91,7 +97,9 @@ in {
     interactiveShellInit = {
       type = types.string;
       description = ''
-        Shell initialization code to be automatically called when Fish is ran interactively.
+        Shell initialization code to be automatically injected into the wrapped package.
+
+        Only ran when Fish is initalized interactively.
       '';
       mutatorType = types.string;
       mergeFunc =

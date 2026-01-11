@@ -13,7 +13,7 @@ in {
     flags = {
       type = types.listOf types.string;
       description = ''
-        Flags to be automatically appended when running the wrapped package.
+        Flags to be automatically appended when running ripgrep.
 
         See the documentation of valid flags:
         https://manpages.ubuntu.com/manpages/jammy/man1/rg.1.html#:~:text=OPTIONS
@@ -24,7 +24,7 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        File containing flags to be automatically appended when running the wrapped package.
+        `ripgreprc` file, containing flags to be automatically appended when running ripgrep.
 
         See the documentation of valid flags:
         https://manpages.ubuntu.com/manpages/jammy/man1/rg.1.html#:~:text=OPTIONS

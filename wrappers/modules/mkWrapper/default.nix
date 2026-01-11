@@ -75,7 +75,7 @@ in {
     };
     flags = {
       type = types.listOf types.string;
-      description = "Flags to be appended to the executed program.";
+      description = "Flags to be automatically appended to the wrapped program.";
       default = [];
     };
   };

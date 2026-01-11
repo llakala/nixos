@@ -13,7 +13,7 @@ in {
     flags = {
       type = types.listOf types.string;
       description = ''
-        Flags to be automatically used on any invocation of less.
+        Flags to be automatically appended when running less.
 
         See the documentation for valid options:
         https://man7.org/linux/man-pages/man1/less.1.html#:~:text=OPTIONS,-top
@@ -24,7 +24,7 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        File containing flags to be automatically used when invoking less.
+        File containing flags to be automatically appended when running less.
 
         See the documentation for valid options:
         https://man7.org/linux/man-pages/man1/less.1.html#:~:text=OPTIONS,-top

@@ -13,9 +13,9 @@ in {
     settings = {
       type = types.attrs;
       description = ''
-        Settings to be added to the user's git config.
+        Settings to be injected into the wrapped package's `gitconfig`.
 
-        See the git documentation on valid options:
+        See the git documentation for valid options:
         https://git-scm.com/docs/git-config#_variables
 
         Disjoint with the `configFile` option.
@@ -26,7 +26,7 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        File containing the user's git configuration, following the git ini format.
+        `gitconfig` file to be injected into the wrapped package.
 
         See the git documentation on the syntax of this file:
         https://git-scm.com/docs/git-config#_configuration_file
