@@ -8,20 +8,7 @@ let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   adios = import "${sources.adios}/adios";
-
-  importModules = import "${sources.adios}/adios/lib/importModules.nix" {
-    # Add my custom types
-    adios = adios // rec {
-      types = adios.types // {
-        null = types.typedef "null" isNull;
-        pathLike = types.union [
-          types.path
-          types.derivation
-          types.string
-        ];
-      };
-    };
-  };
+  adios-wrappers = import sources.adios-wrappers { adios = sources.adios; };
 
   # Take the actual modules providing APIs (soon to be upstreamed into their own
   # repo), and merge the attrsets deeply (think of it like a fancy version of
@@ -29,7 +16,7 @@ let
   # computed values, etc.
   root = {
     name = "root";
-    modules = lib.recursiveUpdate (importModules ./modules) (importModules ./config);
+    modules = lib.recursiveUpdate adios-wrappers (adios.lib.importModules ./.);
   };
 
   tree = (adios root).eval {

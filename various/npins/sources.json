@@ -13,6 +13,19 @@
       "url": "https://github.com/llakala/adios/archive/557651beb3c87f12bfad5bacbe8fa0ab9fdc6b1b.tar.gz",
       "hash": "sha256-fU87WH7vHdAjtBrT6KgNbwc/K1Iw2cKHEMf633D4lm8="
     },
+    "adios-wrappers": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "llakala",
+        "repo": "adios-wrappers"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "b9bcedbc878c67f4518a545ad51a355bde1fb25c",
+      "url": "https://github.com/llakala/adios-wrappers/archive/b9bcedbc878c67f4518a545ad51a355bde1fb25c.tar.gz",
+      "hash": "sha256-HWoExvv+ZDVhPYWpi8jAvGfDbHF2u7SriF/3ee2tPWo="
+    },
     "home-manager": {
       "type": "Git",
       "repository": {
