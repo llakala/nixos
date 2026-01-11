@@ -12,12 +12,25 @@ in {
   options = {
     settings = {
       type = types.attrs;
+      description = ''
+        Settings injected into the wrapped package's configuration file.
+
+        See the termfilechooser documentation for valid options:
+        https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser#configuration
+      '';
     };
     configFile = {
       type = types.pathLike;
+      description = ''
+        Configuration file to be injected into the wrapped package.
+
+        See the termfilechooser documentation for valid options:
+        https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser#configuration
+      '';
     };
     package = {
       type = types.derivation;
+      description = "The xdg-desktop-portal-termfilechooser package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.xdg-desktop-portal-termfilechooser;
     };
   };

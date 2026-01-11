@@ -12,13 +12,23 @@ in {
   options = {
     flags = {
       type = types.listOf types.string;
+      description = ''
+        Flags to be automatically appended when creating the zoxide shell integration.
+
+        See the documentation of valid flags:
+        https://github.com/ajeetdsouza/zoxide#flags
+      '';
       default = [];
     };
     excludedDirs = {
       type = types.string;
+      description = ''
+        Directory globs that won't be added to the database when navigating with zoxide.
+      '';
     };
     package = {
       type = types.derivation;
+      description = "The zoxide package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.zoxide;
     };
   };
