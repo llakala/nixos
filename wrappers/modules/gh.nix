@@ -12,15 +12,36 @@ in {
   options = {
     settings = {
       type = types.attrs;
+      description = ''
+        Settings written to the final package's `config.yml`.
+
+        See the documentation:
+        https://cli.github.com/manual/gh_config
+
+        Disjoint with the `configDir` option.
+      '';
     };
     hosts = {
       type = types.attrs;
+      description = ''
+        Host information written to the final package's `hosts.yml`.
+
+        Disjoint with the `configDir` option.
+      '';
     };
     configDir = {
       type = types.pathLike;
+      description = ''
+        Folder containing gh configuration, to be injected into the final package.
+
+        This folder should contain a `config.yml` and/or a `hosts.yml`.
+
+        Disjoint with the `settings` and `hosts` options.
+      '';
     };
     package = {
       type = types.derivation;
+      description = "The gh package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.gh;
     };
   };

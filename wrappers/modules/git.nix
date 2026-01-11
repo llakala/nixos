@@ -12,22 +12,52 @@ in {
   options = {
     settings = {
       type = types.attrs;
+      description = ''
+        Settings to be added to the user's git config.
+
+        See the git documentation on valid options:
+        https://git-scm.com/docs/git-config#_variables
+
+        Disjoint with the `configFile` option.
+      '';
       mutatorType = types.attrs;
       mergeFunc = adios.lib.mergeFuncs.mergeAttrsRecursively;
     };
     configFile = {
       type = types.pathLike;
+      description = ''
+        File containing the user's git configuration, following the git ini format.
+
+        See the git documentation on the syntax of this file:
+        https://git-scm.com/docs/git-config#_configuration_file
+
+        And the documentation on valid options:
+        https://git-scm.com/docs/git-config#_variables
+
+        Disjoint with the `settings` option.
+      '';
     };
 
     ignoredPaths = {
       type = types.listOf types.string;
+      description = ''
+        Extra path globs to be ignored automatically, along with the repo-specific `.gitignore`.
+
+        Disjoint with the `ignoreFile` option.
+      '';
     };
     ignoreFile = {
       type = types.pathLike;
+      description = ''
+        File containing extra path globs to be ignored automatically, along with the repo-specific `.gitignore`.
+
+        Disjoint with the `ignoredPaths` option.
+      '';
     };
 
     package = {
       type = types.derivation;
+      description = "The git package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.git;
     };
   };

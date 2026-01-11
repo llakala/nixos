@@ -12,20 +12,47 @@ in {
   options = {
     settings = {
       type = types.attrs;
+      description = ''
+        Settings written to the final package's `kitty.conf`.
+
+        See the kitty documentation:
+        https://sw.kovidgoyal.net/kitty/conf.html
+
+        Disjoint with the `configFile` option.
+      '';
     };
     configFile = {
       type = types.pathLike;
+      description = ''
+        `kitty.conf` file to be included in the final package.
+
+        See the kitty documentation:
+        https://sw.kovidgoyal.net/kitty/conf.html
+
+        Disjoint with the `settings` option.
+      '';
     };
 
     theme = {
       type = types.string;
+      description = ''
+        Theme name from `pkgs.kitty-themes` to be used.
+
+        Each of the files in this folder constitute a valid theme:
+        https://github.com/kovidgoyal/kitty-themes/tree/master/themes
+      '';
+      example = "Catppuccin-Mocha";
     };
     themeFile = {
       type = types.pathLike;
+      description = ''
+        File containing a Kitty theme, to be automatically used.
+      '';
     };
 
     package = {
       type = types.derivation;
+      description = "The kitty package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.kitty;
     };
   };

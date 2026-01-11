@@ -13,7 +13,7 @@ in {
     flags = {
       type = types.listOf types.string;
       description = ''
-        Flags to be used by default when running Bat.
+        Flags to be used by default when running bat.
 
         Disjoint with the `configFile` option.
       '';
@@ -21,14 +21,14 @@ in {
     configFile = {
       type = types.pathLike;
       description = ''
-        File containing the flags to be used by default when running Bat.
+        File containing the flags to be used by default when running bat.
 
         Disjoint with the `flags` option.
       '';
     };
     package = {
       type = types.derivation;
-      description = "The Bat package to be wrapped.";
+      description = "The bat package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.bat;
     };
   };

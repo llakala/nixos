@@ -11,35 +11,42 @@ in {
   options = {
     package = {
       type = types.derivation;
+      description = "The package to be wrapped.";
     };
     name = {
       type = types.string;
+      description = ''
+        The name of the package to be wrapped.
+
+        This determines the pname of the wrapped package, as well as the derivation to be automatically run when using `nix run`.
+      '';
       defaultFunc = { options }: options.package.pname;
     };
     extraPaths = {
       type = types.listOf types.derivation;
-      description = "Extra paths to be symlinked in the final derivation";
+      description = "Extra derivations which should have their directory structures replicated in the final package.";
       default = [];
     };
     binaryPath = {
       type = types.string;
+      description = "Path within the input derivation to the binary which should be wrapped";
       defaultFunc = { options }: "$out/bin/${options.name}";
     };
 
     preWrap = {
       type = types.string;
-      description = "Commands to be run before everything else in the postBuild phase";
+      description = "Commands to be run before the wrapping process in the build steps.";
       default = "";
     };
     postWrap = {
       type = types.string;
-      description = "Commands to be run after everything else in the postBuild phase";
+      description = "Commands to be run after the wrapping process in the build steps.";
       default = "";
     };
 
     wrapperArgs = {
       type = types.string;
-      description = "Extra args passed directly to wrapProgram";
+      description = "Extra args passed directly to wrapProgram.";
       default = "";
     };
     environment = {

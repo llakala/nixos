@@ -12,12 +12,32 @@ in {
   options = {
     flags = {
       type = types.listOf types.string;
+      description = ''
+        Flags to be automatically appended when running the wrapped package.
+
+        See the documentation of valid flags:
+        https://manpages.ubuntu.com/manpages/jammy/man1/rg.1.html#:~:text=OPTIONS
+
+        Disjoint with the `configFile` option.
+      '';
     };
     configFile = {
       type = types.pathLike;
+      description = ''
+        File containing flags to be automatically appended when running the wrapped package.
+
+        See the documentation of valid flags:
+        https://manpages.ubuntu.com/manpages/jammy/man1/rg.1.html#:~:text=OPTIONS
+
+        This file should have each flag on its own line. See the documentation of the file's format:
+        https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+
+        Disjoint with the `configFile` option.
+      '';
     };
     package = {
       type = types.derivation;
+      description = "The ripgrep package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.ripgrep;
     };
   };

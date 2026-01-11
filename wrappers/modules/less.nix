@@ -12,20 +12,36 @@ in {
   options = {
     flags = {
       type = types.listOf types.string;
+      description = ''
+        Flags to be automatically used on any invocation of less.
+
+        See the documentation for valid options:
+        https://man7.org/linux/man-pages/man1/less.1.html#:~:text=OPTIONS,-top
+
+        Disjoint with the `configFile` option.
+      '';
     };
     configFile = {
       type = types.pathLike;
+      description = ''
+        File containing flags to be automatically used when invoking less.
+
+        See the documentation for valid options:
+        https://man7.org/linux/man-pages/man1/less.1.html#:~:text=OPTIONS,-top
+
+        Disjoint with the `settings` option.
+      '';
     };
 
-    keybinds = {
-      type = types.string;
-    };
+    # TODO: change this to configFile, and add individual RFC42 options that
+    # modify each of the sections.
     keybindsFile = {
       type = types.pathLike;
     };
 
     package = {
       type = types.derivation;
+      description = "The less package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.less;
     };
   };

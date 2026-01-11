@@ -13,6 +13,7 @@ in {
   options = {
     package = {
       type = types.derivation;
+      description = "The diff-so-fancy package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.diff-so-fancy;
     };
   };

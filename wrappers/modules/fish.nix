@@ -13,24 +13,47 @@ in {
     # TODO: add mergeFunc for completions and functions options
     completions = {
       type = types.attrsOf types.string;
+      description = ''
+        Custom completions to be used for each command.
+
+        Disjoint with the `completionFiles` option.
+      '';
     };
     completionsFiles = {
       type = types.listOf types.pathLike;
+      description = ''
+        Files containing custom completions to be added.
+
+        Disjoint with the `completions` option.
+      '';
       mutatorType = types.listOf types.pathLike;
       mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
 
     functions = {
       type = types.attrsOf types.string;
+      description = ''
+        Custom functions to be added.
+
+        Disjoint with the `functionsFiles` option.
+      '';
     };
     functionsFiles = {
       type = types.listOf types.pathLike;
+      description = ''
+        Files containing custom functions to be added.
+
+        Disjoint with the `functions` option.
+      '';
       mutatorType = types.listOf types.pathLike;
       mergeFunc = adios.lib.mergeFuncs.concatLists;
     };
 
     abbreviations = {
       type = types.string;
+      description = ''
+        Custom abbreviations to be added, with each abbreviation mapped to its expanded form.
+      '';
       mutatorType =
         let
           abbrWithCursor = types.struct "abbrWithCursor" {
@@ -67,6 +90,9 @@ in {
     # TODO: add impure variant of this
     interactiveShellInit = {
       type = types.string;
+      description = ''
+        Shell initialization code to be automatically called when Fish is ran interactively.
+      '';
       mutatorType = types.string;
       mergeFunc =
         { mutators, options }:
@@ -82,6 +108,7 @@ in {
 
     package = {
       type = types.derivation;
+      description = "The Fish package to be wrapped.";
       defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fish;
     };
   };
