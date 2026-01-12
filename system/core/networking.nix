@@ -1,11 +1,10 @@
-{ lib, baseVars, hostVars, ... }:
+{ baseVars, hostVars, ... }:
 
 {
   networking = {
     hostName = hostVars.hostname;
 
     networkmanager.enable = true;
-    wireless.enable = lib.mkForce false;
 
     firewall.enable = true;
     resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
