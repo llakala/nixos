@@ -1,5 +1,10 @@
+#command
 h left-scroll
 l right-scroll
 \e/ forw-search ^R
+
 #line-edit
 \e abort
+
+#env
+LESS = --RAW-CONTROL-CHARS --clear-screen --quit-if-one-screen --redraw-on-quit --tilde --incsearch --wordwrap --ignore-case --search-options=WR

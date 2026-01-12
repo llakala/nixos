@@ -9,6 +9,7 @@ let
   inherit (builtins) mapAttrs;
   adios = import "${sources.adios}/adios";
   adios-wrappers = import sources.adios-wrappers { adios = sources.adios; };
+  # adios-wrappers = import ~/Documents/projects/adios-wrappers { adios = sources.adios; };
 
   # Take the actual modules providing APIs (soon to be upstreamed into their own
   # repo), and merge the attrsets deeply (think of it like a fancy version of
