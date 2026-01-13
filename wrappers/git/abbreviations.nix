@@ -38,11 +38,13 @@
   gsh = "git stash --staged";
   gshu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
   gsha = "git stash --include-untracked"; # Stash everything
+  gshl = "git stash list -p";
   gshp = "git stash pop";
 
   gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
   gbrd = "git branch -d";
 
+  grb = "git rebase";
   grbm = "git rebase main";
   grbma = "git rebase master";
 
