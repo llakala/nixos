@@ -34,7 +34,7 @@
     tldr # Mini-manpages
 
     # commands specifically for nix
-    nixfmt-rfc-style
+    nixfmt
     nix-inspect
     nix-output-monitor # NOT CALLED NOM
     nix-tree
