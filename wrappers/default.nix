@@ -17,7 +17,7 @@ let
   # computed values, etc.
   root = {
     name = "root";
-    modules = lib.recursiveUpdate adios-wrappers (adios.lib.importModules ./.);
+    modules = myLib.recursiveUpdate adios-wrappers (adios.lib.importModules ./.);
   };
 
   tree = (adios root).eval {
