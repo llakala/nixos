@@ -6,12 +6,14 @@
 
   mutations = {
     "/fish".abbreviations = _: {
-      ghrpv = "gh repo view --web";
-      ghrpf = "gh repo fork --remote --clone";
-
-      ghprc = "gh pr create --web";
-      ghprv = "gh pr view --web";
-      ghprm = "gh pr merge";
+      gh = [
+        { rpv = "repo view --web"; }
+        { rpf = "repo fork --remote --clone"; }
+        { prc = "pr create --web"; }
+        { prc = "pr create --web"; }
+        { prv = "pr view --web"; }
+        { prm = "pr merge"; }
+      ];
     };
   };
 }
