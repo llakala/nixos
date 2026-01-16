@@ -26,6 +26,8 @@ pkgs.mkShellNoCC {
     wrappers.kittab.drv
     wrappers.yazi.drv
     wrappers.fish.drv
+    wrappers.less.drv
+    wrappers.bat.drv
     packages.satod
     packages.evalue
     menu.imanpu
