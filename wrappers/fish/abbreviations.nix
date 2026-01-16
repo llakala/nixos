@@ -25,7 +25,10 @@ in
   "nr." = setCursor "nix run .#%";
 
   ns = "nix-shell";
-  nsn = "nix-shell -p";
+  nsn = {
+    setCursor = true;
+    expansion = "nix-shell -p % --command fish";
+  };
 
   "ns." = setCursor "nix shell .#%";
 
