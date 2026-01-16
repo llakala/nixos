@@ -3,6 +3,7 @@
 let
   neovimPackage = import "${sources.meovim}/default.nix" {
     inherit pkgs;
+    small = false;
     mnw = import sources.mnw;
     neovim = sources.neovim { inherit pkgs; }; # Use a derivation fetcher here to avoid ever refetching
   };

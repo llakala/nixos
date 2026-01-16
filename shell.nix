@@ -7,6 +7,7 @@
 let
   menu = import "${sources.menu}/packages/default.nix" { inherit pkgs; };
   meovim = import "${sources.meovim}/default.nix" {
+    small = false;
     inherit pkgs;
     mnw = import sources.mnw;
     neovim = sources.neovim { inherit pkgs; }; # We use a derivation fetcher here to avoid ever refetching
