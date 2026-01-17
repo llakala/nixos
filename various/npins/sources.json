@@ -74,9 +74,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "ea993bf7fe0c4999abb0b6e79c9dafb82a907700",
-      "url": "https://github.com/Gerg-L/mnw/archive/ea993bf7fe0c4999abb0b6e79c9dafb82a907700.tar.gz",
-      "hash": "sha256-qIHxw1FSaYsC8m3d2iFegsQEZVal0dxJDybUOTOQpP8="
+      "revision": "75bb637454b0fbbb5ed652375a4bf7ffd28bcf6f",
+      "url": "https://github.com/Gerg-L/mnw/archive/75bb637454b0fbbb5ed652375a4bf7ffd28bcf6f.tar.gz",
+      "hash": "sha256-kSvWF3Xt2HW9hmV5V7i8PqeWJIBUKmuKoHhOgj3Znzs="
     },
     "neovim": {
       "type": "Git",
