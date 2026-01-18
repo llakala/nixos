@@ -60,10 +60,11 @@
   grbum = "git rebase upstream/main";
   grbuma = "git rebase upstream/master";
 
-
   gcp = "git cherry-pick";
   gcpc = "git cherry-pick --continue";
   gcpa = "git cherry-pick --abort";
+
+  grp = "git rev-parse";
 
   # Using our custom patch-based git aliases
   ghr = "git hire"; # Add staged changes
