@@ -19,6 +19,11 @@ on = "p"
 run = "plugin smart-paste"
 
 [[mgr.prepend_keymap]]
+desc = "Paste normally"
+on = "P"
+run = "paste"
+
+[[mgr.prepend_keymap]]
 desc = "Jump to char"
 on = "f"
 run = "plugin jump-to-char"
