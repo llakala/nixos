@@ -8,8 +8,7 @@ myLib.writeFishApplication {
   ];
 
   # NOTE: doesn't do `pkgs.pkgs` by default, follow the nix.dev tutorial to add it
-  text = # fish
-  ''
+  text = /* fish */ ''
     set FILE $argv[1]
     nix eval --impure --json --expr \
     "

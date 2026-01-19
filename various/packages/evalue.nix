@@ -7,8 +7,7 @@ myLib.writeFishApplication {
     jq
   ];
 
-  text = # fish
-  ''
+  text = /* fish */ ''
 
     switch (count $argv)
       case 0

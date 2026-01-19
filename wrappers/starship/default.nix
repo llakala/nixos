@@ -12,8 +12,7 @@
         finalWrapper = options {};
         inherit (inputs.nixpkgs) lib;
       in
-      # fish
-      ''
+      /* fish */ ''
         ${lib.getExe finalWrapper} init fish | source
         enable_transience
 

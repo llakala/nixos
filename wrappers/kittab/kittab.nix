@@ -11,8 +11,7 @@ myLib.writeFishApplication {
 
   # Using runtime inputs seems to break things, so we rely on the system version of kitty.
   # Based on https://github.com/kovidgoyal/kitty/discussions/7936#discussioncomment-10863308
-  text = # fish
-  ''
+  text = /* fish */ ''
     set socket "unix:@mykitty"
 
     # we remove `-e` from argv, because while the `kitty` command seems to work fine with

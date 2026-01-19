@@ -4,8 +4,7 @@
   hm.xdg.configFile."monitors.xml" = {
     force = true;
 
-    text = # xml
-    ''
+    text = /* xml */ ''
       <monitors version="2">
         <configuration>
           <layoutmode>physical</layoutmode>
@@ -28,8 +27,8 @@
               </mode>
             </monitor>
           </logicalmonitor>
-       </configuration>
-    </monitors>
+        </configuration>
+      </monitors>
     '';
   };
 }

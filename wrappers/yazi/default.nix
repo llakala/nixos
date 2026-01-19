@@ -12,7 +12,7 @@
   mutations = {
     "/fish".interactiveShellInit =
       _:
-      # fish
+      /* fish */
       ''
         # When pressing Ctrl+y, go to the last directory we were in with Yazi
         # Yazi recommends an alternative where you run `$shell` and it goes into

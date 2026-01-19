@@ -51,8 +51,7 @@ in {
     let
       inherit (inputs.nixpkgs) lib;
     in
-    # fish
-    ''
+    /* fish */ ''
       ${lib.getExe options.package} --fish | source
     '';
 }

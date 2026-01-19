@@ -82,8 +82,7 @@ in {
     # Switch to branch using fzf. Reference links below
     # https://esc.sh/blog/switch-git-branches-fzf/
     # https://github.com/erees1/dotfiles/blob/b29a94e/git/aliases.zsh#L85-L97
-    pswitch = # bash
-    ''
+    pswitch = /* bash */ ''
       !git pbranch --color | \
       fzf --ansi --delimiter='\|' --preview-window='bottom' \
       --preview='echo {s2} | cut -c 2- | xargs git show | diff-so-fancy' | \
