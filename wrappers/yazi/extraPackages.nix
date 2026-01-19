@@ -2,7 +2,8 @@
 
 let
   inherit (inputs.nixpkgs) pkgs;
-in with pkgs; [
+in
+with pkgs; [
   jq
   poppler-utils
   _7zz

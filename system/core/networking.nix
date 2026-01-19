@@ -10,9 +10,9 @@
     resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
   };
 
-  users.users.${baseVars.username}.extraGroups = [ "networkmanager"];
+  users.users.${baseVars.username}.extraGroups = [ "networkmanager" ];
 
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;  # Enable ip forwarding
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1; # Enable ip forwarding
 
   hardware.bluetooth = {
     enable = true;

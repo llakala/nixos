@@ -9,7 +9,7 @@
     "/fish".interactiveShellInit =
       { options, inputs }:
       let
-        finalWrapper = options { };
+        finalWrapper = options {};
         inherit (inputs.nixpkgs) lib;
       in
       # fish

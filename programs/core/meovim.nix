@@ -7,8 +7,7 @@ let
     mnw = import sources.mnw;
     neovim = sources.neovim { inherit pkgs; }; # Use a derivation fetcher here to avoid ever refetching
   };
-in
-{
+in {
   environment.systemPackages = [ neovimPackage ];
   features.editor = "neovim"; # If we ever stop using Neovim, change this
 

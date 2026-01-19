@@ -31,7 +31,7 @@ in {
         { inputs }:
         let
           inherit (inputs.nixpkgs) lib;
-          zoxideWrapper = inputs.zoxide { };
+          zoxideWrapper = inputs.zoxide {};
         in {
           ctrl-r.opts = lib.fileContents ./CTRL_R_OPTS;
           alt-c = {

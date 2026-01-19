@@ -1,8 +1,7 @@
 { inputs }:
 let
   inherit (inputs.nixpkgs) lib pkgs;
-in
-{
+in {
   user = {
     name = "Eman Resu";
     email = "78693624+quatquatt@users.noreply.github.com";

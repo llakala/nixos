@@ -56,7 +56,6 @@ in {
       "application/epub" = cfg.pdfViewer;
     };
 
-
     xdg.terminal-exec = {
       enable = true;
       settings.default = [ cfg.terminal ];
