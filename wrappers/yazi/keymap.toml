@@ -86,16 +86,11 @@ on = ["b", "p"]
 run = "cd ~/Documents/projects"
 
 [[mgr.prepend_keymap]]
-desc = "Go to the classwork directory for working on homework"
+desc = "Go to the classes directory for working on homework"
 on = ["b", "c"]
-run = "cd ~/Documents/classwork"
+run = "cd ~/Documents/clases"
 
 [[mgr.prepend_keymap]]
 desc = "Go to the repos directory for working on external Git repos"
 on = ["b", "r"]
 run = "cd ~/Documents/repos"
-
-[[mgr.prepend_keymap]]
-desc = "Go to the notes directory for taking notes in class"
-on = ["b", "n"]
-run = "cd ~/Documents/notes"
