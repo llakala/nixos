@@ -65,6 +65,7 @@
   gcpa = "git cherry-pick --abort";
 
   grp = "git rev-parse";
+  gmt = "git mergetool";
 
   # Using our custom patch-based git aliases
   ghr = "git hire"; # Add staged changes
