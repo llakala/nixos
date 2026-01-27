@@ -2,6 +2,11 @@ lockPref("services.sync.declinedEngines", "");
 lockPref("sidebar.verticalTabs", true);
 lockPref("sidebar.main.tools", "");
 
+// See bookmarks.html - working around a frustrating regression with firefox
+// frecency so g autocompletes to github
+lockPref("browser.bookmarks.file", "@bookmarksFile@");
+lockPref("browser.places.importBookmarksHTML", true);
+
 // From https://discourse.nixos.org/t/can-someone-help-me-with-my-firefox-nix/69590/6
 // Lets me inject userChrome into the wrapper, without having to resort to hm/hjem symlinking
 // We run a replaceVars on this file to substitute `@userChromeFile@` with its real location

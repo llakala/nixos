@@ -13,7 +13,10 @@
         inherit (inputs.nixpkgs) pkgs;
         inherit (pkgs) replaceVars;
       in [
-        (replaceVars ./autoConfig.js { userChromeFile = ./userChrome.css; })
+        (replaceVars ./autoConfig.js {
+          userChromeFile = ./userChrome.css;
+          bookmarksFile = ./bookmarks.html;
+        })
       ];
   };
 }
