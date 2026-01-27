@@ -66,6 +66,7 @@
 
   grp = "git rev-parse";
   gmt = "git mergetool";
+  gch = "git checkout";
 
   # Using our custom patch-based git aliases
   ghr = "git hire"; # Add staged changes
