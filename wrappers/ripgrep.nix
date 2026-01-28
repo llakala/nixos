@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   options = {
     flags.default = [ "--smart-case" "--pretty" ];

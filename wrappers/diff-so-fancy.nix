@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   inputs = {
     less.path = "/less";

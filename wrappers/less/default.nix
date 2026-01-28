@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   options = {
     configFile.default = ./lesskey;

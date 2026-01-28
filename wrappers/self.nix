@@ -1,7 +1,5 @@
-{ adios }:
-let
-  inherit (adios) types;
-in {
+{ types, ... }:
+{
   name = "self";
 
   options = {

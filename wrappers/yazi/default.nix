@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   options = {
     settingsFile.default = ./yazi.toml;

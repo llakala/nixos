@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   options = {
     # I have Yazi set up to auto-update the zoxide database based on where I go --

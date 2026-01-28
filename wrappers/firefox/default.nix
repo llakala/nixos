@@ -1,4 +1,4 @@
-{ adios }:
+_:
 {
   options = {
     policiesFiles.default = [
