@@ -5,7 +5,6 @@ let
     inherit pkgs;
     small = false;
     mnw = import sources.mnw;
-    neovim = sources.neovim { inherit pkgs; }; # Use a derivation fetcher here to avoid ever refetching
   };
 in {
   environment.systemPackages = [ neovimPackage ];

@@ -10,14 +10,12 @@ let
     small = false;
     inherit pkgs;
     mnw = import sources.mnw;
-    neovim = sources.neovim { inherit pkgs; }; # We use a derivation fetcher here to avoid ever refetching
   };
   packages = import ./packages.nix { inherit sources pkgs myLib; };
   wrappers = import ./wrappers { inherit sources pkgs myLib; };
 in
 pkgs.mkShellNoCC {
   allowSubstitutes = false;
-
   packages = [
     meovim
     wrappers.firefox.drv
