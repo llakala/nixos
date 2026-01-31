@@ -24,11 +24,7 @@ let
       ./programs
       ./system
       ./various/nixosModules
-
-        # To handle differences between hosts, each host provides a folder with
-        # config specific to them
-      ./various/hosts/${hostVars.hostname}/config
-      ./various/hosts/${hostVars.hostname}/hardware-configuration.nix
+      ./various/hosts/${hostVars.hostname}
     ];
   };
 
