@@ -1,5 +1,10 @@
 _:
-{
+let
+  withCursor = expansion: {
+    setCursor = true;
+    inherit expansion;
+  };
+in {
   options = {
     configDir.default = ./gh;
   };
@@ -10,7 +15,7 @@ _:
         { rpv = "repo view --web"; }
         { rpf = "repo fork --remote --clone"; }
         { prc = "pr create --web"; }
-        { prc = "pr create --web"; }
+        { prch = withCursor "pr checkout %"; }
         { prv = "pr view --web"; }
         { prm = "pr merge"; }
       ];
