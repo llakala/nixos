@@ -1,4 +1,4 @@
-{ self }:
+{ self, ... }:
 
 {
   environment.systemPackages = with self.wrappers; [
