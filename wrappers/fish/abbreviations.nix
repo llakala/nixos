@@ -1,5 +1,5 @@
 let
-  setCursor = expansion: {
+  withCursor = expansion: {
     setCursor = true;
     inherit expansion;
   };
@@ -21,8 +21,8 @@ in
   nfl = "nix flake lock";
 
   nr = "nix run";
-  nrn = setCursor "nix run nixpkgs#%";
-  "nr." = setCursor "nix run .#%";
+  nrn = withCursor "nix run nixpkgs#%";
+  "nr." = withCursor "nix run .#%";
 
   ns = "nix-shell";
   nsn = {
@@ -30,13 +30,13 @@ in
     expansion = "nix-shell -p % --command fish";
   };
 
-  "ns." = setCursor "nix shell .#%";
+  "ns." = withCursor "nix shell .#%";
 
   nb = "nix-build";
   nba = "nix-build -A";
   nbn = "nix-build '<nixpkgs>' -A";
 
-  "nb." = setCursor "nix build .#%";
+  "nb." = withCursor "nix build .#%";
 
   nrp = "nix repl";
   nrpn = "nix repl nixpkgs";
