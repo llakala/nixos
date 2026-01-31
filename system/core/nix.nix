@@ -1,4 +1,4 @@
-{ hostVars, pkgs, ... }:
+{ self, pkgs, ... }:
 
 {
   nix.package = pkgs.lixPackageSets.latest.lix;
@@ -25,5 +25,5 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = hostVars.stateVersion;
+  system.stateVersion = self.hostVars.stateVersion;
 }

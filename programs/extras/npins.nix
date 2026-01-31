@@ -1,6 +1,6 @@
-{ pkgs, hostVars, ... }:
+{ pkgs, self, ... }:
 
 {
   environment.systemPackages = [ pkgs.npins ];
-  environment.variables.NPINS_DIRECTORY = "${hostVars.configDirectory}/various/npins";
+  environment.variables.NPINS_DIRECTORY = "${self.hostVars.configDirectory}/various/npins";
 }

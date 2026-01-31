@@ -1,10 +1,10 @@
-{ sources, pkgs, ... }:
+{ self, pkgs, ... }:
 
 let
-  neovimPackage = import "${sources.meovim}/default.nix" {
+  neovimPackage = import "${self.sources.meovim}/default.nix" {
     inherit pkgs;
     small = false;
-    mnw = import sources.mnw;
+    mnw = import self.sources.mnw;
   };
 in {
   environment.systemPackages = [ neovimPackage ];

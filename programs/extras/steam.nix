@@ -1,10 +1,10 @@
-{ pkgs, hostVars, ... }:
+{ pkgs, self, ... }:
 
 {
   programs.steam = {
     enable = true;
     package = pkgs.steam.override {
-      extraArgs = "-forcedesktopscaling ${toString hostVars.scalingFactor}";
+      extraArgs = "-forcedesktopscaling ${toString self.hostVars.scalingFactor}";
     };
   };
 

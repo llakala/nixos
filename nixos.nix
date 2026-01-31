@@ -11,8 +11,8 @@ let
 
   mkHost = hostVars: nixosSystem {
     specialArgs = {
-      inherit sources myLib baseVars hostVars;
       self = {
+        inherit sources baseVars hostVars;
         packages = import ./packages.nix { inherit pkgs sources myLib; };
         wrappers = import ./wrappers { inherit pkgs sources myLib; };
       };

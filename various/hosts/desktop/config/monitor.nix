@@ -1,4 +1,4 @@
-{ hostVars, ... }:
+{ self, ... }:
 
 {
   hm.xdg.configFile."monitors.xml" = {
@@ -11,7 +11,7 @@
           <logicalmonitor>
             <x>0</x>
             <y>0</y>
-            <scale>${builtins.toString hostVars.scalingFactor}</scale>
+            <scale>${builtins.toString self.hostVars.scalingFactor}</scale>
             <primary>yes</primary>
             <monitor>
               <monitorspec>

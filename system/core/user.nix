@@ -1,9 +1,9 @@
-{ baseVars, ... }:
+{ self, ... }:
 
 {
-  users.users.${baseVars.username} = {
+  users.users.${self.baseVars.username} = {
     isNormalUser = true;
-    description = baseVars.fullName;
+    description = self.baseVars.fullName;
 
     hashedPassword = "$y$j9T$MGJ3p2bsJzeGrB6.3zN7s.$RobkJp7ROyz3FSS9nDqAp412hjhRuCv/GMaB7Swo8Y5";
     extraGroups = [ "wheel" ];

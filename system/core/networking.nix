@@ -1,8 +1,8 @@
-{ baseVars, hostVars, ... }:
+{ self,  ... }:
 
 {
   networking = {
-    hostName = hostVars.hostname;
+    hostName = self.hostVars.hostname;
 
     networkmanager.enable = true;
 
@@ -10,7 +10,7 @@
     resolvconf.dnsExtensionMechanism = false; # Wifi doesn't work unless I do this
   };
 
-  users.users.${baseVars.username}.extraGroups = [ "networkmanager" ];
+  users.users.${self.baseVars.username}.extraGroups = [ "networkmanager" ];
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1; # Enable ip forwarding
 

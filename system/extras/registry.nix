@@ -1,4 +1,4 @@
-{ sources, ... }:
+{ self, ... }:
 
 let
   inherit (builtins) concatStringsSep attrValues filter isFunction;
@@ -9,7 +9,7 @@ in {
 
   # Keep nix registry synced with our pinned npins input
   nixpkgs.flake = {
-    source = sources.nixpkgs;
+    source = self.sources.nixpkgs;
     setNixPath = false;
     setFlakeRegistry = true;
   };
@@ -17,12 +17,12 @@ in {
   # Keeps <nixpkgs> pinned to the current nixpkgs revision. Requires relog to
   # apply
   nix.nixPath = [
-    "nixpkgs=${sources.nixpkgs.outPath}"
+    "nixpkgs=${self.sources.nixpkgs.outPath}"
   ];
 
   # Add the npins sources to the runtime closure, so my daily gc doesn't remove
   # them and require a refetch
   environment.etc."npins-sources".text = concatStringsSep "\n" (
-    filter (source: !isFunction source) (attrValues sources)
+    filter (source: !isFunction source) (attrValues self.sources)
   );
 }

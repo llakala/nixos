@@ -1,8 +1,8 @@
-{ hostVars, lib, ... }:
+{ self, lib, ... }:
 
 let
-  touchpadName = hostVars.touchpadName or null;
-  mouseName = hostVars.mouseName or null;
+  touchpadName = self.hostVars.touchpadName or null;
+  mouseName = self.hostVars.mouseName or null;
 in {
   hm.programs.plasma.configFile.kcminputrc = lib.mkMerge [
     # Matching the Gnome defaults I'm used to

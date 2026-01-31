@@ -1,4 +1,4 @@
-{ sources, baseVars, pkgs, ... }:
+{ self, pkgs, ... }:
 
 {
   features.desktop = "plasma"; # If we ever stop using KDE, change this
@@ -13,7 +13,7 @@
   # to rebuild - it'll fail and tell you the valid options
   services.displayManager.defaultSession = "plasma";
 
-  hm.imports = [ "${sources.plasma-manager}/modules" ];
+  hm.imports = [ "${self.sources.plasma-manager}/modules" ];
   hm.programs.plasma = {
     enable = true;
     overrideConfig = true; # Reset any imperative settings on login
@@ -21,7 +21,7 @@
   };
 
   hm.gtk = {
-    gtk2.configLocation = "${baseVars.homeDirectory}/.config/.gtkrc-2.0";
+    gtk2.configLocation = "${self.baseVars.homeDirectory}/.config/.gtkrc-2.0";
   };
 
   # Pretty orange tree :3

@@ -1,7 +1,7 @@
-{ sources, pkgs, hostVars, ... }:
+{ pkgs, self, ... }:
 
 let
-  menu = import "${sources.menu}/packages/default.nix" { inherit pkgs; };
+  menu = import "${self.sources.menu}/packages/default.nix" { inherit pkgs; };
 in {
   environment.systemPackages = with menu; [
     fuiska
@@ -10,7 +10,7 @@ in {
 
   # Overriding default values so we don't have to pass our arguments every time
   environment.variables = {
-    UNIFY_DIRECTORY = hostVars.configDirectory; # Also used by fuiska
-    IMANPU_DIRECTORY = "${hostVars.configDirectory}/various/npins";
+    UNIFY_DIRECTORY = self.hostVars.configDirectory; # Also used by fuiska
+    IMANPU_DIRECTORY = "${self.hostVars.configDirectory}/various/npins";
   };
 }
