@@ -10,15 +10,16 @@
   This is the link to the version I'm using here:
   https://account.wolfram.com/dl/WolframApp?version=14.3&platform=Linux&includesDocumentation=false
 
-  Next, get the hash below, via this command:
-  nix-store --query --hash $(nix store add-path /home/emanresu/Downloads/Wolfram_14.3.0_LIN.sh --name 'Wolfram_14.3.0_LIN.sh')
+  Next, add the file to the store and get the hash to put below, via this command:
+  nix hash path $(nix-store --add /home/emanresu/Downloads/Wolfram_14.3.0_LIN.sh)
 
   The next rebuild will take forever, wait it out.
   Now, mathematica should be installed!
 
-  NOTE: the added version MIGHT go away on a GC. I've had it disappear randomly every so often,
-  and this time, the timing lined up with a recent GC. I'm not sure if there's a way to avoid
-  this. if you see this and know a method, please make an issue to let me know!
+  note that this file will end up being destroyed on a gc, and next time nix
+  needs to refer to it, you'll need to run the above command again. I don't
+  think there's a very good workaround for this right now - see
+  https://github.com/NixOS/nix/issues/7138
 */
 { mathematica, requireFile }:
 
