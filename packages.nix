@@ -1,12 +1,19 @@
 {
   sources ? import ./various/npins,
   pkgs ? import sources.nixpkgs { config.allowUnfree = true; },
-  myLib ? import ./various/myLib/default.nix { inherit pkgs; }
+  myLib ? import ./various/myLib/default.nix { inherit pkgs; },
+  wrappers ? import ./wrappers { inherit pkgs sources myLib; }
 }:
 
 let
   inherit (pkgs) lib;
-  callPackage = lib.callPackageWith (pkgs // { inherit myLib; localPackages = packages; });
+  callPackage = lib.callPackageWith (
+    pkgs
+    // {
+      inherit myLib wrappers;
+      localPackages = packages;
+    }
+  );
   packages = {
     emodule = callPackage ./various/packages/emodule.nix {};
     evalue = callPackage ./various/packages/evalue.nix {};

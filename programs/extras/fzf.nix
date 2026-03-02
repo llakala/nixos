@@ -1,7 +1,7 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 
 {
-  environment.systemPackages = [ pkgs.fzf ];
+  environment.systemPackages = [ self.wrappers.fzf.drv ];
 
   environment.variables = {
     FZF_DEFAULT_OPTS = self.wrappers.fzf.defaultOpts;

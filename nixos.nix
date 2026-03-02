@@ -8,13 +8,13 @@ let
   baseVars = import ./various/baseVars.nix;
 
   myLib = import ./various/myLib/default.nix { inherit pkgs; };
+  wrappers = import ./wrappers { inherit pkgs sources myLib; };
 
   mkHost = hostVars: nixosSystem {
     specialArgs = {
       self = {
-        inherit sources baseVars hostVars;
-        packages = import ./packages.nix { inherit pkgs sources myLib; };
-        wrappers = import ./wrappers { inherit pkgs sources myLib; };
+        inherit sources baseVars hostVars wrappers;
+        packages = import ./packages.nix { inherit pkgs sources myLib wrappers; };
       };
     };
 

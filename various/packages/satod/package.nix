@@ -1,13 +1,13 @@
-{ git, fzf, localPackages, myLib }:
+{ wrappers, localPackages, myLib }:
 
 myLib.writeFishApplication {
   name = "satod"; # Split a Type of Diff
 
   runtimeInputs = builtins.attrValues {
-    # TODO: use my diff-so-fancy wrapper as a dependency, rather than assuming
-    # it to be in $PATH
-    inherit fzf git;
     inherit (localPackages) splitpatch;
+    fzf = wrappers.fzf.drv;
+    git = wrappers.git.drv;
+    diff-so-fancy = wrappers.diff-so-fancy.drv;
   };
 
   text = builtins.readFile ./satod.fish;
