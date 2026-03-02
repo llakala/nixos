@@ -22,7 +22,7 @@
     perf
     powertop # Check battery drain
     wl-clipboard
-    xorg.xeyes # See if an app is running under xwayland or not
+    xeyes # See if an app is running under xwayland or not
     typst
 
     # Weird stuff
