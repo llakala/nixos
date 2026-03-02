@@ -1,6 +1,5 @@
 {
-  # I wish this could be true so we could use apropos, but it slows down rebuilds too much
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = true;
   hm.programs.man.generateCaches = false;
 
   # Apparently speeds up rebuilds
