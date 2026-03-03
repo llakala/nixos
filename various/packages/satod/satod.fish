@@ -67,7 +67,12 @@ rm original.patch # Don't need it anymore now that the hunks are split up
 
 # I'm on a fork of splitpatch with some custom changes, including making it use
 # \ for folder separators to make it more scriptable.
-set applied_patches (ls -A | string replace --all \\ / | fzf --with-shell='fish -c' --preview='cat $(echo {} | string replace --all / \\\\) | diff-so-fancy')
+set applied_patches (
+    ls -A \
+    | string replace --all \\ / \
+    | fzf --with-shell='fish -c' --preview='cat $(echo {} | string replace --all / \\\\) | diff-so-fancy' \
+    | string replace --all / \\
+)
 
 cd $DIRECTORY
 for patch in $applied_patches
