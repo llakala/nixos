@@ -38,31 +38,18 @@
           };
         };
     };
+    package = {
+      type = types.derivation;
+      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fzf;
+    };
   };
 
   mutations."/fish".interactiveShellInit =
     { inputs, options }:
     let
       inherit (inputs.nixpkgs) lib;
-      finalWrapper = options {};
     in
     /* fish */ ''
-      ${lib.getExe finalWrapper} --fish | source
+      ${lib.getExe options.package} --fish | source
     '';
-
-  impl =
-    { inputs }:
-    let
-      inherit (inputs.nixpkgs.pkgs) fzf fetchFromGitHub;
-    in
-    # Waiting on https://github.com/NixOS/nixpkgs/pull/495823
-    fzf.overrideAttrs {
-      version = "0.70.0";
-      src = fetchFromGitHub {
-        owner = "junegunn";
-        repo = "fzf";
-        rev = "eacef5ea6e39c6be3fff4e231fc6d10ba2ff9491";
-        hash = "sha256-axp2w4gzf6c+W0bUCR2Kjms1eaWQR1Ii0Axdaquy8XE=";
-      };
-    };
 }

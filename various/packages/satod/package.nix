@@ -1,11 +1,11 @@
-{ wrappers, localPackages, myLib }:
+{ wrappers, localPackages, myLib, fzf }:
 
 myLib.writeFishApplication {
   name = "satod"; # Split a Type of Diff
 
   runtimeInputs = builtins.attrValues {
+    inherit fzf;
     inherit (localPackages) splitpatch;
-    fzf = wrappers.fzf.drv;
     git = wrappers.git.drv;
     diff-so-fancy = wrappers.diff-so-fancy.drv;
   };
