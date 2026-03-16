@@ -10,5 +10,6 @@
     FZF_ALT_C_OPTS = self.wrappers.fzf.shellIntegration.alt-c.opts;
 
     FZF_CTRL_R_OPTS = self.wrappers.fzf.shellIntegration.ctrl-r.opts;
+    FZF_COMPLETION_OPTS = self.wrappers.fzf.shellIntegration.completion.opts;
   };
 }

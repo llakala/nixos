@@ -24,6 +24,9 @@
           opts = types.string;
           command = types.string;
         };
+        completion = types.struct "completion" {
+          opts = types.string;
+        };
       };
       defaultFunc =
         { inputs }:
@@ -36,6 +39,7 @@
             command = "${lib.getExe zoxideWrapper} query --list --score";
             opts = lib.fileContents ./ALT_C_OPTS;
           };
+          completion.opts = lib.fileContents ./COMPLETION_OPTS;
         };
     };
     package = {
