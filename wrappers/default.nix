@@ -7,7 +7,7 @@
 let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
-  adios = import "${sources.adios}/adios";
+  adios = import sources.adios;
   adios-wrappers = import sources.adios-wrappers { adios = sources.adios; };
   # adios-wrappers = import ~/Documents/projects/adios-wrappers { adios = sources.adios; };
 
