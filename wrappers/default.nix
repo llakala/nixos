@@ -17,7 +17,6 @@ let
   # docs on the concept:
   # https://github.com/llakala/adios-wrappers/blob/0dfa8f108c60fdb907cf126e6f211bb0b2c102c5/docs/usage.md
   root = {
-    name = "root";
     modules = myLib.recursiveUpdate adios-wrappers (adios.lib.importModules ./.);
   };
 

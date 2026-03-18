@@ -1,7 +1,5 @@
 { types, ... }:
 {
-  name = "fzf";
-
   inputs = {
     nixpkgs.path = "/nixpkgs";
     zoxide.path = "/zoxide";

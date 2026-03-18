@@ -1,7 +1,5 @@
 { types, ... }:
 {
-  name = "kittab";
-
   inputs = {
     nixpkgs.path = "/nixpkgs";
     self.path = "/self";
