@@ -9,7 +9,7 @@ let
     zipAttrsWith
     ;
 
-  recursiveUpdate =
+  injectIntoModules =
     inModule: lhs: rhs:
     zipAttrsWith
       (
@@ -29,7 +29,7 @@ let
         else if intersectAttrs lhs rhs == {} then
           lhs // rhs
         else
-          recursiveUpdate (
+          injectIntoModules (
             if inModule == null || inModule && name != "modules" then
               # We're either:
               #
@@ -58,4 +58,4 @@ let
 in
 # Start with inModule as false, as recursiveUpdate should be called on `modules
 # =` of root.
-recursiveUpdate false
+injectIntoModules false
