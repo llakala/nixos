@@ -1,56 +1,61 @@
 let
-  inherit (builtins) elemAt head intersectAttrs isAttrs length unsafeGetAttrPos zipAttrsWith;
+  inherit (builtins)
+    elemAt
+    head
+    intersectAttrs
+    isAttrs
+    isFunction
+    length
+    zipAttrsWith
+    ;
+
   recursiveUpdate =
-    withinModule: lhs: rhs:
-    zipAttrsWith (
-      name: values:
-      let
-        lhs = elemAt values 1;
-        rhs = head values;
-      in
-      if length values == 1 || !(isAttrs lhs && isAttrs rhs) then
-        # Either there's no conflict and only head is valid (aka rhs),
-        # or we can't recurse anymore and should pick rhs. Laziness
-        # means even if lhs is invalid, we'll never evaluate it
-        rhs
-      else if isAttrs withinModule then
-        # The previous call was in $module_name.options, and the current
-        # option has a conflict. The merging of this option will break
-        # `unsafeGetAttrPos` for docs generators, so include the
-        # locations of lhs and rhs manually.
-        (if intersectAttrs lhs rhs == {} then lhs // rhs else recursiveUpdate null lhs rhs)
-        // {
-          loc = {
-            lhs = unsafeGetAttrPos name withinModule.lhs;
-            rhs = unsafeGetAttrPos name withinModule.rhs;
-          };
-        }
-      else if intersectAttrs lhs rhs == {} then
-        lhs // rhs
-      else
-        recursiveUpdate (
-          # We only only want to add loc info to withinModule if the path to the
-          # current location looks like /$name(.modules.$name)*.options/ (where
-          # $name can be anything). For performance reasons, we'd prefer to not
-          # pass around a big list of names, so we cram this info into a single
-          # boolean. true means we're right under $name, false means we're under
-          # .modules, and null means the schema doesnt match
-          if withinModule == true then
-            if name == "options" then
-              # Any options that have values injected in the next recursive call
-              # will need to manually include loc info. Pass them our current
-              # lhs and rhs (representing the left and right `options`) so they
-              # can get the location of their option within it
-              { inherit lhs rhs; }
-            else if name == "modules" then
-              false
-            else
+    inModule: lhs: rhs:
+    zipAttrsWith
+      (
+        name: values:
+        let
+          lhs = elemAt values 1;
+          rhs' = head values;
+          # If we're in the modules field, allow rhs to be a function that reads
+          # the old version of itself
+          rhs = if inModule == false && isFunction rhs' then rhs' lhs else rhs';
+        in
+        if length values == 1 || !(isAttrs lhs && isAttrs rhs) then
+          # Either there's no conflict and only head is valid (aka rhs),
+          # or we can't recurse anymore and should pick rhs. Laziness
+          # means even if lhs is invalid, we'll never evaluate it
+          rhs
+        else if intersectAttrs lhs rhs == {} then
+          lhs // rhs
+        else
+          recursiveUpdate (
+            if inModule == null || inModule && name != "modules" then
+              # We're either:
+              #
+              # 1. about to enter another module field like `options` or `inputs`
+              #
+              # 2. have already done that, and should continue to be null
+              #
+              # This null looping protects us from false positives for a key
+              # named `modules` in another field, like
+              # `root.modules.foo.meta.modules = a: a + 1;`
               null
-          else if withinModule == false then
-            true
-          else
-            null
-        ) lhs rhs
-    ) [ rhs lhs ];
+            else
+              # we should toggle the state of inModule. We're either:
+              #
+              # 1. currently in some module foo (foo may be root), and are about
+              # to enter `foo.modules`. Set inModule to false, to allow calling
+              # modules with their old versions.
+              #
+              # 2. Currently in `foo.modules`, and about to enter
+              # `foo.modules.bar`. Set inModule to true, and don't allow rhs to
+              # be called with lhs rhs on the next iteration (but possibly in
+              # two iterations)
+              !inModule
+          ) lhs rhs
+      ) [ rhs lhs ];
 in
+# Start with inModule as false, as recursiveUpdate should be called on `modules
+# =` of root.
 recursiveUpdate false
