@@ -27,7 +27,9 @@
       "widget.use-xdg-desktop-portal.file-picker": 1,
 
       "extensions.autoDisableScopes": 0,
-      "extensions.update.enabled": false
+      "extensions.update.enabled": false,
+
+      "dom.navigation.webidl.enabled": false
     }
   }
 }
