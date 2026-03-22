@@ -8,8 +8,9 @@ let
   lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   adios = import sources.adios;
+  # adios = import ~/Documents/repos/adios;
   adios-wrappers = import sources.adios-wrappers { adios = sources.adios; };
-  # adios-wrappers = import ~/Documents/projects/adios-wrappers { adios = sources.adios; };
+  # adios-wrappers = import ~/Documents/projects/adios-wrappers { adios = ~/Documents/repos/adios; };
 
   # Take the actual modules providing APIs, and merge the attrsets deeply
   # (think of it like a fancy version of //). This allows my config to not just
