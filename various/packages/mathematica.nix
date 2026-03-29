@@ -26,7 +26,7 @@
 mathematica.override {
   source = requireFile {
     name = "Wolfram_14.3.0_LIN.sh"; # Name of shell script we installed
-    sha256 = "18a8wf9j6n4dp631psa254hyniklm61i3qqrvvnz1sgfvd1hl6cf";
+    hash = "sha256-jhkKQ9vu6fDt3hnjEYOpdEbrISlC6RuGuY1YI5PjSKE=";
     message = "you fucked up bbg";
     hashMode = "recursive";
   };
