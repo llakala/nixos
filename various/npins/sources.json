@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f68887a4c11e662b0eb0323d34b3fb9506226719",
-      "url": "https://github.com/nix-community/home-manager/archive/f68887a4c11e662b0eb0323d34b3fb9506226719.tar.gz",
-      "hash": "sha256-QRdehpSKTttlZe0oY2n5OCfZeCMrHkKNlWF1LJzO9tY="
+      "revision": "03bdcf84f092956943dcf9ef164481e463512716",
+      "url": "https://github.com/nix-community/home-manager/archive/03bdcf84f092956943dcf9ef164481e463512716.tar.gz",
+      "hash": "sha256-MCaiC3iWarAsmu8KJXgJHb1H8lf+BD9gymvxkbmNVdc="
     },
     "menu": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "d18d9bd36d69635c845bae1c236c848ad4b92c61",
-      "url": "https://github.com/llakala/meovim/archive/d18d9bd36d69635c845bae1c236c848ad4b92c61.tar.gz",
-      "hash": "sha256-VEU5USg3HFRFysYMxdlzP8oGpZrgrSAT9W/Q9Lqq1Dw="
+      "revision": "c60eb48fcc8bcde14043580e3697772353be71a3",
+      "url": "https://github.com/llakala/meovim/archive/c60eb48fcc8bcde14043580e3697772353be71a3.tar.gz",
+      "hash": "sha256-dj+vcBn+/x2tu41sAv6EjpRsgyO5O2RVBYm2i83sqII="
     },
     "mnw": {
       "type": "Git",
