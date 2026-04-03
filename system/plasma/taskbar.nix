@@ -16,11 +16,11 @@ in {
           assert feats.terminal == "kitty";
           assert feats.usingKittab == true;
           assert feats.editor == "neovim";
-          map (item: "applications:" + item) [
-            "firefox.desktop"
-            "yazi.desktop"
-            "kittab.desktop"
-            "nvim.desktop"
+          [
+            "applications:firefox.desktop"
+            "applications:yazi.desktop"
+            "applications:kittab.desktop"
+            "applications:nvim.desktop"
           ];
       }
       "org.kde.plasma.marginsseparator"
