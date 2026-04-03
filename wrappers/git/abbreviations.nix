@@ -65,6 +65,7 @@
   gcpa = "git cherry-pick --abort";
 
   grp = "git rev-parse";
+  grm = "git remote -v";
   gmt = "git mergetool";
   gch = "git checkout";
 

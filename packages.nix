@@ -17,7 +17,6 @@ let
   packages = {
     emodule = callPackage ./various/packages/emodule.nix {};
     evalue = callPackage ./various/packages/evalue.nix {};
-    git-repo-manager = callPackage ./various/packages/git-repo-manager.nix {};
     satod = callPackage ./various/packages/satod/package.nix {};
     mathematica = callPackage ./various/packages/mathematica.nix {};
     splitpatch = callPackage ./various/packages/splitpatch.nix {};

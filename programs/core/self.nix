@@ -5,7 +5,6 @@
     evalue
     emodule
     satod
-    git-repo-manager
     mathematica
   ];
 }
