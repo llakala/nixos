@@ -12,6 +12,7 @@ in
   src = "source";
 
   npu = "npins update";
+  dra = "direnv allow";
   ndr = "nix-direnv-reload";
 }
 // {
