@@ -7,4 +7,4 @@ l right-scroll
 \e abort
 
 #env
-LESS = --RAW-CONTROL-CHARS --clear-screen --quit-if-one-screen --redraw-on-quit --tilde --incsearch --wordwrap --ignore-case --search-options=WR
+LESS = --RAW-CONTROL-CHARS --tilde --incsearch --wordwrap --ignore-case --search-options=WR
