@@ -17,6 +17,13 @@
     };
   };
 
+  # See https://discuss.kde.org/t/logout-reboot-and-shutdown-using-the-terminal/743
+  environment.shellAliases = {
+    logout = "qdbus org.kde.Shutdown /Shutdown logout";
+    reboot = "qdbus org.kde.Shutdown /Shutdown logoutAndReboot";
+    shutdown = "qdbus org.kde.Shutdown /Shutdown logoutAndShutdown";
+  };
+
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     okular
     dolphin
