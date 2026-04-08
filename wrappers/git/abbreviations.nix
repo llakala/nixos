@@ -68,6 +68,7 @@
   grm = "git remote -v";
   gmt = "git mergetool";
   gch = "git checkout";
+  gchh1 = "git checkout HEAD~1";
 
   # Using our custom patch-based git aliases
   ghr = "git hire"; # Add staged changes
