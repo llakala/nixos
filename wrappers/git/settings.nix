@@ -10,7 +10,6 @@ in {
   init.defaultBranch = "main";
   branch.sort = "-committerdate";
 
-  commit.verbose = true; # Show changes when writing commit message so we remember what we changed
   status.showUntrackedFiles = "all";
 
   # File only contains a single newline, so the comment below a commit giving
