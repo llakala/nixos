@@ -1,7 +1,7 @@
 function fish_user_key_bindings
-    bind tab fzf-completion
+    bind tab fzf_complete
     bind shift-tab complete-and-search # for comparing to non-fzf output
-    bind ctrl-space fzf-completion
+    bind ctrl-space fzf_complete
 
     bind ctrl-h backward-char
     bind ctrl-l forward-char

@@ -1,1 +1,1 @@
---info=inline --height=23 --select-1 --exit-0
+--info=inline --height=23 --select-1 --exit-0 --nth=1 --tiebreak=begin,length,index
