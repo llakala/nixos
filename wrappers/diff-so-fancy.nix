@@ -5,6 +5,8 @@ _:
   };
 
   options = {
+    # Waiting on https://github.com/NixOS/nixpkgs/pull/508799 to make it to
+    # nixos-unstable
     package.defaultFunc =
       { inputs }:
       let
