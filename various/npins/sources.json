@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "a6164dbd9827d6df4077a06f0e6d13beeb0e1c6e",
-      "url": "https://github.com/llakala/adios/archive/a6164dbd9827d6df4077a06f0e6d13beeb0e1c6e.tar.gz",
-      "hash": "sha256-AxRDV5nvCt8GpUaOJqlw6Q5ey7cBrQhxeQJH/2EN3bQ="
+      "revision": "4d68ca782b39c60b56d079b33a2d190a5986d9ed",
+      "url": "https://github.com/llakala/adios/archive/4d68ca782b39c60b56d079b33a2d190a5986d9ed.tar.gz",
+      "hash": "sha256-ey/ZDNtxfFgKTUa8I/8519MBIYg21Fu5jqoQnVuiQHM="
     },
     "adios-wrappers": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "86d20286658dd7c9f71972f368172bc9da281d3f",
-      "url": "https://github.com/llakala/meovim/archive/86d20286658dd7c9f71972f368172bc9da281d3f.tar.gz",
-      "hash": "sha256-847T7JTeeV+BKPxZadS5AbQhz5fk+emy/3vhLrWcLTQ="
+      "revision": "5b61610dc90fb6200fdf3f55e47f82c86772bcbc",
+      "url": "https://github.com/llakala/meovim/archive/5b61610dc90fb6200fdf3f55e47f82c86772bcbc.tar.gz",
+      "hash": "sha256-zlrNmozdrqYg/Ik4WQVS/qjo9txmIbOsMxtc6HxsaRY="
     },
     "mnw": {
       "type": "Git",
