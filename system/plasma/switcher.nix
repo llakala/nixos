@@ -6,12 +6,24 @@
     "Walk Through Windows Alternative" = "Alt+Tab";
     "Walk Through Windows Alternative (Reverse)" = "Alt+Shift+Tab";
 
-    "Window Maximize" = "Meta+Space";
+    "Window Maximize" = "Meta+F";
+    "Window Minimize" = "Meta+M";
+    MinimizeAll = "Meta+Shift+M";
+    "Window Close" = "Meta+Q";
 
-    "Window Quick Tile Top" = [ "Meta+Up" "Meta+K" ];
-    "Window Quick Tile Bottom" = [ "Meta+Down" "Meta+J" ];
-    "Window Quick Tile Left" = [ "Meta+Left" "Meta+H" ];
-    "Window Quick Tile Right" = [ "Meta+Right" "Meta+L" ];
+    "Switch Window Left" = "Meta+H";
+    "Switch Window Down" = "Meta+J";
+    "Switch Window Up" = "Meta+K";
+    "Switch Window Right" = "Meta+L";
+
+    "Window Quick Tile Left" = "Meta+Shift+H";
+    "Window Quick Tile Bottom" = "Meta+Shift+J";
+    "Window Quick Tile Top" = "Meta+Shift+K";
+    "Window Quick Tile Right" = "Meta+Shift+L";
+  };
+
+  hm.programs.plasma.configFile.kdeglobals = {
+    Shortcuts.Quit = "";
   };
 
   hm.programs.plasma.configFile.kwinrc = {
@@ -28,5 +40,7 @@
       LayoutName = "big_icons";
       ShowTabBox = true;
     };
+
+    Plugins.minimizeallEnabled = true;
   };
 }

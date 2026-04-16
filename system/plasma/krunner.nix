@@ -1,7 +1,7 @@
 {
 
   hm.programs.plasma.shortcuts = {
-    "services/org.kde.krunner.desktop"._launch = "Meta";
+    "services/org.kde.krunner.desktop"._launch = "Meta+Space";
     "plasmashell"."activate application launcher" = "none";
   };
 
