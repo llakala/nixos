@@ -24,6 +24,8 @@ let
   firstValidPath = paths: findFirst isValidPath null paths;
 in {
   inherit pkgs lib;
+  ${if isValidPath "default.nix" then "default" else null} = loadPath "default.nix";
+  ${if isValidPath "wrappers/default.nix" then "wrappers" else null} = loadPath "wrappers/default.nix";
 }
 // (
   let
@@ -35,12 +37,6 @@ in {
 // (optionalAttrs (isValidPath "flake.nix") rec {
   flake = getFlake pwd;
   inherit (flake) outputs;
-})
-// (optionalAttrs (isValidPath "default.nix") {
-  default = loadPath "default.nix";
-})
-// (optionalAttrs (isValidPath "wrappers/default.nix") {
-  wrappers = loadPath "wrappers/default.nix";
 })
 // (
   let
