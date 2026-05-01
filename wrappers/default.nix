@@ -5,7 +5,6 @@
 }:
 
 let
-  lib = import "${sources.nixpkgs}/lib";
   inherit (builtins) mapAttrs;
   adios = import sources.adios;
   # adios = import ~/Documents/repos/adios;
@@ -24,7 +23,7 @@ let
   tree = adios root {
     options = {
       "/nixpkgs" = {
-        inherit pkgs lib;
+        inherit pkgs;
       };
       "/self" = {
         inherit myLib;
