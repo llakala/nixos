@@ -24,6 +24,5 @@
     allow-import-from-derivation = false;
   };
 
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = self.hostVars.stateVersion;
 }

@@ -11,6 +11,7 @@ let
   wrappers = import ./wrappers { inherit pkgs sources myLib; };
 
   mkHost = hostVars: nixosSystem {
+    inherit pkgs;
     specialArgs = {
       self = {
         inherit sources baseVars hostVars wrappers;
