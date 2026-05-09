@@ -40,6 +40,7 @@
   gsha = "git stash --include-untracked"; # Stash everything
   gshl = "git stash list -p";
   gshp = "git stash pop";
+  gshd = "git stash drop";
 
   gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
   gbrd = "git branch -d";
@@ -77,4 +78,6 @@
 
   gud = "git undo";
   grd = "git redo";
+
+  gsw- = "git switch -";
 }
