@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "7654d90b94bab7eba3a52fd6f73b3f5a4c544fa2",
-      "url": "https://github.com/nix-community/home-manager/archive/7654d90b94bab7eba3a52fd6f73b3f5a4c544fa2.tar.gz",
-      "hash": "sha256-RK4sTgei29wBzLu+e4ljeixKutWhbMygFsdxdFKpZOU="
+      "revision": "bd868f769a69d3b6091a1da68a75cb83a181033c",
+      "url": "https://github.com/nix-community/home-manager/archive/bd868f769a69d3b6091a1da68a75cb83a181033c.tar.gz",
+      "hash": "sha256-Cf+p/T4Z3n9Sw0TiR3kQaIwQI+/hfvLJcoTzeq6yS3E="
     },
     "menu": {
       "type": "Git",
@@ -87,15 +87,15 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "9bd7c80d43e258aaa607d83b43661df11444d808",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/9bd7c80d43e258aaa607d83b43661df11444d808.tar.gz",
-      "hash": "sha256-xYGrSg6354UK2K4WSQd4+TfyvfqmvFbSY+ZtGQUXK0c="
+      "revision": "c97bc4d15bd3473dd095e8e8ba57330ab1943a77",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/c97bc4d15bd3473dd095e8e8ba57330ab1943a77.tar.gz",
+      "hash": "sha256-j1iZsLy6oFApqR1oiDmHhvkwxXqcNi0aoSJj643LuwU="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre995699.da5ad661ba4e/nixexprs.tar.xz",
-      "hash": "sha256-rNDJzV2JTV5SUTwv1cgKZYMdyoUYU9/YfegSaUf3QfY="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre998534.d233902339c0/nixexprs.tar.xz",
+      "hash": "sha256-VdRy3A14M5vIE882DJcaaR+5wrss9Qsg4YNVbr7uj3k="
     },
     "plasma-manager": {
       "type": "Git",

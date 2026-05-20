@@ -13,7 +13,7 @@
     zip
 
     # Useful stuff
-    asciinema_3
+    asciinema
     fd
     gparted
     hyperfine
