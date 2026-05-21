@@ -11,7 +11,7 @@ let
     inherit pkgs;
     mnw = import sources.mnw;
   };
-  packages = import ./packages.nix { inherit sources pkgs myLib; };
+  packages = import ./packages.nix { inherit sources pkgs myLib wrappers; };
   wrappers = import ./wrappers { inherit sources pkgs myLib; };
 in
 pkgs.mkShellNoCC {
