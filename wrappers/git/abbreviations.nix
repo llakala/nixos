@@ -65,11 +65,14 @@
   gcpc = "git cherry-pick --continue";
   gcpa = "git cherry-pick --abort";
 
+  gch = "git checkout";
+  gchum = "git checkout upstream/main";
+  gchuma = "git checkout upstream/master";
+  gch- = "git checkout -";
+
   grp = "git rev-parse";
   grm = "git remote -v";
   gmt = "git mergetool";
-  gch = "git checkout";
-  gchh1 = "git checkout HEAD~1";
 
   # Using our custom patch-based git aliases
   ghr = "git hire"; # Add staged changes
