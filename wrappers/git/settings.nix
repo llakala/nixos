@@ -68,8 +68,6 @@ in {
     fire = "restore --staged --patch";
     kill = "restore --patch";
 
-    history = "log --patch";
-
     # Inverse of `--intent-to-add` from `git add`. Unadd the existence of all new files.
     # I make a modification to also unstage deleted files, see my post in the conversation
     # https://stackoverflow.com/questions/12994197/how-to-remove-only-intent-to-add-files-from-index-in-git

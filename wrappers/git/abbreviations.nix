@@ -21,7 +21,7 @@
   gdu = "git diff"; # Unstaged changes
 
   l = "git log";
-  ghs = "git history"; # Same as `git log --patch`, just an alias for intuition
+  glp = "git log -p";
 
   p = "git push";
   gfs = "git force"; # Force push via custom alias

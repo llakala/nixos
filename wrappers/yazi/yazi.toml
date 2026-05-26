@@ -12,6 +12,6 @@ play = [
 
 [plugin]
 prepend_fetchers = [
-  { name = "*", id = "git", run = "git" },
-  { name = "*/", id = "git", run = "git" }
+  { url = "*", group = "git", run = "git" },
+  { url = "*/", group = "git", run = "git" }
 ]
