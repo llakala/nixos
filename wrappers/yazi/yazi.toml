@@ -1,5 +1,6 @@
 [mgr]
 sort_by = "extension"
+sort_fallback = "natural"
 sort_dir_first = true
 
 [opener]
