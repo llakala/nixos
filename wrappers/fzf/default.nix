@@ -1,8 +1,8 @@
 { types, ... }:
 {
   inputs = {
-    nixpkgs.path = "/nixpkgs";
-    zoxide.path = "/zoxide";
+    nixpkgs.from = { parent }: parent.nixpkgs;
+    zoxide.from = { parent }: parent.zoxide;
   };
 
   # Rather than injecting this into an actual wrapper, I recommend reading from

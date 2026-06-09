@@ -1,9 +1,9 @@
 { types, ... }:
 {
   inputs = {
-    nixpkgs.path = "/nixpkgs";
-    self.path = "/self";
-    kitty.path = "/kitty";
+    nixpkgs.from = { parent }: parent.nixpkgs;
+    self.from = { parent }: parent.self;
+    kitty.from = { parent }: parent.kitty;
   };
 
   options = {

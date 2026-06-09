@@ -1,7 +1,7 @@
 _:
 {
   inputs = {
-    less.path = "/less";
+    less.from = { parent }: parent.less;
   };
 
   mutations = {
