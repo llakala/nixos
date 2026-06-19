@@ -1,7 +1,7 @@
 {
-  sources ? import ../various/npins,
+  sources ? import ./other/npins,
   pkgs ? import sources.nixpkgs {},
-  myLib ? import ../various/myLib/default.nix { inherit pkgs; }
+  myLib ? import ./other/myLib/default.nix { inherit pkgs; }
 }:
 
 let
@@ -17,7 +17,7 @@ let
   # docs on the concept:
   # https://github.com/llakala/adios-wrappers/blob/0dfa8f108c60fdb907cf126e6f211bb0b2c102c5/docs/usage.md
   root = {
-    modules = myLib.injectIntoModules adios-wrappers (adios.lib.importModules ./.);
+    modules = myLib.injectIntoModules adios-wrappers (adios.lib.importModules ./wrappers);
   };
 
   tree = adios root {
@@ -32,7 +32,7 @@ let
   };
 in
 # We have each wrapper `foo` point to all its options, so you can do
-# `(import ./wrappers {}).foo.some-option`
+# `(import ./wrappers.nix {}).foo.some-option`
 mapAttrs (
   _: wrapper:
   if wrapper.args.options ? __functor then

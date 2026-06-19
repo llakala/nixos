@@ -11,6 +11,6 @@ in {
   # Overriding default values so we don't have to pass our arguments every time
   environment.variables = {
     UNIFY_DIRECTORY = self.hostVars.configDirectory; # Also used by fuiska
-    IMANPU_DIRECTORY = "${self.hostVars.configDirectory}/various/npins";
+    IMANPU_DIRECTORY = "${self.hostVars.configDirectory}/other/npins";
   };
 }

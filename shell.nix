@@ -1,7 +1,7 @@
 {
-  sources ? import ./various/npins,
+  sources ? import ./other/npins,
   pkgs ? import sources.nixpkgs { config.allowUnfree = true; },
-  myLib ? import ./various/myLib/default.nix { inherit pkgs; }
+  myLib ? import ./other/myLib/default.nix { inherit pkgs; }
 }:
 
 let
@@ -12,7 +12,7 @@ let
     mnw = import sources.mnw;
   };
   packages = import ./packages.nix { inherit sources pkgs myLib wrappers; };
-  wrappers = import ./wrappers { inherit sources pkgs myLib; };
+  wrappers = import ./wrappers.nix { inherit sources pkgs myLib; };
 in
 pkgs.mkShellNoCC {
   allowSubstitutes = false;

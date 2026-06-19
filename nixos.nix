@@ -1,14 +1,14 @@
 let
-  sources = import ./various/npins;
+  sources = import ./other/npins;
   pkgs = import sources.nixpkgs { config.allowUnfree = true; }; # Read impurely from `builtins.currentSystem`
   nixosSystem = import "${sources.nixpkgs}/nixos/lib/eval-config.nix";
 
   # Variables that apply to all hosts, to query things like the username without
   # hardcoding it within config
-  baseVars = import ./various/baseVars.nix;
+  baseVars = import ./other/baseVars.nix;
 
-  myLib = import ./various/myLib/default.nix { inherit pkgs; };
-  wrappers = import ./wrappers { inherit pkgs sources myLib; };
+  myLib = import ./other/myLib/default.nix { inherit pkgs; };
+  wrappers = import ./wrappers.nix { inherit pkgs sources myLib; };
 
   mkHost = hostVars: nixosSystem {
     inherit pkgs;
@@ -22,10 +22,9 @@ let
     # I use a custom recursive importer, that will "expand" any folders in this
     # list to all the files within that folder.
     modules = myLib.recursivelyImport [
-      ./programs
-      ./system
-      ./various/nixosModules
-      ./various/hosts/${hostVars.hostname}
+      ./common
+      ./hosts/${hostVars.hostname}
+      ./other/nixosModules
     ];
   };
 

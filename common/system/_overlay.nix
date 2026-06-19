@@ -40,7 +40,7 @@ in {
 })
 // (
   let
-    sourcesPath = firstValidPath [ "npins/default.nix" "various/npins/default.nix" ];
+    sourcesPath = firstValidPath [ "npins/default.nix" "other/npins/default.nix" ];
   in optionalAttrs (sourcesPath != null) {
     sources = loadPath sourcesPath;
   }
