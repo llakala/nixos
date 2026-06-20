@@ -21,6 +21,7 @@
     parallel
     perf
     powertop # Check battery drain
+    prismlauncher
     wl-clipboard
     xeyes # See if an app is running under xwayland or not
     typst
