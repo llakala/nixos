@@ -35,7 +35,7 @@ in
 # `(import ./wrappers.nix {}).foo.some-option`
 mapAttrs (
   _: wrapper:
-  if wrapper.args.options ? __functor then
+  if wrapper ? impl then
     (removeAttrs wrapper.args.options [ "__functor" ]) // { drv = wrapper {}; }
   else
     wrapper.args.options
