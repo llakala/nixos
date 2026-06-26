@@ -7,6 +7,11 @@ in {
     email = "78693624+quatquatt@users.noreply.github.com";
   };
 
+  advice = {
+    detachedHead = false;
+    statusHints = false;
+  };
+
   init.defaultBranch = "main";
   branch.sort = "-committerdate";
 
