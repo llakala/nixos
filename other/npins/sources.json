@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "47b7913af1d138725870109450e6ba941017d429",
-      "url": "https://github.com/llakala/adios/archive/47b7913af1d138725870109450e6ba941017d429.tar.gz",
-      "hash": "sha256-X9FEv/4cy7VgFWR/HOthFtjLyTq5dC6W+lKZ/NoeY1s="
+      "revision": "a637a0757aa98e5b63f2fe4e3a37f329717f3268",
+      "url": "https://github.com/llakala/adios/archive/a637a0757aa98e5b63f2fe4e3a37f329717f3268.tar.gz",
+      "hash": "sha256-2Zho+A/maJLznJtL9F9Zm/eObBPSf3sUBZ6gaXEhaIc="
     },
     "adios-wrappers": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "1e9620fa3092c269708a224500f0f4f83aba0101",
-      "url": "https://github.com/llakala/adios-wrappers/archive/1e9620fa3092c269708a224500f0f4f83aba0101.tar.gz",
-      "hash": "sha256-tdjsqbWqcaHNu7U1oybJz4/prJyMixjkqDkUzcxaTpU="
+      "revision": "f93724f8b9ac9a4f3bf315e759de96b046f2fe96",
+      "url": "https://github.com/llakala/adios-wrappers/archive/f93724f8b9ac9a4f3bf315e759de96b046f2fe96.tar.gz",
+      "hash": "sha256-gW0NwSBZYq0RzqANuZ7UQ5wENrMsCQqEkc/z+g/0CKw="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "5d320ab301cfaaca7d32514f13815d19d109f5f4",
-      "url": "https://github.com/nix-community/home-manager/archive/5d320ab301cfaaca7d32514f13815d19d109f5f4.tar.gz",
-      "hash": "sha256-qPNd6lUohHP5gcJhqQ7rLV87RwIx0xYR2A4Frb9Zjc4="
+      "revision": "4ad9aaae70c9aaab504127f926c0fa9cfbc2b365",
+      "url": "https://github.com/nix-community/home-manager/archive/4ad9aaae70c9aaab504127f926c0fa9cfbc2b365.tar.gz",
+      "hash": "sha256-PHTCpYZCMzJYS3phhywqRAZphKVr2zjvlGYa+H20ZZ4="
     },
     "menu": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "29a08f5c42a06aff58d9000715dd1242f348914e",
-      "url": "https://github.com/llakala/meovim/archive/29a08f5c42a06aff58d9000715dd1242f348914e.tar.gz",
-      "hash": "sha256-8EU0BizWa3S8uW+SuTEW7vMGYVHqrLc7WHBjxn+ummU="
+      "revision": "40867bfdd3658115d0cd6c76f59fceb16a2be7dc",
+      "url": "https://github.com/llakala/meovim/archive/40867bfdd3658115d0cd6c76f59fceb16a2be7dc.tar.gz",
+      "hash": "sha256-ljTEGax+zsqP2YmZh+csT7eniuFPzDlFrAvSB5JAwlY="
     },
     "mnw": {
       "type": "Git",
@@ -87,9 +87,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "603d3afd1b6145bd66e97ae38a34d91c95df70cf",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/603d3afd1b6145bd66e97ae38a34d91c95df70cf.tar.gz",
-      "hash": "sha256-zPvPiU+a7pqtH47xrtZLNRABJKpOjfZQclDbcvNtH+I="
+      "revision": "a9cf7546a938c737b079e738de73934a13de9784",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/a9cf7546a938c737b079e738de73934a13de9784.tar.gz",
+      "hash": "sha256-a7+T6QSeowynwZ1ZJJbP8T8ntAytvrui8kFGJmIZt2c="
     },
     "nixpkgs": {
       "type": "Channel",

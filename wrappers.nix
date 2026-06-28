@@ -11,13 +11,13 @@ let
   adios-wrappers = import sources.adios-wrappers { inherit adios; };
   # adios-wrappers = import ~/Documents/projects/adios-wrappers { inherit adios; };
 
-  # Take the actual modules providing APIs, and merge the attrsets deeply
-  # (think of it like a fancy version of //). This allows my config to not just
-  # call impls, but add inputs, add computed values, etc. See the adios-wrappers
-  # docs on the concept:
-  # https://github.com/llakala/adios-wrappers/blob/0dfa8f108c60fdb907cf126e6f211bb0b2c102c5/docs/usage.md
+  # See the adios docs on this:
+  # https://github.com/llakala/lladios/blob/main/doc/src/lib/inject/index.md
   root = {
-    modules = myLib.injectIntoModules adios-wrappers (adios.lib.importModules ./wrappers);
+    modules = adios.lib.inject [
+      adios-wrappers
+      (adios.lib.importModules { directory = ./wrappers; })
+    ];
   };
 
   tree = adios root {
