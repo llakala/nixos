@@ -25,7 +25,7 @@ let
 in {
   inherit pkgs lib;
   ${if isValidPath "default.nix" then "default" else null} = loadPath "default.nix";
-  ${if isValidPath "wrappers/default.nix" then "wrappers" else null} = loadPath "wrappers/default.nix";
+  ${if isValidPath "wrappers.nix" then "wrappers" else null} = loadPath "wrappers.nix";
 }
 // (
   let
