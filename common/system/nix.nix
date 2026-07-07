@@ -22,6 +22,9 @@
     max-jobs = "auto";
 
     allow-import-from-derivation = false;
+
+    # Lix-only feature
+    repl-overlays = [ ./_repl-overlay.nix ];
   };
 
   system.stateVersion = self.hostVars.stateVersion;
