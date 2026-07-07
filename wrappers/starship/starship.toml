@@ -1,5 +1,6 @@
 format = "$directory$git_status$direnv$git_branch$fill$cmd_duration$time$line_break$character"
 palette = "custom"
+command_timeout = 10
 
 [[battery.display]]
 threshold = 10
