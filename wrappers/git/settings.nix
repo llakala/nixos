@@ -11,6 +11,10 @@ in {
   gpg.format = "ssh";
   gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
   commit.gpgsign = true;
+  url."ssh://git@github.com:".insteadOf = [
+    "https://github.com/"
+    "gh:"
+  ];
 
   advice = {
     detachedHead = false;
