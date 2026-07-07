@@ -4,8 +4,13 @@ let
 in {
   user = {
     name = "Eman Resu";
-    email = "78693624+quatquatt@users.noreply.github.com";
+    email = "elevenaka11@gmail.com";
   };
+
+  user.signingkey = "~/.ssh/signing_key";
+  gpg.format = "ssh";
+  gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+  commit.gpgsign = true;
 
   advice = {
     detachedHead = false;

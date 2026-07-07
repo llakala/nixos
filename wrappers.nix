@@ -1,6 +1,6 @@
 {
   sources ? import ./other/npins,
-  pkgs ? import sources.nixpkgs {},
+  pkgs ? import sources.nixpkgs { config.allowUnfree = true; },
   myLib ? import ./other/myLib/default.nix { inherit pkgs; }
 }:
 
