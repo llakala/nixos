@@ -7,6 +7,7 @@ let
   inherit (lib) optionalAttrs findFirst;
 
   pwd = getEnv "PWD";
+  hostname = getEnv "hostname";
 
   loadPath = path: let
     importedPath = import "${pwd}/${path}";
@@ -45,7 +46,7 @@ in {
     sources = loadPath sourcesPath;
   }
 )
-// (optionalAttrs (isValidPath "nixos.nix") {
-  config = (loadPath "nixos.nix").palpot.config;
-  options = (loadPath "nixos.nix").palpot.options;
+// (optionalAttrs (isValidPath "system.nix") {
+  config = (loadPath "system.nix").${hostname}.config;
+  options = (loadPath "system.nix").${hostname}.options;
 })
