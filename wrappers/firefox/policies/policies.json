@@ -45,6 +45,8 @@
       "SponsoredStories": false,
       "Snippets": false
     },
+    "OfferToSaveLogins": false,
+    "PasswordManagerEnabled": false,
     "3rdparty": {
       "extensions": {
         "gdpr@cavi.au.dk": {
