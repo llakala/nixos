@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "adc2ac7c8674b5b116a454cd809ef046ed45491f",
-      "url": "https://github.com/llakala/adios/archive/adc2ac7c8674b5b116a454cd809ef046ed45491f.tar.gz",
-      "hash": "sha256-Nbq7YDuiJY7zm0F5Z/4HEGscHTzAIErX9QTM9KiUSIg="
+      "revision": "f6d1ffcbdbd1b84820f8c5948b2af49b4c73a3d0",
+      "url": "https://github.com/llakala/adios/archive/f6d1ffcbdbd1b84820f8c5948b2af49b4c73a3d0.tar.gz",
+      "hash": "sha256-b8qThpsPcMwsxHMTENjLUVJzaViZPG0K5Fngx1p9dJE="
     },
     "adios-wrappers": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "4d13899e2ff74b7d2855f858905526260c35f3dd",
-      "url": "https://github.com/llakala/adios-wrappers/archive/4d13899e2ff74b7d2855f858905526260c35f3dd.tar.gz",
-      "hash": "sha256-2UL3VRpRB3qQSasCmp0Ch6KenyXGpiJoSIEKjPlvTf0="
+      "revision": "435e69821d07490956d89e55fc28186ab96fb6b6",
+      "url": "https://github.com/llakala/adios-wrappers/archive/435e69821d07490956d89e55fc28186ab96fb6b6.tar.gz",
+      "hash": "sha256-lSEuovUDm+XpIo/INDs+V1/4ho+Ip1DRzFU3fneoWGI="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "2a37d71bbe69e1522ddabf03a4cea0374958bdbe",
-      "url": "https://github.com/nix-community/home-manager/archive/2a37d71bbe69e1522ddabf03a4cea0374958bdbe.tar.gz",
-      "hash": "sha256-vzs4SBgPsK4aNzlJR2PpFwtARazXMOxZonQnDz0YHxk="
+      "revision": "53ebbdc405acc04acd9bb73ccca462b51ddb8c6d",
+      "url": "https://github.com/nix-community/home-manager/archive/53ebbdc405acc04acd9bb73ccca462b51ddb8c6d.tar.gz",
+      "hash": "sha256-a8whUXG4ThsZNjL92cH4wbl+/dt8CbT/F0zJsfhzFbM="
     },
     "menu": {
       "type": "Git",
@@ -61,9 +61,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "ba5dddfba8febac7d5f85dfdf383ae7d131a9b73",
-      "url": "https://github.com/llakala/meovim/archive/ba5dddfba8febac7d5f85dfdf383ae7d131a9b73.tar.gz",
-      "hash": "sha256-yiS1F55/Ny+hUPxCagukzeKc+QJgj/f4ieV3xXVfk6k="
+      "revision": "8e6272144e1319a2e72ec4a4f8d982d10f320477",
+      "url": "https://github.com/llakala/meovim/archive/8e6272144e1319a2e72ec4a4f8d982d10f320477.tar.gz",
+      "hash": "sha256-j6MhBnb33rFM9ojb3sL9i6Y9TTcio3k4ql1n0XWoK5U="
     },
     "mnw": {
       "type": "Git",
@@ -87,16 +87,16 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "a9cf7546a938c737b079e738de73934a13de9784",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/a9cf7546a938c737b079e738de73934a13de9784.tar.gz",
-      "hash": "sha256-a7+T6QSeowynwZ1ZJJbP8T8ntAytvrui8kFGJmIZt2c="
+      "revision": "662bd6e312d2c8b212e32cb377abaee190749320",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/662bd6e312d2c8b212e32cb377abaee190749320.tar.gz",
+      "hash": "sha256-E+3MIMvKuo9k+K+qLQ9YXzsBzkgHuyVLnsEbN2DFfuc="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1024265.b5aa0fbd5389/nixexprs.tar.xz",
-      "hash": "sha256-T6OhkwGyyGHer1lr4GkbOp//7ii23xLE7HuMmjrdkXI="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1027867.d407951447dc/nixexprs.tar.xz",
+      "hash": "sha256-FGQ8TfSm9WviNE/fQAWsKs+y4GkX8fU4EScewpw54Y8="
     },
     "plasma-manager": {
       "type": "Git",
@@ -107,9 +107,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "a524a6160e6df89f7673ba293cf7d78b559eb1a5",
-      "url": "https://github.com/nix-community/plasma-manager/archive/a524a6160e6df89f7673ba293cf7d78b559eb1a5.tar.gz",
-      "hash": "sha256-b7Mp7P+q2Md5AGt4rjHfMcBykzMumFTen10ST++AuTU="
+      "revision": "1663116ddd23ba7150c2deb3c05ddeb30904bb1f",
+      "url": "https://github.com/nix-community/plasma-manager/archive/1663116ddd23ba7150c2deb3c05ddeb30904bb1f.tar.gz",
+      "hash": "sha256-FnUhS+B9gnLDmy51uAupFq4ewiQPXh5vZbyKhcWz3mU="
     }
   },
   "version": 8
