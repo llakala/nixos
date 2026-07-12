@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "435e69821d07490956d89e55fc28186ab96fb6b6",
-      "url": "https://github.com/llakala/adios-wrappers/archive/435e69821d07490956d89e55fc28186ab96fb6b6.tar.gz",
-      "hash": "sha256-lSEuovUDm+XpIo/INDs+V1/4ho+Ip1DRzFU3fneoWGI="
+      "revision": "a2b52bfa0db4d57f9f5212cee0f6e1586c25cc3d",
+      "url": "https://github.com/llakala/adios-wrappers/archive/a2b52bfa0db4d57f9f5212cee0f6e1586c25cc3d.tar.gz",
+      "hash": "sha256-mgdl/J55RFVESKarrzus6CAzvFa1RS/bA1ZMN6mh+yY="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "53ebbdc405acc04acd9bb73ccca462b51ddb8c6d",
-      "url": "https://github.com/nix-community/home-manager/archive/53ebbdc405acc04acd9bb73ccca462b51ddb8c6d.tar.gz",
-      "hash": "sha256-a8whUXG4ThsZNjL92cH4wbl+/dt8CbT/F0zJsfhzFbM="
+      "revision": "2afec152df4e284d264f8489d16004c264aebf4c",
+      "url": "https://github.com/nix-community/home-manager/archive/2afec152df4e284d264f8489d16004c264aebf4c.tar.gz",
+      "hash": "sha256-yYVxW+uIbCx0Nt870fbErQbz+b2+3Gwpppe+JbIU+Co="
     },
     "menu": {
       "type": "Git",
@@ -87,9 +87,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "662bd6e312d2c8b212e32cb377abaee190749320",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/662bd6e312d2c8b212e32cb377abaee190749320.tar.gz",
-      "hash": "sha256-E+3MIMvKuo9k+K+qLQ9YXzsBzkgHuyVLnsEbN2DFfuc="
+      "revision": "8efb4337e857949f4cfac86d12ef1066f417f31f",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/8efb4337e857949f4cfac86d12ef1066f417f31f.tar.gz",
+      "hash": "sha256-50rvY9GdFvpYDcMLcD/4cWSi0hVxArT5wsGlVsHy8eY="
     },
     "nixpkgs": {
       "type": "Channel",
@@ -107,9 +107,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "1663116ddd23ba7150c2deb3c05ddeb30904bb1f",
-      "url": "https://github.com/nix-community/plasma-manager/archive/1663116ddd23ba7150c2deb3c05ddeb30904bb1f.tar.gz",
-      "hash": "sha256-FnUhS+B9gnLDmy51uAupFq4ewiQPXh5vZbyKhcWz3mU="
+      "revision": "c551f0687658e4bb699cfff6015436ad7ee57a0d",
+      "url": "https://github.com/nix-community/plasma-manager/archive/c551f0687658e4bb699cfff6015436ad7ee57a0d.tar.gz",
+      "hash": "sha256-ICof1tV4/9XheBLBGf7dhMhfMq4dOs1zwTHrr7zGFlA="
     }
   },
   "version": 8
