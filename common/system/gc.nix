@@ -5,7 +5,7 @@
   # rebuild and makes them take longer
   nix.optimise = {
     automatic = true;
-    dates = [ "daily" ];
+    dates = [ "weekly" ];
   };
 
   # Deletes old stuff from the store that's now unreachable.
@@ -13,7 +13,7 @@
   nix.gc = {
     automatic = true;
     persistent = true; # If system is powered off when timer finishes, do it next time the system powers on
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 7d";
   };
 }
