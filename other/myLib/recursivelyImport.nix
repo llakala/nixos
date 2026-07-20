@@ -13,14 +13,16 @@ let
       then [ elem ]
     else lib.filesystem.listFilesRecursive elem;
 
-  # Don't forget toString to prevent copying paths to the store unnecessarily
+  hasUnderscorePrefix = hasPrefix "_";
+  hasNixSuffix = hasSuffix ".nix";
   isNixFile = path:
-    !hasPrefix "_" (baseNameOf (toString path))
-    && hasSuffix ".nix" (toString path);
+    !hasUnderscorePrefix (baseNameOf path)
+    && hasNixSuffix path;
 
 in
   list: filter
     # Filter out any path that doesn't look like `*.nix`.
-    (elem: !isPath elem || isNixFile elem)
+  # Don't forget toString to prevent copying paths to the store unnecessarily
+    (elem: !isPath elem || isNixFile (toString elem))
     # Expand any folder to all the files within it.
     (concatMap expandIfFolder list)
