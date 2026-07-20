@@ -9,12 +9,23 @@ let
     getFlake
     isAttrs
     length
+    stringLength
+    substring
     pathExists
+    readFile
     ;
   optionalAttrs = cond: attrs: if cond then attrs else { };
 
   pwd = getEnv "PWD";
-  hostname = getEnv "hostname";
+
+  hostname =
+    let
+      fileContents = readFile "/etc/hostname";
+    in
+    if fileContents == "" then
+      throw "/etc/hostname was empty!"
+    else
+      substring 0 (stringLength fileContents - 1) fileContents;
 
   findFirst =
     pred: default: list:
