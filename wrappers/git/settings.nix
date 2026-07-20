@@ -24,8 +24,6 @@ in {
   init.defaultBranch = "main";
   branch.sort = "-committerdate";
 
-  status.showUntrackedFiles = "all";
-
   # File only contains a single newline, so the comment below a commit giving
   # instructions gets pushed down a line, and `ip` motions work normally!
   commit.template = "${./template}";
