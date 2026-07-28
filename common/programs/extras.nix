@@ -15,6 +15,7 @@
     # Useful stuff
     asciinema
     fd
+    speedscope
     gparted
     hyperfine
     jq
