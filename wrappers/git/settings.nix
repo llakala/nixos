@@ -17,6 +17,11 @@ in {
     statusHints = false;
   };
 
+  diff.tool = "difftastic";
+  difftool.prompt = false;
+  pager.difftool = true;
+  difftool.difftastic.cmd = ''${lib.getExe pkgs.difftastic} "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"'';
+
   init.defaultBranch = "main";
   branch.sort = "-committerdate";
 
