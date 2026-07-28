@@ -7,7 +7,7 @@
   s = "git status";
   gcl = "git clone";
 
-  a = "git add .";
+  a = "git add -u";
   n = "git unstage ."; # Alias of `git restore --staged`
   gan = "git add -AN"; # Add all new files
   gun = "git unstage-new-files"; # Alias, unstage new file existence
@@ -17,14 +17,17 @@
   grw = "git reword";
   gam = "git amend";
 
-  d = "git diff --staged"; # Staged changes
-  gdu = "git diff"; # Unstaged changes
+  d = "git diff";
+  ds = "git diff --staged";
+  dt = "git difftool";
+  dts = "git difftool --staged";
 
   l = "git log";
   glp = "git log -p";
 
   p = "git push";
   gfs = "git force"; # Force push via custom alias
+  gfe = "git fetch";
 
   gpl = "git pull";
   gplum = "git pull upstream main";
@@ -32,11 +35,14 @@
 
   gsw = "git switch";
   gswc = "git switch -c";
+  gsw- = "git switch -";
   gswp = "git pswitch"; # Switch branches using custom alias with fzf
   gswm = "git switch main";
   gswma = "git switch master";
-  gsh = "git stash --staged";
-  gshu = "git stash --keep-index --include-untracked"; # Stash everything that isn't staged
+
+  gsh = "git stash";
+  gshs = "git stash --staged"; # Staged changes
+  gshu = "git stash --keep-index"; # Unstaged changes
   gsha = "git stash --include-untracked"; # Stash everything
   gshl = "git stash list -p";
   gshp = "git stash pop";
@@ -44,26 +50,34 @@
 
   gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
   gbrd = "git branch -d";
+  gbrm = "git branch --merged";
 
   grb = "git rebase";
   grbm = "git rebase main";
   grbma = "git rebase master";
+  grbum = "git rebase upstream/main";
+  grbuma = "git rebase upstream/master";
 
-  # `grbi 2` will rebase from last 2 commits
-  grbi = {
+  grbi = "git rebase -i";
+  grbin = {
     setCursor = true;
     expansion = "git rebase -i HEAD~%";
   };
-
   grbc = "git rebase --continue";
   grba = "git rebase --abort";
-
-  grbum = "git rebase upstream/main";
-  grbuma = "git rebase upstream/master";
 
   gcp = "git cherry-pick";
   gcpc = "git cherry-pick --continue";
   gcpa = "git cherry-pick --abort";
+
+  grv = "git revert";
+  grvc = "git revert --continue";
+  grva = "git revert --abort";
+
+  gre = "git reset";
+  greh = "git reset --hard";
+  grem = "git reset --mixed";
+  gres = "git reset --soft";
 
   gch = "git checkout";
   gchum = "git checkout upstream/main";
@@ -71,6 +85,7 @@
   gch- = "git checkout -";
 
   grp = "git rev-parse";
+  grf = "git reflog";
   grm = "git remote -v";
   gmt = "git mergetool";
 
@@ -81,6 +96,4 @@
 
   gud = "git undo";
   grd = "git redo";
-
-  gsw- = "git switch -";
 }
