@@ -124,7 +124,7 @@ string Splitter::getFilename(string line) {
 
   if (fullPath) {
     // First cut off initial `b/`, then replace all existing slashes with
-    // dashes.
+    // backslashes.
     int slashPos = filename.find_first_of('/');
     filename = filename.substr(slashPos + 1);
     replace(filename.begin(), filename.end(), '/', '\\');
