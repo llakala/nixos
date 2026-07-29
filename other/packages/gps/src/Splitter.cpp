@@ -9,16 +9,13 @@ using filesystem::create_directories;
 using filesystem::exists;
 using filesystem::filesystem_error;
 using filesystem::is_directory;
+using filesystem::path;
 
 Splitter::Splitter(bool &fullPath, bool &byHunk, string &outputDir) {
   this->fullPath = fullPath;
   this->byHunk = byHunk;
 
-  // Remove trailing slashes from outputDir
-  while (endsWith(outputDir, "/")) {
-    outputDir.erase(outputDir.length() - 1);
-  }
-  this->outputDir = outputDir;
+  this->outputDir = path(outputDir);
   createOutputDir();
 }
 
@@ -32,7 +29,7 @@ void Splitter::split(string &filename) {
     numFiles = splitByFile(inputFile);
   }
   cout << "Input file '" << filename << "' was split into " << numFiles << " files." << endl;
-  cout << "Storing files to output directory '" << outputDir << "/'." << endl;
+  cout << "Storing files to output directory '" << outputDir.string() << "/'." << endl;
 
   inputFile->close();
   delete inputFile;
@@ -87,7 +84,7 @@ void Splitter::createOutputDir() {
     try {
       // create_directories allows passing nested directories that don't exist,
       // like `mkdir -p`
-      create_directories(outputDir + "/");
+      create_directories(outputDir);
     } catch (filesystem_error &error) {
       cout << "Got error: " << error.what() << endl;
       cout << "Invalid output directory - please try again with a different directory." << endl;
@@ -104,7 +101,7 @@ void Splitter::createOutputDir() {
   }
   // If the output dir _is_ empty, we'll be able to exit without any of these
   // conditions triggering
-  else if (!filesystem::is_empty(outputDir + "/")) {
+  else if (!filesystem::is_empty(outputDir)) {
     cout << "Output dir '" << outputDir << "/' already existed and was nonempty." << endl;
     cout << "Please move/delete its contents and try again." << endl;
     exit(1);
@@ -118,7 +115,7 @@ void Splitter::createOutputDir() {
  * @param line: line of the form `diff --git .*`
  * @return: the filename to be used, including the output directory
  * */
-string Splitter::getFilename(string_view line) {
+path Splitter::getFilename(string_view line) {
   int lastSpacePos = line.find_last_of(' ');
   string filename = line.substr(lastSpacePos + 1).data();
 
@@ -133,7 +130,7 @@ string Splitter::getFilename(string_view line) {
     filename = filename.substr(slashPos + 1);
   }
 
-  return outputDir + "/" + filename;
+  return outputDir / filename;
 }
 
 /*
@@ -154,7 +151,7 @@ int Splitter::splitByFile(ifstream *inputFile) {
       if (outfile) {
         outfile.close();
       }
-      outfile.open(getFilename(line) + ".patch");
+      outfile.open(getFilename(line));
       numFiles++;
       outfile << line << endl;
     }

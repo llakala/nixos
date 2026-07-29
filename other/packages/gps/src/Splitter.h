@@ -1,5 +1,6 @@
 #ifndef GIT_SPLITTER_H
 #define GIT_SPLITTER_H
+#include <filesystem>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -29,13 +30,13 @@ public:
 private:
   bool fullPath;
   bool byHunk;
-  string outputDir;
+  filesystem::path outputDir;
 
   bool startsWith(string_view str, string_view with);
   bool endsWith(string_view str, string_view with);
   ifstream *openFile(string &filename);
   void createOutputDir();
-  string getFilename(string_view line);
+  filesystem::path getFilename(string_view line);
   int splitByFile(ifstream *inputFile);
   int splitByHunk(ifstream *inputFile);
 };
