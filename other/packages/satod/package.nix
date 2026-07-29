@@ -5,7 +5,7 @@ myLib.writeFishApplication {
 
   runtimeInputs = builtins.attrValues {
     inherit fzf;
-    inherit (localPackages) splitpatch;
+    inherit (localPackages) gps;
     git = wrappers.git.drv;
     diff-so-fancy = wrappers.diff-so-fancy.drv;
   };

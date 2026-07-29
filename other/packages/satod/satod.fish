@@ -54,19 +54,23 @@ switch $TYPE
 end
 
 function cleanup_state
-    rm -rf $TMPDIR
+    if [ -f $TMPDIR ]
+        rm -rf $TMPDIR
+    end
+    if [ -f /tmp/original.patch ]
+        rm /tmp/original.patch
+    end
 end
 
-set TMPDIR (mktemp -d)
 trap cleanup_state EXIT # Delete TMPDIR on exit, even if user exits early
+set TMPDIR (mktemp -d)
+
+echo $ORIGINAL_DIFF >/tmp/original.patch
 
 cd $TMPDIR
-echo $ORIGINAL_DIFF >original.patch
-splitpatch -f -H original.patch >/dev/null # Split up patch into individual hunks
-rm original.patch # Don't need it anymore now that the hunks are split up
+gps /tmp/original.patch --fullpath --hunk --output-dir . >/dev/null # Split up patch into individual hunks
 
-# I'm on a fork of splitpatch with some custom changes, including making it use
-# \ for folder separators to make it more scriptable.
+# gps uses \ as a separator by default
 set applied_patches (
     ls -A \
     | string replace --all \\ / \

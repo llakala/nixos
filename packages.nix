@@ -19,6 +19,6 @@ let
     evalue = callPackage ./other/packages/evalue.nix {};
     satod = callPackage ./other/packages/satod/package.nix {};
     mathematica = callPackage ./other/packages/mathematica.nix {};
-    splitpatch = callPackage ./other/packages/splitpatch.nix {};
+    gps = callPackage ./other/packages/gps/package.nix {};
   };
 in packages
