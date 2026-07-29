@@ -1,5 +1,6 @@
 #include "Splitter.h"
 #include <algorithm>
+#include <cassert>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -152,6 +153,7 @@ int Splitter::splitByFile(ifstream *inputFile) {
         outfile.close();
       }
       outfile.open(getFilename(line));
+      assert(outfile.good());
       numFiles++;
       outfile << line << endl;
     }
@@ -208,6 +210,7 @@ int Splitter::splitByHunk(ifstream *inputFile) {
 
       currentFilename = getFilename(line);
       outfile.open(currentFilename);
+      assert(outfile.good());
       numFiles++;
       header << line << endl;
     }
