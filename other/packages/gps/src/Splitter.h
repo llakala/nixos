@@ -31,11 +31,11 @@ private:
   bool byHunk;
   string outputDir;
 
-  bool startsWith(string &str, string with);
-  bool endsWith(string &str, string with);
+  bool startsWith(string_view str, string_view with);
+  bool endsWith(string_view str, string_view with);
   ifstream *openFile(string &filename);
   void createOutputDir();
-  string getFilename(string &line);
+  string getFilename(string_view line);
   int splitByFile(ifstream *inputFile);
   int splitByHunk(ifstream *inputFile);
 };

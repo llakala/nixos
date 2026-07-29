@@ -43,7 +43,7 @@ void Splitter::split(string &filename) {
  *
  * @return whether the first string starts with the second one or not
  * */
-bool Splitter::startsWith(string &str, string with) {
+bool Splitter::startsWith(string_view str, string_view with) {
   return str.rfind(with, 0) == 0;
 }
 
@@ -52,7 +52,7 @@ bool Splitter::startsWith(string &str, string with) {
  *
  * @return whether the first string ended with the second one or not
  * */
-bool Splitter::endsWith(string &str, string with) {
+bool Splitter::endsWith(string_view str, string_view with) {
   return str.rfind(with) == (str.length() - with.length());
 }
 
@@ -118,9 +118,9 @@ void Splitter::createOutputDir() {
  * @param line: line of the form `diff --git .*`
  * @return: the filename to be used, including the output directory
  * */
-string Splitter::getFilename(string &line) {
+string Splitter::getFilename(string_view line) {
   int lastSpacePos = line.find_last_of(' ');
-  string filename = line.substr(lastSpacePos + 1);
+  string filename = line.substr(lastSpacePos + 1).data();
 
   if (fullPath) {
     // First cut off initial `b/`, then replace all existing slashes with
