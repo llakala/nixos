@@ -27,8 +27,8 @@ void printUsage(char **argv) {
  * @param byHunkFlag: A pointer to a variable for storing whether the patch should be split by hunk
  * @param outputDir: A pointer to a variable for storing the output directory for the patches
  * */
-void parseOptions(int argc, char **argv, optional<string> *filename, bool *fullPathFlag, bool *byHunkFlag,
-                  string *outputDir) {
+void parseOptions(int argc, char **argv, optional<string> &filename, bool &fullPathFlag, bool &byHunkFlag,
+                  string &outputDir) {
   // We have each longform option simply set `opt` to their short flag, so when
   // we're looping and parsing options, short and long form options are handled
   // identically
@@ -52,15 +52,15 @@ void parseOptions(int argc, char **argv, optional<string> *filename, bool *fullP
 
     switch (opt) {
     case 'f':
-      *fullPathFlag = true;
+      fullPathFlag = true;
       break;
 
     case 'H':
-      *byHunkFlag = true;
+      byHunkFlag = true;
       break;
 
     case 'o':
-      *outputDir = optarg;
+      outputDir = optarg;
       break;
 
     case 'h':
@@ -77,11 +77,11 @@ void parseOptions(int argc, char **argv, optional<string> *filename, bool *fullP
   // Loop through all the arguments that weren't valid options. We're only
   // expecting one of these, and if we get more than one, we error.
   for (int index = optind; index < argc; index++) {
-    if (*filename) {
+    if (filename) {
       cout << "Too many arguments passed - only one filename was expected." << endl;
       exit(1);
     } else {
-      *filename = make_optional<string>(argv[index]);
+      filename = make_optional<string>(argv[index]);
     }
   }
 }
@@ -92,7 +92,7 @@ int main(int argc, char **argv) {
   string outputDir = "output";
   optional<string> filename = nullopt;
 
-  parseOptions(argc, argv, &filename, &fullPathFlag, &byHunkFlag, &outputDir);
+  parseOptions(argc, argv, filename, fullPathFlag, byHunkFlag, outputDir);
 
   // We made filename of type optional so we could easily detect if it hadn't
   // been set

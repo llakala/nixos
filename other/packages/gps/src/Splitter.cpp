@@ -10,7 +10,7 @@ using filesystem::exists;
 using filesystem::filesystem_error;
 using filesystem::is_directory;
 
-Splitter::Splitter(bool fullPath, bool byHunk, string outputDir) {
+Splitter::Splitter(bool &fullPath, bool &byHunk, string &outputDir) {
   this->fullPath = fullPath;
   this->byHunk = byHunk;
 
@@ -22,7 +22,7 @@ Splitter::Splitter(bool fullPath, bool byHunk, string outputDir) {
   createOutputDir();
 }
 
-void Splitter::split(string filename) {
+void Splitter::split(string &filename) {
   ifstream *inputFile = openFile(filename);
 
   int numFiles;
@@ -43,7 +43,7 @@ void Splitter::split(string filename) {
  *
  * @return whether the first string starts with the second one or not
  * */
-bool Splitter::startsWith(string str, string with) {
+bool Splitter::startsWith(string &str, string with) {
   return str.rfind(with, 0) == 0;
 }
 
@@ -52,7 +52,7 @@ bool Splitter::startsWith(string str, string with) {
  *
  * @return whether the first string ended with the second one or not
  * */
-bool Splitter::endsWith(string str, string with) {
+bool Splitter::endsWith(string &str, string with) {
   return str.rfind(with) == (str.length() - with.length());
 }
 
@@ -63,7 +63,7 @@ bool Splitter::endsWith(string str, string with) {
  * @param filename: the name of the file to read from
  * @return the file object
  * */
-ifstream *Splitter::openFile(string filename) {
+ifstream *Splitter::openFile(string &filename) {
   // We use `new` to allow the pointer to live outside of the stack, so it lasts
   // after this stack frame closes.
   ifstream *inputFile = new ifstream(filename);
@@ -118,7 +118,7 @@ void Splitter::createOutputDir() {
  * @param line: line of the form `diff --git .*`
  * @return: the filename to be used, including the output directory
  * */
-string Splitter::getFilename(string line) {
+string Splitter::getFilename(string &line) {
   int lastSpacePos = line.find_last_of(' ');
   string filename = line.substr(lastSpacePos + 1);
 
