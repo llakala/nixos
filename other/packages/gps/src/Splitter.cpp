@@ -12,8 +12,7 @@ using filesystem::filesystem_error;
 using filesystem::is_directory;
 using filesystem::path;
 
-Splitter::Splitter(bool &fullPath, bool &byHunk, string &outputDir) {
-  this->fullPath = fullPath;
+Splitter::Splitter(bool &byHunk, string &outputDir) {
   this->byHunk = byHunk;
 
   this->outputDir = path(outputDir);
@@ -119,16 +118,11 @@ path Splitter::getFilename(string_view line) {
   int lastSpacePos = line.find_last_of(' ');
   string filename = line.substr(lastSpacePos + 1).data();
 
-  if (fullPath) {
-    // First cut off initial `b/`, then replace all existing slashes with
-    // backslashes.
-    int slashPos = filename.find_first_of('/');
-    filename = filename.substr(slashPos + 1);
-    replace(filename.begin(), filename.end(), '/', '\\');
-  } else {
-    int slashPos = filename.find_last_of('/');
-    filename = filename.substr(slashPos + 1);
-  }
+  // First cut off initial `b/`, then replace all existing slashes with
+  // backslashes.
+  int slashPos = filename.find_first_of('/');
+  filename = filename.substr(slashPos + 1);
+  replace(filename.begin(), filename.end(), '/', '\\');
 
   return outputDir / filename;
 }

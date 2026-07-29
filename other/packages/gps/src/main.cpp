@@ -8,7 +8,6 @@ void printUsage(char **argv) {
   cout << "Usage: " << argv[0] << " [<options>] <file>" << endl;
   cout << endl;
   cout << "Options:" << endl;
-  cout << "    -f | --fullpath         Use the full path for each outputted patch." << endl;
   cout << "    -H | --hunk             Split every hunk into its own file." << endl;
   cout << "    -o | --output-dir       The directory to store the outputted patches in. Expected to be nonempty."
        << endl;
@@ -22,18 +21,14 @@ void printUsage(char **argv) {
  * @param argc: The argument count
  * @param argv: A pointer to the arguments passed through stdin
  * @param filename: A pointer to a variable filename which will store the inputted variable.
- * @param fullPathFlag: A pointer to a variable for storeing whether the full path should be used for each outputted
- * patch
  * @param byHunkFlag: A pointer to a variable for storing whether the patch should be split by hunk
  * @param outputDir: A pointer to a variable for storing the output directory for the patches
  * */
-void parseOptions(int argc, char **argv, optional<string> &filename, bool &fullPathFlag, bool &byHunkFlag,
-                  string &outputDir) {
+void parseOptions(int argc, char **argv, optional<string> &filename, bool &byHunkFlag, string &outputDir) {
   // We have each longform option simply set `opt` to their short flag, so when
   // we're looping and parsing options, short and long form options are handled
   // identically
   static struct option longOptions[] = {
-      {"fullpath", no_argument, nullptr, 'f'},
       {"hunk", no_argument, nullptr, 'H'},
       {"help", no_argument, nullptr, 'h'},
       {"output-dir", required_argument, nullptr, 'o'},
@@ -42,7 +37,7 @@ void parseOptions(int argc, char **argv, optional<string> &filename, bool &fullP
   int opt;
   int optionIndex;
   while (true) {
-    opt = getopt_long(argc, argv, "fHho:", longOptions, &optionIndex);
+    opt = getopt_long(argc, argv, "Hho:", longOptions, &optionIndex);
     // All options have been parsed. At this point, optind will set our location
     // in argv, so that we can read from whatever arguments weren't valid
     // options (in our case, the filename).
@@ -51,10 +46,6 @@ void parseOptions(int argc, char **argv, optional<string> &filename, bool &fullP
     }
 
     switch (opt) {
-    case 'f':
-      fullPathFlag = true;
-      break;
-
     case 'H':
       byHunkFlag = true;
       break;
@@ -87,12 +78,11 @@ void parseOptions(int argc, char **argv, optional<string> &filename, bool &fullP
 }
 
 int main(int argc, char **argv) {
-  bool fullPathFlag = false;
   bool byHunkFlag = false;
   string outputDir = "output";
   optional<string> filename = nullopt;
 
-  parseOptions(argc, argv, filename, fullPathFlag, byHunkFlag, outputDir);
+  parseOptions(argc, argv, filename, byHunkFlag, outputDir);
 
   // We made filename of type optional so we could easily detect if it hadn't
   // been set
@@ -102,7 +92,7 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  Splitter x(fullPathFlag, byHunkFlag, outputDir);
+  Splitter x(byHunkFlag, outputDir);
   x.split(*filename);
 
   return 0;

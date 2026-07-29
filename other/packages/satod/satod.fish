@@ -68,7 +68,7 @@ set TMPDIR (mktemp -d)
 echo $ORIGINAL_DIFF >/tmp/original.patch
 
 cd $TMPDIR
-gps /tmp/original.patch --fullpath --hunk --output-dir . >/dev/null # Split up patch into individual hunks
+gps /tmp/original.patch --hunk --output-dir . >/dev/null # Split up patch into individual hunks
 
 # gps uses \ as a separator by default
 set applied_patches (

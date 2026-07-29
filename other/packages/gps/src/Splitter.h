@@ -10,14 +10,12 @@ public:
   /*
    * Creates an instance of the splitter class.
    *
-   * @param fullPath: whether to write each patch with its full filepath rather
-   * than just its filename
    * @param byHunk: whether to split on every single hunk, rather than just by
    * file
    * @param outputDir: the directory to store the resulting patches in. Will be
    * created if it doesn't already exist
    */
-  Splitter(bool &fullPath, bool &byHunk, string &outputDir);
+  Splitter(bool &byHunk, string &outputDir);
 
   /*
    * Split the patch stored at the given filename, and store the resulting
