@@ -21,7 +21,7 @@ Splitter::Splitter(bool &fullPath, bool &byHunk, string &outputDir) {
 }
 
 void Splitter::split(string &filename) {
-  ifstream *inputFile = openFile(filename);
+  ifstream inputFile = openFile(filename);
 
   int numFiles;
   if (byHunk) {
@@ -32,8 +32,7 @@ void Splitter::split(string &filename) {
   cout << "Input file '" << filename << "' was split into " << numFiles << " files." << endl;
   cout << "Storing files to output directory '" << outputDir.string() << "/'." << endl;
 
-  inputFile->close();
-  delete inputFile;
+  inputFile.close();
 }
 
 /*
@@ -61,12 +60,12 @@ bool Splitter::endsWith(string_view str, string_view with) {
  * @param filename: the name of the file to read from
  * @return the file object
  * */
-ifstream *Splitter::openFile(string &filename) {
+ifstream Splitter::openFile(const string &filename) {
   // We use `new` to allow the pointer to live outside of the stack, so it lasts
   // after this stack frame closes.
-  ifstream *inputFile = new ifstream(filename);
+  ifstream inputFile = ifstream(filename);
   // .good checks whether .open() was successful
-  if (!inputFile->good()) {
+  if (!inputFile.good()) {
     cout << "Input file '" << filename << "' doesn't exist." << endl;
     cout << "Please pass a valid filename and try again." << endl;
     exit(1);
@@ -141,12 +140,12 @@ path Splitter::getFilename(string_view line) {
  * @param inputFile: pointer to the filstream to be read from
  * @return: the number of files that have been created
  * */
-int Splitter::splitByFile(ifstream *inputFile) {
+int Splitter::splitByFile(ifstream &inputFile) {
   int numFiles = 0;
   string line;
   ofstream outfile;
 
-  while (getline(*inputFile, line)) {
+  while (getline(inputFile, line)) {
     // Start of a new file within the patch
     if (startsWith(line, "diff --git")) {
       if (outfile) {
@@ -177,7 +176,7 @@ int Splitter::splitByFile(ifstream *inputFile) {
  * @param inputFile: pointer to the filstream to be read from
  * @return: the number of files that have been created
  * */
-int Splitter::splitByHunk(ifstream *inputFile) {
+int Splitter::splitByHunk(ifstream &inputFile) {
   string line;
 
   // We collect the header so we can reuse it for all the hunks in a patch
@@ -189,7 +188,7 @@ int Splitter::splitByHunk(ifstream *inputFile) {
   int hunkNumber = 1;
   bool inHeader = true;
 
-  while (getline(*inputFile, line)) {
+  while (getline(inputFile, line)) {
     if (startsWith(line, "diff --git")) {
       // If this isn't the first file in the input patch
       if (outfile) {

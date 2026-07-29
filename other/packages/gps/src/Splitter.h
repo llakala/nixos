@@ -34,10 +34,10 @@ private:
 
   bool startsWith(string_view str, string_view with);
   bool endsWith(string_view str, string_view with);
-  ifstream *openFile(string &filename);
+  ifstream openFile(const string &filename);
   void createOutputDir();
   filesystem::path getFilename(string_view line);
-  int splitByFile(ifstream *inputFile);
-  int splitByHunk(ifstream *inputFile);
+  int splitByFile(ifstream &inputFile);
+  int splitByHunk(ifstream &inputFile);
 };
 #endif
