@@ -8,22 +8,24 @@
   gcl = "git clone";
 
   a = "git add -u";
+  aa = "git add -A";
   n = "git unstage ."; # Alias of `git restore --staged`
   gan = "git add -AN"; # Add all new files
   gun = "git unstage-new-files"; # Alias, unstage new file existence
 
   c = "git commit";
-  gac = "git commit .";
+  gac = "git commit -p";
   grw = "git reword";
   gam = "git amend";
 
-  d = "git diff";
+  du = "git diff";
   ds = "git diff --staged";
-  dt = "git difftool";
+  dtu = "git difftool";
   dts = "git difftool --staged";
 
   l = "git log";
   glp = "git log -p";
+  gso = "git show";
 
   p = "git push";
   gfs = "git force"; # Force push via custom alias
@@ -57,14 +59,18 @@
   grbma = "git rebase master";
   grbum = "git rebase upstream/main";
   grbuma = "git rebase upstream/master";
+  grbc = "git rebase --continue";
+  grba = "git rebase --abort";
 
   grbi = "git rebase -i";
+  grbim = "git rebase -i main";
+  grbima = "git rebase -i master";
+  grbium = "git rebase -i upstream/main";
+  grbiuma = "git rebase -i upstream/master";
   grbin = {
     setCursor = true;
     expansion = "git rebase -i HEAD~%";
   };
-  grbc = "git rebase --continue";
-  grba = "git rebase --abort";
 
   gcp = "git cherry-pick";
   gcpc = "git cherry-pick --continue";
