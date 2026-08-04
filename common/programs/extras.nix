@@ -39,6 +39,7 @@
     nixfmt
     nix-inspect
     nix-output-monitor # NOT CALLED NOM
+    nix-diff
     nix-tree
   ];
 }
