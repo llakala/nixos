@@ -1,7 +1,7 @@
 { self, pkgs, ... }:
 
 {
-  nix.package = pkgs.lixPackageSets.latest.lix;
+  nix.package = pkgs.nixVersions.latest;
 
   nix.settings = {
     experimental-features = [
@@ -22,10 +22,13 @@
     max-jobs = "auto";
 
     allow-import-from-derivation = false;
-
-    # Lix-only feature
-    repl-overlays = [ ./_repl-overlay.nix ];
   };
+
+  # wrapped version of the lix package that exposes itself under `lix`, so I can
+  # run `lix repl` for my repl overlay
+  environment.systemPackages = [
+    self.wrappers.lix.drv
+  ];
 
   system.stateVersion = self.hostVars.stateVersion;
 }

@@ -39,9 +39,7 @@ in
 
   "nb." = withCursor "nix build .#%";
 
-  nrp = "nix repl";
-  nrpn = "nix repl nixpkgs";
-  nrpf = "nixos-rebuild repl";
+  nrp = "lix repl"; # See the lix wrapper for additional context
 }
 // {
   h = "satod hire";
