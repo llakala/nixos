@@ -22,7 +22,7 @@ pkgs.mkShellNoCC {
     wrappers.bat.drv
     packages.satod
     packages.evalue
-    packages.neovim
+    packages.neovim.devMode
     menu.imanpu
   ];
 }
