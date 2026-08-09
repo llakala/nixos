@@ -10,12 +10,11 @@ let
   callPackage = lib.callPackageWith (
     pkgs
     // {
-      inherit myLib wrappers;
-      localPackages = packages;
+      inherit myLib wrappers localPackages;
     }
   );
-  packages = {
-    neovim = callPackage ../neovim/default.nix { inherit sources; };
+  localPackages = {
+    neovim = import ../neovim/default.nix { inherit sources pkgs localPackages; };
     emodule = callPackage ./emodule.nix {};
     evalue = callPackage ./evalue.nix {};
     mathematica = callPackage ./mathematica.nix {};
@@ -23,4 +22,4 @@ let
     satod = callPackage ./satod/package.nix {};
     sadin = callPackage ./sadin/package.nix {};
   };
-in packages
+in localPackages
