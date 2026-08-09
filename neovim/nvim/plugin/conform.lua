@@ -1,5 +1,6 @@
 local whitelisted_paths = {
   "/Documents/repos/nixpkgs",
+  "/Documents/projects/nixos/neovim",
 }
 local blacklisted_paths = {
   "/Documents/repos",
