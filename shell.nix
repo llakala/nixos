@@ -28,6 +28,7 @@ pkgs.mkShellNoCC {
     wrappers.bat.drv
     packages.satod
     packages.evalue
+    packages.gps
     menu.imanpu
   ];
 }
