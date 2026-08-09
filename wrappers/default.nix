@@ -1,7 +1,7 @@
 {
-  sources ? import ./other/npins,
+  sources ? import ../other/npins,
   pkgs ? import sources.nixpkgs { config.allowUnfree = true; },
-  myLib ? import ./other/myLib/default.nix { inherit pkgs; }
+  myLib ? import ../other/myLib/default.nix { inherit pkgs; }
 }:
 
 let
@@ -16,7 +16,7 @@ let
   root = {
     modules = adios.lib.inject [
       adios-wrappers
-      (adios.lib.importModules { directory = ./wrappers; })
+      (adios.lib.importModules { directory = ./.; })
     ];
   };
 
@@ -32,7 +32,7 @@ let
   };
 in
 # We have each wrapper `foo` point to all its options, so you can do
-# `(import ./wrappers.nix {}).foo.some-option`
+# `(import ./wrappers {}).foo.some-option`
 mapAttrs (
   _: wrapper:
   if wrapper ? impl then

@@ -6,18 +6,12 @@
 
 let
   menu = import "${sources.menu}/packages/default.nix" { inherit pkgs; };
-  meovim = import "${sources.meovim}/default.nix" {
-    small = false;
-    inherit pkgs;
-    mnw = import sources.mnw;
-  };
-  packages = import ./packages.nix { inherit sources pkgs myLib wrappers; };
-  wrappers = import ./wrappers.nix { inherit sources pkgs myLib; };
+  packages = import ./packages { inherit sources pkgs myLib wrappers; };
+  wrappers = import ./wrappers { inherit sources pkgs myLib; };
 in
 pkgs.mkShellNoCC {
   allowSubstitutes = false;
   packages = [
-    meovim
     wrappers.firefox.drv
     wrappers.gh.drv
     wrappers.git.drv
@@ -28,7 +22,7 @@ pkgs.mkShellNoCC {
     wrappers.bat.drv
     packages.satod
     packages.evalue
-    packages.gps
+    packages.neovim
     menu.imanpu
   ];
 }

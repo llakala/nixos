@@ -1,0 +1,16 @@
+diff --git a/src/nvim/normal.c b/src/nvim/normal.c
+index 769889fecc..fa5af9d769 100644
+--- a/src/nvim/normal.c
++++ b/src/nvim/normal.c
+@@ -5956,6 +5956,11 @@ static void nv_wordcmd(cmdarg_T *cap)
+   // Set inclusive for the "E" and "e" command.
+   if (cap->cmdchar == 'e' || cap->cmdchar == 'E') {
+     word_end = true;
++    // If on the last character of a word and using an operator, include until
++    // the end of the current word, not the next one.
++    if (cap->oap->op_type != OP_NOP) {
++      flag = true;
++    }
+   } else {
+     word_end = false;
+   }

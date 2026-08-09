@@ -62,7 +62,7 @@ in
 removeAttrs builtins [ "null" "true" "false" ] # internal symbols, lix complains when shadowing
 // {
   ${if isValidPath "default.nix" then "default" else null} = loadPath "default.nix";
-  ${if isValidPath "wrappers.nix" then "wrappers" else null} = loadPath "wrappers.nix";
+  ${if isValidPath "wrappers/default.nix" then "wrappers" else null} = loadPath "wrappers/default.nix";
 }
 // (
   if baseNameOf pwd == "nixpkgs" then {

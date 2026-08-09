@@ -52,19 +52,6 @@
       "url": "https://github.com/llakala/menu/archive/7f8373ff68bcd69aa67c3963a0fe93d769ec188d.tar.gz",
       "hash": "sha256-tOtykE0V66ek/pTN+NMGX/nDl7UkrSJggfzkzzhqJQg="
     },
-    "meovim": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "llakala",
-        "repo": "meovim"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "9c68006f4e2e15c8bf2f864fdccb267187470b46",
-      "url": "https://github.com/llakala/meovim/archive/9c68006f4e2e15c8bf2f864fdccb267187470b46.tar.gz",
-      "hash": "sha256-ZB35o4IyT6gmvSyXeSEutxhpwJiu/2Ur9n7aZPbUL+U="
-    },
     "mnw": {
       "type": "Git",
       "repository": {

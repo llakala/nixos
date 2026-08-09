@@ -1,13 +1,7 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 
-let
-  neovimPackage = import "${self.sources.meovim}/default.nix" {
-    inherit pkgs;
-    small = false;
-    mnw = import self.sources.mnw;
-  };
-in {
-  environment.systemPackages = [ neovimPackage ];
+{
+  environment.systemPackages = [ self.packages.neovim ];
   features.editor = "neovim"; # If we ever stop using Neovim, change this
 
   environment.variables.EDITOR = "nvim";
