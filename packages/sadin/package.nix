@@ -1,10 +1,10 @@
-{ localPackages, writeShellApplication }:
+{ localPackages, myLib }:
 
-writeShellApplication {
+myLib.writeFishApplication {
   name = "sadin"; # Split a Diff in Neovim
 
   runtimeInputs = [
     localPackages.gps
   ];
-  text = builtins.readFile ./sadin.sh;
+  text = builtins.readFile ./sadin.fish;
 }
