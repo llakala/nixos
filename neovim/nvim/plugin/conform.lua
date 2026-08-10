@@ -1,12 +1,11 @@
 local whitelisted_paths = {
   "/Documents/repos/nixpkgs",
-  "/Documents/projects/nixos/neovim",
 }
 local blacklisted_paths = {
   "/Documents/repos",
   "/Documents/classes",
-  "/Documents/projects/nixos",
-  "/Documents/projects/menu",
+  "/Documents/projects/nixos/.*%.nix",
+  "/Documents/projects/menu/.*%.nix",
 }
 
 require("conform").setup({
