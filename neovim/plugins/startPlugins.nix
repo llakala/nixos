@@ -32,6 +32,7 @@ in {
     mini-ai
     mini-comment
     mini-extra # More textobjects for mini-ai
+    nvim-highlight-colors
     # Colorschemes
     onedarkpro-nvim
     tokyonight-nvim
@@ -39,9 +40,4 @@ in {
     nvim-web-devicons
     promise-async
     ;
-
-    # Since there's no license in the repo of this package, it defaults to
-    # unfree. I could add config.allowUnfree to the flake.nix, but I prefer to
-    # lie
-    nvim-highlight-colors = pkgs.vimPlugins.nvim-highlight-colors.overrideAttrs { meta.license = []; };
 }
