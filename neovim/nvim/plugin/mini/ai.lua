@@ -1,4 +1,8 @@
 require("mini.ai").setup({
+  mappings = {
+    around_cover = "as",
+    inside_cover = "is",
+  },
   custom_textobjects = {
     -- mini.ai makes this an alias for any type of bracket, which I'll
     -- realistically never use - I like using a specific bracket type

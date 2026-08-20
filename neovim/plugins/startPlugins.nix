@@ -7,6 +7,7 @@ in {
   canola-nvim = callPackage ./startPlugins/canola-nvim.nix {};
   canola-collection = callPackage ./startPlugins/canola-collection.nix {};
   mini-indentscope = callPackage ./startPlugins/mini-indentscope.nix {};
+  mini-ai = callPackage ./startPlugins/mini-ai/package.nix {};
   nvim-fundo = callPackage ./startPlugins/nvim-fundo.nix {};
   snacks-nvim = callPackage ./startPlugins/snacks-nvim.nix {};
   vim-nix = callPackage ./startPlugins/vim-nix.nix {};
@@ -29,7 +30,6 @@ in {
     luasnip
     tiny-inline-diagnostic-nvim
     # mini-nvim stuff
-    mini-ai
     mini-comment
     mini-extra # More textobjects for mini-ai
     nvim-highlight-colors

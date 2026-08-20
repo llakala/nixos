@@ -1,6 +1,9 @@
+local nvim_surround = require("nvim-surround")
+local config = require("nvim-surround.config")
+
 -- The defaults use ( for whitespace, and ) for no whitespace. Silly!
 -- See https://github.com/kylechui/nvim-surround/issues/384
-function create_surround(left, right, use_whitespace)
+local function reverse_default(left, right, use_whitespace)
   local add = nil
   local delete = nil
 
@@ -14,7 +17,25 @@ function create_surround(left, right, use_whitespace)
 
   return {
     add = add,
+    find = function()
+      -- search for the covering textobject - see the next function for
+      -- an explanation
+      return config.get_selection({ motion = "as" .. (use_whitespace and right or left) })
+    end,
     delete = delete,
+  }
+end
+
+-- I have mini.ai set up so `dis(` / `das(` only searches the covering
+-- textobject, and never jumps forward. I find this more intuitive, since
+-- "surrounding" should refer to what actually surrounds you. We replace any
+-- instances in the defaults of `get_selection({ motion = })` to use a
+-- surrounding motion instead
+local function use_covering_tobj(char)
+  return {
+    find = function()
+      return config.get_selection({ motion = "as" .. char })
+    end,
   }
 end
 
@@ -31,7 +52,7 @@ vim.keymap.set("x", "gs", "<Plug>(nvim-surround-visual-line)")
 vim.keymap.set("n", "ds", "<Plug>(nvim-surround-delete)")
 vim.keymap.set("n", "cs", "<Plug>(nvim-surround-change)")
 
-require("nvim-surround").setup({
+nvim_surround.setup({
   move_cursor = "sticky",
 
   aliases = {
@@ -43,21 +64,27 @@ require("nvim-surround").setup({
   },
 
   surrounds = {
-    ["("] = create_surround("(", ")", false),
-    [")"] = create_surround("(", ")", true),
+    ["("] = reverse_default("(", ")", false),
+    [")"] = reverse_default("(", ")", true),
 
-    ["["] = create_surround("[", "]", false),
-    ["]"] = create_surround("[", "]", true),
+    ["["] = reverse_default("[", "]", false),
+    ["]"] = reverse_default("[", "]", true),
 
-    ["{"] = create_surround("{", "}", false),
-    ["}"] = create_surround("{", "}", true),
+    ["{"] = reverse_default("{", "}", false),
+    ["}"] = reverse_default("{", "}", true),
 
-    ["<"] = create_surround("<", ">", false),
-    [">"] = create_surround("<", ">", true),
+    ["<"] = reverse_default("<", ">", false),
+    [">"] = reverse_default("<", ">", true),
 
     ["<CR>"] = {
       find = "\n(\n)().-\n(\n)()",
     },
+
+    ["'"] = use_covering_tobj("'"),
+    ['"'] = use_covering_tobj('"'),
+    ["`"] = use_covering_tobj("`"),
+    ["t"] = use_covering_tobj("t"),
+    ["T"] = use_covering_tobj("t"),
 
     -- codeblock! We add this for all languages, since I still use codeblocks in
     -- languages where they aren't a feature (like git commit descriptions)

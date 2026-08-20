@@ -1,0 +1,43 @@
+diff --git a/lua/mini/ai.lua b/lua/mini/ai.lua
+index 3ae72e7..92ba76f 100644
+--- a/lua/mini/ai.lua
++++ b/lua/mini/ai.lua
+@@ -606,6 +606,9 @@ MiniAi.config = {
+     around_last = 'al',
+     inside_last = 'il',
+
++    around_cover = '',
++    inside_cover = '',
++
+     -- Move cursor to corresponding edge of `a` textobject
+     goto_left = 'g[',
+     goto_right = 'g]',
+@@ -1264,6 +1267,8 @@ H.setup_config = function(config)
+   H.check_type('mappings.inside_next', config.mappings.inside_next, 'string')
+   H.check_type('mappings.around_last', config.mappings.around_last, 'string')
+   H.check_type('mappings.inside_last', config.mappings.inside_last, 'string')
++  H.check_type('mappings.around_cover', config.mappings.around_cover, 'string')
++  H.check_type('mappings.inside_cover', config.mappings.inside_cover, 'string')
+   H.check_type('mappings.goto_left', config.mappings.goto_left, 'string')
+   H.check_type('mappings.goto_right', config.mappings.goto_right, 'string')
+
+@@ -1301,12 +1306,19 @@ H.apply_config = function(config)
+
+   m('x', maps.around_next, make_tobj('x', 'a', 'next'), { desc = 'Around next textobject' })
+   m('x', maps.around_last, make_tobj('x', 'a', 'prev'), { desc = 'Around last textobject' })
++  m('x', maps.around_cover, make_tobj('x', 'a', 'cover'), { desc = 'Around covering textobject' })
++
+   m('x', maps.inside_next, make_tobj('x', 'i', 'next'), { desc = 'Inside next textobject' })
+   m('x', maps.inside_last, make_tobj('x', 'i', 'prev'), { desc = 'Inside last textobject' })
++  m('x', maps.inside_cover, make_tobj('x', 'i', 'cover'), { desc = 'Inside covering textobject' })
++
+   m('o', maps.around_next, make_tobj('o', 'a', 'next'), { desc = 'Around next textobject' })
+   m('o', maps.around_last, make_tobj('o', 'a', 'prev'), { desc = 'Around last textobject' })
++  m('o', maps.around_cover, make_tobj('o', 'a', 'cover'), { desc = 'Around covering textobject' })
++
+   m('o', maps.inside_next, make_tobj('o', 'i', 'next'), { desc = 'Inside next textobject' })
+   m('o', maps.inside_last, make_tobj('o', 'i', 'prev'), { desc = 'Inside last textobject' })
++  m('o', maps.inside_cover, make_tobj('o', 'i', 'cover'), { desc = 'Inside covering textobject' })
+ end
+
+ H.is_disabled = function() return vim.g.miniai_disable == true or vim.b.miniai_disable == true end
