@@ -20,11 +20,16 @@ nvim_surround.buffer_setup({
   },
 })
 
+local spec_treesitter = require("mini.ai").gen_spec.treesitter
 vim.b.miniai_config = {
   custom_textobjects = {
-    ["$"] = { "%${().-()}" },
-    Q = { "''().-()''" },
+    -- see neovim/nvim/after/queries/nix/textobjects.scm
+    b = spec_treesitter({ a = "@binding.outer", i = "@binding.inner" }),
 
+    -- inside ${}
+    ["$"] = { "%${().-()}" },
+
+    Q = { "''().-()''" },
     -- Either "foo" or ''foo''
     q = { { "''().-()''", { '%b""', "^.().*().$" } } },
   },
