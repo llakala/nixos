@@ -5,7 +5,7 @@ local get_cwd = ya.sync(function()
   return tostring(cx.active.current.cwd)
 end)
 
-function git_search()
+local function git_search()
   local cwd = get_cwd()
   -- Both staged and unstaged changes
   local child = Command("git"):arg({ "diff", "HEAD", "--name-only" }):cwd(cwd):stdout(Command.PIPED):spawn()
