@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking, and keep cursor in the same place",
   group = vim.api.nvim_create_augroup("YankLogic", {}),
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.hl_op()
     if vim.v.event.operator == "y" and vim.b.cursor_pre_yank ~= nil then
       vim.api.nvim_win_set_cursor(0, vim.b.cursor_pre_yank)
       vim.b.cursor_pre_yank = nil
