@@ -6,5 +6,5 @@ require("luasnip").setup({
 })
 
 require("luasnip.loaders.from_lua").lazy_load({
-  lazy_paths = { "/home/emanresu/Documents/projects/nixos/other/neovim/nvim/snippets/" },
+  lazy_paths = { "/home/emanresu/Documents/projects/nixos/neovim/nvim/snippets/" },
 })
