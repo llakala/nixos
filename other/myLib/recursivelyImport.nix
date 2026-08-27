@@ -1,28 +1,38 @@
-# If you're here to steal this, I recommend taking from the impl at
-# https://github.com/llakala/synaptic-standard/blob/9365c4b7dc5c5d11685b0165bac88114c24df74b/demo/recursivelyImport.nix
-# - that one is actively maintained to be as simple and readable as possible,
-# while this is just my personal one
 { lib }:
 
 let
-  inherit (lib) concatMap hasPrefix hasSuffix;
-  inherit (builtins) isPath filter readFileType;
+  inherit (builtins)
+    attrNames
+    concatMap
+    isPath
+    readDir
+    readFileType
+    ;
 
-  expandIfFolder = elem:
-    if !isPath elem || readFileType elem != "directory"
-      then [ elem ]
-    else lib.filesystem.listFilesRecursive elem;
+  hasUnderscorePrefix = lib.hasPrefix "_";
+  hasNixSuffix = lib.hasSuffix ".nix";
 
-  hasUnderscorePrefix = hasPrefix "_";
-  hasNixSuffix = hasSuffix ".nix";
-  isNixFile = path:
-    !hasUnderscorePrefix (baseNameOf path)
-    && hasNixSuffix path;
-
+  listNixFilesRecursive =
+    folder:
+    let
+      contents = readDir folder;
+    in
+    concatMap (
+      name:
+      if contents.${name} == "directory" then
+        listNixFilesRecursive (folder + "/${name}")
+      else if hasNixSuffix name && !hasUnderscorePrefix (baseNameOf name) then
+        [ (folder + "/${name}") ]
+      else
+        [ ]
+    ) (attrNames contents);
 in
-  list: filter
-    # Filter out any path that doesn't look like `*.nix`.
-  # Don't forget toString to prevent copying paths to the store unnecessarily
-    (elem: !isPath elem || isNixFile (toString elem))
-    # Expand any folder to all the files within it.
-    (concatMap expandIfFolder list)
+concatMap (
+  elem:
+  if !isPath elem then
+    [ ]
+  else if readFileType elem != "directory" then
+    [ elem ]
+  else
+    listNixFilesRecursive elem
+)
