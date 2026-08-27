@@ -23,7 +23,7 @@ let
     # list to all the files within that folder.
     modules = myLib.recursivelyImport [
       ./common
-      ./hosts/${hostVars.hostname}
+      ./other/hosts/${hostVars.hostname}
       ./other/nixosModules
     ];
   };
