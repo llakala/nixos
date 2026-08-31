@@ -88,7 +88,7 @@ run = "cd ~/Documents/projects"
 [[mgr.prepend_keymap]]
 desc = "Go to the classes directory for working on homework"
 on = ["b", "c"]
-run = "cd ~/Documents/clases"
+run = "cd ~/Documents/classes"
 
 [[mgr.prepend_keymap]]
 desc = "Go to the repos directory for working on external Git repos"
