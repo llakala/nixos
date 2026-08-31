@@ -22,7 +22,7 @@ let
     # I use a custom recursive importer, that will "expand" any folders in this
     # list to all the files within that folder.
     modules = myLib.recursivelyImport [
-      ./common
+      ./modules
       ./other/hosts/${hostVars.hostname}
       ./other/nixosModules
     ];
