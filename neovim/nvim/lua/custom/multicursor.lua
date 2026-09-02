@@ -103,8 +103,10 @@ local function apply_complex_mappings()
 end
 
 local function change_kitty_cursor_hl()
-  -- Set the color of all other cursors
-  -- Since we have Kitty multiple-cursors protocol, we need to enable it
+  -- Set the SRGB color of all other cursors. Needs to be done manually if your
+  -- terminal implements the kitty multiple-cursors protocol
+  -- TODO: reset the colors when leaving nvim
+  -- See https://github.com/neovim/neovim/issues/41603
   vim.api.nvim_create_autocmd("UIEnter", {
     callback = function()
       vim.api.nvim_ui_send("\027[>40;2:170:170:170 q")
