@@ -75,7 +75,7 @@ local function apply_complex_mappings()
   -- if multicursor, `z` prefixes a motion and applies it to all cursors
   -- if one cursor, z works as normal
   vim.keymap.set("n", "z", function()
-    if #vim.api.nvim_buf_get_extmarks(0, mc, 0, -1, { limit = 1, details = true }) == 0 then
+    if #vim.api.nvim_buf_get_extmarks(0, mc, 0, -1, { limit = 1 }) == 0 then
       return "z"
     end
     vim.api.nvim_create_autocmd("CmdAtom", {
