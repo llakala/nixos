@@ -13,6 +13,11 @@ end
 -- one to the right. I prefer this, as I use i more than a. Helix-style!
 vim.keymap.set("i", "<Esc>", "<Esc>l")
 
+-- <Esc> to clear search highlights, remove multiple cursors, etc
+vim.keymap.set("n", "<Esc>", function()
+  return "<C-l>"
+end, { expr = true, remap = true })
+
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
@@ -117,3 +122,5 @@ vim.keymap.set("n", ".", function()
   end
   return "."
 end, { expr = true })
+
+require("custom.multicursor").setup()
