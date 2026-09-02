@@ -82,8 +82,8 @@ end, { expr = true })
 vim.keymap.set({ "n", "x" }, "<Space>", "<Nop>")
 
 -- Paste from selection clipboard
-vim.keymap.set("n", "gp", '"*p')
-vim.keymap.set("n", "gP", '"*P')
+vim.keymap.set({ "n", "x" }, "gp", '"*p')
+vim.keymap.set({ "n", "x" }, "gP", '"*P')
 
 vim.keymap.set("n", "[u", "<Cmd>earlier 1f<CR>")
 vim.keymap.set("n", "]u", "<Cmd>later 1f<CR>")
