@@ -78,7 +78,7 @@ local function apply_complex_mappings()
         return true
       end,
     })
-    return ":silent! norm! 1q=<CR>"
+    return "<Cmd>silent! norm! 1q=<CR>"
   end, { expr = true })
 
   -- Search and place cursors on every search result
