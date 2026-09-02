@@ -52,6 +52,7 @@
 
   gbr = "git pbranch"; # Call our alias for `git branch` that adds formatting
   gbrd = "git branch -d";
+  gbrD = "git branch -D";
   gbrm = "git branch --merged";
 
   grb = "git rebase";
