@@ -39,11 +39,11 @@ end
 -- delete the current word and yank it
 vim.keymap.set("n", "dy", "d", { desc = "Delete and yank" })
 vim.keymap.set("n", "dY", "D", { desc = "Delete and yank rest of line" })
-vim.keymap.set("v", "D", "d", { desc = "Delete and yank selection" })
+vim.keymap.set("x", "D", "d", { desc = "Delete and yank selection" })
 
 vim.keymap.set("n", "cy", "c", { desc = "Change and yank" })
 vim.keymap.set("n", "cY", "C", { desc = "Change and yank rest of line" })
-vim.keymap.set("v", "C", "c", { desc = "Change and yank selection" })
+vim.keymap.set("x", "C", "c", { desc = "Change and yank selection" })
 
 -- q to close nvim entirely, d to close the current buffer. however, wq should
 -- only write the current buffer. if you really want to write all buffers, use
