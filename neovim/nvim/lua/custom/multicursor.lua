@@ -34,23 +34,15 @@ local function apply_simple_mappings()
   vim.keymap.set("n", "]C", "<Nop>")
 
   -- Move to next/previous change (h for hunk)
-  vim.keymap.set("n", "[h", function()
-    return "[c"
-  end, { expr = true })
-  vim.keymap.set("n", "]h", function()
-    return "]c"
-  end, { expr = true })
+  vim.keymap.set("n", "[h", "[c")
+  vim.keymap.set("n", "]h", "]c")
 
   -- toggle follow mode.
   -- TODO: find a way to unmap q= without delay
-  vim.keymap.set("n", "gz", function()
-    return "q="
-  end, { expr = true })
+  vim.keymap.set("n", "gz", "q=")
 
   -- Bring back all cursors after removing them
-  vim.keymap.set("n", "gZ", function()
-    return "gQ"
-  end, { expr = true })
+  vim.keymap.set("n", "gZ", "gQ")
   vim.keymap.set("n", "gQ", "<Nop>")
 end
 
@@ -68,9 +60,7 @@ local function apply_complex_mappings()
   )
 
   -- Z to create a cursor
-  vim.keymap.set({ "n", "x" }, "Z", function()
-    return "Q"
-  end, { expr = true })
+  vim.keymap.set({ "n", "x" }, "Z", "Q")
 
   -- if multicursor, `z` prefixes a motion and applies it to all cursors
   -- if one cursor, z works as normal
