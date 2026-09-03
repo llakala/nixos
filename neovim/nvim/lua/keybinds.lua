@@ -29,21 +29,19 @@ vim.keymap.set("n", "]e", function()
 end, { desc = "Next error" })
 
 -- Use blackhole register for all editing keymaps
-for _, mode in pairs({ "x", "n" }) do
-  for _, lhs in pairs({ "c", "C", "d", "D", "s", "S", "x", "X" }) do
-    vim.keymap.set(mode, lhs, '"_' .. lhs, { silent = true })
-  end
+for _, lhs in pairs({ "c", "C", "d", "D", "s", "S", "x", "X" }) do
+  vim.keymap.set({ "x", "n" }, lhs, '"_' .. lhs)
 end
 
 -- Opt in to copying to clipboard. Since timeout is disabled, this makes `dyip`
 -- delete the current word and yank it
-vim.keymap.set("n", "dy", "d", { desc = "Delete and yank" })
-vim.keymap.set("n", "dY", "D", { desc = "Delete and yank rest of line" })
-vim.keymap.set("x", "D", "d", { desc = "Delete and yank selection" })
+vim.keymap.set("n", "dy", "d")
+vim.keymap.set("n", "dY", "D")
+vim.keymap.set("x", "D", "d")
 
-vim.keymap.set("n", "cy", "c", { desc = "Change and yank" })
-vim.keymap.set("n", "cY", "C", { desc = "Change and yank rest of line" })
-vim.keymap.set("x", "C", "c", { desc = "Change and yank selection" })
+vim.keymap.set("n", "cy", "c")
+vim.keymap.set("n", "cY", "C")
+vim.keymap.set("x", "C", "c")
 
 -- q to close nvim entirely, d to close the current buffer. however, wq should
 -- only write the current buffer. if you really want to write all buffers, use
