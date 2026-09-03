@@ -52,8 +52,6 @@ cabbrev("d", "close")
 cabbrev("wd", "w | close")
 cabbrev("q", "qa")
 cabbrev("wq", "w | qa")
-cabbrev("qa", 'echoerr "just use :q"')
-cabbrev("wqa", 'echoerr "just use :wq"')
 
 -- By default, J's count isn't relative, so 2J doesn't perform J twice. I hate
 -- this, so we fix it!
