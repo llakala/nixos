@@ -9,10 +9,10 @@ return {
     local active = cx.active
     local current = active.current
 
-    local esc = active.mode.is_visual or #active.selected > 0 or current.files.filter or current.cwd.is_search
+    local esc = not active.mode.is_normal or #active.selected > 0 or current.files.filter or current.cwd.spec.is_search
 
     if esc then
-      ya.manager_emit("escape", {})
+      ya.emit("escape", {})
     else
       local cwd = tostring(current.cwd)
       local file = io.open("/tmp/yazi-cwd-suspend", "w")
@@ -21,7 +21,7 @@ return {
         file:write(cwd)
         file:close()
       end
-      ya.manager_emit("quit", {})
+      ya.emit("quit", {})
     end
   end,
 }
