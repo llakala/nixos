@@ -1,35 +1,8 @@
 local M = {}
 
-local mc = vim.api.nvim_create_namespace("nvim.multicursor")
-
-local function place_cursor_at_curpos()
-  vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
-end
-
-local function place_cursors_at_searches()
-  vim.api.nvim_create_autocmd("CmdlineLeave", {
-    callback = function()
-      if not vim.v.event.abort then
-        vim.api.nvim_feedkeys("1Q", "n", true)
-      end
-      return true
-    end,
-  })
-end
-
-local function apply_simple_mappings()
-  -- Move to next/previous cursor, and place a cursor at current position (if
-  -- unset)
-  vim.keymap.set("n", "[c", function()
-    place_cursor_at_curpos()
-    return "[C"
-  end, { expr = true })
-  vim.keymap.set("n", "]c", function()
-    place_cursor_at_curpos()
-    return "]C"
-  end, { expr = true })
-
-  -- Unmap defaults
+local function apply_simple_remaps()
+  vim.keymap.set("n", "[c", "[C")
+  vim.keymap.set("n", "]c", "]C")
   vim.keymap.set("n", "[C", "<Nop>")
   vim.keymap.set("n", "]C", "<Nop>")
 
@@ -37,40 +10,17 @@ local function apply_simple_mappings()
   vim.keymap.set("n", "[h", "[c")
   vim.keymap.set("n", "]h", "]c")
 
-  -- toggle follow mode.
-  -- TODO: find a way to unmap q= without delay
-  vim.keymap.set("n", "gz", "q=")
-
   -- Bring back all cursors after removing them
-  vim.keymap.set("n", "gZ", "gQ")
+  vim.keymap.set("n", "q-", "gQ")
   vim.keymap.set("n", "gQ", "<Nop>")
 end
 
 local function apply_complex_mappings()
-  -- bring back "replay last macro" on Q
-  vim.keymap.set("n", "Q", function()
-    local reg = vim.fn.reg_recorded()
-    return reg == "" and "" or ("@" .. reg)
-  end, { expr = true })
-  vim.keymap.set(
-    "x",
-    "Q",
-    "mode() ==# 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : ''",
-    { expr = true, silent = true }
-  )
-
-  -- Z to create a cursor
-  vim.keymap.set({ "n", "x" }, "Z", "Q")
-
-  -- if multicursor, `z` prefixes a motion and applies it to all cursors
-  -- if one cursor, z works as normal
-  vim.keymap.set("n", "z", function()
-    if #vim.api.nvim_buf_get_extmarks(0, mc, 0, -1, { limit = 1 }) == 0 then
-      return "z"
-    end
+  -- `q` prefixes a motion and applies it to all cursors
+  vim.keymap.set("n", "q", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
       callback = function(ev)
-        if ev.data.lhs == "z" then
+        if ev.data.lhs == "q" then
           return
         end
         vim.cmd("silent! normal! 2q=")
@@ -80,16 +30,43 @@ local function apply_complex_mappings()
     })
     return "<Cmd>silent! norm! 1q=<CR>"
   end, { expr = true })
+  vim.keymap.set("n", "zq", "q")
 
-  -- Search and place cursors on every search result
-  vim.keymap.set("n", "z/", function()
-    place_cursors_at_searches()
-    return "/"
+  -- bring back "replay last macro"
+  vim.keymap.set("n", "zQ", function()
+    local reg = vim.fn.reg_recorded()
+    return reg == "" and "" or ("@" .. reg)
   end, { expr = true })
-  vim.keymap.set("x", "z/", function()
-    place_cursors_at_searches()
-    return "<Esc>/\\%V"
-  end, { expr = true })
+  vim.keymap.set(
+    "x",
+    "zQ",
+    "mode() ==# 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : ''",
+    { expr = true, silent = true }
+  )
+
+  local function place_and_jump(forward)
+    local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
+    local cursearch_hl = vim.api.nvim_get_hl(0, { name = "CurSearch" })
+    vim.api.nvim_set_hl(0, "Search", { link = "None" })
+    vim.api.nvim_set_hl(0, "CurSearch", { link = "None" })
+
+    -- TODO: fix jumplist being spammed with a high count
+    local command = "norm! Q" .. (forward and "*" or "#")
+    for _ = 1, vim.v.count1, 1 do
+      vim.cmd(command)
+    end
+
+    vim.cmd.nohlsearch()
+    vim.api.nvim_set_hl(0, "Search", search_hl)
+    vim.api.nvim_set_hl(0, "CurSearch", cursearch_hl)
+  end
+
+  vim.keymap.set("n", "q*", function()
+    place_and_jump(true)
+  end)
+  vim.keymap.set("n", "q#", function()
+    place_and_jump(false)
+  end)
 end
 
 local function change_kitty_cursor_hl()
@@ -105,7 +82,7 @@ local function change_kitty_cursor_hl()
 end
 
 M.setup = function()
-  apply_simple_mappings()
+  apply_simple_remaps()
   apply_complex_mappings()
   change_kitty_cursor_hl()
 end
