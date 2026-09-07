@@ -1,26 +1,60 @@
-local M = {}
-
-local function apply_simple_remaps()
+-- ]C and [C are annoying to type by default
+do
   vim.keymap.set("n", "[c", "[C")
   vim.keymap.set("n", "]c", "]C")
   vim.keymap.set("n", "[C", "<Nop>")
   vim.keymap.set("n", "]C", "<Nop>")
 
-  -- Move to next/previous change (h for hunk)
+  -- Move to next/previous change
+  -- mnemonic: h for hunk
   vim.keymap.set("n", "[h", "[c")
   vim.keymap.set("n", "]h", "]c")
-
-  -- Bring back all cursors after removing them
-  vim.keymap.set("n", "q-", "gQ")
-  vim.keymap.set("n", "gQ", "<Nop>")
 end
 
-local function apply_complex_mappings()
-  -- `q` prefixes a motion and applies it to all cursors
-  vim.keymap.set("n", "q", function()
+-- q will be the new leader for everything multicursor-related
+-- move things currently under it elsewhere
+do
+  vim.keymap.set("n", "q", "<Nop>")
+
+  -- Create a macro
+  -- mnemonic: "adds" a new mapping
+  vim.keymap.set("n", "+", function()
+    if vim.fn.reg_recording() ~= "" then
+      return "q"
+    end
+    local char = vim.fn.getcharstr()
+    vim.print(char)
+    if char == "+" then
+      return "qq"
+    end
+    return "q" .. char
+  end, { expr = true })
+  --
+  -- Replay last macro
+  vim.keymap.set("n", "-", function()
+    local reg = vim.fn.reg_recorded()
+    return reg == "" and "" or ("@" .. reg)
+  end, { expr = true })
+  vim.keymap.set(
+    "x",
+    "-",
+    "mode() ==# 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : ''",
+    { expr = true, silent = true }
+  )
+
+  -- Create commandline window
+  vim.keymap.set("n", "g/", "q/")
+  vim.keymap.set("n", "g?", "q?")
+  vim.keymap.set("n", "g:", "g:")
+end
+
+do
+  -- Enable follow mode for a single motion
+  -- mnemonic: f for follow
+  vim.keymap.set("n", "qf", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
       callback = function(ev)
-        if ev.data.lhs == "q" then
+        if ev.data.lhs == "qf" then
           return
         end
         vim.cmd("silent! normal! 2q=")
@@ -30,20 +64,18 @@ local function apply_complex_mappings()
     })
     return "<Cmd>silent! norm! 1q=<CR>"
   end, { expr = true })
-  vim.keymap.set("n", "zq", "q")
 
-  -- bring back "replay last macro"
-  vim.keymap.set("n", "zQ", function()
-    local reg = vim.fn.reg_recorded()
-    return reg == "" and "" or ("@" .. reg)
-  end, { expr = true })
-  vim.keymap.set(
-    "x",
-    "zQ",
-    "mode() ==# 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : ''",
-    { expr = true, silent = true }
-  )
+  -- Enable/disable follow mode
+  vim.keymap.set("n", "qF", "q=")
+end
 
+-- Bring back all cursors after removing them
+-- mnemonic: u for undo
+vim.keymap.set("n", "qu", "gQ")
+vim.keymap.set("n", "gQ", "<Nop>")
+
+-- Place a cursor at the start of <cword>, then move to the next instance
+do
   local function place_and_jump(forward)
     -- Disable hlsearch while iterating
     local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
@@ -61,7 +93,7 @@ local function apply_complex_mappings()
     local count = vim.v.count1
 
     -- Move to the beginning of cword before starting the iteration.
-    -- Also puts start pos in jumplist, and sets slash buffer
+    -- Also puts initial pos in jumplist and sets slash buffer
     vim.v.errmsg = ""
     vim.api.nvim_feedkeys("*", "nx", false)
     if vim.v.errmsg ~= "" then
@@ -88,7 +120,7 @@ local function apply_complex_mappings()
   end)
 end
 
-local function change_kitty_cursor_hl()
+do
   -- Set the SRGB color of all other cursors. Needs to be done manually if your
   -- terminal implements the kitty multiple-cursors protocol
   -- TODO: reset the colors when leaving nvim
@@ -99,11 +131,3 @@ local function change_kitty_cursor_hl()
     end,
   })
 end
-
-M.setup = function()
-  apply_simple_remaps()
-  apply_complex_mappings()
-  change_kitty_cursor_hl()
-end
-
-return M

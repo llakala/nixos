@@ -9,6 +9,7 @@ require("ui")
 require("keybinds")
 require("lsp")
 require("colorscheme")
+require("multicursor")
 
 require("autocmds.marks")
 require("autocmds.yank")

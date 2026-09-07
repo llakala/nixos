@@ -131,5 +131,3 @@ vim.keymap.set("n", ".", function()
   Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
   return "."
 end, { expr = true })
-
-require("custom.multicursor").setup()
