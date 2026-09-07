@@ -45,20 +45,42 @@ local function apply_complex_mappings()
   )
 
   local function place_and_jump(forward)
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_get_current_buf()
+
+    -- Disable hlsearch while iterating
     local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
     local cursearch_hl = vim.api.nvim_get_hl(0, { name = "CurSearch" })
     vim.api.nvim_set_hl(0, "Search", { link = "None" })
     vim.api.nvim_set_hl(0, "CurSearch", { link = "None" })
 
-    -- TODO: fix jumplist being spammed with a high count
-    local command = "norm! Q" .. (forward and "*" or "#")
-    for _ = 1, vim.v.count1, 1 do
-      vim.cmd(command)
+    local function cleanup()
+      vim.cmd.nohlsearch()
+      vim.api.nvim_set_hl(0, "Search", search_hl)
+      vim.api.nvim_set_hl(0, "CurSearch", cursearch_hl)
     end
 
-    vim.cmd.nohlsearch()
-    vim.api.nvim_set_hl(0, "Search", search_hl)
-    vim.api.nvim_set_hl(0, "CurSearch", cursearch_hl)
+    -- Store this before feedkeys to prevent it from being invalidated
+    local count = vim.v.count1
+
+    -- Move to the beginning of cword before starting the iteration.
+    -- Also puts start pos in jumplist, and sets slash buffer
+    vim.v.errmsg = ""
+    vim.cmd("normal! *")
+    if vim.v.errmsg ~= "" then
+      cleanup()
+      return
+    end
+    vim.cmd("silent keepjumps normal! N")
+
+    for _ = 1, count, 1 do
+      vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
+      vim.cmd("silent keepjumps normal" .. (forward and "*" or "#"))
+    end
+    -- Place cursor on final instance
+    vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
+
+    cleanup()
   end
 
   vim.keymap.set("n", "q*", function()
