@@ -127,9 +127,8 @@ vim.keymap.set("n", "<<", function()
 end, { expr = true })
 
 vim.keymap.set("n", ".", function()
-  if vim.go.operatorfunc == "v:lua.require'custom.shift'.operator_callback" then
-    shift.cache.pos = vim.api.nvim_win_get_cursor(0)
-  end
+  -- See https://github.com/neovim/neovim/discussions/40715
+  Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
   return "."
 end, { expr = true })
 

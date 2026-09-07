@@ -1,12 +1,15 @@
 --- Custom version of > and < that keeps the cursor on the same line before/after
 --- shifting. Works with dot repeat by reimplementing the operators in lua
 local M = {}
-M.cache = {}
+local cached_op
 
 -- This function only triggers if we're not dot repeating. If we are, the cached
 -- op is reused, and the cached pos should be set again in a remap
 M.operator = function(op)
-  M.cache = { op = op, pos = vim.api.nvim_win_get_cursor(0) }
+  cached_op = op
+  -- our mapping for `.` sets this as well, since on dot repeat, cursor gets
+  -- moved to the start of the range
+  Custom.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
   vim.go.operatorfunc = "v:lua.require'custom.shift'.operator_callback"
   return "g@"
 end
@@ -15,7 +18,8 @@ M.operator_callback = function()
   -- why is vim.bo.shiftwidth typed with string | integer | true, while
   -- vim.o.shiftwidth is just an integer?
   local shiftwidth = vim.bo.shiftwidth > 0 and vim.bo.shiftwidth or vim.bo.tabstop
-  local sign = M.cache.op == ">" and 1 or -1
+  local sign = cached_op == ">" and 1 or -1
+  local curpos = Custom.cursor_before_operator
 
   local first_lnum = vim.api.nvim_buf_get_mark(0, "[")[1] - 1
   local last_lnum = vim.api.nvim_buf_get_mark(0, "]")[1]
@@ -40,12 +44,12 @@ M.operator_callback = function()
 
   -- move the column if moving to the right, or current line can actually be
   -- indented
-  local _, cursor_indent = vim.text.indent(0, vim.fn.getline(M.cache.pos[1]))
+  local _, cursor_indent = vim.text.indent(0, vim.fn.getline(curpos[1]))
   if sign == 1 or cursor_indent >= 0 then
-    M.cache.pos[2] = math.max(0, M.cache.pos[2] + shiftwidth * sign)
+    curpos[2] = math.max(0, curpos[2] + shiftwidth * sign)
   end
 
-  vim.api.nvim_win_set_cursor(0, M.cache.pos)
+  vim.api.nvim_win_set_cursor(0, curpos)
 end
 
 return M
