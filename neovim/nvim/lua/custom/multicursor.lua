@@ -75,7 +75,7 @@ local function apply_complex_mappings()
 
     for _ = 1, count, 1 do
       vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
-      vim.cmd("silent keepjumps normal" .. (forward and "*" or "#"))
+      vim.cmd("silent keepjumps normal! " .. (forward and "*" or "#"))
     end
     -- Place cursor on final instance
     vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
