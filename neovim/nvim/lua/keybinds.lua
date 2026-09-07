@@ -1,8 +1,24 @@
-function cabbrev(alias, expanded)
+function cabbrev(alias, expansion)
+  local should_expand
+
+  -- If the first character is uppercase (necessary for creating a user command)
+  if string.match(alias, "^%u") then
+    -- create a fake user command so that nvim_parse_cmd doesn't error
+    vim.api.nvim_create_user_command(alias, function() end, { range = true })
+    should_expand = function()
+      local ok, parsed_cmdline = pcall(vim.api.nvim_parse_cmd, vim.fn.getcmdline())
+      return ok and parsed_cmdline.cmd == alias
+    end
+  else
+    -- fallback to a weak check
+    should_expand = function()
+      return vim.fn.getcmdline() == alias
+    end
+  end
+
   vim.keymap.set("ca", alias, function()
-    local cmdline = vim.fn.getcmdline()
-    if vim.fn.getcmdtype() == ":" and (cmdline == alias or cmdline == "'<,'>" .. alias) then
-      return expanded
+    if vim.fn.getcmdtype() == ":" and should_expand() then
+      return expansion
     else
       return alias
     end
