@@ -66,7 +66,7 @@ local function apply_complex_mappings()
     -- Move to the beginning of cword before starting the iteration.
     -- Also puts start pos in jumplist, and sets slash buffer
     vim.v.errmsg = ""
-    vim.cmd("normal! *")
+    vim.api.nvim_feedkeys("*", "nx", false)
     if vim.v.errmsg ~= "" then
       cleanup()
       return
