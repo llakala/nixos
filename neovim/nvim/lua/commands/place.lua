@@ -73,15 +73,19 @@ vim.api.nvim_create_user_command("Place", function(ctx)
     return
   end
 
-  -- place cursor beforehand, so we can delete the one created by ]C
+  -- because of my issue, moving cursors now PLACES a cursor, but we don't want
+  -- that here. place the cursor ourselves so we can get its id and delete it
+  -- later
   local id = vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(0))
 
-  -- TODO,
   for _, match in ipairs(matches) do
     vim.api.nvim_mcursor(buf, { match.lnum, match.byteidx })
   end
 
   -- Move to the next cursor, then delete the cursor on the original pos
+  -- TODO: fix bad edge cases. ideally core functions would be more extensible,
+  -- so we could find the cursor that's closest from the current batch, and
+  -- prevent placing on jump
   require("vim._core.mcursor").jump(true)
   vim.api.nvim_buf_del_extmark(buf, ns, id)
 end, {
