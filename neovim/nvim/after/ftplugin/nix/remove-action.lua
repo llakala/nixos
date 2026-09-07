@@ -5,4 +5,4 @@ vim.keymap.set({ "n", "x" }, "ga", function()
       return action.title:find("^Quote as") == nil
     end,
   })
-end, { buffer = true })
+end, { buf = 0 })

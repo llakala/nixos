@@ -1,6 +1,6 @@
 -- Follow and return from tag link
-vim.keymap.set("n", "<CR>", "<C-]>", { buffer = true })
-vim.keymap.set("n", "<BS>", "<C-T>", { buffer = true })
+vim.keymap.set("n", "<CR>", "<C-]>", { buf = 0 })
+vim.keymap.set("n", "<BS>", "<C-T>", { buf = 0 })
 
 -- Color tag links blue to be more visually distinct from mini.cursorword
 vim.api.nvim_set_hl(0, "@markup.link.vimdoc", { fg = colors.blue })

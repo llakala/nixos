@@ -4,9 +4,9 @@ vim.keymap.set("n", "]]", function()
       vim.cmd("normal! G0")
     end
   end
-end, { buffer = true })
+end, { buf = 0 })
 vim.keymap.set("n", "[[", function()
   for _ = 1, vim.v.count1 do
     vim.fn.search("^diff --git", "Wb")
   end
-end, { buffer = true })
+end, { buf = 0 })

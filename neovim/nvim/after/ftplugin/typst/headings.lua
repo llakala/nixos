@@ -12,7 +12,7 @@ vim.keymap.set({ "n", "o", "x" }, "]]", function()
       vim.cmd("normal! G^")
     end
   end
-end, { buffer = true })
+end, { buf = 0 })
 
 vim.keymap.set({ "n", "o", "x" }, "[[", function()
   for _ = 1, vim.v.count1 do
@@ -21,4 +21,4 @@ vim.keymap.set({ "n", "o", "x" }, "[[", function()
     end
     vim.fn.search(regex, "Wb")
   end
-end, { buffer = true })
+end, { buf = 0 })
