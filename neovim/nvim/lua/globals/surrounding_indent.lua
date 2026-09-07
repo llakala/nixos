@@ -2,10 +2,9 @@ local MiniIndentscope = require("mini.indentscope")
 local ns = vim.api.nvim_create_namespace("scope_border")
 
 Custom.operate_on_surrounding_indent = function()
-  local win = vim.api.nvim_get_current_win()
   local buf = 0
 
-  local row, col = unpack(vim.api.nvim_win_get_cursor(win))
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local operator, count1 = vim.v.operator, vim.v.count1
 
   if not vim.tbl_contains({ "d", "y", "g@" }, operator) then
@@ -79,7 +78,7 @@ Custom.operate_on_surrounding_indent = function()
       math.max(1, row - (body.top - border.top)),
       math.max(0, col - indent_change),
     }
-    vim.api.nvim_win_set_cursor(win, cursor_dedent)
+    vim.api.nvim_win_set_cursor(0, cursor_dedent)
   end)
 end
 

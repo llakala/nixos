@@ -64,7 +64,6 @@ vim.api.nvim_create_user_command("Place", function(ctx)
     return
   end
 
-  local buf = vim.api.nvim_get_current_buf()
   local ns = vim.api.nvim_create_namespace("nvim.multicursor")
 
   local matches = get_matches(ctx, args, global)
@@ -76,10 +75,10 @@ vim.api.nvim_create_user_command("Place", function(ctx)
   -- because of my issue, moving cursors now PLACES a cursor, but we don't want
   -- that here. place the cursor ourselves so we can get its id and delete it
   -- later
-  local id = vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(0))
+  local id = vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
 
   for _, match in ipairs(matches) do
-    vim.api.nvim_mcursor(buf, { match.lnum, match.byteidx })
+    vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
   end
 
   -- Move to the next cursor, then delete the cursor on the original pos
@@ -87,13 +86,12 @@ vim.api.nvim_create_user_command("Place", function(ctx)
   -- so we could find the cursor that's closest from the current batch, and
   -- prevent placing on jump
   require("vim._core.mcursor").jump(true)
-  vim.api.nvim_buf_del_extmark(buf, ns, id)
+  vim.api.nvim_buf_del_extmark(0, ns, id)
 end, {
   range = true,
   -- Empty nargs means we should reuse last search pattern
   nargs = "?",
   preview = function(ctx, ns)
-    local buf = vim.api.nvim_get_current_buf()
     local args, global = parse_args(ctx)
     if not args then
       return 0
@@ -101,7 +99,7 @@ end, {
 
     local matches = get_matches(ctx, args, global)
     for _, match in ipairs(matches) do
-      vim.hl.range(buf, ns, "Substitute", { match.lnum - 1, match.byteidx }, { match.lnum - 1, match.byteidx + 1 })
+      vim.hl.range(0, ns, "Substitute", { match.lnum - 1, match.byteidx }, { match.lnum - 1, match.byteidx + 1 })
     end
     return 1
   end,

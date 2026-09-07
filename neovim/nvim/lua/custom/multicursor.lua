@@ -45,9 +45,6 @@ local function apply_complex_mappings()
   )
 
   local function place_and_jump(forward)
-    local win = vim.api.nvim_get_current_win()
-    local buf = vim.api.nvim_get_current_buf()
-
     -- Disable hlsearch while iterating
     local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
     local cursearch_hl = vim.api.nvim_get_hl(0, { name = "CurSearch" })
@@ -73,12 +70,12 @@ local function apply_complex_mappings()
     end
     vim.cmd("silent keepjumps normal! N")
 
-    for _ = 1, count, 1 do
-      vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
+    for _ = 1, count do
+      vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
       vim.cmd("silent keepjumps normal! " .. (forward and "*" or "#"))
     end
     -- Place cursor on final instance
-    vim.api.nvim_mcursor(buf, vim.api.nvim_win_get_cursor(win))
+    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
 
     cleanup()
   end
