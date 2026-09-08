@@ -22,4 +22,5 @@ vim.lsp.enable({
   "marksman",
   "tinymist",
   "clangd",
+  "ocamllsp",
 })

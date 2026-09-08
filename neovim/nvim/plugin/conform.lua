@@ -18,6 +18,7 @@ require("conform").setup({
     lua = { "stylua" },
     cpp = { "clang_format" },
     c = { "clang_format" },
+    ocaml = { "ocamlformat" },
 
     python = {
       "ruff_fix",

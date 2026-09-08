@@ -19,6 +19,7 @@ let
     gitignore
     git_rebase
     java
+    ocaml
     python
     typst
 
