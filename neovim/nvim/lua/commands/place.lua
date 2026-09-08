@@ -41,21 +41,23 @@ end
 ---@param ctx vim.api.keyset.create_user_command.command_args
 ---@param args string[]
 ---@param global boolean
----@return table
+---@return vim.Iter
 local function get_matches(ctx, args, global)
   local buf = vim.api.nvim_get_current_buf()
-  local matches = vim.fn.matchbufline(buf, args[2], ctx.line1, ctx.line2)
+  local matches = vim.iter(vim.fn.matchbufline(buf, args[2], ctx.line1, ctx.line2))
 
   if not global then
-    local prev_line = nil
-    matches = vim.tbl_filter(function(match)
-      local new_lnum = match.lnum ~= prev_line
-      prev_line = match.lnum
-      return new_lnum
-    end, matches)
+    local prev_lnum = nil
+    matches:filter(function(match)
+      local is_new_lnum = match.lnum ~= prev_lnum
+      prev_lnum = match.lnum
+      return is_new_lnum
+    end)
   end
 
-  return matches
+  return matches:map(function(match)
+    return vim.pos.cursor(0, { match.lnum, match.byteidx })
+  end)
 end
 
 vim.api.nvim_create_user_command("Place", function(ctx)
@@ -64,29 +66,29 @@ vim.api.nvim_create_user_command("Place", function(ctx)
     return
   end
 
-  local ns = vim.api.nvim_create_namespace("nvim.multicursor")
-
   local matches = get_matches(ctx, args, global)
-  if #matches == 0 then
+  local first_match = matches:peek()
+  if first_match == nil then
     vim.api.nvim_echo({ { "E486: Pattern not found: " .. args[2] } }, true, { err = true })
     return
   end
 
-  -- because of my issue, moving cursors now PLACES a cursor, but we don't want
-  -- that here. place the cursor ourselves so we can get its id and delete it
-  -- later
-  local id = vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
-
-  for _, match in ipairs(matches) do
-    vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
+  local curpos = vim.pos.cursor(0)
+  local cursor_placed = false
+  for match in matches do
+    -- place cursor on the first match that's after the cursor
+    if not cursor_placed and match > curpos then
+      vim.api.nvim_win_set_cursor(0, match:to_cursor())
+      cursor_placed = true
+    end
+    vim.api.nvim_mcursor(0, match:to_cursor())
   end
 
-  -- Move to the next cursor, then delete the cursor on the original pos
-  -- TODO: fix bad edge cases. ideally core functions would be more extensible,
-  -- so we could find the cursor that's closest from the current batch, and
-  -- prevent placing on jump
-  require("vim._core.mcursor").jump(true)
-  vim.api.nvim_buf_del_extmark(0, ns, id)
+  -- if the cursor never got placed, it must've been after every match -
+  -- loop around to the beginning
+  if not cursor_placed then
+    vim.api.nvim_win_set_cursor(0, first_match:to_cursor())
+  end
 end, {
   range = true,
   -- Empty nargs means we should reuse last search pattern
@@ -98,8 +100,8 @@ end, {
     end
 
     local matches = get_matches(ctx, args, global)
-    for _, match in ipairs(matches) do
-      vim.hl.range(0, ns, "Substitute", { match.lnum - 1, match.byteidx }, { match.lnum - 1, match.byteidx + 1 })
+    for match in matches do
+      vim.hl.range(0, ns, "Substitute", { match.row, match.col }, { match.row, match.col + 1 })
     end
     return 1
   end,
