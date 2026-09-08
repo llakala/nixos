@@ -1,5 +1,5 @@
 ---@param ctx vim.api.keyset.create_user_command.command_args
----@return table | nil, boolean
+---@return string[] | nil, boolean
 local function parse_args(ctx)
   local separator = string.sub(ctx.args, 1, 1)
   local global = false
