@@ -14,11 +14,11 @@ end
 -- q will be the new leader for everything multicursor-related
 -- move things currently under it elsewhere
 do
-  vim.keymap.set("n", "q", "<Nop>")
+  vim.keymap.set({ "n", "x" }, "q", "<Nop>")
 
   -- Create a macro
   -- mnemonic: "adds" a new mapping
-  vim.keymap.set("n", "+", function()
+  vim.keymap.set({ "n", "x" }, "+", function()
     if vim.fn.reg_recording() ~= "" then
       return "q"
     end
@@ -43,15 +43,15 @@ do
   )
 
   -- Create commandline window
-  vim.keymap.set("n", "g/", "q/")
-  vim.keymap.set("n", "g?", "q?")
-  vim.keymap.set("n", "g:", "g:")
+  vim.keymap.set({ "n", "x" }, "g/", "q/")
+  vim.keymap.set({ "n", "x" }, "g?", "q?")
+  vim.keymap.set({ "n", "x" }, "g:", "g:")
 end
 
 do
   -- Enable follow mode for a single motion
   -- mnemonic: f for follow
-  vim.keymap.set("n", "qf", function()
+  vim.keymap.set({ "n", "x" }, "qf", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
       callback = function(ev)
         if ev.data.lhs == "qf" then
@@ -66,13 +66,13 @@ do
   end, { expr = true })
 
   -- Enable/disable follow mode
-  vim.keymap.set("n", "qF", "q=")
+  vim.keymap.set({ "n", "x" }, "qF", "q=")
 end
 
 -- Bring back all cursors after removing them
 -- mnemonic: u for undo
-vim.keymap.set("n", "qu", "gQ")
-vim.keymap.set("n", "gQ", "<Nop>")
+vim.keymap.set({ "n", "x" }, "qu", "gQ")
+vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
 
 -- Place a cursor at the start of <cword>, then move to the next instance
 do
@@ -112,6 +112,7 @@ do
     cleanup()
   end
 
+  -- TODO: support visual mode
   vim.keymap.set("n", "q*", function()
     place_and_jump(true)
   end)
