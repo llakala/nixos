@@ -104,7 +104,7 @@ do
 
     for _ = 1, count do
       vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
-      vim.cmd("silent keepjumps normal! " .. (forward and "*" or "#"))
+      vim.cmd("silent keepjumps normal! " .. (forward and "n" or "N"))
     end
     -- Place cursor on final instance
     vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
