@@ -120,6 +120,49 @@ do
   end)
 end
 
+-- Operator that places a cursor on all instances of <cword> in the
+-- motion's range
+do
+  local function operator()
+    Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
+
+    vim.go.operatorfunc = function(mode)
+      local range_start = vim.api.nvim_buf_get_mark(0, "[")
+      local range_end = vim.api.nvim_buf_get_mark(0, "]")
+      if mode == "line" then
+        range_start[2] = 0
+        range_end[2] = #vim.fn.getline(range_end[1])
+      end
+
+      vim.api.nvim_win_set_cursor(0, Custom.curpos_before_operator)
+      local cword = [[\<\V]] .. vim.fn.expand("<cword>") .. [[\m\>]]
+
+      local matches = vim.iter(vim.fn.matchbufline("%", cword, range_start[1], range_end[1]))
+      matches:filter(function(match)
+        if match.lnum == range_start[1] then
+          return match.byteidx >= range_start[2]
+        elseif match.lnum == range_end[1] then
+          return match.byteidx <= range_end[2]
+        end
+        return true
+      end)
+
+      for match in matches do
+        vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
+      end
+    end
+
+    return "g@"
+  end
+
+  vim.keymap.set("n", "qr", function()
+    return operator()
+  end, { expr = true })
+  vim.keymap.set("n", "qrr", function()
+    return operator() .. "_"
+  end, { expr = true })
+end
+
 do
   -- Set the SRGB color of all other cursors. Needs to be done manually if your
   -- terminal implements the kitty multiple-cursors protocol
