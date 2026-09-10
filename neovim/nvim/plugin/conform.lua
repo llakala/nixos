@@ -3,7 +3,6 @@ local whitelisted_paths = {
 }
 local blacklisted_paths = {
   "/Documents/repos",
-  "/Documents/classes",
   "/Documents/projects/nixos/.*%.nix",
   "/Documents/projects/menu/.*%.nix",
 }
