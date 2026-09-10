@@ -1,3 +1,17 @@
+-- Add to this whenever you add a new server to the `lsp` folder!
+vim.lsp.enable({
+  "fish_lsp",
+  "gleam",
+  "lua_ls",
+  "nil_ls",
+  "basedpyright",
+  "ts_ls",
+  "marksman",
+  "tinymist",
+  "clangd",
+  "ocamllsp",
+})
+
 vim.keymap.del("n", "grn")
 -- This is just ascii stuff by default - useless to me!
 vim.keymap.del({ "n", "x" }, "gra")

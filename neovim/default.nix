@@ -22,9 +22,9 @@ mnw.lib.wrap pkgs {
     patches = (oldAttrs.patches or [ ]) ++ [ ./plugins/patches/better-e-binding.patch ];
   });
 
-  luaFiles = [
-    "${./init.lua}"
-  ];
+  initLua = ''
+    require("init")
+  '';
 
   plugins = {
     startAttrs = import ./plugins/startPlugins.nix args;

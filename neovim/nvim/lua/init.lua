@@ -28,3 +28,5 @@ require("commands.deallman")
 require("commands.macros")
 require("commands.place")
 require("commands.chars")
+
+require("lz.n").load("lazy")
