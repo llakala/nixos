@@ -23,7 +23,6 @@ do
       return "q"
     end
     local char = vim.fn.getcharstr()
-    vim.print(char)
     if char == "+" then
       return "qq"
     end
