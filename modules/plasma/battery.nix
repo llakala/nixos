@@ -1,7 +1,16 @@
 {
   hm.programs.plasma.powerdevil = {
-    AC.powerButtonAction = "sleep";
-    battery.powerButtonAction = "sleep";
-    lowBattery.powerButtonAction = "sleep";
+    AC = {
+      powerButtonAction = "sleep";
+      powerProfile = "performance";
+    };
+    battery = {
+      powerButtonAction = "sleep";
+      powerProfile = "balanced";
+    };
+    lowBattery = {
+      powerButtonAction = "sleep";
+      powerProfile = "powerSaving";
+    };
   };
 }
