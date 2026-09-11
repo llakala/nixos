@@ -16,8 +16,8 @@ mnw.lib.wrap pkgs {
     src = pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "493a4dd57127de50c76e6a627bff27c64d5adf91";
-      hash = "sha256-bXPTTwMKK8jnGqWJhHnQibjqiSyGO3f/LZ2o31nGeWk=";
+      rev = "a6d91a8d7c1bcce43e3ce96955b9120ff0a21cf5";
+      hash = "sha256-fqFFUb+r7H7GvjulboGdDItaYTV14manZbE0qcPnX1c=";
     };
     patches = (oldAttrs.patches or [ ]) ++ [ ./plugins/patches/better-e-binding.patch ];
   });
