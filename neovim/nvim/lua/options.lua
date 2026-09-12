@@ -1,7 +1,3 @@
--- Improves startup time
--- We do it before everything so it can help us the most
-vim.loader.enable()
-
 local g = vim.g
 local o = vim.o
 

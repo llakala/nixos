@@ -1,5 +1,6 @@
-Custom = {}
+vim.loader.enable()
 
+Custom = {}
 require("globals.cwd")
 require("globals.in_ts_group")
 require("globals.surrounding_indent")
