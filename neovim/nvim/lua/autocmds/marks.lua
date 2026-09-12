@@ -103,7 +103,7 @@ function M.setup(user_config)
   })
 
   vim.api.nvim_create_autocmd("MarkSet", {
-    group = augroup,
+    pattern = "[a-zA-Z]",
     callback = function(event)
       M.place_mark(event.buf, event.data.name, event.data.line)
     end,
