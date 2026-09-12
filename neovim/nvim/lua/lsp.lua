@@ -42,6 +42,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, args)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, args)
 
+    vim.keymap.set("n", "grr", function()
+      vim.lsp.buf.references({ includeDeclaration = false })
+    end, args)
     vim.keymap.set("n", "grh", function()
       local clients = vim.lsp.get_clients({ bufnr = 0, method = "textDocument/documentHighlight" })
       if vim.tbl_isempty(clients) then
