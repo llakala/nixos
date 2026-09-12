@@ -19,6 +19,7 @@ o.splitright = true
 o.timeout = false
 o.virtualedit = "block"
 vim.opt.jumpoptions:append("view")
+vim.opt.switchbuf:append({ "useopen", "split" })
 o.hidden = false
 o.confirm = true
 
