@@ -53,6 +53,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.buf.document_highlight()
     end, args)
 
+    vim.keymap.set("n", "gO", function()
+      require("custom.quickfix").jump_to_nearest_entry()
+      vim.lsp.buf.document_symbol()
+    end, args)
+
     vim.keymap.set("n", "grd", vim.diagnostic.setloclist, args)
     vim.keymap.set("n", "grD", vim.diagnostic.setqflist, args)
 

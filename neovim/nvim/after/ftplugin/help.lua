@@ -7,3 +7,9 @@ vim.api.nvim_set_hl(0, "@markup.link.vimdoc", { fg = colors.blue })
 
 vim.opt_local.wrap = false
 vim.b.miniindentscope_disable = true
+
+-- upon opening the loclist, jump to the closest heading to the cursor
+vim.keymap.set("n", "gO", function()
+  require("custom.quickfix").jump_to_nearest_entry()
+  require("vim.treesitter._headings").show_toc()
+end, { buf = 0 })
