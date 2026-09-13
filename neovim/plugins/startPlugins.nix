@@ -10,6 +10,7 @@ in {
   mini-ai = callPackage ./startPlugins/mini-ai/package.nix {};
   nvim-fundo = callPackage ./startPlugins/nvim-fundo.nix {};
   snacks-nvim = callPackage ./startPlugins/snacks-nvim.nix {};
+  tokyonight-nvim = callPackage ./startPlugins/tokyonight-nvim.nix {};
   vim-nix = callPackage ./startPlugins/vim-nix.nix {};
 
   inherit (pkgs.vimPlugins)
@@ -35,7 +36,6 @@ in {
     nvim-highlight-colors
     # Colorschemes
     onedarkpro-nvim
-    tokyonight-nvim
     # Dependencies
     nvim-web-devicons
     promise-async
