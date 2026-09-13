@@ -1,0 +1,6 @@
+vim.api.nvim_create_user_command("TSEnable", function()
+  vim.treesitter.start()
+end)
+vim.api.nvim_create_user_command("TSDisable", function()
+  vim.treesitter.stop()
+end)
