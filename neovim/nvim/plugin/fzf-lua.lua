@@ -110,7 +110,7 @@ vim.keymap.set("n", "<leader>F", function()
   FzfLua.files({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Add new file in current folder" })
 
-vim.keymap.set("n", "<leader>s", FzfLua.live_grep, { desc = "Search text in project" })
+vim.keymap.set("n", "<leader>s", FzfLua.live_grep_native, { desc = "Search text in project" })
 vim.keymap.set("n", "<leader>S", function()
   FzfLua.live_grep_native({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Search text in current folder" })

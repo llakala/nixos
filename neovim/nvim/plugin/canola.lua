@@ -132,7 +132,7 @@ vim.g.canola = {
     -- Heavily referenced from
     -- https://github.com/samiulsami/nvim/blob/7a72a0c7328ba4dc58bfe4e0d32750a5323f6267/lua/plugins/oil.lua#L94
     ["<leader>s"] = function()
-      fzf_lua.live_grep({
+      fzf_lua.live_grep_native({
         cwd = canola.get_current_dir(),
         cwd_prompt = true,
         actions = {
