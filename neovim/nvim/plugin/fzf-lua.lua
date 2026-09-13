@@ -31,8 +31,7 @@ require("fzf-lua").setup({
     },
   },
 
-  -- Autoselect current document symbol in `:FzfLua lsp_document_symbols` (bound
-  -- to gO by default)
+  -- Autoselect current document symbol in `:FzfLua lsp_document_symbols`
   lsp = {
     symbols = {
       locate = true,
