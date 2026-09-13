@@ -73,12 +73,34 @@ cabbrev("wq", "w | qa")
 -- By default, J's count isn't relative, so 2J doesn't perform J twice. I hate
 -- this, so we fix it!
 vim.keymap.set("n", "J", function()
-  vim.cmd("normal! " .. vim.v.count + 1 .. "J")
-end)
-vim.keymap.set("n", "gJ", function()
-  vim.cmd("normal! " .. vim.v.count + 1 .. "gJ")
+  vim.cmd("normal! " .. vim.v.count1 + 1 .. "J")
 end)
 
+-- i find vanilla gJ useless - make it remove any existing indentation
+vim.keymap.set("n", "gJ", function()
+  local lnum = vim.api.nvim_win_get_cursor(0)[1]
+  local col = #vim.api.nvim_get_current_line()
+
+  local lines = vim.api.nvim_buf_get_lines(0, lnum, lnum + vim.v.count1, false)
+  -- exit early if on last line of the buffer
+  if #lines == 0 then
+    return
+  end
+
+  local line
+  local merged_lines = ""
+  for i = 1, #lines do
+    -- deindent each line
+    line = string.gsub(lines[i], "^%s+", "")
+    col = col + #line
+    merged_lines = merged_lines .. line
+  end
+  vim.api.nvim_buf_set_text(0, lnum - 1, -1, lnum - 1 + vim.v.count1, -1, { merged_lines })
+
+  -- place our cursor at the start of the last line
+  col = col - #line
+  vim.api.nvim_win_set_cursor(0, { lnum, col })
+end)
 -- Make H move an extra line with an an odd-number window height, so HL is
 -- deterministic
 vim.keymap.set({ "n", "x" }, "H", function()
