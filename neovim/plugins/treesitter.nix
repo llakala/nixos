@@ -26,7 +26,6 @@ let
     # Structured languages
     css
     csv
-    diff # .patch files
     html
     json
     toml
