@@ -1,7 +1,6 @@
 local M = {}
 
--- upon opening the qflist, jump to the closest entry
--- recommended to be called inside a gO mapping
+-- upon opening the qflist / loclist, jump to the entry that directly precedes the cursor.
 M.jump_to_nearest_entry = function()
   local cursor = vim.pos.cursor(0):to_offset()
 
@@ -11,20 +10,19 @@ M.jump_to_nearest_entry = function()
         return true
       end
 
-      local closest = { index = -1, offset = math.huge }
+      local closest = { lnum = -1, dist = math.huge }
       for i, loc in ipairs(vim.fn.getloclist(0)) do
         -- decrement col, since getloclist is 1-1 indexed
-        local offset = cursor - vim.pos.mark(loc.bufnr, loc.lnum, loc.col - 1):to_offset()
+        local dist = cursor - vim.pos.mark(loc.bufnr, loc.lnum, loc.col - 1):to_offset()
 
-        -- find the element closest to the cursor (but not after it)
-        if offset <= closest.offset and offset >= 0 then
-          closest = { offset = offset, index = i }
+        if dist >= 0 and dist < closest.dist then
+          closest = { dist = dist, lnum = i }
         end
       end
 
-      if closest.index ~= -1 then
+      if closest.lnum ~= -1 then
         vim.schedule(function()
-          vim.api.nvim_win_set_cursor(0, { closest.index, 0 })
+          vim.api.nvim_win_set_cursor(0, { closest.lnum, 0 })
         end)
       end
 
