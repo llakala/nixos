@@ -5,7 +5,7 @@ vim.keymap.set("n", "<BS>", "<C-T>", { buf = 0 })
 -- Color tag links blue to be more visually distinct from mini.cursorword
 vim.api.nvim_set_hl(0, "@markup.link.vimdoc", { fg = colors.blue })
 
-vim.opt_local.wrap = false
+vim.wo.wrap = false
 vim.b.miniindentscope_disable = true
 
 -- upon opening the loclist, jump to the closest heading to the cursor
