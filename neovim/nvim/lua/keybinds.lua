@@ -134,3 +134,11 @@ vim.keymap.set("n", ".", function()
   Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
   return "."
 end, { expr = true })
+
+vim.keymap.set("c", "<C-l>", "<CR>")
+vim.keymap.set("c", "<C-BS>", "<C-w>")
+
+vim.keymap.set("c", "<C-p>", "<Up>")
+vim.keymap.set("c", "<C-n>", "<Down>")
+vim.keymap.set("c", "<Up>", "<Nop>")
+vim.keymap.set("c", "<Down>", "<Nop>")

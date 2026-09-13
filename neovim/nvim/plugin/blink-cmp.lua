@@ -4,19 +4,10 @@ vim.lsp.config("*", {
   capabilities = blink.get_lsp_capabilities(),
 })
 
--- Acts as enter for cmdline, even if a completion isn't currently on
-vim.keymap.set("c", "<C-l>", "<CR>")
-
 -- We use ctrl-j and ctrl-k instead, and if we don't unbind these, they'll
 -- trigger the default completions.
 vim.keymap.set("c", "<Tab>", "<Nop>")
 vim.keymap.set("c", "<S-Tab>", "<Nop>")
-
--- Move through cmdline history
-vim.keymap.set("c", "<C-p>", "<Up>")
-vim.keymap.set("c", "<C-n>", "<Down>")
-vim.keymap.set("c", "<Up>", "<Nop>")
-vim.keymap.set("c", "<Down>", "<Nop>")
 
 local prev_providers = nil
 
