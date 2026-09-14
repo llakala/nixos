@@ -3,39 +3,35 @@ let
   inherit (pkgs) callPackage;
 in {
   # Custom plugins
-  fFtT-highlights-nvim = callPackage ./startPlugins/fFtT-highlights-nvim.nix {};
-  canola-nvim = callPackage ./startPlugins/canola-nvim.nix {};
   canola-collection = callPackage ./startPlugins/canola-collection.nix {};
-  mini-indentscope = callPackage ./startPlugins/mini-indentscope.nix {};
+  canola-nvim = callPackage ./startPlugins/canola-nvim.nix {};
+  fFtT-highlights-nvim = callPackage ./startPlugins/fFtT-highlights-nvim.nix {};
   mini-ai = callPackage ./startPlugins/mini-ai/package.nix {};
+  mini-indentscope = callPackage ./startPlugins/mini-indentscope.nix {};
   nvim-fundo = callPackage ./startPlugins/nvim-fundo.nix {};
   snacks-nvim = callPackage ./startPlugins/snacks-nvim.nix {};
   tokyonight-nvim = callPackage ./startPlugins/tokyonight-nvim.nix {};
   vim-nix = callPackage ./startPlugins/vim-nix.nix {};
 
   inherit (pkgs.vimPlugins)
-    # Essentials
     auto-session
     blink-cmp
+    colorful-menu-nvim # Show completion types in color
     conform-nvim
     fzf-lua
     lualine-lsp-progress
     lualine-nvim
-    lz-n
-    nvim-autopairs
-    nvim-lspconfig
-    nvim-surround
-    rainbow-delimiters-nvim
-    # Neat features
-    colorful-menu-nvim # Show completion types in color
     luasnip
-    tiny-inline-diagnostic-nvim
-    # mini-nvim stuff
+    lz-n
     mini-comment
     mini-extra # More textobjects for mini-ai
+    nvim-autopairs
     nvim-highlight-colors
-    # Colorschemes
+    nvim-lspconfig
+    nvim-surround
     onedarkpro-nvim
+    rainbow-delimiters-nvim
+    tiny-inline-diagnostic-nvim
     # Dependencies
     nvim-web-devicons
     promise-async
