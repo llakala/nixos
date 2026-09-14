@@ -124,18 +124,31 @@ end
 -- motion's range
 do
   local function operator()
+    -- get the "semantic" cword via `iw` textobject. better than using <cword>
+    -- since it actually captures special characters, rather than jumping ahead
+    vim.api.nvim_feedkeys("viw", "nx", false)
+    local cword_start, cword_end = vim.fn.getpos("v"), vim.fn.getpos(".")
+    local cword = vim.fn.getregion(cword_start, cword_end)[1]
+    -- store curpos after moving to the start of the cword
+    vim.api.nvim_feedkeys(vim.keycode("o<Esc>"), "nx", false)
     Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
 
+    if vim.fn.match(cword, [[\k]]) ~= -1 then
+      -- prevent in-word matching if the cword passes 'iskeyword'
+      cword = [[\<\V]] .. cword .. [[\m\>]]
+    else
+      cword = [[\V]] .. cword
+    end
+
     vim.go.operatorfunc = function(mode)
+      vim.api.nvim_win_set_cursor(0, Custom.curpos_before_operator)
+
       local range_start = vim.api.nvim_buf_get_mark(0, "[")
       local range_end = vim.api.nvim_buf_get_mark(0, "]")
       if mode == "line" then
         range_start[2] = 0
         range_end[2] = #vim.fn.getline(range_end[1])
       end
-
-      vim.api.nvim_win_set_cursor(0, Custom.curpos_before_operator)
-      local cword = [[\<\V]] .. vim.fn.expand("<cword>") .. [[\m\>]]
 
       local matches = vim.iter(vim.fn.matchbufline("%", cword, range_start[1], range_end[1]))
       matches:filter(function(match)
@@ -152,15 +165,16 @@ do
       end
     end
 
-    return "g@"
+    vim.api.nvim_feedkeys("g@", "ni", false)
   end
 
   vim.keymap.set("n", "qr", function()
-    return operator()
-  end, { expr = true })
-  vim.keymap.set("n", "qrr", function()
-    return operator() .. "_"
-  end, { expr = true })
+    operator()
+  end)
+  -- TODO: figure out why feedkeys has issues with this
+  -- vim.keymap.set("n", "qrr", function()
+  --   operator("_")
+  -- end)
 end
 
 do
