@@ -8,7 +8,7 @@ o.undofile = true -- Persistent undo
 -- According to Neovim example init, this helps performance
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
-    vim.o.clipboard = "unnamedplus"
+    o.clipboard = "unnamedplus"
   end,
 })
 
@@ -31,7 +31,7 @@ vim.opt.matchpairs:append("<:>") -- % goes between <>
 -- We use a custom function from the Cwd namespace that ignores subdirs of git
 -- repos, so `nvim myrepo` will give the same result as `nvim myrepo/foo/bar`
 -- Only activate in git repos, to save on startuptime elsewhere
-local workspace_path = vim.g.repo_root
+local workspace_path = g.repo_root
 if workspace_path ~= nil then
   local cache_dir = vim.fn.stdpath("data")
   local unique_id = vim.fs.basename(workspace_path) .. "_" .. vim.fn.sha256(workspace_path):sub(1, 8)
