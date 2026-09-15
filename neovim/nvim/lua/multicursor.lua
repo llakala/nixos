@@ -1,3 +1,4 @@
+M = {}
 -- ]C and [C are annoying to type by default
 do
   vim.keymap.set("n", "[c", "[C")
@@ -123,26 +124,24 @@ end
 -- Operator that places a cursor on all instances of <cword> in the
 -- motion's range
 do
-  local function operator()
-    -- get the "semantic" cword via `iw` textobject. better than using <cword>
-    -- since it actually captures special characters, rather than jumping ahead
-    vim.api.nvim_feedkeys("viw", "nx", false)
-    local cword_start, cword_end = vim.fn.getpos("v"), vim.fn.getpos(".")
+  M.cword_operator = function(visual)
+    -- use the "semantic" cword (via the `iw` textobject) instead of <cword>,
+    -- since it actually captures special characters, instead of jumping ahead
+    local cword_start, cword_end = vim.fn.getpos("'<"), vim.fn.getpos("'>")
     local cword = vim.fn.getregion(cword_start, cword_end)[1]
-    -- store curpos after moving to the start of the cword
-    vim.api.nvim_feedkeys(vim.keycode("o<Esc>"), "nx", false)
-    Custom.curpos_before_operator = vim.api.nvim_win_get_cursor(0)
 
-    if vim.fn.match(cword, [[\k]]) ~= -1 then
-      -- prevent in-word matching if the cword passes 'iskeyword'
-      cword = [[\<\V]] .. cword .. [[\m\>]]
+    -- if we _are_ on a keyword, then match with <> and skip in-word matches.
+    -- opt out of this with visual mode - `viwqr2j`
+    if not visual and vim.fn.match(cword, [[^\k\+$]]) ~= -1 then
+      cword = [[\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
     else
-      cword = [[\V]] .. cword
+      cword = [[\V]] .. vim.fn.escape(cword, [[\]])
     end
 
-    vim.go.operatorfunc = function(mode)
-      vim.api.nvim_win_set_cursor(0, Custom.curpos_before_operator)
+    -- set the cursor to the beginning of cword
+    Custom.cursor_before_operator = { cword_start[2], cword_start[3] - 1 }
 
+    vim.go.operatorfunc = function(mode)
       local range_start = vim.api.nvim_buf_get_mark(0, "[")
       local range_end = vim.api.nvim_buf_get_mark(0, "]")
       if mode == "line" then
@@ -150,31 +149,30 @@ do
         range_end[2] = #vim.fn.getline(range_end[1])
       end
 
-      local matches = vim.iter(vim.fn.matchbufline("%", cword, range_start[1], range_end[1]))
-      matches:filter(function(match)
-        if match.lnum == range_start[1] then
-          return match.byteidx >= range_start[2]
-        elseif match.lnum == range_end[1] then
-          return match.byteidx <= range_end[2]
+      -- place a cursor on each instance of cword, ignoring matches before the
+      -- start col / after the end col
+      local matches = vim.fn.matchbufline("%", cword, range_start[1], range_end[1])
+      for _, match in ipairs(matches) do
+        if
+          (match.lnum ~= range_start[1] or match.byteidx >= range_start[2])
+          and (match.lnum ~= range_end[1] or match.byteidx <= range_end[2])
+        then
+          vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
         end
-        return true
-      end)
-
-      for match in matches do
-        vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
       end
+      vim.api.nvim_win_set_cursor(0, Custom.cursor_before_operator)
     end
-
-    vim.api.nvim_feedkeys("g@", "ni", false)
   end
 
-  vim.keymap.set("n", "qr", function()
-    operator()
-  end)
-  -- TODO: figure out why feedkeys has issues with this
-  -- vim.keymap.set("n", "qrr", function()
-  --   operator("_")
-  -- end)
+  -- Sets the < and > marks and moves to the start of the "semantic" cword
+  -- we need to use a vimscript mapping, since:
+  -- 1. expr mappings are very limited, and prevent us from calling `g@`
+  -- 2. emitting g@ via feedkeys with the `i` flag has very odd behavior when
+  -- you create a qr AND qrr mapping.
+  vim.keymap.set("n", "qr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>g@]])
+  vim.keymap.set("n", "qrr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>g@_]])
+  vim.keymap.set("x", "qr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>g@]])
+  vim.keymap.set("x", "qrr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>g@_]])
 end
 
 do
@@ -188,3 +186,5 @@ do
     end,
   })
 end
+
+return M
