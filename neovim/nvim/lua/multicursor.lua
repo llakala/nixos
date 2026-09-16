@@ -1,4 +1,19 @@
 M = {}
+
+do
+  -- Q without a count places a cursor (unchanged)
+  -- {count}Q places [count] cursors, one on each line, and enables follow mode
+  vim.keymap.set("n", "Q", function()
+    -- if count = 0, this is equivalent to Q
+    if vim.v.count1 == 1 then
+      vim.api.nvim_feedkeys("Q", "nx", false)
+      return
+    end
+    local keys = string.rep("Qj", vim.v.count - 1) .. "q="
+    vim.api.nvim_feedkeys(keys, "nx", false)
+  end)
+end
+
 -- ]C and [C are annoying to type by default
 do
   vim.keymap.set("n", "[c", "[C")
