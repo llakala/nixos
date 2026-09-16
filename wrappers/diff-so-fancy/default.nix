@@ -4,6 +4,8 @@ _:
     less.from = { parent }: parent.less;
   };
 
+  options.package.defaultFunc = { inputs }: inputs.nixpkgs.pkgs.callPackage ./package.nix {};
+
   mutations = {
     "/git".settings =
       { inputs }:
