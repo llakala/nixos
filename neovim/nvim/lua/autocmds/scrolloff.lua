@@ -6,8 +6,8 @@ local group = vim.api.nvim_create_augroup("CenterCurrentLine", {})
 --
 -- Credit to
 -- https://github.com/fsmiamoto/dotfiles/blob/21a9d9fc31be43f6d6daae796be543f841fe840f/common/.vimrc#L292
--- for the impl
-vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+-- for the original impl
+vim.api.nvim_create_autocmd("CursorMoved", {
   desc = "Center cursor",
   group = group,
   callback = function()
@@ -22,6 +22,15 @@ vim.api.nvim_create_autocmd({ "CursorMoved" }, {
     if prev_line ~= curr_line then
       vim.cmd("normal! zz")
       vim.b.prev_line = curr_line
+    end
+  end,
+})
+vim.api.nvim_create_autocmd("WinResized", {
+  group = group,
+  callback = function(ev)
+    if vim.api.nvim_get_current_win() == ev.win then
+      vim.cmd("normal! zz")
+    else
     end
   end,
 })
