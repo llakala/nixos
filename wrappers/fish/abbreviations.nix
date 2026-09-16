@@ -13,6 +13,7 @@ in
 
   npu = "npins update";
   dra = "direnv allow";
+  drr = "direnv reload";
   ndr = "nix-direnv-reload";
 }
 // {
@@ -20,12 +21,14 @@ in
   ne = "nix eval";
   nfu = "nix flake update";
   nfl = "nix flake lock";
+  nds = "nix derivation show";
 
   nr = "nix run";
   nrn = withCursor "nix run nixpkgs#%";
   "nr." = withCursor "nix run .#%";
 
   ns = "nix-shell";
+  nsf = "nix-shell --command fish";
   nsn = {
     setCursor = true;
     expansion = "nix-shell --command fish -p %";
