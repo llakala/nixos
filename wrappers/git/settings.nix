@@ -66,8 +66,6 @@ in {
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
 
-    unstage = "restore --staged";
-
     # --soft is needed - means that `undo` will put the undone changes into
     # staging, and `redo` will commit only the staged changes you just undid.
     # Note that redo doesn't work when done multiple times - I did some

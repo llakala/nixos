@@ -9,7 +9,8 @@
 
   a = "git add -u";
   aa = "git add -A";
-  n = "git unstage ."; # Alias of `git restore --staged`
+  ga = "git add";
+  n = "git restore --staged ."; # Alias of `git restore --staged`
   gan = "git add -AN"; # Add all new files
   gun = "git unstage-new-files"; # Alias, unstage new file existence
 
@@ -42,9 +43,9 @@
   gswm = "git switch main";
   gswma = "git switch master";
 
-  gsh = "git stash";
-  gshs = "git stash --staged"; # Staged changes
+  gsh = "git stash --staged";
   gshu = "git stash --keep-index"; # Unstaged changes
+  gsht = "git stash"; # Tracked changes
   gsha = "git stash --include-untracked"; # Stash everything
   gshl = "git stash list -p";
   gshp = "git stash pop";
