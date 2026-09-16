@@ -1,8 +1,8 @@
 local win = nil
-local keys = vim.keymode("<CR>")
+local keys = vim.keycode("<CR>")
 
 -- I have vsplit enabled in my 'switchbuf', which is generally nice, but a
--- little annoying for quickfix entries - since every time you open a
+-- little annoying for quickfix entries -- since every time you open a
 -- non-displayed buffer, it makes a new window.
 --
 -- With this keymap, the *first* non-displayed buffer works as normal and
