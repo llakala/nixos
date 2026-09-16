@@ -19,9 +19,12 @@ o.splitright = true
 o.timeout = false
 o.virtualedit = "block"
 vim.opt.jumpoptions:append("view")
-vim.opt.switchbuf:append({ "useopen", "split" })
 o.hidden = false
 o.confirm = true
+
+-- split/vsplit in switchbuf is annoying by default, but I have a keymap that
+-- makes it usable (see nvim/after/ftplugin/qf.lua)
+vim.opt.switchbuf = { "useopen", "vsplit" }
 
 vim.opt.matchpairs:append("<:>") -- % goes between <>
 
