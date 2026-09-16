@@ -149,7 +149,9 @@ vim.g.canola = {
 -- Delete files to the system trash
 vim.g.canola_trash = {}
 
-vim.keymap.set("n", "<leader>e", canola.open_float)
+vim.keymap.set("n", "<leader>e", function()
+  canola.open_float(nil, { preview = {} })
+end)
 vim.keymap.set("n", "<leader>E", function()
-  canola.open_float(".")
+  canola.open_float(".", { preview = {} })
 end)
