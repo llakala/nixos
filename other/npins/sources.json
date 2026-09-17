@@ -52,19 +52,6 @@
       "url": "https://github.com/llakala/menu/archive/7f8373ff68bcd69aa67c3963a0fe93d769ec188d.tar.gz",
       "hash": "sha256-tOtykE0V66ek/pTN+NMGX/nDl7UkrSJggfzkzzhqJQg="
     },
-    "mnw": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "Gerg-L",
-        "repo": "mnw"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "0151d9fa87992cbeb67c86616fb9170dcec830b6",
-      "url": "https://github.com/Gerg-L/mnw/archive/0151d9fa87992cbeb67c86616fb9170dcec830b6.tar.gz",
-      "hash": "sha256-HRn4O1X2ShYtbq5Egji72/aemyc2cIQicjRZD9hBqM8="
-    },
     "nixos-hardware": {
       "type": "Git",
       "repository": {

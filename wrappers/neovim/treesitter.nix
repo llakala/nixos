@@ -1,9 +1,10 @@
-{ pkgs }:
-let
-  # To see all valid values, search this:
-  # https://search.nixos.org/packages?channel=unstable&sort=alpha_asc&type=packages&query=vimPlugins.nvim-treesitter-parsers
-  # Some languages like Lua aren't included bc nvim already includes them
-  my-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: with p; [
+{ inputs }:
+
+# To see all valid values, search this:
+# https://search.nixos.org/packages?channel=unstable&sort=alpha_asc&type=packages&query=vimPlugins.nvim-treesitter-parsers
+# Some languages like Lua aren't included bc nvim already includes them
+inputs.nixpkgs.pkgs.vimPlugins.nvim-treesitter.withPlugins (
+  p: with p; [
     vim # Required, get an error without it
 
     # The languages I work in everyday
@@ -37,6 +38,5 @@ let
     rust
     tsx
     typescript
-  ]);
-in
-  [ my-treesitter ]
+  ]
+)

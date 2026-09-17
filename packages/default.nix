@@ -14,7 +14,6 @@ let
     }
   );
   localPackages = {
-    neovim = import ../neovim/default.nix { inherit sources pkgs localPackages; };
     emodule = callPackage ./emodule.nix {};
     evalue = callPackage ./evalue.nix {};
     mathematica = callPackage ./mathematica.nix {};

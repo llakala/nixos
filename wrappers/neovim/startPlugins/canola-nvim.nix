@@ -1,6 +1,6 @@
-{ fetchFromGitHub }:
+{ fetchFromGitHub, vimUtils }:
 
-{
+vimUtils.buildVimPlugin {
   name = "canola-nvim";
 
   src = fetchFromGitHub {
