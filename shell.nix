@@ -20,9 +20,9 @@ pkgs.mkShellNoCC {
     wrappers.fish.drv
     wrappers.less.drv
     wrappers.bat.drv
+    (wrappers.neovim.module { devMode = true; })
     packages.satod
     packages.evalue
-    packages.neovim.devMode
     menu.imanpu
   ];
 }

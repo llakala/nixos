@@ -1,10 +1,10 @@
-{ pkgs }:
+{ inputs }:
 let
-  inherit (pkgs) callPackage;
+  inherit (inputs.nixpkgs.pkgs) callPackage vimPlugins;
 in {
-  lazydev-nvim = callPackage ./optPlugins/lazydev-nvim.nix {};
+  lazydev-nvim = callPackage ./lazydev-nvim.nix {};
 
-  inherit (pkgs.vimPlugins)
+  inherit (vimPlugins)
     typst-preview-nvim
     nvim-jdtls
     markdown-preview-nvim

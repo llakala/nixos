@@ -1,7 +1,8 @@
 {
   sources ? import ../other/npins,
   pkgs ? import sources.nixpkgs { config.allowUnfree = true; },
-  myLib ? import ../other/myLib/default.nix { inherit pkgs; }
+  myLib ? import ../other/myLib/default.nix { inherit pkgs; },
+  packages ? import ../packages/default.nix { inherit sources pkgs myLib; },
 }:
 
 let
@@ -26,7 +27,7 @@ let
         inherit pkgs;
       };
       "/self" = {
-        inherit myLib;
+        inherit myLib packages;
       };
     };
   };
@@ -34,9 +35,13 @@ in
 # We have each wrapper `foo` point to all its options, so you can do
 # `(import ./wrappers {}).foo.some-option`
 mapAttrs (
-  _: wrapper:
-  if wrapper ? impl then
-    (removeAttrs wrapper.args.options [ "__functor" ]) // { drv = wrapper {}; }
+  _: module:
+  if module ? impl then
+    (removeAttrs module.args.options [ "__functor" ])
+    // {
+      module = module;
+      drv = module { };
+    }
   else
-    wrapper.args.options
+    module.args.options
 ) tree.modules

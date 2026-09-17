@@ -1,7 +1,9 @@
-{ fetchFromGitHub }:
-{
+{ fetchFromGitHub, vimUtils }:
+
+vimUtils.buildVimPlugin {
   name = "nvim-fundo";
   version = "unstable";
+  doCheck = false;
   src = fetchFromGitHub {
     owner = "kevinhwang91";
     repo = "nvim-fundo";
