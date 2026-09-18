@@ -184,10 +184,10 @@ do
   -- 1. expr mappings are very limited, and prevent us from calling `g@`
   -- 2. emitting g@ via feedkeys with the `i` flag has very odd behavior when
   -- you create a qr AND qrr mapping.
-  vim.keymap.set("n", "qr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>g@]])
-  vim.keymap.set("n", "qrr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>g@_]])
-  vim.keymap.set("x", "qr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>g@]])
-  vim.keymap.set("x", "qrr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>g@_]])
+  vim.keymap.set("n", "qr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>1q=g@]])
+  vim.keymap.set("n", "qrr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>1q=g@_]])
+  vim.keymap.set("x", "qr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>1q=g@]])
+  vim.keymap.set("x", "qrr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>1q=g@_]])
 end
 
 do
