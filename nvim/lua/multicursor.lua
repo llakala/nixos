@@ -168,11 +168,12 @@ do
       -- start col / after the end col
       local matches = vim.fn.matchbufline("%", cword, range_start[1], range_end[1])
       for _, match in ipairs(matches) do
+        local pos = { match.lnum, match.byteidx }
         if
-          (match.lnum ~= range_start[1] or match.byteidx >= range_start[2])
-          and (match.lnum ~= range_end[1] or match.byteidx <= range_end[2])
+          (match[1] ~= range_start[1] or match[2] >= range_start[2])
+          and (match[1] ~= range_end[1] or match[2] <= range_end[2])
         then
-          vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
+          vim.api.nvim_mcursor(0, pos)
         end
       end
       vim.api.nvim_win_set_cursor(0, Custom.cursor_before_operator)
