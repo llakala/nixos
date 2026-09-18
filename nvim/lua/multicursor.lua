@@ -60,7 +60,7 @@ do
   -- Create commandline window
   vim.keymap.set({ "n", "x" }, "g/", "q/")
   vim.keymap.set({ "n", "x" }, "g?", "q?")
-  vim.keymap.set({ "n", "x" }, "g:", "g:")
+  vim.keymap.set({ "n", "x" }, "g:", "q:")
 end
 
 do
