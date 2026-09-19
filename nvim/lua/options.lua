@@ -22,9 +22,7 @@ vim.opt.jumpoptions:append("view")
 o.hidden = false
 o.confirm = true
 
--- split/vsplit in switchbuf is annoying by default, but I have a keymap that
--- makes it actually usable (see nvim/after/ftplugin/qf.lua)
-vim.opt.switchbuf = { "useopen", "vsplit" }
+vim.opt.switchbuf = { "useopen", "uselast" }
 
 vim.opt.matchpairs:append("<:>") -- % goes between <>
 
