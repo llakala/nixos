@@ -12,6 +12,7 @@ require("tokyonight").setup({
     hl["@variable"] = { fg = colors.red }
     hl.ColorColumn = { bg = colors.bg_highlight }
     hl.WinSeparator = { fg = "#868eb6" }
+    hl.Search = { bg = colors.fg_gutter }
   end,
 })
 
