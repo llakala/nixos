@@ -31,6 +31,13 @@ require("fzf-lua").setup({
     },
   },
 
+  actions = {
+    files = {
+      true,
+      ["ctrl-s"] = FzfLua.actions.file_vsplit,
+    },
+  },
+
   -- Autoselect current document symbol in `:FzfLua lsp_document_symbols`
   lsp = {
     symbols = {
