@@ -1,4 +1,5 @@
 local canola = require("canola")
+local actions = require("canola.actions")
 local fzf_lua = require("fzf-lua")
 local ns = vim.api.nvim_create_namespace("CanolaHighlights")
 
@@ -150,7 +151,9 @@ vim.g.canola = {
 vim.g.canola_trash = {}
 
 vim.keymap.set("n", "<leader>e", function()
-  canola.open_float(nil, { preview = {} })
+  canola.open_float(nil, {}, function()
+    vim.schedule(actions.preview.callback)
+  end)
 end)
 vim.keymap.set("n", "<leader>E", function()
   canola.open_float(".", { preview = {} })
