@@ -11,6 +11,7 @@ in
   mini-indentscope = callPackage ./mini-indentscope.nix { };
   nvim-fundo = callPackage ./nvim-fundo.nix { };
   snacks-nvim = callPackage ./snacks-nvim.nix { };
+  rainbow-delimiters-nvim = callPackage ./rainbow-delimiters-nvim.nix {};
   tokyonight-nvim = callPackage ./tokyonight-nvim.nix { };
   vim-nix = callPackage ./vim-nix.nix { };
 
@@ -31,7 +32,6 @@ in
     nvim-lspconfig
     nvim-surround
     onedarkpro-nvim
-    rainbow-delimiters-nvim
     tiny-inline-diagnostic-nvim
     # Dependencies
     nvim-web-devicons
