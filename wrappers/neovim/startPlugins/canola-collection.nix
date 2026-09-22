@@ -1,12 +1,15 @@
-{ fetchFromGitHub, vimUtils }:
+{ fetchFromForgejo, vimUtils }:
 
 vimUtils.buildVimPlugin {
   name = "canola-collection";
+  # fails 'require' check because of need for git executable
+  doCheck = false;
 
-  src = fetchFromGitHub {
+  src = fetchFromForgejo {
+    domain = "forge.barrettruth.com";
     owner = "barrettruth";
     repo = "canola-collection";
-    rev = "8566c09080c3084db1ffba21dec53e2b4235daed";
-    hash = "sha256-NspywHVDp6c7Zw4b2M41OuULVlhGtGI0tj8LxP3x7SM=";
+    rev = "738a9e13d8cbf2aa348b5eced41c7ba0d0d9f9c6";
+    hash = "sha256-nWNR0+GOB3CHskqy0JB9635DepeDOxYJcpJQA5hu5Fw=";
   };
 }
