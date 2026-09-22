@@ -6,6 +6,7 @@ in
   # Custom plugins
   canola-collection = callPackage ./canola-collection.nix { };
   canola-nvim = callPackage ./canola-nvim.nix { };
+  Colorizer = callPackage ./Colorizer.nix {};
   fFtT-highlights-nvim = callPackage ./fFtT-highlights-nvim.nix { };
   mini-ai = callPackage ./mini-ai/package.nix { };
   mini-indentscope = callPackage ./mini-indentscope.nix { };
@@ -28,7 +29,6 @@ in
     mini-comment
     mini-extra # More textobjects for mini-ai
     nvim-autopairs
-    nvim-highlight-colors
     nvim-lspconfig
     nvim-surround
     onedarkpro-nvim

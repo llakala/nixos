@@ -18,5 +18,4 @@ require("tokyonight").setup({
 
 vim.cmd([[colorscheme tokyonight]])
 
--- Colorize hex codes
-require("nvim-highlight-colors").setup({})
+vim.g.colorizer_auto_filetype = "*"
