@@ -5,8 +5,8 @@ vim.keymap.del("o", "gc")
 require("mini.comment").setup({
   mappings = {
     comment = "",
-    comment_line = "#",
-    comment_visual = "#",
+    comment_line = "@",
+    comment_visual = "@",
 
     -- We've homerolled a cooler comment textobject that gives separate behavior
     -- with `dic` vs `cic`, and also handles EOL comments!

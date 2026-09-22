@@ -28,7 +28,7 @@ do
 end
 
 -- q will be the new leader for everything multicursor-related
--- move things currently under it elsewhere
+-- move everything macro-related to +, -, and _
 do
   vim.keymap.set({ "n", "x" }, "q", "<Nop>")
 
@@ -56,6 +56,11 @@ do
     "mode() ==# 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : ''",
     { expr = true, silent = true }
   )
+
+  -- I have @ as linewise mini.comment
+  vim.keymap.set("n", "_", "@")
+  vim.keymap.set("x", "_", "mode() ==# 'V' ? ':normal! @'.getcharstr().'<CR>' : '@'", { silent = true, expr = true })
+  vim.keymap.set("n", "__", "@@")
 
   -- Create commandline window
   vim.keymap.set({ "n", "x" }, "g/", "q/")
