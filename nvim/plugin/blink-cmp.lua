@@ -206,3 +206,13 @@ blink.setup({
     },
   },
 })
+
+-- HACK: properly shows the signature even with auto brackets
+vim.api.nvim_create_autocmd("User", {
+  pattern = "BlinkCmpMenuClose",
+  callback = function()
+    if vim.fn.mode() == "i" then
+      blink.show_signature()
+    end
+  end,
+})
