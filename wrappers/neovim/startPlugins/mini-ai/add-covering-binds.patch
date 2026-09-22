@@ -5,7 +5,7 @@ index 3ae72e7..92ba76f 100644
 @@ -606,6 +606,9 @@ MiniAi.config = {
      around_last = 'al',
      inside_last = 'il',
-
+ 
 +    around_cover = '',
 +    inside_cover = '',
 +
@@ -20,9 +20,9 @@ index 3ae72e7..92ba76f 100644
 +  H.check_type('mappings.inside_cover', config.mappings.inside_cover, 'string')
    H.check_type('mappings.goto_left', config.mappings.goto_left, 'string')
    H.check_type('mappings.goto_right', config.mappings.goto_right, 'string')
-
+ 
 @@ -1301,12 +1306,19 @@ H.apply_config = function(config)
-
+ 
    m('x', maps.around_next, make_tobj('x', 'a', 'next'), { desc = 'Around next textobject' })
    m('x', maps.around_last, make_tobj('x', 'a', 'prev'), { desc = 'Around last textobject' })
 +  m('x', maps.around_cover, make_tobj('x', 'a', 'cover'), { desc = 'Around covering textobject' })
@@ -39,5 +39,6 @@ index 3ae72e7..92ba76f 100644
    m('o', maps.inside_last, make_tobj('o', 'i', 'prev'), { desc = 'Inside last textobject' })
 +  m('o', maps.inside_cover, make_tobj('o', 'i', 'cover'), { desc = 'Inside covering textobject' })
  end
-
+ 
  H.is_disabled = function() return vim.g.miniai_disable == true or vim.b.miniai_disable == true end
+

@@ -1,0 +1,94 @@
+diff --git a/autoload/nix.vim b/autoload/nix.vim
+deleted file mode 100644
+index 26abb5c..0000000
+--- a/autoload/nix.vim
++++ /dev/null
+@@ -1,23 +0,0 @@
+-function! nix#find_drv_position()
+-  let line = search("description")
+-  if line == 0
+-    let line = search("name")
+-  endif
+-  if line == 0
+-    echo "error: could not find derivation"
+-    return
+-  endif
+-
+-  return expand("%") . ":" . line
+-endfunction
+-
+-function! nix#edit(attr)
+-  let output = system("nix-instantiate --eval ./. -A " . a:attr . ".meta.position")
+-  if match(output, "^error:") == -1
+-    let position = split(split(output, '"')[0], ":")
+-    execute "edit " . position[0]
+-    execute position[1]
+-    " Update default command to nix-build.
+-    let b:dispatch = 'nix-build --no-out-link -A ' . a:attr
+-  endif
+-endfunction
+diff --git a/ftdetect/nix.vim b/ftdetect/nix.vim
+deleted file mode 100644
+index 61748b2..0000000
+--- a/ftdetect/nix.vim
++++ /dev/null
+@@ -1,7 +0,0 @@
+-" Vim filetype detect
+-" Language:    Nix
+-" Maintainer:  Daiderd Jordan <daiderd@gmail.com>
+-" URL:         https://github.com/LnL7/vim-nix
+-
+-au BufRead,BufNewFile *.nix setf nix
+-au BufRead,BufNewFile flake.lock setf json
+diff --git a/indent/nix.vim b/indent/nix.vim
+index 450989f..cc9d3c7 100644
+--- a/indent/nix.vim
++++ b/indent/nix.vim
+@@ -9,7 +9,7 @@ endif
+ let b:did_indent = 1
+ 
+ setlocal indentexpr=GetNixIndent()
+-setlocal indentkeys+=0=then,0=else,0=inherit,0=in,*<Return>
++setlocal indentkeys+=0=then,0=else,0=inherit,*<Return>
+ 
+ if exists("*GetNixIndent")
+   finish
+@@ -21,8 +21,9 @@ set cpo&vim
+ let s:skip_syntax = '\%(Comment\|String\)$'
+ let s:binding_open = '\%(\<let\>\)'
+ let s:binding_close = '\%(\<in\>\)'
+-let s:block_open  = '\%({\|[\)'
+-let s:block_close = '\%(}\|]\)'
++
++let s:block_open  = '\%({\|[\|(\)'
++let s:block_close = '\%(}\|]\|)\)'
+ 
+ function! GetNixIndent()
+   let lnum = prevnonblank(v:lnum - 1)
+@@ -60,18 +61,10 @@ function! GetNixIndent()
+       let ind -= &sw
+     endif
+ 
+-    if last_line =~ '[(=]$'
+-      let ind += &sw
+-    endif
+-
+     if last_line =~ '\<let\s*$'
+       let ind += &sw
+     endif
+ 
+-    if last_line =~ '^\<in\s*$'
+-      let ind += &sw
+-    endif
+-
+     if current_line =~ '^\s*in\>'
+       let ind -= &sw
+     endif
+diff --git a/plugin/nix.vim b/plugin/nix.vim
+deleted file mode 100644
+index 16ae9fc..0000000
+--- a/plugin/nix.vim
++++ /dev/null
+@@ -1 +0,0 @@
+-command! -bang -nargs=* NixEdit call nix#edit(<q-args>)
+

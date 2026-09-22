@@ -1,6 +1,6 @@
 { vimPlugins }:
 
-vimPlugins.mini-ai.overrideAttrs {
+vimPlugins.mini-ai.overrideAttrs (prevAttrs: {
   # Asked about PRing this - echasnovski said no (typical)
-  patches = ./add-covering-binds.patch;
-}
+  patches = (prevAttrs.patches or []) ++ [ ./add-covering-binds.patch ];
+})

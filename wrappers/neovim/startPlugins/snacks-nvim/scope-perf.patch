@@ -1,0 +1,20 @@
+diff --git a/lua/snacks/indent.lua b/lua/snacks/indent.lua
+index 997f66d9e..21674c5af 100644
+--- a/lua/snacks/indent.lua
++++ b/lua/snacks/indent.lua
+@@ -506,9 +506,11 @@ function M.enable()
+   })
+ 
+   -- Listen for scope changes
+-  scopes = scopes or Snacks.scope.attach(M.on_scope, config.scope)
+-  if not scopes.enabled then
+-    scopes:enable()
++  if config.scope.enabled then
++    scopes = scopes or Snacks.scope.attach(M.on_scope, config.scope)
++    if not scopes.enabled then
++      scopes:enable()
++    end
+   end
+ 
+   local group = vim.api.nvim_create_augroup("snacks_indent", { clear = true })
+

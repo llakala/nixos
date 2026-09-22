@@ -9,12 +9,12 @@ in
   Colorizer = callPackage ./Colorizer.nix {};
   fFtT-highlights-nvim = callPackage ./fFtT-highlights-nvim.nix { };
   mini-ai = callPackage ./mini-ai/package.nix { };
-  mini-indentscope = callPackage ./mini-indentscope.nix { };
+  mini-indentscope = callPackage ./mini-indentscope/package.nix { };
   nvim-fundo = callPackage ./nvim-fundo.nix { };
-  snacks-nvim = callPackage ./snacks-nvim.nix { };
-  rainbow-delimiters-nvim = callPackage ./rainbow-delimiters-nvim.nix {};
+  snacks-nvim = callPackage ./snacks-nvim/package.nix { };
+  rainbow-delimiters-nvim = callPackage ./rainbow-delimiters-nvim/package.nix {};
   tokyonight-nvim = callPackage ./tokyonight-nvim.nix { };
-  vim-nix = callPackage ./vim-nix.nix { };
+  vim-nix = callPackage ./vim-nix/package.nix { };
 
   inherit (vimPlugins)
     auto-session

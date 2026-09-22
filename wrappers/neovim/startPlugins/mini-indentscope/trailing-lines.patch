@@ -1,0 +1,37 @@
+diff --git a/lua/mini/indentscope.lua b/lua/mini/indentscope.lua
+index faf235e..f9d5521 100644
+--- a/lua/mini/indentscope.lua
++++ b/lua/mini/indentscope.lua
+@@ -742,18 +742,22 @@ end
+ -- - Depends on `MiniIndentscope.config.options.border` in such way so as to
+ --   ignore blank lines before line not recognized as border.
+ H.get_line_indent = function(line, opts)
+-  local prev_nonblank = vim.fn.prevnonblank(line)
+-  local res = vim.fn.indent(prev_nonblank)
++  local prev_nonblank_line = vim.fn.prevnonblank(line)
++  local cur_indent = vim.fn.indent(line)
++  local prev_indent = vim.fn.indent(prev_nonblank_line)
++
++  -- Use the current indent if either:
++  -- 1. the current line has non-whitespace
++  -- 2. the current line has only whitespace, but enough of it that it indents
++  if line == prev_nonblank_line or cur_indent > prev_indent then
++    return cur_indent
++  end
+ 
+   -- Compute indent of blank line depending on `border` option
+   local border = opts.border
+-  if line ~= prev_nonblank then
+-    local next_indent = vim.fn.indent(vim.fn.nextnonblank(line))
+-    local blank_rule = H.blank_indent_funs[border]
+-    res = blank_rule(res, next_indent)
+-  end
+-
+-  return res
++  local next_indent = vim.fn.indent(vim.fn.nextnonblank(line))
++  local blank_rule = H.blank_indent_funs[border]
++  return blank_rule(prev_indent, next_indent)
+ end
+ 
+ H.cast_ray = function(line, indent, direction, opts)
+

@@ -2,7 +2,7 @@
 let
   inherit (inputs.nixpkgs.pkgs) callPackage vimPlugins;
 in {
-  lazydev-nvim = callPackage ./lazydev-nvim.nix {};
+  lazydev-nvim = callPackage ./lazydev-nvim/package.nix {};
 
   inherit (vimPlugins)
     typst-preview-nvim
