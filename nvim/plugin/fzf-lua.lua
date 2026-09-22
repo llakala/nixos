@@ -70,7 +70,6 @@ require("fzf-lua").setup({
       ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-search",
     },
     actions = {
-      ["ctrl-g"] = false,
       ["ctrl-r"] = {
         fn = function(_, opts)
           FzfLua.actions.toggle_flag(
