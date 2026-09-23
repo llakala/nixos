@@ -29,8 +29,6 @@ _:
         function starship_transient_rprompt_func
           starship module cmd_duration
         end
-
-        set STARSHIP_LOG error
       '';
   };
 }
