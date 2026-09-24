@@ -29,5 +29,5 @@ npairs.add_rules({
   auto_semicolon("inherit "),
 
   Rule("/*", "*/", "nix"),
-  Autopairs_utils.surrounding_spaces("/*", " ", "*/", "nix"),
+  require("custom.autopairs").surrounding_spaces("/*", " ", "*/", "nix"),
 })
