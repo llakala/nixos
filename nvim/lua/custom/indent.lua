@@ -26,11 +26,6 @@ M.operate_on_surrounding_indent = function()
   local border = scope.border
   local indent_change = body.indent - border.indent
 
-  -- Functions like `nvim_buf_get_lines` are zero-based, so it's easier if our
-  -- numbers are too
-  body.top, body.bottom = body.top - 1, body.bottom - 1
-  border.top, border.bottom = border.top - 1, border.bottom - 1
-
   -- Comment the surrounding lines
   -- Technically brittle because this could be a different operator - but fine
   -- for my purposes
@@ -39,6 +34,11 @@ M.operate_on_surrounding_indent = function()
     nvim_comment.toggle_lines(border.bottom, border.bottom)
     return
   end
+
+  -- Functions like `nvim_buf_get_lines` are zero-based, so it's easier if our
+  -- numbers are too
+  body.top, body.bottom = body.top - 1, body.bottom - 1
+  border.top, border.bottom = border.top - 1, border.bottom - 1
 
   local surrounding_lines = {
     unpack(vim.api.nvim_buf_get_lines(buf, border.top, border.top + 1, true)),
