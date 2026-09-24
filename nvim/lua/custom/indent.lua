@@ -1,5 +1,5 @@
 local M = {}
-local MiniIndentscope = require("mini.indentscope")
+local isc = require("mini.indentscope")
 local ns = vim.api.nvim_create_namespace("scope_border")
 local nvim_comment = require("vim._comment")
 
@@ -14,9 +14,9 @@ M.operate_on_surrounding_indent = function()
     return
   end
 
-  local scope = MiniIndentscope.get_scope(nil, nil)
+  local scope = isc.get_scope(nil, nil)
   for _ = 2, count1 do
-    scope = MiniIndentscope.get_scope(scope.border.top, nil)
+    scope = isc.get_scope(scope.border.top, nil)
   end
   if scope.border.indent < 0 then
     return
@@ -86,9 +86,9 @@ end
 
 -- Used for nvim-surround
 M.get_indent_selections = function(linewise, count1)
-  local scope = MiniIndentscope.get_scope(nil, nil)
+  local scope = isc.get_scope(nil, nil)
   for _ = 2, count1 do
-    scope = MiniIndentscope.get_scope(scope.border.top, nil)
+    scope = isc.get_scope(scope.border.top, nil)
   end
   if scope.border.indent < 0 then
     return

@@ -33,36 +33,36 @@ vim.keymap.set({ "o", "x" }, "[i", function()
   if vim.api.nvim_get_mode().mode ~= "V" then
     vim.cmd("normal! V")
   end
-  MiniIndentscope.move_cursor("top", false)
+  isc.move_cursor("top", false)
 end)
 vim.keymap.set({ "o", "x" }, "]i", function()
   if vim.api.nvim_get_mode().mode ~= "V" then
     vim.cmd("normal! V")
   end
-  MiniIndentscope.move_cursor("bottom", false)
+  isc.move_cursor("bottom", false)
 end)
 vim.keymap.set({ "o", "x" }, "[I", function()
   if vim.api.nvim_get_mode().mode ~= "V" then
     vim.cmd("normal! V")
   end
-  MiniIndentscope.move_cursor("top", true)
+  isc.move_cursor("top", true)
 end)
 vim.keymap.set({ "o", "x" }, "]I", function()
   if vim.api.nvim_get_mode().mode ~= "V" then
     vim.cmd("normal! V")
   end
-  MiniIndentscope.move_cursor("bottom", true)
+  isc.move_cursor("bottom", true)
 end)
 
 vim.keymap.set("n", "[i", function()
-  MiniIndentscope.move_cursor("top", false)
+  isc.move_cursor("top", false)
 end)
 vim.keymap.set("n", "]i", function()
-  MiniIndentscope.move_cursor("bottom", false)
+  isc.move_cursor("bottom", false)
 end)
 vim.keymap.set("n", "[I", function()
-  MiniIndentscope.move_cursor("top", true)
+  isc.move_cursor("top", true)
 end)
 vim.keymap.set("n", "]I", function()
-  MiniIndentscope.move_cursor("bottom", true)
+  isc.move_cursor("bottom", true)
 end)

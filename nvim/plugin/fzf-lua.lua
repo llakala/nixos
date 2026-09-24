@@ -1,3 +1,4 @@
+local fzf_lua = require("fzf-lua")
 vim.env.FZF_DEFAULT_OPTS = nil
 local utils = require("fzf-lua.utils")
 
@@ -34,7 +35,7 @@ require("fzf-lua").setup({
   actions = {
     files = {
       true,
-      ["ctrl-s"] = FzfLua.actions.file_vsplit,
+      ["ctrl-s"] = fzf_lua.actions.file_vsplit,
     },
   },
 
@@ -72,7 +73,7 @@ require("fzf-lua").setup({
     actions = {
       ["ctrl-r"] = {
         fn = function(_, opts)
-          FzfLua.actions.toggle_flag(
+          fzf_lua.actions.toggle_flag(
             _,
             vim.tbl_extend("force", opts, {
               toggle_flag = "--fixed-strings",
@@ -108,16 +109,16 @@ require("fzf-lua").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>b", FzfLua.buffers, { desc = "Swap buffer, including hidden buffers" })
+vim.keymap.set("n", "<leader>b", fzf_lua.buffers, { desc = "Swap buffer, including hidden buffers" })
 
-vim.keymap.set("n", "<leader>f", FzfLua.files, { desc = "Add new file in project" })
+vim.keymap.set("n", "<leader>f", fzf_lua.files, { desc = "Add new file in project" })
 vim.keymap.set("n", "<leader>F", function()
-  FzfLua.files({ cwd = vim.fn.expand("%:p:h") })
+  fzf_lua.files({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Add new file in current folder" })
 
-vim.keymap.set("n", "<leader>s", FzfLua.live_grep_native, { desc = "Search text in project" })
+vim.keymap.set("n", "<leader>s", fzf_lua.live_grep_native, { desc = "Search text in project" })
 vim.keymap.set("n", "<leader>S", function()
-  FzfLua.live_grep_native({ cwd = vim.fn.expand("%:p:h") })
+  fzf_lua.live_grep_native({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Search text in current folder" })
 
 vim.keymap.set("n", "<leader>h", require("custom.hifiki").hire, {})

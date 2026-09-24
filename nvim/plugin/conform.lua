@@ -1,4 +1,5 @@
 local conform = require("conform")
+
 local whitelisted_paths = {
   "/Documents/repos/nixpkgs",
 }
