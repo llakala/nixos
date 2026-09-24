@@ -39,7 +39,7 @@ function! TypstIndent(lnum) abort
 
     " Custom logic to indent over inside a math block. Using treesitter is gross
     " here, but I couldn't find a nicer way to detect whether I'm in a $ block..
-    if l:pline =~ '^\s*\$$' && ! (l:line =~ '^\s*\$$') && v:lua.Custom.in_ts_group([ 'math' ], [])
+    if l:pline =~ '^\s*\$$' && ! (l:line =~ '^\s*\$$') && v:lua.require'custom.treesitter'.in_ts_group([ 'math' ], [])
         let l:ind += s:sw
     endif
 

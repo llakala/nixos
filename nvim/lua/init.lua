@@ -2,7 +2,6 @@ vim.loader.enable()
 
 Custom = {}
 require("globals.cwd")
-require("globals.in_ts_group")
 require("globals.surrounding_indent")
 
 require("options")
@@ -17,8 +16,6 @@ require("autocmds.yank")
 require("autocmds.suspend")
 require("autocmds.trailing")
 require("autocmds.scrolloff")
-
-require("custom.shift")
 
 require("commands.allman")
 require("commands.redir")

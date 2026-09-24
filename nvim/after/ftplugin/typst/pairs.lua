@@ -1,5 +1,6 @@
 local Rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
+local in_ts_group = require("custom.treesitter").in_ts_group
 
 -- Groups that are allowed/disallowed for triggering a pair
 local math = {
@@ -36,7 +37,7 @@ require("nvim-autopairs").add_rules({
 
   Rule("$", "$", "typst")
     :with_pair(function()
-      return Custom.in_ts_group(math[1], math[2], true)
+      return in_ts_group(math[1], math[2], true)
     end)
     -- only allow moving past the right $, not the left one
     :with_move(can_move_past("$")),
@@ -45,21 +46,21 @@ require("nvim-autopairs").add_rules({
 
   Rule("*", "*", "typst")
     :with_pair(function()
-      return Custom.in_ts_group(content[1], content[2], true)
+      return in_ts_group(content[1], content[2], true)
     end)
     -- only allow moving past the right *, not the left one
     :with_move(can_move_past("*")),
 
   Rule("_", "_", "typst")
     :with_pair(function()
-      return Custom.in_ts_group(content[1], content[2], true)
+      return in_ts_group(content[1], content[2], true)
     end)
     -- only allow moving past the right _, not the left one
     :with_move(can_move_past("_")),
 
   Rule("<", ">", "typst")
     :with_pair(function()
-      return Custom.in_ts_group(content[1], content[2], true)
+      return in_ts_group(content[1], content[2], true)
     end)
     -- No need for can_move_past, since < and > are distinguishable
     :with_move(function()
