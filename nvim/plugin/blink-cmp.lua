@@ -1,4 +1,7 @@
 local blink = require("blink.cmp")
+local types = require("blink.cmp.types")
+local colorful_menu = require("colorful-menu")
+local ls = require("luasnip")
 
 vim.lsp.config("*", {
   capabilities = blink.get_lsp_capabilities(),
@@ -102,7 +105,7 @@ blink.setup({
               return ctx.label
             end,
             -- colorize each completion type
-            highlight = require("colorful-menu").blink_components_highlight,
+            highlight = colorful_menu.blink_components_highlight,
           },
         },
       },
@@ -135,7 +138,6 @@ blink.setup({
     -- From https://github.com/BirdeeHub/nixCats-nvim/blob/c6000fb730d4067e3e1d65e9d5a2cbcd1ceaef83/templates/example/lua/myLuaConf/plugins/completion.lua#L104
     -- Prevents snippet placeholders from staying when you leave insert mode
     active = function()
-      local ls = require("luasnip")
       local mode = vim.api.nvim_get_mode().mode
       if ls.in_snippet() and not blink.is_visible() then
         return true
@@ -180,7 +182,7 @@ blink.setup({
         module = "blink.cmp.sources.lsp",
         transform_items = function(_, items)
           return vim.tbl_filter(function(item)
-            return item.kind == require("blink.cmp.types").CompletionItemKind.Snippet
+            return item.kind == types.CompletionItemKind.Snippet
           end, items)
         end,
       },
@@ -191,7 +193,7 @@ blink.setup({
         transform_items = function(_, items)
           -- the default transformer will do this
           return vim.tbl_filter(function(item)
-            return item.kind ~= require("blink.cmp.types").CompletionItemKind.Keyword
+            return item.kind ~= types.CompletionItemKind.Keyword
           end, items)
         end,
       },

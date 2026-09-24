@@ -1,8 +1,10 @@
+local mini_comment = require("mini.comment")
+
 -- we keep `vgc` and `gcip`, so you can comment/uncomment some range. The custom
 -- textobject is only for modifying some commented range
 vim.keymap.del("o", "gc")
 
-require("mini.comment").setup({
+mini_comment.setup({
   mappings = {
     comment = "",
     comment_line = "@",
@@ -16,7 +18,7 @@ require("mini.comment").setup({
 
 -- From https://github.com/echasnovski/mini.nvim/issues/1837
 local function select_multiline_comment(operator)
-  require("mini.comment").textobject()
+  mini_comment.textobject()
 
   -- Default behavior of mini.comment removes the start of the comment, which is
   -- fine for most cases. We only keep going if we're doing anything other than

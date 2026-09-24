@@ -1,3 +1,4 @@
+local conform = require("conform")
 local whitelisted_paths = {
   "/Documents/repos/nixpkgs",
 }
@@ -7,7 +8,7 @@ local blacklisted_paths = {
   "/Documents/projects/menu/.*%.nix",
 }
 
-require("conform").setup({
+conform.setup({
   -- Sometimes a formatter will fail. We should write to the file anyways
   notify_on_error = false,
 
@@ -92,7 +93,7 @@ vim.api.nvim_create_user_command("Format", function(args)
     }
   end
 
-  require("conform").format({ range = range, async = true })
+  conform.format({ range = range, async = true })
 end, { range = true, bar = true })
 
 -- Fine, I'm not supposed to make custom commands that are lowercase

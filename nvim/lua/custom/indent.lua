@@ -1,6 +1,7 @@
 local M = {}
 local MiniIndentscope = require("mini.indentscope")
 local ns = vim.api.nvim_create_namespace("scope_border")
+local nvim_comment = require("vim._comment")
 
 M.operate_on_surrounding_indent = function()
   local buf = 0
@@ -34,8 +35,8 @@ M.operate_on_surrounding_indent = function()
   -- Technically brittle because this could be a different operator - but fine
   -- for my purposes
   if operator == "g@" then
-    require("vim._comment").toggle_lines(border.top, border.top)
-    require("vim._comment").toggle_lines(border.bottom, border.bottom)
+    nvim_comment.toggle_lines(border.top, border.top)
+    nvim_comment.toggle_lines(border.bottom, border.bottom)
     return
   end
 

@@ -1,3 +1,5 @@
+local custom_qf = require("custom.quickfix")
+
 -- Add to this whenever you add a new server to the `lsp` folder!
 vim.lsp.enable({
   "fish_lsp",
@@ -54,7 +56,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, args)
 
     vim.keymap.set("n", "gO", function()
-      require("custom.quickfix").jump_to_nearest_entry()
+      custom_qf.jump_to_nearest_entry()
       vim.lsp.buf.document_symbol()
     end, args)
 

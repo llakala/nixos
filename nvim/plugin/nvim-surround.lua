@@ -123,7 +123,7 @@ nvim_surround.setup({
         if not char or char:find("[%a%c]") then
           return nil
         end
-        return require("nvim-surround.config").get_selection({
+        return config.get_selection({
           pattern = vim.pesc(char) .. ".-" .. vim.pesc(char),
         })
       end,
