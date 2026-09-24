@@ -7,9 +7,9 @@ npairs.setup()
 
 -- For testing, just run `:e` after sourcing on a given file
 npairs.add_rules({
-  custom_pairs.surrounding_spaces("(", " ", ")", "-lua"),
-  custom_pairs.surrounding_spaces("{", " ", "}", "-lua"),
-  custom_pairs.surrounding_spaces("[", " ", "]", "-lua"),
+  custom_pairs.surrounding_spaces("(", " ", ")"),
+  custom_pairs.surrounding_spaces("{", " ", "}"),
+  custom_pairs.surrounding_spaces("[", " ", "]"),
 
   -- Copied from the nvim-autopairs source:
   -- https://github.com/windwp/nvim-autopairs/blob/23320e75953ac82e559c610bec5a90d9c6dfa743/lua/nvim-autopairs/rules/basic.lua#L44C8-L45C54
