@@ -1,8 +1,5 @@
 vim.loader.enable()
-
-Custom = {}
-require("globals.cwd")
-require("globals.surrounding_indent")
+vim.g.repo_root = vim.fs.root(0, ".git")
 
 require("options")
 require("ui")

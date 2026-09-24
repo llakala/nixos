@@ -1,7 +1,8 @@
+local M = {}
 local MiniIndentscope = require("mini.indentscope")
 local ns = vim.api.nvim_create_namespace("scope_border")
 
-Custom.operate_on_surrounding_indent = function()
+M.operate_on_surrounding_indent = function()
   local buf = 0
 
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -83,7 +84,7 @@ Custom.operate_on_surrounding_indent = function()
 end
 
 -- Used for nvim-surround
-Custom.get_indent_selections = function(linewise, count1)
+M.get_indent_selections = function(linewise, count1)
   local scope = MiniIndentscope.get_scope(nil, nil)
   for _ = 2, count1 do
     scope = MiniIndentscope.get_scope(scope.border.top, nil)
@@ -122,3 +123,5 @@ Custom.get_indent_selections = function(linewise, count1)
 
   return { left = left, right = right }
 end
+
+return M

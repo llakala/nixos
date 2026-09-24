@@ -1,4 +1,6 @@
 local isc = require("mini.indentscope")
+local custom_indent = require("custom.indent")
+
 isc.setup({
   options = {
     -- Don't care about the cursor's position within the line
@@ -23,7 +25,7 @@ isc.setup({
 })
 
 -- Custom binding that operates on the lines starting/ending an indentation level
-vim.keymap.set("o", "si", Custom.operate_on_surrounding_indent)
+vim.keymap.set("o", "si", custom_indent.operate_on_surrounding_indent)
 
 -- Custom goto_top and goto_bottom mappings, since I dislike how they're handled
 -- by default

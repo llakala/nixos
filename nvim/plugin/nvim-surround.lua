@@ -1,4 +1,5 @@
 local nvim_surround = require("nvim-surround")
+local custom_indent = require("custom.indent")
 local config = require("nvim-surround.config")
 
 -- The defaults use ( for whitespace, and ) for no whitespace. Silly!
@@ -100,11 +101,11 @@ nvim_surround.setup({
     -- Works with lines surrounding the current indentation level
     i = {
       delete = function()
-        return Custom.get_indent_selections(true, require("nvim-surround.cache").delete.count)
+        return custom_indent.get_indent_selections(true, require("nvim-surround.cache").delete.count)
       end,
       change = {
         target = function()
-          return Custom.get_indent_selections(false, require("nvim-surround.cache").change.count)
+          return custom_indent.get_indent_selections(false, require("nvim-surround.cache").change.count)
         end,
       },
     },
