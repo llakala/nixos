@@ -9,7 +9,7 @@ M.operator = function(op)
   cached_op = op
   -- our mapping for `.` sets this as well, since on dot repeat, cursor gets
   -- moved to the start of the range
-  Custom.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
+  vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
   vim.go.operatorfunc = "v:lua.require'custom.shift'.operator_callback"
   return "g@"
 end
@@ -19,7 +19,7 @@ M.operator_callback = function()
   -- vim.o.shiftwidth is just an integer?
   local shiftwidth = vim.bo.shiftwidth > 0 and vim.bo.shiftwidth or vim.bo.tabstop
   local sign = cached_op == ">" and 1 or -1
-  local curpos = Custom.cursor_before_operator
+  local curpos = vim.b.cursor_before_operator
 
   local first_lnum = vim.api.nvim_buf_get_mark(0, "[")[1] - 1
   local last_lnum = vim.api.nvim_buf_get_mark(0, "]")[1]

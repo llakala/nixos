@@ -167,7 +167,7 @@ end, { expr = true })
 
 vim.keymap.set("n", ".", function()
   -- See https://github.com/neovim/neovim/discussions/40715
-  Custom.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
+  vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
   return "."
 end, { expr = true })
 

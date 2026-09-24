@@ -159,7 +159,7 @@ do
     end
 
     -- set the cursor to the beginning of cword
-    Custom.cursor_before_operator = { cword_start[2], cword_start[3] - 1 }
+    vim.b.cursor_before_operator = { cword_start[2], cword_start[3] - 1 }
 
     vim.go.operatorfunc = function(mode)
       local range_start = vim.api.nvim_buf_get_mark(0, "[")
@@ -181,7 +181,7 @@ do
           vim.api.nvim_mcursor(0, pos)
         end
       end
-      vim.api.nvim_win_set_cursor(0, Custom.cursor_before_operator)
+      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
     end
   end
 
