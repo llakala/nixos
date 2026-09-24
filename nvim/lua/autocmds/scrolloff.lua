@@ -25,12 +25,11 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     end
   end,
 })
-vim.api.nvim_create_autocmd("WinResized", {
+vim.api.nvim_create_autocmd("WinScrolled", {
   group = group,
   callback = function(ev)
     if vim.api.nvim_get_current_win() == ev.win then
       vim.cmd("normal! zz")
-    else
     end
   end,
 })
