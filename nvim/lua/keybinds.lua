@@ -27,7 +27,21 @@ end
 
 -- i<Esc> won't move the cursor at all, while a<Esc> will move the cursor
 -- one to the right. I prefer this, as I use i more than a. Helix-style!
-vim.keymap.set("i", "<Esc>", "<Right><Esc>")
+vim.keymap.set("n", "i", function()
+  vim.b.move_left = true
+  return "i"
+end, { expr = true })
+vim.keymap.set("n", "a", function()
+  vim.b.move_left = true
+  return "a"
+end, { expr = true })
+vim.keymap.set("i", "<Esc>", function()
+  if vim.b.move_left then
+    vim.b.move_left = false
+    return "<Right><Esc>"
+  end
+  return "<Esc>"
+end, { expr = true })
 
 -- <Esc> to clear search highlights, remove multiple cursors, etc
 vim.keymap.set("n", "<Esc>", function()
