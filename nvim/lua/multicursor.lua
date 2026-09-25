@@ -14,19 +14,6 @@ do
   end)
 end
 
--- ]C and [C are annoying to type by default
-do
-  vim.keymap.set("n", "[c", "[C")
-  vim.keymap.set("n", "]c", "]C")
-  vim.keymap.set("n", "[C", "<Nop>")
-  vim.keymap.set("n", "]C", "<Nop>")
-
-  -- Move to next/previous change
-  -- mnemonic: h for hunk
-  vim.keymap.set("n", "[h", "[c")
-  vim.keymap.set("n", "]h", "]c")
-end
-
 -- q will be the new leader for everything multicursor-related
 -- move everything macro-related to +, -, and _
 do
@@ -66,6 +53,24 @@ do
   vim.keymap.set({ "n", "x" }, "g/", "q/")
   vim.keymap.set({ "n", "x" }, "g?", "q?")
   vim.keymap.set({ "n", "x" }, "g:", "q:")
+end
+
+-- move between cursors with qh / ql
+-- to purely jump and not place a cursor upon leaving, use qH and qL
+do
+  vim.keymap.set("n", { "[C", "]C" }, "<Nop>")
+
+  vim.keymap.set("n", "qh", function()
+    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+    return "[C"
+  end, { expr = true })
+  vim.keymap.set("n", "ql", function()
+    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+    return "]C"
+  end, { expr = true })
+
+  vim.keymap.set("n", "qH", "[C")
+  vim.keymap.set("n", "qL", "]C")
 end
 
 do
