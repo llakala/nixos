@@ -4,12 +4,13 @@ do
   -- Q without a count places a cursor (unchanged)
   -- {count}Q places [count] cursors, one on each line, and enables follow mode
   vim.keymap.set("n", "Q", function()
-    -- if count = 0, this is equivalent to Q
+    local keys = ""
     if vim.v.count1 == 1 then
-      vim.api.nvim_feedkeys("Q", "nx", false)
-      return
+      -- fallback to normal Q
+      keys = "Q"
+    else
+      keys = string.rep("Q", vim.v.count1, "j") .. "q="
     end
-    local keys = string.rep("Qj", vim.v.count - 1) .. "q="
     vim.api.nvim_feedkeys(keys, "nx", false)
   end)
 end
