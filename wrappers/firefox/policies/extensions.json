@@ -20,10 +20,6 @@
         "install_url": "https://addons.mozilla.org/en-US/firefox/downloads/latest/return-youtube-dislikes/latest.xpi",
         "installation_mode": "force_installed"
       },
-      "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}": {
-        "install_url": "https://addons.mozilla.org/en-US/firefox/downloads/latest/refined-github-/latest.xpi",
-        "installation_mode": "force_installed"
-      },
       "{cb31ec5d-c49a-4e5a-b240-16c767444f62}": {
         "install_url": "https://addons.mozilla.org/en-US/firefox/downloads/latest/indie-wiki-buddy/latest.xpi",
         "installation_mode": "force_installed"
