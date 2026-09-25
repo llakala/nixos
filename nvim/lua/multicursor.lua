@@ -60,17 +60,17 @@ end
 do
   vim.keymap.set("n", { "[C", "]C" }, "<Nop>")
 
-  vim.keymap.set("n", "qh", function()
+  vim.keymap.set("n", "qh", "[C")
+  vim.keymap.set("n", "ql", "]C")
+
+  vim.keymap.set("n", "qH", function()
     vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
     return "[C"
   end, { expr = true })
-  vim.keymap.set("n", "ql", function()
+  vim.keymap.set("n", "qL", function()
     vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
     return "]C"
   end, { expr = true })
-
-  vim.keymap.set("n", "qH", "[C")
-  vim.keymap.set("n", "qL", "]C")
 end
 
 do
