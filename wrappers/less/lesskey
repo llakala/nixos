@@ -1,6 +1,10 @@
 #command
 h left-scroll
 l right-scroll
+H back-scroll
+L forw-scroll
+^U noaction
+^D noaction
 \e/ forw-search ^R
 
 #line-edit
