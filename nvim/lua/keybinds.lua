@@ -127,6 +127,8 @@ vim.keymap.set({ "n", "x" }, "H", function()
   end
   return (top - 1) .. "G"
 end, { expr = true })
+vim.keymap.set("n", "<C-u>", "<Nop>")
+vim.keymap.set("n", "<C-d>", "<Nop>")
 
 -- Prevents an annoying issue where <Leader><Esc> moves the character one to the
 -- right
