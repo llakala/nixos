@@ -4,17 +4,17 @@ let
 in
 {
   # Custom plugins
-  canola-collection = callPackage ./canola-collection.nix { };
-  canola-nvim = callPackage ./canola-nvim.nix { };
+  canola-collection = callPackage ./canola-collection.nix {};
+  canola-nvim = callPackage ./canola-nvim.nix {};
   Colorizer = callPackage ./Colorizer.nix {};
-  fFtT-highlights-nvim = callPackage ./fFtT-highlights-nvim.nix { };
-  mini-ai = callPackage ./mini-ai/package.nix { };
-  mini-indentscope = callPackage ./mini-indentscope/package.nix { };
-  nvim-fundo = callPackage ./nvim-fundo.nix { };
-  snacks-nvim = callPackage ./snacks-nvim/package.nix { };
+  fFtT-highlights-nvim = callPackage ./fFtT-highlights-nvim.nix {};
+  mini-ai = callPackage ./mini-ai/package.nix {};
+  mini-indentscope = callPackage ./mini-indentscope/package.nix {};
+  nvim-fundo = callPackage ./nvim-fundo.nix {};
+  snacks-nvim = callPackage ./snacks-nvim/package.nix {};
   rainbow-delimiters-nvim = callPackage ./rainbow-delimiters-nvim/package.nix {};
-  tokyonight-nvim = callPackage ./tokyonight-nvim.nix { };
-  vim-nix = callPackage ./vim-nix/package.nix { };
+  tokyonight-nvim = callPackage ./tokyonight-nvim.nix {};
+  vim-nix = callPackage ./vim-nix/package.nix {};
 
   inherit (vimPlugins)
     auto-session
