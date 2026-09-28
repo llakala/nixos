@@ -1,12 +1,11 @@
-_:
-{
+{ promise, ... }: {
   options = {
     configFile.default = ./starship.toml;
     wrapperAttrs.mutators = [ "/git" ];
   };
 
   mutations = {
-    "/fish".interactiveShellInit =
+    "/fish".interactiveShellInit = promise (
       { options, inputs }:
       let
         finalWrapper = options {};
@@ -29,6 +28,7 @@ _:
         function starship_transient_rprompt_func
           starship module cmd_duration
         end
-      '';
+      ''
+    );
   };
 }

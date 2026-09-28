@@ -10,7 +10,7 @@ in {
   };
 
   mutations = {
-    "/fish".abbreviations = _: {
+    "/fish".abbreviations = {
       gh = [
         { rpv = "repo view --web"; }
         { rpf = "repo fork --remote --clone"; }

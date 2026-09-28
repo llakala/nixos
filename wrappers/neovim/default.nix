@@ -1,4 +1,4 @@
-{ types, ... }:
+{ types, promise, ... }:
 
 {
   inputs = {
@@ -6,7 +6,7 @@
   };
 
   options = {
-    package.defaultFunc =
+    package.default = promise (
       { inputs }:
       let
         inherit (inputs.nixpkgs.pkgs) neovim-unwrapped fetchFromGitHub;
@@ -20,24 +20,25 @@
           rev = "d0596fa4429c0a5e2bd83057cd9e713b5b4587de";
           hash = "sha256-8/m02bnWph7n/eFl3sqBvizi7iw1MR9BAjqndjJMqAA=";
         };
-        patches = (oldAttrs.patches or [ ]) ++ [ ./patches/better-e-binding.patch ];
-      });
+        patches = (oldAttrs.patches or []) ++ [ ./patches/better-e-binding.patch ];
+      })
+    );
 
     initLuaContents.default = ''
       require("init")
     '';
 
-    startPlugins.defaultFunc = import ./startPlugins;
-    optPlugins.defaultFunc = import ./optPlugins;
-    treesitterPackage.defaultFunc = import ./treesitter.nix;
-    extraPackages.defaultFunc = import ./binaries.nix;
+    startPlugins.default = promise (import ./startPlugins);
+    optPlugins.default = promise (import ./optPlugins);
+    treesitterPackage.default = promise (import ./treesitter.nix);
+    extraPackages.default = promise (import ./binaries.nix);
 
     devMode = {
       type = types.bool;
       default = false;
     };
-    devPlugins.defaultFunc = { options }: [
+    devPlugins.default = promise ({ options }: [
       ((if options.devMode then toString else x: x) ../../nvim)
-    ];
+    ]);
   };
 }

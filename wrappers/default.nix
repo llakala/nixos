@@ -36,7 +36,7 @@ in
 # `(import ./wrappers {}).foo.some-option`
 mapAttrs (
   _: module:
-  if module ? impl then
+  if module ? __functor then
     {
       result = module {};
       options = removeAttrs module.args.options [ "__functor" ];

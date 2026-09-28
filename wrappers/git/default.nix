@@ -1,4 +1,4 @@
-_:
+{ promise, ... }:
 {
   options = {
     ignoreFile.default = ./ignore;
@@ -6,7 +6,7 @@ _:
   };
 
   mutations = {
-    "/fish".abbreviations = _: import ./abbreviations.nix;
-    "/git".settings = { inputs }: import ./settings.nix { inherit inputs; };
+    "/fish".abbreviations = import ./abbreviations.nix;
+    "/git".settings = promise (import ./settings.nix);
   };
 }

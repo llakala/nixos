@@ -15,7 +15,7 @@ _:
   };
 
   mutations = {
-    "/fish".abbreviations = _: import ./abbreviations.nix;
-    "/fish".interactiveShellInit = _:  builtins.readFile ./config.fish;
+    "/fish".abbreviations = import ./abbreviations.nix;
+    "/fish".interactiveShellInit = builtins.readFile ./config.fish;
   };
 }

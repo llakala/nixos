@@ -1,4 +1,4 @@
-{ types, ... }:
+{ types, promise, ... }:
 {
   inputs = {
     nixpkgs.from = { parent }: parent.nixpkgs;
@@ -12,11 +12,11 @@
     };
     package = {
       type = types.derivation;
-      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.lixPackageSets.latest.lix;
+      default = promise ({ inputs }: inputs.nixpkgs.pkgs.lixPackageSets.latest.lix);
     };
   };
 
-  impl =
+  result = promise (
     { options, inputs }:
     let
       inherit (inputs.nixpkgs.pkgs) runCommandLocal makeBinaryWrapper;
@@ -38,5 +38,6 @@
       }
       ''
         makeBinaryWrapper "${options.package}/bin/nix" "$out/bin/lix" --argv0 nix ${flags}
-      '';
+      ''
+  );
 }

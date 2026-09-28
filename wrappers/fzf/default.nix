@@ -1,4 +1,4 @@
-{ types, ... }:
+{ types, promise, ... }:
 {
   inputs = {
     nixpkgs.from = { parent }: parent.nixpkgs;
@@ -11,7 +11,7 @@
   options = {
     defaultOpts = {
       type = types.string;
-      defaultFunc = { inputs }: inputs.nixpkgs.lib.fileContents ./FZF_OPTS;
+      default = promise ({ inputs }: inputs.nixpkgs.lib.fileContents ./FZF_OPTS);
     };
     shellIntegration = {
       type = types.struct "shellIntegration" {
@@ -26,32 +26,35 @@
           opts = types.string;
         };
       };
-      defaultFunc =
+      default = promise (
         { inputs }:
         let
           inherit (inputs.nixpkgs) lib;
           zoxideWrapper = inputs.zoxide {};
-        in {
+        in
+        {
           ctrl-r.opts = lib.fileContents ./CTRL_R_OPTS;
           alt-c = {
             command = "${lib.getExe zoxideWrapper} query --list --score";
             opts = lib.fileContents ./ALT_C_OPTS;
           };
           completion.opts = lib.fileContents ./COMPLETION_OPTS;
-        };
+        }
+      );
     };
     package = {
       type = types.derivation;
-      defaultFunc = { inputs }: inputs.nixpkgs.pkgs.fzf;
+      default = promise ({ inputs }: inputs.nixpkgs.pkgs.fzf);
     };
   };
 
-  mutations."/fish".interactiveShellInit =
+  mutations."/fish".interactiveShellInit = promise (
     { inputs, options }:
     let
       inherit (inputs.nixpkgs) lib;
     in
     /* fish */ ''
       ${lib.getExe options.package} --fish | source
-    '';
+    ''
+  );
 }

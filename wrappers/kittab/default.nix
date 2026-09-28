@@ -1,4 +1,4 @@
-{ types, ... }:
+{ types, promise, ... }:
 {
   inputs = {
     nixpkgs.from = { parent }: parent.nixpkgs;
@@ -9,15 +9,15 @@
   options = {
     desktopEntry = {
       type = types.derivation;
-      defaultFunc = { inputs }: import ./desktopEntry.nix { inherit inputs; };
+      default = promise (import ./desktopEntry.nix);
     };
     kittab = {
       type = types.derivation;
-      defaultFunc = { inputs }: import ./kittab.nix { inherit inputs; };
+      default = promise (import ./kittab.nix);
     };
   };
 
-  impl =
+  result = promise (
     { options, inputs }:
     let
       inherit (inputs.nixpkgs) pkgs;
@@ -31,5 +31,6 @@
         kittyWrapper
       ];
       meta.mainProgram = "kittab";
-    };
+    }
+  );
 }
