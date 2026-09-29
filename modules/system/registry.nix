@@ -16,7 +16,7 @@ in {
 
   # Keeps <nixpkgs> pinned to the current nixpkgs revision. Requires relog to
   # apply
-  nix.nixPath = [
+  nix.settings.nix-path = [
     "nixpkgs=${self.sources.nixpkgs.outPath}"
   ];
 
