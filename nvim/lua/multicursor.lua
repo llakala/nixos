@@ -150,22 +150,29 @@ end
 -- Operator that places a cursor on all instances of <cword> in the
 -- motion's range
 do
-  M.cword_operator = function(visual)
-    -- use the "semantic" cword (via the `iw` textobject) instead of <cword>,
-    -- since it actually captures special characters, instead of jumping ahead
-    local cword_start, cword_end = vim.fn.getpos("'<"), vim.fn.getpos("'>")
-    local cword = vim.fn.getregion(cword_start, cword_end)[1]
+  M.cword_operator = function(motion, visual)
+    local cword, cword_start, cword_end, is_keyword
 
-    -- if we _are_ on a keyword, then match with <> and skip in-word matches.
-    -- opt out of this with visual mode - `viwqr2j`
-    if not visual and vim.fn.match(cword, [[^\k\+$]]) ~= -1 then
-      cword = [[\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
+    if visual then
+      -- get current visual selection as cword
+      cword_start, cword_end = vim.fn.getpos("v"), vim.fn.getpos(".")
+      cword = vim.fn.getregion(cword_start, cword_end)[1]
     else
-      cword = [[\V]] .. vim.fn.escape(cword, [[\]])
+      -- if current character is special, use it. otherwise, expand <cword>
+      -- not
+      cword_start = vim.fn.getpos(".")
+      cword = vim.fn.getregion(cword_start, cword_start)[1]
+      if vim.fn.match(cword, [[\k]]) ~= -1 then
+        is_keyword = true
+        cword = vim.fn.expand("<cword>")
+        cword = [[\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
+      end
     end
 
-    -- set the cursor to the beginning of cword
-    vim.b.cursor_before_operator = { cword_start[2], cword_start[3] - 1 }
+    -- escape non-keyword so it can't execute regex
+    if not is_keyword then
+      cword = [[\V]] .. vim.fn.escape(cword, [[\]])
+    end
 
     vim.go.operatorfunc = function(mode)
       local range_start = vim.api.nvim_buf_get_mark(0, "[")
@@ -179,27 +186,50 @@ do
       -- start col / after the end col
       local matches = vim.fn.matchbufline("%", cword, range_start[1], range_end[1])
       for _, match in ipairs(matches) do
-        local pos = { match.lnum, match.byteidx }
         if
           (match[1] ~= range_start[1] or match[2] >= range_start[2])
           and (match[1] ~= range_end[1] or match[2] <= range_end[2])
         then
-          vim.api.nvim_mcursor(0, pos)
+          vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
         end
       end
       vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
     end
+
+    -- when exiting visual mode, store the final cursor position in the variable
+    -- that's also set on dot repeat
+    vim.api.nvim_create_autocmd("ModeChanged", {
+      pattern = "v:*",
+      callback = function()
+        vim.b.cursor_before_operator = vim.api.nvim_buf_get_mark(0, "<")
+        -- delete autocmd
+        return true
+      end,
+    })
+
+    if visual then
+      -- < mark is already be in the right place
+      return "<Esc>1q=g@" .. (motion or "")
+    elseif is_keyword then
+      -- place the < mark at the start of cword
+      return "viwo<Esc>1q=g@" .. (motion or "")
+    end
+    -- searching special character, place < on curpos
+    return "v<Esc>1q=g@" .. (motion or "")
   end
 
-  -- Sets the < and > marks and moves to the start of the "semantic" cword
-  -- we need to use a vimscript mapping, since:
-  -- 1. expr mappings are very limited, and prevent us from calling `g@`
-  -- 2. emitting g@ via feedkeys with the `i` flag has very odd behavior when
-  -- you create a qr AND qrr mapping.
-  vim.keymap.set("n", "qr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>1q=g@]])
-  vim.keymap.set("n", "qrr", [[viwo<Esc><Cmd>lua require("multicursor").cword_operator()<CR>1q=g@_]])
-  vim.keymap.set("x", "qr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>1q=g@]])
-  vim.keymap.set("x", "qrr", [[<Esc><Cmd>lua require("multicursor").cword_operator(true)<CR>1q=g@_]])
+  vim.keymap.set("n", "qr", function()
+    return M.cword_operator("", false)
+  end, { expr = true })
+  vim.keymap.set("n", "qrr", function()
+    return M.cword_operator("_", false)
+  end, { expr = true })
+  vim.keymap.set("x", "qr", function()
+    return M.cword_operator("", true)
+  end, { expr = true })
+  vim.keymap.set("x", "qrr", function()
+    return M.cword_operator("_", true)
+  end, { expr = true })
 end
 
 do
