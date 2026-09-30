@@ -150,7 +150,7 @@ end
 -- Operator that places a cursor on all instances of <cword> in the
 -- motion's range
 do
-  M.cword_operator = function(motion, visual)
+  local function operator(visual, motion)
     local cword, cword_start, cword_end, is_keyword
 
     if visual then
@@ -219,16 +219,16 @@ do
   end
 
   vim.keymap.set("n", "qr", function()
-    return M.cword_operator("", false)
+    return operator(false, "")
   end, { expr = true })
   vim.keymap.set("n", "qrr", function()
-    return M.cword_operator("_", false)
+    return operator(false, "_")
   end, { expr = true })
   vim.keymap.set("x", "qr", function()
-    return M.cword_operator("", true)
+    return operator(true, "")
   end, { expr = true })
   vim.keymap.set("x", "qrr", function()
-    return M.cword_operator("_", true)
+    return operator(true, "_")
   end, { expr = true })
 end
 
