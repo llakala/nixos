@@ -37,11 +37,13 @@ in
 mapAttrs (
   _: module:
   if module ? impl then
-    (removeAttrs module.args.options [ "__functor" ])
-    // {
-      module = module;
-      drv = module { };
+    {
+      result = module {};
+      options = removeAttrs module.args.options [ "__functor" ];
+      call = { inherit (module) __functor; };
     }
   else
-    module.args.options
+    {
+      options = module.args.options;
+    }
 ) tree.modules

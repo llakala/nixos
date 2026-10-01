@@ -6,8 +6,8 @@ myLib.writeFishApplication {
   runtimeInputs = builtins.attrValues {
     inherit fzf;
     inherit (localPackages) gps;
-    git = wrappers.git.drv;
-    diff-so-fancy = wrappers.diff-so-fancy.drv;
+    git = wrappers.git.result;
+    diff-so-fancy = wrappers.diff-so-fancy.result;
   };
 
   text = builtins.readFile ./satod.fish;

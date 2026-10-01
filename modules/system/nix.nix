@@ -27,7 +27,7 @@
   # wrapped version of the lix package that exposes itself under `lix`, so I can
   # run `lix repl` for my repl overlay
   environment.systemPackages = [
-    self.wrappers.lix.drv
+    self.wrappers.lix.result
   ];
 
   system.stateVersion = self.hostVars.stateVersion;

@@ -6,7 +6,7 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
-      self.wrappers.termfilechooser.drv
+      self.wrappers.termfilechooser.result
     ];
     config.common = {
       "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";

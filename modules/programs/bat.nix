@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = [
-    self.wrappers.bat.drv
+    self.wrappers.bat.result
     pkgs.bat-extras.batdiff
     pkgs.bat-extras.batgrep
   ];

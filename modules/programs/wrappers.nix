@@ -2,9 +2,9 @@
 
 {
   environment.systemPackages = with self.wrappers; [
-    gh.drv
-    less.drv
-    ripgrep.drv
-    zoxide.drv
+    gh.result
+    less.result
+    ripgrep.result
+    zoxide.result
   ];
 }

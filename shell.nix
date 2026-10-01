@@ -12,15 +12,15 @@ in
 pkgs.mkShellNoCC {
   allowSubstitutes = false;
   packages = [
-    wrappers.firefox.drv
-    wrappers.gh.drv
-    wrappers.git.drv
-    wrappers.kittab.drv
-    wrappers.yazi.drv
-    wrappers.fish.drv
-    wrappers.less.drv
-    wrappers.bat.drv
-    (wrappers.neovim.module { devMode = true; })
+    wrappers.firefox.result
+    wrappers.gh.result
+    wrappers.git.result
+    wrappers.kittab.result
+    wrappers.yazi.result
+    wrappers.fish.result
+    wrappers.less.result
+    wrappers.bat.result
+    (wrappers.neovim.call { devMode = true; })
     packages.satod
     packages.evalue
     menu.imanpu

@@ -1,7 +1,7 @@
 { self, ... }:
 
 {
-  environment.systemPackages = [ self.wrappers.neovim.drv ];
+  environment.systemPackages = [ self.wrappers.neovim.result ];
   features.editor = "neovim"; # If we ever stop using Neovim, change this
 
   environment.variables.EDITOR = "nvim";

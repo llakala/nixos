@@ -7,7 +7,7 @@
 
   programs.fish = {
     enable = true;
-    package = self.wrappers.fish.drv;
+    package = self.wrappers.fish.result;
     useBabelfish = true; # Important: halves the startup time
   };
 }
