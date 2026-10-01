@@ -1,5 +1,3 @@
-M = {}
-
 do
   -- Q without a count places a cursor (unchanged)
   -- {count}Q places [count] cursors, one on each line, and enables follow mode
@@ -97,8 +95,68 @@ end
 
 -- Bring back all cursors after removing them
 -- mnemonic: u for undo
-vim.keymap.set({ "n", "x" }, "qu", "gQ")
-vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
+do
+  vim.keymap.set({ "n", "x" }, "qu", "gQ")
+  vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
+end
+
+do
+  local function operator(motion)
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    vim.go.operatorfunc = function(type)
+      local key
+      if type == "line" then
+        key = "V"
+      elseif type == "block" then
+        key = vim.keycode("<C-v>")
+      else
+        key = "v"
+      end
+
+      local range_start = vim.api.nvim_buf_get_mark(0, "[")
+      local range_end = vim.api.nvim_buf_get_mark(0, "]")
+      if cursor[1] <= range_start[1] then
+        range_start, range_end = range_end, range_start
+      end
+
+      vim.api.nvim_win_set_cursor(0, range_start)
+      vim.api.nvim_feedkeys(key, "nx", false)
+      vim.api.nvim_win_set_cursor(0, range_end)
+
+      vim.api.nvim_create_autocmd("CmdAtom", {
+        callback = function()
+          vim.cmd("silent! normal! 1q=")
+          return true
+        end,
+      })
+      vim.api.nvim_feedkeys("zq", "n", false)
+    end
+    vim.api.nvim_feedkeys("g@" .. (motion or ""), "in", false)
+  end
+  -- qs{motion}{motion}
+  -- first motion selects the range to operate on
+  -- second motion places a cursor on every instance of that motion (in the
+  -- previous range)
+  -- mnemonic: s for select
+  vim.keymap.set("n", "qs", function()
+    operator()
+  end)
+  vim.keymap.set("n", "qss", function()
+    operator("_")
+  end)
+
+  vim.keymap.set("x", "qs", function()
+    vim.api.nvim_create_autocmd("CmdAtom", {
+      callback = function()
+        vim.cmd("silent! normal! 1q=")
+        return true
+      end,
+    })
+    return "zq"
+  end, { expr = true })
+
+  vim.keymap.set({ "n", "x" }, "zq", "<Nop>")
+end
 
 -- Place a cursor at the start of <cword>, then move to the next instance
 do
@@ -235,5 +293,3 @@ end
 do
   vim.api.nvim_set_hl(0, "MCursor", { bg = "#aaaaaa" })
 end
-
-return M
