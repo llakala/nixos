@@ -1,3 +1,5 @@
+local ns = vim.api.nvim_create_namespace("nvim.multicursor")
+
 ---@param ctx vim.api.keyset.create_user_command.command_args
 ---@return string[] | nil, boolean
 local function parse_args(ctx)
@@ -81,7 +83,7 @@ vim.api.nvim_create_user_command("Place", function(ctx)
       vim.api.nvim_win_set_cursor(0, match:to_cursor())
       cursor_placed = true
     end
-    vim.api.nvim_mcursor(0, match:to_cursor())
+    vim.api.nvim_buf_set_extmark(0, ns, match:to_extmark())
   end
 
   -- if the cursor never got placed, it must've been after every match -
@@ -93,7 +95,7 @@ end, {
   range = true,
   -- Empty nargs means we should reuse last search pattern
   nargs = "?",
-  preview = function(ctx, ns)
+  preview = function(ctx, completion_ns)
     local args, global = parse_args(ctx)
     if not args then
       return 0
@@ -101,7 +103,7 @@ end, {
 
     local matches = get_matches(ctx, args, global)
     for match in matches do
-      vim.hl.range(0, ns, "Substitute", { match.row, match.col }, { match.row, match.col + 1 })
+      vim.hl.range(0, completion_ns, "Substitute", { match.row, match.col }, { match.row, match.col + 1 })
     end
     return 1
   end,

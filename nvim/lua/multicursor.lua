@@ -1,3 +1,5 @@
+local ns = vim.api.nvim_create_namespace("nvim.multicursor")
+
 do
   -- Q without a count places a cursor (unchanged)
   -- {count}Q places [count] cursors, one on each line, and enables follow mode
@@ -63,11 +65,11 @@ do
   vim.keymap.set("n", "ql", "]C")
 
   vim.keymap.set("n", "qH", function()
-    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
     return "[C"
   end, { expr = true })
   vim.keymap.set("n", "qL", function()
-    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
     return "]C"
   end, { expr = true })
 end
@@ -187,11 +189,11 @@ do
     vim.cmd("silent keepjumps normal! N")
 
     for _ = 1, count do
-      vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+      vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
       vim.cmd("silent keepjumps normal! " .. (forward and "n" or "N"))
     end
     -- Place cursor on final instance
-    vim.api.nvim_mcursor(0, vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
 
     cleanup()
   end
@@ -248,7 +250,7 @@ do
           (match[1] ~= range_start[1] or match[2] >= range_start[2])
           and (match[1] ~= range_end[1] or match[2] <= range_end[2])
         then
-          vim.api.nvim_mcursor(0, { match.lnum, match.byteidx })
+          vim.api.nvim_buf_set_extmark(0, ns, match.lnum - 1, match.byteidx)
         end
       end
       vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
