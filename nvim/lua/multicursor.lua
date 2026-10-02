@@ -98,7 +98,12 @@ end
 -- Bring back all cursors after removing them
 -- mnemonic: u for undo
 do
-  vim.keymap.set({ "n", "x" }, "qu", "gQ")
+  local last_ns = vim.api.nvim_create_namespace("nvim.multicursor.last")
+  vim.keymap.set({ "n", "x" }, "qu", function()
+    -- don't move the primary cursor
+    pcall(vim.api.nvim_buf_del_extmark, 0, last_ns, 1)
+    return "gQ"
+  end, { expr = true })
   vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
 end
 
