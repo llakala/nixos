@@ -91,6 +91,8 @@ vim.api.nvim_create_user_command("Place", function(ctx)
   if not cursor_placed then
     vim.api.nvim_win_set_cursor(0, first_match:to_cursor())
   end
+
+  vim.cmd([[normal! 1q=]])
 end, {
   range = true,
   -- Empty nargs means we should reuse last search pattern
