@@ -34,12 +34,19 @@ session.setup({
 
   no_restore_cmds = {
     function()
-      if arg_count == 0 and not vim.g.stdin_set and vim.go.errorfile == "errors.err" then
-        if cwd ~= repo_root then
-          vim.cmd.cd(repo_root) -- Neovim cd for stuff like oil
-        end
-        session.restore_session(repo_root, { show_message = false })
+      if arg_count ~= 0 or vim.env.NO_RESTORE_SESSION or vim.g.stdin_set or vim.go.errorfile ~= "errors.err" then
+        return
       end
+      if cwd ~= repo_root then
+        vim.cmd.cd(repo_root) -- Neovim cd for stuff like oil
+      end
+      session.restore_session(repo_root, { show_message = false })
+    end,
+  },
+
+  pre_save_cmds = {
+    function()
+      return not vim.env.NO_RESTORE_SESSION
     end,
   },
 })
