@@ -166,3 +166,28 @@ vim.keymap.set("c", "<C-p>", "<Up>")
 vim.keymap.set("c", "<C-n>", "<Down>")
 vim.keymap.set("c", "<Up>", "<Nop>")
 vim.keymap.set("c", "<Down>", "<Nop>")
+
+local function diff_operator(cmd, motion)
+  vim.o.operatorfunc = function()
+    local range_start = vim.api.nvim_buf_get_mark(0, "[")
+    local range_end = vim.api.nvim_buf_get_mark(0, "]")
+    vim.api.nvim_cmd({
+      cmd = cmd,
+      range = { range_start[1], range_end[1] },
+    })
+  end
+
+  return "g@" .. (motion or "")
+end
+vim.keymap.set("n", "dp", function()
+  return diff_operator("diffput")
+end, { expr = true })
+vim.keymap.set("n", "dpp", function()
+  return diff_operator("diffput", "_")
+end)
+vim.keymap.set("n", "do", function()
+  return diff_operator("diffget")
+end, { expr = true })
+vim.keymap.set("n", "doo", function()
+  return diff_operator("diffget", "_")
+end)
