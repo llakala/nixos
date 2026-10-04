@@ -212,25 +212,29 @@ do
     end
 
     vim.o.operatorfunc = function(mode)
-      local range_start = vim.api.nvim_buf_get_mark(0, "[")
-      local range_end = vim.api.nvim_buf_get_mark(0, "]")
+      local cursor = vim.b.cursor_before_operator
+      local start_pos = vim.api.nvim_buf_get_mark(0, "[")
+      local end_pos = vim.api.nvim_buf_get_mark(0, "]")
       if mode == "line" then
-        range_start[2] = 0
-        range_end[2] = #vim.fn.getline(range_end[1])
+        start_pos[2] = 0
+        end_pos[2] = #vim.fn.getline(end_pos[1])
       end
 
-      -- place a cursor on each instance of cword, ignoring matches before the
-      -- start col / after the end col
-      local matches = vim.fn.matchbufline("%", cword, range_start[1], range_end[1])
+      -- place a cursor on each instance of cword (other than the current one)
+      -- ignore matches before the start col / after the end col
+      local matches = vim.fn.matchbufline("%", cword, start_pos[1], end_pos[1])
       for _, match in ipairs(matches) do
+        local pos = { match.lnum, match.byteidx }
         if
-          (match.lnum ~= range_start[1] or match.byteidx >= range_start[2])
-          and (match.lnum ~= range_end[1] or match.byteidx <= range_end[2])
+          (pos[1] ~= cursor[1] or pos[2] ~= cursor[2])
+          and (pos[1] ~= start_pos[1] or pos[2] >= start_pos[2])
+          and (pos[1] ~= end_pos[1] or pos[2] <= end_pos[2])
         then
-          vim.api.nvim_buf_set_extmark(0, ns, match.lnum - 1, match.byteidx)
+          vim.api.nvim_buf_set_extmark(0, ns, pos[1] - 1, pos[2])
         end
       end
-      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+
+      vim.api.nvim_win_set_cursor(0, cursor)
     end
 
     -- when exiting visual mode, store the final cursor position in the variable
