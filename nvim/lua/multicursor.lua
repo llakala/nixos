@@ -57,19 +57,20 @@ do
 end
 
 -- move between cursors with qh / ql
--- to purely jump and not place a cursor upon leaving, use qH and qL
+-- in follow mode, place a cursor before leaving
 do
   vim.keymap.set("n", { "[C", "]C" }, "<Nop>")
 
-  vim.keymap.set("n", "qh", "[C")
-  vim.keymap.set("n", "ql", "]C")
-
-  vim.keymap.set("n", "qH", function()
-    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+  vim.keymap.set("n", "qh", function()
+    if vim.o.follow then
+      vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+    end
     return "[C"
   end, { expr = true })
-  vim.keymap.set("n", "qL", function()
-    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+  vim.keymap.set("n", "ql", function()
+    if vim.o.follow then
+      vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+    end
     return "]C"
   end, { expr = true })
 end
