@@ -61,20 +61,16 @@ do
 end
 
 do
-  -- Enable follow mode for a single motion
+  -- Toggle follow mode for a single motion
   -- mnemonic: f for follow
   vim.keymap.set({ "n", "x" }, "qf", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
-      callback = function(ev)
-        if ev.data.lhs == "qf" then
-          return
-        end
-        vim.cmd("silent! normal! 2q=")
-        -- delete self
+      callback = function()
+        vim.o.follow = not vim.o.follow
         return true
       end,
     })
-    return "<Cmd>silent! norm! 1q=<CR>"
+    vim.o.follow = not vim.o.follow
   end, { expr = true })
 
   -- Enable/disable follow mode
