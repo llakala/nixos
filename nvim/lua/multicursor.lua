@@ -208,7 +208,7 @@ do
       cword = [[\V]] .. vim.fn.escape(cword, [[\]])
     end
 
-    vim.go.operatorfunc = function(mode)
+    vim.o.operatorfunc = function(mode)
       local range_start = vim.api.nvim_buf_get_mark(0, "[")
       local range_end = vim.api.nvim_buf_get_mark(0, "]")
       if mode == "line" then
@@ -221,8 +221,8 @@ do
       local matches = vim.fn.matchbufline("%", cword, range_start[1], range_end[1])
       for _, match in ipairs(matches) do
         if
-          (match[1] ~= range_start[1] or match[2] >= range_start[2])
-          and (match[1] ~= range_end[1] or match[2] <= range_end[2])
+          (match.lnum ~= range_start[1] or match.byteidx >= range_start[2])
+          and (match.lnum ~= range_end[1] or match.byteidx <= range_end[2])
         then
           vim.api.nvim_buf_set_extmark(0, ns, match.lnum - 1, match.byteidx)
         end
