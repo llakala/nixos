@@ -1,20 +1,5 @@
 local ns = vim.api.nvim_create_namespace("nvim.multicursor")
 
-do
-  -- Q without a count places a cursor (unchanged)
-  -- {count}Q places [count] cursors, one on each line, and enables follow mode
-  vim.keymap.set("n", "Q", function()
-    local keys = ""
-    if vim.v.count1 == 1 then
-      -- fallback to normal Q
-      keys = "Q"
-    else
-      keys = string.rep("Q", vim.v.count1, "j") .. "q="
-    end
-    vim.api.nvim_feedkeys(keys, "nx", false)
-  end)
-end
-
 -- q will be the new leader for everything multicursor-related
 -- move everything macro-related to +, -, and _
 do
@@ -141,19 +126,19 @@ do
     end
     vim.api.nvim_feedkeys("g@" .. (motion or ""), "in", false)
   end
-  -- qs{motion}{motion}
+  -- qx{motion}{motion}
   -- first motion selects the range to operate on
   -- second motion places a cursor on every instance of that motion (in the
   -- previous range)
   -- mnemonic: s for select
-  vim.keymap.set("n", "qs", function()
+  vim.keymap.set("n", "qx", function()
     operator()
   end)
-  vim.keymap.set("n", "qss", function()
+  vim.keymap.set("n", "qxx", function()
     operator("_")
   end)
 
-  vim.keymap.set("x", "qs", function()
+  vim.keymap.set("x", "qx", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
       callback = function()
         vim.cmd("silent! normal! 1q=")
@@ -166,53 +151,40 @@ do
   vim.keymap.set({ "n", "x" }, "zq", "<Nop>")
 end
 
--- Place a cursor at the start of <cword>, then move to the next instance
+-- [cursor-count]qs[motion-count]{motion}
+-- Examples:
+-- 1. qs2w places a cursor "two words away"
+-- 2. 2qsw places two cursors, one on each word
+-- 3. 2qs2w places two cursors, one "two words away", one "four words away"
 do
-  local function place_and_jump(forward)
-    -- Disable hlsearch while iterating
-    local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
-    local cursearch_hl = vim.api.nvim_get_hl(0, { name = "CurSearch" })
-    vim.api.nvim_set_hl(0, "Search", { link = "None" })
-    vim.api.nvim_set_hl(0, "CurSearch", { link = "None" })
+  vim.keymap.set("n", "qs", function()
+    vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
+    local operator_count = vim.v.count1
 
-    local function cleanup()
-      vim.cmd.nohlsearch()
-      vim.api.nvim_set_hl(0, "Search", search_hl)
-      vim.api.nvim_set_hl(0, "CurSearch", cursearch_hl)
+    vim.api.nvim_create_autocmd("CmdAtom", {
+      once = true,
+      callback = function(ev)
+        -- lhs preserves the motion count, and accounts for weird motions like /
+        local motion = string.gsub(ev.data.lhs, "qs", "", 1)
+
+        for _ = 0, operator_count do
+          vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+          vim.cmd("norm " .. motion)
+        end
+
+        vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+      end,
+    })
+
+    -- set cursor before CmdAtom to prevent flashing
+    vim.o.operatorfunc = function()
+      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
     end
 
-    -- Store this before feedkeys to prevent it from being invalidated
-    local count = vim.v.count1
-
-    -- Move to the beginning of cword before starting the iteration.
-    -- Also puts initial pos in jumplist and sets slash buffer
-    vim.v.errmsg = ""
-    vim.api.nvim_feedkeys("*", "nx", false)
-    if vim.v.errmsg ~= "" then
-      cleanup()
-      return
-    end
-    vim.cmd("silent keepjumps normal! N")
-
-    for _ = 1, count do
-      vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
-      vim.cmd("silent keepjumps normal! " .. (forward and "n" or "N"))
-    end
-    -- Place cursor on final instance
-    vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
-
-    cleanup()
-  end
-
-  -- TODO: support visual mode
-  vim.keymap.set("n", "q*", function()
-    place_and_jump(true)
-  end)
-  vim.keymap.set("n", "q#", function()
-    place_and_jump(false)
-  end)
+    vim.o.follow = true
+    return "g@"
+  end, { expr = true })
 end
-
 -- Operator that places a cursor on all instances of <cword> in the
 -- motion's range
 do
