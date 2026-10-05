@@ -160,6 +160,7 @@ do
     local operator_count = vim.v.count1
 
     vim.api.nvim_create_autocmd("CmdAtom", {
+      once = true,
       callback = function(ev)
         -- lhs preserves the motion count, and accounts for weird motions like /
         local motion = string.gsub(ev.data.lhs, "qs", "", 1)
@@ -172,8 +173,6 @@ do
           vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
         end
         vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
-
-        return true
       end,
     })
 
