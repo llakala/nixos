@@ -198,19 +198,18 @@ do
       cword = vim.fn.getregion(cword_start, cword_end)[1]
     else
       -- if current character is special, use it. otherwise, expand <cword>
-      -- not
       cword_start = vim.fn.getpos(".")
       cword = vim.fn.getregion(cword_start, cword_start)[1]
       if vim.fn.match(cword, [[\k]]) ~= -1 then
         is_keyword = true
         cword = vim.fn.expand("<cword>")
-        cword = [[\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
+        cword = [[\C\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
       end
     end
 
     -- escape non-keyword so it can't execute regex
     if not is_keyword then
-      cword = [[\V]] .. vim.fn.escape(cword, [[\]])
+      cword = [[\C\V]] .. vim.fn.escape(cword, [[\]])
     end
 
     vim.o.operatorfunc = function(mode)
