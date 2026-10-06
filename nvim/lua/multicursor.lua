@@ -61,17 +61,35 @@ do
 end
 
 do
+  -- when `qf{motion}` is used to temporarily disable follow mode, if there's
+  -- an extra multicursor underneath the main cursor  delete it
+  -- more intuitive than leaving the multicursor there
+  local function delete_multi_at_cursor()
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    cursor[1] = cursor[1] - 1
+    local extmarks = vim.api.nvim_buf_get_extmarks(0, ns, cursor, cursor, {})
+    if #extmarks > 0 then
+      vim.api.nvim_buf_del_extmark(0, ns, extmarks[1][1])
+    end
+  end
+
   -- Toggle follow mode for a single motion
   -- mnemonic: f for follow
   vim.keymap.set({ "n", "x" }, "qf", function()
     vim.api.nvim_create_autocmd("CmdAtom", {
-      callback = function()
+      callback = function(ev)
+        if ev.data.lhs == "qf" then
+          return
+        end
         vim.o.follow = not vim.o.follow
         return true
       end,
     })
     vim.o.follow = not vim.o.follow
-  end, { expr = true })
+    if not vim.o.follow then
+      delete_multi_at_cursor()
+    end
+  end)
 
   -- Enable/disable follow mode
   vim.keymap.set({ "n", "x" }, "qF", "q=")
