@@ -110,6 +110,85 @@ do
 end
 
 do
+  local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
+  local function rotate(forward)
+    if vim.api.nvim__mcursor_cascading() then
+      return
+    end
+    local visual_extmarks = vim.api.nvim_buf_get_extmarks(0, visual_ns, 0, -1, { details = true })
+    if #visual_extmarks == 0 then
+      return
+    end
+
+    ---@alias cursor { range: vim.Range, text: string[], key: integer }
+    ---@type cursor[]
+    local cursors = {}
+    for i, mark in ipairs(visual_extmarks) do
+      local range = vim.range.extmark(0, mark[2], mark[3], mark[4].end_row, mark[4].end_col)
+      cursors[i] = {
+        range = range,
+        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+        key = vim.pos.extmark(0, mark[2], mark[3]):to_offset(),
+      }
+    end
+
+    vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
+    local left = vim.api.nvim_buf_get_mark(0, "<")
+    local right = vim.api.nvim_buf_get_mark(0, ">")
+    if vim.fn.visualmode() == "V" then
+      right[2] = #vim.api.nvim_get_current_line() - 1
+    end
+
+    --- if there's no multicursor at the primary, insert one into the sorted
+    --- list of cursors. Keeping the list sorted preserves our axioms about
+    --- iterating backwards
+    local cursor_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, { left[1] - 1, left[2] }, { right[1] - 1, right[2] })
+    if #cursor_extmarks == 0 then
+      local range = vim.range.mark(0, left[1], left[2], right[1], right[2])
+      local primary = {
+        range = range,
+        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+        key = vim.pos.cursor(0, left):to_offset(),
+      }
+      local index = vim.list.bisect(cursors, primary, { key = "key" })
+      table.insert(cursors, index, primary)
+    end
+
+    -- move the primary cursor to the next multicursor.
+    vim.api.nvim_feedkeys(forward and "]C" or "[C[C", "n", false)
+
+    ---@type vim.IterArray<cursor>
+    local iter = vim.iter(cursors)
+    local prev = forward and iter:rpeek() or iter:peek()
+
+    -- iterate over the cursors in reverse, so setting text doesn't cause
+    -- overlapping issues with the other cursors
+    for cursor in iter:rev() do
+      local next_cursor = forward and iter:peek() or prev
+      if not forward then
+        prev = cursor
+      end
+      local range = cursor.range
+      vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
+    end
+
+    -- replace the cursors in buffer order, so we don't have to deal with gravity
+    -- TODO: shift positions properly when multiple cursors are on the same line
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    for _, cursor in ipairs(cursors) do
+      vim.api.nvim_buf_set_extmark(0, ns, cursor.range[1], cursor.range[2])
+    end
+  end
+
+  vim.keymap.set("x", "qn", function()
+    rotate(true)
+  end)
+  vim.keymap.set("x", "qp", function()
+    rotate(false)
+  end)
+end
+
+do
   local function operator(motion)
     local cursor = vim.api.nvim_win_get_cursor(0)
     vim.go.operatorfunc = function(type)
