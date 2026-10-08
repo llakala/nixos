@@ -63,8 +63,7 @@ end
 -- "rotate" each cursor's visual selection with qn / qp
 -- TODO:
 -- 1. use the current normal-mode position for V
--- 2. obey [count]
--- 3. try to preserve undo
+-- 2. try to preserve undo
 do
   local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
 
@@ -77,6 +76,7 @@ do
       return
     end
 
+    local distance = (forward and 1 or -1) * vim.v.count1
     -- `!` flag is needed to prevent https://github.com/neovim/neovim/issues/42263
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx!", false)
 
@@ -121,14 +121,10 @@ do
     -- applied in reverse buffer order, so rotations from previous cursors don't
     -- invalidate the ranges of later cursors
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-    local iter = vim.iter(cursors)
-    local prev = forward and iter:rpeek() or iter:peek()
-    for cursor in iter:rev() do
-      local next_cursor = forward and iter:peek() or prev
-      if not forward then
-        prev = cursor
-      end
+    for i = #cursors, 1, -1 do
+      local cursor = cursors[i]
       local range = cursor.range
+      local next_cursor = cursors[(i - distance - 1) % #cursors + 1]
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
       if not cursor.primary or primary_placed then
         vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
