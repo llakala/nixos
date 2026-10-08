@@ -61,9 +61,6 @@ do
 end
 
 -- "rotate" each cursor's visual selection with qn / qp
--- TODO:
--- 1. use the current normal-mode position for V
--- 2. try to preserve undo
 do
   local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
 
@@ -71,30 +68,33 @@ do
     if vim.api.nvim__mcursor_cascading() then
       return
     end
+
+    local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1)
     local visual_extmarks = vim.api.nvim_buf_get_extmarks(0, visual_ns, 0, -1, { details = true })
     if #visual_extmarks == 0 then
       return
     end
 
     local distance = (forward and 1 or -1) * vim.v.count1
+    local linewise = vim.fn.visualmode() == "V"
     -- `!` flag is needed to prevent https://github.com/neovim/neovim/issues/42263
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx!", false)
-
     local primary_start = vim.api.nvim_buf_get_mark(0, "<")
     local primary_end = vim.api.nvim_buf_get_mark(0, ">")
-    if vim.fn.visualmode() == "V" then
+    if linewise then
       primary_end[2] = #vim.api.nvim_get_current_line() - 1
     end
-    local primary_placed = false
 
+    ---@type { range: vim.Range, text: string[], pos: vim.Pos, primary: boolean? }[]
     local cursors = {}
+    local primary_placed = false
     for i, mark in ipairs(visual_extmarks) do
       local range = vim.range.extmark(0, mark[2], mark[3], mark[4].end_row, mark[4].end_col)
       local start_pos = vim.pos.extmark(0, mark[2], mark[3])
       cursors[i] = {
         range = range,
         text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        key = start_pos:to_offset(),
+        pos = linewise and vim.pos.extmark(0, normal_extmarks[i][2], normal_extmarks[i][3]) or start_pos,
       }
       if vim.deep_equal(start_pos:to_cursor(), primary_start) then
         cursors[i].primary = true
@@ -107,13 +107,18 @@ do
     --- about iterating backwards
     if not primary_placed then
       local range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
+      local start_pos = vim.pos.cursor(0, primary_start)
       local primary = {
         range = range,
         text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        key = vim.pos.cursor(0, primary_start):to_offset(),
+        pos = linewise and vim.pos.cursor(0) or start_pos,
         primary = true,
       }
-      local index = vim.list.bisect(cursors, primary, { key = "key" })
+      local index = vim.list.bisect(cursors, primary, {
+        key = function(cursor)
+          return cursor.pos:to_offset()
+        end,
+      })
       table.insert(cursors, index, primary)
     end
 
@@ -127,10 +132,10 @@ do
       local next_cursor = cursors[(i - distance - 1) % #cursors + 1]
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
       if not cursor.primary or primary_placed then
-        vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
+        vim.api.nvim_buf_set_extmark(0, ns, cursor.pos:to_extmark())
       end
       if cursor.primary then
-        vim.api.nvim_win_set_cursor(0, primary_start)
+        vim.api.nvim_win_set_cursor(0, cursor.pos:to_cursor())
       end
     end
   end
