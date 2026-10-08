@@ -4,16 +4,13 @@
     less.from = { parent }: parent.less;
   };
 
-  options.package.default = promise ({ inputs }: inputs.nixpkgs.pkgs.callPackage ./package.nix {});
-
   mutations = {
     "/git".settings = promise (
       { inputs }:
       let
         inherit (inputs.nixpkgs) lib;
         lessWrapper = inputs.less {};
-      in
-      {
+      in {
         # Can't use ${finalWrapper} because of infrec - this module modifies
         # the git settings here, but needs to read from it too. Could solve
         # it with some `lib.fix`, but this is fine for now
