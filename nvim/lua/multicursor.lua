@@ -154,8 +154,10 @@ do
       table.insert(cursors, index, primary)
     end
 
-    -- move the primary cursor to the next multicursor.
+    -- move the primary cursor to the next multicursor, then clear existing
+    -- cursors
     vim.api.nvim_feedkeys(forward and "]C" or "[C[C", "n", false)
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
     ---@type vim.IterArray<cursor>
     local iter = vim.iter(cursors)
@@ -170,13 +172,7 @@ do
       end
       local range = cursor.range
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
-    end
-
-    -- replace the cursors in buffer order, so we don't have to deal with gravity
-    -- TODO: shift positions properly when multiple cursors are on the same line
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-    for _, cursor in ipairs(cursors) do
-      vim.api.nvim_buf_set_extmark(0, ns, cursor.range[1], cursor.range[2])
+      vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
     end
   end
 
