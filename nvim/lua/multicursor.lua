@@ -254,6 +254,7 @@ do
 end
 
 -- [cursor-count]qs[motion-count]{motion}
+-- Mnemonic: "quick select"
 -- Examples:
 -- 1. qs2w places a cursor "two words away"
 -- 2. 2qsw places two cursors, one on each word
@@ -290,7 +291,9 @@ do
   end, { expr = true })
 end
 
--- Operator that places a cursor on all instances of <cword> in the
+-- qd{motion} / v_qd{motion}
+-- Mnemonic: "quick do"
+-- Place a cursor on all instances of the current word / visual selection in the
 -- motion's range
 do
   local function operator(visual, motion)
@@ -364,16 +367,16 @@ do
     return "v<Esc>1q=g@" .. (motion or "")
   end
 
-  vim.keymap.set("n", "qr", function()
+  vim.keymap.set("n", "qd", function()
     return operator(false, "")
   end, { expr = true })
-  vim.keymap.set("n", "qrr", function()
+  vim.keymap.set("n", "qdd", function()
     return operator(false, "_")
   end, { expr = true })
-  vim.keymap.set("x", "qr", function()
+  vim.keymap.set("x", "qd", function()
     return operator(true, "")
   end, { expr = true })
-  vim.keymap.set("x", "qrr", function()
+  vim.keymap.set("x", "qdd", function()
     return operator(true, "_")
   end, { expr = true })
 end
