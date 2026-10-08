@@ -66,7 +66,7 @@ require("fzf-lua").setup({
 
   -- Add fixed-strings to the default, and make ctrl-r toggle regex search on/off
   grep = {
-    rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --fixed-strings -e",
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --engine auto --fixed-strings -e",
     fzf_opts = {
       ["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-search",
     },
