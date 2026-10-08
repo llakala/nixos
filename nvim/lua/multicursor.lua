@@ -60,6 +60,92 @@ do
   end, { expr = true })
 end
 
+-- "rotate" each cursor's visual selection with qn / qp
+-- TODO:
+-- 1. use the current normal-mode position for V
+-- 2. obey [count]
+-- 3. try to preserve undo
+do
+  local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
+
+  local function rotate(forward)
+    if vim.api.nvim__mcursor_cascading() then
+      return
+    end
+    local visual_extmarks = vim.api.nvim_buf_get_extmarks(0, visual_ns, 0, -1, { details = true })
+    if #visual_extmarks == 0 then
+      return
+    end
+
+    -- `!` flag is needed to prevent https://github.com/neovim/neovim/issues/42263
+    vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx!", false)
+
+    local primary_start = vim.api.nvim_buf_get_mark(0, "<")
+    local primary_end = vim.api.nvim_buf_get_mark(0, ">")
+    if vim.fn.visualmode() == "V" then
+      primary_end[2] = #vim.api.nvim_get_current_line() - 1
+    end
+    local primary_placed = false
+
+    local cursors = {}
+    for i, mark in ipairs(visual_extmarks) do
+      local range = vim.range.extmark(0, mark[2], mark[3], mark[4].end_row, mark[4].end_col)
+      local start_pos = vim.pos.extmark(0, mark[2], mark[3])
+      cursors[i] = {
+        range = range,
+        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+        key = start_pos:to_offset(),
+      }
+      if vim.deep_equal(start_pos:to_cursor(), primary_start) then
+        cursors[i].primary = true
+        primary_placed = true
+      end
+    end
+
+    --- if there's not a multicursor underneath the primary, add it to the list
+    --- of cursors to be moved. Keeping the list sorted preserves our axioms
+    --- about iterating backwards
+    if not primary_placed then
+      local range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
+      local primary = {
+        range = range,
+        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+        key = vim.pos.cursor(0, primary_start):to_offset(),
+        primary = true,
+      }
+      local index = vim.list.bisect(cursors, primary, { key = "key" })
+      table.insert(cursors, index, primary)
+    end
+
+    -- delete all existing cursors, then rotate each cursor. rotations are
+    -- applied in reverse buffer order, so rotations from previous cursors don't
+    -- invalidate the ranges of later cursors
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    local iter = vim.iter(cursors)
+    local prev = forward and iter:rpeek() or iter:peek()
+    for cursor in iter:rev() do
+      local next_cursor = forward and iter:peek() or prev
+      if not forward then
+        prev = cursor
+      end
+      local range = cursor.range
+      vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
+      if cursor.primary then
+        vim.api.nvim_win_set_cursor(0, primary_start)
+      else
+        vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
+      end
+    end
+  end
+
+  vim.keymap.set("x", "qn", function()
+    rotate(true)
+  end)
+  vim.keymap.set("x", "qp", function()
+    rotate(false)
+  end)
+end
+
 do
   -- when `qf{motion}` is used to temporarily disable follow mode, if there's
   -- an extra multicursor underneath the main cursor  delete it
@@ -107,81 +193,6 @@ do
   end, { expr = true })
 
   vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
-end
-
-do
-  local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
-  local function rotate(forward)
-    if vim.api.nvim__mcursor_cascading() then
-      return
-    end
-    local visual_extmarks = vim.api.nvim_buf_get_extmarks(0, visual_ns, 0, -1, { details = true })
-    if #visual_extmarks == 0 then
-      return
-    end
-
-    ---@alias cursor { range: vim.Range, text: string[], key: integer }
-    ---@type cursor[]
-    local cursors = {}
-    for i, mark in ipairs(visual_extmarks) do
-      local range = vim.range.extmark(0, mark[2], mark[3], mark[4].end_row, mark[4].end_col)
-      cursors[i] = {
-        range = range,
-        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        key = vim.pos.extmark(0, mark[2], mark[3]):to_offset(),
-      }
-    end
-
-    vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
-    local left = vim.api.nvim_buf_get_mark(0, "<")
-    local right = vim.api.nvim_buf_get_mark(0, ">")
-    if vim.fn.visualmode() == "V" then
-      right[2] = #vim.api.nvim_get_current_line() - 1
-    end
-
-    --- if there's no multicursor at the primary, insert one into the sorted
-    --- list of cursors. Keeping the list sorted preserves our axioms about
-    --- iterating backwards
-    local cursor_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, { left[1] - 1, left[2] }, { right[1] - 1, right[2] })
-    if #cursor_extmarks == 0 then
-      local range = vim.range.mark(0, left[1], left[2], right[1], right[2])
-      local primary = {
-        range = range,
-        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        key = vim.pos.cursor(0, left):to_offset(),
-      }
-      local index = vim.list.bisect(cursors, primary, { key = "key" })
-      table.insert(cursors, index, primary)
-    end
-
-    -- move the primary cursor to the next multicursor, then clear existing
-    -- cursors
-    vim.api.nvim_feedkeys(forward and "]C" or "[C[C", "n", false)
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-
-    ---@type vim.IterArray<cursor>
-    local iter = vim.iter(cursors)
-    local prev = forward and iter:rpeek() or iter:peek()
-
-    -- iterate over the cursors in reverse, so setting text doesn't cause
-    -- overlapping issues with the other cursors
-    for cursor in iter:rev() do
-      local next_cursor = forward and iter:peek() or prev
-      if not forward then
-        prev = cursor
-      end
-      local range = cursor.range
-      vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
-      vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
-    end
-  end
-
-  vim.keymap.set("x", "qn", function()
-    rotate(true)
-  end)
-  vim.keymap.set("x", "qp", function()
-    rotate(false)
-  end)
 end
 
 do
