@@ -130,10 +130,11 @@ do
       end
       local range = cursor.range
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
+      if not cursor.primary or primary_placed then
+        vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
+      end
       if cursor.primary then
         vim.api.nvim_win_set_cursor(0, primary_start)
-      else
-        vim.api.nvim_buf_set_extmark(0, ns, range[1], range[2])
       end
     end
   end
