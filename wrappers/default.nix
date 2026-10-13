@@ -32,18 +32,13 @@ let
     };
   };
 in
-# We have each wrapper `foo` point to all its options, so you can do
-# `(import ./wrappers {}).foo.some-option`
 mapAttrs (
   _: module:
   if module ? __functor then
-    {
-      result = module {};
-      options = removeAttrs module.args.options [ "__functor" ];
+    module.args
+    // {
       call = { inherit (module) __functor; };
     }
   else
-    {
-      options = module.args.options;
-    }
+    module.args
 ) tree.modules

@@ -6,12 +6,11 @@
 
   mutations = {
     "/git".settings = promise (
-      { options, inputs }:
+      { options, inputs, result }:
       let
         inherit (inputs.nixpkgs) lib;
-        finalWrapper = options {};
       in {
-        core.pager = lib.getExe finalWrapper;
+        core.pager = lib.getExe result;
       }
     );
   };

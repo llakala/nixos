@@ -6,13 +6,12 @@
 
   mutations = {
     "/fish".interactiveShellInit = promise (
-      { options, inputs }:
+      { options, inputs, result }:
       let
-        finalWrapper = options {};
         inherit (inputs.nixpkgs) lib;
       in
       /* fish */ ''
-        ${lib.getExe finalWrapper} init fish | source
+        ${lib.getExe result} init fish | source
         enable_transience
 
         function starship_transient_prompt_func

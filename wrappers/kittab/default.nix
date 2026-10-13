@@ -18,17 +18,16 @@
   };
 
   result = promise (
-    { options, inputs }:
+    { options, inputs, results }:
     let
       inherit (inputs.nixpkgs) pkgs;
-      kittyWrapper = inputs.kitty {};
     in
     pkgs.symlinkJoin {
       name = "kittab-wrapped";
       paths = [
         options.kittab
         options.desktopEntry
-        kittyWrapper
+        results.kitty
       ];
       meta.mainProgram = "kittab";
     }

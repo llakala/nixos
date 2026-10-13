@@ -6,12 +6,11 @@
 
   options = {
     flags.default = promise (
-      { inputs }:
+      { inputs, results }:
       let
         inherit (inputs.nixpkgs) lib;
-        lessWrapper = inputs.less {};
       in
-      [ "--style=plain" "--pager=${lib.getExe lessWrapper}" ]
+      [ "--style=plain" "--pager=${lib.getExe results.less}" ]
     );
   };
 }

@@ -9,9 +9,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "3fd28fb61472d94eaef95e4a027b9b3d000add8c",
-      "url": "https://github.com/llakala/adios/archive/3fd28fb61472d94eaef95e4a027b9b3d000add8c.tar.gz",
-      "hash": "sha256-Zivp1rit5QvP9yKsMuGGp2x7X1Vdtbe+UCoYNKF5OQo="
+      "revision": "ad44a296b00f5eae1ab8ca51d87d79cb20e19def",
+      "url": "https://github.com/llakala/adios/archive/ad44a296b00f5eae1ab8ca51d87d79cb20e19def.tar.gz",
+      "hash": "sha256-SfwDKg5ByyqyiqWMlZedKt/qQSaj+jjkY1W5BC58qgg="
     },
     "adios-wrappers": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "bf7124b12ac30042a9220cf920333b6f93447464",
-      "url": "https://github.com/llakala/adios-wrappers/archive/bf7124b12ac30042a9220cf920333b6f93447464.tar.gz",
-      "hash": "sha256-eWzFhGi/EIRqgx16YjIInvHWnx4rgOplHkmNQy6o77I="
+      "revision": "058612b0d7da401a866dfe3a7d4e90a030ad1424",
+      "url": "https://github.com/llakala/adios-wrappers/archive/058612b0d7da401a866dfe3a7d4e90a030ad1424.tar.gz",
+      "hash": "sha256-FR7BGTV7jHrMTnDcA2WMj8bio259TGHVUZ4zSRXhpO8="
     },
     "home-manager": {
       "type": "Git",
