@@ -44,15 +44,15 @@ end
 -- move between cursors with qh / ql
 -- in follow mode, place a cursor before leaving
 do
-  vim.keymap.set("n", { "[C", "]C" }, "<Nop>")
+  vim.keymap.set({ "n", "o" }, { "[C", "]C" }, "<Nop>")
 
-  vim.keymap.set("n", "qh", function()
+  vim.keymap.set({ "n", "o" }, "qh", function()
     if vim.o.follow then
       vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
     end
     return "[C"
   end, { expr = true })
-  vim.keymap.set("n", "ql", function()
+  vim.keymap.set({ "n", "o" }, "ql", function()
     if vim.o.follow then
       vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
     end
