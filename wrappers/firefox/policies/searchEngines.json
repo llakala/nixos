@@ -15,7 +15,8 @@
         {
           "Name": "Google (udm14)",
           "IconURL": "https://www.google.com/favicon.ico",
-          "URLTemplate": "https://www.google.com/search?q={searchTerms}&udm=14"
+          "URLTemplate": "https://www.google.com/search?q={searchTerms}&udm=14",
+          "SuggestURLTemplate": "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}"
         },
         {
           "Name": "Github Search Nix",
