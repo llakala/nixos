@@ -149,9 +149,8 @@ do
 end
 
 do
-  -- when `qf{motion}` is used to temporarily disable follow mode, if there's
-  -- an extra multicursor underneath the main cursor  delete it
-  -- more intuitive than leaving the multicursor there
+  -- when disabling follow mode, if there's an extra multicursor underneath the
+  -- main cursor  delete it. more intuitive than leaving the multicursor there
   local function delete_multi_at_cursor()
     local cursor = vim.api.nvim_win_get_cursor(0)
     cursor[1] = cursor[1] - 1
@@ -180,7 +179,12 @@ do
   end)
 
   -- Enable/disable follow mode
-  vim.keymap.set({ "n", "x" }, "qF", "q=")
+  vim.keymap.set({ "n", "x" }, "qF", function()
+    vim.o.follow = not vim.o.follow
+    if not vim.o.follow then
+      delete_multi_at_cursor()
+    end
+  end)
 end
 
 -- Bring back all cursors after removing them
