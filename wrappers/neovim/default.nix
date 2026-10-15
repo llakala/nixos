@@ -17,8 +17,8 @@
         src = fetchFromGitHub {
           owner = "neovim";
           repo = "neovim";
-          rev = "898e6f884e1331b92dc9deb5148091b32df017ca";
-          hash = "sha256-h4jVBM12UT8dF6U1aNrZeSAZn9j66MEg72yGqrVntVg=";
+          rev = "feeefbcc71859374b625a4d57f692ef0929e6c94";
+          hash = "sha256-/Whio5xTcwF2J4efEi8rhLrmsoRdh3FP6/pZw/D2YG4=";
         };
         patches = (oldAttrs.patches or []) ++ [ ./patches/better-e-binding.patch ];
       })
