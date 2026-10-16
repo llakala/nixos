@@ -24,7 +24,7 @@ local spec_treesitter = require("mini.ai").gen_spec.treesitter
 vim.b.miniai_config = {
   custom_textobjects = {
     -- see neovim/nvim/after/queries/nix/textobjects.scm
-    b = spec_treesitter({ a = "@binding.outer", i = "@binding.inner" }),
+    a = spec_treesitter({ a = "@binding.outer", i = "@binding.inner" }),
 
     -- inside ${}
     ["$"] = { "%${().-()}" },
