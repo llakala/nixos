@@ -1,8 +1,8 @@
 { inputs }:
 let
-  inherit (inputs.nixpkgs) pkgs;
+  inherit (inputs.nixpkgs.pkgs) makeDesktopItem;
 in
-pkgs.makeDesktopItem {
+makeDesktopItem {
   type = "Application";
   name = "kittab"; # ${name}.desktop
   desktopName = "Kittab";

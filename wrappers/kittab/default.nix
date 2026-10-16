@@ -20,9 +20,9 @@
   result = promise (
     { options, inputs, results }:
     let
-      inherit (inputs.nixpkgs) pkgs;
+      inherit (inputs.nixpkgs.pkgs) symlinkJoin;
     in
-    pkgs.symlinkJoin {
+    symlinkJoin {
       name = "kittab-wrapped";
       paths = [
         options.kittab

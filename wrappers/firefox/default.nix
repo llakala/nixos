@@ -13,11 +13,11 @@
       ./policies/preferences.json
       ./policies/searchEngines.json
     ];
+
     autoConfigFiles.default = promise (
       { inputs }:
       let
-        inherit (inputs.nixpkgs) pkgs;
-        inherit (pkgs) replaceVars;
+        inherit (inputs.nixpkgs.pkgs) replaceVars;
       in [
         (replaceVars ./autoConfig.js {
           userChromeFile = ./userChrome.css;
