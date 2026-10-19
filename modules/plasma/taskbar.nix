@@ -34,6 +34,7 @@ in {
           hidden = [
             "org.kde.plasma.brightness"
             "org.kde.plasma.volume"
+            "org.kde.merkuro.contact.applet"
           ];
         };
       }
