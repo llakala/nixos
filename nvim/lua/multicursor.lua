@@ -65,7 +65,7 @@ do
   local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
 
   local function rotate(forward)
-    if vim.api.nvim__mcursor_cascading() then
+    if vim.v.cascading then
       return
     end
 
