@@ -271,7 +271,7 @@ end
 -- This uses v:inclusive, which I patch into Neovim via wrappers/neovim/patches/inclusive.patch.
 -- This lets me properly handle inclusive motions like `e` and `f`. I have an
 -- older version that doesn't require this patch
--- [here](https://github.com/llakala/nixos/blob/main/nvim/lua/multicursor.lua#L262-L298),
+-- [here](https://github.com/llakala/nixos/blob/0277f6434cfc26130f069654db21e0d49eb3f480/nvim/lua/multicursor.lua#L262-L298),
 -- and I'll PR v:inclusive back to Neovim at some point
 do
   vim.keymap.set("n", "qs", function()
