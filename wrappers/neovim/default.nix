@@ -17,10 +17,13 @@
         src = fetchFromGitHub {
           owner = "neovim";
           repo = "neovim";
-          rev = "feeefbcc71859374b625a4d57f692ef0929e6c94";
-          hash = "sha256-/Whio5xTcwF2J4efEi8rhLrmsoRdh3FP6/pZw/D2YG4=";
+          rev = "b3c7c191fa8156ac66d86bb614537944c010d6a2";
+          hash = "sha256-O9osevPo4iXqI4bxsfZsavXS62aosW26l9BJzzYJLeU=";
         };
-        patches = (oldAttrs.patches or []) ++ [ ./patches/better-e-binding.patch ];
+        patches = (oldAttrs.patches or []) ++ [
+          ./patches/better-e-binding.patch
+          ./patches/inclusive.patch
+        ];
       })
     );
 

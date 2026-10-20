@@ -261,36 +261,61 @@ end
 
 -- [cursor-count]qs[motion-count]{motion}
 -- Mnemonic: "quick select"
+--
 -- Examples:
 -- 1. qs2w places a cursor "two words away"
 -- 2. 2qsw places two cursors, one on each word
 -- 3. 2qs2w places two cursors, one "two words away", one "four words away"
+--
+-- NOTE:
+-- This uses v:inclusive, which I patch into Neovim via wrappers/neovim/patches/inclusive.patch.
+-- This lets me properly handle inclusive motions like `e` and `f`. I have an
+-- older version that doesn't require this patch
+-- [here](https://github.com/llakala/nixos/blob/main/nvim/lua/multicursor.lua#L262-L298),
+-- and I'll PR v:inclusive back to Neovim at some point
 do
   vim.keymap.set("n", "qs", function()
-    vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
     local operator_count = vim.v.count1
+    vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
+
+    -- dummy operatorfunc, just used to setup a CmdAtom so we can repeat the
+    -- call to the operator [count] times
+    -- setting the position here prevents flashing
+    vim.o.operatorfunc = function()
+      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+    end
 
     vim.api.nvim_create_autocmd("CmdAtom", {
       once = true,
       callback = function(ev)
-        -- lhs preserves the motion count, and accounts for weird motions like /
-        local motion = string.gsub(ev.data.lhs, "qs", "", 1)
+        -- place a multicursor on the other end of the motion
+        vim.o.operatorfunc = function(type)
+          local mark = vim.api.nvim_buf_get_mark(0, "[")
+          local cursor = vim.b.cursor_before_operator
 
-        -- note: doesn't play well with textobjects and omap bindings
-        -- if we get https://github.com/neovim/neovim/issues/42228, then
-        -- extmarks could be set in the operatorfunc itself
-        for _ = 1, operator_count do
-          vim.cmd("norm " .. motion)
-          vim.api.nvim_buf_set_extmark(0, ns, vim.pos.cursor(0):to_extmark())
+          if cursor[1] == mark[1] and cursor[2] == mark[2] then
+            mark = vim.api.nvim_buf_get_mark(0, "]")
+            -- increment cursor column on exclusive selection
+            if type == "char" and not vim.v.inclusive then
+              mark[2] = mark[2] + 1
+            end
+          else
+            vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+          end
+
+          vim.api.nvim_buf_set_extmark(0, ns, mark[1] - 1, mark[2])
         end
-        vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+
+        -- call the operatorfunc with the same motion typed by the user
+        -- 3qs2w -> g@2w, 2g@2w, 3g@2w
+        -- count multiplies with the motion count, so 2g@2w places a cursor four
+        -- words ahead
+        local operator = string.gsub(ev.data.lhs, "qs", "g@", 1)
+        for count = 1, operator_count do
+          vim.cmd("norm " .. count .. operator)
+        end
       end,
     })
-
-    -- set cursor before CmdAtom to prevent flashing
-    vim.o.operatorfunc = function()
-      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
-    end
 
     vim.o.follow = true
     return "g@"

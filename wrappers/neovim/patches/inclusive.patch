@@ -1,0 +1,43 @@
+diff --git a/src/nvim/eval/vars.c b/src/nvim/eval/vars.c
+index 41b6a891c8..fae9002505 100644
+--- a/src/nvim/eval/vars.c
++++ b/src/nvim/eval/vars.c
+@@ -222,6 +222,7 @@ static struct vimvar {
+   VV(VV_USERACTIVE,       "useractive",       VAR_NUMBER, VV_RO),
+   VV(VV_STARTREASON,      "startreason",      VAR_STRING, VV_RO),
+   VV(VV_CASCADING,        "cascading",        VAR_BOOL,   VV_RO),
++  VV(VV_INCLUSIVE,        "inclusive",        VAR_BOOL,   VV_RO),
+ };
+ #undef VV
+
+diff --git a/src/nvim/eval_defs.h b/src/nvim/eval_defs.h
+index 777dad6938..5728a3c012 100644
+--- a/src/nvim/eval_defs.h
++++ b/src/nvim/eval_defs.h
+@@ -140,4 +140,5 @@ typedef enum {
+   VV_USERACTIVE,
+   VV_STARTREASON,
+   VV_CASCADING,
++  VV_INCLUSIVE,
+ } VimVarIndex;
+diff --git a/src/nvim/ops.c b/src/nvim/ops.c
+index b68786dd64..3603a2b3fd 100644
+--- a/src/nvim/ops.c
++++ b/src/nvim/ops.c
+@@ -29,6 +29,7 @@
+ #include "nvim/eval.h"
+ #include "nvim/eval/typval.h"
+ #include "nvim/eval/typval_defs.h"
++#include "nvim/eval/vars.h"
+ #include "nvim/ex_cmds2.h"
+ #include "nvim/ex_cmds_defs.h"
+ #include "nvim/ex_docmd.h"
+@@ -3295,6 +3296,8 @@ static void op_function(const oparg_T *oap)
+     // Set '[ and '] marks to text to be operated on.
+     curbuf->b_op_start = oap->start;
+     curbuf->b_op_end = oap->end;
++
++    set_vim_var_bool(VV_INCLUSIVE, oap->inclusive ? kBoolVarTrue : kBoolVarFalse);
+     if (oap->motion_type == kMTCharWise && !oap->inclusive) {
+       // Exclude the end position.
+       decl(&curbuf->b_op_end);
