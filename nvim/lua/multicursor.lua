@@ -62,89 +62,250 @@ end
 
 -- "rotate" each cursor's visual selection with qn / qp
 do
+  ---@class CursorMeta : { range: vim.Range, text: string[], start_offset: integer, cursor_offset: integer, primary: boolean? }
+
+  local cursor_ns = vim.api.nvim_create_namespace("nvim.multicursor.cursor")
   local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
 
-  local function rotate(forward)
+  ---@param cursors CursorMeta[]
+  local function apply_rotation(cursors, primary_placed, distance)
+    -- Applies rotations in reverse buffer order, so previous cursors don't
+    -- invalidate the ranges of later cursors
+    for i = #cursors, 1, -1 do
+      local cursor = cursors[i]
+      local range = cursor.range
+      local next_cursor = cursors[(i - distance - 1) % #cursors + 1]
+      vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
+
+      local pos
+      if next_cursor.cursor_offset < next_cursor.start_offset then
+        -- next cursor is outside of its range, ignore its offset
+        pos = vim.pos.offset(0, cursor.start_offset)
+      else
+        pos = vim.pos.offset(0, cursor.start_offset + next_cursor.cursor_offset - next_cursor.start_offset)
+      end
+
+      -- Preserve whether there was a multicursor underneath the primary
+      if not cursor.primary or primary_placed then
+        vim.api.nvim_buf_set_extmark(0, ns, pos:to_extmark())
+      end
+      if cursor.primary then
+        vim.api.nvim_win_set_cursor(0, pos:to_cursor())
+      end
+    end
+  end
+
+  local function rotate_normal(forward, motion)
+    if vim.v.cascading then
+      return
+    end
+    local keys, type
+    local distance = (forward and 1 or -1) * vim.v.count1
+    local primary_pos = vim.pos.cursor(0)
+
+    local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1, { details = true })
+    if #normal_extmarks == 0 then
+      return
+    end
+
+    vim.async.run(function()
+      -- don't exit the `await` until we get the inputted keys via a CmdAtom
+      vim.async.await(function(finish)
+        -- dummy operatorfunc
+        vim.o.operatorfunc = function(op_type)
+          vim.api.nvim_win_set_cursor(0, primary_pos:to_cursor())
+          type = op_type
+        end
+
+        vim.api.nvim_create_autocmd("CmdAtom", {
+          once = true,
+          callback = function(ev)
+            keys = ev.data.keys
+            finish()
+          end,
+        })
+
+        vim.api.nvim_feedkeys("g@" .. (motion or ""), "ni", false)
+      end)
+
+      ---@type CursorMeta[]
+      local cursors = {}
+      local primary_placed = false
+      local primary_start = vim.api.nvim_buf_get_mark(0, "[")
+      local primary_end = vim.api.nvim_buf_get_mark(0, "]")
+
+      -- await all the operators finishing, so the `cursors` table is fully
+      -- populated. by queueing all the operator calls eagerly with
+      -- nvim_feedkeys, the cursors are placed in a single visual refresh!
+      vim.async.await(function(finish)
+        ---@type vim.Pos[]
+        local cursor_positions = {}
+        local op_index = 1
+
+        vim.o.operatorfunc = function()
+          local cursor_pos = cursor_positions[op_index]
+          local range_start = vim.api.nvim_buf_get_mark(0, "[")
+          local range_end = vim.api.nvim_buf_get_mark(0, "]")
+          if type == "line" then
+            range_start[2] = 0
+            range_end[2] = #vim.fn.getline(range_end[1]) - 1
+          end
+          local range = vim.range.mark(0, range_start[1], range_start[2], range_end[1], range_end[2])
+
+          ---@type CursorMeta
+          local cursor = {
+            range = range,
+            text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+            start_offset = vim.pos.cursor(0, range_start):to_offset(),
+            cursor_offset = cursor_pos:to_offset(),
+          }
+
+          if cursor_pos == primary_pos then
+            cursor.primary = true
+            primary_placed = true
+          end
+
+          cursors[op_index] = cursor
+          op_index = op_index + 1
+          if op_index > #normal_extmarks then
+            finish()
+          end
+        end
+
+        -- since we don't have access to each cursor's marks, emit a faux-cascade
+        -- ourselves
+        for i, mark in ipairs(normal_extmarks) do
+          local start_pos = vim.pos.extmark(0, mark[2], mark[3])
+          vim.api.nvim_win_set_cursor(0, start_pos:to_cursor())
+          cursor_positions[i] = start_pos
+          vim.api.nvim_feedkeys(keys, "nx", true)
+        end
+      end)
+
+      -- if there's not already a multicursor under the primary, insert it to the
+      -- sorted list of cursors
+      if not primary_placed then
+        if type == "line" then
+          primary_start[2] = 0
+          primary_end[2] = #vim.fn.getline(primary_end[1]) - 1
+        end
+        local range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
+
+        ---@type CursorMeta
+        local primary = {
+          range = range,
+          text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
+          start_offset = vim.pos.cursor(0, primary_start):to_offset(),
+          cursor_offset = primary_pos:to_offset(),
+          primary = true,
+        }
+
+        local index = vim.list.bisect(cursors, primary, {
+          ---@param cursor CursorMeta
+          key = function(cursor)
+            return cursor.start_offset
+          end,
+        })
+        table.insert(cursors, index, primary)
+      end
+
+      vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+      apply_rotation(cursors, primary_placed, distance)
+    end)
+  end
+
+  local function rotate_visual(forward)
     if vim.v.cascading then
       return
     end
 
-    local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1)
+    local cursor_extmarks = vim.api.nvim_buf_get_extmarks(0, cursor_ns, 0, -1)
     local visual_extmarks = vim.api.nvim_buf_get_extmarks(0, visual_ns, 0, -1, { details = true })
     if #visual_extmarks == 0 then
       return
     end
 
     local distance = (forward and 1 or -1) * vim.v.count1
-    local linewise = vim.fn.visualmode() == "V"
     -- `!` flag is needed to prevent https://github.com/neovim/neovim/issues/42263
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx!", false)
     local primary_start = vim.api.nvim_buf_get_mark(0, "<")
     local primary_end = vim.api.nvim_buf_get_mark(0, ">")
-    if linewise then
-      primary_end[2] = #vim.api.nvim_get_current_line() - 1
-    end
 
-    ---@type { range: vim.Range, text: string[], pos: vim.Pos, primary: boolean? }[]
+    ---@type CursorMeta[]
     local cursors = {}
     local primary_placed = false
     for i, mark in ipairs(visual_extmarks) do
-      local range = vim.range.extmark(0, mark[2], mark[3], mark[4].end_row, mark[4].end_col)
-      local start_pos = vim.pos.extmark(0, mark[2], mark[3])
-      cursors[i] = {
+      local cursor_pos = vim.pos.extmark(0, cursor_extmarks[i][2], cursor_extmarks[i][3])
+      local range_start = vim.pos.extmark(0, mark[2], mark[3])
+      local range_end = vim.pos.extmark(0, mark[4].end_row, mark[4].end_col)
+      ---@type vim.Range
+      local range = vim.range(range_start, range_end)
+
+      ---@type CursorMeta
+      local cursor = {
         range = range,
         text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        pos = linewise and vim.pos.extmark(0, normal_extmarks[i][2], normal_extmarks[i][3]) or start_pos,
+        start_offset = range_start:to_offset(),
+        cursor_offset = cursor_pos:to_offset(),
       }
-      if vim.deep_equal(start_pos:to_cursor(), primary_start) then
-        cursors[i].primary = true
+      if range_start == primary_start then
+        cursor.primary = true
         primary_placed = true
       end
+
+      cursors[i] = cursor
     end
 
     --- if there's not a multicursor underneath the primary, add it to the list
     --- of cursors to be moved. Keeping the list sorted preserves our axioms
     --- about iterating backwards
     if not primary_placed then
-      local range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
-      local start_pos = vim.pos.cursor(0, primary_start)
+      local cursor_pos = vim.pos.cursor(0)
+      if vim.fn.visualmode() == "V" then
+        primary_end[2] = #vim.fn.getline(primary_end[1]) - 1
+      end
+      local primary_range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
+
       local primary = {
-        range = range,
-        text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
-        pos = linewise and vim.pos.cursor(0) or start_pos,
+        range = primary_range,
+        text = vim.api.nvim_buf_get_text(0, primary_range:to_extmark()),
+        start_offset = vim.pos.cursor(0, primary_start):to_offset(),
+        cursor_offset = cursor_pos:to_offset(),
         primary = true,
       }
+
       local index = vim.list.bisect(cursors, primary, {
+        ---@param cursor CursorMeta
         key = function(cursor)
-          return cursor.pos:to_offset()
+          return cursor.start_offset
         end,
       })
       table.insert(cursors, index, primary)
     end
 
-    -- delete all existing cursors, then rotate each cursor. rotations are
-    -- applied in reverse buffer order, so rotations from previous cursors don't
-    -- invalidate the ranges of later cursors
+    -- delete all existing cursors, then rotate each cursor
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-    for i = #cursors, 1, -1 do
-      local cursor = cursors[i]
-      local range = cursor.range
-      local next_cursor = cursors[(i - distance - 1) % #cursors + 1]
-      vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
-      if not cursor.primary or primary_placed then
-        vim.api.nvim_buf_set_extmark(0, ns, cursor.pos:to_extmark())
-      end
-      if cursor.primary then
-        vim.api.nvim_win_set_cursor(0, cursor.pos:to_cursor())
-      end
-    end
+    apply_rotation(cursors, primary_placed, distance)
   end
 
+  vim.keymap.set("n", "qn", function()
+    rotate_normal(true)
+  end)
+  vim.keymap.set("n", "qp", function()
+    rotate_normal(false)
+  end)
+  vim.keymap.set("n", "qnn", function()
+    rotate_normal(true, "_")
+  end)
+  vim.keymap.set("n", "qpp", function()
+    rotate_normal(false, "_")
+  end)
+
   vim.keymap.set("x", "qn", function()
-    rotate(true)
+    rotate_visual(true)
   end)
   vim.keymap.set("x", "qp", function()
-    rotate(false)
+    rotate_visual(false)
   end)
 end
 
@@ -356,7 +517,7 @@ do
       local end_pos = vim.api.nvim_buf_get_mark(0, "]")
       if mode == "line" then
         start_pos[2] = 0
-        end_pos[2] = #vim.fn.getline(end_pos[1])
+        end_pos[2] = #vim.fn.getline(end_pos[1]) - 1
       end
 
       -- place a cursor on each instance of cword (other than the current one)
