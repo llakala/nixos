@@ -62,7 +62,12 @@ end
 
 -- "rotate" each cursor's visual selection with qn / qp
 do
-  ---@class CursorMeta : { range: vim.Range, text: string[], start_offset: integer, cursor_offset: integer, primary: boolean? }
+  ---@class (exact) CursorMeta
+  ---@field range vim.Range
+  ---@field text string[]
+  ---@field start_offset integer
+  ---@field cursor_offset integer
+  ---@field primary boolean?
 
   local cursor_ns = vim.api.nvim_create_namespace("nvim.multicursor.cursor")
   local visual_ns = vim.api.nvim_create_namespace("nvim.multicursor.visual")
@@ -78,7 +83,10 @@ do
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
 
       local pos
-      if next_cursor.cursor_offset < next_cursor.start_offset then
+      if
+        next_cursor.cursor_offset < next_cursor.start_offset
+        or next_cursor.cursor_offset > (next_cursor.start_offset + #next_cursor.text)
+      then
         -- next cursor is outside of its range, ignore its offset
         pos = vim.pos.offset(0, cursor.start_offset)
       else
@@ -95,44 +103,47 @@ do
     end
   end
 
-  local function rotate_normal(forward, motion)
+  local function rotate_normal(forward, motion, info)
     if vim.v.cascading then
       return
     end
-    local keys, type
-    local distance = (forward and 1 or -1) * vim.v.count1
     local primary_pos = vim.pos.cursor(0)
-
-    local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1, { details = true })
+    local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1)
     if #normal_extmarks == 0 then
       return
     end
 
     vim.async.run(function()
-      -- don't exit the `await` until we get the inputted keys via a CmdAtom
-      vim.async.await(function(finish)
-        -- dummy operatorfunc
-        vim.o.operatorfunc = function(op_type)
-          vim.api.nvim_win_set_cursor(0, primary_pos:to_cursor())
-          type = op_type
-        end
+      -- on dot repeat, reuse the cached info. otherwise, get the motion keys
+      -- via a CmdAtom
+      if not info then
+        info = {}
+        info.count = vim.v.count1
+        vim.async.await(function(finish)
+          -- dummy operatorfunc
+          vim.o.operatorfunc = function(op_type)
+            vim.api.nvim_win_set_cursor(0, primary_pos:to_cursor())
+            info.optype = op_type
+          end
 
-        vim.api.nvim_create_autocmd("CmdAtom", {
-          once = true,
-          callback = function(ev)
-            keys = ev.data.keys
-            finish()
-          end,
-        })
+          vim.api.nvim_create_autocmd("CmdAtom", {
+            once = true,
+            callback = function(ev)
+              info.keys = ev.data.keys
+              finish()
+            end,
+          })
 
-        vim.api.nvim_feedkeys("g@" .. (motion or ""), "ni", false)
-      end)
+          vim.api.nvim_feedkeys("g@" .. (motion or ""), "ni", false)
+        end)
+      end
 
       ---@type CursorMeta[]
       local cursors = {}
       local primary_placed = false
       local primary_start = vim.api.nvim_buf_get_mark(0, "[")
       local primary_end = vim.api.nvim_buf_get_mark(0, "]")
+      local distance = (forward and 1 or -1) * info.count
 
       -- await all the operators finishing, so the `cursors` table is fully
       -- populated. by queueing all the operator calls eagerly with
@@ -146,7 +157,7 @@ do
           local cursor_pos = cursor_positions[op_index]
           local range_start = vim.api.nvim_buf_get_mark(0, "[")
           local range_end = vim.api.nvim_buf_get_mark(0, "]")
-          if type == "line" then
+          if info.optype == "line" then
             range_start[2] = 0
             range_end[2] = #vim.fn.getline(range_end[1]) - 1
           end
@@ -178,14 +189,14 @@ do
           local start_pos = vim.pos.extmark(0, mark[2], mark[3])
           vim.api.nvim_win_set_cursor(0, start_pos:to_cursor())
           cursor_positions[i] = start_pos
-          vim.api.nvim_feedkeys(keys, "nx", true)
+          vim.api.nvim_feedkeys(info.keys, "nx", false)
         end
       end)
 
       -- if there's not already a multicursor under the primary, insert it to the
       -- sorted list of cursors
       if not primary_placed then
-        if type == "line" then
+        if info.optype == "line" then
           primary_start[2] = 0
           primary_end[2] = #vim.fn.getline(primary_end[1]) - 1
         end
@@ -211,6 +222,11 @@ do
 
       vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
       apply_rotation(cursors, primary_placed, distance)
+
+      -- on dot repeat, re-call the function, caching the optype and keys
+      vim.o.operatorfunc = function()
+        rotate_normal(forward, motion, info)
+      end
     end)
   end
 
@@ -365,11 +381,11 @@ end
 do
   local function operator(motion)
     local cursor = vim.api.nvim_win_get_cursor(0)
-    vim.go.operatorfunc = function(type)
+    vim.go.operatorfunc = function(optype)
       local key
-      if type == "line" then
+      if optype == "line" then
         key = "V"
-      elseif type == "block" then
+      elseif optype == "block" then
         key = vim.keycode("<C-v>")
       else
         key = "v"
@@ -450,14 +466,14 @@ do
       once = true,
       callback = function(ev)
         -- place a multicursor on the other end of the motion
-        vim.o.operatorfunc = function(type)
+        vim.o.operatorfunc = function(optype)
           local mark = vim.api.nvim_buf_get_mark(0, "[")
           local cursor = vim.b.cursor_before_operator
 
           if cursor[1] == mark[1] and cursor[2] == mark[2] then
             mark = vim.api.nvim_buf_get_mark(0, "]")
             -- increment cursor column on exclusive selection
-            if type == "char" and not vim.v.inclusive then
+            if optype == "char" and not vim.v.inclusive then
               mark[2] = mark[2] + 1
             end
           else
