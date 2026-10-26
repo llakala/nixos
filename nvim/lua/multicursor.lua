@@ -490,9 +490,9 @@ do
         -- 3qs2w -> g@2w, 2g@2w, 3g@2w
         -- count multiplies with the motion count, so 2g@2w places a cursor four
         -- words ahead
-        local operator = string.gsub(ev.data.lhs, "qs", "g@", 1)
+        local keys = string.gsub(ev.data.lhs, "qs", "g@", 1)
         for count = 1, operator_count do
-          vim.cmd("norm " .. count .. operator)
+          vim.api.nvim_feedkeys(count .. keys, "mx", false)
         end
       end,
     })
