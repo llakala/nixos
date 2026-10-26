@@ -60,6 +60,270 @@ do
   end, { expr = true })
 end
 
+do
+  -- when disabling follow mode, if there's an extra multicursor underneath the
+  -- main cursor  delete it. more intuitive than leaving the multicursor there
+  local function delete_multi_at_cursor()
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    cursor[1] = cursor[1] - 1
+    local extmarks = vim.api.nvim_buf_get_extmarks(0, ns, cursor, cursor, {})
+    if #extmarks > 0 then
+      vim.api.nvim_buf_del_extmark(0, ns, extmarks[1][1])
+    end
+  end
+
+  -- Toggle follow mode for a single motion
+  -- mnemonic: f for follow
+  vim.keymap.set({ "n", "x" }, "qf", function()
+    vim.api.nvim_create_autocmd("CmdAtom", {
+      callback = function(ev)
+        if ev.data.lhs == "qf" then
+          return
+        end
+        vim.o.follow = not vim.o.follow
+        return true
+      end,
+    })
+    vim.o.follow = not vim.o.follow
+    if not vim.o.follow then
+      delete_multi_at_cursor()
+    end
+  end)
+
+  -- Enable/disable follow mode
+  vim.keymap.set({ "n", "x" }, "qF", function()
+    vim.o.follow = not vim.o.follow
+    if not vim.o.follow then
+      delete_multi_at_cursor()
+    end
+  end)
+end
+
+-- Bring back all cursors after removing them
+-- mnemonic: u for undo
+do
+  local last_ns = vim.api.nvim_create_namespace("nvim.multicursor.last")
+
+  vim.keymap.set({ "n", "x" }, "qu", function()
+    -- don't move the primary cursor
+    pcall(vim.api.nvim_buf_del_extmark, 0, last_ns, 1)
+    return "gQ"
+  end, { expr = true })
+
+  vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
+end
+
+do
+  local function operator(motion)
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    vim.go.operatorfunc = function(optype)
+      local key
+      if optype == "line" then
+        key = "V"
+      elseif optype == "block" then
+        key = vim.keycode("<C-v>")
+      else
+        key = "v"
+      end
+
+      local range_start = vim.api.nvim_buf_get_mark(0, "[")
+      local range_end = vim.api.nvim_buf_get_mark(0, "]")
+      if cursor[1] <= range_start[1] then
+        range_start, range_end = range_end, range_start
+      end
+
+      vim.api.nvim_win_set_cursor(0, range_start)
+      vim.api.nvim_feedkeys(key, "nx", false)
+      vim.api.nvim_win_set_cursor(0, range_end)
+
+      vim.api.nvim_create_autocmd("CmdAtom", {
+        callback = function()
+          vim.cmd("silent! normal! 1q=")
+          return true
+        end,
+      })
+      vim.api.nvim_feedkeys("zq", "n", false)
+    end
+    vim.api.nvim_feedkeys("g@" .. (motion or ""), "in", false)
+  end
+  -- qx{motion}{motion}
+  -- first motion selects the range to operate on
+  -- second motion places a cursor on every instance of that motion (in the
+  -- previous range)
+  -- mnemonic: s for select
+  vim.keymap.set("n", "qx", function()
+    operator()
+  end)
+  vim.keymap.set("n", "qxx", function()
+    operator("_")
+  end)
+
+  vim.keymap.set("x", "qx", function()
+    vim.api.nvim_create_autocmd("CmdAtom", {
+      callback = function()
+        vim.cmd("silent! normal! 1q=")
+        return true
+      end,
+    })
+    return "zq"
+  end, { expr = true })
+
+  vim.keymap.set({ "n", "x" }, "zq", "<Nop>")
+end
+
+-- [cursor-count]qs[motion-count]{motion}
+-- Mnemonic: "quick select"
+--
+-- Examples:
+-- 1. qs2w places a cursor "two words away"
+-- 2. 2qsw places two cursors, one on each word
+-- 3. 2qs2w places two cursors, one "two words away", one "four words away"
+--
+-- NOTE:
+-- This uses v:inclusive, which I patch into Neovim via wrappers/neovim/patches/inclusive.patch.
+-- This lets me properly handle inclusive motions like `e` and `f`. I have an
+-- older version that doesn't require this patch
+-- [here](https://github.com/llakala/nixos/blob/0277f6434cfc26130f069654db21e0d49eb3f480/nvim/lua/multicursor.lua#L262-L298),
+-- and I'll PR v:inclusive back to Neovim at some point
+do
+  vim.keymap.set("n", "qs", function()
+    local operator_count = vim.v.count1
+    vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
+
+    -- dummy operatorfunc, just used to setup a CmdAtom so we can repeat the
+    -- call to the operator [count] times
+    -- setting the position here prevents flashing
+    vim.o.operatorfunc = function()
+      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+    end
+
+    vim.api.nvim_create_autocmd("CmdAtom", {
+      once = true,
+      callback = function(ev)
+        -- place a multicursor on the other end of the motion
+        vim.o.operatorfunc = function(optype)
+          local mark = vim.api.nvim_buf_get_mark(0, "[")
+          local cursor = vim.b.cursor_before_operator
+
+          if cursor[1] == mark[1] and cursor[2] == mark[2] then
+            mark = vim.api.nvim_buf_get_mark(0, "]")
+            -- increment cursor column on exclusive selection
+            if optype == "char" and not vim.v.inclusive then
+              mark[2] = mark[2] + 1
+            end
+          else
+            vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
+          end
+
+          vim.api.nvim_buf_set_extmark(0, ns, mark[1] - 1, mark[2])
+        end
+
+        -- call the operatorfunc with the same motion typed by the user
+        -- 3qs2w -> g@2w, 2g@2w, 3g@2w
+        -- count multiplies with the motion count, so 2g@2w places a cursor four
+        -- words ahead
+        local keys = string.gsub(ev.data.lhs, "qs", "g@", 1)
+        for count = 1, operator_count do
+          vim.api.nvim_feedkeys(count .. keys, "mx", false)
+        end
+      end,
+    })
+
+    vim.o.follow = true
+    return "g@"
+  end, { expr = true })
+end
+
+-- qd{motion} / v_qd{motion}
+-- Mnemonic: "quick do"
+-- Place a cursor on all instances of the current word / visual selection in the
+-- motion's range
+do
+  local function operator(visual, motion)
+    local cword, cword_start, cword_end, is_keyword
+
+    if visual then
+      -- get current visual selection as cword
+      cword_start, cword_end = vim.fn.getpos("v"), vim.fn.getpos(".")
+      cword = vim.fn.getregion(cword_start, cword_end)[1]
+    else
+      -- if current character is special, use it. otherwise, expand <cword>
+      cword_start = vim.fn.getpos(".")
+      cword = vim.fn.getregion(cword_start, cword_start)[1]
+      if vim.fn.match(cword, [[\k]]) ~= -1 then
+        is_keyword = true
+        cword = vim.fn.expand("<cword>")
+        cword = [[\C\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
+      end
+    end
+
+    -- escape non-keyword so it can't execute regex
+    if not is_keyword then
+      cword = [[\C\V]] .. vim.fn.escape(cword, [[\]])
+    end
+
+    vim.o.operatorfunc = function(mode)
+      local cursor = vim.b.cursor_before_operator
+      local start_pos = vim.api.nvim_buf_get_mark(0, "[")
+      local end_pos = vim.api.nvim_buf_get_mark(0, "]")
+      if mode == "line" then
+        start_pos[2] = 0
+        end_pos[2] = #vim.fn.getline(end_pos[1]) - 1
+      end
+
+      -- place a cursor on each instance of cword (other than the current one)
+      -- ignore matches before the start col / after the end col
+      local matches = vim.fn.matchbufline("%", cword, start_pos[1], end_pos[1])
+      for _, match in ipairs(matches) do
+        local pos = { match.lnum, match.byteidx }
+        if
+          (pos[1] ~= cursor[1] or pos[2] ~= cursor[2])
+          and (pos[1] ~= start_pos[1] or pos[2] >= start_pos[2])
+          and (pos[1] ~= end_pos[1] or pos[2] <= end_pos[2])
+        then
+          vim.api.nvim_buf_set_extmark(0, ns, pos[1] - 1, pos[2])
+        end
+      end
+
+      vim.api.nvim_win_set_cursor(0, cursor)
+    end
+
+    -- when exiting visual mode, store the final cursor position in the variable
+    -- that's also set on dot repeat
+    vim.api.nvim_create_autocmd("ModeChanged", {
+      pattern = "v:*",
+      callback = function()
+        vim.b.cursor_before_operator = vim.api.nvim_buf_get_mark(0, "<")
+        -- delete autocmd
+        return true
+      end,
+    })
+
+    if visual then
+      -- < mark is already be in the right place
+      return "<Esc>1q=g@" .. (motion or "")
+    elseif is_keyword then
+      -- place the < mark at the start of cword
+      return "viwo<Esc>1q=g@" .. (motion or "")
+    end
+    -- searching special character, place < on curpos
+    return "v<Esc>1q=g@" .. (motion or "")
+  end
+
+  vim.keymap.set("n", "qd", function()
+    return operator(false, "")
+  end, { expr = true })
+  vim.keymap.set("n", "qdd", function()
+    return operator(false, "_")
+  end, { expr = true })
+  vim.keymap.set("x", "qd", function()
+    return operator(true, "")
+  end, { expr = true })
+  vim.keymap.set("x", "qdd", function()
+    return operator(true, "_")
+  end, { expr = true })
+end
+
 -- "rotate" each cursor's visual selection with qn / qp
 do
   ---@class (exact) CursorMeta
@@ -326,270 +590,6 @@ do
   vim.keymap.set("x", "qp", function()
     rotate_visual(false)
   end)
-end
-
-do
-  -- when disabling follow mode, if there's an extra multicursor underneath the
-  -- main cursor  delete it. more intuitive than leaving the multicursor there
-  local function delete_multi_at_cursor()
-    local cursor = vim.api.nvim_win_get_cursor(0)
-    cursor[1] = cursor[1] - 1
-    local extmarks = vim.api.nvim_buf_get_extmarks(0, ns, cursor, cursor, {})
-    if #extmarks > 0 then
-      vim.api.nvim_buf_del_extmark(0, ns, extmarks[1][1])
-    end
-  end
-
-  -- Toggle follow mode for a single motion
-  -- mnemonic: f for follow
-  vim.keymap.set({ "n", "x" }, "qf", function()
-    vim.api.nvim_create_autocmd("CmdAtom", {
-      callback = function(ev)
-        if ev.data.lhs == "qf" then
-          return
-        end
-        vim.o.follow = not vim.o.follow
-        return true
-      end,
-    })
-    vim.o.follow = not vim.o.follow
-    if not vim.o.follow then
-      delete_multi_at_cursor()
-    end
-  end)
-
-  -- Enable/disable follow mode
-  vim.keymap.set({ "n", "x" }, "qF", function()
-    vim.o.follow = not vim.o.follow
-    if not vim.o.follow then
-      delete_multi_at_cursor()
-    end
-  end)
-end
-
--- Bring back all cursors after removing them
--- mnemonic: u for undo
-do
-  local last_ns = vim.api.nvim_create_namespace("nvim.multicursor.last")
-
-  vim.keymap.set({ "n", "x" }, "qu", function()
-    -- don't move the primary cursor
-    pcall(vim.api.nvim_buf_del_extmark, 0, last_ns, 1)
-    return "gQ"
-  end, { expr = true })
-
-  vim.keymap.set({ "n", "x" }, "gQ", "<Nop>")
-end
-
-do
-  local function operator(motion)
-    local cursor = vim.api.nvim_win_get_cursor(0)
-    vim.go.operatorfunc = function(optype)
-      local key
-      if optype == "line" then
-        key = "V"
-      elseif optype == "block" then
-        key = vim.keycode("<C-v>")
-      else
-        key = "v"
-      end
-
-      local range_start = vim.api.nvim_buf_get_mark(0, "[")
-      local range_end = vim.api.nvim_buf_get_mark(0, "]")
-      if cursor[1] <= range_start[1] then
-        range_start, range_end = range_end, range_start
-      end
-
-      vim.api.nvim_win_set_cursor(0, range_start)
-      vim.api.nvim_feedkeys(key, "nx", false)
-      vim.api.nvim_win_set_cursor(0, range_end)
-
-      vim.api.nvim_create_autocmd("CmdAtom", {
-        callback = function()
-          vim.cmd("silent! normal! 1q=")
-          return true
-        end,
-      })
-      vim.api.nvim_feedkeys("zq", "n", false)
-    end
-    vim.api.nvim_feedkeys("g@" .. (motion or ""), "in", false)
-  end
-  -- qx{motion}{motion}
-  -- first motion selects the range to operate on
-  -- second motion places a cursor on every instance of that motion (in the
-  -- previous range)
-  -- mnemonic: s for select
-  vim.keymap.set("n", "qx", function()
-    operator()
-  end)
-  vim.keymap.set("n", "qxx", function()
-    operator("_")
-  end)
-
-  vim.keymap.set("x", "qx", function()
-    vim.api.nvim_create_autocmd("CmdAtom", {
-      callback = function()
-        vim.cmd("silent! normal! 1q=")
-        return true
-      end,
-    })
-    return "zq"
-  end, { expr = true })
-
-  vim.keymap.set({ "n", "x" }, "zq", "<Nop>")
-end
-
--- [cursor-count]qs[motion-count]{motion}
--- Mnemonic: "quick select"
---
--- Examples:
--- 1. qs2w places a cursor "two words away"
--- 2. 2qsw places two cursors, one on each word
--- 3. 2qs2w places two cursors, one "two words away", one "four words away"
---
--- NOTE:
--- This uses v:inclusive, which I patch into Neovim via wrappers/neovim/patches/inclusive.patch.
--- This lets me properly handle inclusive motions like `e` and `f`. I have an
--- older version that doesn't require this patch
--- [here](https://github.com/llakala/nixos/blob/0277f6434cfc26130f069654db21e0d49eb3f480/nvim/lua/multicursor.lua#L262-L298),
--- and I'll PR v:inclusive back to Neovim at some point
-do
-  vim.keymap.set("n", "qs", function()
-    local operator_count = vim.v.count1
-    vim.b.cursor_before_operator = vim.api.nvim_win_get_cursor(0)
-
-    -- dummy operatorfunc, just used to setup a CmdAtom so we can repeat the
-    -- call to the operator [count] times
-    -- setting the position here prevents flashing
-    vim.o.operatorfunc = function()
-      vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
-    end
-
-    vim.api.nvim_create_autocmd("CmdAtom", {
-      once = true,
-      callback = function(ev)
-        -- place a multicursor on the other end of the motion
-        vim.o.operatorfunc = function(optype)
-          local mark = vim.api.nvim_buf_get_mark(0, "[")
-          local cursor = vim.b.cursor_before_operator
-
-          if cursor[1] == mark[1] and cursor[2] == mark[2] then
-            mark = vim.api.nvim_buf_get_mark(0, "]")
-            -- increment cursor column on exclusive selection
-            if optype == "char" and not vim.v.inclusive then
-              mark[2] = mark[2] + 1
-            end
-          else
-            vim.api.nvim_win_set_cursor(0, vim.b.cursor_before_operator)
-          end
-
-          vim.api.nvim_buf_set_extmark(0, ns, mark[1] - 1, mark[2])
-        end
-
-        -- call the operatorfunc with the same motion typed by the user
-        -- 3qs2w -> g@2w, 2g@2w, 3g@2w
-        -- count multiplies with the motion count, so 2g@2w places a cursor four
-        -- words ahead
-        local keys = string.gsub(ev.data.lhs, "qs", "g@", 1)
-        for count = 1, operator_count do
-          vim.api.nvim_feedkeys(count .. keys, "mx", false)
-        end
-      end,
-    })
-
-    vim.o.follow = true
-    return "g@"
-  end, { expr = true })
-end
-
--- qd{motion} / v_qd{motion}
--- Mnemonic: "quick do"
--- Place a cursor on all instances of the current word / visual selection in the
--- motion's range
-do
-  local function operator(visual, motion)
-    local cword, cword_start, cword_end, is_keyword
-
-    if visual then
-      -- get current visual selection as cword
-      cword_start, cword_end = vim.fn.getpos("v"), vim.fn.getpos(".")
-      cword = vim.fn.getregion(cword_start, cword_end)[1]
-    else
-      -- if current character is special, use it. otherwise, expand <cword>
-      cword_start = vim.fn.getpos(".")
-      cword = vim.fn.getregion(cword_start, cword_start)[1]
-      if vim.fn.match(cword, [[\k]]) ~= -1 then
-        is_keyword = true
-        cword = vim.fn.expand("<cword>")
-        cword = [[\C\V\<]] .. vim.fn.escape(cword, [[\]]) .. [[\>]]
-      end
-    end
-
-    -- escape non-keyword so it can't execute regex
-    if not is_keyword then
-      cword = [[\C\V]] .. vim.fn.escape(cword, [[\]])
-    end
-
-    vim.o.operatorfunc = function(mode)
-      local cursor = vim.b.cursor_before_operator
-      local start_pos = vim.api.nvim_buf_get_mark(0, "[")
-      local end_pos = vim.api.nvim_buf_get_mark(0, "]")
-      if mode == "line" then
-        start_pos[2] = 0
-        end_pos[2] = #vim.fn.getline(end_pos[1]) - 1
-      end
-
-      -- place a cursor on each instance of cword (other than the current one)
-      -- ignore matches before the start col / after the end col
-      local matches = vim.fn.matchbufline("%", cword, start_pos[1], end_pos[1])
-      for _, match in ipairs(matches) do
-        local pos = { match.lnum, match.byteidx }
-        if
-          (pos[1] ~= cursor[1] or pos[2] ~= cursor[2])
-          and (pos[1] ~= start_pos[1] or pos[2] >= start_pos[2])
-          and (pos[1] ~= end_pos[1] or pos[2] <= end_pos[2])
-        then
-          vim.api.nvim_buf_set_extmark(0, ns, pos[1] - 1, pos[2])
-        end
-      end
-
-      vim.api.nvim_win_set_cursor(0, cursor)
-    end
-
-    -- when exiting visual mode, store the final cursor position in the variable
-    -- that's also set on dot repeat
-    vim.api.nvim_create_autocmd("ModeChanged", {
-      pattern = "v:*",
-      callback = function()
-        vim.b.cursor_before_operator = vim.api.nvim_buf_get_mark(0, "<")
-        -- delete autocmd
-        return true
-      end,
-    })
-
-    if visual then
-      -- < mark is already be in the right place
-      return "<Esc>1q=g@" .. (motion or "")
-    elseif is_keyword then
-      -- place the < mark at the start of cword
-      return "viwo<Esc>1q=g@" .. (motion or "")
-    end
-    -- searching special character, place < on curpos
-    return "v<Esc>1q=g@" .. (motion or "")
-  end
-
-  vim.keymap.set("n", "qd", function()
-    return operator(false, "")
-  end, { expr = true })
-  vim.keymap.set("n", "qdd", function()
-    return operator(false, "_")
-  end, { expr = true })
-  vim.keymap.set("x", "qd", function()
-    return operator(true, "")
-  end, { expr = true })
-  vim.keymap.set("x", "qdd", function()
-    return operator(true, "_")
-  end, { expr = true })
 end
 
 do
