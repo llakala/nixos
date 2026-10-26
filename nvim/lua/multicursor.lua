@@ -66,6 +66,7 @@ do
   ---@field range vim.Range
   ---@field text string[]
   ---@field start_offset integer
+  ---@field end_offset integer
   ---@field cursor_offset integer
   ---@field primary boolean?
 
@@ -83,10 +84,7 @@ do
       vim.api.nvim_buf_set_text(0, range[1], range[2], range[3], range[4], next_cursor.text)
 
       local pos
-      if
-        next_cursor.cursor_offset < next_cursor.start_offset
-        or next_cursor.cursor_offset > (next_cursor.start_offset + #next_cursor.text)
-      then
+      if next_cursor.cursor_offset < next_cursor.start_offset or next_cursor.cursor_offset > next_cursor.end_offset then
         -- next cursor is outside of its range, ignore its offset
         pos = vim.pos.offset(0, cursor.start_offset)
       else
@@ -154,7 +152,7 @@ do
         local op_index = 1
 
         vim.o.operatorfunc = function()
-          local cursor_pos = cursor_positions[op_index]
+          local curpos = cursor_positions[op_index]
           local range_start = vim.api.nvim_buf_get_mark(0, "[")
           local range_end = vim.api.nvim_buf_get_mark(0, "]")
           if info.optype == "line" then
@@ -168,10 +166,11 @@ do
             range = range,
             text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
             start_offset = vim.pos.cursor(0, range_start):to_offset(),
-            cursor_offset = cursor_pos:to_offset(),
+            end_offset = vim.pos.cursor(0, range_end):to_offset(),
+            cursor_offset = curpos:to_offset(),
           }
 
-          if cursor_pos == primary_pos then
+          if curpos == primary_pos then
             cursor.primary = true
             primary_placed = true
           end
@@ -207,6 +206,7 @@ do
           range = range,
           text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
           start_offset = vim.pos.cursor(0, primary_start):to_offset(),
+          end_offset = vim.pos.cursor(0, primary_end):to_offset(),
           cursor_offset = primary_pos:to_offset(),
           primary = true,
         }
@@ -214,7 +214,7 @@ do
         local index = vim.list.bisect(cursors, primary, {
           ---@param cursor CursorMeta
           key = function(cursor)
-            return cursor.start_offset
+            return cursor.cursor_offset
           end,
         })
         table.insert(cursors, index, primary)
@@ -244,8 +244,8 @@ do
     local distance = (forward and 1 or -1) * vim.v.count1
     -- `!` flag is needed to prevent https://github.com/neovim/neovim/issues/42263
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx!", false)
-    local primary_start = vim.api.nvim_buf_get_mark(0, "<")
-    local primary_end = vim.api.nvim_buf_get_mark(0, ">")
+    local primary_start = vim.pos.cursor(0, vim.api.nvim_buf_get_mark(0, "<"))
+    local primary_end = vim.pos.cursor(0, vim.api.nvim_buf_get_mark(0, ">"))
 
     ---@type CursorMeta[]
     local cursors = {}
@@ -262,6 +262,7 @@ do
         range = range,
         text = vim.api.nvim_buf_get_text(0, range:to_extmark()),
         start_offset = range_start:to_offset(),
+        end_offset = range_end:to_offset(),
         cursor_offset = cursor_pos:to_offset(),
       }
       if range_start == primary_start then
@@ -280,12 +281,14 @@ do
       if vim.fn.visualmode() == "V" then
         primary_end[2] = #vim.fn.getline(primary_end[1]) - 1
       end
-      local primary_range = vim.range.mark(0, primary_start[1], primary_start[2], primary_end[1], primary_end[2])
+      local primary_range =
+        vim.range.mark(0, primary_start[1] + 1, primary_start[2], primary_end[1] + 1, primary_end[2])
 
       local primary = {
         range = primary_range,
         text = vim.api.nvim_buf_get_text(0, primary_range:to_extmark()),
-        start_offset = vim.pos.cursor(0, primary_start):to_offset(),
+        start_offset = primary_start:to_offset(),
+        end_offset = primary_end:to_offset(),
         cursor_offset = cursor_pos:to_offset(),
         primary = true,
       }
@@ -293,7 +296,7 @@ do
       local index = vim.list.bisect(cursors, primary, {
         ---@param cursor CursorMeta
         key = function(cursor)
-          return cursor.start_offset
+          return cursor.cursor_offset
         end,
       })
       table.insert(cursors, index, primary)
