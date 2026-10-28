@@ -369,7 +369,7 @@ do
     if vim.v.cascading then
       return
     end
-    local primary_pos = vim.pos.cursor(0)
+    local primary_pos = info and info.pos or vim.pos.cursor(0)
     local normal_extmarks = vim.api.nvim_buf_get_extmarks(0, ns, 0, -1)
     if #normal_extmarks == 0 then
       return
@@ -488,7 +488,13 @@ do
       apply_rotation(cursors, primary_placed, distance)
 
       -- on dot repeat, re-call the function, caching the optype and keys
+      -- note: qnk won't dot repeat properly, as all multicursors are moved
+      -- before the state of each cursor can be saved
       vim.o.operatorfunc = function()
+        if vim.v.cascading then
+          return
+        end
+        info.pos = vim.pos.cursor(0, vim.b.cursor_before_operator)
         rotate_normal(forward, motion, info)
       end
     end)
