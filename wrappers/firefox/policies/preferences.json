@@ -8,6 +8,7 @@
       "browser.warnOnQuitShortcut": false,
       "browser.link.open_newwindow.override.external": 7,
       "media.webspeech.synth.dont_notify_on_error": true,
+      "browser.tabs.splitView.enabled": false,
 
       "browser.urlbar.suggest.calculator": true,
       "browser.urlbar.unitConversion.enabled": true,
