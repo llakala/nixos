@@ -61,6 +61,11 @@ o.textwidth = 80
 -- 2. Added `r`, so comment headers get continued, but only in insert mode.
 o.formatoptions = "cjqr"
 
+vim.cmd([[
+  " |- is ⊢
+  digraphs \|- 8866
+]])
+
 o.ignorecase = true
 o.smartcase = true
 o.hlsearch = true -- Highlight search matches
