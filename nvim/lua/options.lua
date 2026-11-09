@@ -62,8 +62,10 @@ o.textwidth = 80
 o.formatoptions = "cjqr"
 
 vim.cmd([[
-  " |- is ⊢
+  " ⊢
   digraphs \|- 8866
+  " ⊢
+  digraphs -\| 8867
 ]])
 
 o.ignorecase = true
