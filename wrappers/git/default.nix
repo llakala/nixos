@@ -2,11 +2,13 @@
 {
   options = {
     ignoreFile.default = ./ignore;
-    settings.mutators = [ "/gh" "/git" "/less" "/diff-so-fancy" ];
+    settings = {
+      default = promise (import ./settings.nix);
+      mutators = [ "/gh" "/less" "/diff-so-fancy" ];
+    };
   };
 
   mutations = {
     "/fish".abbreviations = import ./abbreviations.nix;
-    "/git".settings = promise (import ./settings.nix);
   };
 }

@@ -1,5 +1,4 @@
-_:
-{
+{ promise, ... }: {
   options = {
     completionsFiles.default = [
       ./completions/nix-build.fish
@@ -10,12 +9,25 @@ _:
       ./functions/down-or-execute.fish
       ./functions/fish_user_key_bindings.fish
     ];
-    abbreviations.mutators = [ "/fish" "/gh" "/git" ];
-    interactiveShellInit.mutators = [ "/fish" "/fzf" "/kitty" "/starship" "/yazi" "/zoxide" ];
-  };
-
-  mutations = {
-    "/fish".abbreviations = import ./abbreviations.nix;
-    "/fish".interactiveShellInit = builtins.readFile ./config.fish;
+    abbreviations = {
+      default = import ./abbreviations.nix;
+      mutators = [
+        "/gh"
+        "/git"
+      ];
+    };
+    interactiveShellInit = {
+      default = promise.map (prev: ''
+        ${prev}
+        ${builtins.readFile ./config.fish}
+      '');
+      mutators = [
+        "/fzf"
+        "/kitty"
+        "/starship"
+        "/yazi"
+        "/zoxide"
+      ];
+    };
   };
 }

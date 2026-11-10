@@ -16,7 +16,6 @@ let
   localPackages = {
     emodule = callPackage ./emodule.nix {};
     evalue = callPackage ./evalue.nix {};
-    mathematica = callPackage ./mathematica.nix {};
     gps = callPackage ./gps/package.nix {};
     satod = callPackage ./satod/package.nix {};
     sadin = callPackage ./sadin/package.nix {};

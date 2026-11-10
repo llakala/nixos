@@ -5,6 +5,5 @@
     evalue
     emodule
     satod
-    mathematica
   ];
 }
