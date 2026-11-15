@@ -3,15 +3,20 @@
 -- didn't use.
 --
 -- Renders marks when loading a buffer, and adds mark deletion keybinds (dma to
--- delete mark a, dM to delete all marks). Uses the nightly 0.12 MarkSet autocmd
--- (which was added by nathanmsmith, ty!)
+-- delete mark a, dM to delete all marks). Uses the 0.12 MarkSet autocmd (which
+-- was added by nathanmsmith, ty!)
 local M = {}
 
 M.config = {
   priority = 100,
   sign_group = "MarkSign",
   name_prefix = "MarkSign_",
+  upper_hl = "DiagnosticSignOk",
+  lower_hl = "DiagnosticSignOk",
 }
+
+vim.api.nvim_set_hl(0, "MarkGutterLower", { link = M.config.upper_hl, default = true })
+vim.api.nvim_set_hl(0, "MarkGutterUpper", { link = M.config.lower_hl, default = true })
 
 function M.place_mark(bufnr, mark, lnum)
   local name = M.config.name_prefix .. mark
@@ -20,18 +25,16 @@ function M.place_mark(bufnr, mark, lnum)
   if mark:match("[A-Z]") then
     -- Unplace all global marks with this label, even in other buffers
     vim.fn.sign_unplace(M.config.sign_group, { id = id })
-    if lnum == 0 then
-      return
-    end
-    vim.fn.sign_place(id, M.config.sign_group, name, bufnr, { lnum = lnum })
   elseif mark:match("[a-z]") then
     -- Only unplace marks with this label in the current buffer
     vim.fn.sign_unplace(M.config.sign_group, { id = id, buffer = bufnr })
-    if lnum == 0 then
-      return
-    end
-    vim.fn.sign_place(id, M.config.sign_group, name, bufnr, { lnum = lnum })
+  else
+    return
   end
+  if lnum == 0 then
+    return
+  end
+  vim.fn.sign_place(id, M.config.sign_group, name, bufnr, { lnum = lnum })
 end
 
 function M.place_all_marks(bufnr)
@@ -50,9 +53,6 @@ function M.place_all_marks(bufnr)
     end
   end
 end
-
-vim.api.nvim_set_hl(0, "MarkGutterLower", { link = "DiagnosticSignOk", default = true })
-vim.api.nvim_set_hl(0, "MarkGutterUpper", { link = "DiagnosticSignOk", default = true })
 
 -- Lowercase marks (a-z)
 for i = 97, 122 do
@@ -88,8 +88,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     -- The MarkSet autocmd uses sign_unplace to remove a global mark from an
     -- existing buffer when it's set somewhere else, so we only need this
     -- autocmd to trigger on first open
-    if vim.bo[ctx.buf].buflisted and not vim.b.marks_placed then
-      vim.b.marks_placed = true
+    if vim.bo[ctx.buf].buflisted and not vim.b[ctx.buf].marks_placed then
+      vim.b[ctx.buf].marks_placed = true
       M.place_all_marks(ctx.buf)
     end
   end,
