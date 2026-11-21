@@ -62,6 +62,21 @@ vim.keymap.set("n", "cy", "c")
 vim.keymap.set("n", "cY", "C")
 vim.keymap.set("x", "C", "c")
 
+-- Jump to definition, and set the tagstack.
+vim.keymap.set("n", "gd", function()
+  if #vim.fn.tagfiles() ~= 0 then
+    return "<C-]>"
+  else
+    local tagname = vim.fn.expand("<cword>")
+    local entry = { tagname = tagname, from = vim.fn.getpos(".") }
+    vim.fn.settagstack(vim.api.nvim_get_current_win(), { items = { entry } }, "t")
+    return "gd"
+  end
+end, { expr = true })
+
+-- Mnemonic: "go back"
+vim.keymap.set("n", "gb", "<C-T>")
+
 -- q to close nvim entirely, d to close the current buffer. however, wq should
 -- only write the current buffer. if you really want to write all buffers, use
 -- :wa
