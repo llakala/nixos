@@ -82,6 +82,12 @@
   grvc = "git revert --continue";
   grva = "git revert --abort";
 
+  gbs = "git bisect start";
+  gbsg = "git bisect good";
+  gbsb = "git bisect bad";
+  gbsa = "git bisect abort";
+  gbsr = "git bisect run";
+
   gre = "git reset";
   greh = "git reset --hard";
   grem = "git reset --mixed";
