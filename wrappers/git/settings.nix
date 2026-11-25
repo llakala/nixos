@@ -48,6 +48,8 @@ in {
 
   log.follow = true;
   log.date = "format:%I:%M %p%Z %a %b %-d %Y"; # a la "01:29 AM Wed Dec 3 2025"
+  blame.coloring = "highlightRecent";
+  blame.date = "format:%b %-d %Y"; # Dec 3 2025
 
   # Slightly modified version of the default log format, to just add color and
   # the relative date. If you'd like to see what the default is so you can
