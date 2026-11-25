@@ -1,10 +1,11 @@
 { inputs }:
 let
   inherit (inputs.nixpkgs) lib pkgs;
+  email = "elevenaka11@gmail.com";
 in {
   user = {
     name = "Eman Resu";
-    email = "elevenaka11@gmail.com";
+    inherit email;
   };
 
   user.signingkey = "~/.ssh/signing_key";
@@ -30,6 +31,7 @@ in {
   commit.template = "${./template}";
 
   rerere.enabled = true;
+  rerere.autoUpdate = true;
   rebase.autoSquash = true; # Treat commits with prepend messages (squash! fixup!) as they should be
 
   diff.algorithm = "histogram";
@@ -53,6 +55,7 @@ in {
   format.pretty = "format:commit %C(auto)%h%d%nAuthor: %C(brightgreen)%an%Creset %C(dim normal)<%ae>%C(auto)%nDate:   %C(brightblue)%ad%C(auto) (%C(blue)%ar%C(auto))%n%n%w(76,4,4)%B%-%n";
 
   merge.conflictstyle = "diff3";
+  merge.renames = "copies";
   merge.directoryRenames = true; # Renamed directories don't cause a merge conflict
 
   merge.tool = "meld";
@@ -60,11 +63,14 @@ in {
     path = lib.getExe pkgs.meld;
     useAutoMerge = true;
   };
+  mergetool.keepBackup = false;
 
   alias = {
     amend = "commit --amend --no-edit";
     reword = "commit --amend --only"; # --only means staged changes aren't included
     force = "push --force-with-lease --force-if-includes";
+
+    mylog = "log --author ${email}";
 
     # --soft is needed - means that `undo` will put the undone changes into
     # staging, and `redo` will commit only the staged changes you just undid.
