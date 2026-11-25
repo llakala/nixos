@@ -1,4 +1,4 @@
-{ promise, ... }: {
+{ await, ... }: {
   options = {
     completionsFiles.default = [
       ./completions/nix-build.fish
@@ -17,7 +17,7 @@
       ];
     };
     interactiveShellInit = {
-      default = promise.map (prev: ''
+      default = await (prev: ''
         ${prev}
         ${builtins.readFile ./config.fish}
       '');
