@@ -175,6 +175,12 @@ blink.setup({
       -- would be a waste of time
       snippets = { opts = { show_autosnippets = false } },
 
+      path = {
+        opts = {
+          trailing_slash = false,
+        },
+      },
+
       -- Filtered version of `lsp` that only contains snippets. We do this so we
       -- can only see snippets when pressing Ctrl+s
       lsp_snippets = {
